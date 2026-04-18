@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  /*
+   * Madrona Product Studio — Design Tokens
+   *
+   * Palette principle: one signature color (madrona bark) against a neutral
+   * ink-on-cream foundation. Restraint is the point — every color earns
+   * its role, no decorative extras.
+   */
+
+  /* Foundation — the 90% of the page */
+  --color-ink: #1a1a1a;         /* Primary text, structural elements */
+  --color-ink-light: #4a4a4a;   /* Secondary text, captions */
+  --color-cream: #faf8f5;       /* Primary background */
+  --color-cream-dark: #ece8e1;  /* Hairline dividers, quiet borders */
+
+  /* Signature — the brand. Used sparingly: links, active nav, CTA, accents */
+  --color-madrona: #c4553a;        /* Peeling-bark orange-red */
+  --color-madrona-dark: #a3432d;   /* Hover, pressed states */
+  --color-madrona-light: #e8a999;  /* Selection highlights, subtle washes */
+
+  /* Typography */
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background-color: var(--color-cream);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  h1 { font-size: 2.75rem; }
+  h2 { font-size: 1.875rem; }
+  h3 { font-size: 1.375rem; }
+
+  @media (min-width: 768px) {
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.25rem; }
+    h3 { font-size: 1.5rem; }
+  }
+
+  p {
+    line-height: 1.75;
+  }
+
+  a {
+    color: var(--color-madrona);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  a:hover {
+    color: var(--color-madrona-dark);
+  }
+
+  ::selection {
+    background-color: var(--color-madrona-light);
+    color: var(--color-ink);
+  }
+}
