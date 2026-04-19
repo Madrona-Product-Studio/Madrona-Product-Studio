@@ -1,9 +1,11 @@
 import { offerings } from "../data/offerings";
 import OfferingCard from "../components/OfferingCard";
+import PageMeta from "../components/PageMeta";
 
 export default function Approach() {
   return (
     <div className="space-y-24">
+      <PageMeta title="Approach" description="Strategy sprints, build engagements, and fractional product leadership. How Madrona Product Studio works." />
       <section className="max-w-2xl">
         <h1 className="mb-5">Approach</h1>
         <p className="text-lg md:text-xl text-ink-light leading-relaxed">

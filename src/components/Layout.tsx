@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const navLinks = [
   { to: "/work", label: "Work" },
@@ -15,6 +15,12 @@ function ScrollToTop() {
 }
 
 function Nav() {
+  const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  // Close mobile menu on navigation
+  useEffect(() => { setOpen(false); }, [pathname]);
+
   return (
     <nav className="sticky top-0 z-50 bg-cream/90 backdrop-blur-sm border-b border-cream-dark/50">
       <div className="max-w-6xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
@@ -24,7 +30,9 @@ function Nav() {
         >
           Madrona Product Studio
         </Link>
-        <ul className="flex gap-8 list-none m-0 p-0">
+
+        {/* Desktop nav */}
+        <ul className="hidden md:flex gap-8 list-none m-0 p-0">
           {navLinks.map(({ to, label }) => (
             <li key={to}>
               <NavLink
@@ -42,7 +50,54 @@ function Nav() {
             </li>
           ))}
         </ul>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 bg-transparent border-none cursor-pointer p-1"
+          aria-label="Toggle navigation"
+        >
+          <span
+            className={`block h-0.5 w-full bg-ink transition-all duration-200 ${
+              open ? "translate-y-2 rotate-45" : ""
+            }`}
+          />
+          <span
+            className={`block h-0.5 w-full bg-ink transition-all duration-200 ${
+              open ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`block h-0.5 w-full bg-ink transition-all duration-200 ${
+              open ? "-translate-y-2 -rotate-45" : ""
+            }`}
+          />
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden border-t border-cream-dark/50 bg-cream/95 backdrop-blur-sm">
+          <ul className="list-none m-0 p-0 px-6 py-4 space-y-4">
+            {navLinks.map(({ to, label }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  className={({ isActive }) =>
+                    `block text-base no-underline transition-colors ${
+                      isActive
+                        ? "text-madrona font-medium"
+                        : "text-ink-light hover:text-ink"
+                    }`
+                  }
+                >
+                  {label}
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </nav>
   );
 }

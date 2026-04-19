@@ -1,8 +1,10 @@
 import { articles } from "../data/writing";
+import PageMeta from "../components/PageMeta";
 
 export default function Writing() {
   return (
     <div>
+      <PageMeta title="Writing" description="Thinking on product strategy, team structure, and the work of building things that matter." />
       <section className="max-w-2xl mb-20">
         <h1 className="mb-5">Writing</h1>
         <p className="text-lg md:text-xl text-ink-light leading-relaxed">

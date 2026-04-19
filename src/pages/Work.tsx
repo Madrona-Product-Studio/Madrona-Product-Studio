@@ -1,5 +1,6 @@
 import { caseStudies } from "../data/caseStudies";
 import CaseStudyCard from "../components/CaseStudyCard";
+import PageMeta from "../components/PageMeta";
 
 export default function Work() {
   const clientWork = caseStudies.filter((s) => !s.isStudioProject);
@@ -7,6 +8,7 @@ export default function Work() {
 
   return (
     <div className="space-y-32">
+      <PageMeta title="Work" description="Product strategy, build, and leadership engagements — plus studio projects we've initiated because they should exist." />
       <section className="max-w-2xl">
         <h1 className="mb-5">Work</h1>
         <p className="text-lg md:text-xl text-ink-light leading-relaxed">

@@ -1,6 +1,9 @@
+import PageMeta from "../components/PageMeta";
+
 export default function About() {
   return (
     <div className="space-y-24">
+      <PageMeta title="About" description="Madrona Product Studio is led by Charlie Koch — fifteen years of product leadership across outdoor, wellness, and health." />
       <section className="max-w-2xl">
         <h1 className="mb-8">About</h1>
         <div className="space-y-6 text-ink-light text-lg leading-relaxed">

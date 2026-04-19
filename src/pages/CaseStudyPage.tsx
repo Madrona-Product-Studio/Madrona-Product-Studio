@@ -2,6 +2,7 @@
 
 import { useParams, Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
+import PageMeta from "../components/PageMeta";
 
 export default function CaseStudyPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -23,6 +24,7 @@ export default function CaseStudyPage() {
 
   return (
     <article className="max-w-3xl">
+      <PageMeta title={`${study.title} — Work`} description={study.tagline} />
       <Link
         to="/work"
         className="text-sm text-ink-light hover:text-ink transition-colors mb-12 inline-block"

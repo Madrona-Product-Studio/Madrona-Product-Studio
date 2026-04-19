@@ -4,6 +4,7 @@ import { offerings } from "../data/offerings";
 import { articles } from "../data/writing";
 import CaseStudyCard from "../components/CaseStudyCard";
 import OfferingCard from "../components/OfferingCard";
+import PageMeta from "../components/PageMeta";
 
 export default function Home() {
   // Mix client and studio work in the featured grid
@@ -17,6 +18,7 @@ export default function Home() {
 
   return (
     <div className="space-y-32">
+      <PageMeta />
       {/* Hero */}
       <section className="max-w-3xl pt-8 md:pt-16">
         <h1 className="mb-8 leading-tight">
