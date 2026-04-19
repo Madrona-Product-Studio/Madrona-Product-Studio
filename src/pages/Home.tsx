@@ -7,13 +7,7 @@ import OfferingCard from "../components/OfferingCard";
 import PageMeta from "../components/PageMeta";
 
 export default function Home() {
-  // Mix client and studio work in the featured grid
-  const featuredWork = [
-    caseStudies.find((s) => s.slug === "rei-membership")!,
-    caseStudies.find((s) => s.slug === "fed")!,
-    caseStudies.find((s) => s.slug === "rei-adventures")!,
-    caseStudies.find((s) => s.slug === "berry-good-berry-farm")!,
-  ];
+  const featuredWork = caseStudies.filter((s) => s.category === "recent").slice(0, 4);
   const latestArticle = articles[0];
 
   return (

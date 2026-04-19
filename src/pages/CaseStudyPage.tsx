@@ -35,11 +35,6 @@ export default function CaseStudyPage() {
       <header className="mb-16">
         <p className="text-sm font-medium uppercase tracking-wider text-ink-light mb-3">
           {study.client}
-          {study.isStudioProject && (
-            <span className="ml-3 text-xs bg-madrona/10 text-madrona-dark px-2.5 py-1 rounded">
-              Studio project
-            </span>
-          )}
         </p>
         <h1 className="mb-4">{study.title}</h1>
         <p className="text-xl text-ink-light leading-relaxed">
