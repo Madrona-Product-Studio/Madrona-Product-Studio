@@ -11,14 +11,14 @@ export default function Home() {
   const latestArticle = articles[0];
 
   return (
-    <div className="space-y-32">
+    <div className="space-y-24">
       <PageMeta />
       {/* Hero */}
       <section className="max-w-3xl pt-8 md:pt-16">
         <h1 className="mb-8 leading-tight">
           We help companies figure out what to build — and then make it real.
         </h1>
-        <p className="text-lg md:text-xl text-ink-light max-w-2xl leading-relaxed">
+        <p className="text-lg md:text-2xl text-ink-light max-w-2xl leading-relaxed">
           Madrona Product Studio is a small, senior product studio based in the
           Pacific Northwest. We partner with teams to shape strategy, prove
           concepts, and build things that matter.
