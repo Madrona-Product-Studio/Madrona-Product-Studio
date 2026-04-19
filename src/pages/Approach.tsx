@@ -5,14 +5,39 @@ import PageMeta from "../components/PageMeta";
 export default function Approach() {
   return (
     <div className="space-y-24">
-      <PageMeta title="Approach" description="Strategy sprints, build engagements, and fractional product leadership. How Madrona Product Studio works." />
+      <PageMeta title="Approach" description="Strategy sprints, rapid prototyping, and fractional product leadership. How Madrona Product Studio works." />
       <section className="max-w-2xl">
-        <h1 className="mb-5">Approach</h1>
-        <p className="text-lg md:text-xl text-ink-light leading-relaxed">
-          We do three things. Each one is designed to give you senior product
-          thinking and the ability to ship — at the scale and pace your
-          situation demands.
-        </p>
+        <h1 className="mb-12">Approach</h1>
+        <div className="border-l-2 border-madrona/30 pl-8 space-y-6">
+          <p className="font-serif text-2xl md:text-3xl text-ink leading-tight">
+            We believe small teams focused on big problems can change the world.
+          </p>
+          <div className="space-y-5 text-ink-light text-lg leading-relaxed">
+            <p>
+              That's the thesis, and it's getting more true every year. The tools
+              available to a senior operator with good taste and a trusted network
+              are better than what most product teams had five years ago. The gap
+              between "I think we should build this" and "here's a working version
+              of it" has collapsed — if you have the right people and you don't get
+              in your own way.
+            </p>
+            <p>
+              Madrona is built around that collapse. We work at the front end of the
+              product lifecycle, where clarity matters more than scale. Our
+              engagements are short, intense, and small-team by design. One senior
+              lead at the center. A trusted network of designers, engineers, and
+              researchers around the edges. AI where it pulls its weight. No
+              hierarchy, no handoffs, no pods.
+            </p>
+            <p>
+              What you get is coherence. The strategy and the prototype are made by
+              the same people, which means the prototype actually reflects the
+              strategy. The research and the decisions are held in the same head,
+              which means the decisions don't drift. The thing we ship is the thing
+              we meant to ship.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Offerings */}
@@ -29,22 +54,10 @@ export default function Approach() {
         <h2>How we work</h2>
         <div className="space-y-5 text-ink-light text-lg leading-relaxed">
           <p>
-            Every engagement is led personally by a senior product leader — not
-            handed off to a junior team. We bring in collaborators from our
-            network when the work calls for it: designers, engineers, data
-            scientists, researchers. The team flexes to the shape of the problem.
-          </p>
-          <p>
             We work in tight cycles. We're direct about what we see. We'd rather
             ship something real and learn than polish a deck. And we treat your
             product like it's ours — because for the duration of the engagement,
             it is.
-          </p>
-          <p>
-            We use AI where it makes the work better — accelerating research,
-            prototyping faster, generating and testing ideas at a pace that
-            wasn't possible two years ago. But we know where it helps and where
-            it doesn't. The goal is never "fast." It's quality, faster.
           </p>
           <p>
             Most of our clients are founders, heads of product, and leadership

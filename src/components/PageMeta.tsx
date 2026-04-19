@@ -7,7 +7,7 @@ interface Props {
 
 const SITE_NAME = "Madrona Product Studio";
 const DEFAULT_DESCRIPTION =
-  "A small, senior product studio based in the Pacific Northwest. Strategy sprints, build engagements, and fractional product leadership.";
+  "A small, senior product studio based in the Pacific Northwest. Strategy sprints, rapid prototyping, and fractional product leadership.";
 
 export default function PageMeta({ title, description }: Props) {
   const fullTitle = title ? `${title} — ${SITE_NAME}` : `${SITE_NAME} — Senior Product Studio, Pacific Northwest`;

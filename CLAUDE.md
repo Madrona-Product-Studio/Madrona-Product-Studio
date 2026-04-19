@@ -94,8 +94,9 @@ variety — stick to these two, vary weight and size instead.
 
 1. **Strategy sprints** (2–6 weeks) — sharp point of view on the question
    blocking the roadmap.
-2. **Build engagements** (2–6 months) — lead plus right team to ship real
-   product.
+2. **Rapid prototyping** (4–12 weeks) — a working prototype, fast. Built
+   well enough to test the hypothesis and show what the full version
+   should be.
 3. **Fractional product leadership** (3–6 month retainers) — embedded
    senior product voice for early-stage teams.
 

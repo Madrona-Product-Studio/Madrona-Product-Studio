@@ -11,20 +11,20 @@ export const offerings: Offering[] = [
     slug: "strategy-sprints",
     timeline: "2–6 weeks",
     description:
-      "A sharp point of view on the question blocking the roadmap. We dig into the customer, the market, the product, and come back with a clear recommendation and the evidence behind it.",
+      "A sharp point of view on the question blocking the roadmap. Product vision, service design, customer research, strategic framing — whatever it takes to get the team aligned and moving. You leave with a direction, the evidence behind it, and a plan for what to do next.",
   },
   {
-    title: "Build engagements",
-    slug: "build-engagements",
-    timeline: "2–6 months",
+    title: "Rapid prototyping",
+    slug: "rapid-prototyping",
+    timeline: "4–12 weeks",
     description:
-      "We lead, plus the right team, to ship real product. Strategy through launch — including the messy middle where most product work actually happens.",
+      "A working prototype, fast. Not a spec. Not a deck. A real thing people can use — a tool, a product, a proof of concept — built well enough to test the hypothesis and show what the full version should be. When it's ready to scale, we hand off cleanly.",
   },
   {
     title: "Fractional product leadership",
     slug: "fractional-product-leadership",
     timeline: "3–6 month retainers",
     description:
-      "Embedded senior product voice for early-stage teams. The strategic thinking and shipping discipline of a VP Product, without the full-time overhead.",
+      "An embedded senior product voice for early-stage teams. Half-time or quarter-time. Helpful for founders figuring out what to build, or small teams that need senior judgment without a full-time hire.",
   },
 ];
