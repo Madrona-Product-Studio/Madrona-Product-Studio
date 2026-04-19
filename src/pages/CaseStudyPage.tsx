@@ -139,12 +139,15 @@ export default function CaseStudyPage() {
 }
 
 function TextSection({ title, content }: { title: string; content: string }) {
+  const paragraphs = content.split("\n\n");
   return (
     <section>
       <h2 className="text-xl font-serif font-medium mb-4 text-ink">{title}</h2>
-      <p className="text-ink-light text-lg leading-relaxed max-w-2xl">
-        {renderInline(content)}
-      </p>
+      <div className="space-y-5 text-ink-light text-lg leading-relaxed max-w-2xl">
+        {paragraphs.map((p, i) => (
+          <p key={i}>{renderInline(p)}</p>
+        ))}
+      </div>
     </section>
   );
 }

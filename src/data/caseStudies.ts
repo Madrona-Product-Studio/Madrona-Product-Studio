@@ -124,16 +124,91 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "lila-yoga",
     title: "Lila Yoga",
-    client: "Bellingham Yoga Collective",
-    tagline: "A digital experience for a community yoga studio",
-    tags: ["wellness", "yoga", "community"],
+    client: "In collaboration with Bellingham Yoga Collective",
+    tagline:
+      "Four card decks for a serious practice — meditations, movements, body science, and teachings — designed as one system.",
+    tags: ["wellness", "yoga", "community", "content"],
     category: "recent",
-    opportunity: "Placeholder — the opportunity behind this project.",
-    thesis: "Placeholder — the thesis we tested.",
-    whatWeDid: { lead: "Placeholder — what we did.", items: [] },
-    builtWith: [],
-    whatWeLearned: ["Placeholder — what we learned."],
-    status: ["Placeholder."],
+    externalUrl: "https://lila.yoga",
+    externalLabel: "lila.yoga",
+    heroImage: "/case-studies/lila-yoga/hero.jpg",
+    heroImageAlt:
+      "The Lila Yoga landing page, showing the four deck covers — meditations, movements, body, and teachings — each with its tradition symbols on a linen background",
+    opportunity:
+      "Wellness apps aren't short on content. They're short on content that connects. A meditation app teaches meditation. A yoga app teaches poses. An anatomy app teaches biomechanics. A philosophy app teaches concepts. None of them talk to each other, which leaves the practitioner who actually wants to understand the practice — not just follow along — stitching four vocabularies together on their own.",
+    thesis:
+      "Build a single system that speaks at four altitudes. A Meditations card hands you something short and usable — a paragraph, a practice, one thing to carry into the day. If you want the philosophy behind it, the Teachings deck has a card for the concept. If you want the body science, Body explains the mechanism: Legs-Up-the-Wall isn't just \"calming\" — it triggers a baroreflex. Elevated legs increase venous return, raising stroke volume, stretching the arterial wall at the carotid sinus, triggering vagal slowing. That's a real thing, with a real mechanism, and knowing it changes how the practice feels.\n\nMost wellness content picks one altitude. This offers the traverse.",
+    whatWeDid: {
+      lead: "Built four decks, 138 cards, with a content architecture tuned to what each deck actually is. *Meditations* — 30 practices organized around five principles drawn from wisdom traditions, each a practice you carry into a day. *Movements* — 30 yoga poses as a flowing sequence, plus breathwork. *Body* — 47 cards on anatomy and biomechanics. *Teachings* — 30 concept cards across six traditions. Each deck has its own opening and closing rituals, its own color language, and a back face structured for what that deck's content calls for.",
+      items: [
+        {
+          label: "The vocabulary is shared across decks by design.",
+          description:
+            "The Body deck established 97 movement-pattern strings — *segmental spinal mobility*, *anti-extension holds*, *scapular control under load*. The Movements deck references them on every pose. A concept in Meditations prose points to its canonical card in Teachings. A practice in one deck connects to a pose in another and a mechanism in a third. The decks resonate with each other rather than talking past each other.",
+          image: "/case-studies/lila-yoga/vocabulary-card.jpg",
+          imageAlt:
+            "A Body deck card for the Iliopsoas (hip flexors), showing the Activates tab with three movement patterns and their corresponding Movements deck exercises",
+          caption:
+            "The Body deck's movement vocabulary, referenced by name in the Movements deck. Learn a pattern on one card, see it on every pose that trains it.",
+        },
+        {
+          label: "The content is research-verified.",
+          description:
+            "The decks make factual claims, and the claims have to be right. Twenty-two specific things were revised against clinical sources during the content pass. Diaphragm pre-activation timing comes from Hodges & Richardson 1996. Stretch-tolerance claims come from Weppler & Magnusson 2010. If a card says it, there's a reason.",
+          image: "/case-studies/lila-yoga/meditation-card.jpg",
+          imageAlt:
+            "A Flow principle Meditations card titled \"Let the body lead,\" referencing Mushin from Zen Buddhism",
+          caption:
+            "The tradition is named specifically. Mushin from Zen Buddhism, not generic mindfulness.",
+        },
+        {
+          label: "No accounts, no backend, no analytics.",
+          description:
+            "Two static sites — one at [lila.yoga](https://lila.yoga), one at [lilatrips.com/practice](https://www.lilatrips.com/practice). Both load fast, work offline once cached, and have nothing to sign up for. The whole Lila Yoga site is 576KB gzipped. 138 cards, 88 anatomy illustrations, four decks, one landing page. Nothing between the reader and the content.",
+          image: "/case-studies/lila-yoga/movement-card.jpg",
+          imageAlt:
+            "The Tree Pose (Vrksasana) Movements card with a glowing amber watercolor anatomy illustration",
+          caption:
+            "No menus, no dashboards, no accounts. Just cards, on a linen surface.",
+        },
+      ],
+    },
+    builtWith: [
+      {
+        label: "Frontend",
+        description: "React 18, Vite, Tailwind CSS v4 for global theme",
+      },
+      {
+        label: "Styling",
+        description:
+          "Inline styles on card components for precise animation control",
+      },
+      {
+        label: "Animations",
+        description:
+          "Custom CSS keyframes — flip, deal-away, stack-lift — no animation library",
+      },
+      {
+        label: "State",
+        description:
+          "useState, useRef, useCallback. No Redux, no Zustand, no context providers.",
+      },
+      {
+        label: "Backend",
+        description:
+          "None. All card content is static JS data shipped in the bundle.",
+      },
+      {
+        label: "Hosting",
+        description: "Vercel, auto-deploys from GitHub on push",
+      },
+    ],
+    whatWeLearned: [
+      "The hard part of this kind of product isn't design or code. It's holding the voice. Writing 138 cards across four content architectures, drawing on a dozen wisdom traditions and decades of exercise science research, and keeping the voice coherent — grounded, direct, neither clinical nor mystical — is the actual work. The decks have to read like they were written by one person who knows a lot of things. That's not an accident; it's the result of holding a voice standard through every rewrite, every research pass, every placeholder filled.",
+    ],
+    status: [
+      "Live at [lila.yoga](https://lila.yoga) and at [lilatrips.com/practice](https://www.lilatrips.com/practice). Free, no login. Currently being shared with Bellingham Yoga Collective for instructor and practitioner feedback — the first real test of whether the decks land with people who know what a serious practice looks like.",
+    ],
   },
   {
     slug: "utah-trip-guide",
