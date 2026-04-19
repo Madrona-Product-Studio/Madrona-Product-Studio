@@ -4,14 +4,15 @@ import { caseStudies } from "../data/caseStudies";
 import type { CaseStudy } from "../data/caseStudies";
 import PageMeta from "../components/PageMeta";
 
-/** Render inline markdown: links [text](url), bold **text**, and italics *text* */
-function renderInline(text: string) {
-  const parts: (string | ReactNode)[] = [];
-  // Match links, bold, and italics
-  const regex = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)|\*\*([^*]+)\*\*|\*([^*]+)\*|~~([^~]+)~~/g;
+/** Render inline markdown: links [text](url), bold **text**, italics *text*, ~~principle~~ */
+let inlineKey = 0;
+
+function renderInline(text: string): ReactNode[] {
+  const parts: ReactNode[] = [];
+  // Process: links first, then bold, then italics (which may contain links), then ~~
+  const regex = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)|\*\*(.+?)\*\*|\*(.+?)\*|~~(.+?)~~/g;
   let lastIndex = 0;
   let match: RegExpExecArray | null;
-  let key = 0;
 
   while ((match = regex.exec(text)) !== null) {
     if (match.index > lastIndex) {
@@ -21,7 +22,7 @@ function renderInline(text: string) {
       // Link
       parts.push(
         <a
-          key={key++}
+          key={inlineKey++}
           href={match[2]}
           target="_blank"
           rel="noopener noreferrer"
@@ -32,14 +33,14 @@ function renderInline(text: string) {
       );
     } else if (match[3]) {
       // Bold
-      parts.push(<strong key={key++}>{match[3]}</strong>);
+      parts.push(<strong key={inlineKey++}>{renderInline(match[3])}</strong>);
     } else if (match[4]) {
-      // Italics
-      parts.push(<em key={key++}>{match[4]}</em>);
+      // Italics — recurse so links inside italics still render
+      parts.push(<em key={inlineKey++}>{renderInline(match[4])}</em>);
     } else if (match[5]) {
-      // Closing principle (~~text~~) — rendered as a distinct statement
+      // Closing principle (~~text~~)
       parts.push(
-        <span key={key++} className="font-serif font-medium text-ink">
+        <span key={inlineKey++} className="font-serif font-medium text-ink">
           {match[5]}
         </span>
       );
