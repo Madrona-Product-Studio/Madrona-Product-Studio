@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { useParams, Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
 import type { CaseStudy } from "../data/caseStudies";
@@ -5,7 +6,7 @@ import PageMeta from "../components/PageMeta";
 
 /** Render inline markdown: links [text](url), bold **text**, and italics *text* */
 function renderInline(text: string) {
-  const parts: (string | JSX.Element)[] = [];
+  const parts: (string | ReactNode)[] = [];
   // Match links, bold, and italics
   const regex = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)|\*\*([^*]+)\*\*|\*([^*]+)\*|~~([^~]+)~~/g;
   let lastIndex = 0;
