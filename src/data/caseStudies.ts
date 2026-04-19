@@ -3,9 +3,17 @@ export interface CaseStudyItem {
   description: string;
 }
 
+export interface WhatWeDidItem {
+  label: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+  caption?: string;
+}
+
 export interface WhatWeDid {
   lead: string;
-  items: CaseStudyItem[];
+  items: WhatWeDidItem[];
 }
 
 export interface CaseStudy {
@@ -17,6 +25,8 @@ export interface CaseStudy {
   category: "recent" | "experience";
   externalUrl?: string;
   externalLabel?: string;
+  heroImage?: string;
+  heroImageAlt?: string;
   opportunity: string;
   thesis: string;
   whatWeDid: WhatWeDid;
@@ -37,6 +47,8 @@ export const caseStudies: CaseStudy[] = [
     category: "recent",
     externalUrl: "https://www.lilatrips.com/",
     externalLabel: "lilatrips.com",
+    heroImage: "/case-studies/lila-trips/hero.jpg",
+    heroImageAlt: "The Lila Trips homepage",
     opportunity:
       "Most travel products are built to optimize — most trails, most sights, least time. That's useful if you're planning a long weekend. It's the wrong frame entirely if you want a trip that actually changes something. The people who travel that way — for intention, for practice, for depth — are underserved by every major travel tool, and the new wave of AI travel apps makes the problem worse, not better. More hallucinated recommendations, more \"optimized\" days, less actual place.",
     thesis:
@@ -48,16 +60,25 @@ export const caseStudies: CaseStudy[] = [
           label: "An AI-powered trip planner on a leash.",
           description:
             "Most AI travel products let the model hallucinate freely and hope for the best. Lila does the opposite: every restaurant, trail, hotel, and cultural site exists in a hand-curated guide file, and the AI can only recommend from that corpus. The trade is scale for trust, and it's the right call — itineraries feel authored, not generated. *See the planner at [lilatrips.com/plan](https://www.lilatrips.com/plan).*",
+          image: "/case-studies/lila-trips/planner.jpg",
+          imageAlt: "A generated Lila Trips itinerary showing day-by-day activities",
+          caption: "The planner shapes days from curated guide content — authored, not hallucinated.",
         },
         {
           label: "Destination guides that pull live context from everywhere.",
           description:
             "Each guide is a long-form editorial page backed by live data — NPS trail conditions, iNaturalist wildlife observations, Google Places enrichment for restaurants and hotels, astronomy calculations for the night sky widget, real-time weather, USGS river levels. Tap a condor in the Zion guide and you get 372 real nearby observations. Open the night sky widget and the moon phase is drawn from tonight's synodic age. *[See the guides.](https://www.lilatrips.com/destinations)*",
+          image: "/case-studies/lila-trips/destination-guide.jpg",
+          imageAlt: "A Lila Trips destination guide page showing terrain, trails, and curated content",
+          caption: "Each destination is a long-form guide backed by live data — trails, wildlife, weather, night sky.",
         },
         {
           label: "A practice library woven into the trip.",
           description:
             "The planner draws on a library of contemplative and movement practices (built separately as [Lila.yoga](https://lila.yoga)) and assigns them to days as matched companions. Day 3 at the Narrows might pair with a Taoist water meditation and a Tree Pose at the canyon rim. Not a feature bolted on — a worldview embedded in software.",
+          image: "/case-studies/lila-trips/practice-companion.jpg",
+          imageAlt: "A practice companion card matched to a day in a Lila Trips itinerary",
+          caption: "The AI matches practices to each day based on setting and energy.",
         },
       ],
     },

@@ -103,10 +103,17 @@ export default function CaseStudyPage() {
         )}
       </header>
 
-      {/* TODO: Replace with real hero image */}
-      <div className="aspect-[16/9] bg-cream-dark rounded mb-16 flex items-center justify-center text-ink-light text-sm">
-        {study.title} — hero image placeholder (16:9)
-      </div>
+      {study.heroImage ? (
+        <img
+          src={study.heroImage}
+          alt={study.heroImageAlt ?? ""}
+          className="aspect-[16/9] w-full object-cover rounded mb-16"
+        />
+      ) : (
+        <div className="aspect-[16/9] bg-cream-dark rounded mb-16 flex items-center justify-center text-ink-light text-sm">
+          {study.title} — hero image placeholder (16:9)
+        </div>
+      )}
 
       <div className="space-y-12">
         <TextSection title="Opportunity" content={study.opportunity} />
@@ -159,6 +166,21 @@ function WhatWeDidSection({ study }: { study: CaseStudy }) {
               <p className="text-ink-light leading-relaxed">
                 {renderInline(item.description)}
               </p>
+              {item.image && (
+                <figure className="mt-6">
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt ?? ""}
+                    className="aspect-[16/10] w-full object-cover rounded"
+                    loading="lazy"
+                  />
+                  {item.caption && (
+                    <figcaption className="mt-3 text-sm text-ink-light italic">
+                      {item.caption}
+                    </figcaption>
+                  )}
+                </figure>
+              )}
             </div>
           ))}
         </div>
