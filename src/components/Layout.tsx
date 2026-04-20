@@ -141,8 +141,19 @@ function Footer() {
               </a>
             </p>
           </div>
-          <div className="md:text-right">
+          <div className="md:text-right space-y-2">
             <p>&copy; {new Date().getFullYear()} Madrona Product Studio</p>
+            <p>
+              Created by{" "}
+              <a
+                href="https://madronaproductstudio.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-madrona font-medium no-underline hover:underline transition-colors"
+              >
+                Madrona Product Studio
+              </a>
+            </p>
           </div>
         </div>
       </div>
