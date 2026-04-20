@@ -300,7 +300,7 @@ export const caseStudies: CaseStudy[] = [
     category: "recent",
     externalUrl: "https://sanjuan-guide.vercel.app/",
     externalLabel: "sanjuan-guide.vercel.app",
-    heroImage: "/case-studies/san-juan-boating-guide/01-hero-homepage.png",
+    heroImage: "/case-studies/san-juan-boating-guide/hero.jpg",
     heroImageAlt:
       "The San Juan Islands Boating Guide homepage",
     opportunity:
@@ -314,7 +314,7 @@ export const caseStudies: CaseStudy[] = [
           label: "A curated guide, not a scraped one.",
           description:
             "Most travel apps let a generic search surface whatever's trending and hope for the best. This one does the opposite: every marina, restaurant, trail, gallery, and wellness studio is a hand-written entry oriented around the dock, not the highway. Marinas list VHF channels, moorage types, fuel availability, and depth cautions. Restaurants list walk distance from the slip. The trade is scale for trust, and it's the right call — the guide feels authored by a cruiser, not scraped.",
-          image: "/case-studies/san-juan-boating-guide/02-marina-detail-card.png",
+          image: "/case-studies/san-juan-boating-guide/marina.jpg",
           imageAlt:
             "A marina detail showing VHF channel, moorage type, fuel, depth — the stuff boaters actually need.",
           caption:
@@ -324,7 +324,7 @@ export const caseStudies: CaseStudy[] = [
           label: "Live enrichment from Google Places.",
           description:
             "Each curated entry is backed by live data. Tap a restaurant in Friday Harbor and you get current photos, rating, phone number, website, and directions — pulled through a Vercel serverless proxy so the API key never touches the client, cached 24 hours for search results and 7 days for photos so it stays fast on spotty marina Wi-Fi. Open a marina and you see the dock as it looks this season, not as it looked in a 2011 almanac.",
-          image: "/case-studies/san-juan-boating-guide/03-restaurant-modal.png",
+          image: "/case-studies/san-juan-boating-guide/restaurant.jpg",
           imageAlt:
             "Curated entries backed by live photos, ratings, and directions from Google Places.",
           caption:
@@ -334,7 +334,7 @@ export const caseStudies: CaseStudy[] = [
           label: "Structured the way boaters actually navigate.",
           description:
             "Content is organized by island and by marina, not by category alone. Five tabs — Map, Islands, Dining, Trails, Logistics — let you move between the views that matter depending on where you are in a trip. Planning the week from home? Start with Islands. Just tied up at Deer Harbor? Open the map, tap the marker, see what's walkable. The Logistics tab collects the stuff that doesn't fit anywhere else but everyone needs: water taxi rates, ferry schedules, pumpout stations, customs clearance, whale buffer zones, a suggested multi-day route.",
-          image: "/case-studies/san-juan-boating-guide/04-map-view.png",
+          image: "/case-studies/san-juan-boating-guide/map.jpg",
           imageAlt:
             "The archipelago with color-coded markers by marina type — boater's-eye navigation.",
           caption:
