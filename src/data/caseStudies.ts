@@ -213,16 +213,64 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "utah-trip-guide",
     title: "Utah Trip Guide",
-    client: "Self-initiated",
-    tagline: "An opinionated guide to adventure travel in Utah",
-    tags: ["travel", "outdoor", "content"],
+    client: "Studio project",
+    tagline:
+      "An on-trip itinerary companion that turns a week-long road trip into a swipeable, bookable, living guide.",
+    tags: ["travel", "outdoor", "PWA"],
     category: "recent",
-    opportunity: "Placeholder — the opportunity behind this project.",
-    thesis: "Placeholder — the thesis we tested.",
-    whatWeDid: { lead: "Placeholder — what we did.", items: [] },
-    builtWith: [],
-    whatWeLearned: ["Placeholder — what we learned."],
-    status: ["Placeholder."],
+    externalUrl: "https://utah-trip.vercel.app",
+    externalLabel: "utah-trip.vercel.app",
+    opportunity:
+      "Most trip planning lives in scattered notes, screenshots, and browser tabs. You know where you're going — Zion, Bryce, Capitol Reef — but coordinating flights, hotels, permits, gear, and weather across seven days becomes its own planning project. And then you get there, lose cell service on the trail, and realize none of it loads. The generic AI alternatives hallucinate restaurants that closed in 2019 and confidently recommend trails that don't exist.",
+    thesis:
+      "A good trip guide isn't a PDF you printed once. It's a live companion — something you actually open on the trail, in the car, at dinner. The information needed to make that work already exists: real bookings, real weather, real confirmation numbers. What's missing is a container elegant enough to use daily, structured enough to trust, and resilient enough to work when the signal drops.",
+    whatWeDid: {
+      lead: "Built a progressive web app that turns a week-long anniversary trip into an interactive, card-based guide. Three design choices make it work:",
+      items: [
+        {
+          label: "Cards that mirror how you move through a trip.",
+          description:
+            "Each day is a self-contained card you swipe through — no scrolling through a 50-page PDF to find Day 4. Mobile-first from the start: tap targets sized for trekking-pole hands, information hierarchy tuned for thumb reach, swipe gestures that feel native. It feels like flipping through a deck of travel cards, which is exactly how people think about multi-day trips.",
+        },
+        {
+          label: "Live weather baked into every decision point.",
+          description:
+            "Weather isn't in a separate tab — it's embedded in the days that need it. The Narrows shows current temp, wind, and precipitation chance, because whether you hike depends entirely on flash flood risk. The Bryce-to-Torrey scenic drive shows weather for both ends, since you're crossing elevation zones.",
+        },
+        {
+          label: "Every booking one tap away, even with no signal.",
+          description:
+            "Hotel confirmations, Sphere tickets, flight status, boarding passes — every critical link lives exactly where you need it, with confirmation numbers visible inline. Installed as a PWA, it works offline: I used it mid-hike in Zion with zero bars to check the next day's shuttle time. The moment you need your trip guide most is usually the moment you have no service. Most travel apps fail exactly there.",
+        },
+      ],
+    },
+    builtWith: [
+      {
+        label: "Frontend",
+        description: "React with hooks, Tailwind utilities, Lucide icons",
+      },
+      {
+        label: "Weather",
+        description: "Open-Meteo API, five locations, updated on load",
+      },
+      {
+        label: "Deployment",
+        description: "Installable PWA with offline support",
+      },
+      {
+        label: "Data",
+        description:
+          "All bookings embedded statically — curation, not generation",
+      },
+    ],
+    whatWeLearned: [
+      "The best travel guides don't try to be comprehensive — they try to be confidence-inducing. You don't need every restaurant in Springdale; you need three good ones you can book tonight. You don't need a 40-page Zion guide; you need to know The Narrows requires a wetsuit in November and here's where to rent one.",
+      "Curation beats generation. A hand-built guide with real bookings earns more trust than an AI itinerary with hallucinated recommendations. The information density is high, but the interface never feels cluttered because everything has one job: get you from decision to action in one tap — whether or not you're online.",
+    ],
+    status: [
+      "Live and actively used. Covers 7 days, 3 national parks, 650 miles, 4 hotel bookings, live weather for 5 locations, plus packing lists and budget tracking.",
+      "Utah Trip Guide was the V0 for what became [Lila Trips](https://www.lilatrips.com). The hardcoded prototype that proved the thesis — that a designed, curated trip artifact beats a generated one — turned into the platform. The two products now split the job: Lila Trips handles planning and booking; Utah Trip Guide is the on-trip companion. Learnings from Utah, especially around offline resilience and the card interface, are flowing back into Lila Trips as the on-trip experience matures.",
+    ],
   },
   {
     slug: "san-juan-discovery-guide",
