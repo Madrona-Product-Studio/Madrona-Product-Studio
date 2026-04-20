@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
 import { offerings } from "../data/offerings";
-import { articles } from "../data/writing";
+// import { articles } from "../data/writing";  // Hidden until content is ready
 import CaseStudyCard from "../components/CaseStudyCard";
 import OfferingCard from "../components/OfferingCard";
 import PageMeta from "../components/PageMeta";
 
 export default function Home() {
   const featuredWork = caseStudies.filter((s) => s.category === "recent").slice(0, 4);
-  const latestArticle = articles[0];
 
   return (
     <div className="space-y-24">
@@ -96,7 +95,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Writing teaser */}
+      {/* Writing teaser — hidden until content is ready
       {latestArticle && (
         <section>
           <h2 className="mb-12">Writing</h2>
@@ -120,7 +119,7 @@ export default function Home() {
             </Link>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* CTA */}
       <section className="max-w-2xl border-t border-cream-dark pt-16">

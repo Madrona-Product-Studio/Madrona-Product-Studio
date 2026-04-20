@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const navLinks = [
   { to: "/work", label: "Work" },
   { to: "/approach", label: "Approach" },
-  { to: "/writing", label: "Writing" },
+  // { to: "/writing", label: "Writing" },  // Hidden until content is ready
   { to: "/about", label: "About" },
 ];
 
@@ -131,9 +131,8 @@ function Footer() {
               </a>
             </p>
             <p>
-              {/* TODO: Replace with real GitHub repo URL */}
               <a
-                href="https://github.com/charliekoch/madrona-product-studio"
+                href="https://github.com/Madrona-Product-Studio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-ink transition-colors"
