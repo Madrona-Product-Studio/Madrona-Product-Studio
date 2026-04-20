@@ -15,7 +15,7 @@ export default function Home() {
       {/* Hero */}
       <section className="max-w-3xl pt-8 md:pt-16">
         <h1 className="mb-8 leading-tight">
-          We help companies figure out what to build — and then make it real.
+          Helping organizations decide what to build — and then making it real.
         </h1>
         <p className="text-lg md:text-2xl text-ink-light max-w-2xl leading-relaxed">
           Madrona Product Studio is a small, senior product studio based in the
