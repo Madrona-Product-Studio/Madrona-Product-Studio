@@ -124,7 +124,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "lila-yoga",
     title: "Lila Yoga",
-    client: "In collaboration with Bellingham Yoga Collective",
+    client: "Studio project",
     tagline:
       "Four card decks for a serious practice — meditations, movements, body science, and teachings — designed as one system.",
     tags: ["wellness", "yoga", "community", "content"],
@@ -207,7 +207,7 @@ export const caseStudies: CaseStudy[] = [
       "The hard part of this kind of product isn't design or code. It's holding the voice. Writing 138 cards across four content architectures, drawing on a dozen wisdom traditions and decades of exercise science research, and keeping the voice coherent — grounded, direct, neither clinical nor mystical — is the actual work. The decks have to read like they were written by one person who knows a lot of things. That's not an accident; it's the result of holding a voice standard through every rewrite, every research pass, every placeholder filled.",
     ],
     status: [
-      "Live at [lila.yoga](https://lila.yoga) and at [lilatrips.com/practice](https://www.lilatrips.com/practice). Free, no login. Currently being shared with Bellingham Yoga Collective for instructor and practitioner feedback — the first real test of whether the decks land with people who know what a serious practice looks like.",
+      "Live at [lila.yoga](https://lila.yoga) and at [lilatrips.com/practice](https://www.lilatrips.com/practice). Free, no login. Currently being shared with local yoga instructors and practitioners for feedback — the first real test of whether the decks land with people who know what a serious practice looks like.",
     ],
   },
   {
@@ -293,7 +293,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "san-juan-boating-guide",
     title: "San Juan Boating Guide",
-    client: "San Juan Islands Chamber of Commerce",
+    client: "Studio project",
     tagline:
       "A purpose-built web app for boaters cruising the San Juan Islands.",
     tags: ["travel", "local", "community", "maps"],
