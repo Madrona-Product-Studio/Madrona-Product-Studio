@@ -220,6 +220,9 @@ export const caseStudies: CaseStudy[] = [
     category: "recent",
     externalUrl: "https://utah-trip.vercel.app",
     externalLabel: "utah-trip.vercel.app",
+    heroImage: "/case-studies/utah-trip-guide/hero-cover-route.png",
+    heroImageAlt:
+      "The Utah Trip Guide cover card showing the Southern Utah Anniversary Adventure route from Las Vegas through Zion, Bryce Canyon, and Capitol Reef — 650 miles, 7 days — with the \"Offline Ready\" indicator visible at the bottom.",
     opportunity:
       "Most trip planning lives in scattered notes, screenshots, and browser tabs. You know where you're going — Zion, Bryce, Capitol Reef — but coordinating flights, hotels, permits, gear, and weather across seven days becomes its own planning project. And then you get there, lose cell service on the trail, and realize none of it loads. The generic AI alternatives hallucinate restaurants that closed in 2019 and confidently recommend trails that don't exist.",
     thesis:
@@ -231,16 +234,31 @@ export const caseStudies: CaseStudy[] = [
           label: "Cards that mirror how you move through a trip.",
           description:
             "Each day is a self-contained card you swipe through — no scrolling through a 50-page PDF to find Day 4. Mobile-first from the start: tap targets sized for trekking-pole hands, information hierarchy tuned for thumb reach, swipe gestures that feel native. It feels like flipping through a deck of travel cards, which is exactly how people think about multi-day trips.",
+          image: "/case-studies/utah-trip-guide/cards-narrows-day.png",
+          imageAlt:
+            "A Day 3 card for The Narrows showing a morning schedule: breakfast at 8, rental gear pickup at 9, hike from 10 to 1. Tap targets for rental outfitter links and afternoon options below.",
+          caption:
+            "Each day is a self-contained card. Schedule, rental gear links, and afternoon options — all reachable in one thumb.",
         },
         {
           label: "Live weather baked into every decision point.",
           description:
             "Weather isn't in a separate tab — it's embedded in the days that need it. The Narrows shows current temp, wind, and precipitation chance, because whether you hike depends entirely on flash flood risk. The Bryce-to-Torrey scenic drive shows weather for both ends, since you're crossing elevation zones.",
+          image: "/case-studies/utah-trip-guide/weather-flash-flood.png",
+          imageAlt:
+            "Weather card for Zion National Park showing 58° cloudy with wind and precipitation data, paired with a Flash Flood Safety CRITICAL callout with a tap-to-call ranger hotline button.",
+          caption:
+            "Weather sits next to the decision it informs. On Narrows day, that means flash-flood conditions with the ranger hotline one tap away.",
         },
         {
           label: "Every booking one tap away, even with no signal.",
           description:
             "Hotel confirmations, Sphere tickets, flight status, boarding passes — every critical link lives exactly where you need it, with confirmation numbers visible inline. Installed as a PWA, it works offline: I used it mid-hike in Zion with zero bars to check the next day's shuttle time. The moment you need your trip guide most is usually the moment you have no service. Most travel apps fail exactly there.",
+          image: "/case-studies/utah-trip-guide/booking-hotel-cliffrose.png",
+          imageAlt:
+            "Day 2 hotel card for the Cliffrose Springdale showing room type, check-in/out times, confirmation and Hilton Honors numbers, with Call Hotel, Hotel Website, and View Confirmation buttons.",
+          caption:
+            "Confirmation numbers inline, hotel phone one tap away, the confirmation PDF cached for offline access.",
         },
       ],
     },
