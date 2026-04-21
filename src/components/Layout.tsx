@@ -120,17 +120,6 @@ function Footer() {
               </a>
             </p>
             <p>
-              {/* TODO: Replace with real LinkedIn URL */}
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-ink transition-colors"
-              >
-                LinkedIn
-              </a>
-            </p>
-            <p>
               <a
                 href="https://github.com/Madrona-Product-Studio"
                 target="_blank"
