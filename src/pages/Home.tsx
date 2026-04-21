@@ -20,7 +20,8 @@ export default function Home() {
         <p className="text-lg md:text-2xl text-ink-light max-w-2xl leading-relaxed">
           Madrona Product Studio is a small, senior product studio based in the
           Pacific Northwest. We partner with teams to shape strategy, prove
-          concepts, and build things that matter.
+          concepts, and build things that matter — with a particular interest
+          in the places where people, nature, and technology meet.
         </p>
       </section>
 
@@ -31,11 +32,13 @@ export default function Home() {
             Product work is changing. The companies winning right now aren't the
             ones with the biggest product teams. They're the ones that can hold
             the whole product in one head — strategy, customer, design,
-            technology — and make coherent decisions fast.
+            technology — and make coherent decisions fast. The bottleneck isn't
+            headcount anymore. It's taste, judgment, and the willingness to build.
           </p>
           <p>
             We're built for that. A senior product lead at the center, a trusted
-            network of designers, engineers, and researchers around the edges.
+            network of designers, engineers, and researchers around the
+            edges — generalists who can do the work, not just coordinate it.
             Modern tools, including AI where it actually helps, let a small team
             do in weeks what used to take quarters. No pods. No handoffs. No
             40-slide decks.
@@ -45,7 +48,8 @@ export default function Home() {
             you're still figuring out what to build, whether it'll work, and what
             the thing should actually feel like. Product vision. Service design.
             Rapid prototypes. Proofs of concept that make the abstract concrete.
-            When it's time to scale, we hand off cleanly.
+            When it's time to scale, we hand off cleanly or help take it to the
+            next level.
           </p>
           <p>
             Some of our work is for enterprise teams — where we come in fast,
@@ -55,12 +59,6 @@ export default function Home() {
             organizations solving real problems in their communities. And some of
             it we initiate ourselves — tools we think should exist, ideas we
             can't stop thinking about.
-          </p>
-          <p>
-            The common thread isn't a business model. It's curious people who
-            like building things that solve real problems — and who've learned
-            that the best work happens when someone cares enough to get the
-            details right.
           </p>
         </div>
       </section>
