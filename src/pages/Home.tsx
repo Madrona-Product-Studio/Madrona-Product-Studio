@@ -19,9 +19,9 @@ export default function Home() {
         </h1>
         <p className="text-lg md:text-2xl text-ink-light max-w-2xl leading-relaxed">
           Madrona Product Studio is a small, senior product studio based in the
-          Pacific Northwest. We partner with teams to shape strategy, prove
-          concepts, and build things that matter — with a particular interest
-          in the places where people, nature, and technology meet.
+          Pacific Northwest. We shape strategy, prove concepts, and build
+          things that matter fast — often in the places where people, the
+          outdoors, and technology meet.
         </p>
       </section>
 
@@ -29,16 +29,16 @@ export default function Home() {
       <section className="max-w-2xl">
         <div className="border-l-2 border-madrona/30 pl-8 space-y-6 text-ink-light text-lg leading-relaxed">
           <p>
-            Product work is changing. The companies winning right now aren't the
-            ones with the biggest product teams. They're the ones that can hold
-            the whole product in one head — strategy, customer, design,
-            technology — and make coherent decisions fast. The bottleneck isn't
-            headcount anymore. It's taste, judgment, and the willingness to build.
+            Product work is changing fast. For years, getting from an idea to a
+            working product meant big teams, long timelines, and a lot of
+            ceremony — decks, committees, and handoffs between people who never
+            quite shared the full picture. That's over. The companies doing the
+            best work right now are small, senior, and able to hold the whole
+            product in one head: strategy, customer, design, technology.
           </p>
           <p>
             We're built for that. A senior product lead at the center, a trusted
-            network of designers, engineers, and researchers around the
-            edges — generalists who can do the work, not just coordinate it.
+            network of designers, engineers, and researchers around the edges.
             Modern tools, including AI where it actually helps, let a small team
             do in weeks what used to take quarters. No pods. No handoffs. No
             40-slide decks.
