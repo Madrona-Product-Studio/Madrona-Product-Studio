@@ -29,10 +29,11 @@ export default function About() {
         </div>
       </section>
 
-      {/* TODO: Replace with real photo */}
+      {/* TODO: Replace with real photo
       <div className="max-w-sm aspect-[3/4] bg-cream-dark rounded flex items-center justify-center text-ink-light text-sm">
         Charlie Koch — photo placeholder (3:4)
       </div>
+      */}
 
       {/* Studio projects ethos */}
       <section className="max-w-2xl">
