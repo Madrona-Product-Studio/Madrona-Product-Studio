@@ -22,7 +22,7 @@ function Nav() {
   useEffect(() => { setOpen(false); }, [pathname]);
 
   return (
-    <nav className="sticky top-0 z-50 bg-cream/90 backdrop-blur-sm border-b border-cream-dark/50">
+    <nav className="sticky top-0 z-50 bg-cream/90 backdrop-blur-sm border-b border-madrona/20">
       <div className="max-w-6xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
         <Link
           to="/"
@@ -104,7 +104,7 @@ function Nav() {
 
 function Footer() {
   return (
-    <footer className="border-t border-cream-dark mt-32">
+    <footer className="border-t border-madrona/15 mt-32">
       <div className="max-w-6xl mx-auto px-6 lg:px-12 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm text-ink-light">
           <div className="space-y-2">

@@ -54,7 +54,7 @@ export const caseStudies: CaseStudy[] = [
     thesis:
       "A good trip isn't a list of things to do. It's a weave — of place, timing, weather, sky, wildlife, practice, pace. The information to do that weaving well already exists, scattered across public APIs, citizen science networks, government data, and the lived knowledge of people who know a place. What's missing is a product that pulls it all together into something coherent enough to trust. Build that product — and let AI do the part it's actually good at: sequencing and personalizing, not inventing.",
     whatWeDid: {
-      lead: "Built the full product — research, brand, destination guides, planner, and all the infrastructure underneath. Three areas in particular took the most work and make the thing what it is:",
+      lead: "Built the full product — research, brand, destination guides, planner, and all the infrastructure underneath. Every destination in Lila is a place I've been to multiple times and care about deeply — the guides are grounded in years of firsthand experience, not desk research. Three areas in particular took the most work and make the thing what it is:",
       items: [
         {
           label: "An AI-powered trip planner on a leash.",
@@ -118,6 +118,90 @@ export const caseStudies: CaseStudy[] = [
       "Live at [lilatrips.com](https://www.lilatrips.com/), in active beta with real users as of this writing. The product has already been through several research and build iterations; the public release is where it meets actual intentional travelers for the first time.",
       "The beta is focused on three things: whether the core planner is usable, whether the experience is actually desirable to the intentional-travel audience we built it for, and whether the AI-generated itineraries hold up in quality and stability across real trips.",
       "What comes next depends on what the users tell us. The likely paths forward are freemium tiers for the planner and guides, referral monetization on bookings, and small-group *Threshold Trips* as a higher-touch product. More destinations will come as the core product earns them.",
+      "~~Build real, test real, scale what's earned.~~",
+    ],
+  },
+  {
+    slug: "san-juan-boating-guide",
+    title: "San Juan Boating Guide",
+    client: "Studio project",
+    tagline:
+      "A purpose-built web app for boaters cruising the San Juan Islands.",
+    tags: ["travel", "local", "community", "maps"],
+    category: "recent",
+    externalUrl: "https://sanjuan-guide.vercel.app/",
+    externalLabel: "sanjuan-guide.vercel.app",
+    heroImage: "/case-studies/san-juan-boating-guide/hero.jpg",
+    heroImageAlt:
+      "The San Juan Islands Boating Guide homepage",
+    opportunity:
+      "Most boating guides are built for the shelf — static PDFs, dense cruising almanacs, or whatever Google Maps returns when you search \"food near me\" from a marina. That's fine if you already know the archipelago. It's the wrong frame entirely if you're cruising it for the first time, or the tenth, and want to actually find the quiet cove, the good restaurant a short walk from the dock, the trail that's worth the tie-up. The people who travel the San Juans by boat — for the anchorages, for the pace, for the island-to-island rhythm of it — are underserved by every existing tool. Almanacs are stuck in print logic. Google Maps doesn't know what a VHF channel is.",
+    thesis:
+      "A good cruising day isn't a list of businesses sorted by distance from a highway. It's a weave — of marina, tide, dock walk, weather, island. The information to do that weaving well already exists, scattered across cruiser knowledge, state park data, NOAA, and Google's place database. What's missing is a product that pulls it all together from a boater's point of view. Build that product — curate the entries by hand, let Google do the part it's actually good at: current photos, ratings, phone numbers, directions.",
+    whatWeDid: {
+      lead: "Built the full product — curation, structure, map, and all the infrastructure underneath. Three areas in particular took the most work and make the thing what it is:",
+      items: [
+        {
+          label: "A curated guide, not a scraped one.",
+          description:
+            "Most travel apps let a generic search surface whatever's trending and hope for the best. This one does the opposite: every marina, restaurant, trail, gallery, and wellness studio is a hand-written entry oriented around the dock, not the highway — drawn from three summers of cruising the San Juans, personal notes, conversations with harbormasters and other boaters, and being connected to the community. Marinas list VHF channels, moorage types, fuel availability, and depth cautions. Restaurants list walk distance from the slip. The trade is scale for trust, and it's the right call — the guide feels authored by a cruiser because it was.",
+          image: "/case-studies/san-juan-boating-guide/marina.jpg",
+          imageAlt:
+            "A marina detail showing VHF channel, moorage type, fuel, depth — the stuff boaters actually need.",
+          caption:
+            "A marina detail showing VHF channel, moorage type, fuel, depth — the stuff boaters actually need.",
+        },
+        {
+          label: "Live enrichment from Google Places.",
+          description:
+            "Each curated entry is backed by live data. Tap a restaurant in Friday Harbor and you get current photos, rating, phone number, website, and directions — pulled through a Vercel serverless proxy so the API key never touches the client, cached 24 hours for search results and 7 days for photos so it stays fast on spotty marina Wi-Fi. Open a marina and you see the dock as it looks this season, not as it looked in a 2011 almanac.",
+          image: "/case-studies/san-juan-boating-guide/restaurant.jpg",
+          imageAlt:
+            "Curated entries backed by live photos, ratings, and directions from Google Places.",
+          caption:
+            "Curated entries backed by live photos, ratings, and directions from Google Places.",
+        },
+        {
+          label: "Structured the way boaters actually navigate.",
+          description:
+            "Content is organized by island and by marina, not by category alone. Five tabs — Map, Islands, Dining, Trails, Logistics — let you move between the views that matter depending on where you are in a trip. Planning the week from home? Start with Islands. Just tied up at Deer Harbor? Open the map, tap the marker, see what's walkable. The Logistics tab collects the stuff that doesn't fit anywhere else but everyone needs: water taxi rates, ferry schedules, pumpout stations, customs clearance, whale buffer zones, a suggested multi-day route.",
+          image: "/case-studies/san-juan-boating-guide/map.jpg",
+          imageAlt:
+            "The archipelago with color-coded markers by marina type — boater's-eye navigation.",
+          caption:
+            "The archipelago with color-coded markers by marina type — boater's-eye navigation.",
+        },
+      ],
+    },
+    builtWith: [
+      {
+        label: "Frontend",
+        description:
+          "Vanilla HTML/CSS/JS with Leaflet for the map — no framework, no build step, loads fast on marina Wi-Fi",
+      },
+      {
+        label: "Hosting",
+        description: "Vercel (static + serverless functions), auto-deploy from GitHub",
+      },
+      {
+        label: "Live data",
+        description:
+          "Google Places for photos, ratings, phone numbers, websites, and directions — pulled through cached serverless proxies so the API key never touches the client",
+      },
+      {
+        label: "Content",
+        description:
+          "Hand-curated across the full cruising corridor: 7 islands, 24 marinas, 24 restaurants, 20 trails, 9 galleries, 7 wellness studios, 8 logistics reference cards — 99 entries from Bellingham and Anacortes staging points through the main ferry-served islands to the outer marine parks",
+      },
+    ],
+    whatWeLearned: [
+      "The hard part of a boater-facing product isn't the map or the API. It's the ground truth underneath it — the curation, the orientation, the decision to measure everything from the dock instead of the road. Google Places gets the credit for the nice photo; the hand-written guide does the work of putting you in front of the right place to begin with.",
+      "Most travel apps are thin. This one is deep by choice, and you can feel the difference the moment you tie up and open it.",
+    ],
+    status: [
+      "Live at [sanjuan-guide.vercel.app](https://sanjuan-guide.vercel.app/), shared with cruising boaters as a v1 for feedback and iteration. The product has been built end-to-end — curation, map, live enrichment, logistics — and now it meets actual boaters for the first time.",
+      "The v1 is focused on three things: whether the dock-first orientation matches how cruisers actually plan and explore, whether the five-tab structure is the right shape for a trip that moves island to island, and whether the curated entries plus live Google Places data are enough to replace the almanac and the ad-hoc searches boaters use today.",
+      "What comes next depends on what the users tell us. The likely paths forward are deeper marina and anchorage detail, expansion into the Gulf Islands and South Sound, partnerships with harbormasters and marine businesses, and an offline mode for coves with no signal. More coverage will come as the core product earns it.",
       "~~Build real, test real, scale what's earned.~~",
     ],
   },
@@ -288,90 +372,6 @@ export const caseStudies: CaseStudy[] = [
     status: [
       "Live and actively used. Covers 7 days, 3 national parks, 650 miles, 4 hotel bookings, live weather for 5 locations, plus packing lists and budget tracking.",
       "Utah Trip Guide was the V0 for what became [Lila Trips](https://www.lilatrips.com). The hardcoded prototype that proved the thesis — that a designed, curated trip artifact beats a generated one — turned into the platform. The two products now split the job: Lila Trips handles planning and booking; Utah Trip Guide is the on-trip companion. Learnings from Utah, especially around offline resilience and the card interface, are flowing back into Lila Trips as the on-trip experience matures.",
-    ],
-  },
-  {
-    slug: "san-juan-boating-guide",
-    title: "San Juan Boating Guide",
-    client: "Studio project",
-    tagline:
-      "A purpose-built web app for boaters cruising the San Juan Islands.",
-    tags: ["travel", "local", "community", "maps"],
-    category: "recent",
-    externalUrl: "https://sanjuan-guide.vercel.app/",
-    externalLabel: "sanjuan-guide.vercel.app",
-    heroImage: "/case-studies/san-juan-boating-guide/hero.jpg",
-    heroImageAlt:
-      "The San Juan Islands Boating Guide homepage",
-    opportunity:
-      "Most boating guides are built for the shelf — static PDFs, dense cruising almanacs, or whatever Google Maps returns when you search \"food near me\" from a marina. That's fine if you already know the archipelago. It's the wrong frame entirely if you're cruising it for the first time, or the tenth, and want to actually find the quiet cove, the good restaurant a short walk from the dock, the trail that's worth the tie-up. The people who travel the San Juans by boat — for the anchorages, for the pace, for the island-to-island rhythm of it — are underserved by every existing tool. Almanacs are stuck in print logic. Google Maps doesn't know what a VHF channel is.",
-    thesis:
-      "A good cruising day isn't a list of businesses sorted by distance from a highway. It's a weave — of marina, tide, dock walk, weather, island. The information to do that weaving well already exists, scattered across cruiser knowledge, state park data, NOAA, and Google's place database. What's missing is a product that pulls it all together from a boater's point of view. Build that product — curate the entries by hand, let Google do the part it's actually good at: current photos, ratings, phone numbers, directions.",
-    whatWeDid: {
-      lead: "Built the full product — curation, structure, map, and all the infrastructure underneath. Three areas in particular took the most work and make the thing what it is:",
-      items: [
-        {
-          label: "A curated guide, not a scraped one.",
-          description:
-            "Most travel apps let a generic search surface whatever's trending and hope for the best. This one does the opposite: every marina, restaurant, trail, gallery, and wellness studio is a hand-written entry oriented around the dock, not the highway. Marinas list VHF channels, moorage types, fuel availability, and depth cautions. Restaurants list walk distance from the slip. The trade is scale for trust, and it's the right call — the guide feels authored by a cruiser, not scraped.",
-          image: "/case-studies/san-juan-boating-guide/marina.jpg",
-          imageAlt:
-            "A marina detail showing VHF channel, moorage type, fuel, depth — the stuff boaters actually need.",
-          caption:
-            "A marina detail showing VHF channel, moorage type, fuel, depth — the stuff boaters actually need.",
-        },
-        {
-          label: "Live enrichment from Google Places.",
-          description:
-            "Each curated entry is backed by live data. Tap a restaurant in Friday Harbor and you get current photos, rating, phone number, website, and directions — pulled through a Vercel serverless proxy so the API key never touches the client, cached 24 hours for search results and 7 days for photos so it stays fast on spotty marina Wi-Fi. Open a marina and you see the dock as it looks this season, not as it looked in a 2011 almanac.",
-          image: "/case-studies/san-juan-boating-guide/restaurant.jpg",
-          imageAlt:
-            "Curated entries backed by live photos, ratings, and directions from Google Places.",
-          caption:
-            "Curated entries backed by live photos, ratings, and directions from Google Places.",
-        },
-        {
-          label: "Structured the way boaters actually navigate.",
-          description:
-            "Content is organized by island and by marina, not by category alone. Five tabs — Map, Islands, Dining, Trails, Logistics — let you move between the views that matter depending on where you are in a trip. Planning the week from home? Start with Islands. Just tied up at Deer Harbor? Open the map, tap the marker, see what's walkable. The Logistics tab collects the stuff that doesn't fit anywhere else but everyone needs: water taxi rates, ferry schedules, pumpout stations, customs clearance, whale buffer zones, a suggested multi-day route.",
-          image: "/case-studies/san-juan-boating-guide/map.jpg",
-          imageAlt:
-            "The archipelago with color-coded markers by marina type — boater's-eye navigation.",
-          caption:
-            "The archipelago with color-coded markers by marina type — boater's-eye navigation.",
-        },
-      ],
-    },
-    builtWith: [
-      {
-        label: "Frontend",
-        description:
-          "Vanilla HTML/CSS/JS with Leaflet for the map — no framework, no build step, loads fast on marina Wi-Fi",
-      },
-      {
-        label: "Hosting",
-        description: "Vercel (static + serverless functions), auto-deploy from GitHub",
-      },
-      {
-        label: "Live data",
-        description:
-          "Google Places for photos, ratings, phone numbers, websites, and directions — pulled through cached serverless proxies so the API key never touches the client",
-      },
-      {
-        label: "Content",
-        description:
-          "Hand-curated across the full cruising corridor: 7 islands, 24 marinas, 24 restaurants, 20 trails, 9 galleries, 7 wellness studios, 8 logistics reference cards — 99 entries from Bellingham and Anacortes staging points through the main ferry-served islands to the outer marine parks",
-      },
-    ],
-    whatWeLearned: [
-      "The hard part of a boater-facing product isn't the map or the API. It's the ground truth underneath it — the curation, the orientation, the decision to measure everything from the dock instead of the road. Google Places gets the credit for the nice photo; the hand-written guide does the work of putting you in front of the right place to begin with.",
-      "Most travel apps are thin. This one is deep by choice, and you can feel the difference the moment you tie up and open it.",
-    ],
-    status: [
-      "Live at [sanjuan-guide.vercel.app](https://sanjuan-guide.vercel.app/), shared with cruising boaters as a v1 for feedback and iteration. The product has been built end-to-end — curation, map, live enrichment, logistics — and now it meets actual boaters for the first time.",
-      "The v1 is focused on three things: whether the dock-first orientation matches how cruisers actually plan and explore, whether the five-tab structure is the right shape for a trip that moves island to island, and whether the curated entries plus live Google Places data are enough to replace the almanac and the ad-hoc searches boaters use today.",
-      "What comes next depends on what the users tell us. The likely paths forward are deeper marina and anchorage detail, expansion into the Gulf Islands and South Sound, partnerships with harbormasters and marine businesses, and an offline mode for coves with no signal. More coverage will come as the core product earns it.",
-      "~~Build real, test real, scale what's earned.~~",
     ],
   },
   // --- Selected experience ---

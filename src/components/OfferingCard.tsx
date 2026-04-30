@@ -6,7 +6,7 @@ interface Props {
 
 export default function OfferingCard({ offering }: Props) {
   return (
-    <div className="border-t-2 border-cream-dark pt-8">
+    <div className="border-t-2 border-madrona/25 pt-8">
       <p className="text-xs font-medium uppercase tracking-wider text-ink-light mb-3">
         {offering.timeline}
       </p>
