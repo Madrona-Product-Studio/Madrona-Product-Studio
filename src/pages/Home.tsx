@@ -89,10 +89,8 @@ function ThinkingDots({ active }: { active: boolean }) {
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className={`block w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-            active
-              ? "bg-madrona animate-[dot-bounce_0.6s_ease-in-out_infinite]"
-              : "bg-madrona"
+          className={`block w-2.5 h-2.5 rounded-full bg-madrona ${
+            active ? "animate-dot-bounce" : ""
           }`}
           style={active ? { animationDelay: `${i * 0.15}s` } : undefined}
         />
@@ -135,7 +133,7 @@ export default function Home() {
   const [searchParams] = useSearchParams();
   const referral = getReferralContext(searchParams);
   const featuredWork = caseStudies.filter((s) => s.category === "recent").slice(0, 4);
-  const cyclerWords = useRef(["lightning fast", "worth shipping", "with style", "no fluff", "rain or shine", "that people want"]);
+  const cyclerWords = useRef(["lightning fast", "worth shipping", "with style", "no fluff", "rain or shine", "people love"]);
   const { displayed, isTyping, isActive } = useWordCycler(cyclerWords.current);
 
   // Staggered hero animation
