@@ -89,7 +89,7 @@ function ThinkingDots({ active }: { active: boolean }) {
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className={`block w-2.5 h-2.5 rounded-full bg-madrona ${
+          className={`block w-[14px] h-[14px] rounded-full bg-madrona ${
             active ? "animate-dot-bounce" : ""
           }`}
           style={active ? { animationDelay: `${i * 0.15}s` } : undefined}
@@ -122,7 +122,7 @@ function CapabilityCard({ title, body, delay }: { title: string; body: string; d
       className={`transition-all duration-700 ${reveal.className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="mb-4"><span className="inline-block w-2.5 h-2.5 rounded-full bg-madrona" aria-hidden="true" /></div>
+      <div className="mb-4"><span className="inline-block w-[14px] h-[14px] rounded-full bg-madrona" aria-hidden="true" /></div>
       <h3 className="text-lg mb-3 text-ink">{title}</h3>
       <p className="text-ink-light text-sm leading-relaxed">{body}</p>
     </div>
