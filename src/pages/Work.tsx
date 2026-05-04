@@ -32,10 +32,8 @@ export default function Work() {
     <div className="space-y-32">
       <PageMeta title="Work" description="Recent product work and selected experience from Madrona Product Studio." />
 
-      <h1>Work</h1>
-
       <section>
-        <h2 className="mb-12">Recent work</h2>
+        <h1 className="mb-12">Products we've shipped</h1>
         <div className="grid sm:grid-cols-2 gap-x-10 gap-y-14">
           {recentWork.map((study) => (
             <CaseStudyCard key={study.slug} study={study} />

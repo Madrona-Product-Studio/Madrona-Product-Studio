@@ -76,17 +76,6 @@ export default function About() {
               hello@madronaproduct.com
             </a>
           </p>
-          <p>
-            {/* TODO: Replace with real LinkedIn URL */}
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-madrona hover:text-madrona-dark transition-colors"
-            >
-              LinkedIn
-            </a>
-          </p>
           <p className="text-ink-light">Pacific Northwest</p>
         </div>
       </section>

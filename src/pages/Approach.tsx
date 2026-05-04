@@ -10,24 +10,20 @@ export default function Approach() {
         <h1 className="mb-12">Approach</h1>
         <div className="border-l-2 border-madrona/30 pl-8 space-y-6">
           <p className="font-serif text-2xl md:text-3xl text-ink leading-tight">
-            We believe small teams focused on big problems can change the world.
+            Strategy without software is a slide deck. Software without strategy is a feature factory.
           </p>
           <div className="space-y-5 text-ink-light text-lg leading-relaxed">
             <p>
-              That's the thesis, and it's getting more true every year. The tools
-              available to a senior operator with good taste and a trusted network
-              are better than what most product teams had five years ago. The gap
-              between "I think we should build this" and "here's a working version
-              of it" has collapsed — if you have the right people and you don't get
-              in your own way.
+              We do both — and we do them together. The gap between "I think we
+              should build this" and "here's a working version of it" has collapsed.
+              AI, modern tooling, and a senior team that holds the full picture mean
+              we ship in weeks what used to take quarters.
             </p>
             <p>
-              Madrona is built around that collapse. We work at the front end of the
-              product lifecycle, where clarity matters more than scale. Our
-              engagements are short, intense, and small-team by design. One senior
-              lead at the center. A trusted network of designers, engineers, and
-              researchers around the edges. AI where it pulls its weight. No
-              hierarchy, no handoffs, no pods.
+              One senior lead at the center. A trusted network of designers,
+              engineers, and researchers around the edges. AI where it pulls its
+              weight. No hierarchy, no handoffs, no pods. Engagements are short,
+              intense, and high-signal by design.
             </p>
             <p>
               What you get is coherence. The strategy and the prototype are made by
@@ -54,22 +50,21 @@ export default function Approach() {
         <h2>How we work</h2>
         <div className="space-y-5 text-ink-light text-lg leading-relaxed">
           <p>
-            We work in tight cycles. We're direct about what we see. We'd rather
-            ship something real and learn than polish a deck. And we treat your
-            product like it's ours — because for the duration of the engagement,
-            it is.
+            Tight cycles. Direct feedback. Working software over polished decks.
+            We treat your product like it's ours — because for the duration of
+            the engagement, it is.
           </p>
           <p>
-            Most of our clients are founders, heads of product, and leadership
-            teams at early- and mid-stage companies in outdoor, wellness, health,
-            and consumer tech. If that sounds like you, we should talk.
+            We work best with founders, heads of product, and leadership teams
+            who want a senior partner, not a vendor. If you're building something
+            real in outdoor, wellness, health, or consumer tech — we should talk.
           </p>
         </div>
       </section>
 
       {/* CTA */}
       <section className="max-w-2xl border-t border-cream-dark pt-16">
-        <h2 className="mb-5">Interested?</h2>
+        <h2 className="mb-5">Let's build something.</h2>
         <p className="text-ink-light text-lg mb-8 leading-relaxed">
           Tell us what you're working on. We'll figure out together whether
           there's a fit.
