@@ -90,16 +90,16 @@ export default function CaseStudyPage() {
           {study.tagline}
         </p>
         {study.externalUrl && (
-          <p className="mt-4">
+          <div className="mt-6">
             <a
               href={study.externalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors"
+              className="inline-block bg-madrona text-cream px-6 py-3 rounded font-medium text-sm hover:bg-madrona-dark transition-colors no-underline"
             >
-              {study.externalLabel || study.externalUrl} &rarr;
+              Visit {study.externalLabel || study.title} &rarr;
             </a>
-          </p>
+          </div>
         )}
       </header>
 
