@@ -302,8 +302,8 @@ export const caseStudies: CaseStudy[] = [
       "An AI health companion that guides people through menopause — not with generic information, but with structured, empathetic, stage-aware support.",
     tags: ["health", "AI", "concept", "prototype"],
     category: "recent",
-    externalUrl: "https://github.com/Madrona-Product-Studio/aria",
-    externalLabel: "GitHub",
+    externalUrl: "https://aria-health-mp.vercel.app/",
+    externalLabel: "aria-health-mp.vercel.app",
     heroImage: "/case-studies/aria-health/hero.jpg",
     heroImageAlt: "The Aria Health landing page — So you've been diagnosed with menopause...",
     opportunity:
