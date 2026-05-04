@@ -113,6 +113,16 @@ function Footer() {
                 hello@madronaproduct.com
               </a>
             </p>
+            <p>
+              <a href="https://github.com/Madrona-Product-Studio" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors">
+                GitHub
+              </a>
+            </p>
+            <p>
+              <a href="https://www.linkedin.com/company/madrona-product-studio" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors">
+                LinkedIn
+              </a>
+            </p>
           </div>
           <div className="md:text-right">
             <p>&copy; {new Date().getFullYear()} Madrona Product Studio</p>
