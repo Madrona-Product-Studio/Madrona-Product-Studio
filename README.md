@@ -1,68 +1,21 @@
 # Madrona Product Studio
 
-Marketing site for Madrona Product Studio — a small, senior product studio based in the Pacific Northwest.
+A small, senior product studio based in the Pacific Northwest — shipping working software at the intersection of nature, wellness, and technology.
 
-## Getting started
+[madronaproduct.com](https://www.madronaproduct.com)
 
-```bash
-npm install
-npm run dev
-```
+## What we're building
 
-Open [http://localhost:5173](http://localhost:5173) to view the site.
+| Project | Description | Link |
+|---------|-------------|------|
+| **Lila Trips** | Wellness travel platform with AI-generated itineraries and destination guides | [lilatrips.com](https://www.lilatrips.com) |
+| **Lila Yoga** | Four card decks — meditations, movements, body science, and teachings — designed as one system | [lila.yoga](https://lila.yoga) |
+| **Aria Health** | AI health companion for navigating menopause with structured, empathetic support | [aria-health-mp.vercel.app](https://aria-health-mp.vercel.app) |
+| **San Juan Boating Guide** | Purpose-built web guide for boaters cruising the San Juan Islands | [sanjuan-guide.vercel.app](https://sanjuan-guide.vercel.app) |
+| **Utah Trip Guide** | On-trip itinerary companion — swipeable, bookable, offline-ready | [utah-trip.vercel.app](https://utah-trip.vercel.app) |
+| **HikerLink** | Offline-first safety app for Mount Baker hikers — trip plans, mesh networking, emergency resources | [baker-five.vercel.app](https://baker-five.vercel.app) |
+| **Löyly** | A field guide to the perfect sweat — curated saunas and bathhouses across America | In progress |
 
-## Project structure
+## How we work
 
-```
-src/
-├── components/       # Shared UI components (Layout, cards, etc.)
-├── data/             # Content as TypeScript data files
-│   ├── caseStudies.ts   # Case study content and metadata
-│   ├── offerings.ts     # Service offerings
-│   └── writing.ts       # Articles / writing index
-├── pages/            # Page components (one per route)
-│   ├── Home.tsx
-│   ├── Work.tsx
-│   ├── CaseStudyPage.tsx
-│   ├── Approach.tsx
-│   ├── Writing.tsx
-│   └── About.tsx
-├── App.tsx           # Router configuration
-├── main.tsx          # Entry point
-└── index.css         # Tailwind imports and base styles
-```
-
-## Content
-
-All content lives in `src/data/` as plain TypeScript files. Edit them directly — no CMS, no build step beyond Vite.
-
-### Adding a new case study
-
-1. Open `src/data/caseStudies.ts`
-2. Add a new object to the `caseStudies` array following the `CaseStudy` interface
-3. The slug becomes the URL: `/work/{slug}`
-4. Done — the work grid and case study page are generated automatically
-
-### Adding a writing entry
-
-1. Open `src/data/writing.ts`
-2. Add a new object to the `articles` array
-3. Set the `url` to the external article link (e.g. LinkedIn)
-
-## Tech stack
-
-- **Vite** + **React** + **TypeScript**
-- **Tailwind CSS** for styling
-- **React Router** for client-side routing
-
-## Deployment
-
-The site is configured for Vercel. Push to main and it deploys automatically (once connected).
-
-For a production build:
-
-```bash
-npm run build
-```
-
-Output goes to `dist/`.
+Product strategy, design, and code move together — not across handoffs. AI-assisted development as a core practice, using modern tools to ship in weeks what used to take quarters.
