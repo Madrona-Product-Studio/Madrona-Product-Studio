@@ -23,37 +23,68 @@ function useScrollReveal() {
   return { ref, className: visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6" };
 }
 
-function TypewriterLine({ text, delay = 0 }: { text: string; delay?: number }) {
-  const [displayed, setDisplayed] = useState("");
-  const [started, setStarted] = useState(false);
+function WordCycler({ words }: { words: string[] }) {
+  const [displayed, setDisplayed] = useState(words[0]);
+  const wordRef = useRef(0);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setStarted(true), delay);
+    const typeSpeed = 80;
+    const deleteSpeed = 50;
+    const holdDelay = 2400;
+
+    let timeout: ReturnType<typeof setTimeout>;
+
+    function deleteWord(current: string, onDone: () => void) {
+      if (current.length === 0) { onDone(); return; }
+      timeout = setTimeout(() => {
+        const next = current.slice(0, -1);
+        setDisplayed(next);
+        deleteWord(next, onDone);
+      }, deleteSpeed);
+    }
+
+    function typeWord(target: string, i: number, onDone: () => void) {
+      if (i > target.length) { onDone(); return; }
+      timeout = setTimeout(() => {
+        setDisplayed(target.slice(0, i));
+        typeWord(target, i + 1, onDone);
+      }, typeSpeed);
+    }
+
+    function cycle() {
+      timeout = setTimeout(() => {
+        const currentWord = words[wordRef.current];
+        deleteWord(currentWord, () => {
+          wordRef.current = (wordRef.current + 1) % words.length;
+          const nextWord = words[wordRef.current];
+          timeout = setTimeout(() => {
+            typeWord(nextWord, 1, cycle);
+          }, 300);
+        });
+      }, holdDelay);
+    }
+
+    cycle();
     return () => clearTimeout(timeout);
-  }, [delay]);
+  }, [words]);
 
-  useEffect(() => {
-    if (!started) return;
-    let i = 0;
-    const interval = setInterval(() => {
-      i++;
-      setDisplayed(text.slice(0, i));
-      if (i >= text.length) clearInterval(interval);
-    }, 30);
-    return () => clearInterval(interval);
-  }, [started, text]);
+  const isTyping = displayed.length > 0 && displayed !== words[wordRef.current];
 
   return (
     <span>
       {displayed}
-      {started && displayed.length < text.length && (
-        <span className="inline-block w-[2px] h-[1.1em] bg-madrona/60 ml-0.5 align-text-bottom animate-pulse" />
+      {isTyping ? (
+        <span className="inline-block w-[3px] h-[0.8em] bg-madrona/60 ml-0.5 align-text-bottom animate-[cursor-blink_1s_steps(2,start)_infinite]" />
+      ) : displayed.length > 0 ? (
+        <span className="text-madrona">.</span>
+      ) : (
+        <span className="inline-block w-[3px] h-[0.8em] bg-madrona/60 ml-0.5 align-text-bottom animate-[cursor-blink_1s_steps(2,start)_infinite]" />
       )}
     </span>
   );
 }
 
-function CapabilityCard({ icon, title, body, delay }: { icon: string; title: string; body: string; delay: number }) {
+function CapabilityCard({ title, body, delay }: { title: string; body: string; delay: number }) {
   const reveal = useScrollReveal();
   return (
     <div
@@ -61,7 +92,7 @@ function CapabilityCard({ icon, title, body, delay }: { icon: string; title: str
       className={`transition-all duration-700 ${reveal.className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="text-2xl mb-4">{icon}</div>
+      <div className="mb-4"><span className="inline-block w-3 h-3 rounded-full bg-madrona" aria-hidden="true" /></div>
       <h3 className="text-lg mb-3 text-ink">{title}</h3>
       <p className="text-ink-light text-sm leading-relaxed">{body}</p>
     </div>
@@ -82,7 +113,6 @@ export default function Home() {
 
   const s1 = useScrollReveal();
   const s2 = useScrollReveal();
-  const s3 = useScrollReveal();
   const s4 = useScrollReveal();
   const s5 = useScrollReveal();
 
@@ -112,22 +142,19 @@ export default function Home() {
           </>
         ) : (
           <>
-            <p className={`text-xs font-medium uppercase tracking-widest text-madrona/60 mb-6 transition-all duration-500 ${heroReady ? "opacity-100" : "opacity-0"}`}>
-              Madrona Product Studio
-            </p>
+            <div className={`mb-6 transition-all duration-500 ${heroReady ? "opacity-100" : "opacity-0"}`}>
+              <span className="block w-10 h-[2px] bg-madrona" aria-hidden="true" />
+            </div>
             <h1 className={`mb-8 leading-tight transition-all duration-700 delay-100 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-              We turn ideas into<br />working product — fast.
+              We turn ideas into<br />working products — <WordCycler words={["lightning fast", "with style", "end to end", "from scratch", "together", "for real"]} />
             </h1>
           </>
         )}
 
         <div className={`max-w-2xl transition-all duration-700 delay-300 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
           <div className="border-l-2 border-madrona/30 pl-6">
-            <p className="font-serif text-lg md:text-xl text-ink/70 italic leading-relaxed">
-              <TypewriterLine
-                text="A small, senior team that holds the whole product in one head — strategy, design, and code — using AI to compress the distance between an idea and something real."
-                delay={800}
-              />
+            <p className="text-lg md:text-xl text-ink-light leading-relaxed">
+              Senior product leadership that moves fluidly from strategy to design to working software — using AI to compress the distance between an idea and something real.
             </p>
           </div>
         </div>
@@ -142,19 +169,16 @@ export default function Home() {
 
         <div className="grid md:grid-cols-3 gap-12 md:gap-10">
           <CapabilityCard
-            icon="&#9672;"
             title="Strategy that ships"
             body="We don't write decks that sit in a drawer. Every engagement starts with strategy and ends with working software. The thinking and the building happen together."
             delay={0}
           />
           <CapabilityCard
-            icon="&#9674;"
             title="AI-native workflow"
             body="We use AI to do in weeks what used to take quarters. Not as a gimmick — as a genuine force multiplier that lets a senior team move at startup speed with enterprise judgment."
             delay={150}
           />
           <CapabilityCard
-            icon="&#9670;"
             title="Full-spectrum product"
             body="Product vision. Service design. Interaction patterns. Working code. Most teams split these across departments. We hold them together, because that's where the best products come from."
             delay={300}
@@ -175,25 +199,6 @@ export default function Home() {
           <Link to="/work" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
             See all work &rarr;
           </Link>
-        </div>
-      </section>
-
-      {/* The thesis */}
-      <section ref={s3.ref} className={`transition-all duration-700 ${s3.className}`}>
-        <div className="bg-ink rounded-sm px-10 py-12 md:px-14 md:py-16 max-w-3xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-madrona/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-          <p className="text-xs font-medium uppercase tracking-widest text-madrona/60 mb-6 relative z-10">
-            Why now
-          </p>
-          <p className="font-serif text-xl md:text-2xl text-cream/90 italic leading-relaxed mb-4 relative z-10">
-            "This is the most exciting time in the history of software to build product.
-            AI is compressing teams, eliminating handoffs, and making whole-product
-            thinking more valuable than ever."
-          </p>
-          <p className="text-cream/50 leading-relaxed text-sm relative z-10">
-            The companies doing the best work right now are small, senior, and fast.
-            We're built for exactly that moment.
-          </p>
         </div>
       </section>
 
