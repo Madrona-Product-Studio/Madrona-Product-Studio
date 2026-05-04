@@ -97,7 +97,7 @@ export default function CaseStudyPage() {
               rel="noopener noreferrer"
               className="inline-block bg-madrona text-cream px-6 py-3 rounded font-medium text-sm hover:bg-madrona-dark transition-colors no-underline"
             >
-              Visit {study.externalLabel || study.title} &rarr;
+              View the project &rarr;
             </a>
           </div>
         )}
