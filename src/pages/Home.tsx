@@ -23,20 +23,26 @@ function useScrollReveal() {
   return { ref, className: visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6" };
 }
 
-function WordCycler({ words }: { words: string[] }) {
+function useWordCycler(words: string[]) {
   const [displayed, setDisplayed] = useState(words[0]);
+  const [isActive, setIsActive] = useState(false);
   const wordRef = useRef(0);
 
   useEffect(() => {
     const typeSpeed = 80;
     const deleteSpeed = 50;
     const holdDelay = 2400;
+    let cancelled = false;
 
-    let timeout: ReturnType<typeof setTimeout>;
+    function schedule(fn: () => void, ms: number) {
+      const id = setTimeout(() => { if (!cancelled) fn(); }, ms);
+      return id;
+    }
 
     function deleteWord(current: string, onDone: () => void) {
+      if (cancelled) return;
       if (current.length === 0) { onDone(); return; }
-      timeout = setTimeout(() => {
+      schedule(() => {
         const next = current.slice(0, -1);
         setDisplayed(next);
         deleteWord(next, onDone);
@@ -44,20 +50,24 @@ function WordCycler({ words }: { words: string[] }) {
     }
 
     function typeWord(target: string, i: number, onDone: () => void) {
-      if (i > target.length) { onDone(); return; }
-      timeout = setTimeout(() => {
+      if (cancelled) return;
+      if (i > target.length) { setIsActive(false); onDone(); return; }
+      schedule(() => {
         setDisplayed(target.slice(0, i));
         typeWord(target, i + 1, onDone);
       }, typeSpeed);
     }
 
     function cycle() {
-      timeout = setTimeout(() => {
+      if (cancelled) return;
+      schedule(() => {
+        setIsActive(true);
         const currentWord = words[wordRef.current];
         deleteWord(currentWord, () => {
+          if (cancelled) return;
           wordRef.current = (wordRef.current + 1) % words.length;
           const nextWord = words[wordRef.current];
-          timeout = setTimeout(() => {
+          schedule(() => {
             typeWord(nextWord, 1, cycle);
           }, 300);
         });
@@ -65,11 +75,33 @@ function WordCycler({ words }: { words: string[] }) {
     }
 
     cycle();
-    return () => clearTimeout(timeout);
+    return () => { cancelled = true; };
   }, [words]);
 
   const isTyping = displayed.length > 0 && displayed !== words[wordRef.current];
 
+  return { displayed, isTyping, isActive };
+}
+
+function ThinkingDots({ active }: { active: boolean }) {
+  return (
+    <div className="flex items-center gap-1.5 h-3 mb-6" aria-hidden="true">
+      {[0, 1, 2].map((i) => (
+        <span
+          key={i}
+          className={`block w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+            active
+              ? "bg-madrona animate-[dot-bounce_0.6s_ease-in-out_infinite]"
+              : "bg-madrona"
+          }`}
+          style={active ? { animationDelay: `${i * 0.15}s` } : undefined}
+        />
+      ))}
+    </div>
+  );
+}
+
+function WordCyclerText({ displayed, isTyping }: { displayed: string; isTyping: boolean }) {
   return (
     <span>
       {displayed}
@@ -103,6 +135,8 @@ export default function Home() {
   const [searchParams] = useSearchParams();
   const referral = getReferralContext(searchParams);
   const featuredWork = caseStudies.filter((s) => s.category === "recent").slice(0, 4);
+  const cyclerWords = useRef(["lightning fast", "worth shipping", "with style", "no fluff", "rain or shine", "that people want"]);
+  const { displayed, isTyping, isActive } = useWordCycler(cyclerWords.current);
 
   // Staggered hero animation
   const [heroReady, setHeroReady] = useState(false);
@@ -142,11 +176,11 @@ export default function Home() {
           </>
         ) : (
           <>
-            <div className={`mb-6 transition-all duration-500 ${heroReady ? "opacity-100" : "opacity-0"}`}>
-              <span className="block w-10 h-[2px] bg-madrona" aria-hidden="true" />
+            <div className={`transition-all duration-500 ${heroReady ? "opacity-100" : "opacity-0"}`}>
+              <ThinkingDots active={isActive} />
             </div>
             <h1 className={`mb-8 leading-tight transition-all duration-700 delay-100 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-              We turn ideas into<br />working products — <WordCycler words={["lightning fast", "with style", "end to end", "from scratch", "together", "for real"]} />
+              We turn ideas into<br />working products — <WordCyclerText displayed={displayed} isTyping={isTyping} />
             </h1>
           </>
         )}
