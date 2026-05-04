@@ -304,6 +304,8 @@ export const caseStudies: CaseStudy[] = [
     category: "recent",
     externalUrl: "https://github.com/Madrona-Product-Studio/aria",
     externalLabel: "GitHub",
+    heroImage: "/case-studies/aria-health/hero.jpg",
+    heroImageAlt: "The Aria Health landing page — So you've been diagnosed with menopause...",
     opportunity:
       "Health platforms have decades of trusted content, but it sits behind search — articles, listicles, condition pages. When someone gets a life-changing diagnosis or enters a major transition like menopause, they don't need another article. They need a companion that synthesizes what's known, remembers their context, and meets them where they are emotionally. Generic AI assistants hallucinate medical advice. Static content doesn't adapt. Nothing in between does both well.",
     thesis:
@@ -315,16 +317,25 @@ export const caseStudies: CaseStudy[] = [
           label: "A conversational AI tuned for health, not search.",
           description:
             "Aria isn't a general-purpose chatbot pointed at a knowledge base. The system prompt encodes clinical guardrails, emotional calibration, and a structured guidance framework — Must Know, Should Consider, Can Do Today — that shapes every response. It knows when to suggest a doctor visit, when to offer reassurance, and when to simply listen. It never diagnoses, never prescribes, and always defers to professional care for medical decisions.",
+          image: "/case-studies/aria-health/chat.jpg",
+          imageAlt: "The Aria chat interface with conversation starters like 'I think I'm starting menopause' and 'Help me understand HRT options'",
+          caption: "Structured conversation starters meet people where they are — not a blank input box.",
         },
         {
           label: "A journey map that tracks where you are.",
           description:
             "Menopause isn't a single event — it's a multi-year transition through perimenopause, menopause, and postmenopause. Aria models the journey as a structured timeline with stages, milestones, and phase-specific guidance. The interface shows where you are, what to expect next, and what's relevant right now — not everything at once.",
+          image: "/case-studies/aria-health/journey.jpg",
+          imageAlt: "A journey card showing 'Hot flashes & night sweats' — card 1 of 4 in the symptom education sequence",
+          caption: "Stage-specific guidance delivered as swipeable cards — one topic at a time, not a wall of text.",
         },
         {
           label: "Built as a product concept, not a demo.",
           description:
             "This isn't a slide deck or a wireframe. It's a working Next.js application with real AI conversations, a dashboard, and journey tracking. The prototype is designed to show what a health guidance product *feels like* to use — the tone, the pacing, the trust-building — not just what it looks like on a screen.",
+          image: "/case-studies/aria-health/dashboard.jpg",
+          imageAlt: "The Aria dashboard showing symptom tracking, journey stages, quick actions, and a chat prompt",
+          caption: "Symptom tracking, journey stages, and quick actions — a working dashboard, not a wireframe.",
         },
       ],
     },
