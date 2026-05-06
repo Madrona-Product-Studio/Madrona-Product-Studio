@@ -196,7 +196,7 @@ export default function Home() {
       <section>
         <div ref={s1.ref} className={`mb-14 transition-all duration-700 ${s1.className}`}>
           <p className="text-xs font-medium uppercase tracking-widest text-ink-light/50 mb-4">What we do differently</p>
-          <h2>Most studios hand off. We hold on.</h2>
+          <h2>Thinking and building, held together.</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-12 md:gap-10">
