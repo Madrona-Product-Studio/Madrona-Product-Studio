@@ -107,7 +107,7 @@ export default function CaseStudyPage() {
         <img
           src={study.heroImage}
           alt={study.heroImageAlt ?? ""}
-          className="aspect-[16/9] w-full object-cover rounded mb-16"
+          className="aspect-[16/9] w-full object-cover object-top rounded mb-16"
         />
       ) : (
         <div className="aspect-[16/9] bg-cream-dark rounded mb-16 flex items-center justify-center text-ink-light text-sm">
