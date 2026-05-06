@@ -42,7 +42,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Lila Trips",
     client: "Studio project",
     tagline:
-      "A travel platform for designing transformative trips in sacred landscapes.",
+      "An AI travel platform for designing transformative trips in sacred landscapes.",
     tags: ["wellness travel", "responsible travel", "AI", "concept"],
     category: "recent",
     externalUrl: "https://www.lilatrips.com/",
