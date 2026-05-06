@@ -43,39 +43,39 @@ export const caseStudies: CaseStudy[] = [
     client: "Studio project",
     tagline:
       "A travel platform for designing transformative trips in sacred landscapes.",
-    tags: ["wellness", "travel", "AI", "concept"],
+    tags: ["wellness travel", "responsible travel", "AI", "concept"],
     category: "recent",
     externalUrl: "https://www.lilatrips.com/",
     externalLabel: "lilatrips.com",
     heroImage: "/case-studies/lila-trips/hero.jpg",
     heroImageAlt: "The Lila Trips homepage",
     opportunity:
-      "Most travel products are built to optimize — most trails, most sights, least time. That's useful if you're planning a long weekend. It's the wrong frame entirely if you want a trip that actually changes something. The people who travel that way — for intention, for practice, for depth — are underserved by every major travel tool, and the new wave of AI travel apps makes the problem worse, not better. More hallucinated recommendations, more \"optimized\" days, less actual place.",
+      "Most travel products are built to optimize for the most miles, the most sights, the least time. That's useful if you're planning a long weekend. It's the wrong frame entirely if you want a trip that actually changes something. The people who travel for intention, for practice, for depth are underserved by every major travel tool, and the new wave of AI travel apps makes the problem worse, not better. More hallucinated recommendations, more \"optimized\" days, less actual place. The travelers we're building for want the inverse, and they're a category the industry doesn't yet have a name for.",
     thesis:
-      "A good trip isn't a list of things to do. It's a weave — of place, timing, weather, sky, wildlife, practice, pace. The information to do that weaving well already exists, scattered across public APIs, citizen science networks, government data, and the lived knowledge of people who know a place. What's missing is a product that pulls it all together into something coherent enough to trust. Build that product — and let AI do the part it's actually good at: sequencing and personalizing, not inventing.",
+      "Travel that actually changes you isn't separable from how you travel. The dominant model optimizes for sights and scales for volume, which produces depleted places and depleted travelers in roughly equal measure. Wellness tourism is now an $894 billion category growing roughly 9% a year. The dominant product (resort spa, scheduled programming, controlled environments) is a category-mismatch with what's actually driving that growth: people who want unmediated nature, real practice, and to come back changed. The next decade of travel will be defined by trips that restore both the visitor and the place, in iconic outdoor terrain, rooted in real practice. There isn't a product category for this yet. There should be.\n\nA good trip isn't a list of things to do. It's a weave of place, timing, weather, wildlife, practice, and pace. The information to do that weaving well already exists, scattered across public APIs, citizen science networks, government data, and the lived knowledge of people who know a place. What's missing is a product that pulls it all together into something coherent enough to trust. Build that product, and let AI do the part it's actually good at: sequencing and personalizing, not inventing.",
     whatWeDid: {
-      lead: "Built the full product — research, brand, destination guides, planner, and all the infrastructure underneath. Every destination in Lila is a place I've been to multiple times and care about deeply — the guides are grounded in years of firsthand experience, not desk research. Three areas in particular took the most work and make the thing what it is:",
+      lead: "Built the full product: research, brand, destination guides, planner, and all the infrastructure underneath. Every destination in Lila is a place I've been to multiple times and care about deeply. The guides are grounded in years of firsthand experience, not desk research. Three areas in particular took the most work and make the thing what it is.",
       items: [
         {
           label: "An AI-powered trip planner on a leash.",
           description:
-            "Most AI travel products let the model hallucinate freely and hope for the best. Lila does the opposite: every restaurant, trail, hotel, and cultural site exists in a hand-curated guide file, and the AI can only recommend from that corpus. The trade is scale for trust, and it's the right call — itineraries feel authored, not generated. *See the planner at [lilatrips.com/plan](https://www.lilatrips.com/plan).*",
+            "Most AI travel products let the model hallucinate freely and hope for the best. Lila does the opposite. Every restaurant, trail, hotel, and cultural site exists in a hand-curated guide file, and the AI can only recommend from that corpus. The trade is scale for trust, and it's the right call: itineraries feel authored, not generated. *See the planner at [lilatrips.com/plan](https://www.lilatrips.com/plan).*",
           image: "/case-studies/lila-trips/planner.jpg",
           imageAlt: "A generated Lila Trips itinerary showing day-by-day activities",
-          caption: "The planner shapes days from curated guide content — authored, not hallucinated.",
+          caption: "The planner shapes days from curated guide content. Authored, not hallucinated.",
         },
         {
           label: "Destination guides that pull live context from everywhere.",
           description:
-            "Each guide is a long-form editorial page backed by live data — NPS trail conditions, iNaturalist wildlife observations, Google Places enrichment for restaurants and hotels, astronomy calculations for the night sky widget, real-time weather, USGS river levels. Tap a condor in the Zion guide and you get 372 real nearby observations. Open the night sky widget and the moon phase is drawn from tonight's synodic age. *[See the guides.](https://www.lilatrips.com/destinations)*",
+            "Each guide is a long-form editorial page backed by live data: NPS trail conditions, iNaturalist wildlife observations, Google Places enrichment for hotels, astronomy calculations for the night sky widget, real-time weather, USGS river levels. Tap a condor in the Zion guide and you get 372 real nearby observations. Open the night sky widget and the moon phase is drawn from tonight's synodic age. *[See the guides.](https://www.lilatrips.com/destinations)*",
           image: "/case-studies/lila-trips/destination-guide.jpg",
           imageAlt: "A Lila Trips destination guide page showing terrain, trails, and curated content",
-          caption: "Each destination is a long-form guide backed by live data — trails, wildlife, weather, night sky.",
+          caption: "Each destination is a long-form guide backed by live data: trails, wildlife, weather, night sky.",
         },
         {
           label: "A practice library woven into the trip.",
           description:
-            "The planner draws on a library of contemplative and movement practices (built separately as [Lila.yoga](https://lila.yoga)) and assigns them to days as matched companions. Day 3 at the Narrows might pair with a Taoist water meditation and a Tree Pose at the canyon rim. Not a feature bolted on — a worldview embedded in software.",
+            "The planner draws on a library of contemplative and movement practices (built separately as [Lila.yoga](https://lila.yoga)) and assigns them to days as matched companions. Day 3 at the Narrows might pair with a Taoist water meditation and a Tree Pose at the canyon rim. Not a feature bolted on. A worldview embedded in software.",
           image: "/case-studies/lila-trips/practice-companion.jpg",
           imageAlt: "A practice companion card matched to a day in a Lila Trips itinerary",
           caption: "The AI matches practices to each day based on setting and energy.",
@@ -103,7 +103,7 @@ export const caseStudies: CaseStudy[] = [
       {
         label: "Live data",
         description:
-          "NPS, Google Places, iNaturalist, AstronomyAPI, Open-Meteo, USGS — pulled through cached serverless proxies so API keys never touch the client",
+          "NPS, Google Places, iNaturalist, AstronomyAPI, Open-Meteo, USGS, pulled through cached serverless proxies so API keys never touch the client",
       },
       {
         label: "Email",
@@ -111,8 +111,9 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     whatWeLearned: [
-      "The hard part of AI-powered product isn't the AI. It's the ground truth underneath it — the guides, the curation, the constrained context, the research, the math. The AI gets the credit; the corpus does the work.",
+      "The hard part of the AI-powered product isn't the AI. It's the ground truth underneath it: the guides, the curation, the constrained context, the research, the math. The AI gets the credit; the corpus does the work.",
       "Most AI products are thin. This one is deep by choice, and you can feel the difference the moment you use it.",
+      "The bigger lesson is about what the category needs. A trust layer between the place, the traveler, and the operators on the ground that's credible, defensible, and not greenwashed. That's the thing the industry hasn't built yet, and it's the thing this product is reaching toward.",
     ],
     status: [
       "Live at [lilatrips.com](https://www.lilatrips.com/), in active beta with real users as of this writing. The product has already been through several research and build iterations; the public release is where it meets actual intentional travelers for the first time.",
