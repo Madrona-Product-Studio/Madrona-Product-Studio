@@ -452,6 +452,8 @@ export const caseStudies: CaseStudy[] = [
       "Offline trail safety for Mount Baker — powered by the hikers around you.",
     tags: ["outdoor", "safety", "P2P", "native"],
     category: "recent",
+    externalUrl: "https://hiker-link.vercel.app/",
+    externalLabel: "hiker-link.vercel.app",
     heroImage: "/case-studies/hikerlink/hero.png",
     heroImageAlt: "The HikerLink trail feed showing peer-synced conditions on Mount Baker",
     opportunity:
