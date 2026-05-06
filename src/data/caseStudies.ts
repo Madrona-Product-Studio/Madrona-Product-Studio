@@ -444,6 +444,82 @@ export const caseStudies: CaseStudy[] = [
       "Utah Trip Guide was the V0 for what became [Lila Trips](https://www.lilatrips.com). The hardcoded prototype that proved the thesis — that a designed, curated trip artifact beats a generated one — turned into the platform. The two products now split the job: Lila Trips handles planning and booking; Utah Trip Guide is the on-trip companion. Learnings from Utah, especially around offline resilience and the card interface, are flowing back into Lila Trips as the on-trip experience matures.",
     ],
   },
+  {
+    slug: "hikerlink",
+    title: "HikerLink",
+    client: "Studio project",
+    tagline:
+      "Offline trail safety for Mount Baker — powered by the hikers around you.",
+    tags: ["outdoor", "safety", "P2P", "native"],
+    category: "recent",
+    heroImage: "/case-studies/hikerlink/hero.png",
+    heroImageAlt: "The HikerLink trail feed showing peer-synced conditions on Mount Baker",
+    opportunity:
+      "Backcountry conditions change by the hour — ice appears, creek crossings rise, trail junctions get obscured by snow. The hikers who know what's up ahead are the ones coming down, but that information dies in passing conversation. Meanwhile, every trail-conditions app on the market assumes you have cell signal, which on Mount Baker you almost never do.",
+    thesis:
+      "The best condition reports already exist — in the heads of hikers on the trail. Build a phone-to-phone mesh that lets that knowledge spread automatically, the way word-of-mouth works on a trail, but persistent. Make the whole thing work offline-first, because that's the only honest architecture for a mountain with no signal.",
+    whatWeDid: {
+      lead: "Built a native-capable trail safety app focused entirely on Mount Baker — six routes, real conditions, current season. Three things make it different from every other trail app:",
+      items: [
+        {
+          label: "Peer-to-peer condition sharing via MultipeerConnectivity.",
+          description:
+            "When two hikers pass each other on the trail — even with zero cell service — their phones automatically sync trail check-ins over Bluetooth and WiFi Direct. A hiker descending can passively share \"heads up, ice on the traverse above 5,800 ft\" to everyone they walk past on the way down. No server, no signal required. The information flows like word-of-mouth, but persistent — on a busy trail day, conditions propagate down the mountain organically, each phone becoming a relay.",
+          image: "/case-studies/hikerlink/trail-feed.png",
+          imageAlt: "The trail feed showing condition reports from nearby hikers, including one synced via P2P",
+          caption: "\"Synced from nearby hiker\" — conditions arrive over Bluetooth, no cell signal needed.",
+        },
+        {
+          label: "Safety built in, not bolted on.",
+          description:
+            "Trip plans, emergency contacts, last-known GPS coordinates, SAR phone numbers — all available offline and designed for the moment you actually need them: cold hands, low battery, no signal. The emergency screen is high-contrast and single-purpose, because that's what matters at 6,000 feet when something goes wrong.",
+          image: "/case-studies/hikerlink/emergency.png",
+          imageAlt: "The emergency screen showing Call 911, SAR contact, and last known GPS coordinates",
+          caption: "High-contrast, single-purpose — designed for cold hands and low battery.",
+        },
+        {
+          label: "A native shell that earns its weight.",
+          description:
+            "Capacitor wraps the React app into a native iOS shell distributed via TestFlight. This isn't a vanity native app — the native layer unlocks the MultipeerConnectivity API that makes the P2P mesh possible, something a pure web PWA can't do. Up to 10,000 testers, no App Store review required.",
+          image: "/case-studies/hikerlink/check-in.png",
+          imageAlt: "The check-in screen with GPS coordinates, waypoint selector, and condition status buttons",
+          caption: "Check in from the trail — GPS, condition, and a note, all saved locally.",
+        },
+      ],
+    },
+    builtWith: [
+      {
+        label: "Frontend",
+        description: "Vite + React + TypeScript, Tailwind for styling",
+      },
+      {
+        label: "Native",
+        description:
+          "Capacitor for iOS shell, MultipeerConnectivity for peer-to-peer mesh",
+      },
+      {
+        label: "Offline",
+        description:
+          "Service worker via vite-plugin-pwa, localStorage for trip plans and check-ins",
+      },
+      {
+        label: "Distribution",
+        description: "TestFlight (up to 10k testers, no App Store review)",
+      },
+      {
+        label: "Hosting",
+        description: "Vercel",
+      },
+    ],
+    whatWeLearned: [
+      "Hyper-local beats global. Instead of trying to be a trail database for everywhere, HikerLink is a field guide for one mountain — and that constraint makes every screen better. Six routes, real conditions, current season. The app knows exactly what it is.",
+      "The most interesting distribution problems are the ones where the network *is* the product. Every new phone on the trail makes the mesh better. The install incentive isn't features — it's that the person you just passed on the switchback had conditions from two hours ahead of you.",
+    ],
+    status: [
+      "In active development. The web app is functional; the Capacitor native layer and MultipeerConnectivity integration are in progress for TestFlight distribution.",
+      "~~Build for the mountain, not the App Store.~~",
+    ],
+  },
   // --- Selected experience ---
   {
     slug: "rei-adventures",
