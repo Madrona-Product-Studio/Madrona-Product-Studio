@@ -207,6 +207,76 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    slug: "aria-health",
+    title: "Aria Health",
+    client: "Studio project",
+    tagline:
+      "An AI health companion that guides people through menopause with structured, empathetic, stage-aware support.",
+    tags: ["health", "AI", "concept", "prototype"],
+    category: "recent",
+    externalUrl: "https://aria-health-mp.vercel.app/",
+    externalLabel: "aria-health-mp.vercel.app",
+    heroImage: "/case-studies/aria-health/hero.jpg",
+    heroImageAlt: "The Aria Health landing page. So you've been diagnosed with menopause...",
+    opportunity:
+      "Health platforms have decades of trusted content, but it sits behind search: articles, listicles, condition pages. When someone gets a life-changing diagnosis or enters a major transition like menopause, they don't need another article. They need a companion that synthesizes what's known, remembers their context, and meets them where they are emotionally. Generic AI assistants hallucinate medical advice. Static content doesn't adapt. Nothing in between does both well.",
+    thesis:
+      "An AI companion constrained to evidence-based health content, with real clinical guardrails, stage-aware context, and an empathetic conversational voice, could transform a content library into an active guidance platform. Not a doctor. Not a chatbot. A structured companion that helps people prepare for appointments, understand their symptoms, and take the next step with confidence.",
+    whatWeDid: {
+      lead: "Built a functional prototype that demonstrates the full concept, from first diagnosis through ongoing journey management. The prototype is scoped to the menopause transition, but the architecture is designed to generalize across any health inflection point.",
+      items: [
+        {
+          label: "A conversational AI tuned for health, not search.",
+          description:
+            "Aria isn't a general-purpose chatbot pointed at a knowledge base. The system prompt encodes clinical guardrails, emotional calibration, and a structured guidance framework (Must Know, Should Consider, Can Do Today) that shapes every response. It knows when to suggest a doctor visit, when to offer reassurance, and when to simply listen. It never diagnoses, never prescribes, and always defers to professional care for medical decisions.",
+          image: "/case-studies/aria-health/chat.jpg",
+          imageAlt: "The Aria chat interface with conversation starters like 'I think I'm starting menopause' and 'Help me understand HRT options'",
+          caption: "Structured conversation starters meet people where they are. Not a blank input box.",
+        },
+        {
+          label: "A journey map that tracks where you are.",
+          description:
+            "Menopause isn't a single event. It's a multi-year transition through perimenopause, menopause, and postmenopause. Aria models the journey as a structured timeline with stages, milestones, and phase-specific guidance. The interface shows where you are, what to expect next, and what's relevant right now. Not everything at once.",
+          image: "/case-studies/aria-health/journey.jpg",
+          imageAlt: "A journey card showing 'Hot flashes & night sweats', card 1 of 4 in the symptom education sequence",
+          caption: "Stage-specific guidance delivered as swipeable cards. One topic at a time, not a wall of text.",
+        },
+        {
+          label: "Built as a product concept, not a demo.",
+          description:
+            "This isn't a slide deck or a wireframe. It's a working Next.js application with real AI conversations, a dashboard, and journey tracking. The prototype is designed to show what a health guidance product *feels like* to use (the tone, the pacing, the trust-building) not just what it looks like on a screen.",
+          image: "/case-studies/aria-health/dashboard.jpg",
+          imageAlt: "The Aria dashboard showing symptom tracking, journey stages, quick actions, and a chat prompt",
+          caption: "Symptom tracking, journey stages, and quick actions. A working dashboard, not a wireframe.",
+        },
+      ],
+    },
+    builtWith: [
+      {
+        label: "Frontend",
+        description: "Next.js App Router, Tailwind CSS, TypeScript",
+      },
+      {
+        label: "AI",
+        description:
+          "Claude API with a deeply structured system prompt encoding clinical guardrails, empathetic tone, and the Must Know / Should Consider / Can Do Today framework",
+      },
+      {
+        label: "Architecture",
+        description:
+          "Designed to generalize. The menopause journey is the proof of concept, but the three-layer framework (triggering moments, guidance structure, delivery modes) applies to any health inflection point",
+      },
+    ],
+    whatWeLearned: [
+      "The hardest part of a health AI product isn't the AI. It's the guardrails: knowing when to speak, when to defer, when to escalate, and how to hold an empathetic tone across hundreds of conversational turns without drifting into false reassurance or clinical coldness.",
+      "A structured journey model changes everything. When the AI knows what stage you're in, it stops being a search engine and starts being a companion. Context turns generic content into personal guidance.",
+    ],
+    status: [
+      "Functional prototype, built as a product concept to demonstrate the vision. The architecture is designed to generalize beyond menopause to any health inflection point: diagnosis, treatment, recovery, major life transitions.",
+      "Source available on [GitHub](https://github.com/Madrona-Product-Studio/aria).",
+    ],
+  },
+  {
     slug: "lila-yoga",
     title: "Lila Yoga",
     client: "Studio project",
@@ -293,76 +363,6 @@ export const caseStudies: CaseStudy[] = [
     ],
     status: [
       "Live at [lila.yoga](https://lila.yoga) and at [lilatrips.com/practice](https://www.lilatrips.com/practice). Free, no login. Currently being shared with local yoga instructors and practitioners for feedback. The first real test of whether the decks land with people who know what a serious practice looks like.",
-    ],
-  },
-  {
-    slug: "aria-health",
-    title: "Aria Health",
-    client: "Studio project",
-    tagline:
-      "An AI health companion that guides people through menopause with structured, empathetic, stage-aware support.",
-    tags: ["health", "AI", "concept", "prototype"],
-    category: "recent",
-    externalUrl: "https://aria-health-mp.vercel.app/",
-    externalLabel: "aria-health-mp.vercel.app",
-    heroImage: "/case-studies/aria-health/hero.jpg",
-    heroImageAlt: "The Aria Health landing page. So you've been diagnosed with menopause...",
-    opportunity:
-      "Health platforms have decades of trusted content, but it sits behind search: articles, listicles, condition pages. When someone gets a life-changing diagnosis or enters a major transition like menopause, they don't need another article. They need a companion that synthesizes what's known, remembers their context, and meets them where they are emotionally. Generic AI assistants hallucinate medical advice. Static content doesn't adapt. Nothing in between does both well.",
-    thesis:
-      "An AI companion constrained to evidence-based health content, with real clinical guardrails, stage-aware context, and an empathetic conversational voice, could transform a content library into an active guidance platform. Not a doctor. Not a chatbot. A structured companion that helps people prepare for appointments, understand their symptoms, and take the next step with confidence.",
-    whatWeDid: {
-      lead: "Built a functional prototype that demonstrates the full concept, from first diagnosis through ongoing journey management. The prototype is scoped to the menopause transition, but the architecture is designed to generalize across any health inflection point.",
-      items: [
-        {
-          label: "A conversational AI tuned for health, not search.",
-          description:
-            "Aria isn't a general-purpose chatbot pointed at a knowledge base. The system prompt encodes clinical guardrails, emotional calibration, and a structured guidance framework (Must Know, Should Consider, Can Do Today) that shapes every response. It knows when to suggest a doctor visit, when to offer reassurance, and when to simply listen. It never diagnoses, never prescribes, and always defers to professional care for medical decisions.",
-          image: "/case-studies/aria-health/chat.jpg",
-          imageAlt: "The Aria chat interface with conversation starters like 'I think I'm starting menopause' and 'Help me understand HRT options'",
-          caption: "Structured conversation starters meet people where they are. Not a blank input box.",
-        },
-        {
-          label: "A journey map that tracks where you are.",
-          description:
-            "Menopause isn't a single event. It's a multi-year transition through perimenopause, menopause, and postmenopause. Aria models the journey as a structured timeline with stages, milestones, and phase-specific guidance. The interface shows where you are, what to expect next, and what's relevant right now. Not everything at once.",
-          image: "/case-studies/aria-health/journey.jpg",
-          imageAlt: "A journey card showing 'Hot flashes & night sweats', card 1 of 4 in the symptom education sequence",
-          caption: "Stage-specific guidance delivered as swipeable cards. One topic at a time, not a wall of text.",
-        },
-        {
-          label: "Built as a product concept, not a demo.",
-          description:
-            "This isn't a slide deck or a wireframe. It's a working Next.js application with real AI conversations, a dashboard, and journey tracking. The prototype is designed to show what a health guidance product *feels like* to use (the tone, the pacing, the trust-building) not just what it looks like on a screen.",
-          image: "/case-studies/aria-health/dashboard.jpg",
-          imageAlt: "The Aria dashboard showing symptom tracking, journey stages, quick actions, and a chat prompt",
-          caption: "Symptom tracking, journey stages, and quick actions. A working dashboard, not a wireframe.",
-        },
-      ],
-    },
-    builtWith: [
-      {
-        label: "Frontend",
-        description: "Next.js App Router, Tailwind CSS, TypeScript",
-      },
-      {
-        label: "AI",
-        description:
-          "Claude API with a deeply structured system prompt encoding clinical guardrails, empathetic tone, and the Must Know / Should Consider / Can Do Today framework",
-      },
-      {
-        label: "Architecture",
-        description:
-          "Designed to generalize. The menopause journey is the proof of concept, but the three-layer framework (triggering moments, guidance structure, delivery modes) applies to any health inflection point",
-      },
-    ],
-    whatWeLearned: [
-      "The hardest part of a health AI product isn't the AI. It's the guardrails: knowing when to speak, when to defer, when to escalate, and how to hold an empathetic tone across hundreds of conversational turns without drifting into false reassurance or clinical coldness.",
-      "A structured journey model changes everything. When the AI knows what stage you're in, it stops being a search engine and starts being a companion. Context turns generic content into personal guidance.",
-    ],
-    status: [
-      "Functional prototype, built as a product concept to demonstrate the vision. The architecture is designed to generalize beyond menopause to any health inflection point: diagnosis, treatment, recovery, major life transitions.",
-      "Source available on [GitHub](https://github.com/Madrona-Product-Studio/aria).",
     ],
   },
   {
