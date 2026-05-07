@@ -3,9 +3,12 @@ import OfferingCard from "../components/OfferingCard";
 import PageMeta from "../components/PageMeta";
 
 export default function Approach() {
+  const coreEngagement = offerings.filter(o => o.slug !== "product-stewardship");
+  const fractional = offerings.find(o => o.slug === "product-stewardship");
+
   return (
     <div className="space-y-24">
-      <PageMeta title="Approach" description="Strategy sprints, rapid prototyping, and fractional product leadership. How Madrona Product Studio works." />
+      <PageMeta title="Approach" description="Strategy sprints, signal sprints, and product stewardship. How Madrona Product Studio works." />
       <section className="max-w-2xl">
         <h1 className="mb-12">Approach</h1>
         <div className="border-l-2 border-madrona/30 pl-8 space-y-6">
@@ -14,7 +17,7 @@ export default function Approach() {
           </p>
           <div className="space-y-5 text-ink-light text-lg leading-relaxed">
             <p>
-              We do both — and we do them together. The gap between "I think we
+              We do both, and we do them together. The gap between "I think we
               should build this" and "here's a working version of it" has collapsed.
               AI, modern tooling, and a senior team that holds the full picture mean
               we ship in weeks what used to take quarters.
@@ -36,31 +39,39 @@ export default function Approach() {
         </div>
       </section>
 
-      {/* Offerings */}
+      {/* The engagement arc */}
       <section>
-        <div className="grid md:grid-cols-3 gap-10 lg:gap-14">
-          {offerings.map((o) => (
+        <p className="text-xs font-medium uppercase tracking-widest text-ink-light/50 mb-4">The engagement</p>
+        <h2 className="mb-12">Figure it out, then build it.</h2>
+        <div className="grid md:grid-cols-2 gap-10 lg:gap-14">
+          {coreEngagement.map((o) => (
             <OfferingCard key={o.slug} offering={o} />
           ))}
         </div>
       </section>
 
-      {/* How we work */}
+      {/* The rhythm */}
       <section className="max-w-2xl space-y-6">
-        <h2>How we work</h2>
+        <h2>The rhythm</h2>
         <div className="space-y-5 text-ink-light text-lg leading-relaxed">
           <p>
-            Tight cycles. Direct feedback. Working software over polished decks.
-            We treat your product like it's ours — because for the duration of
-            the engagement, it is.
-          </p>
-          <p>
-            We work best with founders, heads of product, and leadership teams
-            who want a senior partner, not a vendor. If you're building something
-            real in outdoor, wellness, health, or consumer tech — we should talk.
+            Kickoff call to align on the question. Weekly syncs, async everything
+            else. A shared Slack channel or equivalent. Working demos every 1-2
+            weeks so nothing drifts. Direct access to the people doing the work,
+            because there's no layer between us.
           </p>
         </div>
       </section>
+
+      {/* Ongoing leadership */}
+      {fractional && (
+        <section>
+          <p className="text-xs font-medium uppercase tracking-widest text-ink-light/50 mb-4">Ongoing</p>
+          <div className="max-w-xl">
+            <OfferingCard offering={fractional} />
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="max-w-2xl border-t border-cream-dark pt-16">

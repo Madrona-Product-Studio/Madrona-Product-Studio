@@ -237,24 +237,22 @@ export default function Home() {
       {/* How we work — condensed */}
       <section ref={s4.ref} className={`max-w-2xl transition-all duration-700 ${s4.className}`}>
         <p className="text-xs font-medium uppercase tracking-widest text-ink-light/50 mb-4">How it works</p>
-        <h2 className="mb-8">From ambiguity to artifact.</h2>
+        <h2 className="mb-8">Figure it out, then build it.</h2>
         <div className="space-y-6 text-ink-light leading-relaxed">
           <p>
-            We work at the front end of the product lifecycle — the part where
-            you're still figuring out what to build, whether it'll work, and what
-            the thing should feel like. Product vision. Service design. Rapid
-            prototypes. Working software that makes the abstract concrete.
+            Most engagements follow one arc. First we figure out what to build:
+            the strategy, the framing, the hard product decisions. Then we build
+            it: a working prototype you can test, demo, or ship. Same team, no
+            handoff. Weeks, not quarters.
           </p>
           <p>
-            Some of our work is for teams that need a senior product voice to
-            sharpen a direction and unblock a roadmap. Some is for founders who
-            need a working product, not another slide deck. Some is for
-            organizations solving real problems in their communities.
+            For teams that want this as an ongoing relationship, we also offer
+            product stewardship on retainer.
           </p>
         </div>
         <div className="mt-8">
           <Link to="/approach" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            More about our approach &rarr;
+            More about how we work &rarr;
           </Link>
         </div>
       </section>

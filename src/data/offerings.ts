@@ -3,28 +3,38 @@ export interface Offering {
   slug: string;
   timeline: string;
   description: string;
+  outcome: string;
+  goodFor?: string;
 }
 
 export const offerings: Offering[] = [
   {
-    title: "Strategy sprints",
-    slug: "strategy-sprints",
+    title: "Strategy sprint",
+    slug: "strategy-sprint",
     timeline: "2–6 weeks",
     description:
-      "A sharp point of view on the question blocking the roadmap. Product vision, service design, customer research, strategic framing — whatever it takes to get the team aligned and moving. You leave with a direction, the evidence behind it, and a plan for what to do next.",
+      "We start with the question blocking the roadmap and end with a working prototype you can touch, react to, and show people. Not a deck. Not a wireframe. Working software that makes the abstract concrete.\n\nStrategy and building happen simultaneously. We think by building. The prototype *is* the strategy deliverable: the product direction, the key decisions, and the evidence, all in a form you can put in front of real people the day the sprint ends.",
+    outcome:
+      "A working prototype. A product brief. The hard calls, made. Something to react to, not just read about.",
   },
   {
-    title: "Rapid prototyping",
-    slug: "rapid-prototyping",
+    title: "Signal sprint",
+    slug: "signal-sprint",
     timeline: "4–12 weeks",
     description:
-      "A working prototype, fast. Not a spec. Not a deck. A real thing people can use — a tool, a product, a proof of concept — built well enough to test the hypothesis and show what the full version should be. When it's ready to scale, we hand off cleanly.",
+      "A prototype without users is a guess. This is where the guess becomes evidence.\n\nThe working prototype goes in front of real people. We instrument it, watch how they use it, and iterate on what we learn. Not a focus group. Not a survey. Real usage, real signal, real decisions about what to keep, what to cut, and what to change.",
+    outcome:
+      "Validated (or invalidated) hypotheses. A refined prototype shaped by real usage. Clear signal on what to build next, and what to stop building.",
   },
   {
-    title: "Fractional product leadership",
-    slug: "fractional-product-leadership",
+    title: "Product stewardship",
+    slug: "product-stewardship",
     timeline: "3–6 month retainers",
     description:
-      "An embedded senior product voice for early-stage teams. Half-time or quarter-time. Helpful for founders figuring out what to build, or small teams that need senior judgment without a full-time hire.",
+      "A senior product voice embedded in your team, not advising from the outside. Half-time or quarter-time. Same access, same accountability, same judgment as a full-time product leader, without the full-time hire.",
+    goodFor:
+      "Founders who've validated the direction and need someone to hold it as the team scales. Or organizations that need senior product judgment to shape what's next.",
+    outcome:
+      "Continuity. The same person who shaped the strategy and built the prototype, now guiding the team building the full thing.",
   },
 ];
