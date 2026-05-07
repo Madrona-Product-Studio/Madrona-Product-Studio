@@ -7,23 +7,27 @@ export default function About() {
       <section className="max-w-2xl">
         <h1 className="mb-8">About</h1>
         <div className="space-y-6 text-ink-light text-lg leading-relaxed">
-          <p>
-            Madrona Product Studio is led by Charlie Koch, a senior product
-            leader with fifteen years of experience across outdoor, wellness,
-            and health. Most recently Group Product Manager at Healthline.
-            Before that, nearly a decade at REI leading mobile commerce,
-            membership, and the Adventures travel business.
+          <p className="font-medium text-ink">
+            Fifteen years of product leadership at REI, Healthline, and Microsoft.
           </p>
           <p>
-            The studio works with a trusted network of collaborators —
-            designers, engineers, data scientists, researchers — who come in
-            when the work calls for them. Every engagement is led personally.
+            Charlie Koch started Madrona Product Studio after leading product
+            teams across outdoor, wellness, and health. The through line was
+            always the same: figure out what the product should be, then build
+            it with a small team that holds the full picture.
           </p>
           <p>
-            Not everything we build is for a client. We also initiate our own
-            projects — tools for communities, concepts we believe in, ideas
-            that won't let go. It's part of what keeps the work honest. When
-            you spend time building things just because they should exist, it
+            The studio is one senior product lead at the center, with a trusted
+            network of designers, engineers, and researchers who come in when
+            the work calls for them. Every engagement is led personally. The
+            team stays small on purpose, because the best products come from a
+            few people who are deeply in it, not a large team managing around it.
+          </p>
+          <p>
+            We also build our own things. Travel products, wellness tools, trail
+            safety apps, community guides. Not everything has a business model.
+            Some of it exists because it should. That's part of what keeps the
+            work honest: when you spend time building things you believe in, it
             changes how you show up for everything else.
           </p>
         </div>
@@ -40,16 +44,14 @@ export default function About() {
         <h2 className="mb-5">Building in the open</h2>
         <div className="space-y-6 text-ink-light text-lg leading-relaxed">
           <p>
-            Some of the most interesting work starts as someone's side project — a
-            thing they've been tinkering with nights and weekends, something their
-            community needs, an idea that's too good to let sit in a notes app.
-            We love those projects.
+            Some of the most interesting work starts as a question someone can't
+            stop thinking about. A tool their community needs. A product that
+            should exist but doesn't. We take those projects seriously, whether
+            or not there's a business plan behind them.
           </p>
           <p>
-            If you're building something you believe in and could use some
-            product thinking, design help, or engineering muscle — even if
-            there's no business plan yet — we'd like to hear about it. Some of
-            our best work has started that way.
+            If you're building something you believe in and could use a senior
+            product partner, we'd like to hear about it.
           </p>
         </div>
       </section>
