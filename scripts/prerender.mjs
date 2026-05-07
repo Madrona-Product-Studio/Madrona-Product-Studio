@@ -1,64 +1,135 @@
-import puppeteer from 'puppeteer';
+/**
+ * Lightweight SEO prerender — no browser needed.
+ *
+ * Reads the case study data and page metadata, then generates
+ * a static HTML file for each route with real content in a
+ * <noscript> block so Google can index it. The React app hydrates
+ * on top for interactive users.
+ */
 import fs from 'fs';
 import path from 'path';
-import http from 'http';
-import handler from 'serve-handler';
-
-const routes = [
-  '/',
-  '/work',
-  '/approach',
-  '/writing',
-  '/about',
-  '/work/lila-trips',
-  '/work/san-juan-boating-guide',
-  '/work/aria-health',
-  '/work/lila-yoga',
-  '/work/utah-trip-guide',
-  '/work/hikerlink',
-  '/work/rei-adventures',
-  '/work/rei-cooperative-action',
-  '/work/healthline-bezzy-daily-dose',
-  '/work/rei-membership',
-];
 
 const distDir = path.resolve('dist');
+const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
 
-async function prerender() {
-  // Serve dist with SPA fallback so all routes resolve to index.html
-  const server = http.createServer((req, res) =>
-    handler(req, res, {
-      public: distDir,
-      rewrites: [{ source: '**', destination: '/index.html' }],
-    })
-  );
-  await new Promise(resolve => server.listen(4173, resolve));
+// Page metadata for static pages
+const pages = {
+  '/': {
+    title: 'Madrona Product Studio — Senior Product Studio, Pacific Northwest',
+    description: 'We help companies figure out what to build, and then build it. Strategy sprints, rapid prototyping, and fractional product leadership.',
+    h1: 'We turn ideas into working products.',
+    body: 'Madrona Product Studio is a small, senior product studio based in the Pacific Northwest. We help companies figure out what to build, and then build it. Strategy sprints. Rapid prototyping. Fractional product leadership.',
+  },
+  '/work': {
+    title: 'Work — Madrona Product Studio',
+    description: 'Recent product work and selected experience from Madrona Product Studio.',
+    h1: 'Products we\'ve shipped',
+    body: 'Studio projects and client engagements. Lila Trips, San Juan Boating Guide, Aria Health, Lila Yoga, Utah Trip Guide, HikerLink.',
+  },
+  '/approach': {
+    title: 'Approach — Madrona Product Studio',
+    description: 'How Madrona Product Studio works: strategy sprints, rapid prototyping, and fractional product leadership.',
+    h1: 'How we work',
+    body: 'Strategy sprints, rapid prototyping, and fractional product leadership. A small, senior team that thinks and builds together.',
+  },
+  '/writing': {
+    title: 'Writing — Madrona Product Studio',
+    description: 'Articles and essays from Madrona Product Studio.',
+    h1: 'Writing',
+    body: 'Articles and essays on product strategy, design, and building things that matter.',
+  },
+  '/about': {
+    title: 'About — Madrona Product Studio',
+    description: 'About Charlie Koch and Madrona Product Studio. A senior product leader with a network of designers, engineers, and researchers.',
+    h1: 'About',
+    body: 'Founded by Charlie Koch. A senior product leader at the center, with a trusted network of designers, engineers, and researchers.',
+  },
+};
 
-  const browser = await puppeteer.launch({ headless: true });
-  const page = await browser.newPage();
+// Load case study data by parsing the TS file for slugs, titles, taglines, and opportunities
+const caseStudiesFile = fs.readFileSync(
+  path.resolve('src/data/caseStudies.ts'),
+  'utf-8'
+);
 
-  for (const route of routes) {
-    const url = `http://localhost:4173${route}`;
-    console.log(`Prerendering ${route}...`);
+// Extract case studies with a simple regex approach
+const studyRegex = /slug:\s*"([^"]+)"[\s\S]*?title:\s*"([^"]+)"[\s\S]*?tagline:\s*\n?\s*"([^"]+)"[\s\S]*?opportunity:\s*\n?\s*"((?:[^"\\]|\\.)*)"/g;
 
-    await page.goto(url, { waitUntil: 'networkidle0' });
-    const html = await page.content();
-
-    const filePath = route === '/'
-      ? path.join(distDir, 'index.html')
-      : path.join(distDir, route, 'index.html');
-
-    const dir = path.dirname(filePath);
-    fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(filePath, html);
-  }
-
-  await browser.close();
-  server.close();
-  console.log(`\nPrerendered ${routes.length} routes.`);
+let match;
+while ((match = studyRegex.exec(caseStudiesFile)) !== null) {
+  const [, slug, title, tagline, opportunity] = match;
+  const opp = opportunity.replace(/\\"/g, '"').replace(/\\n/g, ' ');
+  pages[`/work/${slug}`] = {
+    title: `${title} — Madrona Product Studio`,
+    description: tagline,
+    h1: title,
+    body: `${tagline} ${opp}`,
+  };
 }
 
-prerender().catch(err => {
-  console.error('Prerender failed:', err);
-  process.exit(1);
-});
+function generateHtml(route, meta) {
+  let html = template;
+
+  // Update <title>
+  html = html.replace(
+    /<title>[^<]*<\/title>/,
+    `<title>${meta.title}</title>`
+  );
+
+  // Update meta description
+  html = html.replace(
+    /<meta name="description" content="[^"]*" \/>/,
+    `<meta name="description" content="${meta.description.replace(/"/g, '&quot;')}" />`
+  );
+
+  // Update OG tags
+  html = html.replace(
+    /<meta property="og:title" content="[^"]*" \/>/,
+    `<meta property="og:title" content="${meta.title.replace(/"/g, '&quot;')}" />`
+  );
+  html = html.replace(
+    /<meta property="og:description" content="[^"]*" \/>/,
+    `<meta property="og:description" content="${meta.description.replace(/"/g, '&quot;')}" />`
+  );
+
+  // Update Twitter tags
+  html = html.replace(
+    /<meta name="twitter:title" content="[^"]*" \/>/,
+    `<meta name="twitter:title" content="${meta.title.replace(/"/g, '&quot;')}" />`
+  );
+  html = html.replace(
+    /<meta name="twitter:description" content="[^"]*" \/>/,
+    `<meta name="twitter:description" content="${meta.description.replace(/"/g, '&quot;')}" />`
+  );
+
+  // Add canonical URL
+  const canonical = `<link rel="canonical" href="https://madronaproduct.com${route === '/' ? '' : route}" />`;
+  html = html.replace('</head>', `  ${canonical}\n  </head>`);
+
+  // Inject SEO content in a noscript block so Google sees real text
+  const seoBlock = `
+    <noscript>
+      <h1>${meta.h1}</h1>
+      <p>${meta.body}</p>
+    </noscript>`;
+  html = html.replace('<div id="root"></div>', `<div id="root"></div>${seoBlock}`);
+
+  return html;
+}
+
+// Generate files
+let count = 0;
+for (const [route, meta] of Object.entries(pages)) {
+  const html = generateHtml(route, meta);
+
+  const filePath = route === '/'
+    ? path.join(distDir, 'index.html')
+    : path.join(distDir, route, 'index.html');
+
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, html);
+  count++;
+  console.log(`Generated ${route}`);
+}
+
+console.log(`\nPrerendered ${count} routes.`);
