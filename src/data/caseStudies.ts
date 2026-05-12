@@ -137,7 +137,7 @@ export const caseStudies: CaseStudy[] = [
     externalLabel: "sanjuan-guide.vercel.app",
     heroImage: "/case-studies/san-juan-boating-guide/hero.jpg",
     heroImageAlt:
-      "The San Juan Islands Boating Guide homepage",
+      "The San Juan Islands Boating Guide map view with color-coded marina markers and Live Conditions widget",
     opportunity:
       "Most boating guides are built for the shelf: static PDFs, dense cruising almanacs, or whatever Google Maps returns when you search \"food near me\" from a marina. That's fine if you already know the archipelago. It's the wrong frame entirely if you're cruising it for the first time, or the tenth, and want to actually find the quiet cove, the good restaurant a short walk from the dock, the trail that's worth the tie-up. The people who travel the San Juans by boat for the anchorages, for the pace, for the island-to-island rhythm of it are underserved by every existing tool. Almanacs are stuck in print logic. Google Maps doesn't know what a VHF channel is.",
     thesis:
