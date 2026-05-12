@@ -89,6 +89,18 @@ export default function CaseStudyPage() {
         <p className="text-xl text-ink-light leading-relaxed">
           {study.tagline}
         </p>
+        {study.highlights && study.highlights.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-5">
+            {study.highlights.map((h) => (
+              <span
+                key={h}
+                className="text-xs font-medium text-madrona bg-madrona/8 px-3 py-1.5 rounded"
+              >
+                {h}
+              </span>
+            ))}
+          </div>
+        )}
         {study.externalUrl && (
           <div className="mt-6">
             <a

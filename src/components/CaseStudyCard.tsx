@@ -21,6 +21,18 @@ export default function CaseStudyCard({ study }: Props) {
         <p className="text-ink-light text-sm leading-relaxed">
           {study.tagline}
         </p>
+        {study.highlights && study.highlights.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mt-2">
+            {study.highlights.map((h) => (
+              <span
+                key={h}
+                className="text-[11px] font-medium text-madrona bg-madrona/8 px-2 py-0.5 rounded"
+              >
+                {h}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
       {study.heroImage ? (
         <img

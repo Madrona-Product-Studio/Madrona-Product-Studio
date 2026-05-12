@@ -25,6 +25,7 @@ export interface CaseStudy {
   category: "recent" | "experience";
   externalUrl?: string;
   externalLabel?: string;
+  highlights?: string[];
   heroImage?: string;
   heroImageAlt?: string;
   opportunity: string;
@@ -44,6 +45,7 @@ export const caseStudies: CaseStudy[] = [
     tagline:
       "An AI travel platform for designing transformative trips in sacred landscapes.",
     tags: ["wellness travel", "responsible travel", "AI", "concept"],
+    highlights: ["AI-powered itinerary engine", "Real-time multi-source data aggregation", "Auth-enabled iterative trip planning"],
     category: "recent",
     externalUrl: "https://www.lilatrips.com/",
     externalLabel: "lilatrips.com",
@@ -129,6 +131,7 @@ export const caseStudies: CaseStudy[] = [
     tagline:
       "A purpose-built web app for boaters cruising the San Juan Islands.",
     tags: ["travel", "local", "community", "maps"],
+    highlights: ["Dock-first navigation UX", "Custom Leaflet map interface", "Cached Google Places integration"],
     category: "recent",
     externalUrl: "https://sanjuan-guide.vercel.app/",
     externalLabel: "sanjuan-guide.vercel.app",
@@ -213,6 +216,7 @@ export const caseStudies: CaseStudy[] = [
     tagline:
       "An AI health companion that guides people through menopause with structured, empathetic, stage-aware support.",
     tags: ["health", "AI", "concept", "prototype"],
+    highlights: ["AI clinical guardrails", "Stage-aware personalization", "Structured conversational onboarding"],
     category: "recent",
     externalUrl: "https://aria-health-mp.vercel.app/",
     externalLabel: "aria-health-mp.vercel.app",
@@ -283,6 +287,7 @@ export const caseStudies: CaseStudy[] = [
     tagline:
       "Four card decks for a serious practice: meditations, movements, body science, and teachings. Designed as one system.",
     tags: ["wellness", "yoga", "community", "content"],
+    highlights: ["Swipe-enabled interactive card UI", "Deep research-verified content", "Single-system vocabulary"],
     category: "recent",
     externalUrl: "https://lila.yoga",
     externalLabel: "lila.yoga",
@@ -372,6 +377,7 @@ export const caseStudies: CaseStudy[] = [
     tagline:
       "An on-trip itinerary companion that turns a week-long road trip into a swipeable, bookable, living guide.",
     tags: ["travel", "outdoor", "PWA"],
+    highlights: ["Offline-first PWA", "Live weather integration", "Card-based itinerary UX"],
     category: "recent",
     externalUrl: "https://utah-trip.vercel.app",
     externalLabel: "utah-trip.vercel.app",
@@ -452,6 +458,7 @@ export const caseStudies: CaseStudy[] = [
     tagline:
       "Offline trail safety for Mount Baker, powered by the hikers around you.",
     tags: ["outdoor", "safety", "P2P", "native"],
+    highlights: ["P2P mesh networking", "Native iOS distribution", "Offline-first safety architecture"],
     category: "recent",
     externalUrl: "https://hiker-link.vercel.app/",
     externalLabel: "hiker-link.vercel.app",
