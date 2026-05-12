@@ -12,9 +12,16 @@ export default function CaseStudyCard({ study }: Props) {
       className="group block no-underline"
     >
       <div className="space-y-1.5 mb-5">
-        <p className="text-xs font-medium uppercase tracking-wider text-ink-light">
-          {study.client}
-        </p>
+        <div className="flex items-center gap-2">
+          <p className="text-xs font-medium uppercase tracking-wider text-ink-light">
+            {study.client}
+          </p>
+          {study.statusLabel && (
+            <span className="text-[10px] font-medium uppercase tracking-wider text-madrona border border-madrona/30 px-1.5 py-0.5 rounded leading-none">
+              {study.statusLabel}
+            </span>
+          )}
+        </div>
         <h3 className="text-xl group-hover:text-madrona transition-colors text-ink">
           {study.title}
         </h3>
