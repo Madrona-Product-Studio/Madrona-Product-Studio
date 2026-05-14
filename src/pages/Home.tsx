@@ -186,7 +186,7 @@ export default function Home() {
         <div className={`max-w-2xl transition-all duration-700 delay-300 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
           <div className="border-l-2 border-madrona/30 pl-6">
             <p className="text-lg md:text-xl text-ink-light leading-relaxed">
-              Senior product leadership that moves fluidly from strategy to design to working software — using AI to compress the distance between an idea and something real.
+              Senior product leadership collaborative that moves fluidly from strategy to design to working software — using AI to compress the distance between an idea and something real.
             </p>
           </div>
         </div>
