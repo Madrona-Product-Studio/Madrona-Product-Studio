@@ -45,7 +45,7 @@ export default function CaseStudyCard({ study }: Props) {
         <img
           src={study.heroImage}
           alt={study.heroImageAlt ?? ""}
-          className="aspect-[4/3] w-full object-cover object-top rounded transition-shadow group-hover:shadow-md"
+          className={`aspect-[4/3] w-full object-cover object-top rounded transition-shadow group-hover:shadow-md${study.borderImages ? " border border-cream-dark" : ""}`}
           loading="lazy"
         />
       ) : (
