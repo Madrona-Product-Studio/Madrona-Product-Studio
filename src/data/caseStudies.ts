@@ -302,7 +302,7 @@ export const caseStudies: CaseStudy[] = [
     heroImageAlt:
       "The Plainly landing page — Share why plainly. We'll organize the rest.",
     opportunity:
-      "The hardest part of starting therapy isn't finding a therapist. It's the moment they say \"so, what brings you in?\" and you realize you have no idea where to start. Intake forms capture what people are willing to type. They miss what people actually mean — the hesitations, the emphasis, the thing they keep circling back to. Meanwhile, therapists spend the first 15 minutes of session one just getting oriented. Both sides lose.",
+      "The hardest part of therapy isn't always finding a therapist. It's the moment they say \"so, what brings you in?\" and you realize you have no idea where to start. Intake forms capture what people are willing to type. They miss what people actually mean — the hesitations, the emphasis, the thing they keep circling back to. Meanwhile, therapists spend the first 15 minutes of session one just getting oriented. Both sides lose.",
     thesis:
       "Voice surfaces what forms miss. A short, structured AI conversation — 5 minutes, no account, no forms — can produce a written profile that captures what a patient actually means, not just what they're willing to type into a text box. The patient owns the artifact, shares it with any therapist, and arrives at session one already understood. The therapist arrives already oriented. Both sides win.\n\nThe product has to earn trust in the first 30 seconds. That means no accounts, no email capture, no friction. Land, talk, get a link. The conversation is discarded after synthesis. The profile is anonymized and ephemeral. Privacy isn't a feature — it's the architecture.",
     whatWeDid: {
