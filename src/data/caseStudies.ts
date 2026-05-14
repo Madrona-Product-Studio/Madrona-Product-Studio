@@ -296,8 +296,8 @@ export const caseStudies: CaseStudy[] = [
     statusLabel: "v0",
     borderImages: true,
     category: "recent",
-    externalUrl: "https://plainly.vercel.app/",
-    externalLabel: "plainly.vercel.app",
+    externalUrl: "https://plainly-therapy.vercel.app/",
+    externalLabel: "plainly-therapy.vercel.app",
     heroImage: "/case-studies/plainly/hero.jpg",
     heroImageAlt:
       "The Plainly landing page — Share why plainly. We'll organize the rest.",
