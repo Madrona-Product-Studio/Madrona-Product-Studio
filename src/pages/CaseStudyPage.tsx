@@ -119,7 +119,7 @@ export default function CaseStudyPage() {
         <img
           src={study.heroImage}
           alt={study.heroImageAlt ?? ""}
-          className="aspect-[16/9] w-full object-cover object-top rounded mb-16"
+          className={`aspect-[16/9] w-full object-cover object-top rounded mb-16${study.borderImages ? " border border-cream-dark" : ""}`}
         />
       ) : (
         <div className="aspect-[16/9] bg-cream-dark rounded mb-16 flex items-center justify-center text-ink-light text-sm">
@@ -186,7 +186,7 @@ function WhatWeDidSection({ study }: { study: CaseStudy }) {
                   <img
                     src={item.image}
                     alt={item.imageAlt ?? ""}
-                    className="aspect-[16/10] w-full object-cover rounded"
+                    className={`aspect-[16/10] w-full object-cover rounded${study.borderImages ? " border border-cream-dark" : ""}`}
                     loading="lazy"
                   />
                   {item.caption && (

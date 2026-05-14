@@ -27,6 +27,7 @@ export interface CaseStudy {
   externalLabel?: string;
   highlights?: string[];
   statusLabel?: string;
+  borderImages?: boolean;
   heroImage?: string;
   heroImageAlt?: string;
   opportunity: string;
@@ -127,6 +128,78 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    slug: "aria-health",
+    title: "Aria Health",
+    client: "Studio project",
+    tagline:
+      "An AI health companion that guides people through menopause with structured, empathetic, stage-aware support.",
+    tags: ["health", "AI", "concept", "prototype"],
+    highlights: ["AI clinical guardrails", "Stage-aware personalization", "Structured conversational onboarding"],
+    statusLabel: "v0",
+    category: "recent",
+    externalUrl: "https://aria-health-mp.vercel.app/",
+    externalLabel: "aria-health-mp.vercel.app",
+    heroImage: "/case-studies/aria-health/hero.jpg",
+    heroImageAlt: "The Aria Health landing page. So you've been diagnosed with menopause...",
+    opportunity:
+      "Health platforms have decades of trusted content, but it sits behind search: articles, listicles, condition pages. When someone gets a life-changing diagnosis or enters a major transition like menopause, they don't need another article. They need a companion that synthesizes what's known, remembers their context, and meets them where they are emotionally. Generic AI assistants hallucinate medical advice. Static content doesn't adapt. Nothing in between does both well.",
+    thesis:
+      "An AI companion constrained to evidence-based health content, with real clinical guardrails, stage-aware context, and an empathetic conversational voice, could transform a content library into an active guidance platform. Not a doctor. Not a chatbot. A structured companion that helps people prepare for appointments, understand their symptoms, and take the next step with confidence.",
+    whatWeDid: {
+      lead: "Built a functional prototype that demonstrates the full concept, from first diagnosis through ongoing journey management. The prototype is scoped to the menopause transition, but the architecture is designed to generalize across any health inflection point.",
+      items: [
+        {
+          label: "A conversational AI tuned for health, not search.",
+          description:
+            "Aria isn't a general-purpose chatbot pointed at a knowledge base. The system prompt encodes clinical guardrails, emotional calibration, and a structured guidance framework (Must Know, Should Consider, Can Do Today) that shapes every response. It knows when to suggest a doctor visit, when to offer reassurance, and when to simply listen. It never diagnoses, never prescribes, and always defers to professional care for medical decisions.",
+          image: "/case-studies/aria-health/chat.jpg",
+          imageAlt: "The Aria chat interface with conversation starters like 'I think I'm starting menopause' and 'Help me understand HRT options'",
+          caption: "Structured conversation starters meet people where they are. Not a blank input box.",
+        },
+        {
+          label: "A journey map that tracks where you are.",
+          description:
+            "Menopause isn't a single event. It's a multi-year transition through perimenopause, menopause, and postmenopause. Aria models the journey as a structured timeline with stages, milestones, and phase-specific guidance. The interface shows where you are, what to expect next, and what's relevant right now. Not everything at once.",
+          image: "/case-studies/aria-health/journey.jpg",
+          imageAlt: "A journey card showing 'Hot flashes & night sweats', card 1 of 4 in the symptom education sequence",
+          caption: "Stage-specific guidance delivered as swipeable cards. One topic at a time, not a wall of text.",
+        },
+        {
+          label: "Built as a product concept, not a demo.",
+          description:
+            "This isn't a slide deck or a wireframe. It's a working Next.js application with real AI conversations, a dashboard, and journey tracking. The prototype is designed to show what a health guidance product *feels like* to use (the tone, the pacing, the trust-building) not just what it looks like on a screen.",
+          image: "/case-studies/aria-health/dashboard.jpg",
+          imageAlt: "The Aria dashboard showing symptom tracking, journey stages, quick actions, and a chat prompt",
+          caption: "Symptom tracking, journey stages, and quick actions. A working dashboard, not a wireframe.",
+        },
+      ],
+    },
+    builtWith: [
+      {
+        label: "Frontend",
+        description: "Next.js App Router, Tailwind CSS, TypeScript",
+      },
+      {
+        label: "AI",
+        description:
+          "Claude API with a deeply structured system prompt encoding clinical guardrails, empathetic tone, and the Must Know / Should Consider / Can Do Today framework",
+      },
+      {
+        label: "Architecture",
+        description:
+          "Designed to generalize. The menopause journey is the proof of concept, but the three-layer framework (triggering moments, guidance structure, delivery modes) applies to any health inflection point",
+      },
+    ],
+    whatWeLearned: [
+      "The hardest part of a health AI product isn't the AI. It's the guardrails: knowing when to speak, when to defer, when to escalate, and how to hold an empathetic tone across hundreds of conversational turns without drifting into false reassurance or clinical coldness.",
+      "A structured journey model changes everything. When the AI knows what stage you're in, it stops being a search engine and starts being a companion. Context turns generic content into personal guidance.",
+    ],
+    status: [
+      "Functional prototype, built as a product concept to demonstrate the vision. The architecture is designed to generalize beyond menopause to any health inflection point: diagnosis, treatment, recovery, major life transitions.",
+      "Source available on [GitHub](https://github.com/Madrona-Product-Studio/aria).",
+    ],
+  },
+  {
     slug: "san-juan-boating-guide",
     title: "San Juan Boating Guide",
     client: "Studio project",
@@ -213,75 +286,84 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "aria-health",
-    title: "Aria Health",
+    slug: "plainly",
+    title: "Plainly",
     client: "Studio project",
     tagline:
-      "An AI health companion that guides people through menopause with structured, empathetic, stage-aware support.",
-    tags: ["health", "AI", "concept", "prototype"],
-    highlights: ["AI clinical guardrails", "Stage-aware personalization", "Structured conversational onboarding"],
+      "A voice-first intake tool that turns a 5-minute conversation into a shareable therapy profile.",
+    tags: ["health", "AI", "voice", "privacy"],
+    highlights: ["Real-time WebRTC voice", "Voice-enabled user onboarding", "Privacy-by-design architecture"],
     statusLabel: "v0",
+    borderImages: true,
     category: "recent",
-    externalUrl: "https://aria-health-mp.vercel.app/",
-    externalLabel: "aria-health-mp.vercel.app",
-    heroImage: "/case-studies/aria-health/hero.jpg",
-    heroImageAlt: "The Aria Health landing page. So you've been diagnosed with menopause...",
+    externalUrl: "https://plainly.vercel.app/",
+    externalLabel: "plainly.vercel.app",
+    heroImage: "/case-studies/plainly/hero.jpg",
+    heroImageAlt:
+      "The Plainly landing page — Share why plainly. We'll organize the rest.",
     opportunity:
-      "Health platforms have decades of trusted content, but it sits behind search: articles, listicles, condition pages. When someone gets a life-changing diagnosis or enters a major transition like menopause, they don't need another article. They need a companion that synthesizes what's known, remembers their context, and meets them where they are emotionally. Generic AI assistants hallucinate medical advice. Static content doesn't adapt. Nothing in between does both well.",
+      "The hardest part of starting therapy isn't finding a therapist. It's the moment they say \"so, what brings you in?\" and you realize you have no idea where to start. Intake forms capture what people are willing to type. They miss what people actually mean — the hesitations, the emphasis, the thing they keep circling back to. Meanwhile, therapists spend the first 15 minutes of session one just getting oriented. Both sides lose.",
     thesis:
-      "An AI companion constrained to evidence-based health content, with real clinical guardrails, stage-aware context, and an empathetic conversational voice, could transform a content library into an active guidance platform. Not a doctor. Not a chatbot. A structured companion that helps people prepare for appointments, understand their symptoms, and take the next step with confidence.",
+      "Voice surfaces what forms miss. A short, structured AI conversation — 5 minutes, no account, no forms — can produce a written profile that captures what a patient actually means, not just what they're willing to type into a text box. The patient owns the artifact, shares it with any therapist, and arrives at session one already understood. The therapist arrives already oriented. Both sides win.\n\nThe product has to earn trust in the first 30 seconds. That means no accounts, no email capture, no friction. Land, talk, get a link. The conversation is discarded after synthesis. The profile is anonymized and ephemeral. Privacy isn't a feature — it's the architecture.",
     whatWeDid: {
-      lead: "Built a functional prototype that demonstrates the full concept, from first diagnosis through ongoing journey management. The prototype is scoped to the menopause transition, but the architecture is designed to generalize across any health inflection point.",
+      lead: "Built the full product: voice conversation, profile synthesis, privacy architecture, and the design system that holds it together. Three things make it what it is.",
       items: [
         {
-          label: "A conversational AI tuned for health, not search.",
+          label: "A real voice conversation, not a chatbot.",
           description:
-            "Aria isn't a general-purpose chatbot pointed at a knowledge base. The system prompt encodes clinical guardrails, emotional calibration, and a structured guidance framework (Must Know, Should Consider, Can Do Today) that shapes every response. It knows when to suggest a doctor visit, when to offer reassurance, and when to simply listen. It never diagnoses, never prescribes, and always defers to professional care for medical decisions.",
-          image: "/case-studies/aria-health/chat.jpg",
-          imageAlt: "The Aria chat interface with conversation starters like 'I think I'm starting menopause' and 'Help me understand HRT options'",
-          caption: "Structured conversation starters meet people where they are. Not a blank input box.",
+            "Plainly uses the OpenAI Realtime API over WebRTC — true streaming voice, not transcription-then-respond. The conversation follows a 4-phase clinical structure (opening, why now, history and context, goals and risk) but adapts to what the person actually says. A canvas-based voice visualizer with six sine wave layers responds to whichever speaker is active, with speaker-aware color crossfade between sage (Plainly) and clay (the patient). Word-by-word text reveal at 300ms syncs to voice playback so you can read along as it speaks.",
+          image: "/case-studies/plainly/conversation.jpg",
+          imageAlt: "The Plainly conversation interface with voice visualizer active and word-by-word text reveal",
+          caption: "Real-time voice with a 6-layer sine wave visualizer. Sage for Plainly, clay for the patient.",
         },
         {
-          label: "A journey map that tracks where you are.",
+          label: "A profile a therapist can use in 30 seconds.",
           description:
-            "Menopause isn't a single event. It's a multi-year transition through perimenopause, menopause, and postmenopause. Aria models the journey as a structured timeline with stages, milestones, and phase-specific guidance. The interface shows where you are, what to expect next, and what's relevant right now. Not everything at once.",
-          image: "/case-studies/aria-health/journey.jpg",
-          imageAlt: "A journey card showing 'Hot flashes & night sweats', card 1 of 4 in the symptom education sequence",
-          caption: "Stage-specific guidance delivered as swipeable cards. One topic at a time, not a wall of text.",
+            "When the conversation ends, Claude synthesizes the transcript into a structured therapy profile — an opening line, narrative threads, therapy fit spectrums (structure vs. exploration, pacing, time focus, warmth vs. challenge), and first-session prompts. The synthesis uses medium inference: \"You seemed to return to...\" not \"exhibits symptoms of...\" Grounded in real clinical frameworks (Cooper & Norcross therapy fit axes, Prochaska stages of change) without naming them in output. Partial profiles are marked as such. Sections are nulled rather than fabricated.",
+          image: "/case-studies/plainly/profile.jpg",
+          imageAlt: "A therapy profile ready to save as PDF — narrative threads, therapy fit tags, and an opening line",
+          caption: "Save as PDF and send to any therapist before session one. Structured, anonymized, patient-owned.",
         },
         {
-          label: "Built as a product concept, not a demo.",
+          label: "Privacy by design, not privacy by policy.",
           description:
-            "This isn't a slide deck or a wireframe. It's a working Next.js application with real AI conversations, a dashboard, and journey tracking. The prototype is designed to show what a health guidance product *feels like* to use (the tone, the pacing, the trust-building) not just what it looks like on a screen.",
-          image: "/case-studies/aria-health/dashboard.jpg",
-          imageAlt: "The Aria dashboard showing symptom tracking, journey stages, quick actions, and a chat prompt",
-          caption: "Symptom tracking, journey stages, and quick actions. A working dashboard, not a wireframe.",
+            "Transcripts are never stored — processed in memory, discarded after synthesis. Profiles are anonymized (no names, dates, locations, employers) and auto-expire after 30 days. No accounts, no email, no PII retained. The patient can delete immediately from the profile page. Plainly is not a HIPAA-covered entity because it doesn't need to be — no PHI is stored. Risk protocol with normalized screening and crisis resource handoff is built into the conversation, not bolted on.",
         },
       ],
     },
     builtWith: [
       {
         label: "Frontend",
-        description: "Next.js App Router, Tailwind CSS, TypeScript",
+        description: "Vite + React 19 + TypeScript + Tailwind v4",
       },
       {
-        label: "AI",
+        label: "Voice",
         description:
-          "Claude API with a deeply structured system prompt encoding clinical guardrails, empathetic tone, and the Must Know / Should Consider / Can Do Today framework",
+          "OpenAI Realtime API (GA) via WebRTC — true streaming voice with ephemeral session tokens",
       },
       {
-        label: "Architecture",
+        label: "Synthesis",
         description:
-          "Designed to generalize. The menopause journey is the proof of concept, but the three-layer framework (triggering moments, guidance structure, delivery modes) applies to any health inflection point",
+          "Claude Sonnet 4 for transcript-to-profile synthesis, with fallback to 3.5-Sonnet",
+      },
+      {
+        label: "Storage",
+        description: "Supabase — anonymized profiles only, UUID-based sharing, RLS for privacy",
+      },
+      {
+        label: "Hosting",
+        description: "Vercel (static + edge functions)",
       },
     ],
     whatWeLearned: [
-      "The hardest part of a health AI product isn't the AI. It's the guardrails: knowing when to speak, when to defer, when to escalate, and how to hold an empathetic tone across hundreds of conversational turns without drifting into false reassurance or clinical coldness.",
-      "A structured journey model changes everything. When the AI knows what stage you're in, it stops being a search engine and starts being a companion. Context turns generic content into personal guidance.",
+      "Voice captures signal that forms miss. Hesitations, emphasis, what someone returns to — these are diagnostic. A 5-minute conversation surfaces things a 20-field intake form never would, because people talk differently than they type.",
+      "The hardest design problem is trust. The product has to earn it in 30 seconds, which means zero friction (no accounts, no forms), visible privacy commitments, and a tone that's warm without being clinical or artificially cheerful. The voice, the visualizer, the pacing — all of it is trust architecture.",
+      "Medium inference is the right register. The profile says \"you seemed to return to\" rather than \"exhibits symptoms of.\" It's grounded enough to be useful to a clinician and recognizable enough that the patient sees themselves in it. That middle ground is hard to hold and worth holding.",
     ],
     status: [
-      "Functional prototype, built as a product concept to demonstrate the vision. The architecture is designed to generalize beyond menopause to any health inflection point: diagnosis, treatment, recovery, major life transitions.",
-      "Source available on [GitHub](https://github.com/Madrona-Product-Studio/aria).",
+      "Functional v0 demonstrating the full flow: voice conversation, profile synthesis, shareable artifact. Built to show what a voice-first intake product feels like to use, not just what it looks like on a slide.",
+      "Source available on [GitHub](https://github.com/themurphiest/plainly).",
+      "~~The hardest part of starting therapy isn't finding a therapist. It's finding the words.~~",
     ],
   },
   {
