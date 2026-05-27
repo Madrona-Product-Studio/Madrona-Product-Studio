@@ -2,7 +2,7 @@
 
 A purpose-built web app for boaters cruising the San Juan Islands.
 
-https://sanjuan-guide.vercel.app/
+https://www.sjiboating.com/
 
 ![Hero](./images/01-hero-homepage.png)
 *The San Juan Islands Boating Guide homepage*
@@ -62,7 +62,7 @@ Most travel apps are thin. This one is deep by choice, and you can feel the diff
 
 ## Status
 
-Live at [sanjuan-guide.vercel.app](https://sanjuan-guide.vercel.app/), shared with cruising boaters as a v1 for feedback and iteration. The product has been built end-to-end — curation, map, live enrichment, logistics — and now it meets actual boaters for the first time.
+Live at [sanjuan-guide.vercel.app](https://www.sjiboating.com/), shared with cruising boaters as a v1 for feedback and iteration. The product has been built end-to-end — curation, map, live enrichment, logistics — and now it meets actual boaters for the first time.
 
 The v1 is focused on three things: whether the dock-first orientation matches how cruisers actually plan and explore, whether the five-tab structure is the right shape for a trip that moves island to island, and whether the curated entries plus live Google Places data are enough to replace the almanac and the ad-hoc searches boaters use today.
 

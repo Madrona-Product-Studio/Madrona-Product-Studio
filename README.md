@@ -11,7 +11,7 @@ A small, senior product studio based in the Pacific Northwest — shipping worki
 | **Lila Trips** | Wellness travel platform with AI-generated itineraries and destination guides | [lilatrips.com](https://www.lilatrips.com) |
 | **Lila Yoga** | Four card decks — meditations, movements, body science, and teachings — designed as one system | [lila.yoga](https://lila.yoga) |
 | **Aria Health** | AI health companion for navigating menopause with structured, empathetic support | [aria-health-mp.vercel.app](https://aria-health-mp.vercel.app) |
-| **San Juan Boating Guide** | Purpose-built web guide for boaters cruising the San Juan Islands | [sanjuan-guide.vercel.app](https://sanjuan-guide.vercel.app) |
+| **San Juan Boating Guide** | Purpose-built web guide for boaters cruising the San Juan Islands | [sjiboating.com](https://www.sjiboating.com) |
 | **Utah Trip Guide** | On-trip itinerary companion — swipeable, bookable, offline-ready | [utah-trip.vercel.app](https://utah-trip.vercel.app) |
 | **HikerLink** | Offline-first safety app for Mount Baker hikers — trip plans, mesh networking, emergency resources | [baker-five.vercel.app](https://baker-five.vercel.app) |
 | **Löyly** | A field guide to the perfect sweat — curated saunas and bathhouses across America | In progress |

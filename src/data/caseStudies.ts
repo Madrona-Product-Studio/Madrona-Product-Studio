@@ -209,8 +209,8 @@ export const caseStudies: CaseStudy[] = [
     highlights: ["Dock-first navigation UX", "Custom Leaflet map interface", "Cached Google Places integration"],
     statusLabel: "Live v1",
     category: "recent",
-    externalUrl: "https://sanjuan-guide.vercel.app/",
-    externalLabel: "sanjuan-guide.vercel.app",
+    externalUrl: "https://www.sjiboating.com/",
+    externalLabel: "sjiboating.com",
     heroImage: "/case-studies/san-juan-boating-guide/hero.jpg",
     heroImageAlt:
       "The San Juan Islands Boating Guide map view with color-coded marina markers and Live Conditions widget",
@@ -279,7 +279,7 @@ export const caseStudies: CaseStudy[] = [
       "Most travel apps are thin. This one is deep by choice, and you can feel the difference the moment you tie up and open it.",
     ],
     status: [
-      "Live at [sanjuan-guide.vercel.app](https://sanjuan-guide.vercel.app/), shared with cruising boaters as a v1 for feedback and iteration. The product has been built end-to-end (curation, map, live enrichment, logistics) and now it meets actual boaters for the first time.",
+      "Live at [sjiboating.com](https://www.sjiboating.com/), shared with cruising boaters as a v1 for feedback and iteration. The product has been built end-to-end (curation, map, live enrichment, logistics) and now it meets actual boaters for the first time.",
       "The v1 is focused on three things: whether the dock-first orientation matches how cruisers actually plan and explore, whether the five-tab structure is the right shape for a trip that moves island to island, and whether curated entries plus live Google Places data are enough to replace the almanac and the ad-hoc searches boaters use today.",
       "What comes next depends on what the users tell us. The likely paths forward are deeper marina and anchorage detail, expansion into the Gulf Islands and South Sound, partnerships with harbormasters and marine businesses, and an offline mode for coves with no signal. More coverage will come as the core product earns it.",
       "~~Build real, test real, scale what's earned.~~",
