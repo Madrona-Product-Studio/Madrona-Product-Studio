@@ -72,62 +72,64 @@ export default function CaseStudyPage() {
   }
 
   return (
-    <article className="max-w-3xl">
+    <article>
       <PageMeta title={`${study.title} — Work`} description={study.tagline} />
-      <Link
-        to="/work"
-        className="text-sm text-ink-light hover:text-ink transition-colors mb-12 inline-block"
-      >
-        &larr; Back to work
-      </Link>
+      <div className="max-w-3xl">
+        <Link
+          to="/work"
+          className="text-sm text-ink-light hover:text-ink transition-colors mb-12 inline-block"
+        >
+          &larr; Back to work
+        </Link>
 
-      <header className="mb-16">
-        <p className="text-sm font-medium uppercase tracking-wider text-ink-light mb-3">
-          {study.client}
-        </p>
-        <h1 className="mb-4">{study.title}</h1>
-        <p className="text-xl text-ink-light leading-relaxed">
-          {study.tagline}
-        </p>
-        {study.highlights && study.highlights.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-5">
-            {study.highlights.map((h) => (
-              <span
-                key={h}
-                className="text-xs font-medium text-madrona bg-madrona/8 px-3 py-1.5 rounded"
+        <header className="mb-16">
+          <p className="text-sm font-medium uppercase tracking-wider text-ink-light mb-3">
+            {study.client}
+          </p>
+          <h1 className="mb-4">{study.title}</h1>
+          <p className="text-xl text-ink-light leading-relaxed">
+            {study.tagline}
+          </p>
+          {study.highlights && study.highlights.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-5">
+              {study.highlights.map((h) => (
+                <span
+                  key={h}
+                  className="text-xs font-medium text-madrona bg-madrona/8 px-3 py-1.5 rounded"
+                >
+                  {h}
+                </span>
+              ))}
+            </div>
+          )}
+          {study.externalUrl && (
+            <div className="mt-6">
+              <a
+                href={study.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-madrona text-cream px-6 py-3 rounded font-medium text-sm hover:bg-madrona-dark transition-colors no-underline"
               >
-                {h}
-              </span>
-            ))}
-          </div>
-        )}
-        {study.externalUrl && (
-          <div className="mt-6">
-            <a
-              href={study.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-madrona text-cream px-6 py-3 rounded font-medium text-sm hover:bg-madrona-dark transition-colors no-underline"
-            >
-              View the project &rarr;
-            </a>
-          </div>
-        )}
-      </header>
+                View the project &rarr;
+              </a>
+            </div>
+          )}
+        </header>
+      </div>
 
       {study.heroImage ? (
         <img
           src={study.heroImage}
           alt={study.heroImageAlt ?? ""}
-          className={`aspect-[16/9] w-full object-cover object-top rounded mb-16${study.borderImages ? " border border-cream-dark" : ""}`}
+          className={`w-full object-cover object-top rounded-lg shadow-lg mb-20${study.borderImages ? " border border-cream-dark" : ""}`}
         />
       ) : (
-        <div className="aspect-[16/9] bg-cream-dark rounded mb-16 flex items-center justify-center text-ink-light text-sm">
+        <div className="aspect-[16/9] bg-cream-dark rounded-lg mb-20 flex items-center justify-center text-ink-light text-sm">
           {study.title} — hero image placeholder (16:9)
         </div>
       )}
 
-      <div className="space-y-12">
+      <div className="space-y-16">
         <TextSection title="Opportunity" content={study.opportunity} />
         <TextSection title="Thesis" content={study.thesis} />
         <WhatWeDidSection study={study} />
@@ -136,7 +138,7 @@ export default function CaseStudyPage() {
         <StatusSection paragraphs={study.status} />
       </div>
 
-      <div className="flex flex-wrap gap-2 mt-16 pt-10 border-t border-cream-dark">
+      <div className="flex flex-wrap gap-2 mt-16 pt-10 border-t border-cream-dark max-w-3xl">
         {study.tags.map((tag) => (
           <span
             key={tag}
@@ -153,7 +155,7 @@ export default function CaseStudyPage() {
 function TextSection({ title, content }: { title: string; content: string }) {
   const paragraphs = content.split("\n\n");
   return (
-    <section>
+    <section className="max-w-3xl">
       <h2 className="text-xl font-serif font-medium mb-4 text-ink">{title}</h2>
       <div className="space-y-5 text-ink-light text-lg leading-relaxed max-w-2xl">
         {paragraphs.map((p, i) => (
@@ -167,35 +169,39 @@ function TextSection({ title, content }: { title: string; content: string }) {
 function WhatWeDidSection({ study }: { study: CaseStudy }) {
   return (
     <section>
-      <h2 className="text-xl font-serif font-medium mb-4 text-ink">
-        What we did
-      </h2>
-      <p className="text-ink-light text-lg leading-relaxed max-w-2xl">
-        {renderInline(study.whatWeDid.lead)}
-      </p>
+      <div className="max-w-3xl">
+        <h2 className="text-xl font-serif font-medium mb-4 text-ink">
+          What we did
+        </h2>
+        <p className="text-ink-light text-lg leading-relaxed max-w-2xl">
+          {renderInline(study.whatWeDid.lead)}
+        </p>
+      </div>
       {study.whatWeDid.items.length > 0 && (
-        <div className="mt-8 space-y-8 max-w-2xl">
+        <div className="mt-12 space-y-16">
           {study.whatWeDid.items.map((item) => (
-            <div key={item.label} className="border-t border-cream-dark pt-6">
-              <p className="font-medium text-ink mb-2">{item.label}</p>
-              <p className="text-ink-light leading-relaxed">
-                {renderInline(item.description)}
-              </p>
+            <div key={item.label}>
               {item.image && (
-                <figure className="mt-6">
+                <figure className="mb-6">
                   <img
                     src={item.image}
                     alt={item.imageAlt ?? ""}
-                    className={`aspect-[16/10] w-full object-cover rounded${study.borderImages ? " border border-cream-dark" : ""}`}
+                    className={`w-full object-cover rounded-lg shadow-lg${study.borderImages ? " border border-cream-dark" : ""}`}
                     loading="lazy"
                   />
                   {item.caption && (
-                    <figcaption className="mt-3 text-sm text-ink-light italic">
+                    <figcaption className="mt-4 text-sm text-ink-light italic max-w-3xl">
                       {item.caption}
                     </figcaption>
                   )}
                 </figure>
               )}
+              <div className="max-w-3xl">
+                <p className="font-medium text-ink mb-2">{item.label}</p>
+                <p className="text-ink-light leading-relaxed max-w-2xl">
+                  {renderInline(item.description)}
+                </p>
+              </div>
             </div>
           ))}
         </div>
@@ -206,7 +212,7 @@ function WhatWeDidSection({ study }: { study: CaseStudy }) {
 
 function BuiltWithSection({ study }: { study: CaseStudy }) {
   return (
-    <section>
+    <section className="max-w-3xl">
       <h2 className="text-xl font-serif font-medium mb-4 text-ink">
         Built with
       </h2>
@@ -232,7 +238,7 @@ function ParagraphsSection({
   paragraphs: string[];
 }) {
   return (
-    <section>
+    <section className="max-w-3xl">
       <h2 className="text-xl font-serif font-medium mb-4 text-ink">{title}</h2>
       <div className="space-y-5 text-ink-light text-lg leading-relaxed max-w-2xl">
         {paragraphs.map((p, i) => (
@@ -252,7 +258,7 @@ function StatusSection({ paragraphs }: { paragraphs: string[] }) {
     : paragraphs;
 
   return (
-    <section>
+    <section className="max-w-3xl">
       <h2 className="text-xl font-serif font-medium mb-4 text-ink">Status</h2>
       <div className="space-y-5 text-ink-light text-lg leading-relaxed max-w-2xl">
         {bodyParagraphs.map((p, i) => (
