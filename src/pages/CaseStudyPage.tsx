@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
 import { useParams, Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
-import type { CaseStudy } from "../data/caseStudies";
+import type { CaseStudy, HowItWorks } from "../data/caseStudies";
 import PageMeta from "../components/PageMeta";
+import ArchitectureDiagram from "../components/ArchitectureDiagram";
 
 /** Render inline markdown: links [text](url), bold **text**, italics *text*, ~~principle~~ */
 let inlineKey = 0;
@@ -132,6 +133,10 @@ export default function CaseStudyPage() {
       <div className="space-y-16">
         <TextSection title="Opportunity" content={study.opportunity} />
         <TextSection title="Thesis" content={study.thesis} />
+        {study.architecture && (
+          <ArchitectureDiagram architecture={study.architecture} />
+        )}
+        {study.howItWorks && <HowItWorksSection howItWorks={study.howItWorks} />}
         <WhatWeDidSection study={study} />
         {study.builtWith.length > 0 && <BuiltWithSection study={study} />}
         <ParagraphsSection title="What we learned" paragraphs={study.whatWeLearned} />
@@ -160,6 +165,45 @@ function TextSection({ title, content }: { title: string; content: string }) {
       <div className="space-y-5 text-ink-light text-lg leading-relaxed max-w-2xl">
         {paragraphs.map((p, i) => (
           <p key={i}>{renderInline(p)}</p>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function HowItWorksSection({ howItWorks }: { howItWorks: HowItWorks }) {
+  return (
+    <section className="max-w-3xl">
+      <h2 className="text-xl font-serif font-medium mb-4 text-ink">
+        How it works
+      </h2>
+      {howItWorks.intro && (
+        <p className="text-ink-light text-lg leading-relaxed max-w-2xl mb-8">
+          {renderInline(howItWorks.intro)}
+        </p>
+      )}
+      <div className="border-l-2 border-madrona/30 pl-6 sm:pl-8">
+        {howItWorks.layers.map((layer, i) => (
+          <div
+            key={layer.label}
+            className={`grid grid-cols-1 gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:gap-6${
+              i > 0 ? " border-t border-cream-dark" : ""
+            }`}
+          >
+            <p className="text-xs font-medium uppercase tracking-wider text-madrona sm:pt-2">
+              {layer.label}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {layer.items.map((item) => (
+                <span
+                  key={item}
+                  className="text-sm text-ink bg-cream-dark/70 px-3 py-1.5 rounded"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </section>

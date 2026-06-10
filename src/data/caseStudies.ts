@@ -16,6 +16,68 @@ export interface WhatWeDid {
   items: WhatWeDidItem[];
 }
 
+export interface HowItWorksLayer {
+  label: string;
+  items: string[];
+}
+
+export interface HowItWorks {
+  intro?: string;
+  layers: HowItWorksLayer[];
+}
+
+export interface FlowNode {
+  /** Short role label, rendered uppercase (e.g. "CLAUDE API") */
+  label: string;
+  /** One- or two-sentence plain-language description of what happens here */
+  body: string;
+  /** Optional small spec chip (e.g. "claude-sonnet-4-6 · NDJSON") */
+  tech?: string;
+}
+
+export interface PlatformService {
+  label: string;
+  body: string;
+}
+
+/** A side input that feeds into one of the path nodes (e.g. curated guides into the planner). */
+export interface FlowBranch {
+  /** Index of the path node this branch feeds into. */
+  intoIndex: number;
+  label?: string;
+  node: FlowNode;
+  /** Optional upstream node feeding the branch (e.g. live data into the guides). */
+  feeder?: {
+    label?: string;
+    node: FlowNode;
+  };
+}
+
+/** A feedback loop from one path node back up to an earlier one. */
+export interface FlowLoopback {
+  fromIndex: number;
+  toIndex: number;
+  label: string;
+}
+
+/** A data-flow / architecture diagram: a critical path plus the supporting services around it. */
+export interface Architecture {
+  intro?: string;
+  /** The critical path, ordered top to bottom. */
+  path: FlowNode[];
+  /** Labels for the arrows between path nodes. Length must be path.length - 1. */
+  connectors: string[];
+  /** Optional side input feeding one of the path nodes. */
+  branch?: FlowBranch;
+  /** Optional feedback loop drawn up the right side. */
+  loopback?: FlowLoopback;
+  /** Label on the connector from the path into the platform boundary. */
+  platformConnector?: string;
+  /** Heading for the supporting-services boundary (e.g. "Runs on Vercel"). */
+  platformLabel?: string;
+  platform?: PlatformService[];
+}
+
 export interface CaseStudy {
   slug: string;
   title: string;
@@ -33,6 +95,8 @@ export interface CaseStudy {
   opportunity: string;
   thesis: string;
   whatWeDid: WhatWeDid;
+  howItWorks?: HowItWorks;
+  architecture?: Architecture;
   builtWith: CaseStudyItem[];
   whatWeLearned: string[];
   status: string[];
@@ -87,6 +151,67 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
     },
+    architecture: {
+      intro:
+        "Lila looks like one travel app. Underneath, it's a constrained AI pipeline. Your choices become a tightly-scoped prompt, Claude sequences the days, and hand-curated guides keep every recommendation real.",
+      path: [
+        {
+          label: "You",
+          body: "Pick destinations, dates, pace, and the kind of practice you want from the trip.",
+        },
+        {
+          label: "Planning tool",
+          body: "Turns your choices into a tightly-scoped prompt. Claude can only draw from hand-curated guide files — never the open web.",
+          tech: "guides only",
+        },
+        {
+          label: "Claude API",
+          body: "Sequences and personalizes the days, then streams back the whole itinerary as structured JSON.",
+          tech: "claude-sonnet-4-6",
+        },
+        {
+          label: "Your itinerary",
+          body: "Rendered day by day — authored, not hallucinated. Edits are batched and sent back for Claude to revise in place.",
+        },
+      ],
+      connectors: ["your inputs", "scoped prompt", "raw JSON"],
+      branch: {
+        intoIndex: 1,
+        label: "feeds",
+        node: {
+          label: "Destination guides",
+          body: "Long-form pages you browse — and the planner's only source.",
+        },
+        feeder: {
+          label: "live context",
+          node: {
+            label: "Live data",
+            body: "Public APIs (trails, wildlife, weather, sky) via serverless proxies.",
+          },
+        },
+      },
+      loopback: {
+        fromIndex: 3,
+        toIndex: 2,
+        label: "batched revisions",
+      },
+      platformConnector: "served by",
+      platformLabel: "Runs on Vercel",
+      platform: [
+        {
+          label: "Auth",
+          body: "Supabase accounts and saved trips.",
+        },
+        {
+          label: "Payments",
+          body: "Stripe unlocks full itinerary planning.",
+        },
+        {
+          label: "Email",
+          body: "Resend for trip sharing and contact.",
+        },
+      ],
+    },
     builtWith: [
       {
         label: "Frontend",
@@ -103,7 +228,11 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         label: "Storage",
-        description: "Supabase (sessions, trip sharing)",
+        description: "Supabase (auth, sessions, trip sharing)",
+      },
+      {
+        label: "Payments",
+        description: "Stripe — a $20 unlock opens full itinerary planning",
       },
       {
         label: "Live data",
@@ -172,6 +301,28 @@ export const caseStudies: CaseStudy[] = [
           imageAlt: "The Aria dashboard showing symptom tracking, journey stages, quick actions, and a chat prompt",
           caption: "Symptom tracking, journey stages, and quick actions. A working dashboard, not a wireframe.",
         },
+      ],
+    },
+    architecture: {
+      intro:
+        "Aria looks like a friendly chat app. Underneath, it's a tightly guardrailed AI: your questions meet a Claude prompt that knows your stage, never diagnoses, and shapes every answer into the same structured format.",
+      path: [
+        { label: "You", body: "Ask a question, or pick a starter like “I think I'm starting menopause.”" },
+        { label: "Claude API", body: "A deeply structured system prompt adds clinical guardrails and your stage. Never diagnoses, always defers to real care.", tech: "claude + system prompt" },
+        { label: "Guided response", body: "Every answer comes back in the same shape: Must Know, Should Consider, Can Do Today." },
+        { label: "Journey + dashboard", body: "Stage-aware tracking across perimenopause, menopause, and after — surfacing what's relevant right now." },
+      ],
+      connectors: ["your question", "structured reply", "tracked over time"],
+      branch: {
+        intoIndex: 1, label: "grounds",
+        node: { label: "Stage-aware model", body: "Where you are in the transition shapes every response." },
+        feeder: { label: "drawn from", node: { label: "Evidence-based content", body: "A trusted health library — never the open web." } },
+      },
+      platformConnector: "runs on",
+      platformLabel: "Runs on Vercel",
+      platform: [
+        { label: "App", body: "Next.js App Router, Tailwind, TypeScript." },
+        { label: "Generalizes", body: "Same framework fits any health inflection point." },
       ],
     },
     builtWith: [
@@ -253,6 +404,27 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
     },
+    architecture: {
+      intro:
+        "The guide looks like a fast little map app. Underneath, every pin is a hand-written entry — Google supplies the live photo, but the curation does the work of putting you in front of the right dock.",
+      path: [
+        { label: "You", body: "Open the map and tap a marker — a marina, a restaurant, a trail." },
+        { label: "The guide", body: "Five tabs over a Leaflet map. No framework, no build step — loads fast on marina Wi-Fi.", tech: "Leaflet · vanilla JS" },
+        { label: "Curated entry", body: "Dock-first detail: VHF channel, moorage, fuel, walk distance from the slip." },
+        { label: "Live detail", body: "Current photos, ratings, phone, directions — fetched only when you tap.", tech: "Google Places" },
+      ],
+      connectors: ["browse", "tap a marker", "enriched on demand"],
+      branch: {
+        intoIndex: 2, label: "from",
+        node: { label: "Hand-curated content", body: "99 entries across 7 islands — three summers of cruising, not a scrape." },
+      },
+      platformConnector: "served by",
+      platformLabel: "Runs on Vercel",
+      platform: [
+        { label: "Hosting", body: "Static site plus serverless functions, auto-deployed." },
+        { label: "Cached proxy", body: "Google key never touches the client; cached 24h / 7d." },
+      ],
+    },
     builtWith: [
       {
         label: "Frontend",
@@ -329,6 +501,28 @@ export const caseStudies: CaseStudy[] = [
           description:
             "Transcripts are never stored — processed in memory, discarded after synthesis. Profiles are anonymized (no names, dates, locations, employers) and auto-expire after 30 days. No accounts, no email, no PII retained. The patient can delete immediately from the profile page. Plainly is not a HIPAA-covered entity because it doesn't need to be — no PHI is stored. Risk protocol with normalized screening and crisis resource handoff is built into the conversation, not bolted on.",
         },
+      ],
+    },
+    architecture: {
+      intro:
+        "Plainly feels like a calm 5-minute phone call. Underneath, streaming voice becomes a transcript that lives only in memory — Claude turns it into a shareable profile, then the words are gone.",
+      path: [
+        { label: "You", body: "Land, talk. No account, no forms — a structured 4-phase conversation that adapts to what you say." },
+        { label: "Voice conversation", body: "True streaming voice over WebRTC, not transcribe-then-respond.", tech: "OpenAI Realtime" },
+        { label: "Transcript", body: "Held only while you talk — never written to a database.", tech: "in memory" },
+        { label: "Claude synthesis", body: "Turns the conversation into narrative threads, therapy-fit spectrums, and a first-session opener.", tech: "Claude Sonnet 4" },
+        { label: "Your profile", body: "Anonymized, saved as PDF, auto-expires in 30 days. Yours to share with any therapist." },
+      ],
+      connectors: ["land & talk", "streamed", "synthesized", "shareable link"],
+      branch: {
+        intoIndex: 3, label: "grounded in",
+        node: { label: "Clinical frameworks", body: "Cooper & Norcross fit axes, Prochaska stages — never named in output." },
+      },
+      platformConnector: "served by",
+      platformLabel: "Runs on Vercel",
+      platform: [
+        { label: "App", body: "Vite + React 19 on Vercel edge functions." },
+        { label: "Storage", body: "Supabase holds anonymized profiles only — RLS, UUID sharing." },
       ],
     },
     builtWith: [
@@ -418,6 +612,27 @@ export const caseStudies: CaseStudy[] = [
           caption:
             "No menus, no dashboards, no accounts. Just cards, on a linen surface.",
         },
+      ],
+    },
+    architecture: {
+      intro:
+        "Lila Yoga is deliberately backend-less — there's nothing between you and the content. The depth isn't in the stack; it's in how the four decks share one vocabulary and verify their own claims.",
+      path: [
+        { label: "You", body: "Swipe through cards. No account, no login, works offline once cached." },
+        { label: "Four decks", body: "Meditations, Movements, Body, Teachings — one system at four altitudes.", tech: "138 cards" },
+      ],
+      connectors: ["open & swipe"],
+      branch: {
+        intoIndex: 1, label: "bound by",
+        node: { label: "Shared vocabulary", body: "97 movement-pattern strings cross-referenced across every deck." },
+        feeder: { label: "checked against", node: { label: "Research-verified", body: "22 claims revised against clinical sources." } },
+      },
+      platformConnector: "shipped as",
+      platformLabel: "Static, no server",
+      platform: [
+        { label: "Frontend", body: "React + Vite, custom CSS, no UI libraries." },
+        { label: "Backend", body: "None — all content is static JS in a 576KB bundle." },
+        { label: "Hosting", body: "Vercel; loads fast, works offline." },
       ],
     },
     builtWith: [
@@ -511,6 +726,26 @@ export const caseStudies: CaseStudy[] = [
         },
       ],
     },
+    architecture: {
+      intro:
+        "The guide is a swipeable deck of days that installs to your phone and keeps working when the signal drops. The bookings are real and curated; only the weather is live.",
+      path: [
+        { label: "You", body: "Swipe through the trip one day at a time — schedule, bookings, weather, all in thumb reach." },
+        { label: "Day cards", body: "A self-contained card per day. Installs as a PWA and runs fully offline once cached.", tech: "React + PWA" },
+      ],
+      connectors: ["open the trip"],
+      branch: {
+        intoIndex: 1, label: "live on",
+        node: { label: "Live weather", body: "Open-Meteo for 5 locations, sitting next to the decision it informs." },
+        feeder: { label: "alongside", node: { label: "Embedded bookings", body: "Real confirmation numbers, curated not generated — cached offline." } },
+      },
+      platformConnector: "served by",
+      platformLabel: "Runs on Vercel",
+      platform: [
+        { label: "Offline", body: "Service worker caches the whole trip for no-signal trails." },
+        { label: "Hosting", body: "Installable PWA on Vercel." },
+      ],
+    },
     builtWith: [
       {
         label: "Frontend",
@@ -584,6 +819,28 @@ export const caseStudies: CaseStudy[] = [
           imageAlt: "The check-in screen with GPS coordinates, waypoint selector, and condition status buttons",
           caption: "Check in from the trail. GPS, condition, and a note, all saved locally.",
         },
+      ],
+    },
+    architecture: {
+      intro:
+        "HikerLink has no server and assumes no signal. Your check-in saves to your phone, then spreads hiker-to-hiker over Bluetooth — and conditions from the people ahead of you arrive the same way.",
+      path: [
+        { label: "You", body: "Check in from the trail: GPS, a condition, a note. Saved to your phone first.", tech: "localStorage" },
+        { label: "P2P mesh", body: "Pass another hiker and your phones sync automatically over Bluetooth / WiFi Direct. No server, no signal.", tech: "MultipeerConnectivity" },
+        { label: "Nearby hikers", body: "Conditions propagate down the mountain, each phone becoming a relay." },
+      ],
+      connectors: ["check in", "phones pass"],
+      loopback: { fromIndex: 1, toIndex: 0, label: "conditions ahead" },
+      branch: {
+        intoIndex: 0, label: "always on",
+        node: { label: "Offline safety", body: "Trip plan, SAR numbers, last-known GPS — there when the battery's low." },
+      },
+      platformConnector: "wrapped by",
+      platformLabel: "Native iOS shell",
+      platform: [
+        { label: "Native", body: "Capacitor unlocks the P2P API a web app can't reach." },
+        { label: "Distribution", body: "TestFlight — up to 10k testers, no App Store review." },
+        { label: "Web app", body: "Vite + React, hosted on Vercel." },
       ],
     },
     builtWith: [
