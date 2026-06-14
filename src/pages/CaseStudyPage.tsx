@@ -74,7 +74,7 @@ export default function CaseStudyPage() {
 
   return (
     <article>
-      <PageMeta title={`${study.title} — Work`} description={study.tagline} />
+      <PageMeta title={`${study.title} · Work`} description={study.tagline} />
       <div className="max-w-3xl">
         <Link
           to="/work"
@@ -126,7 +126,7 @@ export default function CaseStudyPage() {
         />
       ) : (
         <div className="aspect-[16/9] bg-cream-dark rounded-lg mb-20 flex items-center justify-center text-ink-light text-sm">
-          {study.title} — hero image placeholder (16:9)
+          {study.title} · hero image placeholder (16:9)
         </div>
       )}
 

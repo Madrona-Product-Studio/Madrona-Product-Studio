@@ -15,31 +15,33 @@ const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
 // Page metadata for static pages
 const pages = {
   '/': {
-    title: 'Madrona Product Studio — Senior Product Studio, Pacific Northwest',
+    title: 'Madrona Product Studio · Senior Product Studio, Pacific Northwest',
     description: 'We help companies figure out what to build, and then build it. Strategy sprints, rapid prototyping, and fractional product leadership.',
     h1: 'We turn ideas into working products.',
     body: 'Madrona Product Studio is a small, senior product studio based in the Pacific Northwest. We help companies figure out what to build, and then build it. Strategy sprints. Rapid prototyping. Fractional product leadership.',
   },
   '/work': {
-    title: 'Work — Madrona Product Studio',
+    title: 'Work · Madrona Product Studio',
     description: 'Recent product work and selected experience from Madrona Product Studio.',
     h1: 'Products we\'ve shipped',
     body: 'Studio projects and client engagements. Lila Trips, San Juan Boating Guide, Aria Health, Lila Yoga, Utah Trip Guide, HikerLink.',
   },
   '/approach': {
-    title: 'Approach — Madrona Product Studio',
+    title: 'Approach · Madrona Product Studio',
     description: 'How Madrona Product Studio works: strategy sprints, rapid prototyping, and fractional product leadership.',
     h1: 'How we work',
     body: 'Strategy sprints, rapid prototyping, and fractional product leadership. A small, senior team that thinks and builds together.',
   },
   '/writing': {
-    title: 'Writing — Madrona Product Studio',
+    title: 'Writing · Madrona Product Studio',
     description: 'Articles and essays from Madrona Product Studio.',
     h1: 'Writing',
     body: 'Articles and essays on product strategy, design, and building things that matter.',
+    // Placeholder content — keep out of the sitemap and search index until real articles ship.
+    noindex: true,
   },
   '/about': {
-    title: 'About — Madrona Product Studio',
+    title: 'About · Madrona Product Studio',
     description: 'About Charlie Koch and Madrona Product Studio. A senior product leader with a network of designers, engineers, and researchers.',
     h1: 'About',
     body: 'Founded by Charlie Koch. A senior product leader at the center, with a trusted network of designers, engineers, and researchers.',
@@ -60,7 +62,7 @@ while ((match = studyRegex.exec(caseStudiesFile)) !== null) {
   const [, slug, title, tagline, opportunity] = match;
   const opp = opportunity.replace(/\\"/g, '"').replace(/\\n/g, ' ');
   pages[`/work/${slug}`] = {
-    title: `${title} — Madrona Product Studio`,
+    title: `${title} · Madrona Product Studio`,
     description: tagline,
     h1: title,
     body: `${tagline} ${opp}`,
@@ -106,6 +108,11 @@ function generateHtml(route, meta) {
   const canonical = `<link rel="canonical" href="https://madronaproduct.com${route === '/' ? '' : route}" />`;
   html = html.replace('</head>', `  ${canonical}\n  </head>`);
 
+  // Keep placeholder routes out of the search index
+  if (meta.noindex) {
+    html = html.replace('</head>', `  <meta name="robots" content="noindex" />\n  </head>`);
+  }
+
   // Inject SEO content in a noscript block so Google sees real text
   const seoBlock = `
     <noscript>
@@ -133,3 +140,17 @@ for (const [route, meta] of Object.entries(pages)) {
 }
 
 console.log(`\nPrerendered ${count} routes.`);
+
+// Generate sitemap.xml from the same route set, so it can never drift from the
+// pages we actually build. Excludes noindex (placeholder) routes.
+const sitemapRoutes = Object.keys(pages).filter((route) => !pages[route].noindex);
+const sitemap =
+  `<?xml version="1.0" encoding="UTF-8"?>\n` +
+  `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+  sitemapRoutes
+    .map((route) => `  <url><loc>https://madronaproduct.com${route}</loc></url>`)
+    .join('\n') +
+  `\n</urlset>\n`;
+
+fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemap);
+console.log(`Generated sitemap.xml with ${sitemapRoutes.length} routes.`);

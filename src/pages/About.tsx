@@ -3,7 +3,7 @@ import PageMeta from "../components/PageMeta";
 export default function About() {
   return (
     <div className="space-y-24">
-      <PageMeta title="About" description="Madrona Product Studio is led by Charlie Koch — fifteen years of product leadership across outdoor, wellness, and health." />
+      <PageMeta title="About" description="Madrona Product Studio is led by Charlie Koch. Fifteen years of product leadership across outdoor, wellness, and health." />
       <section className="max-w-2xl">
         <h1 className="mb-8">About</h1>
         <div className="space-y-6 text-ink-light text-lg leading-relaxed">
@@ -60,7 +60,7 @@ export default function About() {
       <section className="max-w-2xl">
         <h2 className="mb-5">The name</h2>
         <p className="text-ink-light text-lg leading-relaxed">
-          Based in the Pacific Northwest. Named for the madrona tree — the one
+          Based in the Pacific Northwest. Named for the madrona tree, the one
           that grows on the bluff, bark peeling, leaning out over the water. It
           only grows where the edge meets the sea.
         </p>

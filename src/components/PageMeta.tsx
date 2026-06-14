@@ -10,7 +10,7 @@ const DEFAULT_DESCRIPTION =
   "A small, senior product studio based in the Pacific Northwest. Strategy sprints, rapid prototyping, and fractional product leadership.";
 
 export default function PageMeta({ title, description }: Props) {
-  const fullTitle = title ? `${title} — ${SITE_NAME}` : `${SITE_NAME} — Senior Product Studio, Pacific Northwest`;
+  const fullTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · Senior Product Studio, Pacific Northwest`;
   const desc = description || DEFAULT_DESCRIPTION;
 
   useEffect(() => {

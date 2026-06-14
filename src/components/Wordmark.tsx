@@ -38,7 +38,7 @@ export default function Wordmark({ size = "md", variant = "full", as = "div", cl
       <Link
         to="/"
         className={`${sharedClassName} hover:opacity-80 transition-opacity`}
-        aria-label="Madrona Product Studio — home"
+        aria-label="Madrona Product Studio, home"
       >
         {content}
       </Link>

@@ -10,7 +10,7 @@ const referralMap: Record<string, ReferralContext> = {
   airbnb: {
     source: "Airbnb",
     headline: "Building products that create belonging.",
-    subhead: "Travel, community, and marketplace products — that's the work I keep coming back to.",
+    subhead: "Travel, community, and marketplace products. That's the work I keep coming back to.",
   },
   expedia: {
     source: "Expedia",
@@ -77,7 +77,7 @@ const referralMap: Record<string, ReferralContext> = {
   playlist: {
     source: "Playlist",
     headline: "Wellness as a habit, not a transaction.",
-    subhead: "Loyalty, marketplace, community — and a personal yoga practice booked through ClassPass.",
+    subhead: "Loyalty, marketplace, community, and a personal yoga practice booked through ClassPass.",
   },
 
   // Health tech

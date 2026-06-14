@@ -84,7 +84,7 @@ export interface CaseStudy {
   client: string;
   tagline: string;
   tags: string[];
-  category: "recent" | "experience";
+  category: "recent";
   externalUrl?: string;
   externalLabel?: string;
   highlights?: string[];
@@ -161,7 +161,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           label: "Planning tool",
-          body: "Turns your choices into a tightly-scoped prompt. Claude can only draw from hand-curated guide files — never the open web.",
+          body: "Turns your choices into a tightly-scoped prompt. Claude can only draw from hand-curated guide files, never the open web.",
           tech: "guides only",
         },
         {
@@ -171,7 +171,7 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           label: "Your itinerary",
-          body: "Rendered day by day — authored, not hallucinated. Edits are batched and sent back for Claude to revise in place.",
+          body: "Rendered day by day, authored, not hallucinated. Edits are batched and sent back for Claude to revise in place.",
         },
       ],
       connectors: ["your inputs", "scoped prompt", "raw JSON"],
@@ -180,7 +180,7 @@ export const caseStudies: CaseStudy[] = [
         label: "feeds",
         node: {
           label: "Destination guides",
-          body: "Long-form pages you browse — and the planner's only source.",
+          body: "Long-form pages you browse, and the planner's only source.",
         },
         feeder: {
           label: "live context",
@@ -232,7 +232,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         label: "Payments",
-        description: "Stripe — a $20 unlock opens full itinerary planning",
+        description: "Stripe, a $20 unlock opens full itinerary planning",
       },
       {
         label: "Live data",
@@ -310,13 +310,13 @@ export const caseStudies: CaseStudy[] = [
         { label: "You", body: "Ask a question, or pick a starter like “I think I'm starting menopause.”" },
         { label: "Claude API", body: "A deeply structured system prompt adds clinical guardrails and your stage. Never diagnoses, always defers to real care.", tech: "claude + system prompt" },
         { label: "Guided response", body: "Every answer comes back in the same shape: Must Know, Should Consider, Can Do Today." },
-        { label: "Journey + dashboard", body: "Stage-aware tracking across perimenopause, menopause, and after — surfacing what's relevant right now." },
+        { label: "Journey + dashboard", body: "Stage-aware tracking across perimenopause, menopause, and after, surfacing what's relevant right now." },
       ],
       connectors: ["your question", "structured reply", "tracked over time"],
       branch: {
         intoIndex: 1, label: "grounds",
         node: { label: "Stage-aware model", body: "Where you are in the transition shapes every response." },
-        feeder: { label: "drawn from", node: { label: "Evidence-based content", body: "A trusted health library — never the open web." } },
+        feeder: { label: "drawn from", node: { label: "Evidence-based content", body: "A trusted health library, never the open web." } },
       },
       platformConnector: "runs on",
       platformLabel: "Runs on Vercel",
@@ -406,17 +406,17 @@ export const caseStudies: CaseStudy[] = [
     },
     architecture: {
       intro:
-        "The guide looks like a fast little map app. Underneath, every pin is a hand-written entry — Google supplies the live photo, but the curation does the work of putting you in front of the right dock.",
+        "The guide looks like a fast little map app. Underneath, every pin is a hand-written entry. Google supplies the live photo, but the curation does the work of putting you in front of the right dock.",
       path: [
-        { label: "You", body: "Open the map and tap a marker — a marina, a restaurant, a trail." },
-        { label: "The guide", body: "Five tabs over a Leaflet map. No framework, no build step — loads fast on marina Wi-Fi.", tech: "Leaflet · vanilla JS" },
+        { label: "You", body: "Open the map and tap a marker, a marina, a restaurant, a trail." },
+        { label: "The guide", body: "Five tabs over a Leaflet map. No framework, no build step. Loads fast on marina Wi-Fi.", tech: "Leaflet · vanilla JS" },
         { label: "Curated entry", body: "Dock-first detail: VHF channel, moorage, fuel, walk distance from the slip." },
-        { label: "Live detail", body: "Current photos, ratings, phone, directions — fetched only when you tap.", tech: "Google Places" },
+        { label: "Live detail", body: "Current photos, ratings, phone, directions, fetched only when you tap.", tech: "Google Places" },
       ],
       connectors: ["browse", "tap a marker", "enriched on demand"],
       branch: {
         intoIndex: 2, label: "from",
-        node: { label: "Hand-curated content", body: "99 entries across 7 islands — three summers of cruising, not a scrape." },
+        node: { label: "Hand-curated content", body: "99 entries across 7 islands, three summers of cruising, not a scrape." },
       },
       platformConnector: "served by",
       platformLabel: "Runs on Vercel",
@@ -472,18 +472,18 @@ export const caseStudies: CaseStudy[] = [
     externalLabel: "plainly-therapy.vercel.app",
     heroImage: "/case-studies/plainly/hero.jpg",
     heroImageAlt:
-      "The Plainly landing page — Share why plainly. We'll organize the rest.",
+      "The Plainly landing page: Share why plainly. We'll organize the rest.",
     opportunity:
-      "The hardest part of therapy isn't always finding a therapist. It's the moment they say \"so, what brings you in?\" and you realize you have no idea where to start. Intake forms capture what people are willing to type. They miss what people actually mean — the hesitations, the emphasis, the thing they keep circling back to. Meanwhile, therapists spend the first 15 minutes of session one just getting oriented. Both sides lose.",
+      "The hardest part of therapy isn't always finding a therapist. It's the moment they say \"so, what brings you in?\" and you realize you have no idea where to start. Intake forms capture what people are willing to type. They miss what people actually mean, the hesitations, the emphasis, the thing they keep circling back to. Meanwhile, therapists spend the first 15 minutes of session one just getting oriented. Both sides lose.",
     thesis:
-      "Voice surfaces what forms miss. A short, structured AI conversation — 5 minutes, no account, no forms — can produce a written profile that captures what a patient actually means, not just what they're willing to type into a text box. The patient owns the artifact, shares it with any therapist, and arrives at session one already understood. The therapist arrives already oriented. Both sides win.\n\nThe product has to earn trust in the first 30 seconds. That means no accounts, no email capture, no friction. Land, talk, get a link. The conversation is discarded after synthesis. The profile is anonymized and ephemeral. Privacy isn't a feature — it's the architecture.",
+      "Voice surfaces what forms miss. A short, structured AI conversation, 5 minutes, no account, no forms, can produce a written profile that captures what a patient actually means, not just what they're willing to type into a text box. The patient owns the artifact, shares it with any therapist, and arrives at session one already understood. The therapist arrives already oriented. Both sides win.\n\nThe product has to earn trust in the first 30 seconds. That means no accounts, no email capture, no friction. Land, talk, get a link. The conversation is discarded after synthesis. The profile is anonymized and ephemeral. Privacy isn't a feature. It's the architecture.",
     whatWeDid: {
       lead: "Built the full product: voice conversation, profile synthesis, privacy architecture, and the design system that holds it together. Three things make it what it is.",
       items: [
         {
           label: "A real voice conversation, not a chatbot.",
           description:
-            "Plainly uses the OpenAI Realtime API over WebRTC — true streaming voice, not transcription-then-respond. The conversation follows a 4-phase clinical structure (opening, why now, history and context, goals and risk) but adapts to what the person actually says. A canvas-based voice visualizer with six sine wave layers responds to whichever speaker is active, with speaker-aware color crossfade between sage (Plainly) and clay (the patient). Word-by-word text reveal at 300ms syncs to voice playback so you can read along as it speaks.",
+            "Plainly uses the OpenAI Realtime API over WebRTC, true streaming voice, not transcription-then-respond. The conversation follows a 4-phase clinical structure (opening, why now, history and context, goals and risk) but adapts to what the person actually says. A canvas-based voice visualizer with six sine wave layers responds to whichever speaker is active, with speaker-aware color crossfade between sage (Plainly) and clay (the patient). Word-by-word text reveal at 300ms syncs to voice playback so you can read along as it speaks.",
           image: "/case-studies/plainly/conversation.jpg",
           imageAlt: "The Plainly conversation interface with voice visualizer active and word-by-word text reveal",
           caption: "Real-time voice with a 6-layer sine wave visualizer. Sage for Plainly, clay for the patient.",
@@ -491,38 +491,38 @@ export const caseStudies: CaseStudy[] = [
         {
           label: "A profile a therapist can use in 30 seconds.",
           description:
-            "When the conversation ends, Claude synthesizes the transcript into a structured therapy profile — an opening line, narrative threads, therapy fit spectrums (structure vs. exploration, pacing, time focus, warmth vs. challenge), and first-session prompts. The synthesis uses medium inference: \"You seemed to return to...\" not \"exhibits symptoms of...\" Grounded in real clinical frameworks (Cooper & Norcross therapy fit axes, Prochaska stages of change) without naming them in output. Partial profiles are marked as such. Sections are nulled rather than fabricated.",
+            "When the conversation ends, Claude synthesizes the transcript into a structured therapy profile, an opening line, narrative threads, therapy fit spectrums (structure vs. exploration, pacing, time focus, warmth vs. challenge), and first-session prompts. The synthesis uses medium inference: \"You seemed to return to...\" not \"exhibits symptoms of...\" Grounded in real clinical frameworks (Cooper & Norcross therapy fit axes, Prochaska stages of change) without naming them in output. Partial profiles are marked as such. Sections are nulled rather than fabricated.",
           image: "/case-studies/plainly/profile.jpg",
-          imageAlt: "A therapy profile ready to save as PDF — narrative threads, therapy fit tags, and an opening line",
+          imageAlt: "A therapy profile ready to save as PDF, narrative threads, therapy fit tags, and an opening line",
           caption: "Save as PDF and send to any therapist before session one. Structured, anonymized, patient-owned.",
         },
         {
           label: "Privacy by design, not privacy by policy.",
           description:
-            "Transcripts are never stored — processed in memory, discarded after synthesis. Profiles are anonymized (no names, dates, locations, employers) and auto-expire after 30 days. No accounts, no email, no PII retained. The patient can delete immediately from the profile page. Plainly is not a HIPAA-covered entity because it doesn't need to be — no PHI is stored. Risk protocol with normalized screening and crisis resource handoff is built into the conversation, not bolted on.",
+            "Transcripts are never stored, processed in memory, discarded after synthesis. Profiles are anonymized (no names, dates, locations, employers) and auto-expire after 30 days. No accounts, no email, no PII retained. The patient can delete immediately from the profile page. Plainly is not a HIPAA-covered entity because it doesn't need to be. No PHI is stored. Risk protocol with normalized screening and crisis resource handoff is built into the conversation, not bolted on.",
         },
       ],
     },
     architecture: {
       intro:
-        "Plainly feels like a calm 5-minute phone call. Underneath, streaming voice becomes a transcript that lives only in memory — Claude turns it into a shareable profile, then the words are gone.",
+        "Plainly feels like a calm 5-minute phone call. Underneath, streaming voice becomes a transcript that lives only in memory. Claude turns it into a shareable profile, then the words are gone.",
       path: [
-        { label: "You", body: "Land, talk. No account, no forms — a structured 4-phase conversation that adapts to what you say." },
+        { label: "You", body: "Land, talk. No account, no forms, a structured 4-phase conversation that adapts to what you say." },
         { label: "Voice conversation", body: "True streaming voice over WebRTC, not transcribe-then-respond.", tech: "OpenAI Realtime" },
-        { label: "Transcript", body: "Held only while you talk — never written to a database.", tech: "in memory" },
+        { label: "Transcript", body: "Held only while you talk, never written to a database.", tech: "in memory" },
         { label: "Claude synthesis", body: "Turns the conversation into narrative threads, therapy-fit spectrums, and a first-session opener.", tech: "Claude Sonnet 4" },
         { label: "Your profile", body: "Anonymized, saved as PDF, auto-expires in 30 days. Yours to share with any therapist." },
       ],
       connectors: ["land & talk", "streamed", "synthesized", "shareable link"],
       branch: {
         intoIndex: 3, label: "grounded in",
-        node: { label: "Clinical frameworks", body: "Cooper & Norcross fit axes, Prochaska stages — never named in output." },
+        node: { label: "Clinical frameworks", body: "Cooper & Norcross fit axes, Prochaska stages, never named in output." },
       },
       platformConnector: "served by",
       platformLabel: "Runs on Vercel",
       platform: [
         { label: "App", body: "Vite + React 19 on Vercel edge functions." },
-        { label: "Storage", body: "Supabase holds anonymized profiles only — RLS, UUID sharing." },
+        { label: "Storage", body: "Supabase holds anonymized profiles only, RLS, UUID sharing." },
       ],
     },
     builtWith: [
@@ -533,7 +533,7 @@ export const caseStudies: CaseStudy[] = [
       {
         label: "Voice",
         description:
-          "OpenAI Realtime API (GA) via WebRTC — true streaming voice with ephemeral session tokens",
+          "OpenAI Realtime API (GA) via WebRTC, true streaming voice with ephemeral session tokens",
       },
       {
         label: "Synthesis",
@@ -542,7 +542,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         label: "Storage",
-        description: "Supabase — anonymized profiles only, UUID-based sharing, RLS for privacy",
+        description: "Supabase, anonymized profiles only, UUID-based sharing, RLS for privacy",
       },
       {
         label: "Hosting",
@@ -550,8 +550,8 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     whatWeLearned: [
-      "Voice captures signal that forms miss. Hesitations, emphasis, what someone returns to — these are diagnostic. A 5-minute conversation surfaces things a 20-field intake form never would, because people talk differently than they type.",
-      "The hardest design problem is trust. The product has to earn it in 30 seconds, which means zero friction (no accounts, no forms), visible privacy commitments, and a tone that's warm without being clinical or artificially cheerful. The voice, the visualizer, the pacing — all of it is trust architecture.",
+      "Voice captures signal that forms miss. Hesitations, emphasis, what someone returns to. These are diagnostic. A 5-minute conversation surfaces things a 20-field intake form never would, because people talk differently than they type.",
+      "The hardest design problem is trust. The product has to earn it in 30 seconds, which means zero friction (no accounts, no forms), visible privacy commitments, and a tone that's warm without being clinical or artificially cheerful. The voice, the visualizer, the pacing. All of it is trust architecture.",
       "Medium inference is the right register. The profile says \"you seemed to return to\" rather than \"exhibits symptoms of.\" It's grounded enough to be useful to a clinician and recognizable enough that the patient sees themselves in it. That middle ground is hard to hold and worth holding.",
     ],
     status: [
@@ -616,10 +616,10 @@ export const caseStudies: CaseStudy[] = [
     },
     architecture: {
       intro:
-        "Lila Yoga is deliberately backend-less — there's nothing between you and the content. The depth isn't in the stack; it's in how the four decks share one vocabulary and verify their own claims.",
+        "Lila Yoga is deliberately backend-less. There's nothing between you and the content. The depth isn't in the stack; it's in how the four decks share one vocabulary and verify their own claims.",
       path: [
         { label: "You", body: "Swipe through cards. No account, no login, works offline once cached." },
-        { label: "Four decks", body: "Meditations, Movements, Body, Teachings — one system at four altitudes.", tech: "138 cards" },
+        { label: "Four decks", body: "Meditations, Movements, Body, Teachings, one system at four altitudes.", tech: "138 cards" },
       ],
       connectors: ["open & swipe"],
       branch: {
@@ -631,7 +631,7 @@ export const caseStudies: CaseStudy[] = [
       platformLabel: "Static, no server",
       platform: [
         { label: "Frontend", body: "React + Vite, custom CSS, no UI libraries." },
-        { label: "Backend", body: "None — all content is static JS in a 576KB bundle." },
+        { label: "Backend", body: "None, all content is static JS in a 576KB bundle." },
         { label: "Hosting", body: "Vercel; loads fast, works offline." },
       ],
     },
@@ -730,14 +730,14 @@ export const caseStudies: CaseStudy[] = [
       intro:
         "The guide is a swipeable deck of days that installs to your phone and keeps working when the signal drops. The bookings are real and curated; only the weather is live.",
       path: [
-        { label: "You", body: "Swipe through the trip one day at a time — schedule, bookings, weather, all in thumb reach." },
+        { label: "You", body: "Swipe through the trip one day at a time, schedule, bookings, weather, all in thumb reach." },
         { label: "Day cards", body: "A self-contained card per day. Installs as a PWA and runs fully offline once cached.", tech: "React + PWA" },
       ],
       connectors: ["open the trip"],
       branch: {
         intoIndex: 1, label: "live on",
         node: { label: "Live weather", body: "Open-Meteo for 5 locations, sitting next to the decision it informs." },
-        feeder: { label: "alongside", node: { label: "Embedded bookings", body: "Real confirmation numbers, curated not generated — cached offline." } },
+        feeder: { label: "alongside", node: { label: "Embedded bookings", body: "Real confirmation numbers, curated not generated, cached offline." } },
       },
       platformConnector: "served by",
       platformLabel: "Runs on Vercel",
@@ -823,7 +823,7 @@ export const caseStudies: CaseStudy[] = [
     },
     architecture: {
       intro:
-        "HikerLink has no server and assumes no signal. Your check-in saves to your phone, then spreads hiker-to-hiker over Bluetooth — and conditions from the people ahead of you arrive the same way.",
+        "HikerLink has no server and assumes no signal. Your check-in saves to your phone, then spreads hiker-to-hiker over Bluetooth, and conditions from the people ahead of you arrive the same way.",
       path: [
         { label: "You", body: "Check in from the trail: GPS, a condition, a note. Saved to your phone first.", tech: "localStorage" },
         { label: "P2P mesh", body: "Pass another hiker and your phones sync automatically over Bluetooth / WiFi Direct. No server, no signal.", tech: "MultipeerConnectivity" },
@@ -833,13 +833,13 @@ export const caseStudies: CaseStudy[] = [
       loopback: { fromIndex: 1, toIndex: 0, label: "conditions ahead" },
       branch: {
         intoIndex: 0, label: "always on",
-        node: { label: "Offline safety", body: "Trip plan, SAR numbers, last-known GPS — there when the battery's low." },
+        node: { label: "Offline safety", body: "Trip plan, SAR numbers, last-known GPS, there when the battery's low." },
       },
       platformConnector: "wrapped by",
       platformLabel: "Native iOS shell",
       platform: [
         { label: "Native", body: "Capacitor unlocks the P2P API a web app can't reach." },
-        { label: "Distribution", body: "TestFlight — up to 10k testers, no App Store review." },
+        { label: "Distribution", body: "TestFlight, up to 10k testers, no App Store review." },
         { label: "Web app", body: "Vite + React, hosted on Vercel." },
       ],
     },
@@ -875,78 +875,5 @@ export const caseStudies: CaseStudy[] = [
       "In active development. The web app is functional; the Capacitor native layer and MultipeerConnectivity integration are in progress for TestFlight distribution.",
       "~~Build for the mountain, not the App Store.~~",
     ],
-  },
-  // --- Selected experience ---
-  {
-    slug: "rei-adventures",
-    title: "REI Adventures",
-    client: "REI",
-    tagline: "Product strategy for REI's guided trip business",
-    tags: ["outdoor", "travel", "strategy"],
-    category: "experience",
-    opportunity:
-      "REI Adventures is one of the largest adventure travel companies in the US, but the digital product experience hadn't kept pace with the quality of the trips themselves.",
-    thesis:
-      "A modern trip discovery and booking experience, one that felt as considered as the trips, could unlock meaningful growth in a business with strong margins and deep brand affinity.",
-    whatWeDid: {
-      lead: "Developed the product strategy for trip discovery, booking, and post-trip engagement. Led the team through research, concept development, and initial build.",
-      items: [],
-    },
-    builtWith: [],
-    whatWeLearned: ["Placeholder: what we learned from this engagement."],
-    status: ["Shipped."],
-  },
-  {
-    slug: "rei-cooperative-action",
-    title: "REI Cooperative Action",
-    client: "REI",
-    tagline:
-      "Uniting REI's member activism and charitable giving programs",
-    tags: ["outdoor", "social impact", "membership"],
-    category: "experience",
-    opportunity: "Placeholder: the opportunity behind this work.",
-    thesis: "Placeholder: the thesis we tested.",
-    whatWeDid: { lead: "Placeholder: what we did.", items: [] },
-    builtWith: [],
-    whatWeLearned: ["Placeholder: what we learned."],
-    status: ["Shipped."],
-  },
-  {
-    slug: "healthline-bezzy-daily-dose",
-    title: "Healthline: Bezzy + Daily Dose",
-    client: "Healthline",
-    tagline: "Community and engagement products for health audiences",
-    tags: ["health", "community", "consumer"],
-    category: "experience",
-    opportunity:
-      "Healthline reaches hundreds of millions of users, but most visits are transactional: search, read, leave. There was an opportunity to build deeper, ongoing relationships through community and personalized content.",
-    thesis:
-      "Health content consumers would engage more deeply with a platform that combined peer community with personalized daily content, not just search-driven articles.",
-    whatWeDid: {
-      lead: "Led the product strategy and launch for Bezzy (peer community for chronic conditions) and Daily Dose (personalized health content), from concept through initial release.",
-      items: [],
-    },
-    builtWith: [],
-    whatWeLearned: ["Placeholder: what we learned from this engagement."],
-    status: ["Shipped."],
-  },
-  {
-    slug: "rei-membership",
-    title: "REI Membership",
-    client: "REI",
-    tagline: "Rebuilding REI's member experience",
-    tags: ["outdoor", "membership", "e-commerce"],
-    category: "experience",
-    opportunity:
-      "REI's co-op membership, one of the most iconic loyalty programs in retail, needed a modern digital experience that reflected the depth of the member relationship.",
-    thesis:
-      "Membership at REI is more than a dividend check. A reimagined digital experience could deepen engagement and drive both retention and lifetime value.",
-    whatWeDid: {
-      lead: "Led the product strategy and roadmap for the membership experience redesign across web and mobile, from discovery through launch.",
-      items: [],
-    },
-    builtWith: [],
-    whatWeLearned: ["Placeholder: what we learned from this engagement."],
-    status: ["Shipped."],
   },
 ];

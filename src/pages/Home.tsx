@@ -178,7 +178,7 @@ export default function Home() {
               <ThinkingDots active={isActive} />
             </div>
             <h1 className={`mb-8 leading-tight transition-all duration-700 delay-100 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-              We turn ideas into<br />working products — <WordCyclerText displayed={displayed} isTyping={isTyping} />
+              We turn ideas into<br />working products, <WordCyclerText displayed={displayed} isTyping={isTyping} />
             </h1>
           </>
         )}
@@ -186,7 +186,7 @@ export default function Home() {
         <div className={`max-w-2xl transition-all duration-700 delay-300 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
           <div className="border-l-2 border-madrona/30 pl-6">
             <p className="text-lg md:text-xl text-ink-light leading-relaxed">
-              Senior product leadership collaborative that moves fluidly from strategy to design to working software — using AI to compress the distance between an idea and something real.
+              A senior product studio that moves from strategy to design to working software in one motion, using AI to compress the distance between an idea and something real.
             </p>
           </div>
         </div>
@@ -207,7 +207,7 @@ export default function Home() {
           />
           <CapabilityCard
             title="AI-native workflow"
-            body="We use AI to do in weeks what used to take quarters. Not as a gimmick — as a genuine force multiplier that lets a senior team move at startup speed with enterprise judgment."
+            body="We use AI to do in weeks what used to take quarters. Not as a gimmick, but as a genuine force multiplier that lets a senior team move at startup speed with enterprise judgment."
             delay={150}
           />
           <CapabilityCard
@@ -262,7 +262,7 @@ export default function Home() {
         <h2 className="mb-5">Let's talk about what you're building.</h2>
         <p className="text-ink-light text-lg mb-8 leading-relaxed">
           Whether you're shaping a strategy, proving a concept, or looking for
-          a senior product partner — we'd love to hear what you're working on.
+          a senior product partner, we'd love to hear what you're working on.
         </p>
         <a
           href="mailto:hello@madronaproduct.com"
