@@ -102,6 +102,19 @@ export interface CaseStudy {
   status: string[];
 }
 
+// Display order for recent work. Drives the /work grid and the homepage featured four
+// (Home shows the first four). Reorder this list to reorder the site; the objects below
+// can stay in any order. Add new slugs here too, or they sort to the front.
+const recentOrder = [
+  "lila-trips",
+  "san-juan-boating-guide",
+  "plainly",
+  "aria-health",
+  "lila-yoga",
+  "hikerlink",
+  "utah-trip-guide",
+];
+
 export const caseStudies: CaseStudy[] = [
   // --- Recent work ---
   {
@@ -877,3 +890,6 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
 ];
+
+// Apply the display order defined above (sorts the exported array in place).
+caseStudies.sort((a, b) => recentOrder.indexOf(a.slug) - recentOrder.indexOf(b.slug));
