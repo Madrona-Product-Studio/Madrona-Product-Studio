@@ -8,20 +8,9 @@ import { useEffect, useRef, useState } from "react";
 
 function useScrollReveal() {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return { ref, className: visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6" };
+  // Scroll-reveal fade-in removed — content renders immediately so the page
+  // reads as full, not hollow. Spacing alone carries the breathing room.
+  return { ref, className: "opacity-100 translate-y-0" };
 }
 
 function useWordCycler(words: string[]) {
@@ -151,7 +140,7 @@ export default function Home() {
   const s5 = useScrollReveal();
 
   return (
-    <div className="space-y-32">
+    <div className="space-y-24">
       <PageMeta />
 
       {/* Referral greeting */}
@@ -180,7 +169,7 @@ export default function Home() {
               <ThinkingDots active={isActive} />
             </div>
             <h1 className={`mb-8 leading-tight transition-all duration-700 delay-100 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-              We turn ideas into<br />working products, <WordCyclerText displayed={displayed} isTyping={isTyping} />
+              We turn ideas into<br />working products,<br /><span className="whitespace-nowrap"><WordCyclerText displayed={displayed} isTyping={isTyping} /></span>
             </h1>
           </>
         )}
