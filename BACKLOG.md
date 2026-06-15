@@ -13,6 +13,17 @@
 - [ ] Detail offering sections — how we communicate what an actual engagement looks like
 - [ ] About page copy polish
 - [ ] "We build systems, not just products" positioning. Show that the studio builds reusable infrastructure (component libraries, the capabilities + standards registry, shared packages like @madrona/api-utils) that makes building faster and easier to maintain. A real differentiator vs. studios that ship and leave. Worth surfacing on Approach or About at some point. Source: madrona-studio-capabilities repo.
+- [x] "How we can help" question set — self-recognizing prompts that make the offerings concrete. Live as a Home section. Full raw bank to pull from / rotate:
+  - Need to pressure-test a new idea before you commit real money to it? *(live)*
+  - Sitting on a roadmap question that's been stuck for months? *(live)*
+  - Not sure the thing you're imagining is actually worth building?
+  - Need a working prototype you can put in front of people, not another deck? *(live)*
+  - Want to build an internal tool to streamline how your team operates? *(live)*
+  - Trying to add AI to your product without the hallucinations and the hype? *(live)*
+  - Built something but not sure it's landing with users?
+  - Need real signal on what to keep, cut, or change?
+  - Want a senior product voice on your team without a full-time hire?
+  - Want what we build to make your next build faster, not just ship and leave? *(systems/loops angle)*
 
 ## Done
 - [x] Removed pre-Madrona placeholder case studies (REI x3, Healthline); kept the logo-row tease

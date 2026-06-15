@@ -145,6 +145,7 @@ export default function Home() {
 
   const s1 = useScrollReveal();
   const s2 = useScrollReveal();
+  const s3 = useScrollReveal();
   const s4 = useScrollReveal();
   const s5 = useScrollReveal();
 
@@ -215,6 +216,25 @@ export default function Home() {
             body="Product vision. Service design. Interaction patterns. Working code. Most teams split these across departments. We hold them together, because that's where the best products come from."
             delay={300}
           />
+        </div>
+      </section>
+
+      {/* How we can help */}
+      <section ref={s3.ref} className={`transition-all duration-700 ${s3.className}`}>
+        <p className="text-xs font-medium uppercase tracking-widest text-ink-light/50 mb-4">How we can help</p>
+        <h2 className="mb-10">Where we come in.</h2>
+        <div className="max-w-3xl border-t border-cream-dark divide-y divide-cream-dark">
+          {[
+            "Need to pressure-test a new idea before you commit real money to it?",
+            "Sitting on a roadmap question that's been stuck for months?",
+            "Need a working prototype you can put in front of people, not another deck?",
+            "Want to build an internal tool to streamline how your team operates?",
+            "Trying to add AI to your product without the hallucinations and the hype?",
+          ].map((q) => (
+            <p key={q} className="py-5 font-serif text-lg md:text-xl text-ink leading-snug">
+              {q}
+            </p>
+          ))}
         </div>
       </section>
 
