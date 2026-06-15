@@ -123,9 +123,9 @@ export const caseStudies: CaseStudy[] = [
     client: "Studio project",
     tagline:
       "An AI travel platform for designing transformative trips in sacred landscapes.",
-    tags: ["wellness travel", "responsible travel", "AI", "concept"],
+    tags: ["wellness travel", "responsible travel", "AI"],
     highlights: ["AI-powered itinerary engine", "Real-time multi-source data aggregation", "Auth-enabled iterative trip planning"],
-    statusLabel: "Public Beta",
+    statusLabel: "Live v1",
     category: "recent",
     externalUrl: "https://www.lilatrips.com/",
     externalLabel: "lilatrips.com",
@@ -263,8 +263,8 @@ export const caseStudies: CaseStudy[] = [
       "The bigger lesson is about what the category needs. A trust layer between the place, the traveler, and the operators on the ground that's credible, defensible, and not greenwashed. That's the thing the industry hasn't built yet, and it's the thing this product is reaching toward.",
     ],
     status: [
-      "Live at [lilatrips.com](https://www.lilatrips.com/), in active beta with real users as of this writing. The product has already been through several research and build iterations; the public release is where it meets actual intentional travelers for the first time.",
-      "The beta is focused on three things: whether the core planner is usable, whether the experience is actually desirable to the intentional-travel audience we built it for, and whether the AI-generated itineraries hold up in quality and stability across real trips.",
+      "Live at [lilatrips.com](https://www.lilatrips.com/), out as a v1 with real users as of this writing. The product has already been through several research and build iterations; the public release is where it meets actual intentional travelers for the first time.",
+      "The v1 is focused on three things: whether the core planner is usable, whether the experience is actually desirable to the intentional-travel audience we built it for, and whether the AI-generated itineraries hold up in quality and stability across real trips.",
       "What comes next depends on what the users tell us. The likely paths forward are freemium tiers for the planner and guides, referral monetization on bookings, and small-group *Threshold Trips* as a higher-touch product. More destinations will come as the core product earns them.",
       "~~Build real, test real, scale what's earned.~~",
     ],
