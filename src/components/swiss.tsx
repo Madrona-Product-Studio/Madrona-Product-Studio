@@ -32,15 +32,9 @@ export function Seal({ label, className = "" }: { label: ReactNode; className?: 
   );
 }
 
-/** The recurring section-header signature: seal index + madrona dot + position. */
-export function Marker({ index, total = "04" }: { index: string; total?: string }) {
-  return (
-    <div className="flex items-center gap-3.5">
-      <Seal label={index} />
-      <span className="w-[12px] h-[12px] rounded-full bg-madrona shrink-0" aria-hidden="true" />
-      <span className="text-[11px] font-semibold tracking-[0.18em] text-faint">of {total}</span>
-    </div>
-  );
+/** The recurring section-header signature: a short madrona accent rule. */
+export function Marker({ index: _index }: { index?: string }) {
+  return <span className="block h-[3px] w-12 bg-madrona" aria-hidden="true" />;
 }
 
 /** The single emotional line per section — a touch larger, calmer than body. */
