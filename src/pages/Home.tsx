@@ -3,6 +3,7 @@ import { caseStudies } from "../data/caseStudies";
 import { getReferralContext } from "../data/referralContext";
 import CaseStudyCard from "../components/CaseStudyCard";
 import PageMeta from "../components/PageMeta";
+import { Label, Marker, Breath } from "../components/swiss";
 import { useEffect, useRef, useState } from "react";
 
 function useScrollReveal() {
@@ -185,18 +186,17 @@ export default function Home() {
         )}
 
         <div className={`max-w-2xl transition-all duration-700 delay-300 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-          <div className="border-l-2 border-madrona/30 pl-6">
-            <p className="text-lg md:text-xl text-ink-light leading-relaxed">
-              A senior product studio that moves from strategy to design to working software in one motion, using AI to compress the distance between an idea and something real.
-            </p>
-          </div>
+          <Breath>
+            A senior product studio that moves from strategy to design to working software in one motion, using AI to compress the distance between an idea and something real.
+          </Breath>
         </div>
       </section>
 
       {/* What makes us different */}
       <section>
         <div ref={s1.ref} className={`mb-14 transition-all duration-700 ${s1.className}`}>
-          <p className="text-xs font-medium uppercase tracking-widest text-ink-light/50 mb-4">What we do differently</p>
+          <div className="mb-6"><Marker index="01" /></div>
+          <Label className="block mb-4">What we do differently</Label>
           <h2>Thinking and building, done together.</h2>
         </div>
 
@@ -221,9 +221,10 @@ export default function Home() {
 
       {/* How we can help */}
       <section ref={s3.ref} className={`transition-all duration-700 ${s3.className}`}>
-        <p className="text-xs font-medium uppercase tracking-widest text-ink-light/50 mb-4">How we can help</p>
+        <div className="mb-6"><Marker index="02" /></div>
+        <Label className="block mb-4">How we can help</Label>
         <h2 className="mb-10">Where we come in.</h2>
-        <div className="max-w-3xl border-t border-cream-dark divide-y divide-cream-dark">
+        <div className="max-w-3xl border-t border-line divide-y divide-line-soft">
           {[
             "Need to pressure-test a new idea before you commit real money to it?",
             "Sitting on a roadmap question that's been stuck for months?",
@@ -231,7 +232,7 @@ export default function Home() {
             "Want to build an internal tool to streamline how your team operates?",
             "Trying to add AI to your product without the hallucinations and the hype?",
           ].map((q) => (
-            <p key={q} className="py-5 font-serif text-lg md:text-xl text-ink leading-snug">
+            <p key={q} className="py-5 text-[19px] md:text-[22px] tracking-[-0.02em] text-ink leading-[1.2]">
               {q}
             </p>
           ))}
@@ -240,7 +241,8 @@ export default function Home() {
 
       {/* Selected work */}
       <section ref={s2.ref} className={`transition-all duration-700 ${s2.className}`}>
-        <p className="text-xs font-medium uppercase tracking-widest text-ink-light/50 mb-4">Recent work</p>
+        <div className="mb-6"><Marker index="03" /></div>
+        <Label className="block mb-4">Recent work</Label>
         <h2 className="mb-12">Products we've shipped.</h2>
         <div className="grid sm:grid-cols-2 gap-x-10 gap-y-14">
           {featuredWork.map((study) => (
@@ -256,7 +258,8 @@ export default function Home() {
 
       {/* How we work — condensed */}
       <section ref={s4.ref} className={`max-w-2xl transition-all duration-700 ${s4.className}`}>
-        <p className="text-xs font-medium uppercase tracking-widest text-ink-light/50 mb-4">How it works</p>
+        <div className="mb-6"><Marker index="04" /></div>
+        <Label className="block mb-4">How it works</Label>
         <h2 className="mb-8">Figure it out, then build it.</h2>
         <div className="space-y-6 text-ink-light leading-relaxed">
           <p>

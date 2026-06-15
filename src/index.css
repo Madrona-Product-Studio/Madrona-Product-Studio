@@ -2,29 +2,46 @@
 
 @theme {
   /*
-   * Madrona Product Studio — Design Tokens
-   *
-   * Palette principle: one signature color (madrona bark) against a neutral
-   * ink-on-cream foundation. Restraint is the point — every color earns
-   * its role, no decorative extras.
+   * Madrona × swiss/zen — design tokens.
+   * Adopts the studio swiss/zen system (layered paper grounds, 5-step ink ramp,
+   * hairlines, Inter-only type) while KEEPING Madrona's bark-orange accent for
+   * brand continuity. Legacy cream/ink-light tokens are retained so any
+   * not-yet-restyled page still resolves.
    */
 
-  /* Foundation — the 90% of the page */
-  --color-ink: #1a1a1a;         /* Primary text, structural elements */
-  --color-ink-light: #4a4a4a;   /* Secondary text, captions */
-  --color-cream: #faf8f5;       /* Primary background */
-  --color-cream-dark: #ece8e1;  /* Hairline dividers, quiet borders */
+  /* Grounds — warm paper, layered lightest→page */
+  --color-card:  #ffffff;
+  --color-paper: #fdfcfa;
+  --color-bg:    #f5f1ea;
 
-  /* Signature — the brand. Used sparingly: links, active nav, CTA, accents */
-  --color-madrona: #c4553a;        /* Peeling-bark orange-red */
-  --color-madrona-dark: #a3432d;   /* Hover, pressed states */
-  --color-madrona-light: #e8a999;  /* Selection highlights, subtle washes */
+  /* Ink scale */
+  --color-ink:   #1a1714;
+  --color-ink70: #403a33;
+  --color-clay:  #6f6657;
+  --color-muted: #8c8378;
+  --color-faint: #b8b0a2;
 
-  /* Typography */
+  /* The one accent — Madrona bark (kept; used scarcely, the swiss way) */
+  --color-madrona: #c4553a;
+  --color-madrona-dark: #a3432d;
+  --color-madrona-light: #e8a999;
+
+  /* Hairlines */
+  --color-line:      rgba(26, 23, 20, 0.14);
+  --color-line-soft: rgba(26, 23, 20, 0.08);
+
+  /* Legacy tokens — retained for graceful degradation on un-restyled pages */
+  --color-ink-light: #403a33;
+  --color-cream: #fdfcfa;
+  --color-cream-dark: rgba(26, 23, 20, 0.12);
+
+  /* Type — Inter system + Fraunces kept for the H1 / page-title moment (hybrid) */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-serif: "Fraunces", Georgia, serif;
-  --font-sans: "Inter", system-ui, sans-serif;
 
-  /* Animations */
+  /* Radii */
+  --radius-card: 10px;
+
   --animate-dot-bounce: dot-bounce 0.6s ease-in-out infinite;
 }
 
@@ -32,46 +49,47 @@
   html {
     font-family: var(--font-sans);
     color: var(--color-ink);
-    background-color: var(--color-cream);
+    background-color: var(--color-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Display: Inter, tight tracking, near-solid leading — the swiss move */
   h1, h2, h3, h4 {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
   }
 
-  h1 { font-size: 2.75rem; }
-  h2 { font-size: 1.875rem; }
+  /* Hybrid: H1 keeps the editorial Fraunces voice; H2–H4 stay tight Inter */
+  h1 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  h1 { font-size: 2.875rem; }
+  h2 { font-size: 2rem; }
   h3 { font-size: 1.375rem; }
 
   @media (min-width: 768px) {
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2.25rem; }
+    h1 { font-size: 3.25rem; }
+    h2 { font-size: 2.5rem; }
     h3 { font-size: 1.5rem; }
   }
 
-  p {
-    line-height: 1.75;
-  }
+  p { line-height: 1.6; }
 
   a {
     color: var(--color-madrona);
     text-decoration: none;
     transition: color 0.15s ease;
   }
+  a:hover { color: var(--color-madrona-dark); }
 
-  a:hover {
-    color: var(--color-madrona-dark);
-  }
-
-  ::selection {
-    background-color: var(--color-madrona-light);
-    color: var(--color-ink);
-  }
+  ::selection { background-color: var(--color-madrona-light); color: var(--color-ink); }
 }
 
 @keyframes cursor-blink {
@@ -83,4 +101,3 @@
   0%, 100% { transform: translateY(0); opacity: 1; }
   50% { transform: translateY(-4px); opacity: 0.5; }
 }
-

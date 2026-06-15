@@ -7,33 +7,28 @@ interface Props {
 
 export default function CaseStudyCard({ study }: Props) {
   return (
-    <Link
-      to={`/work/${study.slug}`}
-      className="group block no-underline"
-    >
-      <div className="space-y-1.5 mb-5">
-        <div className="flex items-center gap-2">
-          <p className="text-xs font-medium uppercase tracking-wider text-ink-light">
+    <Link to={`/work/${study.slug}`} className="group block no-underline">
+      <div className="mb-5">
+        <div className="flex items-center gap-2.5 mb-2">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
             {study.client}
-          </p>
+          </span>
           {study.statusLabel && (
-            <span className="text-[10px] font-medium uppercase tracking-wider text-madrona border border-madrona/30 px-1.5 py-0.5 rounded leading-none">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-madrona border border-madrona/40 px-1.5 py-0.5 rounded-[3px] leading-none">
               {study.statusLabel}
             </span>
           )}
         </div>
-        <h3 className="text-xl group-hover:text-madrona transition-colors text-ink">
+        <h3 className="text-[1.4rem] leading-[1.04] tracking-[-0.03em] text-ink group-hover:text-madrona transition-colors mb-2">
           {study.title}
         </h3>
-        <p className="text-ink-light text-sm leading-relaxed">
-          {study.tagline}
-        </p>
+        <p className="text-clay text-sm leading-[1.6]">{study.tagline}</p>
         {study.highlights && study.highlights.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mt-2">
+          <div className="flex flex-wrap gap-1.5 mt-3">
             {study.highlights.map((h) => (
               <span
                 key={h}
-                className="text-[11px] font-medium text-madrona bg-madrona/8 px-2 py-0.5 rounded"
+                className="text-[11px] font-medium text-clay border border-line px-2 py-0.5 rounded-[3px]"
               >
                 {h}
               </span>
@@ -45,11 +40,13 @@ export default function CaseStudyCard({ study }: Props) {
         <img
           src={study.heroImage}
           alt={study.heroImageAlt ?? ""}
-          className={`aspect-[4/3] w-full object-cover object-top rounded transition-shadow group-hover:shadow-md${study.borderImages ? " border border-cream-dark" : ""}`}
+          className={`aspect-[4/3] w-full object-cover object-top rounded-card transition-shadow group-hover:shadow-sm${
+            study.borderImages ? " border border-line" : " border border-line-soft"
+          }`}
           loading="lazy"
         />
       ) : (
-        <div className="aspect-[4/3] bg-cream-dark rounded flex items-center justify-center text-ink-light text-sm transition-shadow group-hover:shadow-md">
+        <div className="aspect-[4/3] bg-card rounded-card border border-line-soft flex items-center justify-center text-muted text-sm">
           {study.title}
         </div>
       )}
