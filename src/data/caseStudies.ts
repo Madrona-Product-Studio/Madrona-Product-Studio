@@ -294,7 +294,6 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "gardenhq",
     stage: "prototype",
-    hidden: true,
     title: "GardenHQ",
     client: "Studio project",
     tagline:
