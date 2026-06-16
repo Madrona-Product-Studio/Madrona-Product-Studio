@@ -116,7 +116,7 @@ const recentOrder = [
   "plainly",
   "aria-health",
   "lila-yoga",
-  "tend",
+  "gardenhq",
   "hikerlink",
   "utah-trip-guide",
 ];
@@ -292,10 +292,10 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
-    slug: "tend",
+    slug: "gardenhq",
     stage: "prototype",
     hidden: true,
-    title: "Tend",
+    title: "GardenHQ",
     client: "Studio project",
     tagline:
       "Map, organize, and improve your food garden, year over year.",
@@ -320,20 +320,20 @@ export const caseStudies: CaseStudy[] = [
         },
         {
           label: "Local-first, because gardens have bad signal.",
-          description: "The whole garden lives in the browser, on the device, in IndexedDB. No account, no backend, no connection required. Tend ships seeded with a real sixteen-bed garden, so it's a working tool on first open rather than an empty shell asking you to set everything up.",
+          description: "The whole garden lives in the browser, on the device, in IndexedDB. No account, no backend, no connection required. GardenHQ ships seeded with a real sixteen-bed garden, so it's a working tool on first open rather than an empty shell asking you to set everything up.",
         },
       ],
     },
     architecture: {
       intro:
-        "Tend has no backend in v1. The whole garden lives on the device, and the map is drawn straight from a pure domain model that the rest of the app depends on.",
+        "GardenHQ has no backend in v1. The whole garden lives on the device, and the map is drawn straight from a pure domain model that the rest of the app depends on.",
       path: [
         {
           label: "You",
           body: "Walk the garden and record its zones, beds, plants, and the systems that serve them.",
         },
         {
-          label: "Tend",
+          label: "GardenHQ",
           body: "A React app that renders the garden as an SVG map you can zoom from the whole plot down to a single bed.",
           tech: "React 19 · Vite · PWA",
         },
@@ -353,7 +353,7 @@ export const caseStudies: CaseStudy[] = [
         label: "seeded from",
         node: {
           label: "A real garden audit",
-          body: "More than 150 plants across 4 zones and 16 beds, captured on a walkthrough and shipped as the demo so Tend is useful the moment it opens.",
+          body: "More than 150 plants across 4 zones and 16 beds, captured on a walkthrough and shipped as the demo so GardenHQ is useful the moment it opens.",
         },
       },
       loopback: {
