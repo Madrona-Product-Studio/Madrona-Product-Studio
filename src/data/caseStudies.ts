@@ -389,37 +389,44 @@ export const caseStudies: CaseStudy[] = [
     title: "Helm",
     client: "Studio project",
     tagline:
-      "A personal command center built on a markdown file you own, legible to you and your agents alike.",
-    tags: ["personal software", "AI", "agent-native"],
+      "A command center for the work you're running, built on a markdown file you own, legible to you and your agents alike.",
+    tags: ["productivity", "AI", "agent-native"],
     highlights: ["Markdown file as the single source of truth", "Claude-powered capture and natural-language edits", "Offline-first PWA that commits to GitHub"],
     statusLabel: "In daily use",
     category: "recent",
     heroImage: "/case-studies/helm/hero.png",
     heroImageAlt:
-      "The Helm dashboard on a phone: a ranked Top Priorities list blended from starred items across six focus areas.",
+      "The Helm dashboard: a ranked top-priorities list (ship the redesign beta, the Q3 roadmap, a staff PM hire) blended across work focus areas.",
     opportunity:
-      "Every productivity tool ever made assumes a human clicking a UI. That assumption is about to break. The moment you want an agent to actually do the work, plan the week, file the note, reorganize the project, the tool becomes the bottleneck: your data is trapped in a proprietary database, reachable only through a rate-limited API the agent has to be taught. The thing that should make delegation easy is the thing standing in the way. The format your life lives in was chosen for the app's benefit, not yours.",
+      "Every productivity tool ever made assumes a human clicking a UI. That assumption is about to break. The moment you want an agent to actually do the work, plan the week, file the note, reorganize the project, the tool becomes the bottleneck: your data is trapped in a proprietary database, reachable only through a rate-limited API the agent has to be taught. The thing that should make delegation easy is the thing standing in the way. The format your work lives in was chosen for the app's benefit, not yours.",
     thesis:
-      "The next generation of personal software will be written for the human and their agents jointly, and the unlock is the substrate. Put your life-state in a plain markdown file you own, version-controlled in git, and the hard parts get easy. An agent can load the whole thing into one context window, reason across all of it at once, edit it like prose, and commit the change back, no integration required, because text in git is already an agent's native format.\n\nThat inverts the usual model. The defensible thing isn't \"everything in one place,\" it's that the brain is a file you own and the app is just one replaceable view of it. At personal scale you don't need a database at all: the context window replaces the query. Lose the app, fork it, or swap it for the next one, and nothing is lost, because the brain was never in the app to begin with.",
+      "The next generation of personal software will be written for the human and their agents jointly, and the unlock is the substrate. Put your work, your projects, your priorities in a plain markdown file you own, version-controlled in git, and the hard parts get easy. An agent can load the whole thing into one context window, reason across all of it at once, edit it like prose, and commit the change back, no integration required, because text in git is already an agent's native format.\n\nThat inverts the usual model. The defensible thing isn't \"everything in one place,\" it's that the brain is a file you own and the app is just one replaceable view of it. At this scale you don't need a database at all: the context window replaces the query. Lose the app, fork it, or swap it for the next one, and nothing is lost, because the brain was never in the app to begin with.",
     whatWeDid: {
       lead: "Built the whole system: the markdown engine that reads and rewrites the file, the mobile-first dashboard, the AI layer for capture and edits, the GitHub sync, and offline support. The product runs as the way we actually keep the studio and everything around it on the rails, every day, from a phone.",
       items: [
         {
           label: "The file is the product. The app is a view.",
-          description: "Your life lives in one markdown file in your own GitHub repo. Helm parses it into a dashboard, and every action you take, checking a task, starring a priority, rewriting a line, becomes a precise edit committed straight back to the file. Git history is the audit trail. The app holds nothing the file doesn't.",
+          description: "Your work lives in one markdown file in your own GitHub repo. Helm parses it into a dashboard, and every action you take, checking a task, starring a priority, rewriting a line, becomes a precise edit committed straight back to the file. Git history is the audit trail. The app holds nothing the file doesn't.",
           image: "/case-studies/helm/app-is-a-view.png",
-          imageAlt: "A Helm focus area opened on a phone, showing its tasks tagged build, grow, and support, with one starred as a priority.",
-          caption: "Open a focus area and the same file becomes a working list. The dashboard, the priorities, the drill-in are all just views of one document.",
+          imageAlt: "The Mobile Redesign focus area opened to its tasks, each tagged build, support, or grow, with one starred as a priority.",
+          caption: "Open a focus area, like a product redesign, and the same file becomes a working backlog. The dashboard, the priorities, the drill-in are all views of one document.",
+        },
+        {
+          label: "The same file, on every screen.",
+          description: "Because the brain is just text, the view can be whatever the moment calls for. On a phone it's a single focused column you thumb through between meetings. On a desktop it opens into a two-pane command center, focus areas down the side and the work in front of you, with no second codebase and no separate data model. Same file, same edits, a layout that fits the screen.",
+          image: "/case-studies/helm/desktop.png",
+          imageAlt: "Helm's desktop layout: a left sidebar of focus areas beside a main pane showing the ranked Top Priorities.",
+          caption: "One markdown file, rendered as a focused phone column or a full desktop command center. The view bends to the screen; the brain never changes.",
         },
         {
           label: "AI that edits prose, not a database.",
           description: "Capture a thought in plain language and Claude decides where it belongs and how to format it. Speak an update and it becomes a structured edit: complete, star, rewrite, move. Ask a question and it finds the right section and answers. Every call returns constrained, structured output rather than freeform text, so the model proposes edits and the file stays clean.",
           image: "/case-studies/helm/ai-edits.png",
-          imageAlt: "Two phones: capturing a thought in plain language on the left, and an action sheet with an Update with AI option on the right.",
-          caption: "Capture in plain language; tap any line and Update with AI turns intent into a clean, structured edit to the file.",
+          imageAlt: "Capturing a task in plain language on the left (prep the QBR deck before Thursday); an action sheet with an Update with AI option on the right.",
+          caption: "Capture in plain language (prep the QBR deck before Thursday); tap any line and Update with AI turns intent into a clean, structured edit.",
         },
         {
-          label: "Built to work on a trailhead.",
+          label: "Built to keep up anywhere.",
           description: "Helm is an installable PWA that works with no signal. Edits queue locally and sync the moment you're back online. Capture and query also run through token-authed endpoints, so an iOS Shortcut or an external agent can reach the same brain without ever opening the app.",
         },
       ],
@@ -477,8 +484,8 @@ export const caseStudies: CaseStudy[] = [
       { label: "Auth", description: "GitHub OAuth for the file; token auth for the capture and query endpoints." },
     ],
     whatWeLearned: [
-      "The interesting part of an agent-native product isn't the agent. It's the substrate. Put your life-state in a plain text file an agent can already read, and most of the hard integration work simply disappears.",
-      "At personal scale, a context window beats a database. You don't query your life, you hand the whole thing to the model and let it reason across all of it at once.",
+      "The interesting part of an agent-native product isn't the agent. It's the substrate. Put your work in a plain text file an agent can already read, and most of the hard integration work simply disappears.",
+      "At this scale, a context window beats a database. You don't query your work, you hand the whole thing to the model and let it reason across all of it at once.",
       "Owning the file changes your relationship with the tool. The app becomes disposable in the best way: lose it, fork it, or replace it, and the brain is still yours, still just text.",
     ],
     status: [
