@@ -302,6 +302,9 @@ export const caseStudies: CaseStudy[] = [
     highlights: ["Spatially-true, semantic-zoom garden map", "Garden, zone, bed, and plant domain model", "Local-first PWA that works offline in the yard"],
     statusLabel: "v1",
     category: "recent",
+    heroImage: "/case-studies/gardenhq/hero.png",
+    heroImageAlt:
+      "The GardenHQ overview: a home garden's four zones, Main Production, Brassicas, Herbs & Lettuce, and Fruit & Berries, each a small spatial diagram of its beds.",
     opportunity:
       "Anyone who gardens seriously loses the thread between seasons. Plant labels get knocked out of the soil, handwritten notes fade, and what you learned last summer, which bed runs hot, which variety bolted, where the shade creeps in by August, doesn't carry forward. Manage sixteen beds and a hundred and fifty plants and the whole thing lives in your head, which is a bad place for it. In the Pacific Northwest the single biggest limiting factor is sun exposure, and almost nobody has a systematic way to see it. The tools that exist are either toy plant trackers or sprawling farm software. Nothing sits in the middle and starts where a garden actually starts: with the space itself.",
     thesis:
@@ -312,10 +315,16 @@ export const caseStudies: CaseStudy[] = [
         {
           label: "A map that's true to the ground, not just pretty.",
           description: "A hand-built SVG renderer draws beds at their real relative positions and lets you zoom from the whole garden, down to a single zone, into one bed and its rows of plantings. State shows up on the map itself: a wicking bed's reservoir level reads as a fill right there in the diagram. You navigate it like a place, not a spreadsheet.",
+          image: "/case-studies/gardenhq/map.png",
+          imageAlt: "A zone's spatial map with beds at their real relative positions, including a round she-shed squash bed, showing live soil temperatures.",
+          caption: "Each zone is a spatially-true map: beds sit where they really are (the she-shed squash bed is round because it is), with live readings like soil temperature right on the diagram.",
         },
         {
           label: "The garden as a system, not a list.",
           description: "Everything is modeled the way a garden actually behaves: a garden holds zones, zones hold beds, beds hold plants. Covers, sensors, and irrigation nodes are first-class objects that move between beds as the season changes. That structure is what keeps the map honest, and what future recommendations will reason over.",
+          image: "/case-studies/gardenhq/bed.png",
+          imageAlt: "A bed detail showing two rows of plantings with their states (bolted, transplanted, failed), an 80% reservoir, the water node, and a greenhouse cover.",
+          caption: "Drill into a bed and the whole system is there: the plantings and how they fared, the reservoir level, the water node, and the cover that moves on and off with the season.",
         },
         {
           label: "Local-first, because gardens have bad signal.",
