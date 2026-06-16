@@ -91,6 +91,8 @@ export interface CaseStudy {
   statusLabel?: string;
   /** Product maturity stage. Drives the homepage grouping and the status chip. */
   stage?: "concept" | "prototype" | "beta" | "live";
+  /** Hide from the work lists (e.g., awaiting assets). Still reachable by direct URL. */
+  hidden?: boolean;
   borderImages?: boolean;
   heroImage?: string;
   heroImageAlt?: string;
@@ -292,6 +294,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "tend",
     stage: "prototype",
+    hidden: true,
     title: "Tend",
     client: "Studio project",
     tagline:
@@ -433,7 +436,7 @@ export const caseStudies: CaseStudy[] = [
     },
     architecture: {
       intro:
-        "Helm looks like a tidy mobile dashboard. Underneath, it's a thin, replaceable view over a markdown file you own, with Claude doing the structured edits and GitHub holding the history.",
+        "Helm looks like a tidy dashboard. Underneath, it's a thin, replaceable view over a markdown file you own, with Claude doing the structured edits and GitHub holding the history.",
       path: [
         {
           label: "You",

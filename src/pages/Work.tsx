@@ -27,7 +27,7 @@ const priorWork = [
 ];
 
 export default function Work() {
-  const recentWork = caseStudies.filter((s) => s.category === "recent");
+  const recentWork = caseStudies.filter((s) => s.category === "recent" && !s.hidden);
 
   return (
     <div className="space-y-32">

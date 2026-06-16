@@ -122,7 +122,7 @@ function CapabilityCard({ title, body, delay }: { title: string; body: string; d
 export default function Home() {
   const [searchParams] = useSearchParams();
   const referral = getReferralContext(searchParams);
-  const featuredWork = caseStudies.filter((s) => s.category === "recent").slice(0, 2);
+  const featuredWork = caseStudies.filter((s) => s.category === "recent" && !s.hidden).slice(0, 2);
   const cyclerWords = useRef(["lightning fast", "worth shipping", "with style", "no fluff", "rain or shine", "people love"]);
   const { displayed, isTyping, isActive } = useWordCycler(cyclerWords.current);
 
