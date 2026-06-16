@@ -89,6 +89,8 @@ export interface CaseStudy {
   externalLabel?: string;
   highlights?: string[];
   statusLabel?: string;
+  /** Product maturity stage. Drives the homepage grouping and the status chip. */
+  stage?: "concept" | "prototype" | "beta" | "live";
   borderImages?: boolean;
   heroImage?: string;
   heroImageAlt?: string;
@@ -108,17 +110,35 @@ export interface CaseStudy {
 const recentOrder = [
   "lila-trips",
   "san-juan-boating-guide",
+  "helm",
   "plainly",
   "aria-health",
   "lila-yoga",
+  "tend",
   "hikerlink",
   "utah-trip-guide",
 ];
+
+/**
+ * Product maturity ladder, most-mature first. Drives homepage grouping and chip labels.
+ * concept   — an idea / thesis, not yet built
+ * prototype — built to test a hypothesis; not for general use
+ * beta      — real users, still evolving
+ * live      — shipped, in production
+ */
+export const STAGE_ORDER = ["live", "beta", "prototype", "concept"] as const;
+export const STAGE_LABELS: Record<(typeof STAGE_ORDER)[number], string> = {
+  live: "Live",
+  beta: "Beta",
+  prototype: "Prototype",
+  concept: "Concept",
+};
 
 export const caseStudies: CaseStudy[] = [
   // --- Recent work ---
   {
     slug: "lila-trips",
+    stage: "live",
     title: "Lila Trips",
     client: "Studio project",
     tagline:
@@ -270,7 +290,206 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    slug: "tend",
+    stage: "prototype",
+    title: "Tend",
+    client: "Studio project",
+    tagline:
+      "Map, organize, and improve your food garden, year over year.",
+    tags: ["home garden", "maps", "local-first"],
+    highlights: ["Spatially-true, semantic-zoom garden map", "Garden, zone, bed, and plant domain model", "Local-first PWA that works offline in the yard"],
+    statusLabel: "v1",
+    category: "recent",
+    opportunity:
+      "Anyone who gardens seriously loses the thread between seasons. Plant labels get knocked out of the soil, handwritten notes fade, and what you learned last summer, which bed runs hot, which variety bolted, where the shade creeps in by August, doesn't carry forward. Manage sixteen beds and a hundred and fifty plants and the whole thing lives in your head, which is a bad place for it. In the Pacific Northwest the single biggest limiting factor is sun exposure, and almost nobody has a systematic way to see it. The tools that exist are either toy plant trackers or sprawling farm software. Nothing sits in the middle and starts where a garden actually starts: with the space itself.",
+    thesis:
+      "The map is the foundation. A beautiful, spatially-true picture of the whole garden, its zones, beds, plants, and the systems that serve them, is the thing a grower can read at a glance, and everything else hangs off it: the notes, the tasks, the year-over-year comparisons. Get the map right and the rest of the product has somewhere to live.\n\nUnderneath, a garden isn't a flat list of plants, it's a composable system. Beds group into zones, and the things that serve them, covers, sensors, irrigation lines, move between beds as the season turns, the way speakers move between rooms in a Sonos setup. Model it that way and the software starts to match how a garden actually works. And because gardens sit at the far end of the yard with no signal, all of it has to run on the device, offline, first.",
+    whatWeDid: {
+      lead: "Built the v1 end to end: the domain model, the map renderer with semantic zoom, the local-first storage, and the dual map-and-list views, seeded with a real garden audit of more than a hundred and fifty plants so it's useful the moment you open it.",
+      items: [
+        {
+          label: "A map that's true to the ground, not just pretty.",
+          description: "A hand-built SVG renderer draws beds at their real relative positions and lets you zoom from the whole garden, down to a single zone, into one bed and its rows of plantings. State shows up on the map itself: a wicking bed's reservoir level reads as a fill right there in the diagram. You navigate it like a place, not a spreadsheet.",
+        },
+        {
+          label: "The garden as a system, not a list.",
+          description: "Everything is modeled the way a garden actually behaves: a garden holds zones, zones hold beds, beds hold plants. Covers, sensors, and irrigation nodes are first-class objects that move between beds as the season changes. That structure is what keeps the map honest, and what future recommendations will reason over.",
+        },
+        {
+          label: "Local-first, because gardens have bad signal.",
+          description: "The whole garden lives in the browser, on the device, in IndexedDB. No account, no backend, no connection required. Tend ships seeded with a real sixteen-bed garden, so it's a working tool on first open rather than an empty shell asking you to set everything up.",
+        },
+      ],
+    },
+    architecture: {
+      intro:
+        "Tend has no backend in v1. The whole garden lives on the device, and the map is drawn straight from a pure domain model that the rest of the app depends on.",
+      path: [
+        {
+          label: "You",
+          body: "Walk the garden and record its zones, beds, plants, and the systems that serve them.",
+        },
+        {
+          label: "Tend",
+          body: "A React app that renders the garden as an SVG map you can zoom from the whole plot down to a single bed.",
+          tech: "React 19 · Vite · PWA",
+        },
+        {
+          label: "Domain model",
+          body: "A pure TypeScript core: garden, zone, bed, plant, plus movable covers, sensors, and irrigation. Everything depends on it; it depends on nothing.",
+        },
+        {
+          label: "Your device",
+          body: "State persists in IndexedDB on the device, so the app keeps working in the yard with no signal.",
+          tech: "Dexie / IndexedDB",
+        },
+      ],
+      connectors: ["observations", "pure selectors", "saved locally"],
+      branch: {
+        intoIndex: 2,
+        label: "seeded from",
+        node: {
+          label: "A real garden audit",
+          body: "More than 150 plants across 4 zones and 16 beds, captured on a walkthrough and shipped as the demo so Tend is useful the moment it opens.",
+        },
+      },
+      loopback: {
+        fromIndex: 3,
+        toIndex: 1,
+        label: "re-renders from",
+      },
+      platformConnector: "ships on",
+      platformLabel: "Runs on Vercel",
+      platform: [
+        { label: "Vercel", body: "Hosts the installable PWA." },
+        { label: "Service worker", body: "Caches everything for offline use in the garden." },
+      ],
+    },
+    builtWith: [
+      { label: "Frontend", description: "React 19, TypeScript, Vite, Tailwind 4. An installable, offline-capable PWA." },
+      { label: "Map", description: "A hand-built SVG renderer, chosen over canvas for crisp vectors, semantic zoom, and accessible, linkable views." },
+      { label: "State & storage", description: "Zustand for app state and Dexie over IndexedDB for local-first persistence. No backend in v1." },
+      { label: "Interaction", description: "dnd-kit for dragging beds and plantings into place, with react-spring and use-gesture for motion." },
+      { label: "Design", description: "The studio's swiss / zen design system, ported from Lila, with a categorical palette for crop types." },
+    ],
+    whatWeLearned: [
+      "The map is the product. Once a grower can see the whole garden at a glance, every other feature, the notes, the tasks, the comparisons across seasons, finally has somewhere to live.",
+      "Topology before scale. Getting the beds in the right relative positions matters far more than getting them to exact dimensions, and to-scale can wait.",
+      "Local-first wasn't a limitation, it was the right call. Gardens have bad signal, and a tool you can't open in the yard is a tool you don't use.",
+    ],
+    status: [
+      "v1 is built end to end and runs as an installable, offline-first app: the semantic-zoom map, the full garden-to-plant model, movable equipment, and the map and list lenses, seeded with a real sixteen-bed garden.",
+      "What comes next is accounts and cloud sync, photos, and a voice tour that turns a spoken walk through the garden into structured beds, plants, and a punch-list, with Claude in the loop. After that, recommendations: what to plant where, and when, drawn from the garden's own history.",
+      "~~Map it, work it, improve it. Year over year.~~",
+    ],
+  },
+  {
+    slug: "helm",
+    stage: "beta",
+    title: "Helm",
+    client: "Studio project",
+    tagline:
+      "A personal command center built on a markdown file you own, legible to you and your agents alike.",
+    tags: ["personal software", "AI", "agent-native"],
+    highlights: ["Markdown file as the single source of truth", "Claude-powered capture and natural-language edits", "Offline-first PWA that commits to GitHub"],
+    statusLabel: "In daily use",
+    category: "recent",
+    heroImage: "/case-studies/helm/hero.png",
+    heroImageAlt:
+      "The Helm dashboard on a phone: a ranked Top Priorities list blended from starred items across six focus areas.",
+    opportunity:
+      "Every productivity tool ever made assumes a human clicking a UI. That assumption is about to break. The moment you want an agent to actually do the work, plan the week, file the note, reorganize the project, the tool becomes the bottleneck: your data is trapped in a proprietary database, reachable only through a rate-limited API the agent has to be taught. The thing that should make delegation easy is the thing standing in the way. The format your life lives in was chosen for the app's benefit, not yours.",
+    thesis:
+      "The next generation of personal software will be written for the human and their agents jointly, and the unlock is the substrate. Put your life-state in a plain markdown file you own, version-controlled in git, and the hard parts get easy. An agent can load the whole thing into one context window, reason across all of it at once, edit it like prose, and commit the change back, no integration required, because text in git is already an agent's native format.\n\nThat inverts the usual model. The defensible thing isn't \"everything in one place,\" it's that the brain is a file you own and the app is just one replaceable view of it. At personal scale you don't need a database at all: the context window replaces the query. Lose the app, fork it, or swap it for the next one, and nothing is lost, because the brain was never in the app to begin with.",
+    whatWeDid: {
+      lead: "Built the whole system: the markdown engine that reads and rewrites the file, the mobile-first dashboard, the AI layer for capture and edits, the GitHub sync, and offline support. The product runs as the way we actually keep the studio and everything around it on the rails, every day, from a phone.",
+      items: [
+        {
+          label: "The file is the product. The app is a view.",
+          description: "Your life lives in one markdown file in your own GitHub repo. Helm parses it into a dashboard, and every action you take, checking a task, starring a priority, rewriting a line, becomes a precise edit committed straight back to the file. Git history is the audit trail. The app holds nothing the file doesn't.",
+          image: "/case-studies/helm/app-is-a-view.png",
+          imageAlt: "A Helm focus area opened on a phone, showing its tasks tagged build, grow, and support, with one starred as a priority.",
+          caption: "Open a focus area and the same file becomes a working list. The dashboard, the priorities, the drill-in are all just views of one document.",
+        },
+        {
+          label: "AI that edits prose, not a database.",
+          description: "Capture a thought in plain language and Claude decides where it belongs and how to format it. Speak an update and it becomes a structured edit: complete, star, rewrite, move. Ask a question and it finds the right section and answers. Every call returns constrained, structured output rather than freeform text, so the model proposes edits and the file stays clean.",
+          image: "/case-studies/helm/ai-edits.png",
+          imageAlt: "Two phones: capturing a thought in plain language on the left, and an action sheet with an Update with AI option on the right.",
+          caption: "Capture in plain language; tap any line and Update with AI turns intent into a clean, structured edit to the file.",
+        },
+        {
+          label: "Built to work on a trailhead.",
+          description: "Helm is an installable PWA that works with no signal. Edits queue locally and sync the moment you're back online. Capture and query also run through token-authed endpoints, so an iOS Shortcut or an external agent can reach the same brain without ever opening the app.",
+        },
+      ],
+    },
+    architecture: {
+      intro:
+        "Helm looks like a tidy mobile dashboard. Underneath, it's a thin, replaceable view over a markdown file you own, with Claude doing the structured edits and GitHub holding the history.",
+      path: [
+        {
+          label: "You",
+          body: "Capture a thought, check off a task, or ask a question, all in plain language.",
+        },
+        {
+          label: "Helm",
+          body: "Renders your markdown as a dashboard and turns each action into one precise edit.",
+          tech: "Next.js PWA",
+        },
+        {
+          label: "Claude API",
+          body: "Classifies captures, interprets natural-language edits, and routes questions, returning structured JSON rather than freeform prose.",
+          tech: "claude-haiku-4.5 · AI Gateway",
+        },
+        {
+          label: "Your markdown file",
+          body: "The single source of truth, edited like prose and committed to GitHub, with the full git history as the audit trail.",
+        },
+      ],
+      connectors: ["your action", "structured edit", "commit"],
+      branch: {
+        intoIndex: 2,
+        label: "also from",
+        node: {
+          label: "Shortcuts & agents",
+          body: "iOS Shortcuts and external agents capture, query, and edit through token-authed endpoints. Same brain, no UI required.",
+        },
+      },
+      loopback: {
+        fromIndex: 3,
+        toIndex: 1,
+        label: "re-renders from",
+      },
+      platformConnector: "syncs to",
+      platformLabel: "Runs on Vercel",
+      platform: [
+        { label: "GitHub", body: "Stores the markdown file and every change as git history." },
+        { label: "AI Gateway", body: "Routes structured-output calls to Claude." },
+        { label: "Service worker", body: "Caches the app and queues edits while offline." },
+      ],
+    },
+    builtWith: [
+      { label: "Frontend", description: "Next.js 16 App Router, React 19, TypeScript, Tailwind 4. Installable PWA with a custom service worker." },
+      { label: "Markdown engine", description: "unified and remark to parse and re-stringify the file, with sentinel blocks fencing off system-owned sections." },
+      { label: "AI", description: "Claude through the Vercel AI SDK and AI Gateway, using generateObject with Zod schemas for structured, constrained edits." },
+      { label: "Sync", description: "GitHub Contents API, with optimistic local edits and a read-the-SHA-and-retry pass on conflict." },
+      { label: "Auth", description: "GitHub OAuth for the file; token auth for the capture and query endpoints." },
+    ],
+    whatWeLearned: [
+      "The interesting part of an agent-native product isn't the agent. It's the substrate. Put your life-state in a plain text file an agent can already read, and most of the hard integration work simply disappears.",
+      "At personal scale, a context window beats a database. You don't query your life, you hand the whole thing to the model and let it reason across all of it at once.",
+      "Owning the file changes your relationship with the tool. The app becomes disposable in the best way: lose it, fork it, or replace it, and the brain is still yours, still just text.",
+    ],
+    status: [
+      "In daily use on mobile, as the way we actually run the studio and everything around it. Built by Madrona Product Studio, and in active development.",
+      "What comes next is making the markdown substrate invisible enough that someone who has never opened a .md file still gets the benefit, and opening the same brain to more surfaces and more agents.",
+      "~~The app is disposable. The brain is yours.~~",
+    ],
+  },
+  {
     slug: "aria-health",
+    stage: "prototype",
     title: "Aria Health",
     client: "Studio project",
     tagline:
@@ -365,6 +584,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "san-juan-boating-guide",
+    stage: "live",
     title: "San Juan Boating Guide",
     client: "Studio project",
     tagline:
@@ -472,6 +692,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "plainly",
+    stage: "prototype",
     title: "Plainly",
     client: "Studio project",
     tagline:
@@ -575,6 +796,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "lila-yoga",
+    stage: "prototype",
     title: "Lila Yoga",
     client: "Studio project",
     tagline:
@@ -687,6 +909,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "utah-trip-guide",
+    stage: "concept",
     title: "Utah Trip Guide",
     client: "Studio project",
     tagline:
@@ -789,6 +1012,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "hikerlink",
+    stage: "concept",
     title: "HikerLink",
     client: "Studio project",
     tagline:

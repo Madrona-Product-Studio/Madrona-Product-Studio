@@ -1,24 +1,22 @@
 import { Link } from "react-router-dom";
-import type { CaseStudy } from "../data/caseStudies";
+import { STAGE_LABELS, type CaseStudy } from "../data/caseStudies";
 
 interface Props {
   study: CaseStudy;
 }
 
 export default function CaseStudyCard({ study }: Props) {
+  const badge = study.stage ? STAGE_LABELS[study.stage] : study.statusLabel;
   return (
     <Link to={`/work/${study.slug}`} className="group block no-underline">
       <div className="mb-5">
-        <div className="flex items-center gap-2.5 mb-2">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">
-            {study.client}
-          </span>
-          {study.statusLabel && (
+        {badge && (
+          <div className="mb-2">
             <span className="text-[10px] font-semibold uppercase tracking-[0.12em] text-madrona border border-madrona/40 px-1.5 py-0.5 rounded-[3px] leading-none">
-              {study.statusLabel}
+              {badge}
             </span>
-          )}
-        </div>
+          </div>
+        )}
         <h3 className="text-[1.4rem] leading-[1.04] tracking-[-0.03em] text-ink group-hover:text-madrona transition-colors mb-2">
           {study.title}
         </h3>

@@ -1,6 +1,7 @@
-import { caseStudies } from "../data/caseStudies";
-import CaseStudyCard from "../components/CaseStudyCard";
+import { caseStudies, STAGE_ORDER, STAGE_LABELS } from "../data/caseStudies";
+import WorkRow from "../components/WorkRow";
 import PageMeta from "../components/PageMeta";
+import { Label } from "../components/swiss";
 
 const priorWork = [
   {
@@ -33,11 +34,28 @@ export default function Work() {
       <PageMeta title="Work" description="Recent product work and selected experience from Madrona Product Studio." />
 
       <section>
-        <h1 className="mb-12">Products we've shipped</h1>
-        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-14">
-          {recentWork.map((study) => (
-            <CaseStudyCard key={study.slug} study={study} />
-          ))}
+        <h1 className="mb-12">What we're building</h1>
+        <div className="space-y-9">
+          {STAGE_ORDER.map((stage) => {
+            const items = recentWork.filter((s) => s.stage === stage);
+            if (items.length === 0) return null;
+            return (
+              <div key={stage}>
+                <div className="flex items-center gap-3 mb-3">
+                  <span
+                    className={`h-[3px] w-8 shrink-0 ${stage === "live" ? "bg-madrona" : "bg-faint"}`}
+                    aria-hidden="true"
+                  />
+                  <Label>{STAGE_LABELS[stage]}</Label>
+                </div>
+                <div>
+                  {items.map((study) => (
+                    <WorkRow key={study.slug} study={study} />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 

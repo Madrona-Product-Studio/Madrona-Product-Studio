@@ -122,7 +122,7 @@ function CapabilityCard({ title, body, delay }: { title: string; body: string; d
 export default function Home() {
   const [searchParams] = useSearchParams();
   const referral = getReferralContext(searchParams);
-  const featuredWork = caseStudies.filter((s) => s.category === "recent").slice(0, 4);
+  const featuredWork = caseStudies.filter((s) => s.category === "recent").slice(0, 2);
   const cyclerWords = useRef(["lightning fast", "worth shipping", "with style", "no fluff", "rain or shine", "people love"]);
   const { displayed, isTyping, isActive } = useWordCycler(cyclerWords.current);
 
@@ -232,7 +232,7 @@ export default function Home() {
       <section ref={s2.ref} className={`transition-all duration-700 ${s2.className}`}>
         <div className="mb-6"><Marker index="03" /></div>
         <Label className="block mb-4">Recent work</Label>
-        <h2 className="mb-12">Products we've shipped.</h2>
+        <h2 className="mb-12">A few we're proud of.</h2>
         <div className="grid sm:grid-cols-2 gap-x-10 gap-y-14">
           {featuredWork.map((study) => (
             <CaseStudyCard key={study.slug} study={study} />
