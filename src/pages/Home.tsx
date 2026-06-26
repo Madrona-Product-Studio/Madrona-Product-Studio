@@ -6,19 +6,60 @@ import PageMeta from "../components/PageMeta";
 import { Label, Marker, Breath } from "../components/swiss";
 import { useEffect, useRef, useState } from "react";
 
-function useScrollReveal() {
-  const ref = useRef<HTMLDivElement>(null);
-  // Scroll-reveal fade-in removed — content renders immediately so the page
-  // reads as full, not hollow. Spacing alone carries the breathing room.
-  return { ref, className: "opacity-100 translate-y-0" };
+// Reveal a section once it scrolls into view. Subtle, one-time, and gated:
+// the hidden start state lives under html.js-reveal (set before paint), so
+// content is never hidden for no-JS, crawlers, or reduced-motion users.
+function useReveal<T extends HTMLElement = HTMLDivElement>() {
+  const ref = useRef<T>(null);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (!document.documentElement.classList.contains("js-reveal")) {
+      setShown(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.1 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return { ref, shown };
 }
 
-function useWordCycler(words: string[]) {
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const onChange = () => setReduced(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+  return reduced;
+}
+
+function useWordCycler(words: string[], enabled = true) {
   const [displayed, setDisplayed] = useState(words[0]);
   const [isActive, setIsActive] = useState(false);
   const wordRef = useRef(0);
 
   useEffect(() => {
+    // Respect reduced motion — hold the first word, skip the typing loop.
+    if (!enabled) {
+      setDisplayed(words[0]);
+      setIsActive(false);
+      return;
+    }
     const typeSpeed = 80;
     const deleteSpeed = 50;
     const holdDelay = 2400;
@@ -66,7 +107,7 @@ function useWordCycler(words: string[]) {
 
     cycle();
     return () => { cancelled = true; };
-  }, [words]);
+  }, [words, enabled]);
 
   const isTyping = displayed.length > 0 && displayed !== words[wordRef.current];
 
@@ -105,11 +146,12 @@ function WordCyclerText({ displayed, isTyping }: { displayed: string; isTyping: 
 }
 
 function CapabilityCard({ title, body, delay }: { title: string; body: string; delay: number }) {
-  const reveal = useScrollReveal();
+  const reveal = useReveal();
   return (
     <div
       ref={reveal.ref}
-      className={`transition-all duration-700 ${reveal.className}`}
+      className="reveal"
+      data-shown={reveal.shown}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="mb-4"><span className="inline-block w-[14px] h-[14px] rounded-full bg-madrona" aria-hidden="true" /></div>
@@ -124,7 +166,8 @@ export default function Home() {
   const referral = getReferralContext(searchParams);
   const featuredWork = caseStudies.filter((s) => s.category === "recent" && !s.hidden).slice(0, 2);
   const cyclerWords = useRef(["lightning fast", "worth shipping", "with style", "no fluff", "rain or shine", "people love"]);
-  const { displayed, isTyping, isActive } = useWordCycler(cyclerWords.current);
+  const reducedMotion = usePrefersReducedMotion();
+  const { displayed, isTyping, isActive } = useWordCycler(cyclerWords.current, !reducedMotion);
 
   // Staggered hero animation
   const [heroReady, setHeroReady] = useState(false);
@@ -133,11 +176,11 @@ export default function Home() {
     return () => clearTimeout(t);
   }, []);
 
-  const s1 = useScrollReveal();
-  const s2 = useScrollReveal();
-  const s3 = useScrollReveal();
-  const s4 = useScrollReveal();
-  const s5 = useScrollReveal();
+  const s1 = useReveal();
+  const s2 = useReveal();
+  const s3 = useReveal();
+  const s4 = useReveal();
+  const s5 = useReveal();
 
   return (
     <div className="space-y-24">
@@ -156,25 +199,25 @@ export default function Home() {
       <section className="max-w-3xl pt-8 md:pt-16">
         {referral?.headline ? (
           <>
-            <h1 className={`mb-6 leading-tight transition-all duration-700 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <h1 className={`mb-6 leading-tight transition-[opacity,transform] duration-500 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
               {referral.headline}
             </h1>
-            <p className={`text-lg md:text-xl text-ink-light max-w-2xl leading-relaxed mb-10 transition-all duration-700 delay-200 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <p className={`text-lg md:text-xl text-ink-light max-w-2xl leading-relaxed mb-10 transition-[opacity,transform] duration-500 delay-150 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
               {referral.subhead}
             </p>
           </>
         ) : (
           <>
-            <div className={`transition-all duration-500 ${heroReady ? "opacity-100" : "opacity-0"}`}>
+            <div className={`transition-opacity duration-500 ease-snap ${heroReady ? "opacity-100" : "opacity-0"}`}>
               <ThinkingDots active={isActive} />
             </div>
-            <h1 className={`mb-8 leading-tight transition-all duration-700 delay-100 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <h1 className={`mb-8 leading-tight transition-[opacity,transform] duration-500 delay-75 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
               We turn ideas into<br />working products,<br /><span className="whitespace-nowrap"><WordCyclerText displayed={displayed} isTyping={isTyping} /></span>
             </h1>
           </>
         )}
 
-        <div className={`max-w-2xl transition-all duration-700 delay-300 ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+        <div className={`max-w-2xl transition-[opacity,transform] duration-500 delay-200 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
           <Breath>
             A senior product studio that moves from strategy to design to working software in one motion, using AI to compress the distance between an idea and something real.
           </Breath>
@@ -183,7 +226,7 @@ export default function Home() {
 
       {/* What makes us different */}
       <section>
-        <div ref={s1.ref} className={`mb-14 transition-all duration-700 ${s1.className}`}>
+        <div ref={s1.ref} data-shown={s1.shown} className="reveal mb-14">
           <div className="mb-6"><Marker index="01" /></div>
           <Label className="block mb-4">What we do differently</Label>
           <h2>Thinking and building, done together.</h2>
@@ -209,7 +252,7 @@ export default function Home() {
       </section>
 
       {/* How we can help */}
-      <section ref={s3.ref} className={`transition-all duration-700 ${s3.className}`}>
+      <section ref={s3.ref} data-shown={s3.shown} className="reveal">
         <div className="mb-6"><Marker index="02" /></div>
         <Label className="block mb-4">How we can help</Label>
         <h2 className="mb-10">Where we come in.</h2>
@@ -229,7 +272,7 @@ export default function Home() {
       </section>
 
       {/* Selected work */}
-      <section ref={s2.ref} className={`transition-all duration-700 ${s2.className}`}>
+      <section ref={s2.ref} data-shown={s2.shown} className="reveal">
         <div className="mb-6"><Marker index="03" /></div>
         <Label className="block mb-4">Recent work</Label>
         <h2 className="mb-12">A few we're proud of.</h2>
@@ -246,7 +289,7 @@ export default function Home() {
       </section>
 
       {/* How we work — condensed */}
-      <section ref={s4.ref} className={`max-w-2xl transition-all duration-700 ${s4.className}`}>
+      <section ref={s4.ref} data-shown={s4.shown} className="reveal max-w-2xl">
         <div className="mb-6"><Marker index="04" /></div>
         <Label className="block mb-4">How it works</Label>
         <h2 className="mb-8">Figure it out, then build it.</h2>
@@ -270,7 +313,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section ref={s5.ref} className={`max-w-2xl border-t border-cream-dark pt-16 transition-all duration-700 ${s5.className}`}>
+      <section ref={s5.ref} data-shown={s5.shown} className="reveal max-w-2xl border-t border-cream-dark pt-16">
         <h2 className="mb-5">Let's talk about what you're building.</h2>
         <p className="text-ink-light text-lg mb-8 leading-relaxed">
           Whether you're shaping a strategy, proving a concept, or looking for
@@ -278,7 +321,7 @@ export default function Home() {
         </p>
         <a
           href="mailto:hello@madronaproduct.com"
-          className="inline-block bg-madrona text-cream px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark transition-colors no-underline"
+          className="press inline-block bg-madrona text-cream px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
         >
           Get in touch
         </a>

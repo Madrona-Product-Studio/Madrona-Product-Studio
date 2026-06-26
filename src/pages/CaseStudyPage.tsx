@@ -109,7 +109,7 @@ export default function CaseStudyPage() {
                 href={study.externalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-madrona text-cream px-6 py-3 rounded font-medium text-sm hover:bg-madrona-dark transition-colors no-underline"
+                className="press inline-block bg-madrona text-cream px-6 py-3 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
               >
                 View the project &rarr;
               </a>

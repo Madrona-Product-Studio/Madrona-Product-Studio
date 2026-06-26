@@ -6,6 +6,14 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Enable scroll-reveal only when JS runs and motion is allowed. Runs before
+         paint so prerendered content is never hidden for no-JS / crawlers. -->
+    <script>
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.documentElement.classList.add("js-reveal");
+      }
+    </script>
     <title>Madrona Product Studio · Senior Product Studio, Pacific Northwest</title>
     <meta name="description" content="Madrona Product Studio is a small, senior product studio based in the Pacific Northwest. We help companies figure out what to build, and then make it real." />
 

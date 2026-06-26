@@ -54,17 +54,17 @@ function Nav() {
           aria-label="Toggle navigation"
         >
           <span
-            className={`block h-0.5 w-full bg-ink transition-all duration-200 ${
+            className={`block h-0.5 w-full bg-ink transition-[transform,opacity] duration-200 ease-snap ${
               open ? "translate-y-2 rotate-45" : ""
             }`}
           />
           <span
-            className={`block h-0.5 w-full bg-ink transition-all duration-200 ${
+            className={`block h-0.5 w-full bg-ink transition-[transform,opacity] duration-200 ease-snap ${
               open ? "opacity-0" : ""
             }`}
           />
           <span
-            className={`block h-0.5 w-full bg-ink transition-all duration-200 ${
+            className={`block h-0.5 w-full bg-ink transition-[transform,opacity] duration-200 ease-snap ${
               open ? "-translate-y-2 -rotate-45" : ""
             }`}
           />
