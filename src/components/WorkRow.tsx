@@ -39,7 +39,7 @@ export default function WorkRow({ study }: { study: CaseStudy }) {
         )}
       </div>
       <span
-        className="hidden sm:block shrink-0 self-center text-faint text-lg group-hover:text-madrona group-hover:translate-x-0.5 transition-all"
+        className="hidden sm:block shrink-0 self-center text-faint text-lg group-hover:text-madrona group-hover:translate-x-0.5 transition-[color,transform] duration-200 ease-snap"
         aria-hidden="true"
       >
         &rarr;

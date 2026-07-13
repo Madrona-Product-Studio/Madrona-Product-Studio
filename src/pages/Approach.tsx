@@ -82,7 +82,7 @@ export default function Approach() {
         </p>
         <a
           href="mailto:hello@madronaproduct.com"
-          className="inline-block bg-madrona text-cream px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark transition-colors no-underline"
+          className="press inline-block bg-madrona text-cream px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
         >
           Get in touch
         </a>
