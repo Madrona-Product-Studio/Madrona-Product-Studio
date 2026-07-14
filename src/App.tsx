@@ -6,6 +6,7 @@ import CaseStudyPage from "./pages/CaseStudyPage";
 import Approach from "./pages/Approach";
 import Writing from "./pages/Writing";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="approach" element={<Approach />} />
           <Route path="writing" element={<Writing />} />
           <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>
     </BrowserRouter>

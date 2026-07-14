@@ -319,12 +319,12 @@ export default function Home() {
           Whether you're shaping a strategy, proving a concept, or looking for
           a senior product partner, we'd love to hear what you're working on.
         </p>
-        <a
-          href="mailto:hello@madronaproduct.com"
+        <Link
+          to="/contact"
           className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
         >
           Get in touch
-        </a>
+        </Link>
       </section>
     </div>
   );

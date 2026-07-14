@@ -46,6 +46,12 @@ const pages = {
     h1: 'About',
     body: 'Founded by Charlie Koch. A senior product leader at the center, with a trusted network of designers, engineers, and researchers.',
   },
+  '/contact': {
+    title: 'Contact · Madrona Product Studio',
+    description: "Tell us what you're building. We'll figure out together whether there's a fit.",
+    h1: "Let's talk about what you're building.",
+    body: "Whether you're shaping a strategy, proving a concept, or looking for a senior product partner, we'd love to hear what you're working on. Email hello@madronaproduct.com.",
+  },
 };
 
 // Load case study data by parsing the TS file for slugs, titles, taglines, and opportunities

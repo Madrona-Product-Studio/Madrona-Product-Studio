@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { offerings } from "../data/offerings";
 import OfferingCard from "../components/OfferingCard";
 import PageMeta from "../components/PageMeta";
@@ -80,12 +81,12 @@ export default function Approach() {
           Tell us what you're working on. We'll figure out together whether
           there's a fit.
         </p>
-        <a
-          href="mailto:hello@madronaproduct.com"
+        <Link
+          to="/contact"
           className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
         >
           Get in touch
-        </a>
+        </Link>
       </section>
     </div>
   );
