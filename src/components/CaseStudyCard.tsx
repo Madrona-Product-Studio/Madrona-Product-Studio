@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { STAGE_LABELS, type CaseStudy } from "../data/caseStudies";
+import Img from "./Img";
 
 interface Props {
   study: CaseStudy;
@@ -35,13 +36,12 @@ export default function CaseStudyCard({ study }: Props) {
         )}
       </div>
       {study.heroImage ? (
-        <img
+        <Img
           src={study.heroImage}
           alt={study.heroImageAlt ?? ""}
           className={`aspect-[4/3] w-full object-cover object-top rounded-card transition-shadow group-hover:shadow-sm${
             study.borderImages ? " border border-line" : " border border-line-soft"
           }`}
-          loading="lazy"
         />
       ) : (
         <div className="aspect-[4/3] bg-card rounded-card border border-line-soft flex items-center justify-center text-muted text-sm">

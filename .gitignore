@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Generated WebP derivatives (rebuilt by scripts/optimize-images.mjs on build).
+# The dimensions manifest (src/data/imageManifest.ts) IS committed.
+public/**/*.webp
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

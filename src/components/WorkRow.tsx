@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { CaseStudy } from "../data/caseStudies";
+import Img from "./Img";
 
 /** Portfolio row for the maturity-grouped index on /work: thumbnail, title, what it is, and its key capabilities. */
 export default function WorkRow({ study }: { study: CaseStudy }) {
@@ -9,11 +10,10 @@ export default function WorkRow({ study }: { study: CaseStudy }) {
       className="group flex items-start gap-5 sm:gap-6 py-6 no-underline border-t border-line first:border-t-0 first:pt-0"
     >
       {study.heroImage ? (
-        <img
+        <Img
           src={study.heroImage}
           alt={study.heroImageAlt ?? ""}
           className="w-28 sm:w-44 aspect-[4/3] object-cover object-top rounded-card border border-line-soft shrink-0"
-          loading="lazy"
         />
       ) : (
         <div className="w-28 sm:w-44 aspect-[4/3] rounded-card border border-line-soft bg-card shrink-0 flex items-center justify-center text-muted text-xs text-center px-2">

@@ -4,6 +4,7 @@ import { caseStudies } from "../data/caseStudies";
 import type { CaseStudy, HowItWorks } from "../data/caseStudies";
 import PageMeta from "../components/PageMeta";
 import ArchitectureDiagram from "../components/ArchitectureDiagram";
+import Img from "../components/Img";
 
 /** Render inline markdown: links [text](url), bold **text**, italics *text*, ~~principle~~ */
 let inlineKey = 0;
@@ -119,9 +120,11 @@ export default function CaseStudyPage() {
       </div>
 
       {study.heroImage ? (
-        <img
+        <Img
           src={study.heroImage}
           alt={study.heroImageAlt ?? ""}
+          loading="eager"
+          fetchPriority="high"
           className={`w-full object-cover object-top rounded-lg shadow-lg mb-20${study.borderImages ? " border border-line" : ""}`}
         />
       ) : (
@@ -227,11 +230,10 @@ function WhatWeDidSection({ study }: { study: CaseStudy }) {
             <div key={item.label}>
               {item.image && (
                 <figure className="mb-6">
-                  <img
+                  <Img
                     src={item.image}
                     alt={item.imageAlt ?? ""}
                     className={`w-full object-cover rounded-lg shadow-lg${study.borderImages ? " border border-line" : ""}`}
-                    loading="lazy"
                   />
                   {item.caption && (
                     <figcaption className="mt-4 text-sm text-ink70 italic max-w-3xl">
