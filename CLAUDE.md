@@ -36,21 +36,32 @@ one accent color.
 
 All colors and type are defined as CSS custom properties in `src/index.css`
 under the `@theme` block. Tailwind picks them up automatically as utilities
-(`bg-madrona`, `text-ink-light`, etc.). Do not introduce hardcoded hex values
+(`bg-madrona`, `text-ink70`, `border-line`, etc.). Do not introduce hardcoded hex values
 in components — if a color isn't in the system, either it's not needed or
 the system needs to change.
 
 ### Color palette
 
-The palette is deliberately lean. Three color families, each with a role:
+The palette is the "swiss/zen" system: layered warm-paper grounds, a five-step
+ink ramp, hairlines, and one bark accent. Deliberately lean, each token has a
+role. These are the ONLY tokens — there are no legacy `cream`/`ink-light`
+aliases (they were removed; use the tokens below).
 
-**Ink (primary text and structure)**
-- `ink` `#1a1a1a` — primary text, structural elements, logo wordmark
-- `ink-light` `#4a4a4a` — secondary text, captions, meta labels
+**Grounds (background and surfaces, lightest → page)**
+- `card` `#ffffff` — raised surfaces, the lightest ground
+- `paper` `#fdfcfa` — quiet surfaces, light button text on the bark
+- `bg` `#f5f1ea` — primary page background
 
-**Cream (background and surfaces)**
-- `cream` `#faf8f5` — primary page background
-- `cream-dark` `#ece8e1` — hairline dividers, quiet borders, image placeholders
+**Ink (text and structure, darkest → faintest)**
+- `ink` `#1a1714` — primary text, structural elements, logo wordmark
+- `ink70` `#403a33` — secondary text, captions, meta labels
+- `clay` `#6f6657` — tertiary body text, the calmer "Breath" line
+- `muted` `#8c8378` — micro-labels, quiet eyebrow captions
+- `faint` `#b8b0a2` — faintest text, inactive marks
+
+**Hairlines (dividers and quiet borders)**
+- `line` `rgba(26,23,20,0.14)` — standard hairline rules and borders
+- `line-soft` `rgba(26,23,20,0.08)` — the quietest dividers
 
 **Madrona (the signature — used sparingly)**
 - `madrona` `#c4553a` — links, active nav, CTA buttons, accent rules
@@ -65,14 +76,14 @@ signal, not decoration.
 
 ### Typography
 
-- **Serif (display):** Fraunces — used for h1/h2/h3/h4, the wordmark, and
-  occasional editorial emphasis. Weight 500 by default.
-- **Sans (body and UI):** Inter — everything else. Body copy, nav, buttons,
-  UI labels, meta text.
+- **Serif (display):** Fraunces — used for the `h1` / page-title moment and
+  occasional editorial emphasis. Weight 500.
+- **Sans (everything else):** Inter — `h2`–`h4` (weight 600, tight tracking),
+  body copy, nav, buttons, UI labels, meta text.
 
-The serif carries the editorial, senior-studio feeling. Inter keeps UI and
-body copy functional and legible. Don't swap in alternative fonts for
-variety — stick to these two, vary weight and size instead.
+This is a hybrid: the `h1` keeps the editorial Fraunces voice while `h2`–`h4`
+stay tight, near-solid-leading Inter (the swiss move). Don't swap in
+alternative fonts for variety — stick to these two, vary weight and size.
 
 ### Structural moves (the brand on the page)
 
@@ -81,7 +92,8 @@ variety — stick to these two, vary weight and size instead.
 2. **Left-aligned content, max-width constrained.** No centered marketing
    layouts. Hero content lives in `max-w-3xl` or similar.
 3. **Hairline dividers, not boxes.** When sections need separation, use
-   `border-cream-dark` rules. Avoid card outlines and shadow-heavy containers.
+   `border-line` / `border-line-soft` rules. Avoid card outlines and
+   shadow-heavy containers.
 4. **Left-edge madrona rule as a signature gesture.** A thin left border in
    `border-madrona/30` (see the manifesto block on the homepage) is a
    repeatable structural move. Use it for pull-quotes, callouts, or

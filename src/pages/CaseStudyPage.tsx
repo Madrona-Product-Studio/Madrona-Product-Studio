@@ -62,7 +62,7 @@ export default function CaseStudyPage() {
     return (
       <div className="max-w-2xl py-24">
         <h1 className="mb-4">Not found</h1>
-        <p className="text-ink-light mb-6">
+        <p className="text-ink70 mb-6">
           We couldn't find that case study.
         </p>
         <Link to="/work" className="text-sm font-medium">
@@ -78,17 +78,17 @@ export default function CaseStudyPage() {
       <div className="max-w-3xl">
         <Link
           to="/work"
-          className="text-sm text-ink-light hover:text-ink transition-colors mb-12 inline-block"
+          className="text-sm text-ink70 hover:text-ink transition-colors mb-12 inline-block"
         >
           &larr; Back to work
         </Link>
 
         <header className="mb-16">
-          <p className="text-sm font-medium uppercase tracking-wider text-ink-light mb-3">
+          <p className="text-sm font-medium uppercase tracking-wider text-ink70 mb-3">
             {study.client}
           </p>
           <h1 className="mb-4">{study.title}</h1>
-          <p className="text-xl text-ink-light leading-relaxed">
+          <p className="text-xl text-ink70 leading-relaxed">
             {study.tagline}
           </p>
           {study.highlights && study.highlights.length > 0 && (
@@ -109,7 +109,7 @@ export default function CaseStudyPage() {
                 href={study.externalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="press inline-block bg-madrona text-cream px-6 py-3 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
+                className="press inline-block bg-madrona text-paper px-6 py-3 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
               >
                 View the project &rarr;
               </a>
@@ -122,10 +122,10 @@ export default function CaseStudyPage() {
         <img
           src={study.heroImage}
           alt={study.heroImageAlt ?? ""}
-          className={`w-full object-cover object-top rounded-lg shadow-lg mb-20${study.borderImages ? " border border-cream-dark" : ""}`}
+          className={`w-full object-cover object-top rounded-lg shadow-lg mb-20${study.borderImages ? " border border-line" : ""}`}
         />
       ) : (
-        <div className="aspect-[16/9] bg-cream-dark rounded-lg mb-20 flex items-center justify-center text-ink-light text-sm">
+        <div className="aspect-[16/9] bg-line rounded-lg mb-20 flex items-center justify-center text-ink70 text-sm">
           {study.title} · hero image placeholder (16:9)
         </div>
       )}
@@ -143,11 +143,11 @@ export default function CaseStudyPage() {
         <StatusSection paragraphs={study.status} />
       </div>
 
-      <div className="flex flex-wrap gap-2 mt-16 pt-10 border-t border-cream-dark max-w-3xl">
+      <div className="flex flex-wrap gap-2 mt-16 pt-10 border-t border-line max-w-3xl">
         {study.tags.map((tag) => (
           <span
             key={tag}
-            className="text-xs bg-cream-dark text-ink-light px-3 py-1.5 rounded"
+            className="text-xs bg-line text-ink70 px-3 py-1.5 rounded"
           >
             {tag}
           </span>
@@ -162,7 +162,7 @@ function TextSection({ title, content }: { title: string; content: string }) {
   return (
     <section className="max-w-3xl">
       <h2 className="text-xl font-serif font-medium mb-4 text-ink">{title}</h2>
-      <div className="space-y-5 text-ink-light text-lg leading-relaxed max-w-2xl">
+      <div className="space-y-5 text-ink70 text-lg leading-relaxed max-w-2xl">
         {paragraphs.map((p, i) => (
           <p key={i}>{renderInline(p)}</p>
         ))}
@@ -178,7 +178,7 @@ function HowItWorksSection({ howItWorks }: { howItWorks: HowItWorks }) {
         How it works
       </h2>
       {howItWorks.intro && (
-        <p className="text-ink-light text-lg leading-relaxed max-w-2xl mb-8">
+        <p className="text-ink70 text-lg leading-relaxed max-w-2xl mb-8">
           {renderInline(howItWorks.intro)}
         </p>
       )}
@@ -187,7 +187,7 @@ function HowItWorksSection({ howItWorks }: { howItWorks: HowItWorks }) {
           <div
             key={layer.label}
             className={`grid grid-cols-1 gap-2 py-5 sm:grid-cols-[9rem_1fr] sm:gap-6${
-              i > 0 ? " border-t border-cream-dark" : ""
+              i > 0 ? " border-t border-line" : ""
             }`}
           >
             <p className="text-xs font-medium uppercase tracking-wider text-madrona sm:pt-2">
@@ -197,7 +197,7 @@ function HowItWorksSection({ howItWorks }: { howItWorks: HowItWorks }) {
               {layer.items.map((item) => (
                 <span
                   key={item}
-                  className="text-sm text-ink bg-cream-dark/70 px-3 py-1.5 rounded"
+                  className="text-sm text-ink bg-line/70 px-3 py-1.5 rounded"
                 >
                   {item}
                 </span>
@@ -217,7 +217,7 @@ function WhatWeDidSection({ study }: { study: CaseStudy }) {
         <h2 className="text-xl font-serif font-medium mb-4 text-ink">
           What we did
         </h2>
-        <p className="text-ink-light text-lg leading-relaxed max-w-2xl">
+        <p className="text-ink70 text-lg leading-relaxed max-w-2xl">
           {renderInline(study.whatWeDid.lead)}
         </p>
       </div>
@@ -230,11 +230,11 @@ function WhatWeDidSection({ study }: { study: CaseStudy }) {
                   <img
                     src={item.image}
                     alt={item.imageAlt ?? ""}
-                    className={`w-full object-cover rounded-lg shadow-lg${study.borderImages ? " border border-cream-dark" : ""}`}
+                    className={`w-full object-cover rounded-lg shadow-lg${study.borderImages ? " border border-line" : ""}`}
                     loading="lazy"
                   />
                   {item.caption && (
-                    <figcaption className="mt-4 text-sm text-ink-light italic max-w-3xl">
+                    <figcaption className="mt-4 text-sm text-ink70 italic max-w-3xl">
                       {item.caption}
                     </figcaption>
                   )}
@@ -242,7 +242,7 @@ function WhatWeDidSection({ study }: { study: CaseStudy }) {
               )}
               <div className="max-w-3xl">
                 <p className="font-medium text-ink mb-2">{item.label}</p>
-                <p className="text-ink-light leading-relaxed max-w-2xl">
+                <p className="text-ink70 leading-relaxed max-w-2xl">
                   {renderInline(item.description)}
                 </p>
               </div>
@@ -266,7 +266,7 @@ function BuiltWithSection({ study }: { study: CaseStudy }) {
             <dt className="font-medium text-ink sm:min-w-28 shrink-0">
               {item.label}
             </dt>
-            <dd className="text-ink-light">{renderInline(item.description)}</dd>
+            <dd className="text-ink70">{renderInline(item.description)}</dd>
           </div>
         ))}
       </dl>
@@ -284,7 +284,7 @@ function ParagraphsSection({
   return (
     <section className="max-w-3xl">
       <h2 className="text-xl font-serif font-medium mb-4 text-ink">{title}</h2>
-      <div className="space-y-5 text-ink-light text-lg leading-relaxed max-w-2xl">
+      <div className="space-y-5 text-ink70 text-lg leading-relaxed max-w-2xl">
         {paragraphs.map((p, i) => (
           <p key={i}>{renderInline(p)}</p>
         ))}
@@ -304,7 +304,7 @@ function StatusSection({ paragraphs }: { paragraphs: string[] }) {
   return (
     <section className="max-w-3xl">
       <h2 className="text-xl font-serif font-medium mb-4 text-ink">Status</h2>
-      <div className="space-y-5 text-ink-light text-lg leading-relaxed max-w-2xl">
+      <div className="space-y-5 text-ink70 text-lg leading-relaxed max-w-2xl">
         {bodyParagraphs.map((p, i) => (
           <p key={i}>{renderInline(p)}</p>
         ))}

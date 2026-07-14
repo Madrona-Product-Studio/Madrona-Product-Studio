@@ -37,7 +37,7 @@ function Nav() {
                   `text-sm tracking-wide no-underline transition-colors ${
                     isActive
                       ? "text-madrona font-medium"
-                      : "text-ink-light hover:text-ink"
+                      : "text-ink70 hover:text-ink"
                   }`
                 }
               >
@@ -73,7 +73,7 @@ function Nav() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden border-t border-cream-dark/50 bg-cream/95 backdrop-blur-sm">
+        <div className="md:hidden border-t border-line/50 bg-paper/95 backdrop-blur-sm">
           <ul className="list-none m-0 p-0 px-6 py-4 space-y-4">
             {navLinks.map(({ to, label }) => (
               <li key={to}>
@@ -83,7 +83,7 @@ function Nav() {
                     `block text-base no-underline transition-colors ${
                       isActive
                         ? "text-madrona font-medium"
-                        : "text-ink-light hover:text-ink"
+                        : "text-ink70 hover:text-ink"
                     }`
                   }
                 >
@@ -102,7 +102,7 @@ function Footer() {
   return (
     <footer className="border-t border-line mt-32">
       <div className="max-w-6xl mx-auto px-6 lg:px-12 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm text-ink-light">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm text-ink70">
           <div className="space-y-3">
             <Wordmark size="sm" />
             <p>Pacific Northwest</p>

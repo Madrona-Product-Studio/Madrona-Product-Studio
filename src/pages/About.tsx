@@ -6,7 +6,7 @@ export default function About() {
       <PageMeta title="About" description="Madrona Product Studio is led by Charlie Koch. Fifteen years of product leadership across outdoor, wellness, and health." />
       <section className="max-w-2xl">
         <h1 className="mb-8">About</h1>
-        <div className="space-y-6 text-ink-light text-lg leading-relaxed">
+        <div className="space-y-6 text-ink70 text-lg leading-relaxed">
           <p className="font-medium text-ink">
             Fifteen years of product leadership at REI, Healthline, and Microsoft.
           </p>
@@ -34,7 +34,7 @@ export default function About() {
       </section>
 
       {/* TODO: Replace with real photo
-      <div className="max-w-sm aspect-[3/4] bg-cream-dark rounded flex items-center justify-center text-ink-light text-sm">
+      <div className="max-w-sm aspect-[3/4] bg-line rounded flex items-center justify-center text-ink70 text-sm">
         Charlie Koch — photo placeholder (3:4)
       </div>
       */}
@@ -42,7 +42,7 @@ export default function About() {
       {/* Studio projects ethos */}
       <section className="max-w-2xl">
         <h2 className="mb-5">Building in the open</h2>
-        <div className="space-y-6 text-ink-light text-lg leading-relaxed">
+        <div className="space-y-6 text-ink70 text-lg leading-relaxed">
           <p>
             Some of the most interesting work starts as a question someone can't
             stop thinking about. A tool their community needs. A product that
@@ -59,7 +59,7 @@ export default function About() {
       {/* The name */}
       <section className="max-w-2xl">
         <h2 className="mb-5">The name</h2>
-        <p className="text-ink-light text-lg leading-relaxed">
+        <p className="text-ink70 text-lg leading-relaxed">
           Based in the Pacific Northwest. Named for the madrona tree, the one
           that grows on the bluff, bark peeling, leaning out over the water. It
           only grows where the edge meets the sea.
@@ -67,7 +67,7 @@ export default function About() {
       </section>
 
       {/* Contact */}
-      <section className="max-w-2xl border-t border-cream-dark pt-16">
+      <section className="max-w-2xl border-t border-line pt-16">
         <h2 className="mb-6">Get in touch</h2>
         <div className="space-y-3 text-lg">
           <p>
@@ -78,7 +78,7 @@ export default function About() {
               hello@madronaproduct.com
             </a>
           </p>
-          <p className="text-ink-light">Pacific Northwest</p>
+          <p className="text-ink70">Pacific Northwest</p>
         </div>
       </section>
     </div>

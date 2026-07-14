@@ -15,7 +15,7 @@ export default function Approach() {
           <p className="font-serif text-2xl md:text-3xl text-ink leading-tight">
             Strategy without software is a slide deck. Software without strategy is a feature factory.
           </p>
-          <div className="space-y-5 text-ink-light text-lg leading-relaxed">
+          <div className="space-y-5 text-ink70 text-lg leading-relaxed">
             <p>
               We do both, and we do them together. The gap between "I think we
               should build this" and "here's a working version of it" has collapsed.
@@ -41,7 +41,7 @@ export default function Approach() {
 
       {/* The engagement arc */}
       <section>
-        <p className="text-xs font-medium uppercase tracking-widest text-ink-light/50 mb-4">The engagement</p>
+        <p className="text-xs font-medium uppercase tracking-widest text-ink70/50 mb-4">The engagement</p>
         <h2 className="mb-12">Figure it out, then build it.</h2>
         <div className="grid md:grid-cols-2 gap-10 lg:gap-14">
           {coreEngagement.map((o) => (
@@ -53,7 +53,7 @@ export default function Approach() {
       {/* The rhythm */}
       <section className="max-w-2xl space-y-6">
         <h2>The rhythm</h2>
-        <div className="space-y-5 text-ink-light text-lg leading-relaxed">
+        <div className="space-y-5 text-ink70 text-lg leading-relaxed">
           <p>
             Kickoff call to align on the question. Weekly syncs, async everything
             else. A shared Slack channel or equivalent. Working demos every 1-2
@@ -66,7 +66,7 @@ export default function Approach() {
       {/* Ongoing leadership */}
       {fractional && (
         <section>
-          <p className="text-xs font-medium uppercase tracking-widest text-ink-light/50 mb-4">Ongoing</p>
+          <p className="text-xs font-medium uppercase tracking-widest text-ink70/50 mb-4">Ongoing</p>
           <div className="max-w-xl">
             <OfferingCard offering={fractional} />
           </div>
@@ -74,15 +74,15 @@ export default function Approach() {
       )}
 
       {/* CTA */}
-      <section className="max-w-2xl border-t border-cream-dark pt-16">
+      <section className="max-w-2xl border-t border-line pt-16">
         <h2 className="mb-5">Let's build something.</h2>
-        <p className="text-ink-light text-lg mb-8 leading-relaxed">
+        <p className="text-ink70 text-lg mb-8 leading-relaxed">
           Tell us what you're working on. We'll figure out together whether
           there's a fit.
         </p>
         <a
           href="mailto:hello@madronaproduct.com"
-          className="press inline-block bg-madrona text-cream px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
+          className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
         >
           Get in touch
         </a>

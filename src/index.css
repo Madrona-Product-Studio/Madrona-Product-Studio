@@ -5,8 +5,8 @@
    * Madrona × swiss/zen — design tokens.
    * Adopts the studio swiss/zen system (layered paper grounds, 5-step ink ramp,
    * hairlines, Inter-only type) while KEEPING Madrona's bark-orange accent for
-   * brand continuity. Legacy cream/ink-light tokens are retained so any
-   * not-yet-restyled page still resolves.
+   * brand continuity. This is the single, authoritative palette — every page
+   * uses these tokens (no legacy cream/ink-light aliases).
    */
 
   /* Grounds — warm paper, layered lightest→page */
@@ -29,11 +29,6 @@
   /* Hairlines */
   --color-line:      rgba(26, 23, 20, 0.14);
   --color-line-soft: rgba(26, 23, 20, 0.08);
-
-  /* Legacy tokens — retained for graceful degradation on un-restyled pages */
-  --color-ink-light: #403a33;
-  --color-cream: #fdfcfa;
-  --color-cream-dark: rgba(26, 23, 20, 0.12);
 
   /* Type — Inter system + Fraunces kept for the H1 / page-title moment (hybrid) */
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;

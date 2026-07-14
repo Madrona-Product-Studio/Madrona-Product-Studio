@@ -156,7 +156,7 @@ function CapabilityCard({ title, body, delay }: { title: string; body: string; d
     >
       <div className="mb-4"><span className="inline-block w-[14px] h-[14px] rounded-full bg-madrona" aria-hidden="true" /></div>
       <h3 className="text-lg mb-3 text-ink">{title}</h3>
-      <p className="text-ink-light text-sm leading-relaxed">{body}</p>
+      <p className="text-ink70 text-sm leading-relaxed">{body}</p>
     </div>
   );
 }
@@ -202,7 +202,7 @@ export default function Home() {
             <h1 className={`mb-6 leading-tight transition-[opacity,transform] duration-500 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
               {referral.headline}
             </h1>
-            <p className={`text-lg md:text-xl text-ink-light max-w-2xl leading-relaxed mb-10 transition-[opacity,transform] duration-500 delay-150 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
+            <p className={`text-lg md:text-xl text-ink70 max-w-2xl leading-relaxed mb-10 transition-[opacity,transform] duration-500 delay-150 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
               {referral.subhead}
             </p>
           </>
@@ -293,7 +293,7 @@ export default function Home() {
         <div className="mb-6"><Marker index="04" /></div>
         <Label className="block mb-4">How it works</Label>
         <h2 className="mb-8">Figure it out, then build it.</h2>
-        <div className="space-y-6 text-ink-light leading-relaxed">
+        <div className="space-y-6 text-ink70 leading-relaxed">
           <p>
             Most engagements follow one arc. First we figure out what to build:
             the strategy, the framing, the hard product decisions. Then we build
@@ -313,15 +313,15 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section ref={s5.ref} data-shown={s5.shown} className="reveal max-w-2xl border-t border-cream-dark pt-16">
+      <section ref={s5.ref} data-shown={s5.shown} className="reveal max-w-2xl border-t border-line pt-16">
         <h2 className="mb-5">Let's talk about what you're building.</h2>
-        <p className="text-ink-light text-lg mb-8 leading-relaxed">
+        <p className="text-ink70 text-lg mb-8 leading-relaxed">
           Whether you're shaping a strategy, proving a concept, or looking for
           a senior product partner, we'd love to hear what you're working on.
         </p>
         <a
           href="mailto:hello@madronaproduct.com"
-          className="press inline-block bg-madrona text-cream px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
+          className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
         >
           Get in touch
         </a>

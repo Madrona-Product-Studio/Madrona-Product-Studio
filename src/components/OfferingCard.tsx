@@ -7,11 +7,11 @@ interface Props {
 export default function OfferingCard({ offering }: Props) {
   return (
     <div className="border-t-2 border-madrona/25 pt-8">
-      <p className="text-xs font-medium uppercase tracking-wider text-ink-light mb-3">
+      <p className="text-xs font-medium uppercase tracking-wider text-ink70 mb-3">
         {offering.timeline}
       </p>
       <h3 className="text-xl mb-3">{offering.title}</h3>
-      <div className="space-y-4 text-ink-light leading-relaxed">
+      <div className="space-y-4 text-ink70 leading-relaxed">
         {offering.description.split("\n\n").map((p, i) => (
           <p key={i}>{p}</p>
         ))}

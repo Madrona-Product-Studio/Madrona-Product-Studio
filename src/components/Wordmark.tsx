@@ -25,7 +25,7 @@ export default function Wordmark({ size = "md", variant = "full", as = "div", cl
       {variant === "full" && (
         <span className={`flex items-baseline ${s.gap2} ${s.text} tracking-[-0.01em] leading-none`}>
           <span className="font-medium text-ink lowercase">madrona</span>
-          <span className="font-light text-ink-light lowercase">product studio</span>
+          <span className="font-light text-ink70 lowercase">product studio</span>
         </span>
       )}
     </>

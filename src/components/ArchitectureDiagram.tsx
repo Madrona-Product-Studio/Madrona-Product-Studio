@@ -72,7 +72,7 @@ export default function ArchitectureDiagram({
         How it works
       </h2>
       {intro && (
-        <p className="text-ink-light text-lg leading-relaxed max-w-2xl mb-8">
+        <p className="text-ink70 text-lg leading-relaxed max-w-2xl mb-8">
           {intro}
         </p>
       )}
@@ -216,7 +216,7 @@ export default function ArchitectureDiagram({
       </div>
 
       {/* legend */}
-      <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-ink-light">
+      <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-ink70">
         <span className="flex items-center gap-2">
           <svg width="22" height="8" aria-hidden="true">
             <line
@@ -232,7 +232,7 @@ export default function ArchitectureDiagram({
           Data flow
         </span>
         <span className="flex items-center gap-2">
-          <span className="inline-block h-3 w-4 rounded-sm border border-cream-dark border-dashed" />
+          <span className="inline-block h-3 w-4 rounded-sm border border-line border-dashed" />
           Platform boundary
         </span>
       </div>
