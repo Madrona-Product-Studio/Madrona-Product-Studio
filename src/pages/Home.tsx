@@ -1,6 +1,5 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
-import { getReferralContext } from "../data/referralContext";
 import CaseStudyCard from "../components/CaseStudyCard";
 import PageMeta from "../components/PageMeta";
 import { Label, Marker, Breath } from "../components/swiss";
@@ -162,8 +161,6 @@ function CapabilityCard({ title, body, delay }: { title: string; body: string; d
 }
 
 export default function Home() {
-  const [searchParams] = useSearchParams();
-  const referral = getReferralContext(searchParams);
   const featuredWork = caseStudies.filter((s) => s.category === "recent" && !s.hidden).slice(0, 2);
   const cyclerWords = useRef(["lightning fast", "worth shipping", "with style", "no fluff", "rain or shine", "people love"]);
   const reducedMotion = usePrefersReducedMotion();
@@ -186,36 +183,14 @@ export default function Home() {
     <div className="space-y-24">
       <PageMeta />
 
-      {/* Referral greeting */}
-      {referral?.greeting && (
-        <div className="pt-4 -mb-28">
-          <span className="text-xs font-medium uppercase tracking-widest text-madrona/60">
-            {referral.greeting}
-          </span>
-        </div>
-      )}
-
       {/* Hero */}
       <section className="max-w-3xl pt-8 md:pt-16">
-        {referral?.headline ? (
-          <>
-            <h1 className={`mb-6 leading-tight transition-[opacity,transform] duration-500 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-              {referral.headline}
-            </h1>
-            <p className={`text-lg md:text-xl text-ink70 max-w-2xl leading-relaxed mb-10 transition-[opacity,transform] duration-500 delay-150 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-              {referral.subhead}
-            </p>
-          </>
-        ) : (
-          <>
-            <div className={`transition-opacity duration-500 ease-snap ${heroReady ? "opacity-100" : "opacity-0"}`}>
-              <ThinkingDots active={isActive} />
-            </div>
-            <h1 className={`mb-8 leading-tight transition-[opacity,transform] duration-500 delay-75 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-              We turn ideas into<br />working products,<br /><span className="whitespace-nowrap"><WordCyclerText displayed={displayed} isTyping={isTyping} /></span>
-            </h1>
-          </>
-        )}
+        <div className={`transition-opacity duration-500 ease-snap ${heroReady ? "opacity-100" : "opacity-0"}`}>
+          <ThinkingDots active={isActive} />
+        </div>
+        <h1 className={`mb-8 leading-tight transition-[opacity,transform] duration-500 delay-75 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
+          We turn ideas into<br />working products,<br /><span className="whitespace-nowrap"><WordCyclerText displayed={displayed} isTyping={isTyping} /></span>
+        </h1>
 
         <div className={`max-w-2xl transition-[opacity,transform] duration-500 delay-200 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
           <Breath>
