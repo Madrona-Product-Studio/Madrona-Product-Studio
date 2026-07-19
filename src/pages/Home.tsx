@@ -151,6 +151,7 @@ const heroBuilds = [
   "a website that earns trust",
   "ordering without middlemen",
   "an agent for the busywork",
+  "proof customers want it",
   "a plan you can act on",
   "the thing customers ask for",
 ];
@@ -167,6 +168,10 @@ const bucketRows = [
   {
     question: "Want customers ordering and booking from you directly?",
     services: "Direct channels, online ordering, booking, fulfillment.",
+  },
+  {
+    question: "Not sure people will pay for the idea before you spend real money on it?",
+    services: "Concept tests, user panels, smoke tests. Real signal, kept small.",
   },
 ];
 

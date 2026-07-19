@@ -15,6 +15,7 @@ const buckets = [
     services: [
       "Brand and positioning that sounds like you, not like marketing",
       "A web presence that does your work justice",
+      "Optimizing the site you already have: speed, conversion, search",
       "Content people actually want, on a rhythm you can keep",
       "Performance marketing with honest measurement",
       "E-commerce that turns interest into orders",
@@ -30,7 +31,7 @@ const buckets = [
       "Service blueprinting: the whole operation, mapped honestly",
       "Finding the efficiencies worth chasing (and naming the ones that aren't)",
       "AI agents and tools built on your real workflows",
-      "Internal tools your team actually uses",
+      "Small tools with one job: a what's-fresh board, a field map, a review digest, an availability broadcast",
     ],
     flagship: true,
   },
@@ -99,6 +100,28 @@ export default function Services() {
           )}
         </section>
       ))}
+
+      {/* Signal — the cross-cutting practice */}
+      <section className="max-w-2xl">
+        <div className="mb-6"><Marker index="04" /></div>
+        <Label className="block mb-4">Signal · how we de-risk all of it</Label>
+        <h2 className="mb-6">Real customers, before real money.</h2>
+        <div className="space-y-6 text-ink70 leading-relaxed">
+          <p>
+            Before anything expensive gets built, we make the idea testable
+            and put it in front of real customers: moderated tests through
+            panels like UserTesting, smoke-test pages with a small ad budget,
+            instrumented betas, and plain old conversations. We run this loop
+            on our own products, and it's the cheapest insurance an idea can
+            buy.
+          </p>
+          <p>
+            A validation test also makes a natural first engagement: small,
+            fast, and the signal is yours to keep whatever you decide to
+            build.
+          </p>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="max-w-2xl border-t border-line pt-16">

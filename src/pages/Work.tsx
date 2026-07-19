@@ -28,7 +28,7 @@ const sections = [
     label: "Strategy, made tangible",
     heading: "What strategy work leaves behind.",
     intro:
-      "A strategy engagement here doesn't end in a deck; it ends in something you can touch. These are ours: some tested with real people, some still open theses. Every one of them started as a question.",
+      "A strategy engagement here doesn't end in a deck; it ends in something you can touch. These are ours: some validated with real users through betas and testing panels, some still open theses. Every one of them started as a question.",
   },
 ];
 
