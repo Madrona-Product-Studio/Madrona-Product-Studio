@@ -113,8 +113,9 @@ export default function HowItWorks() {
           <p>
             If the assessment points somewhere worth going, we turn it into a
             proposal: scope, cost, and approach, in plain terms. We like to
-            start small. A first engagement should be tight in scope and
-            quick to ship, with payback you can see.
+            start small. Our entry engagement is a fixed $2,500: one specific
+            thing fixed or built, with payback you can see. Larger work gets
+            scoped from there.
           </p>
           <p>
             And if the assessment doesn't point anywhere? We'll say that too,
