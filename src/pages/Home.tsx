@@ -144,25 +144,53 @@ function WordCyclerText({ displayed, isTyping }: { displayed: string; isTyping: 
   );
 }
 
-function CapabilityCard({ title, body, delay }: { title: string; body: string; delay: number }) {
-  const reveal = useReveal();
-  return (
-    <div
-      ref={reveal.ref}
-      className="reveal"
-      data-shown={reveal.shown}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      <div className="mb-4"><span className="inline-block w-[14px] h-[14px] rounded-full bg-madrona" aria-hidden="true" /></div>
-      <h3 className="text-lg mb-3 text-ink">{title}</h3>
-      <p className="text-ink70 text-sm leading-relaxed">{body}</p>
-    </div>
-  );
-}
+// The cycled phrases ARE the offer inventory: one per lifecycle bucket,
+// in words a business owner uses. Keep each under ~28 chars so they hold
+// one line on desktop; the block below reserves height for mobile wrap.
+const heroBuilds = [
+  "a website that earns trust",
+  "ordering without middlemen",
+  "an agent for the busywork",
+  "a plan you can act on",
+  "the thing customers ask for",
+];
+
+const bucketRows = [
+  {
+    question: "Selling something great behind a web presence that doesn't do it justice?",
+    services: "Brand, websites, content, marketing, e-commerce.",
+  },
+  {
+    question: "Watching the week disappear into work that software should be doing?",
+    services: "Service blueprinting, efficiencies, AI agents on your real workflows.",
+  },
+  {
+    question: "Want customers ordering and booking from you directly?",
+    services: "Direct channels, online ordering, booking, fulfillment.",
+  },
+];
+
+const steps = [
+  {
+    index: "01",
+    lead: "A free 45-minute conversation.",
+    body: "About your business, not about us. The agenda is published, so you know exactly what you're saying yes to.",
+  },
+  {
+    index: "02",
+    lead: "A short written assessment.",
+    body: "Where we think you could grow or run smoother, in writing. Yours to keep either way.",
+  },
+  {
+    index: "03",
+    lead: "A scoped proposal, if it makes sense.",
+    body: "Entry engagements are $2,500, fixed: one specific thing fixed or built, with payback you can see.",
+  },
+];
 
 export default function Home() {
   const featuredWork = caseStudies.filter((s) => s.category === "recent" && !s.hidden).slice(0, 2);
-  const cyclerWords = useRef(["lightning fast", "worth shipping", "with style", "no fluff", "rain or shine", "people love"]);
+  const cyclerWords = useRef(heroBuilds);
   const reducedMotion = usePrefersReducedMotion();
   const { displayed, isTyping, isActive } = useWordCycler(cyclerWords.current, !reducedMotion);
 
@@ -189,77 +217,91 @@ export default function Home() {
           <ThinkingDots active={isActive} />
         </div>
         <h1 className={`mb-8 leading-tight transition-[opacity,transform] duration-500 delay-75 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-          We turn ideas into<br />working products,<br /><span className="whitespace-nowrap"><WordCyclerText displayed={displayed} isTyping={isTyping} /></span>
+          We help businesses build<br />
+          <span className="block min-h-[2.2em] md:min-h-[1.1em]">
+            <WordCyclerText displayed={displayed} isTyping={isTyping} />
+          </span>
         </h1>
 
         <div className={`max-w-2xl transition-[opacity,transform] duration-500 delay-200 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
           <Breath>
-            A senior product studio that moves from strategy to design to working software in one motion, using AI to compress the distance between an idea and something real.
+            A senior product studio in Bellingham, Washington. We figure out
+            what your business actually needs, then we build it ourselves:
+            strategy, design, and working software from one small team.
           </Breath>
         </div>
-      </section>
 
-      {/* What makes us different */}
-      <section>
-        <div ref={s1.ref} data-shown={s1.shown} className="reveal mb-14">
-          <div className="mb-6"><Marker index="01" /></div>
-          <Label className="block mb-4">What we do differently</Label>
-          <h2>Thinking and building, done together.</h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-12 md:gap-10">
-          <CapabilityCard
-            title="Strategy that ships"
-            body="We don't write decks that sit in a drawer. Every engagement starts with strategy and ends with working software. The thinking and the building happen together."
-            delay={0}
-          />
-          <CapabilityCard
-            title="AI-native workflow"
-            body="We use AI to do in weeks what used to take quarters. Not as a gimmick, but as a genuine force multiplier that lets a senior team move at startup speed with enterprise judgment."
-            delay={150}
-          />
-          <CapabilityCard
-            title="Full-spectrum product"
-            body="Product vision. Service design. Interaction patterns. Working code. Most teams split these across departments. We hold them together, because that's where the best products come from."
-            delay={300}
-          />
-        </div>
-      </section>
-
-      {/* How we can help */}
-      <section ref={s3.ref} data-shown={s3.shown} className="reveal">
-        <div className="mb-6"><Marker index="02" /></div>
-        <Label className="block mb-4">How we can help</Label>
-        <h2 className="mb-10">Where we come in.</h2>
-        <div className="max-w-3xl border-t border-line divide-y divide-line-soft">
-          {[
-            "Need to pressure-test a new idea before you commit real money to it?",
-            "Selling something great behind a web presence that doesn't do it justice?",
-            "Watching the week disappear into manual work that software should be doing?",
-            "Want customers ordering or booking from you directly, without the middlemen?",
-            "Need a working prototype you can put in front of people, not another deck?",
-            "Trying to add AI to your product without the hallucinations and the hype?",
-          ].map((q) => (
-            <p key={q} className="py-5 text-[19px] md:text-[22px] tracking-[-0.02em] text-ink leading-[1.2]">
-              {q}
-            </p>
-          ))}
-        </div>
-        <div className="mt-10">
+        <div className={`mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 transition-[opacity,transform] duration-500 delay-300 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
+          <Link
+            to="/how-it-works"
+            className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
+          >
+            Book a free 45-minute chat
+          </Link>
           <Link to="/services" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            Everything we do &rarr;
+            What we do &rarr;
           </Link>
         </div>
       </section>
 
-      {/* Selected work */}
-      <section ref={s2.ref} data-shown={s2.shown} className="reveal">
+      {/* What we do — question-led lifecycle buckets */}
+      <section ref={s1.ref} data-shown={s1.shown} className="reveal">
+        <div className="mb-6"><Marker index="01" /></div>
+        <Label className="block mb-4">What we do</Label>
+        <h2 className="mb-10">Wherever the business hurts.</h2>
+        <div className="max-w-3xl border-t border-line divide-y divide-line-soft">
+          {bucketRows.map((row) => (
+            <Link
+              key={row.question}
+              to="/services"
+              className="group block py-6 no-underline"
+            >
+              <p className="text-[19px] md:text-[22px] tracking-[-0.02em] text-ink leading-[1.25] mb-2 group-hover:text-madrona-dark transition-colors">
+                {row.question}
+              </p>
+              <p className="text-sm text-muted">{row.services}</p>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-8">
+          <Link to="/services/agentic-operations" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
+            Our flagship: agentic operations &rarr;
+          </Link>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section ref={s2.ref} data-shown={s2.shown} className="reveal max-w-2xl">
+        <div className="mb-6"><Marker index="02" /></div>
+        <Label className="block mb-4">How it works</Label>
+        <h2 className="mb-10">The first conversation is free.</h2>
+        <div className="space-y-8">
+          {steps.map((step) => (
+            <div key={step.index} className="flex gap-6">
+              <span className="font-medium text-madrona/60 text-sm pt-1 tabular-nums">{step.index}</span>
+              <div>
+                <p className="font-medium text-ink mb-1">{step.lead}</p>
+                <p className="text-ink70 leading-relaxed">{step.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10">
+          <Link to="/how-it-works" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
+            See the full agenda &rarr;
+          </Link>
+        </div>
+      </section>
+
+      {/* Proof */}
+      <section ref={s3.ref} data-shown={s3.shown} className="reveal">
         <div className="mb-6"><Marker index="03" /></div>
-        <Label className="block mb-4">Recent work</Label>
-        <h2 className="mb-6">A few we're proud of.</h2>
+        <Label className="block mb-4">Built and running</Label>
+        <h2 className="mb-6">We ship our own products too.</h2>
         <p className="text-ink70 leading-relaxed mb-12 max-w-2xl">
-          Our own products live where our lives do: the outdoors, adventure
-          travel, and health and wellness.
+          When we say we build, we mean us, actually building. Our own
+          products are live and in use, in the places our lives happen: the
+          outdoors, adventure travel, and health and wellness.
         </p>
         <div className="grid sm:grid-cols-2 gap-x-10 gap-y-14">
           {featuredWork.map((study) => (
@@ -273,42 +315,45 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How we work — condensed */}
+      {/* From here */}
       <section ref={s4.ref} data-shown={s4.shown} className="reveal max-w-2xl">
         <div className="mb-6"><Marker index="04" /></div>
-        <Label className="block mb-4">How it works</Label>
-        <h2 className="mb-8">The first conversation is free.</h2>
+        <Label className="block mb-4">From here</Label>
+        <h2 className="mb-8">Bellingham is home, not a market.</h2>
         <div className="space-y-6 text-ink70 leading-relaxed">
           <p>
-            Every engagement starts with a free 45-minute conversation about
-            your business, with a published agenda, so you know exactly what
-            you're saying yes to. Then you get a short written assessment of
-            where we think we can help. If it points somewhere worth going,
-            we scope a proposal. Small first steps, visible payback.
+            The berries in our fridge come from farm stands out past Lynden,
+            Saturday mornings happen at the farmers market, and Fridays
+            include a shift at the food bank. If you run a business in
+            Whatcom County, a farm, a shop, an outfitter, a nonprofit, we'd
+            especially like to talk. Neighbors first.
           </p>
         </div>
         <div className="mt-8">
-          <Link to="/how-it-works" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            See how it works &rarr;
+          <Link to="/about" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
+            More about the studio &rarr;
           </Link>
         </div>
       </section>
 
       {/* CTA */}
       <section ref={s5.ref} data-shown={s5.shown} className="reveal max-w-2xl border-t border-line pt-16">
-        <h2 className="mb-5">Let's talk about what you're building.</h2>
+        <h2 className="mb-5">Tell us about your business.</h2>
         <p className="text-ink70 text-lg mb-8 leading-relaxed">
-          Whether you're shaping a strategy, proving a concept, or looking for
-          a senior product partner, we'd love to hear what you're working on.
-          We're based in Bellingham, and if you run a business in Whatcom
-          County, we'd especially like to hear from you.
+          Forty-five minutes, free, agenda published. Worst case, you leave
+          with a written read on your biggest opportunities.
         </p>
-        <Link
-          to="/contact"
-          className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
-        >
-          Get in touch
-        </Link>
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+          <Link
+            to="/how-it-works"
+            className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
+          >
+            Book the free 45
+          </Link>
+          <Link to="/contact" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
+            Or just write us &rarr;
+          </Link>
+        </div>
       </section>
     </div>
   );
