@@ -22,9 +22,9 @@ const pages = {
   },
   '/work': {
     title: 'Work · Madrona Product Studio',
-    description: 'Recent product work from Madrona Product Studio.',
-    h1: 'Products we\'ve shipped',
-    body: 'Studio products at every stage. Lila Trips, San Juan Boating Guide, Helm, GardenHQ, Plainly, Aria Health, Lila Yoga, HikerLink, Utah Trip Guide.',
+    description: 'The work behind the offer: demand built for live products, an operation run on agents, and prototypes as the deliverable of strategy work.',
+    h1: 'The work',
+    body: 'Demand: Lila Trips and the San Juan Boating Guide, brand and content taken to live audiences. Operations: Helm, the command surface our own studio runs on. Strategy made tangible: GardenHQ, Plainly, Aria Health, Lila Yoga, HikerLink, Utah Trip Guide.',
   },
   '/how-it-works': {
     title: 'How it works · Madrona Product Studio',
