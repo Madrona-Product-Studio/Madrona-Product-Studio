@@ -12,10 +12,16 @@ export default function About() {
             Fifteen years of product leadership at REI, Healthline, and Microsoft.
           </p>
           <p>
-            Charlie Koch started Madrona Product Studio after leading product
-            teams across outdoor, wellness, and health. The through line was
-            always the same: figure out what the product should be, then build
-            it with a small team that holds the full picture.
+            Charlie Koch started Madrona Product Studio after a career at the
+            junction of three threads: outdoor advocacy, adventure travel, and
+            health and wellness. The through line was always the same: figure
+            out what the product should be, then build it with a small team
+            that holds the full picture.
+          </p>
+          <p>
+            Plenty of product leaders have lived in one of those worlds.
+            Living at the intersection of all three is what makes the work
+            distinctive inside any one of them.
           </p>
           <p>
             The studio is one senior product lead at the center, with a trusted

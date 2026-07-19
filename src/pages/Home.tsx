@@ -234,9 +234,10 @@ export default function Home() {
         <div className="max-w-3xl border-t border-line divide-y divide-line-soft">
           {[
             "Need to pressure-test a new idea before you commit real money to it?",
-            "Sitting on a roadmap question that's been stuck for months?",
+            "Selling something great behind a web presence that doesn't do it justice?",
+            "Watching the week disappear into manual work that software should be doing?",
+            "Want customers ordering or booking from you directly, without the middlemen?",
             "Need a working prototype you can put in front of people, not another deck?",
-            "Want to build an internal tool to streamline how your team operates?",
             "Trying to add AI to your product without the hallucinations and the hype?",
           ].map((q) => (
             <p key={q} className="py-5 text-[19px] md:text-[22px] tracking-[-0.02em] text-ink leading-[1.2]">
@@ -244,13 +245,22 @@ export default function Home() {
             </p>
           ))}
         </div>
+        <div className="mt-10">
+          <Link to="/services" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
+            Everything we do &rarr;
+          </Link>
+        </div>
       </section>
 
       {/* Selected work */}
       <section ref={s2.ref} data-shown={s2.shown} className="reveal">
         <div className="mb-6"><Marker index="03" /></div>
         <Label className="block mb-4">Recent work</Label>
-        <h2 className="mb-12">A few we're proud of.</h2>
+        <h2 className="mb-6">A few we're proud of.</h2>
+        <p className="text-ink70 leading-relaxed mb-12 max-w-2xl">
+          Our own products live where our lives do: the outdoors, adventure
+          travel, and health and wellness.
+        </p>
         <div className="grid sm:grid-cols-2 gap-x-10 gap-y-14">
           {featuredWork.map((study) => (
             <CaseStudyCard key={study.slug} study={study} />
