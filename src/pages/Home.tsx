@@ -267,22 +267,19 @@ export default function Home() {
       <section ref={s4.ref} data-shown={s4.shown} className="reveal max-w-2xl">
         <div className="mb-6"><Marker index="04" /></div>
         <Label className="block mb-4">How it works</Label>
-        <h2 className="mb-8">Figure it out, then build it.</h2>
+        <h2 className="mb-8">The first conversation is free.</h2>
         <div className="space-y-6 text-ink70 leading-relaxed">
           <p>
-            Most engagements follow one arc. First we figure out what to build:
-            the strategy, the framing, the hard product decisions. Then we build
-            it: a working prototype you can test, demo, or ship. Same team, no
-            handoff. Weeks, not quarters.
-          </p>
-          <p>
-            For teams that want this as an ongoing relationship, we also offer
-            product stewardship on retainer.
+            Every engagement starts with a free 45-minute conversation about
+            your business, with a published agenda, so you know exactly what
+            you're saying yes to. Then you get a short written assessment of
+            where we think we can help. If it points somewhere worth going,
+            we scope a proposal. Small first steps, visible payback.
           </p>
         </div>
         <div className="mt-8">
-          <Link to="/approach" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            More about how we work &rarr;
+          <Link to="/how-it-works" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
+            See how it works &rarr;
           </Link>
         </div>
       </section>

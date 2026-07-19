@@ -26,6 +26,12 @@ const pages = {
     h1: 'Products we\'ve shipped',
     body: 'Studio products at every stage. Lila Trips, San Juan Boating Guide, Helm, GardenHQ, Plainly, Aria Health, Lila Yoga, HikerLink, Utah Trip Guide.',
   },
+  '/how-it-works': {
+    title: 'How it works · Madrona Product Studio',
+    description: 'A free 45-minute conversation with a published agenda, a short written assessment, then a scoped proposal if it makes sense. How every Madrona engagement starts.',
+    h1: 'How it works',
+    body: 'Step one: a free 45-minute conversation with a published agenda covering where you are at, where you have been, your biggest opportunities to grow or get more efficient, and what is already on your mind. Step two: a short written assessment of where we can help. Step three: a scoped proposal with scope, cost, and approach.',
+  },
   '/approach': {
     title: 'Approach · Madrona Product Studio',
     description: 'How Madrona Product Studio works: strategy sprints, signal sprints, and product stewardship. Thinking and building, done together.',

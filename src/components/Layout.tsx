@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Wordmark from "./Wordmark";
 
 const navLinks = [
+  { to: "/how-it-works", label: "How it works" },
   { to: "/work", label: "Work" },
   { to: "/approach", label: "Approach" },
   // { to: "/writing", label: "Writing" },  // Hidden until content is ready
