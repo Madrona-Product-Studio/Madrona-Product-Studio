@@ -13,7 +13,7 @@ export const offerings: Offering[] = [
     slug: "strategy-sprint",
     timeline: "2–6 weeks",
     description:
-      "We start with the question blocking the roadmap and end with a working prototype you can touch, react to, and show people. Not a deck. Not a wireframe. Working software that makes the abstract concrete.\n\nStrategy and building happen simultaneously. We think by building. The prototype *is* the strategy deliverable: the product direction, the key decisions, and the evidence, all in a form you can put in front of real people the day the sprint ends.",
+      "We start with the question blocking the roadmap and end with a working prototype you can touch, react to, and show people. Not a deck. Not a wireframe. Working software that makes the abstract concrete.\n\nStrategy and building happen simultaneously. We think by building. The prototype is the strategy deliverable: the product direction, the key decisions, and the evidence, all in a form you can put in front of real people the day the sprint ends.",
     outcome:
       "A working prototype. A product brief. The hard calls, made. Something to react to, not just read about.",
   },

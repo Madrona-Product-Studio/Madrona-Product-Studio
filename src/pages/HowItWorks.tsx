@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import PageMeta from "../components/PageMeta";
+import OfferingCard from "../components/OfferingCard";
+import { offerings } from "../data/offerings";
 import { Label, Marker, Breath } from "../components/swiss";
 
 // Booking destination. When the Cal.com (or similar) account exists, set
@@ -121,6 +123,21 @@ export default function HowItWorks() {
             And if the assessment doesn't point anywhere? We'll say that too,
             and you're out nothing but 45 minutes.
           </p>
+        </div>
+      </section>
+
+      {/* Proposal shapes */}
+      <section>
+        <Label className="block mb-4">The shapes a proposal takes</Label>
+        <h2 className="mb-6">Sized to the question.</h2>
+        <p className="text-ink70 leading-relaxed mb-12 max-w-2xl">
+          Beyond the entry engagement, most proposals land in one of three
+          shapes. The assessment tells us which one fits.
+        </p>
+        <div className="grid md:grid-cols-3 gap-10 lg:gap-12">
+          {offerings.map((o) => (
+            <OfferingCard key={o.slug} offering={o} />
+          ))}
         </div>
       </section>
 

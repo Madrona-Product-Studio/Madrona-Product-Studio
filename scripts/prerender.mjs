@@ -32,11 +32,23 @@ const pages = {
     h1: 'How it works',
     body: 'Step one: a free 45-minute conversation with a published agenda covering where you are at, where you have been, your biggest opportunities to grow or get more efficient, and what is already on your mind. Step two: a short written assessment of where we can help. Step three: a scoped proposal with scope, cost, and approach.',
   },
+  '/services': {
+    title: 'Services · Madrona Product Studio',
+    description: 'Madrona works across the whole arc of a business: demand (brand, web, content, marketing, e-commerce), operations (blueprinting, efficiencies, AI agents), and channel & fulfillment (DTC, ordering, booking).',
+    h1: 'What we do',
+    body: 'Demand: brand, web presence, content, performance marketing, e-commerce. Operations: service blueprinting, efficiencies, AI agents and tools, with agentic operations as the flagship. Channel and fulfillment: direct-to-consumer channels, online ordering, booking, fulfillment support.',
+  },
+  '/services/agentic-operations': {
+    title: 'Agentic operations · Madrona Product Studio',
+    description: 'Business agents on your real workflows, and one command surface that shows the whole operation. Madrona runs its own studio this way, and builds the same architecture for clients.',
+    h1: 'Agentic operations',
+    body: 'Business agents working real workflows on a schedule, and a command surface rendered from one source of truth. A worked example: the industry agent, a base knowledge file, a scheduled sweep, a what-changed digest, signals routed to action. We run our own operation this way, with Helm as the command center. First engagements start with one agent and one dashboard card.',
+  },
   '/approach': {
     title: 'Approach · Madrona Product Studio',
-    description: 'How Madrona Product Studio works: strategy sprints, signal sprints, and product stewardship. Thinking and building, done together.',
+    description: 'The philosophy behind Madrona Product Studio: strategy and software made by the same people, in short, high-signal engagements.',
     h1: 'How we work',
-    body: 'Strategy sprints, signal sprints, and product stewardship. A small, senior team that thinks and builds together.',
+    body: 'Strategy without software is a slide deck. Software without strategy is a feature factory. We do both, together: one senior lead, a trusted network, AI where it pulls its weight.',
   },
   '/writing': {
     title: 'Writing · Madrona Product Studio',

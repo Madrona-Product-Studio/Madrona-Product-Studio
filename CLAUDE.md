@@ -15,6 +15,12 @@ Northwest and beyond.
 
 **One-liner:** We help companies figure out what to build, then build it.
 
+**Three pillars (domain identity, intersection as narrative):** outdoor
+advocacy · adventure travel · health & wellness. A client or project fits
+by sitting in one pillar; the story is that the studio has lived at the
+junction of all three. The local Bellingham/Whatcom identity is separate:
+geography-first, capability-led, and does not need to map to the pillars.
+
 **Voice:** "We" throughout, direct, confident, personal, not corporate.
 Editorial, not promotional. Restraint is the point.
 
@@ -121,10 +127,23 @@ Every page should be able to route here. Three steps, published on
 Booking currently routes through `/contact`; a Cal.com link will replace
 it when the account exists (see `BOOKING_URL` in `HowItWorks.tsx`).
 
-## Offerings (for reference in copy)
+## Service architecture (the lifecycle model — site IA follows it)
 
-As rendered on `/approach` (a lifecycle-based service architecture is
-planned for the Phase 2 revision):
+`/services` is organized by the client's business lifecycle, offer-led:
+
+1. **Demand** (front) — brand, web presence, content, performance
+   marketing, e-commerce.
+2. **Operations** (middle) — service blueprinting, efficiencies, AI
+   agents/tools. **Flagship: agentic operations**
+   (`/services/agentic-operations`) — business agents + a centralized
+   command surface; the industry agent as the worked example; dogfood
+   proof is our own operation (Helm demo mode `?demo=1` — NEVER link the
+   real HQ instance).
+3. **Channel & fulfillment** (back) — DTC channels, ordering, booking,
+   fulfillment support.
+
+The three engagement shapes live on `/how-it-works` as the shapes a
+*proposal* takes (they are project shapes, not the service architecture):
 
 1. **Strategy sprint** (2–6 weeks) — sharp point of view on the question
    blocking the roadmap, delivered as a working prototype.
@@ -135,19 +154,25 @@ planned for the Phase 2 revision):
 
 ## Content architecture
 
-- **Home** — hero, capability cards, self-recognition questions, recent
-  work, how-it-works teaser, contact CTA.
+- **Home** — hero, capability cards, self-recognition questions (lifecycle
+  flavored), recent work (with pillars line), how-it-works teaser,
+  contact CTA.
 - **How it works** — the 3-step engagement model with the published
-  45-minute agenda.
+  45-minute agenda + the proposal shapes.
+- **Services** — the lifecycle model: demand / operations / channel &
+  fulfillment, with the agentic-operations flagship callout.
+- **Agentic operations** — flagship page: the idea, the industry-agent
+  worked example, the dogfood proof (Helm demo), start-tiny framing.
 - **Work** — 9 studio case studies grouped by maturity stage
   (Live → Beta → Prototype → Concept).
 - **Case study pages** — template: Opportunity → Thesis → What We Did →
   What We Learned → Status.
-- **Approach** — how we work, philosophy, more detail on offerings.
+- **Approach** — philosophy only: manifesto, the rhythm.
 - **Writing** — placeholder; hidden from nav and noindexed until real
   articles ship.
-- **About** — Charlie's background, the studio, building in the open,
-  the name, the Bellingham "from here" block, contact.
+- **About** — Charlie's background (three-pillar framing), the studio,
+  building in the open, the name, the Bellingham "from here" block,
+  contact.
 - **Contact** — 3-field form → `/api/contact` (Resend).
 
 ## Studio signature footer (planned, not yet built)
