@@ -290,6 +290,8 @@ export default function Home() {
         <p className="text-ink70 text-lg mb-8 leading-relaxed">
           Whether you're shaping a strategy, proving a concept, or looking for
           a senior product partner, we'd love to hear what you're working on.
+          We're based in Bellingham, and if you run a business in Whatcom
+          County, we'd especially like to hear from you.
         </p>
         <Link
           to="/contact"
