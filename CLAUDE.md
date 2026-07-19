@@ -6,12 +6,14 @@ anything visual.
 
 ## Brand positioning
 
-Madrona Product Studio is a small, senior product studio based in the Pacific
-Northwest. Founded by Charlie Koch. The positioning is a senior product lead
+Madrona Product Studio is a small, senior product studio in Bellingham,
+Washington. Founded by Charlie Koch. The positioning is a senior product lead
 at the center, with a trusted network of designers, engineers, and researchers
-who come in as engagements require.
+who come in as engagements require. Local identity is real, not decorative:
+Bellingham/Whatcom is home ("from here"), and the studio serves the Pacific
+Northwest and beyond.
 
-**One-liner:** We help companies figure out what to build — and then build it.
+**One-liner:** We help companies figure out what to build, then build it.
 
 **Voice:** "We" throughout, direct, confident, personal, not corporate.
 Editorial, not promotional. Restraint is the point.
@@ -102,28 +104,51 @@ alternative fonts for variety — stick to these two, vary weight and size.
    landscape illustrations, no generic consultancy graphics. Photography
    (when real) should be environmental and PNW-coded.
 
+## The engagement model (the front door)
+
+Every page should be able to route here. Three steps, published on
+`/how-it-works`:
+
+1. **Free 45-minute conversation** — published agenda: where you're at,
+   where you've been, the biggest opportunities to grow or get more
+   efficient, and what's already on your mind.
+2. **Written assessment** — a short written read on where the studio can
+   help (and where it can't). The client keeps it either way.
+3. **Scoped proposal** — scope, cost, and approach. First engagements are
+   deliberately small, with visible payback. No prices published yet
+   (Charlie's call, pending).
+
+Booking currently routes through `/contact`; a Cal.com link will replace
+it when the account exists (see `BOOKING_URL` in `HowItWorks.tsx`).
+
 ## Offerings (for reference in copy)
 
-1. **Strategy sprints** (2–6 weeks) — sharp point of view on the question
-   blocking the roadmap.
-2. **Rapid prototyping** (4–12 weeks) — a working prototype, fast. Built
-   well enough to test the hypothesis and show what the full version
-   should be.
-3. **Fractional product leadership** (3–6 month retainers) — embedded
-   senior product voice for early-stage teams.
+As rendered on `/approach` (a lifecycle-based service architecture is
+planned for the Phase 2 revision):
+
+1. **Strategy sprint** (2–6 weeks) — sharp point of view on the question
+   blocking the roadmap, delivered as a working prototype.
+2. **Signal sprint** (4–12 weeks) — the prototype in front of real users.
+   Real usage, real signal.
+3. **Product stewardship** (3–6 month retainers) — embedded fractional
+   senior product voice.
 
 ## Content architecture
 
-- **Home** — hero, manifesto, offerings summary, selected work, writing
-  teaser, contact CTA.
-- **Work** — split between client engagements (REI Membership, REI
-  Adventures, Healthline Loyalty) and studio projects (Lila Trips, Berry
-  Good Berry Farm, Fed).
+- **Home** — hero, capability cards, self-recognition questions, recent
+  work, how-it-works teaser, contact CTA.
+- **How it works** — the 3-step engagement model with the published
+  45-minute agenda.
+- **Work** — 9 studio case studies grouped by maturity stage
+  (Live → Beta → Prototype → Concept).
 - **Case study pages** — template: Opportunity → Thesis → What We Did →
   What We Learned → Status.
 - **Approach** — how we work, philosophy, more detail on offerings.
-- **Writing** — article/essay index.
-- **About** — Charlie's background, the studio, the network.
+- **Writing** — placeholder; hidden from nav and noindexed until real
+  articles ship.
+- **About** — Charlie's background, the studio, building in the open,
+  the name, the Bellingham "from here" block, contact.
+- **Contact** — 3-field form → `/api/contact` (Resend).
 
 ## Studio signature footer (planned, not yet built)
 

@@ -15,22 +15,22 @@ const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
 // Page metadata for static pages
 const pages = {
   '/': {
-    title: 'Madrona Product Studio · Senior Product Studio, Pacific Northwest',
-    description: 'We help companies figure out what to build, and then build it. Strategy sprints, rapid prototyping, and fractional product leadership.',
+    title: 'Madrona Product Studio · Bellingham, Washington',
+    description: 'A small, senior product studio in Bellingham, Washington. We help companies figure out what to build, then build it. Every engagement starts with a free 45-minute conversation.',
     h1: 'We turn ideas into working products.',
-    body: 'Madrona Product Studio is a small, senior product studio based in the Pacific Northwest. We help companies figure out what to build, and then build it. Strategy sprints. Rapid prototyping. Fractional product leadership.',
+    body: 'Madrona Product Studio is a small, senior product studio in Bellingham, Washington, serving the Pacific Northwest and beyond. We help companies figure out what to build, then build it. Every engagement starts with a free 45-minute conversation with a published agenda.',
   },
   '/work': {
     title: 'Work · Madrona Product Studio',
-    description: 'Recent product work and selected experience from Madrona Product Studio.',
+    description: 'Recent product work from Madrona Product Studio.',
     h1: 'Products we\'ve shipped',
-    body: 'Studio projects and client engagements. Lila Trips, San Juan Boating Guide, Aria Health, Lila Yoga, Utah Trip Guide, HikerLink.',
+    body: 'Studio products at every stage. Lila Trips, San Juan Boating Guide, Helm, GardenHQ, Plainly, Aria Health, Lila Yoga, HikerLink, Utah Trip Guide.',
   },
   '/approach': {
     title: 'Approach · Madrona Product Studio',
-    description: 'How Madrona Product Studio works: strategy sprints, rapid prototyping, and fractional product leadership.',
+    description: 'How Madrona Product Studio works: strategy sprints, signal sprints, and product stewardship. Thinking and building, done together.',
     h1: 'How we work',
-    body: 'Strategy sprints, rapid prototyping, and fractional product leadership. A small, senior team that thinks and builds together.',
+    body: 'Strategy sprints, signal sprints, and product stewardship. A small, senior team that thinks and builds together.',
   },
   '/writing': {
     title: 'Writing · Madrona Product Studio',

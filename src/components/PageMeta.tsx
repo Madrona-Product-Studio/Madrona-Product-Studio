@@ -7,10 +7,10 @@ interface Props {
 
 const SITE_NAME = "Madrona Product Studio";
 const DEFAULT_DESCRIPTION =
-  "A small, senior product studio based in the Pacific Northwest. Strategy sprints, rapid prototyping, and fractional product leadership.";
+  "A small, senior product studio in Bellingham, Washington. We help companies figure out what to build, then build it. Every engagement starts with a free 45-minute conversation.";
 
 export default function PageMeta({ title, description }: Props) {
-  const fullTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · Senior Product Studio, Pacific Northwest`;
+  const fullTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · Bellingham, Washington`;
   const desc = description || DEFAULT_DESCRIPTION;
 
   useEffect(() => {
