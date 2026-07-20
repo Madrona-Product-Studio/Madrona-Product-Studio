@@ -4,6 +4,11 @@ This file is the source of truth for brand and design decisions on this site.
 Read it before making styling changes, generating mockups, or producing
 anything visual.
 
+**Positioning canon lives elsewhere:** `charlie-hq/madrona-positioning.md`
+is the single source of truth for what Madrona is, who it serves, and how
+it's positioned. This file executes that positioning visually; when the two
+disagree, the canon wins and this file gets updated.
+
 ## Brand positioning
 
 Madrona Product Studio is a small, senior product studio in Bellingham,
