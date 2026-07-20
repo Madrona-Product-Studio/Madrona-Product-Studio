@@ -10,6 +10,7 @@ import AgenticOperations from "./pages/AgenticOperations";
 import Writing from "./pages/Writing";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import StudioBrief from "./pages/StudioBrief";
 
 export default function App() {
   return (
@@ -26,6 +27,8 @@ export default function App() {
           <Route path="writing" element={<Writing />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
+          {/* Internal working page — not in nav, not prerendered. */}
+          <Route path="brief" element={<StudioBrief />} />
         </Route>
       </Routes>
     </BrowserRouter>
