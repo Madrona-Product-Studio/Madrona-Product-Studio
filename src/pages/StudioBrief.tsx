@@ -95,6 +95,17 @@ export default function StudioBrief() {
           <span className="text-ink">signal</span>: real customers before
           real money — panels, smoke tests, instrumented betas.
         </p>
+        <Open>
+          <p>
+            <span className="font-medium text-ink">Proposed fourth bucket:
+            "How customers come back."</span> Retention, loyalty, repeat
+            orders, memberships, CSA renewals, the email list nobody sends
+            to. Completes the arc (find you → run → deliver → come back)
+            and it's where the career proof runs deepest. Confirm the
+            4-bucket shape and it propagates to Services, Home, and the
+            canon.
+          </p>
+        </Open>
       </Block>
 
       <Block label="Why us">
@@ -105,6 +116,19 @@ export default function StudioBrief() {
           senior work at small-business prices because the tooling collapsed
           the cost, not the standard. Small on purpose.
         </p>
+        <Open>
+          <p>
+            <span className="font-medium text-ink">Career proof, mapped to
+            the buckets</span> (one quiet provenance line each, not a logo
+            wall — verify numbers before anything ships):
+          </p>
+          <ul className="list-none m-0 p-0 space-y-2">
+            <li>Growth &amp; brand → REI: membership growth, brand work, getting people outside.</li>
+            <li>Coming back → REI's 22M-member program, Healthline loyalty. The deepest muscle.</li>
+            <li>Operations → Microsoft: operations at a scale where nothing about your week will scare us.</li>
+            <li>Content &amp; audience → Healthline: content that earned an audience of millions honestly.</li>
+          </ul>
+        </Open>
       </Block>
 
       <Block label="The positioning statement">
