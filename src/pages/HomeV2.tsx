@@ -92,15 +92,36 @@ export default function HomeV2() {
       <section className="max-w-2xl">
         <div className="mb-6"><Marker index="01" /></div>
         <Label className="block mb-6">Why we exist</Label>
-        <blockquote className="border-l-2 border-madrona/30 pl-6 mb-9 m-0">
-          <p className="font-serif text-xl md:text-2xl text-ink leading-snug">
-            "I know parts of my business should work better: the website,
-            the ordering, the hours I lose every week. But I can't stop
-            running the business to fix the business. I know I should be
-            using AI for some of it, but I'm not even sure where to start.
-            So it stays broken."
-          </p>
-        </blockquote>
+        {/* VOICE TEST — three candidate quotes stacked for comparison.
+            Charlie picks one; the others come out. */}
+        <div className="space-y-8 mb-9">
+          {[
+            {
+              label: "Voice 1 · the shrug",
+              quote:
+                "Honestly? My website is just ok. Ordering still means someone texts me. I keep saying I'll fix it all in the off-season, and then the off-season comes and I patch the truck instead. And AI... I mean, I know. Everyone says it would help. I wouldn't even know where to start.",
+            },
+            {
+              label: "Voice 2 · nine o'clock",
+              quote:
+                "It's 9pm and I'm typing today's orders into a spreadsheet again. Same four questions in my inbox every morning. The website's fine, I guess. Just ok. There's obviously a better way to run this. I just can't stop running the business long enough to fix the business.",
+            },
+            {
+              label: "Voice 3 · pride",
+              quote:
+                "We're really good at what we do. You'd never guess it from our website. I've been meaning to deal with it for two years, but there's always something more urgent, and I don't really know who to trust with it. Everyone says use AI. Sure. Where would I even start?",
+            },
+          ].map((v) => (
+            <blockquote key={v.label} className="border-l-2 border-madrona/30 pl-6 m-0">
+              <span className="block text-[11px] font-medium uppercase tracking-wider text-madrona/70 mb-2">
+                {v.label}
+              </span>
+              <p className="font-serif text-xl md:text-2xl text-ink leading-snug">
+                "{v.quote}"
+              </p>
+            </blockquote>
+          ))}
+        </div>
         <div className="space-y-5 text-ink70 text-lg leading-relaxed">
           <p>
             Almost every owner we talk to says a version of this. Excellent
