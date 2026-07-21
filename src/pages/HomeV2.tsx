@@ -18,7 +18,6 @@ import { Label, Marker, Breath } from "../components/swiss";
 // Charlie's pick (IMG_2872): the working harbor at dusk. Re-encoded to
 // strip GPS EXIF and shrink for web; original stays untracked.
 const HERO_IMAGE: string | null = "/images/hero-harbor-dusk.jpg";
-const HERO_CAPTION = "The harbor at dusk, Bellingham"; // draft — Charlie confirms wording
 
 function Cta({ to = "/how-it-works", children }: { to?: string; children: React.ReactNode }) {
   return (
@@ -30,7 +29,9 @@ function Cta({ to = "/how-it-works", children }: { to?: string; children: React.
 
 export default function HomeV2() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const overlay = searchParams.get("hero") === "overlay";
+  // Overlay is the chosen direction (Charlie, 7/20) at the compact height;
+  // ?hero=below keeps the runner-up around for comparison until merge.
+  const overlay = searchParams.get("hero") !== "below";
   const proofWork = caseStudies.filter((s) =>
     ["lila-trips", "san-juan-boating-guide"].includes(s.slug),
   );
@@ -44,15 +45,15 @@ export default function HomeV2() {
         <span className="text-muted uppercase tracking-wider">Headline</span>
         <button
           onClick={() => setSearchParams({})}
-          className={`bg-transparent border-none cursor-pointer p-0 ${!overlay ? "text-ink" : "text-madrona hover:text-madrona-dark"}`}
-        >
-          below
-        </button>
-        <button
-          onClick={() => setSearchParams({ hero: "overlay" })}
           className={`bg-transparent border-none cursor-pointer p-0 ${overlay ? "text-ink" : "text-madrona hover:text-madrona-dark"}`}
         >
           overlay
+        </button>
+        <button
+          onClick={() => setSearchParams({ hero: "below" })}
+          className={`bg-transparent border-none cursor-pointer p-0 ${!overlay ? "text-ink" : "text-madrona hover:text-madrona-dark"}`}
+        >
+          below
         </button>
       </div>
 
@@ -64,7 +65,7 @@ export default function HomeV2() {
             <img
               src={HERO_IMAGE}
               alt="Fishing boats in the harbor at dusk in Bellingham, Washington"
-              className={`${overlay ? "h-[62vh] md:h-[78vh]" : "h-[46vh] md:h-[62vh]"} w-full object-cover object-[center_42%]`}
+              className="h-[46vh] md:h-[62vh] w-full object-cover object-[center_42%]"
             />
           ) : (
             <div className="h-[46vh] md:h-[62vh] w-full bg-gradient-to-b from-faint/40 via-bg to-faint/25" />
@@ -72,14 +73,15 @@ export default function HomeV2() {
 
           {overlay && (
             <>
-              {/* Legibility scrim — quiet, bottom-weighted */}
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/15 to-transparent" aria-hidden="true" />
-              <div className="absolute inset-x-0 bottom-0">
-                <div className="max-w-6xl mx-auto px-6 lg:px-12 pb-12 md:pb-16">
-                  <h1 className="mb-5 text-paper max-w-3xl">
-                    Good businesses around here deserve
+              {/* Overlay is desktop-only: on mobile there isn't room for
+                  both the photo and the words, so the text drops below. */}
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/15 to-transparent" aria-hidden="true" />
+              <div className="hidden md:block absolute inset-x-0 bottom-0">
+                <div className="max-w-6xl mx-auto px-6 lg:px-12 pb-14 lg:pb-16">
+                  <h1 className="mb-5 text-paper max-w-3xl lg:text-[3.75rem] lg:leading-[1.06]">
+                    Good businesses around here
                     <br />
-                    software this good.
+                    deserve software this good.
                   </h1>
                   <p className="text-paper/85 text-lg md:text-xl leading-relaxed max-w-2xl mb-8">
                     Madrona is a small, senior team in Bellingham. We figure
@@ -91,39 +93,35 @@ export default function HomeV2() {
               </div>
             </>
           )}
-
-          {overlay ? (
-            <span className="absolute top-4 right-6 lg:right-12 text-xs font-medium uppercase tracking-wider text-paper/70">
-              {HERO_CAPTION}
-            </span>
-          ) : (
+          {overlay ? null : (
             <div className="max-w-6xl mx-auto px-6 lg:px-12 w-full -mt-10 pb-4 relative">
-              <span className={`text-xs font-medium uppercase tracking-wider ${HERO_IMAGE ? "text-paper/70" : "text-muted"}`}>
-                {HERO_IMAGE ? HERO_CAPTION : "PNW hero photo — drop the file in public/images/ and set HERO_IMAGE"}
-              </span>
+              {!HERO_IMAGE && (
+                <span className="text-xs font-medium uppercase tracking-wider text-muted">
+                  PNW hero photo — drop the file in public/images/ and set HERO_IMAGE
+                </span>
+              )}
             </div>
           )}
         </div>
 
-        {!overlay && (
-          <div className="max-w-3xl pt-10">
-            <h1 className="mb-6">
-              Good businesses around here deserve
-              <br />
-              software this good.
-            </h1>
-            <div className="max-w-2xl">
-              <Breath>
-                Madrona is a small, senior team in Bellingham. We figure out
-                what your business actually needs, then we make it real
-                ourselves.
-              </Breath>
-            </div>
-            <div className="mt-8">
-              <Cta>See how the first conversation works</Cta>
-            </div>
+        {/* Text below the photo: mobile always; desktop only in below mode. */}
+        <div className={`max-w-3xl pt-10 ${overlay ? "md:hidden" : ""}`}>
+          <h1 className="mb-6">
+            Good businesses around here
+            <br />
+            deserve software this good.
+          </h1>
+          <div className="max-w-2xl">
+            <Breath>
+              Madrona is a small, senior team in Bellingham. We figure out
+              what your business actually needs, then we make it real
+              ourselves.
+            </Breath>
           </div>
-        )}
+          <div className="mt-8">
+            <Cta>See how the first conversation works</Cta>
+          </div>
+        </div>
       </section>
 
       {/* The letter — founder authority, neighbor register */}
