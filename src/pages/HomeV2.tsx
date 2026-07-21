@@ -96,33 +96,23 @@ export default function HomeV2() {
           <p className="font-serif text-xl md:text-2xl text-ink leading-snug">
             "I know parts of my business should work better: the website,
             the ordering, the hours I lose every week. But I can't stop
-            running the business to fix the business. Agencies are expensive
-            and speak marketing. Freelancers are a gamble I have to manage.
-            I know I should be using AI to solve some of this, but I'm not
-            even really sure where to start. So it stays broken."
+            running the business to fix the business. I know I should be
+            using AI for some of it, but I'm not even sure where to start.
+            So it stays broken."
           </p>
         </blockquote>
         <div className="space-y-5 text-ink70 text-lg leading-relaxed">
           <p>
-            Almost every owner we talk to says a version of this. Most
-            owner-run businesses are excellent at the thing they do and
-            badly served by the software around it. The website undersells
-            them, the ordering is held together by hand, and the hours
-            disappear into work a machine should be doing.
-          </p>
-          <p>
-            And the ground keeps moving. AI really can take a lot of this
-            work off a business's plate now, but knowing that isn't the
-            same as knowing where to start, and most of what gets sold as
-            AI is noise. We build with these tools every day, on our own
-            products and our own operation, so we can tell you plainly
-            which problems they'll solve for a business like yours and
-            which they won't.
+            Almost every owner we talk to says a version of this. Excellent
+            at what they do, badly served by the software around it, and
+            rightly suspicious of everything being sold as AI.
           </p>
           <p>
             Madrona exists to fix that, close to home, one business at a
-            time. Strategy through working software, from the person who
-            does both.
+            time. We build with AI every day, on our own products and our
+            own operation, so we can tell you plainly where it helps and
+            where it's noise. Strategy through working software, from the
+            person who does both.
           </p>
         </div>
       </section>
