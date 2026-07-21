@@ -5,8 +5,9 @@ import { Label } from "../components/swiss";
  * Internal working page — the one-page positioning brief, rendered in the
  * site's own voice and type so it can be refined where it will live.
  * Not in the nav, not prerendered, not for production. Canon:
- * charlie-hq/madrona-positioning.md · conversation: madrona-workshop.md.
- * Blocks marked OPEN are strawmen awaiting Charlie's call.
+ * charlie-hq/madrona-positioning.md. Blocks marked OPEN await Charlie.
+ * v2 2026-07-20: Option A ingested (horizontal · symptom language ·
+ * agenda-over-free · referral sentence · build-or-run question).
  */
 
 function Block({ label, children }: { label: string; children: React.ReactNode }) {
@@ -36,126 +37,197 @@ export default function StudioBrief() {
 
       <section className="max-w-2xl">
         <p className="text-xs font-medium uppercase tracking-widest text-muted mb-6">
-          Internal · the one-page brief · refined here, canonized in charlie-hq
+          Internal · the one-page brief · v2, Option A · canonized in charlie-hq
         </p>
         <h1 className="mb-6">What Madrona is</h1>
         <p className="font-serif text-2xl md:text-[1.7rem] text-ink leading-snug">
-          A senior product studio in Bellingham, Washington. We figure out
-          what a business actually needs, then we build it ourselves:
-          strategy, design, and working software from one small team.
+          Madrona is a small, senior team in Bellingham, Washington. We
+          figure out what your business actually needs, then we make it
+          real ourselves.
         </p>
+        <div className="mt-6">
+          <Open>
+            <p>
+              <span className="font-medium text-ink">The descriptor is
+              open.</span> "Product studio" reads software-company to those
+              who know the term and nothing to a farm or a guide service.
+              Candidates: Madrona Studio · Madrona Digital · plain Madrona
+              with a plain-English tagline. Don't decide in copy; decide
+              once, here.
+            </p>
+          </Open>
+        </div>
       </section>
 
-      <Block label="The problem we solve">
-        <p className="text-ink text-lg">
-          "I know parts of my business should work better: the website, the
-          ordering, the hours I lose every week. But I can't stop running
-          the business to fix the business. Agencies are expensive and speak
-          marketing. Freelancers are a gamble I have to manage. So it stays
-          broken."
+      <Block label="Scope — decided">
+        <p>
+          <span className="font-medium text-ink">Horizontal.</span>{" "}
+          Owner-run businesses of any category, Bellingham and Whatcom
+          County first. The internal frame is Grow / Retain / Operate;
+          that vocabulary stays internal. Everything customer-facing
+          speaks symptoms: nobody new is finding us, people come once and
+          don't come back, I lose eleven hours a week to this.
         </p>
         <p>
-          The competitor is inertia, not other studios. The whole sales
-          motion is three progressively small ways to beat it: a free 45
-          with a published agenda, a written assessment, a $2,500 entry
-          engagement.
+          The outdoor/wellness pillar identity isn't abandoned; it's a
+          career asset and a reassurance credential. It is not the studio's
+          market filter.
         </p>
       </Block>
 
-      <Block label="Who it's for">
+      <Block label="The problem we solve">
         <p>
-          <span className="font-medium text-ink">First:</span> owner-run
-          businesses in Bellingham and Whatcom County — farms, shops,
-          outfitters, orgs — great at what they do, underserved by software.
-        </p>
-        <p>
-          <span className="font-medium text-ink">Also:</span> founders and
-          product teams in our home territory (outdoor advocacy, adventure
-          travel, health and wellness) who need senior judgment plus hands
-          that build. Served when they arrive, not chased.
+          The spine, kept:{" "}
+          <span className="text-ink">
+            "I can't stop running the business to fix the business. So it
+            stays broken."
+          </span>{" "}
+          The competitor is inertia, plus its harder cousin: the owner who
+          already paid someone once and got something half-finished they
+          can't edit. And quieter than both: embarrassment — being great at
+          the work and knowing the website undersells it.
         </p>
         <Open>
+          <p className="font-medium text-ink">Pick the lead voice (or blend):</p>
           <p>
-            <span className="font-medium text-ink">Who it's NOT for</span> —
-            do we say this publicly? Draft: not a dev shop by the hour, not
-            an RFP vendor, not decks-instead-of-change. Refusal is
-            positioning; naming it costs some breadth.
+            <span className="font-medium text-ink">A · symptom:</span>{" "}
+            "The same four questions come in by email every day, and I'm
+            still typing orders into a spreadsheet at nine at night. I know
+            there's a better way. But I can't stop running the business to
+            fix the business. So it stays broken."
+          </p>
+          <p>
+            <span className="font-medium text-ink">B · pride:</span>{" "}
+            "We're really good at this. You'd never know it from our
+            website. I've been meaning to deal with it for two years, but
+            there's always something more urgent, and honestly I don't know
+            who to trust with it. So it stays broken."
+          </p>
+          <p>
+            <span className="font-medium text-ink">C · burned before:</span>{" "}
+            "We paid someone to build it. It was never quite finished, I
+            can't change anything myself, and I'm not doing that again. So
+            it stays broken."
+          </p>
+          <p className="text-sm text-muted">
+            Working recommendation: B on the site, C in outreach, A as
+            support.
           </p>
         </Open>
       </Block>
 
-      <Block label="What we do">
+      <Block label="Who it's for">
         <p>
-          The whole arc of a business: <span className="text-ink">demand</span>{" "}
-          (brand, web, content, marketing, e-comm, optimizing what exists) ·{" "}
-          <span className="text-ink">operations</span> (blueprinting,
-          efficiencies, agents and small tools with one job — the flagship) ·{" "}
-          <span className="text-ink">channel</span> (ordering, booking,
-          fulfillment). Cut across by{" "}
-          <span className="text-ink">signal</span>: real customers before
-          real money — panels, smoke tests, instrumented betas.
+          <span className="font-medium text-ink">
+            Businesses great at what they do and underserved by software.
+          </span>{" "}
+          That's the segment: a condition, not an industry. Whatcom first,
+          any category — farm, shop, outfitter, clinic, nonprofit. Product
+          organizations are the second audience, served when they arrive.
+        </p>
+        <p>
+          And the enemy, named: no junior teams, no black-box process, no
+          half-finished handoffs you can't edit.
+        </p>
+      </Block>
+
+      <Block label="What we do (symptom language, three verbs)">
+        <p>
+          <span className="text-ink font-medium">Get found and chosen</span>{" "}
+          — brand, a site that does the work justice, fixing the one you
+          have, content, marketing, e-commerce.
+        </p>
+        <p>
+          <span className="text-ink font-medium">Keep them coming back</span>{" "}
+          — memberships and loyalty, repeat ordering, win-back, reviews.
+          First-class now, not a footnote. It's also the deepest career
+          muscle.
+        </p>
+        <p>
+          <span className="text-ink font-medium">Run smoother</span> —
+          the operation mapped honestly, efficiencies found, agents and
+          small tools with one job doing the busywork.
+        </p>
+        <p>
+          Cut across everything by <span className="text-ink">signal</span>:
+          real customers before real money. Sometimes the win is killing
+          the idea for $2,500 instead of building it for $50,000.
         </p>
         <Open>
           <p>
-            <span className="font-medium text-ink">Proposed fourth bucket:
-            "How customers come back."</span> Retention, loyalty, repeat
-            orders, memberships, CSA renewals, the email list nobody sends
-            to. Completes the arc (find you → run → deliver → come back)
-            and it's where the career proof runs deepest. Confirm the
-            4-bucket shape and it propagates to Services, Home, and the
-            canon.
+            <span className="font-medium text-ink">Build, or build and
+            run?</span> "Builds it" is a project business. "Gets it working
+            and keeps it working" is a relationship business — and
+            marketing, content, and retention aren't built once. This is
+            the highest-value open call: it sets the revenue model and the
+            one-liner's verb.
+          </p>
+          <p className="text-sm text-muted">
+            Smaller seam, same block: where does ordering/booking/fulfillment
+            work live — under growing or under running smoother?
           </p>
         </Open>
       </Block>
 
       <Block label="Why us">
         <p>
-          The person who makes the strategy makes the thing. We run our own
-          operation on what we sell, and our own products are live. We're
-          from here, and it shows. AI is our leverage, not our identity:
-          senior work at small-business prices because the tooling collapsed
-          the cost, not the standard. Small on purpose.
+          Seniority, proximity, and actually finishing. The person who
+          makes the plan makes the thing, he's from here, and it ships. We
+          run our own operation on what we sell, and our own products are
+          live. AI is leverage, not identity.
+        </p>
+        <p className="text-sm text-muted">
+          Guards: never sound like an AI automation agency (that segment's
+          "we keep up with the changes for you" pitch is cut — true but
+          unownable). Career logos (REI, Healthline, Microsoft) are
+          reassurance, placed quietly — the real proof is a working thing
+          built for a business like yours, which is why the Berry Good
+          prototype is the core sales mechanism, not a side project.
         </p>
         <Open>
           <p>
-            <span className="font-medium text-ink">Career proof, mapped to
-            the buckets</span> (one quiet provenance line each, not a logo
-            wall — verify numbers before anything ships):
-          </p>
-          <ul className="list-none m-0 p-0 space-y-2">
-            <li>Growth &amp; brand → REI: membership growth, brand work, getting people outside.</li>
-            <li>Coming back → REI's 22M-member program, Healthline loyalty. The deepest muscle.</li>
-            <li>Operations → Microsoft: operations at a scale where nothing about your week will scare us.</li>
-            <li>Content &amp; audience → Healthline: content that earned an audience of millions honestly.</li>
-          </ul>
-        </Open>
-      </Block>
-
-      <Block label="The positioning statement">
-        <Open>
-          <p>
-            V1: For owner-run businesses that are great at what they do and
-            underserved by software, Madrona is a senior product studio in
-            Bellingham that figures out what your business needs and builds
-            it, starting small enough to say yes to. Unlike agencies, you
-            talk to the person doing the work, and the first conversation is
-            free with the agenda published.
-          </p>
-          <p className="text-sm text-muted">
-            (V2 capability-led and V3 short versions in madrona-workshop.md
-            Q6 — pick, blend, or rewrite.)
+            Verify the reassurance numbers before anything ships: 22M-member
+            program, 300K+ communities.
           </p>
         </Open>
       </Block>
 
-      <Block label="Open strategic questions">
+      <Block label="How it travels">
+        <p>
+          The real test isn't the elegant statement; it's whether someone
+          at a barbecue can finish the sentence:{" "}
+          <span className="text-ink">
+            "You should talk to Charlie — he fixes the tech side of small
+            businesses, and he's actually good."
+          </span>{" "}
+          That's the current best referral sentence. Charlie's words final.
+        </p>
+        <p>
+          The first-conversation lead is{" "}
+          <span className="text-ink">the published agenda</span>, not
+          "free." Every agency has a free intro call; nobody publishes
+          what happens in the meeting. The agenda is the trust move and
+          the answer to "I'm not doing that again." Free still exists — on
+          the offer page, as a fact, not a headline.
+        </p>
+        <p className="text-sm text-muted">
+          The "For X who Y…" statement stays an internal alignment tool
+          and never appears on the homepage. Its two load-bearing phrases:
+          "great at what they do and underserved by software" · "small
+          enough to say yes to."
+        </p>
+      </Block>
+
+      <Block label="Open questions (in order of what they unblock)">
         <ul className="list-none m-0 p-0 space-y-3">
           {[
-            "Voice tension: the site says \"we,\" but the differentiator is one accountable person. Does About (or the whole site) get more honest first-person?",
-            "Pricing transparency: $2,500 entry is drafted public. Do sprint ranges get published too? (Research says almost nobody does — that's the opening.)",
-            "Two lanes, one site: do product-org visitors get their own path, or does plain language serve both? (Current bet: one site, plain language.)",
-            "Category word: keep \"product studio\" and repositon around it, or rename the category?",
-            "Outcomes language: no client outcomes exist yet. Do we mine Lila/San Juan for real numbers, or hold outcome claims until first engagements?",
+            "Build, or build-and-run? Project vs. relationship business; sets the verb, the pricing model, and capacity.",
+            "How does the first conversation get created? The ladder closes but doesn't generate. Referral, reputation, prototype-as-gift — this becomes the outreach program.",
+            "Problem voice: A, B, C, or a blend (recommendation: B site, C outreach).",
+            "Naming/descriptor: Madrona Studio · Madrona Digital · plain Madrona + tagline.",
+            "Pricing bands: entry $2,500 is set; working assumption $2–6K/mo retainers, $5–15K projects — confirm before publishing beyond the entry.",
+            "Voice: the site says \"we\"; the differentiator is one accountable person. Where does \"I\" belong?",
+            "Lila validation raw material — makes the signal claim a story.",
           ].map((q) => (
             <li key={q} className="pl-5 border-l-2 border-line leading-relaxed">
               {q}
@@ -167,12 +239,12 @@ export default function StudioBrief() {
       <Block label="Gaps: this brief vs. the site today">
         <ul className="list-none m-0 p-0 space-y-3">
           {[
+            "Demand generation: nothing on or off the site creates first conversations yet — the funnel is immaculate and empty.",
             "No face. Trust for a local buyer is a name and a photo; About still has the placeholder.",
             "Booking is not two clicks: no Cal.com; contact form blocked on the Resend key in Vercel.",
-            "Case-study pages still tell the product story, not the demand/ops story the Work index now promises (needs Charlie's raw material).",
-            "No proof yet in the two thinnest sections: Berry Good (demand) and the ops case study (operations) are queued but unbuilt.",
-            "Off-site presence unmanaged: Google Business Profile, LinkedIn copy, og-image all predate this positioning.",
-            "The outreach letter and the site must sound like one voice — outreach-voice.md isn't settled yet.",
+            "Site copy still leads with \"free\" and the old three-bucket frame — updates once this brief settles.",
+            "Proof queue: Berry Good (the core sales mechanism) and the ops case study are unbuilt.",
+            "Off-site: no Google Business Profile; LinkedIn and og-image predate this positioning.",
           ].map((g) => (
             <li key={g} className="pl-5 border-l-2 border-madrona/25 leading-relaxed">
               {g}
