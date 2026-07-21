@@ -3,6 +3,7 @@ import PageMeta from "../components/PageMeta";
 import V1 from "./brief/V1";
 import V1_1 from "./brief/V1_1";
 import V2 from "./brief/V2";
+import V3 from "./brief/V3";
 
 /**
  * Internal working page — the one-page positioning brief with a version
@@ -12,6 +13,13 @@ import V2 from "./brief/V2";
  */
 
 const versions = [
+  {
+    id: "3",
+    label: "v3",
+    stamp: "Jul 20, night",
+    note: "Homepage session settlements: the problem voice lands (spoken register, Charlie-approved) and the hero headline is set.",
+    Body: V3,
+  },
   {
     id: "2",
     label: "v2",

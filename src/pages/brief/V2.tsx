@@ -2,8 +2,7 @@ import { Block, Open } from "./shared";
 
 /** Brief v2, 2026-07-20 evening. Option A ingested from the claude.ai
  * positioning session: horizontal scope, symptom language, three problem
- * voices, three verbs, referral sentence, agenda over free. Current until
- * V3 exists — then freeze. */
+ * voices, three verbs, referral sentence, agenda over free. FROZEN. */
 export default function V2() {
   return (
     <div className="space-y-16">
