@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
 import CaseStudyCard from "../components/CaseStudyCard";
 import PageMeta from "../components/PageMeta";
@@ -29,6 +29,8 @@ function Cta({ to = "/how-it-works", children }: { to?: string; children: React.
 }
 
 export default function HomeV2() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const overlay = searchParams.get("hero") === "overlay";
   const proofWork = caseStudies.filter((s) =>
     ["lila-trips", "san-juan-boating-guide"].includes(s.slug),
   );
@@ -36,6 +38,23 @@ export default function HomeV2() {
   return (
     <div className="space-y-24">
       <PageMeta title="Homepage v2 (internal draft)" description="Internal working draft." />
+
+      {/* Internal-only hero A/B toggle — floats so the hero stays flush. */}
+      <div className="fixed bottom-4 right-4 z-50 flex items-center gap-3 bg-card/95 border border-line rounded-full px-4 py-2 shadow-sm text-xs font-medium">
+        <span className="text-muted uppercase tracking-wider">Headline</span>
+        <button
+          onClick={() => setSearchParams({})}
+          className={`bg-transparent border-none cursor-pointer p-0 ${!overlay ? "text-ink" : "text-madrona hover:text-madrona-dark"}`}
+        >
+          below
+        </button>
+        <button
+          onClick={() => setSearchParams({ hero: "overlay" })}
+          className={`bg-transparent border-none cursor-pointer p-0 ${overlay ? "text-ink" : "text-madrona hover:text-madrona-dark"}`}
+        >
+          overlay
+        </button>
+      </div>
 
       {/* Full-bleed hero photo — flush under the nav.
           Breakout: center-anchored w-screen; -mt cancels the page's top padding. */}
@@ -45,35 +64,66 @@ export default function HomeV2() {
             <img
               src={HERO_IMAGE}
               alt="Fishing boats in the harbor at dusk in Bellingham, Washington"
-              className="h-[46vh] md:h-[62vh] w-full object-cover object-[center_42%]"
+              className={`${overlay ? "h-[62vh] md:h-[78vh]" : "h-[46vh] md:h-[62vh]"} w-full object-cover object-[center_42%]`}
             />
           ) : (
             <div className="h-[46vh] md:h-[62vh] w-full bg-gradient-to-b from-faint/40 via-bg to-faint/25" />
           )}
-          <div className="max-w-6xl mx-auto px-6 lg:px-12 w-full -mt-10 pb-4 relative flex items-baseline justify-between gap-4">
-            <span className={`text-xs font-medium uppercase tracking-wider ${HERO_IMAGE ? "text-paper/70" : "text-muted"}`}>
-              {HERO_IMAGE ? HERO_CAPTION : "PNW hero photo — drop the file in public/images/ and set HERO_IMAGE"}
+
+          {overlay && (
+            <>
+              {/* Legibility scrim — quiet, bottom-weighted */}
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/15 to-transparent" aria-hidden="true" />
+              <div className="absolute inset-x-0 bottom-0">
+                <div className="max-w-6xl mx-auto px-6 lg:px-12 pb-12 md:pb-16">
+                  <h1 className="mb-5 text-paper max-w-3xl">
+                    Good businesses around here deserve
+                    <br />
+                    software this good.
+                  </h1>
+                  <p className="text-paper/85 text-lg md:text-xl leading-relaxed max-w-2xl mb-8">
+                    Madrona is a small, senior team in Bellingham. We figure
+                    out what your business actually needs, then we make it
+                    real ourselves.
+                  </p>
+                  <Cta>See how the first conversation works</Cta>
+                </div>
+              </div>
+            </>
+          )}
+
+          {overlay ? (
+            <span className="absolute top-4 right-6 lg:right-12 text-xs font-medium uppercase tracking-wider text-paper/70">
+              {HERO_CAPTION}
             </span>
-          </div>
+          ) : (
+            <div className="max-w-6xl mx-auto px-6 lg:px-12 w-full -mt-10 pb-4 relative">
+              <span className={`text-xs font-medium uppercase tracking-wider ${HERO_IMAGE ? "text-paper/70" : "text-muted"}`}>
+                {HERO_IMAGE ? HERO_CAPTION : "PNW hero photo — drop the file in public/images/ and set HERO_IMAGE"}
+              </span>
+            </div>
+          )}
         </div>
 
-        <div className="max-w-3xl pt-10">
-          <h1 className="mb-6">
-            Good businesses around here deserve
-            <br />
-            software this good.
-          </h1>
-          <div className="max-w-2xl">
-            <Breath>
-              Madrona is a small, senior team in Bellingham. We figure out
-              what your business actually needs, then we make it real
-              ourselves.
-            </Breath>
+        {!overlay && (
+          <div className="max-w-3xl pt-10">
+            <h1 className="mb-6">
+              Good businesses around here deserve
+              <br />
+              software this good.
+            </h1>
+            <div className="max-w-2xl">
+              <Breath>
+                Madrona is a small, senior team in Bellingham. We figure out
+                what your business actually needs, then we make it real
+                ourselves.
+              </Breath>
+            </div>
+            <div className="mt-8">
+              <Cta>See how the first conversation works</Cta>
+            </div>
           </div>
-          <div className="mt-8">
-            <Cta>See how the first conversation works</Cta>
-          </div>
-        </div>
+        )}
       </section>
 
       {/* The letter — founder authority, neighbor register */}
