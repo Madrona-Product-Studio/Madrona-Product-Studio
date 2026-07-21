@@ -98,7 +98,8 @@ export default function HomeV2() {
             the ordering, the hours I lose every week. But I can't stop
             running the business to fix the business. Agencies are expensive
             and speak marketing. Freelancers are a gamble I have to manage.
-            So it stays broken."
+            I know I should be using AI to solve some of this, but I'm not
+            even really sure where to start. So it stays broken."
           </p>
         </blockquote>
         <div className="space-y-5 text-ink70 text-lg leading-relaxed">
@@ -108,6 +109,15 @@ export default function HomeV2() {
             badly served by the software around it. The website undersells
             them, the ordering is held together by hand, and the hours
             disappear into work a machine should be doing.
+          </p>
+          <p>
+            And the ground keeps moving. AI really can take a lot of this
+            work off a business's plate now, but knowing that isn't the
+            same as knowing where to start, and most of what gets sold as
+            AI is noise. We build with these tools every day, on our own
+            products and our own operation, so we can tell you plainly
+            which problems they'll solve for a business like yours and
+            which they won't.
           </p>
           <p>
             Madrona exists to fix that, close to home, one business at a
@@ -131,6 +141,10 @@ export default function HomeV2() {
             {
               question: "Watching the week disappear into work that software should be doing?",
               services: "Service blueprinting, efficiencies, AI agents on your real workflows.",
+            },
+            {
+              question: "Pretty sure AI could help your business, but nobody's shown you how?",
+              services: "We build with it daily. Honest answers on where it helps, and where it doesn't.",
             },
             {
               question: "Want customers ordering and booking from you directly?",
