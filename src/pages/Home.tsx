@@ -90,28 +90,26 @@ export default function Home() {
         <Label className="block mb-6">Why we exist</Label>
         <blockquote className="border-l-2 border-madrona/30 pl-6 mb-9 m-0">
           <p className="font-serif text-xl md:text-2xl text-ink leading-snug">
-            "More has changed in the last two years than the previous
-            twenty. Everyone knows it. AI is in every pitch and every
-            headline. What nobody can tell me is what it actually means
-            for our business, and I can't stop running the company to
-            figure it out. So nothing changes."
+            "I know things should work better around here. The website's
+            just ok. Ordering still means somebody texts me. I lose hours
+            every week to stuff a computer should be doing. But I can't
+            stop running the business to fix the business. And AI...
+            everyone says it would help. I wouldn't even know where to
+            start. So it stays broken."
           </p>
         </blockquote>
         <div className="space-y-5 text-ink70 text-lg leading-relaxed">
           <p>
-            Almost every business we talk to says a version of this. The
-            ground really did shift, and the gap between companies that
-            work out what it means for them and companies that wait is
-            compounding. Knowing that isn't the problem. Time and trust
-            are the problem.
+            Almost every owner we talk to says a version of this. Excellent
+            at what they do, badly served by the software around it, and
+            rightly suspicious of everything being sold as AI.
           </p>
           <p>
-            Madrona exists for exactly this moment. We build with these
-            tools every day, on our own products and our own operation, so
-            we can tell you plainly what matters for your business and
-            what's noise. In writing, before you spend anything. Then we
-            build it. Strategy through working software, from the person
-            who does both.
+            Madrona exists to fix that, close to home, one business at a
+            time. We build with AI every day, on our own products and our
+            own operation, so we can tell you plainly where it helps and
+            where it's noise. Strategy through working software, from the
+            person who does both.
           </p>
         </div>
       </section>
@@ -125,23 +123,23 @@ export default function Home() {
           {[
             {
               question: "Selling something great behind a web presence that doesn't do it justice?",
-              services: "We build the brand, site, content, and store that finally match the work.",
+              services: "Brand, websites, content, marketing, e-commerce.",
             },
             {
               question: "Watching the week disappear into work that software should be doing?",
-              services: "We map your operation, then build agents and tools on your real workflows.",
+              services: "Service blueprinting, efficiencies, AI agents on your real workflows.",
             },
             {
               question: "Pretty sure AI could help your business, but nobody's shown you how?",
-              services: "We work in it every day. We'll tell you straight where it pays off for you, and where it won't.",
+              services: "We build with it daily. Honest answers on where it helps, and where it doesn't.",
             },
             {
               question: "Want customers ordering and booking from you directly?",
-              services: "We stand up channels you own: online ordering, booking, fulfillment.",
+              services: "Direct channels, online ordering, booking, fulfillment.",
             },
             {
               question: "Not sure people will pay for the idea before you spend real money on it?",
-              services: "We get you real customer signal first: concept tests, panels, smoke tests. Kept small.",
+              services: "Concept tests, user panels, smoke tests. Real signal, kept small.",
             },
           ].map((row) => (
             <Link
