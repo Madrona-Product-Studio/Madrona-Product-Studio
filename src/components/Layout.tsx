@@ -2,12 +2,11 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Wordmark from "./Wordmark";
 
+// The streamlined expression: the homepage carries the story; the nav
+// holds only depth. Services/Approach routes still resolve, just unlisted.
 const navLinks = [
-  { to: "/services", label: "What we do" },
-  { to: "/how-it-works", label: "How it works" },
   { to: "/work", label: "Work" },
-  // Approach folded out of the nav in the local-first structure (route
-  // still resolves); Writing stays hidden until content is ready.
+  { to: "/how-it-works", label: "How it works" },
   { to: "/about", label: "About" },
 ];
 
