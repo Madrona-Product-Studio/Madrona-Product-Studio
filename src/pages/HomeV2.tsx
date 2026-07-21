@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
 import CaseStudyCard from "../components/CaseStudyCard";
 import PageMeta from "../components/PageMeta";
@@ -28,10 +28,6 @@ function Cta({ to = "/how-it-works", children }: { to?: string; children: React.
 }
 
 export default function HomeV2() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  // Overlay is the chosen direction (Charlie, 7/20) at the compact height;
-  // ?hero=below keeps the runner-up around for comparison until merge.
-  const overlay = searchParams.get("hero") !== "below";
   const proofWork = caseStudies.filter((s) =>
     ["lila-trips", "san-juan-boating-guide"].includes(s.slug),
   );
@@ -39,23 +35,6 @@ export default function HomeV2() {
   return (
     <div className="space-y-24">
       <PageMeta title="Homepage v2 (internal draft)" description="Internal working draft." />
-
-      {/* Internal-only hero A/B toggle — floats so the hero stays flush. */}
-      <div className="fixed bottom-4 right-4 z-50 flex items-center gap-3 bg-card/95 border border-line rounded-full px-4 py-2 shadow-sm text-xs font-medium">
-        <span className="text-muted uppercase tracking-wider">Headline</span>
-        <button
-          onClick={() => setSearchParams({})}
-          className={`bg-transparent border-none cursor-pointer p-0 ${overlay ? "text-ink" : "text-madrona hover:text-madrona-dark"}`}
-        >
-          overlay
-        </button>
-        <button
-          onClick={() => setSearchParams({ hero: "below" })}
-          className={`bg-transparent border-none cursor-pointer p-0 ${!overlay ? "text-ink" : "text-madrona hover:text-madrona-dark"}`}
-        >
-          below
-        </button>
-      </div>
 
       {/* Full-bleed hero photo — flush under the nav.
           Breakout: center-anchored w-screen; -mt cancels the page's top padding. */}
@@ -71,10 +50,8 @@ export default function HomeV2() {
             <div className="h-[46vh] md:h-[62vh] w-full bg-gradient-to-b from-faint/40 via-bg to-faint/25" />
           )}
 
-          {overlay && (
-            <>
-              {/* Overlay is desktop-only: on mobile there isn't room for
-                  both the photo and the words, so the text drops below. */}
+          {/* Overlay is desktop-only: on mobile there isn't room for
+              both the photo and the words, so the text drops below. */}
               <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/15 to-transparent" aria-hidden="true" />
               <div className="hidden md:block absolute inset-x-0 bottom-0">
                 <div className="max-w-6xl mx-auto px-6 lg:px-12 pb-14 lg:pb-16">
@@ -91,21 +68,10 @@ export default function HomeV2() {
                   <Cta>See how the first conversation works</Cta>
                 </div>
               </div>
-            </>
-          )}
-          {overlay ? null : (
-            <div className="max-w-6xl mx-auto px-6 lg:px-12 w-full -mt-10 pb-4 relative">
-              {!HERO_IMAGE && (
-                <span className="text-xs font-medium uppercase tracking-wider text-muted">
-                  PNW hero photo — drop the file in public/images/ and set HERO_IMAGE
-                </span>
-              )}
-            </div>
-          )}
         </div>
 
-        {/* Text below the photo: mobile always; desktop only in below mode. */}
-        <div className={`max-w-3xl pt-10 ${overlay ? "md:hidden" : ""}`}>
+        {/* Mobile hero text: the overlay needs room the phone doesn't have. */}
+        <div className="max-w-3xl pt-10 md:hidden">
           <h1 className="mb-6 text-balance">
             Good businesses around here deserve software as good as they are.
           </h1>
@@ -122,44 +88,69 @@ export default function HomeV2() {
         </div>
       </section>
 
-      {/* The letter — founder authority, neighbor register */}
+      {/* Why we exist — the owner's words, then ours */}
       <section className="max-w-2xl">
         <div className="mb-6"><Marker index="01" /></div>
-        <Label className="block mb-6">From Charlie</Label>
-        <div className="flex gap-6 items-start">
-          <div className="w-20 h-20 rounded-full bg-faint/40 border border-line-soft shrink-0 flex items-center justify-center text-[10px] text-muted text-center px-1">
-            photo
-          </div>
-          <div className="space-y-5 text-ink70 text-lg leading-relaxed">
-            <p>
-              I spent fifteen years leading product at places like REI and
-              Healthline. These days I build for businesses closer to home:
-              the farm stand, the shop, the outfitter, the nonprofit. The
-              ones that are great at what they do and get the least help
-              from software.
-            </p>
-            <p>
-              You talk to me, I do the work, and it actually gets finished.
-              That's the whole model.
-            </p>
-          </div>
+        <Label className="block mb-6">Why we exist</Label>
+        <blockquote className="border-l-2 border-madrona/30 pl-6 mb-9 m-0">
+          <p className="font-serif text-xl md:text-2xl text-ink leading-snug">
+            "I know parts of my business should work better: the website,
+            the ordering, the hours I lose every week. But I can't stop
+            running the business to fix the business. Agencies are expensive
+            and speak marketing. Freelancers are a gamble I have to manage.
+            So it stays broken."
+          </p>
+        </blockquote>
+        <div className="space-y-5 text-ink70 text-lg leading-relaxed">
+          <p>
+            Almost every owner we talk to says a version of this. Most
+            owner-run businesses are excellent at the thing they do and
+            badly served by the software around it. The website undersells
+            them, the ordering is held together by hand, and the hours
+            disappear into work a machine should be doing.
+          </p>
+          <p>
+            Madrona exists to fix that, close to home, one business at a
+            time. Strategy through working software, from the person who
+            does both.
+          </p>
         </div>
       </section>
 
-      {/* Services: three verbs, plain rows */}
-      <section className="max-w-3xl">
+      {/* What we do — question-led, symptom language */}
+      <section>
         <div className="mb-6"><Marker index="02" /></div>
         <Label className="block mb-4">What we do</Label>
-        <div className="border-t border-line divide-y divide-line-soft">
+        <h2 className="mb-10">Wherever the business hurts.</h2>
+        <div className="max-w-3xl border-t border-line divide-y divide-line-soft">
           {[
-            ["Get found and chosen", "Brand, a site that does your work justice, fixing the one you have, content, e-commerce."],
-            ["Keep them coming back", "Memberships, repeat ordering, win-back, reviews."],
-            ["Run smoother", "Your operation mapped, the busywork handed to small tools and agents."],
-          ].map(([title, desc]) => (
-            <div key={title} className="py-6">
-              <h3 className="mb-1.5">{title}.</h3>
-              <p className="text-ink70">{desc}</p>
-            </div>
+            {
+              question: "Selling something great behind a web presence that doesn't do it justice?",
+              services: "Brand, websites, content, marketing, e-commerce.",
+            },
+            {
+              question: "Watching the week disappear into work that software should be doing?",
+              services: "Service blueprinting, efficiencies, AI agents on your real workflows.",
+            },
+            {
+              question: "Want customers ordering and booking from you directly?",
+              services: "Direct channels, online ordering, booking, fulfillment.",
+            },
+            {
+              question: "Not sure people will pay for the idea before you spend real money on it?",
+              services: "Concept tests, user panels, smoke tests. Real signal, kept small.",
+            },
+          ].map((row) => (
+            <Link
+              key={row.question}
+              to="/services"
+              className="group block py-6 no-underline"
+            >
+              <p className="text-[19px] md:text-[22px] tracking-[-0.02em] text-ink leading-[1.25] mb-2 group-hover:text-madrona-dark transition-colors">
+                {row.question}
+              </p>
+              <p className="text-sm text-muted">{row.services}</p>
+            </Link>
           ))}
         </div>
         <div className="mt-8">
