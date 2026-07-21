@@ -65,29 +65,43 @@ function useCycler(words: string[]) {
 
 /* ---------- Option A · The Letter ---------- */
 
+function LetterHeroText() {
+  return (
+    <div className="max-w-3xl pt-10">
+      <h1 className="mb-6">
+        Good businesses around here deserve
+        <br />
+        software this good.
+      </h1>
+      <div className="max-w-2xl">
+        <Breath>
+          Madrona is a small, senior team in Bellingham. We figure out
+          what your business actually needs, then we make it real
+          ourselves.
+        </Breath>
+      </div>
+      <div className="mt-8"><Cta /></div>
+    </div>
+  );
+}
+
 function OptionA() {
   return (
     <div className="space-y-24">
       {/* Hero: photo leads, words stay calm */}
       <section>
         <PhotoSlot />
-        <div className="max-w-3xl pt-10">
-          <h1 className="mb-6">
-            Good businesses around here deserve
-            <br />
-            software this good.
-          </h1>
-          <div className="max-w-2xl">
-            <Breath>
-              Madrona is a small, senior team in Bellingham. We figure out
-              what your business actually needs, then we make it real
-              ourselves.
-            </Breath>
-          </div>
-          <div className="mt-8"><Cta /></div>
-        </div>
+        <LetterHeroText />
       </section>
 
+      <LetterBody />
+    </div>
+  );
+}
+
+function LetterBody() {
+  return (
+    <div className="space-y-24">
       {/* The letter — founder authority, neighbor register */}
       <section className="max-w-2xl">
         <div className="mb-6"><Marker index="01" /></div>
@@ -153,6 +167,35 @@ function OptionA() {
         <h2 className="mb-6">Tell us about your business.</h2>
         <Cta>Book the first conversation</Cta>
       </section>
+    </div>
+  );
+}
+
+/* ---------- Option D · Full Bleed ---------- */
+
+function OptionD() {
+  return (
+    <div className="space-y-24">
+      {/* Hero photo: edge-to-edge, flush to the top. In production this
+          sits directly under the nav; in the lab it sits under the
+          switcher bar. Breakout trick: center-anchored w-screen. */}
+      <section>
+        <div className="relative left-1/2 -translate-x-1/2 w-screen -mt-12">
+          <div className="h-[46vh] md:h-[62vh] w-full bg-gradient-to-b from-faint/40 via-bg to-faint/25 flex items-end">
+            <div className="max-w-6xl mx-auto px-6 lg:px-12 w-full pb-5 flex items-baseline justify-between gap-4">
+              <span className="text-xs font-medium uppercase tracking-wider text-muted">
+                PNW hero photo — full bleed, flush under the nav
+              </span>
+              <span className="text-xs text-muted hidden md:block">
+                caption slot · e.g. "Salish Sea, from the bluff"
+              </span>
+            </div>
+          </div>
+        </div>
+        <LetterHeroText />
+      </section>
+
+      <LetterBody />
     </div>
   );
 }
@@ -339,6 +382,7 @@ function OptionC() {
 
 const options = [
   { id: "a", label: "A · The Letter", note: "Photo leads, Charlie's note builds the trust, services stay quiet rows. The most 'neighbor' of the three.", Body: OptionA },
+  { id: "d", label: "D · Full Bleed", note: "Option A's body under an edge-to-edge photo that runs flush beneath the nav (here it sits under this bar; in production it touches the nav). The photo IS the hero.", Body: OptionD },
   { id: "b", label: "B · The Counter", note: "Offer as scannable objects: who-we-help chips, three service cards with the $2,500 anchor, a differentiator strip. Closest to the Ranch House clarity, kept swiss. Cycler retained.", Body: OptionB },
   { id: "c", label: "C · Sound familiar?", note: "Symptom-first: the customer's own words as the hero, symptom→fix rows, the burned-before answer front and center. Boldest.", Body: OptionC },
 ];
