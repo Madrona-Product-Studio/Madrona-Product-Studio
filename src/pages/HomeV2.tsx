@@ -15,8 +15,10 @@ import { Label, Marker, Breath } from "../components/swiss";
  * gradient renders.
  */
 
-const HERO_IMAGE: string | null = null; // e.g. "/images/hero-salish-sea.jpg"
-const HERO_CAPTION = "Salish Sea, from the bluff"; // draft — match the real photo
+// Charlie's pick (IMG_2872): the working harbor at dusk. Re-encoded to
+// strip GPS EXIF and shrink for web; original stays untracked.
+const HERO_IMAGE: string | null = "/images/hero-harbor-dusk.jpg";
+const HERO_CAPTION = "The harbor at dusk, Bellingham"; // draft — Charlie confirms wording
 
 function Cta({ to = "/how-it-works", children }: { to?: string; children: React.ReactNode }) {
   return (
@@ -42,14 +44,14 @@ export default function HomeV2() {
           {HERO_IMAGE ? (
             <img
               src={HERO_IMAGE}
-              alt=""
-              className="h-[46vh] md:h-[62vh] w-full object-cover"
+              alt="Fishing boats in the harbor at dusk in Bellingham, Washington"
+              className="h-[46vh] md:h-[62vh] w-full object-cover object-[center_42%]"
             />
           ) : (
             <div className="h-[46vh] md:h-[62vh] w-full bg-gradient-to-b from-faint/40 via-bg to-faint/25" />
           )}
           <div className="max-w-6xl mx-auto px-6 lg:px-12 w-full -mt-10 pb-4 relative flex items-baseline justify-between gap-4">
-            <span className="text-xs font-medium uppercase tracking-wider text-muted">
+            <span className={`text-xs font-medium uppercase tracking-wider ${HERO_IMAGE ? "text-paper/70" : "text-muted"}`}>
               {HERO_IMAGE ? HERO_CAPTION : "PNW hero photo — drop the file in public/images/ and set HERO_IMAGE"}
             </span>
           </div>
