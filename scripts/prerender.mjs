@@ -17,8 +17,8 @@ const pages = {
   '/': {
     title: 'Madrona Product Studio · Bellingham, Washington',
     description: 'A small, senior product studio in Bellingham, Washington. We help companies figure out what to build, then build it. Every engagement starts with a free 45-minute conversation.',
-    h1: 'We turn ideas into working products.',
-    body: 'Madrona Product Studio is a small, senior product studio in Bellingham, Washington, serving the Pacific Northwest and beyond. We help companies figure out what to build, then build it. Every engagement starts with a free 45-minute conversation with a published agenda.',
+    h1: 'Good businesses around here deserve software as good as they are.',
+    body: 'Madrona is a small, senior team in Bellingham, Washington. We figure out what your business actually needs, then we make it real ourselves. Every engagement starts with a 45-minute conversation with a published agenda, then a written assessment that is yours to keep.',
   },
   '/work': {
     title: 'Work · Madrona Product Studio',

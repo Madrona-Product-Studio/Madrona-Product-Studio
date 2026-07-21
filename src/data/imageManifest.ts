@@ -134,5 +134,41 @@ export const imageManifest: Record<string, { width: number; height: number }> = 
   "/case-studies/utah-trip-guide/weather-flash-flood.png": {
     "width": 1600,
     "height": 1000
+  },
+  "/images/IMG_0492.jpeg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/images/IMG_0739.jpeg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/images/IMG_1929.PNG": {
+    "width": 1600,
+    "height": 738
+  },
+  "/images/IMG_1988.jpeg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/images/IMG_1989.jpeg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/images/IMG_2301.jpeg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/images/IMG_2872.jpeg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/images/IMG_3163.jpeg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/images/hero-harbor-dusk.jpg": {
+    "width": 1600,
+    "height": 1200
   }
 };

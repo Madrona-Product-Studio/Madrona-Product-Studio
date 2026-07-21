@@ -3,259 +3,145 @@ import { caseStudies } from "../data/caseStudies";
 import CaseStudyCard from "../components/CaseStudyCard";
 import PageMeta from "../components/PageMeta";
 import { Label, Marker, Breath } from "../components/swiss";
-import { useEffect, useRef, useState } from "react";
 
-// Reveal a section once it scrolls into view. Subtle, one-time, and gated:
-// the hidden start state lives under html.js-reveal (set before paint), so
-// content is never hidden for no-JS, crawlers, or reduced-motion users.
-function useReveal<T extends HTMLElement = HTMLDivElement>() {
-  const ref = useRef<T>(null);
-  const [shown, setShown] = useState(false);
+/**
+ * The homepage — promoted from the home-v2 draft (Charlie, 2026-07-21).
+ * Full-bleed harbor hero (overlay on desktop, text-below on mobile),
+ * Why we exist (settled problem voice), question-led What we do,
+ * agenda strip, curated proof, CTA.
+ */
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (!document.documentElement.classList.contains("js-reveal")) {
-      setShown(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "0px 0px -12% 0px", threshold: 0.1 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+// Charlie's pick (IMG_2872): the working harbor at dusk. Re-encoded to
+// strip GPS EXIF and shrink for web; original stays untracked.
+const HERO_IMAGE: string | null = "/images/hero-harbor-dusk.jpg";
 
-  return { ref, shown };
-}
-
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const onChange = () => setReduced(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-  return reduced;
-}
-
-function useWordCycler(words: string[], enabled = true) {
-  const [displayed, setDisplayed] = useState(words[0]);
-  const [isActive, setIsActive] = useState(false);
-  const wordRef = useRef(0);
-
-  useEffect(() => {
-    // Respect reduced motion — hold the first word, skip the typing loop.
-    if (!enabled) {
-      setDisplayed(words[0]);
-      setIsActive(false);
-      return;
-    }
-    const typeSpeed = 80;
-    const deleteSpeed = 50;
-    const holdDelay = 2400;
-    let cancelled = false;
-
-    function schedule(fn: () => void, ms: number) {
-      const id = setTimeout(() => { if (!cancelled) fn(); }, ms);
-      return id;
-    }
-
-    function deleteWord(current: string, onDone: () => void) {
-      if (cancelled) return;
-      if (current.length === 0) { onDone(); return; }
-      schedule(() => {
-        const next = current.slice(0, -1);
-        setDisplayed(next);
-        deleteWord(next, onDone);
-      }, deleteSpeed);
-    }
-
-    function typeWord(target: string, i: number, onDone: () => void) {
-      if (cancelled) return;
-      if (i > target.length) { setIsActive(false); onDone(); return; }
-      schedule(() => {
-        setDisplayed(target.slice(0, i));
-        typeWord(target, i + 1, onDone);
-      }, typeSpeed);
-    }
-
-    function cycle() {
-      if (cancelled) return;
-      schedule(() => {
-        setIsActive(true);
-        const currentWord = words[wordRef.current];
-        deleteWord(currentWord, () => {
-          if (cancelled) return;
-          wordRef.current = (wordRef.current + 1) % words.length;
-          const nextWord = words[wordRef.current];
-          schedule(() => {
-            typeWord(nextWord, 1, cycle);
-          }, 300);
-        });
-      }, holdDelay);
-    }
-
-    cycle();
-    return () => { cancelled = true; };
-  }, [words, enabled]);
-
-  const isTyping = displayed.length > 0 && displayed !== words[wordRef.current];
-
-  return { displayed, isTyping, isActive };
-}
-
-function ThinkingDots({ active }: { active: boolean }) {
+function Cta({ to = "/how-it-works", children }: { to?: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-1.5 h-3 mb-6" aria-hidden="true">
-      {[0, 1, 2].map((i) => (
-        <span
-          key={i}
-          className={`block w-[14px] h-[14px] rounded-full bg-madrona ${
-            active ? "animate-dot-bounce" : ""
-          }`}
-          style={active ? { animationDelay: `${i * 0.15}s` } : undefined}
-        />
-      ))}
-    </div>
+    <Link to={to} className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline">
+      {children}
+    </Link>
   );
 }
-
-function WordCyclerText({ displayed, isTyping }: { displayed: string; isTyping: boolean }) {
-  return (
-    <span>
-      {displayed}
-      {isTyping ? (
-        <span className="inline-block w-[3px] h-[0.8em] bg-madrona/60 ml-0.5 align-text-bottom animate-[cursor-blink_1s_steps(2,start)_infinite]" />
-      ) : displayed.length > 0 ? (
-        <span className="text-madrona">.</span>
-      ) : (
-        <span className="inline-block w-[3px] h-[0.8em] bg-madrona/60 ml-0.5 align-text-bottom animate-[cursor-blink_1s_steps(2,start)_infinite]" />
-      )}
-    </span>
-  );
-}
-
-// The cycled phrases ARE the offer inventory: one per lifecycle bucket,
-// in words a business owner uses. Keep each under ~28 chars so they hold
-// one line on desktop; the block below reserves height for mobile wrap.
-const heroBuilds = [
-  "a website that earns trust",
-  "ordering without middlemen",
-  "an agent for the busywork",
-  "proof customers want it",
-  "a plan you can act on",
-  "the thing customers ask for",
-];
-
-const bucketRows = [
-  {
-    question: "Selling something great behind a web presence that doesn't do it justice?",
-    services: "Brand, websites, content, marketing, e-commerce.",
-  },
-  {
-    question: "Watching the week disappear into work that software should be doing?",
-    services: "Service blueprinting, efficiencies, AI agents on your real workflows.",
-  },
-  {
-    question: "Want customers ordering and booking from you directly?",
-    services: "Direct channels, online ordering, booking, fulfillment.",
-  },
-  {
-    question: "Not sure people will pay for the idea before you spend real money on it?",
-    services: "Concept tests, user panels, smoke tests. Real signal, kept small.",
-  },
-];
-
-const steps = [
-  {
-    index: "01",
-    lead: "A free 45-minute conversation.",
-    body: "About your business, not about us. The agenda is published, so you know exactly what you're saying yes to.",
-  },
-  {
-    index: "02",
-    lead: "A short written assessment.",
-    body: "Where we think you could grow or run smoother, in writing. Yours to keep either way.",
-  },
-  {
-    index: "03",
-    lead: "A scoped proposal, if it makes sense.",
-    body: "Entry engagements are $2,500, fixed: one specific thing fixed or built, with payback you can see.",
-  },
-];
 
 export default function Home() {
-  const featuredWork = caseStudies.filter((s) => s.category === "recent" && !s.hidden).slice(0, 2);
-  const cyclerWords = useRef(heroBuilds);
-  const reducedMotion = usePrefersReducedMotion();
-  const { displayed, isTyping, isActive } = useWordCycler(cyclerWords.current, !reducedMotion);
-
-  // Staggered hero animation
-  const [heroReady, setHeroReady] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => setHeroReady(true), 100);
-    return () => clearTimeout(t);
-  }, []);
-
-  const s1 = useReveal();
-  const s2 = useReveal();
-  const s3 = useReveal();
-  const s4 = useReveal();
-  const s5 = useReveal();
+  const proofWork = caseStudies.filter((s) =>
+    ["lila-trips", "san-juan-boating-guide"].includes(s.slug),
+  );
 
   return (
     <div className="space-y-24">
       <PageMeta />
 
-      {/* Hero */}
-      <section className="max-w-3xl pt-8 md:pt-16">
-        <div className={`transition-opacity duration-500 ease-snap ${heroReady ? "opacity-100" : "opacity-0"}`}>
-          <ThinkingDots active={isActive} />
-        </div>
-        <h1 className={`mb-8 leading-tight transition-[opacity,transform] duration-500 delay-75 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-          We help businesses build<br />
-          <span className="block min-h-[2.2em] md:min-h-[1.1em]">
-            <WordCyclerText displayed={displayed} isTyping={isTyping} />
-          </span>
-        </h1>
+      {/* Full-bleed hero photo — flush under the nav.
+          Breakout: center-anchored w-screen; -mt cancels the page's top padding. */}
+      <section>
+        <div className="relative left-1/2 -translate-x-1/2 w-screen -mt-16 md:-mt-24">
+          {HERO_IMAGE ? (
+            <img
+              src={HERO_IMAGE}
+              alt="Fishing boats in the harbor at dusk in Bellingham, Washington"
+              className="h-[46vh] md:h-[62vh] w-full object-cover object-[center_42%]"
+            />
+          ) : (
+            <div className="h-[46vh] md:h-[62vh] w-full bg-gradient-to-b from-faint/40 via-bg to-faint/25" />
+          )}
 
-        <div className={`max-w-2xl transition-[opacity,transform] duration-500 delay-200 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-          <Breath>
-            A senior product studio in Bellingham, Washington. We figure out
-            what your business actually needs, then we build it ourselves:
-            strategy, design, and working software from one small team.
-          </Breath>
+          {/* Overlay is desktop-only: on mobile there isn't room for
+              both the photo and the words, so the text drops below. */}
+              <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/15 to-transparent" aria-hidden="true" />
+              <div className="hidden md:block absolute inset-x-0 bottom-0">
+                <div className="max-w-6xl mx-auto px-6 lg:px-12 pb-14 lg:pb-16">
+                  <h1 className="mb-5 text-paper max-w-4xl md:text-[2.75rem] lg:text-[3.4rem] leading-[1.08]">
+                    Good businesses around here deserve
+                    <br />
+                    software as good as they are.
+                  </h1>
+                  <p className="text-paper/85 text-lg md:text-xl leading-relaxed max-w-2xl mb-8">
+                    Madrona is a small, senior team in Bellingham. We figure
+                    out what your business actually needs, then we make it
+                    real ourselves.
+                  </p>
+                  <Cta>See how the first conversation works</Cta>
+                </div>
+              </div>
         </div>
 
-        <div className={`mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 transition-[opacity,transform] duration-500 delay-300 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-          <Link
-            to="/how-it-works"
-            className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
-          >
-            Book a free 45-minute chat
-          </Link>
-          <Link to="/services" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            What we do &rarr;
-          </Link>
+        {/* Mobile hero text: the overlay needs room the phone doesn't have. */}
+        <div className="max-w-3xl pt-10 md:hidden">
+          <h1 className="mb-6 text-balance">
+            Good businesses around here deserve software as good as they are.
+          </h1>
+          <div className="max-w-2xl">
+            <Breath>
+              Madrona is a small, senior team in Bellingham. We figure out
+              what your business actually needs, then we make it real
+              ourselves.
+            </Breath>
+          </div>
+          <div className="mt-8">
+            <Cta>See how the first conversation works</Cta>
+          </div>
         </div>
       </section>
 
-      {/* What we do — question-led lifecycle buckets */}
-      <section ref={s1.ref} data-shown={s1.shown} className="reveal">
+      {/* Why we exist — the owner's words, then ours */}
+      <section className="max-w-2xl">
         <div className="mb-6"><Marker index="01" /></div>
+        <Label className="block mb-6">Why we exist</Label>
+        <blockquote className="border-l-2 border-madrona/30 pl-6 mb-9 m-0">
+          <p className="font-serif text-xl md:text-2xl text-ink leading-snug">
+            "I know things should work better around here. The website's
+            just ok. Ordering still means somebody texts me. I lose hours
+            every week to stuff a computer should be doing. But I can't
+            stop running the business to fix the business. And AI...
+            everyone says it would help. I wouldn't even know where to
+            start. So it stays broken."
+          </p>
+        </blockquote>
+        <div className="space-y-5 text-ink70 text-lg leading-relaxed">
+          <p>
+            Almost every owner we talk to says a version of this. Excellent
+            at what they do, badly served by the software around it, and
+            rightly suspicious of everything being sold as AI.
+          </p>
+          <p>
+            Madrona exists to fix that, close to home, one business at a
+            time. We build with AI every day, on our own products and our
+            own operation, so we can tell you plainly where it helps and
+            where it's noise. Strategy through working software, from the
+            person who does both.
+          </p>
+        </div>
+      </section>
+
+      {/* What we do — question-led, symptom language */}
+      <section>
+        <div className="mb-6"><Marker index="02" /></div>
         <Label className="block mb-4">What we do</Label>
         <h2 className="mb-10">Wherever the business hurts.</h2>
         <div className="max-w-3xl border-t border-line divide-y divide-line-soft">
-          {bucketRows.map((row) => (
+          {[
+            {
+              question: "Selling something great behind a web presence that doesn't do it justice?",
+              services: "Brand, websites, content, marketing, e-commerce.",
+            },
+            {
+              question: "Watching the week disappear into work that software should be doing?",
+              services: "Service blueprinting, efficiencies, AI agents on your real workflows.",
+            },
+            {
+              question: "Pretty sure AI could help your business, but nobody's shown you how?",
+              services: "We build with it daily. Honest answers on where it helps, and where it doesn't.",
+            },
+            {
+              question: "Want customers ordering and booking from you directly?",
+              services: "Direct channels, online ordering, booking, fulfillment.",
+            },
+            {
+              question: "Not sure people will pay for the idea before you spend real money on it?",
+              services: "Concept tests, user panels, smoke tests. Real signal, kept small.",
+            },
+          ].map((row) => (
             <Link
               key={row.question}
               to="/services"
@@ -269,47 +155,30 @@ export default function Home() {
           ))}
         </div>
         <div className="mt-8">
-          <Link to="/services/agentic-operations" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            Our flagship: agentic operations &rarr;
+          <Link to="/services" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
+            Everything we do &rarr;
           </Link>
         </div>
       </section>
 
-      {/* How it works */}
-      <section ref={s2.ref} data-shown={s2.shown} className="reveal max-w-2xl">
-        <div className="mb-6"><Marker index="02" /></div>
-        <Label className="block mb-4">How it works</Label>
-        <h2 className="mb-10">The first conversation is free.</h2>
-        <div className="space-y-8">
-          {steps.map((step) => (
-            <div key={step.index} className="flex gap-6">
-              <span className="font-medium text-madrona/60 text-sm pt-1 tabular-nums">{step.index}</span>
-              <div>
-                <p className="font-medium text-ink mb-1">{step.lead}</p>
-                <p className="text-ink70 leading-relaxed">{step.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-10">
-          <Link to="/how-it-works" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            See the full agenda &rarr;
-          </Link>
-        </div>
+      {/* Agenda strip — the trust move */}
+      <section className="max-w-2xl border-l-2 border-madrona/30 pl-6">
+        <p className="text-ink text-lg leading-relaxed mb-3">
+          The first conversation has a published agenda. You'll know exactly
+          what we'll ask before you say yes, and you keep the written
+          assessment either way.
+        </p>
+        <Link to="/how-it-works" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
+          Read the agenda &rarr;
+        </Link>
       </section>
 
       {/* Proof */}
-      <section ref={s3.ref} data-shown={s3.shown} className="reveal">
+      <section>
         <div className="mb-6"><Marker index="03" /></div>
-        <Label className="block mb-4">Built and running</Label>
-        <h2 className="mb-6">We ship our own products too.</h2>
-        <p className="text-ink70 leading-relaxed mb-12 max-w-2xl">
-          When we say we build, we mean us, actually building. Our own
-          products are live and in use, in the places our lives happen: the
-          outdoors, adventure travel, and health and wellness.
-        </p>
+        <Label className="block mb-4">Things we've built and run</Label>
         <div className="grid sm:grid-cols-2 gap-x-10 gap-y-14">
-          {featuredWork.map((study) => (
+          {proofWork.map((study) => (
             <CaseStudyCard key={study.slug} study={study} />
           ))}
         </div>
@@ -320,45 +189,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* From here */}
-      <section ref={s4.ref} data-shown={s4.shown} className="reveal max-w-2xl">
-        <div className="mb-6"><Marker index="04" /></div>
-        <Label className="block mb-4">From here</Label>
-        <h2 className="mb-8">Bellingham is home, not a market.</h2>
-        <div className="space-y-6 text-ink70 leading-relaxed">
-          <p>
-            The berries in our fridge come from farm stands out past Lynden,
-            Saturday mornings happen at the farmers market, and Fridays
-            include a shift at the food bank. If you run a business in
-            Whatcom County, a farm, a shop, an outfitter, a nonprofit, we'd
-            especially like to talk. Neighbors first.
-          </p>
-        </div>
-        <div className="mt-8">
-          <Link to="/about" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            More about the studio &rarr;
-          </Link>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section ref={s5.ref} data-shown={s5.shown} className="reveal max-w-2xl border-t border-line pt-16">
-        <h2 className="mb-5">Tell us about your business.</h2>
-        <p className="text-ink70 text-lg mb-8 leading-relaxed">
-          Forty-five minutes, free, agenda published. Worst case, you leave
-          with a written read on your biggest opportunities.
-        </p>
-        <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-          <Link
-            to="/how-it-works"
-            className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
-          >
-            Book the free 45
-          </Link>
-          <Link to="/contact" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            Or just write us &rarr;
-          </Link>
-        </div>
+      <section className="max-w-2xl border-t border-line pt-14">
+        <h2 className="mb-6">Tell us about your business.</h2>
+        <Cta>Book the first conversation</Cta>
       </section>
     </div>
   );

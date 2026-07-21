@@ -12,7 +12,6 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import StudioBrief from "./pages/StudioBrief";
 import HomeLab from "./pages/HomeLab";
-import HomeV2 from "./pages/HomeV2";
 
 export default function App() {
   return (
@@ -32,7 +31,6 @@ export default function App() {
           {/* Internal working pages — not in nav, not prerendered. */}
           <Route path="brief" element={<StudioBrief />} />
           <Route path="home-lab" element={<HomeLab />} />
-          <Route path="home-v2" element={<HomeV2 />} />
         </Route>
       </Routes>
     </BrowserRouter>
