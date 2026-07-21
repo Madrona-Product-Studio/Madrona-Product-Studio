@@ -78,10 +78,10 @@ export default function HomeV2() {
               <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/15 to-transparent" aria-hidden="true" />
               <div className="hidden md:block absolute inset-x-0 bottom-0">
                 <div className="max-w-6xl mx-auto px-6 lg:px-12 pb-14 lg:pb-16">
-                  <h1 className="mb-5 text-paper max-w-3xl lg:text-[3.75rem] lg:leading-[1.06]">
-                    Good businesses around here
+                  <h1 className="mb-5 text-paper max-w-4xl md:text-[2.75rem] lg:text-[3.4rem] leading-[1.08]">
+                    Good businesses around here deserve
                     <br />
-                    deserve software this good.
+                    software as good as they are.
                   </h1>
                   <p className="text-paper/85 text-lg md:text-xl leading-relaxed max-w-2xl mb-8">
                     Madrona is a small, senior team in Bellingham. We figure
@@ -106,10 +106,8 @@ export default function HomeV2() {
 
         {/* Text below the photo: mobile always; desktop only in below mode. */}
         <div className={`max-w-3xl pt-10 ${overlay ? "md:hidden" : ""}`}>
-          <h1 className="mb-6">
-            Good businesses around here
-            <br />
-            deserve software this good.
+          <h1 className="mb-6 text-balance">
+            Good businesses around here deserve software as good as they are.
           </h1>
           <div className="max-w-2xl">
             <Breath>
