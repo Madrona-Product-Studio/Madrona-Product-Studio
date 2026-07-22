@@ -182,33 +182,35 @@ export function HomeBody() {
 
   return (
     <>
-      {/* Why we exist — the owner's words, then ours */}
-      <section className="max-w-2xl">
+      {/* Why we exist — the owner's words on the left, ours on the right */}
+      <section>
         <div className="mb-6"><Marker index="01" /></div>
-        <Label className="block mb-6">Why we exist</Label>
-        <blockquote className="border-l-2 border-madrona/30 pl-6 mb-9 m-0">
-          <p className="font-serif text-xl md:text-2xl text-ink leading-snug">
-            "I know things should work better around here. The website's
-            just ok. Ordering still means somebody texts me. I lose hours
-            every week to stuff a computer should be doing. But I can't
-            stop running the business to fix the business. And AI...
-            everyone says it would help. I wouldn't even know where to
-            start. So it stays broken."
-          </p>
-        </blockquote>
-        <div className="space-y-5 text-ink70 text-lg leading-relaxed">
-          <p>
-            Almost every owner we talk to says a version of this. Excellent
-            at what they do, badly served by the software around it, and
-            rightly suspicious of everything being sold as AI.
-          </p>
-          <p>
-            Madrona exists to fix that, close to home, one business at a
-            time. We build with AI every day, on our own products and our
-            own operation, so we can tell you plainly where it helps and
-            where it's noise. Strategy through working software, from the
-            person who does both.
-          </p>
+        <Label className="block mb-8">Why we exist</Label>
+        <div className="grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-10 md:gap-16">
+          <blockquote className="m-0 border-l-2 border-madrona/30 pl-6 md:pl-8">
+            <p className="font-serif text-[1.35rem] md:text-[1.65rem] text-ink leading-[1.4] m-0">
+              &ldquo;I know things should work better around here. The
+              website&rsquo;s just ok. Ordering from us is way harder than
+              it should be. I lose hours every week to stuff it seems like
+              a computer could be doing. But I can&rsquo;t stop running the
+              business to fix the business. And AI... everyone says it
+              should help, but I wouldn&rsquo;t even know where to start.
+              So it stays broken.&rdquo;
+            </p>
+          </blockquote>
+          <div className="space-y-5 text-ink70 text-lg leading-relaxed md:pt-1">
+            <p>
+              Almost every owner we talk to says a version of this.
+              Excellent at what they do, badly served by the software
+              around it, and rightly suspicious of everything AI.
+            </p>
+            <p>
+              Madrona exists to fix that, close to home, one business at a
+              time. Our small, senior team of builders and marketers helps
+              businesses like yours break through the noise and tells you
+              plainly how to help your business grow and run better.
+            </p>
+          </div>
         </div>
       </section>
 
