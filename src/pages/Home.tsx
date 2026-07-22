@@ -1,19 +1,89 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
 import CaseStudyCard from "../components/CaseStudyCard";
 import PageMeta from "../components/PageMeta";
-import { Label, Marker, Breath } from "../components/swiss";
+import { Label, Marker } from "../components/swiss";
 
 /**
- * The homepage — promoted from the home-v2 draft (Charlie, 2026-07-21).
- * Full-bleed harbor hero (overlay on desktop, text-below on mobile),
- * Why we exist (settled problem voice), question-led What we do,
- * agenda strip, curated proof, CTA.
+ * The homepage — typed hero promoted from the home-v5 study (Charlie,
+ * 2026-07-22). Full-bleed harbor photo with the settled headline and
+ * descriptor, a cycling "never been a better time to…" line, then the
+ * settled body: Why we exist, question-led What we do, agenda strip,
+ * curated proof, CTA.
  */
 
 // Charlie's pick (IMG_2872): the working harbor at dusk. Re-encoded to
 // strip GPS EXIF and shrink for web; original stays untracked.
-const HERO_IMAGE: string | null = "/images/hero-harbor-dusk.jpg";
+const HERO_IMAGE = "/images/hero-harbor-dusk.jpg";
+
+const PHRASES = [
+  "make it happen.",
+  "fix that website.",
+  "reach new customers.",
+  "implement agentic AI.",
+  "go direct to customers.",
+  "test some new ideas.",
+];
+
+function useTypeCycler() {
+  const [displayed, setDisplayed] = useState(PHRASES[0]);
+  const phraseIndex = useRef(0);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let cancelled = false;
+    let timeout: ReturnType<typeof setTimeout>;
+    const schedule = (callback: () => void, delay: number) => {
+      timeout = setTimeout(() => {
+        if (!cancelled) callback();
+      }, delay);
+    };
+
+    const remove = (value: string, done: () => void) => {
+      if (cancelled) return;
+      if (value.length === 0) {
+        done();
+        return;
+      }
+      schedule(() => {
+        const next = value.slice(0, -1);
+        setDisplayed(next);
+        remove(next, done);
+      }, 34);
+    };
+
+    const type = (value: string, character: number, done: () => void) => {
+      if (cancelled) return;
+      if (character > value.length) {
+        done();
+        return;
+      }
+      schedule(() => {
+        setDisplayed(value.slice(0, character));
+        type(value, character + 1, done);
+      }, 52);
+    };
+
+    const cycle = () => {
+      schedule(() => {
+        remove(PHRASES[phraseIndex.current], () => {
+          phraseIndex.current = (phraseIndex.current + 1) % PHRASES.length;
+          schedule(() => type(PHRASES[phraseIndex.current], 1, cycle), 180);
+        });
+      }, 2200);
+    };
+
+    cycle();
+    return () => {
+      cancelled = true;
+      clearTimeout(timeout);
+    };
+  }, []);
+
+  return displayed;
+}
 
 function Cta({ to = "/how-it-works", children }: { to?: string; children: React.ReactNode }) {
   return (
@@ -24,60 +94,80 @@ function Cta({ to = "/how-it-works", children }: { to?: string; children: React.
 }
 
 export default function Home() {
+  const phrase = useTypeCycler();
+
   return (
     <div className="space-y-24">
       <PageMeta />
 
       {/* Full-bleed hero photo — flush under the nav.
           Breakout: center-anchored w-screen; -mt cancels the page's top padding. */}
-      <section>
-        <div className="relative left-1/2 -translate-x-1/2 w-screen -mt-16 md:-mt-24">
-          {HERO_IMAGE ? (
-            <img
-              src={HERO_IMAGE}
-              alt="Fishing boats in the harbor at dusk in Bellingham, Washington"
-              className="h-[46vh] md:h-[62vh] w-full object-cover object-[center_42%]"
-            />
-          ) : (
-            <div className="h-[46vh] md:h-[62vh] w-full bg-gradient-to-b from-faint/40 via-bg to-faint/25" />
-          )}
+      <section className="relative left-1/2 -translate-x-1/2 w-screen -mt-16 md:-mt-24 border-b border-line overflow-hidden bg-ink">
+        <img
+          src={HERO_IMAGE}
+          alt="Fishing boats in Bellingham harbor at dusk"
+          className="absolute inset-0 w-full h-full object-cover object-[58%_center]"
+        />
+        {/* Text sits on the left; the sunset stays bright on the right. */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-ink/50 via-ink/20 to-transparent"
+          aria-hidden="true"
+        />
+        <div className="relative max-w-6xl mx-auto px-6 lg:px-12 min-h-[clamp(36rem,68svh,42rem)] pt-12 pb-12 md:pb-14 lg:pb-16 flex flex-col justify-end">
+          <div className="max-w-4xl">
+            <h1
+              className="text-paper max-w-4xl md:text-[2.75rem] lg:text-[3.4rem] leading-[1.08] mb-5"
+              style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
+            >
+              Good businesses around here deserve{" "}
+              <br className="hidden md:block" />
+              software as good as they are.
+            </h1>
 
-          {/* Overlay is desktop-only: on mobile there isn't room for
-              both the photo and the words, so the text drops below. */}
-              <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/15 to-transparent" aria-hidden="true" />
-              <div className="hidden md:block absolute inset-x-0 bottom-0">
-                <div className="max-w-6xl mx-auto px-6 lg:px-12 pb-14 lg:pb-16">
-                  <h1 className="mb-5 text-paper max-w-4xl md:text-[2.75rem] lg:text-[3.4rem] leading-[1.08]">
-                    Good businesses around here deserve
-                    <br />
-                    software as good as they are.
-                  </h1>
-                  <p className="text-paper/85 text-lg md:text-xl leading-relaxed max-w-2xl mb-8">
-                    Madrona is a small, senior team in Bellingham. We figure
-                    out what your business actually needs, then we make it
-                    real ourselves.
-                  </p>
-                  <Cta>See how the first conversation works</Cta>
-                </div>
+            <p
+              className="text-paper/85 text-lg md:text-xl leading-relaxed max-w-3xl mb-8 md:mb-9"
+              style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
+            >
+              Madrona is a small, senior team in Bellingham. We find the
+              digital problem holding your business back, then plan and
+              build the fix ourselves.
+            </p>
+
+            <div className="border-t border-paper/30 pt-6 max-w-3xl">
+              <p
+                className="font-sans text-base md:text-lg font-medium text-paper/90 mb-2"
+                style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
+              >
+                There’s never been a better time to
+              </p>
+              <div
+                className="font-serif font-medium text-[clamp(1.75rem,3vw,2.6rem)] leading-[1.08] tracking-[-0.035em] text-madrona-light min-h-[2.2em] md:min-h-[1.1em]"
+                style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
+                aria-hidden="true"
+              >
+                <span>…{phrase}</span>
+                <span className="inline-block w-[0.06em] h-[0.85em] bg-madrona-light ml-[0.08em] align-[-0.04em] animate-[cursor-blink_1s_steps(2,start)_infinite]" />
               </div>
-        </div>
+              <span className="sr-only">
+                Make it happen, fix that website, reach new customers,
+                implement agentic AI, go direct to customers, or test new ideas.
+              </span>
+            </div>
 
-        {/* Mobile hero text: the overlay needs room the phone doesn't have. */}
-        <div className="max-w-3xl pt-10 md:hidden">
-          <h1 className="mb-6 text-balance">
-            Good businesses around here deserve software as good as they are.
-          </h1>
-          <div className="max-w-2xl">
-            <Breath>
-              Madrona is a small, senior team in Bellingham. We figure out
-              what your business actually needs, then we make it real
-              ourselves.
-            </Breath>
-          </div>
-          <div className="mt-8">
-            <Cta>See how the first conversation works</Cta>
+            <div className="mt-9">
+              <Link
+                to="/how-it-works"
+                className="press inline-flex items-center gap-3 bg-madrona text-paper px-7 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
+              >
+                See how the first conversation works
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            </div>
           </div>
         </div>
+        <p className="absolute bottom-5 right-6 lg:right-12 text-[10px] uppercase tracking-[0.16em] text-paper/70 m-0">
+          Bellingham, Washington
+        </p>
       </section>
 
       <HomeBody />
@@ -92,7 +182,6 @@ export function HomeBody() {
 
   return (
     <>
-
       {/* Why we exist — the owner's words, then ours */}
       <section className="max-w-2xl">
         <div className="mb-6"><Marker index="01" /></div>
