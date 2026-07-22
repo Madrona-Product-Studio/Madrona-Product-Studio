@@ -12,6 +12,9 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import StudioBrief from "./pages/StudioBrief";
 import HomeLab from "./pages/HomeLab";
+import HomeV3 from "./pages/HomeV3";
+import HomeV4 from "./pages/HomeV4";
+import HomeV5 from "./pages/HomeV5";
 
 export default function App() {
   return (
@@ -31,6 +34,9 @@ export default function App() {
           {/* Internal working pages — not in nav, not prerendered. */}
           <Route path="brief" element={<StudioBrief />} />
           <Route path="home-lab" element={<HomeLab />} />
+          <Route path="home-v3" element={<HomeV3 />} />
+          <Route path="home-v4" element={<HomeV4 />} />
+          <Route path="home-v5" element={<HomeV5 />} />
         </Route>
       </Routes>
     </BrowserRouter>

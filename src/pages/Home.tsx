@@ -24,10 +24,6 @@ function Cta({ to = "/how-it-works", children }: { to?: string; children: React.
 }
 
 export default function Home() {
-  const proofWork = caseStudies.filter((s) =>
-    ["lila-trips", "san-juan-boating-guide"].includes(s.slug),
-  );
-
   return (
     <div className="space-y-24">
       <PageMeta />
@@ -83,6 +79,19 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <HomeBody />
+    </div>
+  );
+}
+
+export function HomeBody() {
+  const proofWork = caseStudies.filter((s) =>
+    ["lila-trips", "san-juan-boating-guide"].includes(s.slug),
+  );
+
+  return (
+    <>
 
       {/* Why we exist — the owner's words, then ours */}
       <section className="max-w-2xl">
@@ -194,6 +203,6 @@ export default function Home() {
         <h2 className="mb-6">Tell us about your business.</h2>
         <Cta>Book the first conversation</Cta>
       </section>
-    </div>
+    </>
   );
 }
