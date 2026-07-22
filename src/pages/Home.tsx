@@ -128,9 +128,9 @@ export default function Home() {
               className="text-paper/85 text-lg md:text-xl leading-relaxed max-w-3xl mb-8 md:mb-9"
               style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
             >
-              Madrona is a small, senior team in Bellingham. We find the
-              digital problem holding your business back, then plan and
-              build the fix ourselves.
+              Madrona is a small, senior digital team in the PNW. We focus
+              on the problems holding your business back, then build the
+              solutions ourselves.
             </p>
 
             <div className="border-t border-paper/30 pt-6 max-w-3xl">
