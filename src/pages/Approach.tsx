@@ -53,14 +53,14 @@ export default function Approach() {
         <h2 className="mb-5">Let's build something.</h2>
         <p className="text-ink70 text-lg mb-8 leading-relaxed">
           See <Link to="/services" className="text-madrona hover:text-madrona-dark transition-colors">what we do</Link>,
-          or start where every engagement starts: a free 45-minute
+          or start where every engagement starts: a free 30-minute
           conversation with a published agenda.
         </p>
         <Link
           to="/how-it-works"
           className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
         >
-          See how it works
+          Book a 30m free chat
         </Link>
       </section>
     </div>

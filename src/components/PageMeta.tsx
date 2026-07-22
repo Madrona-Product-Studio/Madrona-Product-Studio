@@ -7,7 +7,7 @@ interface Props {
 
 const SITE_NAME = "Madrona Product Studio";
 const DEFAULT_DESCRIPTION =
-  "A small, senior product studio in Bellingham, Washington. We help companies figure out what to build, then build it. Every engagement starts with a free 45-minute conversation.";
+  "A small, senior product studio in Bellingham, Washington. We help companies figure out what to build, then build it. Every engagement starts with a free 30-minute conversation.";
 
 export default function PageMeta({ title, description }: Props) {
   const fullTitle = title ? `${title} · ${SITE_NAME}` : `${SITE_NAME} · Bellingham, Washington`;

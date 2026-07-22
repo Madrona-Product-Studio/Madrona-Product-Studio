@@ -62,7 +62,7 @@ export default function Contact() {
         <p className="text-ink70 text-lg leading-relaxed mb-10">
           Whether you're shaping a strategy, proving a concept, or running a
           business that could use a hand, the first step is the same: a free
-          45-minute conversation, and{" "}
+          30-minute conversation, and{" "}
           <Link to="/how-it-works" className="text-madrona hover:text-madrona-dark transition-colors">
             the agenda is published
           </Link>

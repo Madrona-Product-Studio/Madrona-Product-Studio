@@ -154,14 +154,14 @@ export default function AgenticOperations() {
       <section className="max-w-2xl border-t border-line pt-16">
         <h2 className="mb-5">Curious what this looks like on your operation?</h2>
         <p className="text-ink70 text-lg mb-8 leading-relaxed">
-          That's a 45-minute conversation, and it's free. We'll tell you in
+          That's a 30-minute conversation, and it's free. We'll tell you in
           writing where agents would actually help, and where they wouldn't.
         </p>
         <Link
           to="/how-it-works"
           className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
         >
-          See how it works
+          Book a 30m free chat
         </Link>
       </section>
     </div>

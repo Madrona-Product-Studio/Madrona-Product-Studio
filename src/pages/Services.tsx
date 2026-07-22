@@ -127,7 +127,7 @@ export default function Services() {
       <section className="max-w-2xl border-t border-line pt-16">
         <h2 className="mb-5">Not sure which part you need?</h2>
         <p className="text-ink70 text-lg mb-8 leading-relaxed">
-          That's what the first conversation is for. Forty-five minutes,
+          That's what the first conversation is for. Thirty minutes,
           free, with a published agenda. We'll tell you where we'd start,
           in writing, whether or not you hire us.
         </p>
@@ -135,7 +135,7 @@ export default function Services() {
           to="/how-it-works"
           className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
         >
-          See how it works
+          Book a 30m free chat
         </Link>
       </section>
     </div>

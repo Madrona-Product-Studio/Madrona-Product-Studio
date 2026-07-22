@@ -159,7 +159,7 @@ export default function Home() {
                 to="/how-it-works"
                 className="press inline-flex items-center gap-3 bg-madrona text-paper px-7 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
               >
-                See how the first conversation works
+                Book a 30m free chat
                 <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
@@ -292,7 +292,7 @@ export function HomeBody() {
       {/* CTA */}
       <section className="max-w-2xl border-t border-line pt-14">
         <h2 className="mb-6">Tell us about your business.</h2>
-        <Cta>Book the first conversation</Cta>
+        <Cta>Book a 30m free chat</Cta>
       </section>
     </>
   );

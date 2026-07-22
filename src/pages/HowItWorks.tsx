@@ -47,7 +47,7 @@ export default function HowItWorks() {
     <div className="space-y-24">
       <PageMeta
         title="How it works"
-        description="A free 45-minute conversation with a published agenda, a short written assessment, then a scoped proposal if it makes sense. How every Madrona engagement starts."
+        description="A free 30-minute conversation with a published agenda, a short written assessment, then a scoped proposal if it makes sense. How every Madrona engagement starts."
       />
 
       {/* Intro */}
@@ -66,7 +66,7 @@ export default function HowItWorks() {
       <section className="max-w-2xl">
         <div className="mb-6"><Marker index="01" /></div>
         <Label className="block mb-4">Step one</Label>
-        <h2 className="mb-6">A 45-minute conversation. Free.</h2>
+        <h2 className="mb-6">A 30-minute conversation. Free.</h2>
         <div className="space-y-6 text-ink70 leading-relaxed">
           <p>
             We talk about your business, not about us. The agenda is published
@@ -83,7 +83,7 @@ export default function HowItWorks() {
         </ul>
         <div className="space-y-6 text-ink70 leading-relaxed">
           <p>
-            Forty-five minutes, not an hour. A tight conversation respects
+            Thirty minutes, not an hour. A tight conversation respects
             your day, and it's enough to see where the real opportunities
             sit. No pitch, no deck. You'll do most of the talking.
           </p>
@@ -121,7 +121,7 @@ export default function HowItWorks() {
           </p>
           <p>
             And if the assessment doesn't point anywhere? We'll say that too,
-            and you're out nothing but 45 minutes.
+            and you're out nothing but 30 minutes.
           </p>
         </div>
       </section>
@@ -148,7 +148,7 @@ export default function HowItWorks() {
           Tell us a little about your business and a couple of times that
           work. We'll take it from there.
         </p>
-        <BookButton>Book your 45 minutes</BookButton>
+        <BookButton>Book a 30m free chat</BookButton>
       </section>
     </div>
   );

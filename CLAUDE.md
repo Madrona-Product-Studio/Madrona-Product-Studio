@@ -120,9 +120,11 @@ alternative fonts for variety — stick to these two, vary weight and size.
 Every page should be able to route here. Three steps, published on
 `/how-it-works`:
 
-1. **Free 45-minute conversation** — published agenda: where you're at,
+1. **Free 30-minute conversation** — published agenda: where you're at,
    where you've been, the biggest opportunities to grow or get more
-   efficient, and what's already on your mind.
+   efficient, and what's already on your mind. (Shortened from 45 in
+   canon 2026-07-21.) The main CTA sitewide is **"Book a 30m free chat"**
+   (Charlie, 2026-07-22).
 2. **Written assessment** — a short written read on where the studio can
    help (and where it can't). The client keeps it either way.
 3. **Scoped proposal** — scope, cost, and approach. First engagements are
@@ -133,6 +135,13 @@ Booking currently routes through `/contact`; a Cal.com link will replace
 it when the account exists (see `BOOKING_URL` in `HowItWorks.tsx`).
 
 ## Service architecture (the lifecycle model — site IA follows it)
+
+> ⚠️ **Superseded in canon, rebuild pending:** the canon replaced this
+> lifecycle triad with **Grow / Retain / Operate** (internal vocabulary;
+> customer surfaces use symptom language). The services menu is being
+> redefined in `charlie-hq/briefs/2026-07-22-services-architecture.md`;
+> this section gets rewritten when that brief is signed off. Until then,
+> don't build new work against the triad below.
 
 `/services` is organized by the client's business lifecycle, offer-led:
 
@@ -163,7 +172,7 @@ The three engagement shapes live on `/how-it-works` as the shapes a
   flavored), recent work (with pillars line), how-it-works teaser,
   contact CTA.
 - **How it works** — the 3-step engagement model with the published
-  45-minute agenda + the proposal shapes.
+  30-minute agenda + the proposal shapes.
 - **Services** — the lifecycle model: demand / operations / channel &
   fulfillment, with the agentic-operations flagship callout.
 - **Agentic operations** — flagship page: the idea, the industry-agent
