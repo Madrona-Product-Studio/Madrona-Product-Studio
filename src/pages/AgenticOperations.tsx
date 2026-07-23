@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import PageMeta from "../components/PageMeta";
-import BookCta from "../components/BookCta";
+import ConnectCta from "../components/ConnectCta";
 import { Label, Marker, Breath } from "../components/swiss";
 
 // Public demo only. Never link the real HQ / Helm instance from the site.
@@ -205,7 +205,7 @@ export default function AgenticOperations() {
           That's a 30-minute conversation, and it's free. We'll tell you in
           writing where agents would actually help, and where they wouldn't.
         </p>
-        <BookCta>Book a 30m free chat</BookCta>
+        <ConnectCta>Let's connect</ConnectCta>
       </section>
     </div>
   );

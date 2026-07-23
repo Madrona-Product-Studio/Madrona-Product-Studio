@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Work from "./pages/Work";
@@ -9,7 +9,7 @@ import Services from "./pages/Services";
 import AgenticOperations from "./pages/AgenticOperations";
 import Writing from "./pages/Writing";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Connect from "./pages/Connect";
 import StudioBrief from "./pages/StudioBrief";
 import HomeLab from "./pages/HomeLab";
 
@@ -27,7 +27,9 @@ export default function App() {
           <Route path="approach" element={<Approach />} />
           <Route path="writing" element={<Writing />} />
           <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
+          <Route path="connect" element={<Connect />} />
+          {/* Legacy path redirects to the unified Connect page. */}
+          <Route path="contact" element={<Navigate to="/connect" replace />} />
           {/* Internal working pages — not in nav, not prerendered. */}
           <Route path="brief" element={<StudioBrief />} />
           <Route path="home-lab" element={<HomeLab />} />

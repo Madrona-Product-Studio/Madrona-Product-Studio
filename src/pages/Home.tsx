@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
 import CaseStudyCard from "../components/CaseStudyCard";
-import BookCta from "../components/BookCta";
+import ConnectCta from "../components/ConnectCta";
 import PageMeta from "../components/PageMeta";
 import { Label, Marker } from "../components/swiss";
 
@@ -149,10 +149,10 @@ export default function Home() {
             </div>
 
             <div className="mt-9">
-              <BookCta className="press inline-flex items-center gap-3 bg-madrona text-paper px-7 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline">
-                Book a 30m free chat
+              <ConnectCta className="press inline-flex items-center gap-3 bg-madrona text-paper px-7 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline">
+                Let's connect
                 <span aria-hidden="true">&rarr;</span>
-              </BookCta>
+              </ConnectCta>
             </div>
           </div>
         </div>
@@ -275,7 +275,7 @@ export function HomeBody() {
       {/* CTA */}
       <section className="max-w-2xl border-t border-line pt-14">
         <h2 className="mb-6">Tell us about your business.</h2>
-        <BookCta>Book a 30m free chat</BookCta>
+        <ConnectCta>Let's connect</ConnectCta>
       </section>
     </>
   );

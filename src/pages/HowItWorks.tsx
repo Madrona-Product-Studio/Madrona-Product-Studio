@@ -1,6 +1,6 @@
 import PageMeta from "../components/PageMeta";
 import OfferingCard from "../components/OfferingCard";
-import BookCta from "../components/BookCta";
+import ConnectCta from "../components/ConnectCta";
 import { offerings } from "../data/offerings";
 import { Label, Marker, Breath } from "../components/swiss";
 
@@ -150,7 +150,7 @@ export default function HowItWorks() {
           Tell us a little about your business and a couple of times that
           work. We'll take it from there.
         </p>
-        <BookCta fallbackTo="/contact">Book a 30m free chat</BookCta>
+        <ConnectCta>Let's connect</ConnectCta>
       </section>
     </div>
   );

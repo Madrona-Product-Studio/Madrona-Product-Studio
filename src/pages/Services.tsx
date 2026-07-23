@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import PageMeta from "../components/PageMeta";
-import BookCta from "../components/BookCta";
+import ConnectCta from "../components/ConnectCta";
 import { Label, Marker, Breath } from "../components/swiss";
 
 // The service architecture is Grow / Retain / Operate (internal vocabulary;
@@ -120,7 +120,7 @@ export default function Services() {
           free, with a published agenda. We'll tell you where we'd start,
           in writing, whether or not you hire us.
         </p>
-        <BookCta>Book a 30m free chat</BookCta>
+        <ConnectCta>Let's connect</ConnectCta>
       </section>
     </div>
   );

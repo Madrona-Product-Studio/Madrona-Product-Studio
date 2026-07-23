@@ -64,11 +64,11 @@ const pages = {
     h1: 'About',
     body: 'Founded by Charlie Koch. A senior product leader at the center, with a trusted network of designers, engineers, and researchers. Based in Bellingham, Washington, serving Whatcom County and the Pacific Northwest.',
   },
-  '/contact': {
-    title: 'Contact · Madrona Product Studio',
-    description: "Tell us what you're building. We'll figure out together whether there's a fit.",
-    h1: "Let's talk about what you're building.",
-    body: "Whether you're shaping a strategy, proving a concept, or looking for a senior product partner, we'd love to hear what you're working on. Email hello@madronaproduct.com.",
+  '/connect': {
+    title: 'Connect · Madrona Product Studio',
+    description: 'Three ways to start: book a 30-minute call, send a message, or text. Every path begins with a free 30-minute conversation with a published agenda.',
+    h1: "Let's connect.",
+    body: "Whatever's easiest: book a 30-minute call, send a message, or text. Every way in starts the same, a free 30-minute conversation with a published agenda. Email hello@madronaproduct.com.",
   },
 };
 
