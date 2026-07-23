@@ -16,33 +16,33 @@ const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
 const pages = {
   '/': {
     title: 'Madrona Product Studio · Bellingham, Washington',
-    description: 'A small, senior product studio in Bellingham, Washington. We help companies figure out what to build, then build it. Every engagement starts with a free 45-minute conversation.',
+    description: 'A small, senior product studio in Bellingham, Washington. We help companies figure out what to build, then build it. Every engagement starts with a free 30-minute conversation.',
     h1: 'Good businesses around here deserve software as good as they are.',
-    body: 'Madrona is a small, senior team in Bellingham, Washington. We figure out what your business actually needs, then we make it real ourselves. Every engagement starts with a 45-minute conversation with a published agenda, then a written assessment that is yours to keep.',
+    body: 'Madrona is a small, senior digital team in the PNW. We focus on the problems holding your business back, then build the solutions ourselves. Every engagement starts with a free 30-minute conversation with a published agenda, then a written assessment that is yours to keep.',
   },
   '/work': {
     title: 'Work · Madrona Product Studio',
-    description: 'The work behind the offer: demand built for live products, an operation run on agents, and prototypes as the deliverable of strategy work.',
+    description: 'The work behind the offer: audiences earned for live products, an operation run on agents, and prototypes as the deliverable of strategy work.',
     h1: 'The work',
-    body: 'Demand: Lila Trips and the San Juan Boating Guide, brand and content taken to live audiences. Operations: Helm, the command surface our own studio runs on. Strategy made tangible: GardenHQ, Plainly, Aria Health, Lila Yoga, HikerLink, Utah Trip Guide.',
+    body: 'Getting found: Lila Trips and the San Juan Boating Guide, brand and content taken to live audiences. Running smoother: Helm, the command surface our own studio runs on. Strategy made tangible: GardenHQ, Plainly, Aria Health, Lila Yoga, HikerLink, Utah Trip Guide.',
   },
   '/how-it-works': {
     title: 'How it works · Madrona Product Studio',
-    description: 'A free 45-minute conversation with a published agenda, a short written assessment, then a scoped proposal if it makes sense. How every Madrona engagement starts.',
+    description: 'A free 30-minute conversation with a published agenda, a short written assessment, then a scoped proposal if it makes sense. How every Madrona engagement starts.',
     h1: 'How it works',
-    body: 'Step one: a free 45-minute conversation with a published agenda covering where you are at, where you have been, your biggest opportunities to grow or get more efficient, and what is already on your mind. Step two: a short written assessment of where we can help. Step three: a scoped proposal with scope, cost, and approach.',
+    body: 'Step one: a free 30-minute conversation with a published agenda covering where you are at, where you have been, what would better look like, your biggest opportunities to grow or get more efficient, and what is already on your mind. Step two: a short written assessment where every recommendation names its measure. Step three: a scoped proposal with scope, cost, approach, and what changes and how we will know.',
   },
   '/services': {
     title: 'Services · Madrona Product Studio',
-    description: 'Madrona works across the whole arc of a business: demand (brand, web, content, marketing, e-commerce), operations (blueprinting, efficiencies, AI agents), and channel & fulfillment (DTC, ordering, booking).',
+    description: 'Getting found, coming back, running smoother. New websites, brand, and online stores; loyalty and repeat ordering; workflow fixes and agentic AI on your real workflows. Every engagement names what would change.',
     h1: 'What we do',
-    body: 'Demand: brand, web presence, content, performance marketing, e-commerce. Operations: service blueprinting, efficiencies, AI agents and tools, with agentic operations as the flagship. Channel and fulfillment: direct-to-consumer channels, online ordering, booking, fulfillment support.',
+    body: 'Getting found: new websites, brand and positioning, content and marketing, online stores. Coming back: loyalty programs and memberships, repeat ordering, win-back and lifecycle email and SMS, reviews. Running smoother: workflow fixes, small tools with one job, agentic AI on your real workflows, with agentic operations as the flagship. Every engagement names its win before work starts.',
   },
   '/services/agentic-operations': {
     title: 'Agentic operations · Madrona Product Studio',
     description: 'Business agents on your real workflows, and one command surface that shows the whole operation. Madrona runs its own studio this way, and builds the same architecture for clients.',
     h1: 'Agentic operations',
-    body: 'Business agents working real workflows on a schedule, and a command surface rendered from one source of truth. A worked example: the industry agent, a base knowledge file, a scheduled sweep, a what-changed digest, signals routed to action. We run our own operation this way, with Helm as the command center. First engagements start with one agent and one dashboard card.',
+    body: 'Business agents working real workflows on a schedule, and a command surface rendered from one source of truth. The worked example is Berry Good Berry Farm, our demonstration business: an industry agent, an invoicing agent, a customer service agent, and the ordering surface. We run our own operation this way, with Helm as the command center. First engagements start with one agent and one dashboard card.',
   },
   '/approach': {
     title: 'Approach · Madrona Product Studio',

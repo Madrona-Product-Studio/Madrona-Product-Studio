@@ -5,4 +5,4 @@
 // set BOOKING_URL to that link and every CTA switches to direct booking.
 // Until then, CTAs route to /how-it-works, whose own button falls back to
 // the /contact form.
-export const BOOKING_URL: string | null = null;
+export const BOOKING_URL: string | null = "https://calendar.app.google/UsSNGWa1EdW6Az8aA";
