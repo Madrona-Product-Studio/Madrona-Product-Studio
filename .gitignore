@@ -26,5 +26,3 @@ public/**/*.webp
 *.njsproj
 *.sln
 *.sw?
-.vercel
-.env*

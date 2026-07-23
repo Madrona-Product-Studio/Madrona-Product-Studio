@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
 import PageMeta from "../components/PageMeta";
 
 declare global {
@@ -60,13 +59,8 @@ export default function Contact() {
       <section>
         <h1 className="mb-5">Let's talk about what you're building.</h1>
         <p className="text-ink70 text-lg leading-relaxed mb-10">
-          Whether you're shaping a strategy, proving a concept, or running a
-          business that could use a hand, the first step is the same: a free
-          30-minute conversation, and{" "}
-          <Link to="/how-it-works" className="text-madrona hover:text-madrona-dark transition-colors">
-            the agenda is published
-          </Link>
-          . Send a note and we'll reply with times.
+          Whether you're shaping a strategy, proving a concept, or looking for a
+          senior product partner, we'd love to hear what you're working on.
         </p>
 
         {status === "success" ? (

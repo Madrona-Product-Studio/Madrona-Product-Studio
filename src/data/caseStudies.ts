@@ -91,14 +91,6 @@ export interface CaseStudy {
   statusLabel?: string;
   /** Product maturity stage. Drives the homepage grouping and the status chip. */
   stage?: "concept" | "prototype" | "beta" | "live";
-  /**
-   * Which lifecycle muscle this work demonstrates. Drives the /work grouping:
-   * demand (brand/content/launch/growth) · operations (agents, command
-   * surface) · strategy (prototypes as the deliverable of strategy work).
-   */
-  lifecycle?: "demand" | "operations" | "strategy";
-  /** Optional one-line engagement framing shown under the tagline on /work. */
-  engagementLine?: string;
   /** Hide from the work lists (e.g., awaiting assets). Still reachable by direct URL. */
   hidden?: boolean;
   borderImages?: boolean;
@@ -149,9 +141,6 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "lila-trips",
     stage: "live",
-    lifecycle: "demand",
-    engagementLine:
-      "The demand work: a brand from scratch, content that earns trust, and a product taken to market and grown.",
     title: "Lila Trips",
     client: "Studio project",
     tagline:
@@ -305,7 +294,6 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "gardenhq",
     stage: "prototype",
-    lifecycle: "strategy",
     title: "GardenHQ",
     client: "Studio project",
     tagline:
@@ -409,9 +397,6 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "helm",
     stage: "beta",
-    lifecycle: "operations",
-    engagementLine:
-      "The operations work: one command surface over the whole studio, with agents doing the busywork behind it.",
     title: "Helm",
     client: "Studio project",
     tagline:
@@ -517,7 +502,6 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "aria-health",
     stage: "prototype",
-    lifecycle: "strategy",
     title: "Aria Health",
     client: "Studio project",
     tagline:
@@ -613,9 +597,6 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "san-juan-boating-guide",
     stage: "live",
-    lifecycle: "demand",
-    engagementLine:
-      "The demand work: purpose-built content and a community launch, from a standing start to a niche audience.",
     title: "San Juan Boating Guide",
     client: "Studio project",
     tagline:
@@ -724,7 +705,6 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "plainly",
     stage: "prototype",
-    lifecycle: "strategy",
     title: "Plainly",
     client: "Studio project",
     tagline:
@@ -829,7 +809,6 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "lila-yoga",
     stage: "prototype",
-    lifecycle: "strategy",
     title: "Lila Yoga",
     client: "Studio project",
     tagline:
@@ -943,7 +922,6 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "utah-trip-guide",
     stage: "concept",
-    lifecycle: "strategy",
     title: "Utah Trip Guide",
     client: "Studio project",
     tagline:
@@ -1047,7 +1025,6 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "hikerlink",
     stage: "concept",
-    lifecycle: "strategy",
     title: "HikerLink",
     client: "Studio project",
     tagline:
