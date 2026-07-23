@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import PageMeta from "../components/PageMeta";
 
 export default function About() {
   return (
     <div className="space-y-24">
-      <PageMeta title="About" description="Madrona Product Studio is led by Charlie Koch. Fifteen years of product leadership across outdoor, wellness, and health." />
+      <PageMeta title="About" description="Madrona Product Studio is led by Charlie Koch. Fifteen years of product leadership across outdoor, wellness, and health. Based in Bellingham, Washington." />
       <section className="max-w-2xl">
         <h1 className="mb-8">About</h1>
         <div className="space-y-6 text-ink70 text-lg leading-relaxed">
@@ -11,10 +12,16 @@ export default function About() {
             Fifteen years of product leadership at REI, Healthline, and Microsoft.
           </p>
           <p>
-            Charlie Koch started Madrona Product Studio after leading product
-            teams across outdoor, wellness, and health. The through line was
-            always the same: figure out what the product should be, then build
-            it with a small team that holds the full picture.
+            Charlie Koch started Madrona Product Studio after a career at the
+            junction of three threads: outdoor advocacy, adventure travel, and
+            health and wellness. The through line was always the same: figure
+            out what the product should be, then build it with a small team
+            that holds the full picture.
+          </p>
+          <p>
+            Plenty of product leaders have lived in one of those worlds.
+            Living at the intersection of all three is what makes the work
+            distinctive inside any one of them.
           </p>
           <p>
             The studio is one senior product lead at the center, with a trusted
@@ -60,10 +67,32 @@ export default function About() {
       <section className="max-w-2xl">
         <h2 className="mb-5">The name</h2>
         <p className="text-ink70 text-lg leading-relaxed">
-          Based in the Pacific Northwest. Named for the madrona tree, the one
-          that grows on the bluff, bark peeling, leaning out over the water. It
-          only grows where the edge meets the sea.
+          Named for the madrona tree, the one that grows on the bluff, bark
+          peeling, leaning out over the water. It only grows where the edge
+          meets the sea.
         </p>
+      </section>
+
+      {/* From here */}
+      <section className="max-w-2xl">
+        <h2 className="mb-5">From here</h2>
+        <div className="space-y-6 text-ink70 text-lg leading-relaxed">
+          <p>
+            The studio is based in Bellingham, and Whatcom County isn't a
+            market we researched. It's home. The berries in our fridge come
+            from farm stands out past Lynden, Saturday mornings happen at the
+            farmers market, Fridays include a shift at the food bank, and some
+            weekends go to stewarding land with the Whatcom Land Trust.
+          </p>
+          <p>
+            So if you run a business around here, a farm, a shop, an
+            outfitter, a nonprofit, we'd especially like to talk.{" "}
+            <Link to="/how-it-works" className="text-madrona hover:text-madrona-dark transition-colors">
+              The first conversation is free and the agenda is published.
+            </Link>{" "}
+            Neighbors first.
+          </p>
+        </div>
       </section>
 
       {/* Contact */}
@@ -78,7 +107,7 @@ export default function About() {
               hello@madronaproduct.com
             </a>
           </p>
-          <p className="text-ink70">Pacific Northwest</p>
+          <p className="text-ink70">Bellingham, Washington</p>
         </div>
       </section>
     </div>

@@ -4,14 +4,27 @@ This file is the source of truth for brand and design decisions on this site.
 Read it before making styling changes, generating mockups, or producing
 anything visual.
 
+**Positioning canon lives elsewhere:** `charlie-hq/madrona-positioning.md`
+is the single source of truth for what Madrona is, who it serves, and how
+it's positioned. This file executes that positioning visually; when the two
+disagree, the canon wins and this file gets updated.
+
 ## Brand positioning
 
-Madrona Product Studio is a small, senior product studio based in the Pacific
-Northwest. Founded by Charlie Koch. The positioning is a senior product lead
+Madrona Product Studio is a small, senior product studio in Bellingham,
+Washington. Founded by Charlie Koch. The positioning is a senior product lead
 at the center, with a trusted network of designers, engineers, and researchers
-who come in as engagements require.
+who come in as engagements require. Local identity is real, not decorative:
+Bellingham/Whatcom is home ("from here"), and the studio serves the Pacific
+Northwest and beyond.
 
-**One-liner:** We help companies figure out what to build — and then build it.
+**One-liner:** We help companies figure out what to build, then build it.
+
+**Three pillars (domain identity, intersection as narrative):** outdoor
+advocacy · adventure travel · health & wellness. A client or project fits
+by sitting in one pillar; the story is that the studio has lived at the
+junction of all three. The local Bellingham/Whatcom identity is separate:
+geography-first, capability-led, and does not need to map to the pillars.
 
 **Voice:** "We" throughout, direct, confident, personal, not corporate.
 Editorial, not promotional. Restraint is the point.
@@ -102,28 +115,106 @@ alternative fonts for variety — stick to these two, vary weight and size.
    landscape illustrations, no generic consultancy graphics. Photography
    (when real) should be environmental and PNW-coded.
 
-## Offerings (for reference in copy)
+## The engagement model (the front door)
 
-1. **Strategy sprints** (2–6 weeks) — sharp point of view on the question
-   blocking the roadmap.
-2. **Rapid prototyping** (4–12 weeks) — a working prototype, fast. Built
-   well enough to test the hypothesis and show what the full version
-   should be.
-3. **Fractional product leadership** (3–6 month retainers) — embedded
-   senior product voice for early-stage teams.
+Every page should be able to route here. Three steps, published on
+`/how-it-works`:
+
+1. **Free 30-minute conversation** — published agenda: where you're at,
+   where you've been, the biggest opportunities to grow or get more
+   efficient, and what's already on your mind. (Shortened from 45 in
+   canon 2026-07-21.) The main CTA sitewide is **"Book a 30m free chat"**
+   (Charlie, 2026-07-22).
+2. **Written assessment** — a short written read on where the studio can
+   help (and where it can't). The client keeps it either way.
+3. **Scoped proposal** — scope, cost, and approach. First engagements are
+   deliberately small, with visible payback. No prices published yet
+   (Charlie's call, pending).
+
+Booking currently routes through the site funnel (/how-it-works →
+/contact). The swap point is `BOOKING_URL` in `src/data/booking.ts`:
+set it to the Google Calendar appointment-schedule share link (the
+settled recommendation, not Cal.com) and every "Book a 30m free chat"
+CTA sitewide switches to direct booking via the shared `<BookCta>`
+component.
+
+## Service architecture (Grow / Retain / Operate — site IA follows it)
+
+Settled 2026-07-23 (Charlie sign-off on
+`charlie-hq/briefs/2026-07-22-services-architecture.md`). Internal
+vocabulary is **Grow / Retain / Operate** — customer surfaces never say
+those words. Each bucket appears as a symptom question (the "door"), an
+impact line in the owner's terms, and plain-words offerings:
+
+1. **Grow — "Getting found."** Door: "Selling something great behind a
+   web presence that doesn't do it justice?" Offerings: new websites,
+   brand, content and marketing, online stores. Impact: more people find
+   you, and more of them buy.
+2. **Retain — "Coming back."** Door: "People buy from you once, then you
+   never hear from them again?" Offerings: loyalty and memberships,
+   repeat ordering, win-back and lifecycle email/SMS, reviews. Impact:
+   customers come back more often.
+3. **Operate — "Running smoother."** Door: "Watching the week disappear
+   into work that software should be doing?" Offerings: workflow fixes,
+   small tools with one job, agentic AI. Impact: hours back every week.
+   **Flagship: agentic operations** (`/services/agentic-operations`) —
+   agents + one command surface. The worked example is **Berry Good
+   Berry Farm, openly framed as our demonstration business** (industry
+   agent, invoicing agent, customer service agent, the ordering
+   surface); dogfood proof is our own operation (Helm demo mode
+   `?demo=1` — NEVER link the real HQ instance).
+
+**Channel/fulfillment is not a bucket:** first-purchase path → Grow,
+repeat/standing ordering → Retain, behind-the-counter fulfillment →
+Operate.
+
+**Signal is method, not a service:** "real customers before real money"
+lives on `/how-it-works`, not the services menu.
+
+**Success criteria run through everything:** every engagement names its
+win up front in the owner's terms. The published agenda includes "what
+would better look like"; every assessment recommendation names its
+measure; every scoped proposal item says what changes and how we'll
+know. Impact is an honest expectation, never a guarantee — no "3x your
+revenue" energy. Proof links are wired copy-first: offerings ship as
+copy, case studies and Berry Good demos link in as each proof lands.
+
+The three engagement shapes live on `/how-it-works` as the shapes a
+*proposal* takes (they are project shapes, not the service architecture):
+
+1. **Strategy sprint** (2–6 weeks) — sharp point of view on the question
+   blocking the roadmap, delivered as a working prototype.
+2. **Signal sprint** (4–12 weeks) — the prototype in front of real users.
+   Real usage, real signal.
+3. **Product stewardship** (3–6 month retainers) — embedded fractional
+   senior product voice.
 
 ## Content architecture
 
-- **Home** — hero, manifesto, offerings summary, selected work, writing
-  teaser, contact CTA.
-- **Work** — split between client engagements (REI Membership, REI
-  Adventures, Healthline Loyalty) and studio projects (Lila Trips, Berry
-  Good Berry Farm, Fed).
+- **Home** — typed hero (settled headline + descriptor + cycling
+  "never been a better time to" line), Why-we-exist two-column spread,
+  three question doors (one per bucket), agenda strip, curated proof,
+  contact CTA.
+- **How it works** — the 3-step engagement model with the published
+  30-minute agenda (incl. "what would better look like"), the Signal
+  block (real customers before real money), + the proposal shapes.
+- **Services** — the three doors: getting found / coming back / running
+  smoother, each with impact line and offerings, agentic-operations
+  flagship callout, success-criteria strip.
+- **Agentic operations** — flagship page: the idea, the Berry Good
+  worked example (the agent cast), the anatomy, the dogfood proof
+  (Helm demo), start-tiny framing.
+- **Work** — 9 studio case studies grouped by maturity stage
+  (Live → Beta → Prototype → Concept).
 - **Case study pages** — template: Opportunity → Thesis → What We Did →
   What We Learned → Status.
-- **Approach** — how we work, philosophy, more detail on offerings.
-- **Writing** — article/essay index.
-- **About** — Charlie's background, the studio, the network.
+- **Approach** — philosophy only: manifesto, the rhythm.
+- **Writing** — placeholder; hidden from nav and noindexed until real
+  articles ship.
+- **About** — Charlie's background (three-pillar framing), the studio,
+  building in the open, the name, the Bellingham "from here" block,
+  contact.
+- **Contact** — 3-field form → `/api/contact` (Resend).
 
 ## Studio signature footer (planned, not yet built)
 

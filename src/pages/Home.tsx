@@ -1,283 +1,267 @@
-import { Link, useSearchParams } from "react-router-dom";
-import { caseStudies } from "../data/caseStudies";
-import { getReferralContext } from "../data/referralContext";
-import CaseStudyCard from "../components/CaseStudyCard";
-import PageMeta from "../components/PageMeta";
-import { Label, Marker, Breath } from "../components/swiss";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { caseStudies } from "../data/caseStudies";
+import CaseStudyCard from "../components/CaseStudyCard";
+import BookCta from "../components/BookCta";
+import PageMeta from "../components/PageMeta";
+import { Label, Marker } from "../components/swiss";
 
-// Reveal a section once it scrolls into view. Subtle, one-time, and gated:
-// the hidden start state lives under html.js-reveal (set before paint), so
-// content is never hidden for no-JS, crawlers, or reduced-motion users.
-function useReveal<T extends HTMLElement = HTMLDivElement>() {
-  const ref = useRef<T>(null);
-  const [shown, setShown] = useState(false);
+/**
+ * The homepage — typed hero promoted from the home-v5 study (Charlie,
+ * 2026-07-22). Full-bleed harbor photo with the settled headline and
+ * descriptor, a cycling "never been a better time to…" line, then the
+ * settled body: Why we exist, question-led What we do, agenda strip,
+ * curated proof, CTA.
+ */
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (!document.documentElement.classList.contains("js-reveal")) {
-      setShown(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "0px 0px -12% 0px", threshold: 0.1 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
+// Charlie's pick (IMG_2872): the working harbor at dusk. Re-encoded to
+// strip GPS EXIF and shrink for web; original stays untracked.
+const HERO_IMAGE = "/images/hero-harbor-dusk.jpg";
 
-  return { ref, shown };
-}
+const PHRASES = [
+  "make it happen.",
+  "fix that website.",
+  "reach new customers.",
+  "implement agentic AI.",
+  "go direct to customers.",
+  "test some new ideas.",
+];
 
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReduced(mq.matches);
-    const onChange = () => setReduced(mq.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-  return reduced;
-}
-
-function useWordCycler(words: string[], enabled = true) {
-  const [displayed, setDisplayed] = useState(words[0]);
-  const [isActive, setIsActive] = useState(false);
-  const wordRef = useRef(0);
+function useTypeCycler() {
+  const [displayed, setDisplayed] = useState(PHRASES[0]);
+  const phraseIndex = useRef(0);
 
   useEffect(() => {
-    // Respect reduced motion — hold the first word, skip the typing loop.
-    if (!enabled) {
-      setDisplayed(words[0]);
-      setIsActive(false);
-      return;
-    }
-    const typeSpeed = 80;
-    const deleteSpeed = 50;
-    const holdDelay = 2400;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     let cancelled = false;
+    let timeout: ReturnType<typeof setTimeout>;
+    const schedule = (callback: () => void, delay: number) => {
+      timeout = setTimeout(() => {
+        if (!cancelled) callback();
+      }, delay);
+    };
 
-    function schedule(fn: () => void, ms: number) {
-      const id = setTimeout(() => { if (!cancelled) fn(); }, ms);
-      return id;
-    }
-
-    function deleteWord(current: string, onDone: () => void) {
+    const remove = (value: string, done: () => void) => {
       if (cancelled) return;
-      if (current.length === 0) { onDone(); return; }
+      if (value.length === 0) {
+        done();
+        return;
+      }
       schedule(() => {
-        const next = current.slice(0, -1);
+        const next = value.slice(0, -1);
         setDisplayed(next);
-        deleteWord(next, onDone);
-      }, deleteSpeed);
-    }
+        remove(next, done);
+      }, 34);
+    };
 
-    function typeWord(target: string, i: number, onDone: () => void) {
+    const type = (value: string, character: number, done: () => void) => {
       if (cancelled) return;
-      if (i > target.length) { setIsActive(false); onDone(); return; }
+      if (character > value.length) {
+        done();
+        return;
+      }
       schedule(() => {
-        setDisplayed(target.slice(0, i));
-        typeWord(target, i + 1, onDone);
-      }, typeSpeed);
-    }
+        setDisplayed(value.slice(0, character));
+        type(value, character + 1, done);
+      }, 52);
+    };
 
-    function cycle() {
-      if (cancelled) return;
+    const cycle = () => {
       schedule(() => {
-        setIsActive(true);
-        const currentWord = words[wordRef.current];
-        deleteWord(currentWord, () => {
-          if (cancelled) return;
-          wordRef.current = (wordRef.current + 1) % words.length;
-          const nextWord = words[wordRef.current];
-          schedule(() => {
-            typeWord(nextWord, 1, cycle);
-          }, 300);
+        remove(PHRASES[phraseIndex.current], () => {
+          phraseIndex.current = (phraseIndex.current + 1) % PHRASES.length;
+          schedule(() => type(PHRASES[phraseIndex.current], 1, cycle), 180);
         });
-      }, holdDelay);
-    }
+      }, 2200);
+    };
 
     cycle();
-    return () => { cancelled = true; };
-  }, [words, enabled]);
-
-  const isTyping = displayed.length > 0 && displayed !== words[wordRef.current];
-
-  return { displayed, isTyping, isActive };
-}
-
-function ThinkingDots({ active }: { active: boolean }) {
-  return (
-    <div className="flex items-center gap-1.5 h-3 mb-6" aria-hidden="true">
-      {[0, 1, 2].map((i) => (
-        <span
-          key={i}
-          className={`block w-[14px] h-[14px] rounded-full bg-madrona ${
-            active ? "animate-dot-bounce" : ""
-          }`}
-          style={active ? { animationDelay: `${i * 0.15}s` } : undefined}
-        />
-      ))}
-    </div>
-  );
-}
-
-function WordCyclerText({ displayed, isTyping }: { displayed: string; isTyping: boolean }) {
-  return (
-    <span>
-      {displayed}
-      {isTyping ? (
-        <span className="inline-block w-[3px] h-[0.8em] bg-madrona/60 ml-0.5 align-text-bottom animate-[cursor-blink_1s_steps(2,start)_infinite]" />
-      ) : displayed.length > 0 ? (
-        <span className="text-madrona">.</span>
-      ) : (
-        <span className="inline-block w-[3px] h-[0.8em] bg-madrona/60 ml-0.5 align-text-bottom animate-[cursor-blink_1s_steps(2,start)_infinite]" />
-      )}
-    </span>
-  );
-}
-
-function CapabilityCard({ title, body, delay }: { title: string; body: string; delay: number }) {
-  const reveal = useReveal();
-  return (
-    <div
-      ref={reveal.ref}
-      className="reveal"
-      data-shown={reveal.shown}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      <div className="mb-4"><span className="inline-block w-[14px] h-[14px] rounded-full bg-madrona" aria-hidden="true" /></div>
-      <h3 className="text-lg mb-3 text-ink">{title}</h3>
-      <p className="text-ink70 text-sm leading-relaxed">{body}</p>
-    </div>
-  );
-}
-
-export default function Home() {
-  const [searchParams] = useSearchParams();
-  const referral = getReferralContext(searchParams);
-  const featuredWork = caseStudies.filter((s) => s.category === "recent" && !s.hidden).slice(0, 2);
-  const cyclerWords = useRef(["lightning fast", "worth shipping", "with style", "no fluff", "rain or shine", "people love"]);
-  const reducedMotion = usePrefersReducedMotion();
-  const { displayed, isTyping, isActive } = useWordCycler(cyclerWords.current, !reducedMotion);
-
-  // Staggered hero animation
-  const [heroReady, setHeroReady] = useState(false);
-  useEffect(() => {
-    const t = setTimeout(() => setHeroReady(true), 100);
-    return () => clearTimeout(t);
+    return () => {
+      cancelled = true;
+      clearTimeout(timeout);
+    };
   }, []);
 
-  const s1 = useReveal();
-  const s2 = useReveal();
-  const s3 = useReveal();
-  const s4 = useReveal();
-  const s5 = useReveal();
+  return displayed;
+}
+
+
+export default function Home() {
+  const phrase = useTypeCycler();
 
   return (
     <div className="space-y-24">
       <PageMeta />
 
-      {/* Referral greeting */}
-      {referral?.greeting && (
-        <div className="pt-4 -mb-28">
-          <span className="text-xs font-medium uppercase tracking-widest text-madrona/60">
-            {referral.greeting}
-          </span>
-        </div>
-      )}
-
-      {/* Hero */}
-      <section className="max-w-3xl pt-8 md:pt-16">
-        {referral?.headline ? (
-          <>
-            <h1 className={`mb-6 leading-tight transition-[opacity,transform] duration-500 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-              {referral.headline}
+      {/* Full-bleed hero photo — flush under the nav.
+          Breakout: center-anchored w-screen; -mt cancels the page's top padding. */}
+      <section className="relative left-1/2 -translate-x-1/2 w-screen -mt-16 md:-mt-24 border-b border-line overflow-hidden bg-ink">
+        <img
+          src={HERO_IMAGE}
+          alt="Fishing boats in Bellingham harbor at dusk"
+          className="absolute inset-0 w-full h-full object-cover object-[58%_center]"
+        />
+        {/* Text sits on the left; the sunset stays bright on the right. */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-ink/50 via-ink/20 to-transparent"
+          aria-hidden="true"
+        />
+        <div className="relative max-w-6xl mx-auto px-6 lg:px-12 min-h-[clamp(36rem,68svh,42rem)] pt-12 pb-12 md:pb-14 lg:pb-16 flex flex-col justify-end">
+          <div className="max-w-4xl">
+            <h1
+              className="text-paper max-w-4xl md:text-[2.75rem] lg:text-[3.4rem] leading-[1.08] mb-5"
+              style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
+            >
+              Good businesses around here deserve{" "}
+              <br className="hidden md:block" />
+              software as good as they are.
             </h1>
-            <p className={`text-lg md:text-xl text-ink70 max-w-2xl leading-relaxed mb-10 transition-[opacity,transform] duration-500 delay-150 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-              {referral.subhead}
+
+            <p
+              className="text-paper/85 text-lg md:text-xl leading-relaxed max-w-3xl mb-8 md:mb-9"
+              style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
+            >
+              Madrona is a small, senior digital team in the PNW. We focus
+              on the problems holding your business back, then build the
+              solutions ourselves.
             </p>
-          </>
-        ) : (
-          <>
-            <div className={`transition-opacity duration-500 ease-snap ${heroReady ? "opacity-100" : "opacity-0"}`}>
-              <ThinkingDots active={isActive} />
+
+            <div className="border-t border-paper/30 pt-6 max-w-3xl">
+              <p
+                className="font-sans text-base md:text-lg font-medium text-paper/90 mb-2"
+                style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
+              >
+                There’s never been a better time to
+              </p>
+              <div
+                className="font-serif font-medium text-[clamp(1.75rem,3vw,2.6rem)] leading-[1.08] tracking-[-0.035em] text-madrona-light min-h-[2.2em] md:min-h-[1.1em]"
+                style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
+                aria-hidden="true"
+              >
+                <span>…{phrase}</span>
+                <span className="inline-block w-[0.06em] h-[0.85em] bg-madrona-light ml-[0.08em] align-[-0.04em] animate-[cursor-blink_1s_steps(2,start)_infinite]" />
+              </div>
+              <span className="sr-only">
+                Make it happen, fix that website, reach new customers,
+                implement agentic AI, go direct to customers, or test new ideas.
+              </span>
             </div>
-            <h1 className={`mb-8 leading-tight transition-[opacity,transform] duration-500 delay-75 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-              We turn ideas into<br />working products,<br /><span className="whitespace-nowrap"><WordCyclerText displayed={displayed} isTyping={isTyping} /></span>
-            </h1>
-          </>
-        )}
 
-        <div className={`max-w-2xl transition-[opacity,transform] duration-500 delay-200 ease-snap ${heroReady ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
-          <Breath>
-            A senior product studio that moves from strategy to design to working software in one motion, using AI to compress the distance between an idea and something real.
-          </Breath>
+            <div className="mt-9">
+              <BookCta className="press inline-flex items-center gap-3 bg-madrona text-paper px-7 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline">
+                Book a 30m free chat
+                <span aria-hidden="true">&rarr;</span>
+              </BookCta>
+            </div>
+          </div>
         </div>
+        <p className="absolute bottom-5 right-6 lg:right-12 text-[10px] uppercase tracking-[0.16em] text-paper/70 m-0">
+          Bellingham, Washington
+        </p>
       </section>
 
-      {/* What makes us different */}
+      <HomeBody />
+    </div>
+  );
+}
+
+export function HomeBody() {
+  const proofWork = caseStudies.filter((s) =>
+    ["lila-trips", "san-juan-boating-guide"].includes(s.slug),
+  );
+
+  return (
+    <>
+      {/* Why we exist — the owner's words on the left, ours on the right */}
       <section>
-        <div ref={s1.ref} data-shown={s1.shown} className="reveal mb-14">
-          <div className="mb-6"><Marker index="01" /></div>
-          <Label className="block mb-4">What we do differently</Label>
-          <h2>Thinking and building, done together.</h2>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-12 md:gap-10">
-          <CapabilityCard
-            title="Strategy that ships"
-            body="We don't write decks that sit in a drawer. Every engagement starts with strategy and ends with working software. The thinking and the building happen together."
-            delay={0}
-          />
-          <CapabilityCard
-            title="AI-native workflow"
-            body="We use AI to do in weeks what used to take quarters. Not as a gimmick, but as a genuine force multiplier that lets a senior team move at startup speed with enterprise judgment."
-            delay={150}
-          />
-          <CapabilityCard
-            title="Full-spectrum product"
-            body="Product vision. Service design. Interaction patterns. Working code. Most teams split these across departments. We hold them together, because that's where the best products come from."
-            delay={300}
-          />
+        <div className="mb-6"><Marker index="01" /></div>
+        <Label className="block mb-8">Why we exist</Label>
+        <div className="grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-10 md:gap-16">
+          <blockquote className="m-0 border-l-2 border-madrona/30 pl-6 md:pl-8">
+            <p className="font-serif text-[1.35rem] md:text-[1.65rem] text-ink leading-[1.4] m-0">
+              &ldquo;I know things should work better around here. The
+              website&rsquo;s just ok. Ordering from us is way harder than
+              it should be. I lose hours every week to stuff it seems like
+              a computer could be doing. But I can&rsquo;t stop running the
+              business to fix the business. And AI... everyone says it
+              should help, but I wouldn&rsquo;t even know where to start.
+              So it stays broken.&rdquo;
+            </p>
+          </blockquote>
+          <div className="space-y-5 text-ink70 text-lg leading-relaxed md:pt-1">
+            <p>
+              Almost every owner we talk to says a version of this.
+              Excellent at what they do, badly served by the software
+              around it, and rightly suspicious of everything AI.
+            </p>
+            <p>
+              Madrona exists to fix that, close to home, one business at a
+              time. Our small, senior team of builders and marketers helps
+              businesses like yours break through the noise and tells you
+              plainly how to help your business grow and run better.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* How we can help */}
-      <section ref={s3.ref} data-shown={s3.shown} className="reveal">
+      {/* What we do — question-led, symptom language */}
+      <section>
         <div className="mb-6"><Marker index="02" /></div>
-        <Label className="block mb-4">How we can help</Label>
-        <h2 className="mb-10">Where we come in.</h2>
+        <Label className="block mb-4">What we do</Label>
+        <h2 className="mb-10">Wherever the business hurts.</h2>
         <div className="max-w-3xl border-t border-line divide-y divide-line-soft">
           {[
-            "Need to pressure-test a new idea before you commit real money to it?",
-            "Sitting on a roadmap question that's been stuck for months?",
-            "Need a working prototype you can put in front of people, not another deck?",
-            "Want to build an internal tool to streamline how your team operates?",
-            "Trying to add AI to your product without the hallucinations and the hype?",
-          ].map((q) => (
-            <p key={q} className="py-5 text-[19px] md:text-[22px] tracking-[-0.02em] text-ink leading-[1.2]">
-              {q}
-            </p>
+            {
+              question: "Selling something great behind a web presence that doesn't do it justice?",
+              services: "New websites, brand, content and marketing, online stores.",
+            },
+            {
+              question: "People buy from you once, then you never hear from them again?",
+              services: "Loyalty and memberships, repeat ordering, win-back email and SMS, reviews.",
+            },
+            {
+              question: "Watching the week disappear into work that software should be doing?",
+              services: "Workflow fixes, small tools with one job, agentic AI on your real workflows.",
+            },
+          ].map((row) => (
+            <Link
+              key={row.question}
+              to="/services"
+              className="group block py-6 no-underline"
+            >
+              <p className="text-[19px] md:text-[22px] tracking-[-0.02em] text-ink leading-[1.25] mb-2 group-hover:text-madrona-dark transition-colors">
+                {row.question}
+              </p>
+              <p className="text-sm text-muted">{row.services}</p>
+            </Link>
           ))}
+        </div>
+        <div className="mt-8">
+          <Link to="/services" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
+            Everything we do &rarr;
+          </Link>
         </div>
       </section>
 
-      {/* Selected work */}
-      <section ref={s2.ref} data-shown={s2.shown} className="reveal">
+      {/* Agenda strip — the trust move */}
+      <section className="max-w-2xl border-l-2 border-madrona/30 pl-6">
+        <p className="text-ink text-lg leading-relaxed mb-3">
+          The first conversation has a published agenda. You'll know exactly
+          what we'll ask before you say yes, and you keep the written
+          assessment either way.
+        </p>
+        <Link to="/how-it-works" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
+          Read the agenda &rarr;
+        </Link>
+      </section>
+
+      {/* Proof */}
+      <section>
         <div className="mb-6"><Marker index="03" /></div>
-        <Label className="block mb-4">Recent work</Label>
-        <h2 className="mb-12">A few we're proud of.</h2>
+        <Label className="block mb-4">Things we've built and run</Label>
         <div className="grid sm:grid-cols-2 gap-x-10 gap-y-14">
-          {featuredWork.map((study) => (
+          {proofWork.map((study) => (
             <CaseStudyCard key={study.slug} study={study} />
           ))}
         </div>
@@ -288,44 +272,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How we work — condensed */}
-      <section ref={s4.ref} data-shown={s4.shown} className="reveal max-w-2xl">
-        <div className="mb-6"><Marker index="04" /></div>
-        <Label className="block mb-4">How it works</Label>
-        <h2 className="mb-8">Figure it out, then build it.</h2>
-        <div className="space-y-6 text-ink70 leading-relaxed">
-          <p>
-            Most engagements follow one arc. First we figure out what to build:
-            the strategy, the framing, the hard product decisions. Then we build
-            it: a working prototype you can test, demo, or ship. Same team, no
-            handoff. Weeks, not quarters.
-          </p>
-          <p>
-            For teams that want this as an ongoing relationship, we also offer
-            product stewardship on retainer.
-          </p>
-        </div>
-        <div className="mt-8">
-          <Link to="/approach" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            More about how we work &rarr;
-          </Link>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section ref={s5.ref} data-shown={s5.shown} className="reveal max-w-2xl border-t border-line pt-16">
-        <h2 className="mb-5">Let's talk about what you're building.</h2>
-        <p className="text-ink70 text-lg mb-8 leading-relaxed">
-          Whether you're shaping a strategy, proving a concept, or looking for
-          a senior product partner, we'd love to hear what you're working on.
-        </p>
-        <Link
-          to="/contact"
-          className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
-        >
-          Get in touch
-        </Link>
+      <section className="max-w-2xl border-t border-line pt-14">
+        <h2 className="mb-6">Tell us about your business.</h2>
+        <BookCta>Book a 30m free chat</BookCta>
       </section>
-    </div>
+    </>
   );
 }

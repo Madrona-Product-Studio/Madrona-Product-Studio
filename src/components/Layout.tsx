@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import Wordmark from "./Wordmark";
 
 const navLinks = [
+  { to: "/services", label: "What we do" },
+  { to: "/how-it-works", label: "How it works" },
   { to: "/work", label: "Work" },
-  { to: "/approach", label: "Approach" },
-  // { to: "/writing", label: "Writing" },  // Hidden until content is ready
+  // Approach folded out of the nav in the local-first structure (route
+  // still resolves); Writing stays hidden until content is ready.
   { to: "/about", label: "About" },
 ];
 
@@ -105,7 +107,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm text-ink70">
           <div className="space-y-3">
             <Wordmark size="sm" />
-            <p>Pacific Northwest</p>
+            <p>Bellingham, Washington</p>
           </div>
           <div className="space-y-2">
             <p>

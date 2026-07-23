@@ -1,40 +1,88 @@
-import { caseStudies, STAGE_ORDER, STAGE_LABELS } from "../data/caseStudies";
+import { Link } from "react-router-dom";
+import { caseStudies } from "../data/caseStudies";
 import WorkRow from "../components/WorkRow";
 import PageMeta from "../components/PageMeta";
-import { Label } from "../components/swiss";
+import { Label, Breath } from "../components/swiss";
+
+// The /work index groups by the lifecycle muscle each project demonstrates,
+// mirroring the service architecture — not by product maturity. Prototypes
+// are presented as the deliverable of strategy work, not unfinished apps.
+const sections = [
+  {
+    lifecycle: "demand" as const,
+    label: "Getting found",
+    heading: "Earning attention, honestly.",
+    intro:
+      "Brand, content, launch, growth. Both of these went from nothing to a live audience, and the marketing work is as much the story as the software.",
+  },
+  {
+    lifecycle: "operations" as const,
+    label: "Running smoother",
+    heading: "Running the studio on agents.",
+    intro:
+      "Our own operation is the ops proof: agents on real workflows, and a command surface that renders the whole business. Helm is the visible part.",
+    link: { to: "/services/agentic-operations", text: "How we build this for clients" },
+  },
+  {
+    lifecycle: "strategy" as const,
+    label: "Strategy, made tangible",
+    heading: "What strategy work leaves behind.",
+    intro:
+      "A strategy engagement here doesn't end in a deck; it ends in something you can touch. These are ours: some validated with real users through betas and testing panels, some still open theses. Every one of them started as a question.",
+  },
+];
 
 export default function Work() {
   const recentWork = caseStudies.filter((s) => s.category === "recent" && !s.hidden);
 
   return (
-    <div className="space-y-32">
-      <PageMeta title="Work" description="Recent product work from Madrona Product Studio." />
+    <div className="space-y-24">
+      <PageMeta
+        title="Work"
+        description="The work behind the offer: audiences earned for live products, an operation run on agents, and prototypes as the deliverable of strategy work."
+      />
 
-      <section>
-        <h1 className="mb-12">What we're building</h1>
-        <div className="space-y-9">
-          {STAGE_ORDER.map((stage) => {
-            const items = recentWork.filter((s) => s.stage === stage);
-            if (items.length === 0) return null;
-            return (
-              <div key={stage}>
-                <div className="flex items-center gap-3 mb-3">
-                  <span
-                    className={`h-[3px] w-8 shrink-0 ${stage === "live" ? "bg-madrona" : "bg-faint"}`}
-                    aria-hidden="true"
-                  />
-                  <Label>{STAGE_LABELS[stage]}</Label>
-                </div>
-                <div>
-                  {items.map((study) => (
-                    <WorkRow key={study.slug} study={study} />
-                  ))}
-                </div>
-              </div>
-            );
-          })}
+      <section className="max-w-3xl">
+        <h1 className="mb-8">The work</h1>
+        <div className="max-w-2xl">
+          <Breath>
+            Everything here is ours: built, shipped, and run by the studio.
+            We show it because it's the same work clients hire us for:
+            getting found, running smoother, and turning strategy into
+            something you can touch.
+          </Breath>
         </div>
       </section>
+
+      {sections.map((section) => {
+        const items = recentWork.filter((s) => s.lifecycle === section.lifecycle);
+        if (items.length === 0) return null;
+        return (
+          <section key={section.lifecycle}>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="h-[3px] w-8 shrink-0 bg-madrona" aria-hidden="true" />
+              <Label>{section.label}</Label>
+            </div>
+            <h2 className="mb-5">{section.heading}</h2>
+            <p className="text-ink70 leading-relaxed mb-10 max-w-2xl">{section.intro}</p>
+            <div>
+              {items.map((study) => (
+                <WorkRow key={study.slug} study={study} />
+              ))}
+            </div>
+            {section.link && (
+              <div className="mt-8">
+                <Link
+                  to={section.link.to}
+                  className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors"
+                >
+                  {section.link.text} &rarr;
+                </Link>
+              </div>
+            )}
+          </section>
+        );
+      })}
     </div>
   );
 }

@@ -1,15 +1,11 @@
 import { Link } from "react-router-dom";
-import { offerings } from "../data/offerings";
-import OfferingCard from "../components/OfferingCard";
 import PageMeta from "../components/PageMeta";
+import BookCta from "../components/BookCta";
 
 export default function Approach() {
-  const coreEngagement = offerings.filter(o => o.slug !== "product-stewardship");
-  const fractional = offerings.find(o => o.slug === "product-stewardship");
-
   return (
     <div className="space-y-24">
-      <PageMeta title="Approach" description="Strategy sprints, signal sprints, and product stewardship. How Madrona Product Studio works." />
+      <PageMeta title="Approach" description="The philosophy behind Madrona Product Studio: strategy and software made by the same people, in short, high-signal engagements." />
       <section className="max-w-2xl">
         <h1 className="mb-12">Approach</h1>
         <div className="border-l-2 border-madrona/30 pl-8 space-y-6">
@@ -40,17 +36,6 @@ export default function Approach() {
         </div>
       </section>
 
-      {/* The engagement arc */}
-      <section>
-        <p className="text-xs font-medium uppercase tracking-widest text-ink70/50 mb-4">The engagement</p>
-        <h2 className="mb-12">Figure it out, then build it.</h2>
-        <div className="grid md:grid-cols-2 gap-10 lg:gap-14">
-          {coreEngagement.map((o) => (
-            <OfferingCard key={o.slug} offering={o} />
-          ))}
-        </div>
-      </section>
-
       {/* The rhythm */}
       <section className="max-w-2xl space-y-6">
         <h2>The rhythm</h2>
@@ -64,29 +49,15 @@ export default function Approach() {
         </div>
       </section>
 
-      {/* Ongoing leadership */}
-      {fractional && (
-        <section>
-          <p className="text-xs font-medium uppercase tracking-widest text-ink70/50 mb-4">Ongoing</p>
-          <div className="max-w-xl">
-            <OfferingCard offering={fractional} />
-          </div>
-        </section>
-      )}
-
       {/* CTA */}
       <section className="max-w-2xl border-t border-line pt-16">
         <h2 className="mb-5">Let's build something.</h2>
         <p className="text-ink70 text-lg mb-8 leading-relaxed">
-          Tell us what you're working on. We'll figure out together whether
-          there's a fit.
+          See <Link to="/services" className="text-madrona hover:text-madrona-dark transition-colors">what we do</Link>,
+          or start where every engagement starts: a free 30-minute
+          conversation with a published agenda.
         </p>
-        <Link
-          to="/contact"
-          className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
-        >
-          Get in touch
-        </Link>
+        <BookCta>Book a 30m free chat</BookCta>
       </section>
     </div>
   );

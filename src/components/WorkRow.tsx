@@ -25,6 +25,11 @@ export default function WorkRow({ study }: { study: CaseStudy }) {
           {study.title}
         </h3>
         <p className="text-clay text-sm leading-[1.55] max-w-2xl">{study.tagline}</p>
+        {study.engagementLine && (
+          <p className="text-muted text-sm leading-[1.55] max-w-2xl mt-2">
+            {study.engagementLine}
+          </p>
+        )}
         {study.highlights && study.highlights.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mt-3">
             {study.highlights.map((h) => (
