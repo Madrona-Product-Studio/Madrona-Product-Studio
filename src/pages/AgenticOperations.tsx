@@ -98,12 +98,12 @@ export default function AgenticOperations() {
         <h2 className="mb-6">Berry Good Berry Farm.</h2>
         <div className="space-y-6 text-ink70 leading-relaxed">
           <p>
-            Berry Good is our demonstration business: a small berry farm we
-            run the way a client would, so we can prove these tools on a
-            real operation instead of a slide. A farm is a useful test
-            because it has everything a business has: an industry that
-            moves, invoices to chase, customers with questions, orders to
-            fill. Here's the cast of agents around it:
+            Berry Good is our demonstration business: a small berry farm
+            we're building out the way we'd build for a client, so we can
+            show these tools on a real operation instead of a slide. A farm
+            is a useful example because it has everything a business has: an
+            industry that moves, invoices to chase, customers with questions,
+            orders to fill. Here's the cast we're standing up around it:
           </p>
         </div>
         <ul className="my-8 space-y-5 border-l-2 border-madrona/30 pl-6 list-none">
@@ -192,8 +192,8 @@ export default function AgenticOperations() {
             You don't buy the whole architecture on day one. A first
             engagement is one agent on one workflow, plus one card on a
             dashboard that proves it's working. Tiny scope, visible payback.
-            That's what the $2,500 entry engagement is built for. If it
-            earns its keep, we grow it from there.
+            That's exactly what a first engagement is for. If it earns its
+            keep, we grow it from there.
           </p>
         </div>
       </section>

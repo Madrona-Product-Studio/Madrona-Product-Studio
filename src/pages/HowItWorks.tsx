@@ -102,9 +102,9 @@ export default function HowItWorks() {
             If the assessment points somewhere worth going, we turn it into a
             proposal: scope, cost, and approach, in plain terms. Every scoped
             item says what changes and how we'll know, agreed before work
-            starts. We like to start small. Our entry engagement is a fixed
-            $2,500: one specific thing fixed or built, with payback you can
-            see. Larger work gets scoped from there.
+            starts. We like to start small: a first engagement is one
+            specific thing fixed or built, with payback you can see. Larger
+            work gets scoped from there.
           </p>
           <p>
             And if the assessment doesn't point anywhere? We'll say that too,
@@ -133,7 +133,7 @@ export default function HowItWorks() {
         <Label className="block mb-4">The shapes a proposal takes</Label>
         <h2 className="mb-6">Sized to the question.</h2>
         <p className="text-ink70 leading-relaxed mb-12 max-w-2xl">
-          Beyond the entry engagement, most proposals land in one of three
+          Beyond that first engagement, most proposals land in one of three
           shapes. The assessment tells us which one fits.
         </p>
         <div className="grid md:grid-cols-3 gap-10 lg:gap-12">
