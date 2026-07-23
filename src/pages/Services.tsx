@@ -63,79 +63,108 @@ const buckets = [
 
 export default function Services() {
   return (
-    <div className="space-y-24">
+    <div className="space-y-28 md:space-y-36">
       <PageMeta
         title="Services"
         description="Getting found, coming back, running smoother. New websites, brand, and online stores on Shopify; loyalty and repeat ordering; workflow fixes and AI agents on your real workflows. Every engagement names what would change."
       />
 
       {/* Intro */}
-      <section className="max-w-3xl">
-        <h1 className="mb-8">What we do</h1>
-        <div className="max-w-2xl">
+      <section className="grid gap-8 md:grid-cols-[.8fr_1.2fr] md:items-end">
+        <div>
+          <Label className="mb-5 block">What we do</Label>
+          <h1>Start with what needs to change.</h1>
+        </div>
+        <div className="max-w-2xl md:pb-1">
           <Breath>
-            The shop, the clinic, the outfitter, the family farm. Good
-            businesses around here come in every shape, and the software
-            rarely keeps up. We help in three ways: more people find you,
-            more of them come back, and the work behind the counter runs
-            smoother. Pick the part that hurts; we meet you there.
+            You do not need to arrive with a feature list or the name of a
+            technology. Tell us where customers get stuck or where the week
+            disappears. We will help name the right first move.
           </Breath>
         </div>
       </section>
 
-      {buckets.map((bucket) => (
-        <section key={bucket.index} className="max-w-2xl">
-          <div className="mb-6"><Marker index={bucket.index} /></div>
-          <Label className="block mb-4">{bucket.label}</Label>
-          <h2 className="mb-6">{bucket.door}</h2>
-          <p className="text-ink70 leading-relaxed mb-8">{bucket.impact}</p>
-          <ul className="border-t border-line divide-y divide-line-soft list-none m-0 p-0">
-            {bucket.services.map((s) => (
-              <li key={s} className="py-4 text-ink leading-relaxed">
-                {s}
-              </li>
-            ))}
-          </ul>
-          {bucket.callout && (
-            <div className="mt-10 border-l-2 border-madrona/30 pl-6">
-              <p className="text-ink leading-relaxed mb-3">
-                <span className="font-medium">{bucket.callout.heading}</span>{" "}
-                {bucket.callout.body}
+      <section className="grid border-y border-line md:grid-cols-3 md:divide-x md:divide-line">
+        {buckets.map((bucket) => (
+          <a
+            key={bucket.index}
+            href={`#service-${bucket.index}`}
+            className="group flex min-h-64 flex-col justify-between border-b border-line py-7 no-underline last:border-0 md:border-0 md:px-7 md:first:pl-0 md:last:pr-0"
+          >
+            <span className="text-xs font-semibold text-madrona">{bucket.index}</span>
+            <div className="mt-12">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[.16em] text-muted">
+                {bucket.label}
               </p>
-              {bucket.callout.to && (
-                <Link
-                  to={bucket.callout.to}
-                  className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors"
-                >
-                  {bucket.callout.linkText}
-                </Link>
-              )}
+              <h2 className="text-[1.75rem] text-ink transition-colors group-hover:text-madrona-dark">
+                {bucket.index === "01" ? "Get found." : bucket.index === "02" ? "Bring people back." : "Get hours back."}
+              </h2>
             </div>
-          )}
+          </a>
+        ))}
+      </section>
+
+      {buckets.map((bucket, bucketIndex) => (
+        <section
+          id={`service-${bucket.index}`}
+          key={bucket.index}
+          className="grid scroll-mt-28 gap-10 border-t border-line pt-10 md:grid-cols-[.72fr_1.28fr] md:gap-20"
+        >
+          <div>
+            <div className="mb-6"><Marker index={bucket.index} /></div>
+            <Label className="mb-4 block">{bucket.label}</Label>
+            <h2 className="mb-6">
+              {bucketIndex === 0 ? "Get found." : bucketIndex === 1 ? "Bring people back." : "Get hours back."}
+            </h2>
+            <p className="text-lg leading-relaxed text-ink70">{bucket.impact}</p>
+          </div>
+          <div>
+            <p className="mb-8 font-serif text-[1.55rem] font-medium leading-snug text-ink">
+              {bucket.door}
+            </p>
+            <ul className="m-0 list-none divide-y divide-line-soft border-y border-line p-0">
+              {bucket.services.map((service) => (
+                <li key={service} className="grid grid-cols-[1.5rem_1fr] gap-3 py-4 text-ink">
+                  <span className="text-madrona" aria-hidden="true">↳</span>
+                  <span>{service}</span>
+                </li>
+              ))}
+            </ul>
+            {bucket.callout && (
+              <div className="mt-8 rounded-card bg-paper p-6 md:p-8">
+                <p className="mb-3 text-ink">
+                  <span className="font-semibold">{bucket.callout.heading}</span>{" "}
+                  <span className="text-ink70">{bucket.callout.body}</span>
+                </p>
+                {bucket.callout.to && (
+                  <Link to={bucket.callout.to} className="text-sm font-medium">
+                    {bucket.callout.linkText}
+                  </Link>
+                )}
+              </div>
+            )}
+          </div>
         </section>
       ))}
 
       {/* Success criteria — the standing promise */}
-      <section className="max-w-2xl border-l-2 border-madrona/30 pl-6">
-        <p className="text-ink text-lg leading-relaxed mb-3">
-          Every engagement names its win before work starts, in your terms,
-          and we measure against it. An honest expectation with a way to
-          check it, never a guarantee.
-        </p>
-        <Link to="/how-it-works" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-          How that works &rarr;
-        </Link>
-      </section>
-
-      {/* CTA */}
-      <section className="max-w-2xl border-t border-line pt-16">
-        <h2 className="mb-5">Not sure which part you need?</h2>
-        <p className="text-ink70 text-lg mb-8 leading-relaxed">
-          That's what the first conversation is for. Thirty minutes,
-          free, with a published agenda. We'll tell you where we'd start,
-          in writing, whether or not you hire us.
-        </p>
-        <ConnectCta>Let's connect</ConnectCta>
+      <section className="grid gap-10 bg-ink px-7 py-10 text-paper md:grid-cols-[1fr_auto] md:items-end md:px-10 md:py-12">
+        <div>
+          <Label className="mb-4 block text-paper/55">The standing promise</Label>
+          <h2 className="mb-5 max-w-3xl text-paper">Name the win before the work starts.</h2>
+          <p className="max-w-2xl text-lg leading-relaxed text-paper/65">
+            Every engagement defines what should change and how we will know.
+            An honest expectation with a way to check it, never a guarantee.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-5">
+          <Link to="/how-it-works" className="self-center text-sm font-medium text-paper/80 hover:text-paper">
+            How it works
+          </Link>
+          <ConnectCta className="press inline-flex items-center rounded bg-madrona px-6 py-3 text-sm font-medium text-paper no-underline hover:bg-madrona-dark">
+            Let&apos;s connect
+          </ConnectCta>
+        </div>
       </section>
     </div>
   );

@@ -33,8 +33,8 @@ export function Seal({ label, className = "" }: { label: ReactNode; className?: 
 }
 
 /** The recurring section-header signature: a short madrona accent rule. */
-export function Marker({ index: _index }: { index?: string }) {
-  return <span className="block h-[3px] w-12 bg-madrona" aria-hidden="true" />;
+export function Marker({ index }: { index?: string }) {
+  return <span className="block h-[3px] w-12 bg-madrona" data-marker-index={index} aria-hidden="true" />;
 }
 
 /** The single emotional line per section — a touch larger, calmer than body. */

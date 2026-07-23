@@ -49,7 +49,7 @@ const agentArc = [
 
 export default function AgenticOperations() {
   return (
-    <div className="space-y-24">
+    <div className="space-y-28 md:space-y-36">
       <PageMeta
         title="Agentic operations"
         description="Business agents on your real workflows, and one command surface that shows the whole operation. Madrona runs its own studio this way, and builds the same architecture for clients."
@@ -66,6 +66,34 @@ export default function AgenticOperations() {
             bolted onto the side of the business. The business itself,
             running with less friction.
           </Breath>
+        </div>
+      </section>
+
+      <section className="rounded-card bg-ink p-6 text-paper md:p-10">
+        <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <Label className="mb-3 block text-paper/50">The operating loop</Label>
+            <h2 className="max-w-2xl text-paper">From scattered signals to a clear next move.</h2>
+          </div>
+          <span className="text-xs text-paper/45">One source of truth</span>
+        </div>
+        <div className="grid gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-stretch">
+          {[
+            ["Watch", "Orders, inboxes, reports, inventory"],
+            ["Understand", "What changed and what actually matters"],
+            ["Act", "Draft, flag, route, and show the next step"],
+          ].map(([title, body], index) => (
+            <div key={title} className="contents">
+              <article className="rounded bg-paper/7 p-5">
+                <span className="mb-10 block text-xs font-semibold text-madrona-light">0{index + 1}</span>
+                <h3 className="mb-3 text-xl text-paper">{title}</h3>
+                <p className="text-sm leading-relaxed text-paper/60">{body}</p>
+              </article>
+              {index < 2 && (
+                <span className="hidden self-center text-madrona-light md:block" aria-hidden="true">&rarr;</span>
+              )}
+            </div>
+          ))}
         </div>
       </section>
 

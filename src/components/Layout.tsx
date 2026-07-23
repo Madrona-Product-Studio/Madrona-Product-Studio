@@ -19,10 +19,6 @@ function ScrollToTop() {
 
 function Nav() {
   const [open, setOpen] = useState(false);
-  const { pathname } = useLocation();
-
-  // Close mobile menu on navigation
-  useEffect(() => { setOpen(false); }, [pathname]);
 
   return (
     <nav className="sticky top-0 z-50 bg-bg/90 backdrop-blur-sm border-b border-line">
@@ -81,6 +77,7 @@ function Nav() {
               <li key={to}>
                 <NavLink
                   to={to}
+                  onClick={() => setOpen(false)}
                   className={({ isActive }) =>
                     `block text-base no-underline transition-colors ${
                       isActive

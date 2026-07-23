@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
 import WorkRow from "../components/WorkRow";
+import CaseStudyCard from "../components/CaseStudyCard";
 import PageMeta from "../components/PageMeta";
 import { Label, Breath } from "../components/swiss";
 
@@ -36,26 +37,50 @@ export default function Work() {
   const recentWork = caseStudies.filter((s) => s.category === "recent" && !s.hidden);
 
   return (
-    <div className="space-y-24">
+    <div className="space-y-28 md:space-y-36">
       <PageMeta
         title="Work"
         description="The work behind the offer: audiences earned for live products, an operation run on agents, and prototypes as the deliverable of strategy work."
       />
 
-      <section className="max-w-3xl">
-        <h1 className="mb-8">The work</h1>
+      <section className="grid gap-8 md:grid-cols-[.8fr_1.2fr] md:items-end">
+        <div>
+          <Label className="mb-5 block">Selected work</Label>
+          <h1>Ideas made tangible.</h1>
+        </div>
         <div className="max-w-2xl">
           <Breath>
-            Everything here is ours: built, shipped, and run by the studio.
-            We show it because it's the same work clients hire us for:
-            getting found, running smoother, and turning strategy into
-            something you can touch.
+            Everything here was built, shipped, and run by the studio. The
+            work spans live businesses, tools used every day, and product
+            theses made real enough to test.
           </Breath>
         </div>
       </section>
 
+      <section>
+        <div className="mb-8 flex items-end justify-between gap-5">
+          <div>
+            <Label className="mb-4 block">The clearest proof</Label>
+            <h2>Live and in use.</h2>
+          </div>
+        </div>
+        <div className="grid gap-10 md:grid-cols-3">
+          {recentWork
+            .filter((study) => ["lila-trips", "san-juan-boating-guide", "helm"].includes(study.slug))
+            .map((study) => <CaseStudyCard key={study.slug} study={study} />)}
+        </div>
+      </section>
+
+      <div className="border-t border-line pt-12">
+        <Label>More from the studio</Label>
+      </div>
+
       {sections.map((section) => {
-        const items = recentWork.filter((s) => s.lifecycle === section.lifecycle);
+        const items = recentWork.filter(
+          (study) =>
+            study.lifecycle === section.lifecycle &&
+            !["lila-trips", "san-juan-boating-guide", "helm"].includes(study.slug),
+        );
         if (items.length === 0) return null;
         return (
           <section key={section.lifecycle}>

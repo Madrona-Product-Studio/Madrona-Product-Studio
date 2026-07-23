@@ -1,286 +1,175 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
 import CaseStudyCard from "../components/CaseStudyCard";
 import ConnectCta from "../components/ConnectCta";
 import PageMeta from "../components/PageMeta";
-import { Label, Marker } from "../components/swiss";
+import { Label } from "../components/swiss";
 
-/**
- * The homepage — typed hero promoted from the home-v5 study (Charlie,
- * 2026-07-22). Full-bleed harbor photo with the settled headline and
- * descriptor, a cycling "never been a better time to…" line, then the
- * settled body: Why we exist, question-led What we do, agenda strip,
- * curated proof, CTA.
- */
-
-// Charlie's pick (IMG_2872): the working harbor at dusk. Re-encoded to
-// strip GPS EXIF and shrink for web; original stays untracked.
-const HERO_IMAGE = "/images/hero-harbor-dusk.jpg";
-
-const PHRASES = [
-  "make it happen.",
-  "fix that website.",
-  "reach new customers.",
-  "implement agentic AI.",
-  "go direct to customers.",
-  "test some new ideas.",
+const outcomes = [
+  {
+    index: "01",
+    title: "Get found.",
+    result: "More of the right people discover you, understand you, and buy.",
+    services: "Websites · positioning · content · online stores",
+  },
+  {
+    index: "02",
+    title: "Bring people back.",
+    result: "Turn a first purchase into a customer relationship that lasts.",
+    services: "Loyalty · memberships · repeat ordering · win-back",
+  },
+  {
+    index: "03",
+    title: "Get hours back.",
+    result: "Fix the manual work that quietly consumes the week.",
+    services: "Workflow tools · automation · practical AI agents",
+  },
 ];
 
-function useTypeCycler() {
-  const [displayed, setDisplayed] = useState(PHRASES[0]);
-  const phraseIndex = useRef(0);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    let cancelled = false;
-    let timeout: ReturnType<typeof setTimeout>;
-    const schedule = (callback: () => void, delay: number) => {
-      timeout = setTimeout(() => {
-        if (!cancelled) callback();
-      }, delay);
-    };
-
-    const remove = (value: string, done: () => void) => {
-      if (cancelled) return;
-      if (value.length === 0) {
-        done();
-        return;
-      }
-      schedule(() => {
-        const next = value.slice(0, -1);
-        setDisplayed(next);
-        remove(next, done);
-      }, 34);
-    };
-
-    const type = (value: string, character: number, done: () => void) => {
-      if (cancelled) return;
-      if (character > value.length) {
-        done();
-        return;
-      }
-      schedule(() => {
-        setDisplayed(value.slice(0, character));
-        type(value, character + 1, done);
-      }, 52);
-    };
-
-    const cycle = () => {
-      schedule(() => {
-        remove(PHRASES[phraseIndex.current], () => {
-          phraseIndex.current = (phraseIndex.current + 1) % PHRASES.length;
-          schedule(() => type(PHRASES[phraseIndex.current], 1, cycle), 180);
-        });
-      }, 2200);
-    };
-
-    cycle();
-    return () => {
-      cancelled = true;
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  return displayed;
-}
-
+const process = [
+  ["01", "Talk", "A free 30-minute conversation with a public agenda."],
+  ["02", "Assess", "A short written assessment. Yours to keep either way."],
+  ["03", "Start", "One scoped first move with a result you can see."],
+];
 
 export default function Home() {
-  const phrase = useTypeCycler();
+  const proofWork = caseStudies.filter((study) =>
+    ["lila-trips", "san-juan-boating-guide"].includes(study.slug),
+  );
 
   return (
-    <div className="space-y-24">
+    <div className="space-y-28 md:space-y-36">
       <PageMeta />
 
-      {/* Full-bleed hero photo — flush under the nav.
-          Breakout: center-anchored w-screen; -mt cancels the page's top padding. */}
-      <section className="relative left-1/2 -translate-x-1/2 w-screen -mt-16 md:-mt-24 border-b border-line overflow-hidden bg-ink">
+      <section className="relative left-1/2 -translate-x-1/2 w-screen -mt-16 md:-mt-24 overflow-hidden bg-ink">
         <img
-          src={HERO_IMAGE}
+          src="/images/hero-harbor-dusk.jpg"
           alt="Fishing boats in Bellingham harbor at dusk"
-          className="absolute inset-0 w-full h-full object-cover object-[58%_center]"
+          className="absolute inset-0 h-full w-full object-cover object-[58%_center]"
         />
-        {/* Text sits on the left; the sunset stays bright on the right. */}
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-ink/50 via-ink/20 to-transparent"
-          aria-hidden="true"
-        />
-        <div className="relative max-w-6xl mx-auto px-6 lg:px-12 min-h-[clamp(36rem,68svh,42rem)] pt-12 pb-12 md:pb-14 lg:pb-16 flex flex-col justify-end">
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(26,23,20,.78)_0%,rgba(26,23,20,.48)_52%,rgba(26,23,20,.06)_100%)]" />
+        <div className="relative mx-auto flex min-h-[clamp(38rem,72svh,47rem)] max-w-6xl flex-col justify-end px-6 pb-14 pt-16 lg:px-12 lg:pb-20">
           <div className="max-w-4xl">
-            <h1
-              className="text-paper max-w-4xl md:text-[2.75rem] lg:text-[3.4rem] leading-[1.08] mb-5"
-              style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
-            >
-              Good businesses around here deserve{" "}
-              <br className="hidden md:block" />
-              software as good as they are.
+            <Label className="mb-5 block text-paper/70">
+              Senior product help · Bellingham, Washington
+            </Label>
+            <h1 className="mb-7 max-w-3xl text-[clamp(3rem,7vw,5.9rem)] leading-[.98] tracking-[-0.035em] text-paper">
+              Make the digital side of your business work better.
             </h1>
-
-            <p
-              className="text-paper/85 text-lg md:text-xl leading-relaxed max-w-3xl mb-8 md:mb-9"
-              style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
-            >
-              Madrona is a small, senior digital team in the PNW. We focus
-              on the problems holding your business back, then build the
-              solutions ourselves.
+            <p className="mb-9 max-w-2xl text-lg leading-relaxed text-paper/80 md:text-xl">
+              We find the places costing you customers or time, then design
+              and build the fix. One senior team from first question to
+              finished product.
             </p>
-
-            <div className="border-t border-paper/30 pt-6 max-w-3xl">
-              <p
-                className="font-sans text-base md:text-lg font-medium text-paper/90 mb-2"
-                style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
-              >
-                There’s never been a better time to
-              </p>
-              <div
-                className="font-serif font-medium text-[clamp(1.75rem,3vw,2.6rem)] leading-[1.08] tracking-[-0.035em] text-madrona-light min-h-[2.2em] md:min-h-[1.1em]"
-                style={{ textShadow: "0 1px 4px rgb(from var(--color-ink) r g b / 0.72)" }}
-                aria-hidden="true"
-              >
-                <span>…{phrase}</span>
-                <span className="inline-block w-[0.06em] h-[0.85em] bg-madrona-light ml-[0.08em] align-[-0.04em] animate-[cursor-blink_1s_steps(2,start)_infinite]" />
-              </div>
-              <span className="sr-only">
-                Make it happen, fix that website, reach new customers,
-                implement agentic AI, go direct to customers, or test new ideas.
-              </span>
-            </div>
-
-            <div className="mt-9">
-              <ConnectCta className="press inline-flex items-center gap-3 bg-madrona text-paper px-7 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline">
-                Let's connect
-                <span aria-hidden="true">&rarr;</span>
+            <div className="flex flex-wrap items-center gap-5">
+              <ConnectCta className="press inline-flex items-center gap-3 rounded bg-madrona px-7 py-3.5 text-sm font-medium text-paper no-underline hover:bg-madrona-dark">
+                Let&apos;s connect <span aria-hidden="true">&rarr;</span>
               </ConnectCta>
+              <Link
+                to="/work"
+                className="text-sm font-medium text-paper/85 hover:text-paper"
+              >
+                See the work
+              </Link>
             </div>
           </div>
         </div>
-        <p className="absolute bottom-5 right-6 lg:right-12 text-[10px] uppercase tracking-[0.16em] text-paper/70 m-0">
-          Bellingham, Washington
-        </p>
       </section>
 
-      <HomeBody />
+      <section>
+        <div className="mb-10 grid gap-5 md:grid-cols-[.75fr_1.25fr] md:items-end">
+          <Label>Where we help</Label>
+          <h2 className="max-w-3xl text-[clamp(2.5rem,5vw,4.5rem)]">
+            Start with what needs to change.
+          </h2>
+        </div>
+        <div className="grid border-y border-line md:grid-cols-3 md:divide-x md:divide-line">
+          {outcomes.map((outcome) => (
+            <Link
+              key={outcome.index}
+              to="/services"
+              className="group flex min-h-72 flex-col justify-between border-b border-line px-0 py-8 no-underline last:border-b-0 md:border-b-0 md:px-8 md:first:pl-0 md:last:pr-0"
+            >
+              <span className="text-xs font-semibold tracking-[.16em] text-madrona">
+                {outcome.index}
+              </span>
+              <div className="mt-14">
+                <h3 className="mb-3 text-[1.8rem] text-ink transition-colors group-hover:text-madrona-dark">
+                  {outcome.title}
+                </h3>
+                <p className="mb-7 max-w-xs text-ink70">{outcome.result}</p>
+                <p className="text-xs leading-relaxed text-muted">
+                  {outcome.services}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="grid gap-10 md:grid-cols-[.8fr_1.2fr] md:gap-20">
+        <div>
+          <Label className="mb-5 block">How it starts</Label>
+          <h2 className="mb-5">A useful first conversation, not a sales call.</h2>
+          <p className="max-w-md text-lg leading-relaxed text-ink70">
+            You will know what we will ask before the call, and leave with
+            something useful whether or not we work together.
+          </p>
+          <Link
+            to="/how-it-works"
+            className="mt-7 inline-block text-sm font-medium"
+          >
+            Read the public agenda &rarr;
+          </Link>
+        </div>
+        <ol className="m-0 list-none border-t border-line p-0">
+          {process.map(([index, title, body]) => (
+            <li
+              key={index}
+              className="grid grid-cols-[2.5rem_6rem_1fr] gap-3 border-b border-line py-6"
+            >
+              <span className="text-xs font-semibold text-madrona">{index}</span>
+              <span className="font-semibold text-ink">{title}</span>
+              <span className="text-ink70">{body}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section>
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-5">
+          <div>
+            <Label className="mb-4 block">Built, shipped, and run</Label>
+            <h2 className="max-w-2xl">Proof should do more talking than we do.</h2>
+          </div>
+          <Link to="/work" className="text-sm font-medium">
+            See all work &rarr;
+          </Link>
+        </div>
+        <div className="grid gap-x-10 gap-y-14 sm:grid-cols-2">
+          {proofWork.map((study) => (
+            <CaseStudyCard key={study.slug} study={study} />
+          ))}
+        </div>
+      </section>
+
+      <section className="relative left-1/2 w-screen -translate-x-1/2 bg-ink text-paper">
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-[1fr_auto] md:items-end md:py-20 lg:px-12">
+          <div>
+            <Label className="mb-4 block text-paper/55">A small studio by design</Label>
+            <h2 className="max-w-3xl text-paper">
+              Senior attention from the first question to the finished work.
+            </h2>
+          </div>
+          <ConnectCta className="press inline-flex w-fit items-center gap-3 rounded bg-madrona px-7 py-3.5 text-sm font-medium text-paper no-underline hover:bg-madrona-dark">
+            Let&apos;s connect <span aria-hidden="true">&rarr;</span>
+          </ConnectCta>
+        </div>
+      </section>
     </div>
   );
 }
 
 export function HomeBody() {
-  const proofWork = caseStudies.filter((s) =>
-    ["lila-trips", "san-juan-boating-guide"].includes(s.slug),
-  );
-
-  return (
-    <>
-      {/* Why we exist — the owner's words on the left, ours on the right */}
-      <section>
-        <div className="mb-6"><Marker index="01" /></div>
-        <Label className="block mb-8">Why we exist</Label>
-        <div className="grid md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-10 md:gap-16">
-          <blockquote className="m-0 border-l-2 border-madrona/30 pl-6 md:pl-8">
-            <p className="font-serif text-[1.35rem] md:text-[1.65rem] text-ink leading-[1.4] m-0">
-              &ldquo;I know things should work better around here. The
-              website&rsquo;s just ok. Ordering from us is way harder than
-              it should be. I lose hours every week to stuff it seems like
-              a computer could be doing. But I can&rsquo;t stop running the
-              business to fix the business. And AI... everyone says it
-              should help, but I wouldn&rsquo;t even know where to start.
-              So it stays broken.&rdquo;
-            </p>
-          </blockquote>
-          <div className="space-y-5 text-ink70 text-lg leading-relaxed md:pt-1">
-            <p>
-              Almost every owner we talk to says a version of this.
-              Excellent at what they do, badly served by the software
-              around it, and rightly suspicious of everything AI.
-            </p>
-            <p>
-              Madrona exists to fix that, close to home, one business at a
-              time. Our small, senior team of builders and marketers helps
-              businesses like yours break through the noise and tells you
-              plainly how to help your business grow and run better.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* What we do — question-led, symptom language */}
-      <section>
-        <div className="mb-6"><Marker index="02" /></div>
-        <Label className="block mb-4">What we do</Label>
-        <h2 className="mb-4">Wherever the business hurts.</h2>
-        <p className="text-ink70 text-lg leading-relaxed max-w-2xl mb-10">
-          The shop, the clinic, the outfitter, the family farm. Good
-          businesses around here come in every shape, and the problems rhyme.
-        </p>
-        <div className="max-w-3xl border-t border-line divide-y divide-line-soft">
-          {[
-            {
-              question: "Selling something great behind a web presence that doesn't do it justice?",
-              services: "New websites, brand, content, online stores that sell.",
-            },
-            {
-              question: "People buy from you once, then you never hear from them again?",
-              services: "Loyalty and memberships, repeat ordering, win-back emails and texts, reviews.",
-            },
-            {
-              question: "Watching the week disappear into work that software should be doing?",
-              services: "Workflow fixes, small tools with one job, AI agents for the busywork.",
-            },
-          ].map((row) => (
-            <Link
-              key={row.question}
-              to="/services"
-              className="group block py-6 no-underline"
-            >
-              <p className="text-[19px] md:text-[22px] tracking-[-0.02em] text-ink leading-[1.25] mb-2 group-hover:text-madrona-dark transition-colors">
-                {row.question}
-              </p>
-              <p className="text-sm text-muted">{row.services}</p>
-            </Link>
-          ))}
-        </div>
-        <div className="mt-8">
-          <Link to="/services" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            Everything we do &rarr;
-          </Link>
-        </div>
-      </section>
-
-      {/* Agenda strip — the trust move */}
-      <section className="max-w-2xl border-l-2 border-madrona/30 pl-6">
-        <p className="text-ink text-lg leading-relaxed mb-3">
-          The first conversation has a published agenda. You'll know exactly
-          what we'll ask before you say yes, and you keep the written
-          assessment either way.
-        </p>
-        <Link to="/how-it-works" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-          Read the agenda &rarr;
-        </Link>
-      </section>
-
-      {/* Proof */}
-      <section>
-        <div className="mb-6"><Marker index="03" /></div>
-        <Label className="block mb-4">Things we've built and run</Label>
-        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-14">
-          {proofWork.map((study) => (
-            <CaseStudyCard key={study.slug} study={study} />
-          ))}
-        </div>
-        <div className="mt-10">
-          <Link to="/work" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
-            See all work &rarr;
-          </Link>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="max-w-2xl border-t border-line pt-14">
-        <h2 className="mb-6">Tell us about your business.</h2>
-        <ConnectCta>Let's connect</ConnectCta>
-      </section>
-    </>
-  );
+  return null;
 }
