@@ -5,6 +5,28 @@ import { Label, Marker, Breath } from "../components/swiss";
 // Public demo only. Never link the real HQ / Helm instance from the site.
 const HELM_DEMO_URL = "https://helm-os1.vercel.app/?demo=1";
 
+// The Berry Good cast: each agent is one beat for the farm, one beat for
+// the reader's business. Berry Good is openly ours — a demonstration
+// business, never implied to be a client.
+const berryGoodCast = [
+  {
+    lead: "The industry agent.",
+    body: "Gathers the latest agriculture reports, prices, and news overnight, and hands the farm a short what-changed brief. Pointed at your trade instead, it's the cheapest strategy work you'll ever buy.",
+  },
+  {
+    lead: "The invoicing agent.",
+    body: "Drafts the invoices, sends them, and chases the late ones politely. The same agent runs on any business that bills.",
+  },
+  {
+    lead: "The customer service agent.",
+    body: "First answers on hours, availability, and orders, in the farm's own voice, with a human one message away. The same agent sits on any inbox.",
+  },
+  {
+    lead: "The ordering surface.",
+    body: "U-pick bookings and standing orders. The first order is a growth move, the reorder a retention move, the packing list behind it an operations move. One surface, all three.",
+  },
+];
+
 const agentArc = [
   {
     lead: "A base knowledge file.",
@@ -68,17 +90,49 @@ export default function AgenticOperations() {
         </div>
       </section>
 
-      {/* The worked example */}
+      {/* The worked example — Berry Good */}
       <section className="max-w-2xl">
         <div className="mb-6"><Marker index="02" /></div>
-        <Label className="block mb-4">A worked example</Label>
-        <h2 className="mb-6">The industry agent.</h2>
+        <Label className="block mb-4">The worked example</Label>
+        <h2 className="mb-6">Berry Good Berry Farm.</h2>
         <div className="space-y-6 text-ink70 leading-relaxed">
           <p>
-            One agent type we build again and again: an industry and
-            competitive intelligence agent that keeps you current without
-            costing you a reading habit. It's one pattern that works across
-            industries:
+            Berry Good is our demonstration business: a small berry farm we
+            run the way a client would, so we can prove these tools on a
+            real operation instead of a slide. A farm is a useful test
+            because it has everything a business has: an industry that
+            moves, invoices to chase, customers with questions, orders to
+            fill. Here's the cast of agents around it:
+          </p>
+        </div>
+        <ul className="my-8 space-y-5 border-l-2 border-madrona/30 pl-6 list-none">
+          {berryGoodCast.map((item) => (
+            <li key={item.lead} className="leading-relaxed">
+              <span className="font-medium text-ink">{item.lead}</span>{" "}
+              <span className="text-ink70">{item.body}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="space-y-6 text-ink70 leading-relaxed">
+          <p>
+            None of this is berry-specific. Swap the agriculture reports for
+            your trade's, point the inbox agent at your inbox, and the same
+            cast runs a clinic, an outfitter, or a bakery. Every agent ships
+            with you taught to run it: we build it, set it up, and leave you
+            capable.
+          </p>
+        </div>
+      </section>
+
+      {/* Anatomy of one agent */}
+      <section className="max-w-2xl">
+        <div className="mb-6"><Marker index="03" /></div>
+        <Label className="block mb-4">The anatomy</Label>
+        <h2 className="mb-6">What's inside an agent.</h2>
+        <div className="space-y-6 text-ink70 leading-relaxed">
+          <p>
+            Take the industry agent apart and there's no magic, just four
+            pieces done carefully:
           </p>
         </div>
         <ul className="my-8 space-y-5 border-l-2 border-madrona/30 pl-6 list-none">
@@ -89,18 +143,11 @@ export default function AgenticOperations() {
             </li>
           ))}
         </ul>
-        <div className="space-y-6 text-ink70 leading-relaxed">
-          <p>
-            We run one on our own industry. The first thing it does for a
-            client is usually the cheapest strategy work they've ever
-            bought: knowing what changed this week, every week.
-          </p>
-        </div>
       </section>
 
       {/* Dogfood proof */}
       <section className="max-w-2xl">
-        <div className="mb-6"><Marker index="03" /></div>
+        <div className="mb-6"><Marker index="04" /></div>
         <Label className="block mb-4">Proof</Label>
         <h2 className="mb-6">We run our own operation this way.</h2>
         <div className="space-y-6 text-ink70 leading-relaxed">
@@ -136,7 +183,7 @@ export default function AgenticOperations() {
 
       {/* Start tiny */}
       <section className="max-w-2xl">
-        <div className="mb-6"><Marker index="04" /></div>
+        <div className="mb-6"><Marker index="05" /></div>
         <Label className="block mb-4">Where to start</Label>
         <h2 className="mb-6">One agent, one card, tiny scope.</h2>
         <div className="space-y-6 text-ink70 leading-relaxed">

@@ -33,6 +33,10 @@ const agenda = [
     body: "What you've already tried or built, so we don't recommend something you've spent money on twice.",
   },
   {
+    lead: "What would better look like.",
+    body: "Success in your terms: the numbers you watch, the hours you want back, what you'd love to stop doing by hand.",
+  },
+  {
     lead: "Your biggest opportunities.",
     body: "Where we see room to grow or get more efficient.",
   },
@@ -99,9 +103,10 @@ export default function HowItWorks() {
           <p>
             Within a week, you get a written assessment: the specific places
             where we think you could grow or run smoother, what we'd tackle
-            first, and where we honestly can't help. It's a real piece of
-            strategy work, and it's yours to keep whether or not we ever work
-            together.
+            first, and where we honestly can't help. Every recommendation
+            names its measure: what would change, and how you'd see it. It's
+            a real piece of strategy work, and it's yours to keep whether or
+            not we ever work together.
           </p>
         </div>
       </section>
@@ -114,14 +119,30 @@ export default function HowItWorks() {
         <div className="space-y-6 text-ink70 leading-relaxed">
           <p>
             If the assessment points somewhere worth going, we turn it into a
-            proposal: scope, cost, and approach, in plain terms. We like to
-            start small. Our entry engagement is a fixed $2,500: one specific
-            thing fixed or built, with payback you can see. Larger work gets
-            scoped from there.
+            proposal: scope, cost, and approach, in plain terms. Every scoped
+            item says what changes and how we'll know, agreed before work
+            starts. We like to start small. Our entry engagement is a fixed
+            $2,500: one specific thing fixed or built, with payback you can
+            see. Larger work gets scoped from there.
           </p>
           <p>
             And if the assessment doesn't point anywhere? We'll say that too,
             and you're out nothing but 30 minutes.
+          </p>
+        </div>
+      </section>
+
+      {/* Signal — how unproven ideas get de-risked (method, not a service) */}
+      <section className="max-w-2xl">
+        <Label className="block mb-4">When the idea is unproven</Label>
+        <h2 className="mb-6">Real customers, before real money.</h2>
+        <div className="space-y-6 text-ink70 leading-relaxed">
+          <p>
+            When an assessment points at something nobody's proven yet, we
+            don't propose building it. We propose testing it: moderated
+            panels, smoke-test pages with a small ad budget, instrumented
+            betas, plain old conversations. Real customers before real
+            money, and the signal is yours to keep whatever you decide.
           </p>
         </div>
       </section>

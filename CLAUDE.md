@@ -134,27 +134,46 @@ Every page should be able to route here. Three steps, published on
 Booking currently routes through `/contact`; a Cal.com link will replace
 it when the account exists (see `BOOKING_URL` in `HowItWorks.tsx`).
 
-## Service architecture (the lifecycle model — site IA follows it)
+## Service architecture (Grow / Retain / Operate — site IA follows it)
 
-> ⚠️ **Superseded in canon, rebuild pending:** the canon replaced this
-> lifecycle triad with **Grow / Retain / Operate** (internal vocabulary;
-> customer surfaces use symptom language). The services menu is being
-> redefined in `charlie-hq/briefs/2026-07-22-services-architecture.md`;
-> this section gets rewritten when that brief is signed off. Until then,
-> don't build new work against the triad below.
+Settled 2026-07-23 (Charlie sign-off on
+`charlie-hq/briefs/2026-07-22-services-architecture.md`). Internal
+vocabulary is **Grow / Retain / Operate** — customer surfaces never say
+those words. Each bucket appears as a symptom question (the "door"), an
+impact line in the owner's terms, and plain-words offerings:
 
-`/services` is organized by the client's business lifecycle, offer-led:
+1. **Grow — "Getting found."** Door: "Selling something great behind a
+   web presence that doesn't do it justice?" Offerings: new websites,
+   brand, content and marketing, online stores. Impact: more people find
+   you, and more of them buy.
+2. **Retain — "Coming back."** Door: "People buy from you once, then you
+   never hear from them again?" Offerings: loyalty and memberships,
+   repeat ordering, win-back and lifecycle email/SMS, reviews. Impact:
+   customers come back more often.
+3. **Operate — "Running smoother."** Door: "Watching the week disappear
+   into work that software should be doing?" Offerings: workflow fixes,
+   small tools with one job, agentic AI. Impact: hours back every week.
+   **Flagship: agentic operations** (`/services/agentic-operations`) —
+   agents + one command surface. The worked example is **Berry Good
+   Berry Farm, openly framed as our demonstration business** (industry
+   agent, invoicing agent, customer service agent, the ordering
+   surface); dogfood proof is our own operation (Helm demo mode
+   `?demo=1` — NEVER link the real HQ instance).
 
-1. **Demand** (front) — brand, web presence, content, performance
-   marketing, e-commerce.
-2. **Operations** (middle) — service blueprinting, efficiencies, AI
-   agents/tools. **Flagship: agentic operations**
-   (`/services/agentic-operations`) — business agents + a centralized
-   command surface; the industry agent as the worked example; dogfood
-   proof is our own operation (Helm demo mode `?demo=1` — NEVER link the
-   real HQ instance).
-3. **Channel & fulfillment** (back) — DTC channels, ordering, booking,
-   fulfillment support.
+**Channel/fulfillment is not a bucket:** first-purchase path → Grow,
+repeat/standing ordering → Retain, behind-the-counter fulfillment →
+Operate.
+
+**Signal is method, not a service:** "real customers before real money"
+lives on `/how-it-works`, not the services menu.
+
+**Success criteria run through everything:** every engagement names its
+win up front in the owner's terms. The published agenda includes "what
+would better look like"; every assessment recommendation names its
+measure; every scoped proposal item says what changes and how we'll
+know. Impact is an honest expectation, never a guarantee — no "3x your
+revenue" energy. Proof links are wired copy-first: offerings ship as
+copy, case studies and Berry Good demos link in as each proof lands.
 
 The three engagement shapes live on `/how-it-works` as the shapes a
 *proposal* takes (they are project shapes, not the service architecture):
@@ -168,15 +187,19 @@ The three engagement shapes live on `/how-it-works` as the shapes a
 
 ## Content architecture
 
-- **Home** — hero, capability cards, self-recognition questions (lifecycle
-  flavored), recent work (with pillars line), how-it-works teaser,
+- **Home** — typed hero (settled headline + descriptor + cycling
+  "never been a better time to" line), Why-we-exist two-column spread,
+  three question doors (one per bucket), agenda strip, curated proof,
   contact CTA.
 - **How it works** — the 3-step engagement model with the published
-  30-minute agenda + the proposal shapes.
-- **Services** — the lifecycle model: demand / operations / channel &
-  fulfillment, with the agentic-operations flagship callout.
-- **Agentic operations** — flagship page: the idea, the industry-agent
-  worked example, the dogfood proof (Helm demo), start-tiny framing.
+  30-minute agenda (incl. "what would better look like"), the Signal
+  block (real customers before real money), + the proposal shapes.
+- **Services** — the three doors: getting found / coming back / running
+  smoother, each with impact line and offerings, agentic-operations
+  flagship callout, success-criteria strip.
+- **Agentic operations** — flagship page: the idea, the Berry Good
+  worked example (the agent cast), the anatomy, the dogfood proof
+  (Helm demo), start-tiny framing.
 - **Work** — 9 studio case studies grouped by maturity stage
   (Live → Beta → Prototype → Concept).
 - **Case study pages** — template: Opportunity → Thesis → What We Did →

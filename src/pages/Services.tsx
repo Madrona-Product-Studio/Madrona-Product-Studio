@@ -2,50 +2,48 @@ import { Link } from "react-router-dom";
 import PageMeta from "../components/PageMeta";
 import { Label, Marker, Breath } from "../components/swiss";
 
-// The service architecture follows the business lifecycle: how customers
-// find you (demand), how the work gets done (operations), how what you
-// sell reaches people (channel & fulfillment). See CLAUDE.md.
+// The service architecture is Grow / Retain / Operate (internal vocabulary;
+// see CLAUDE.md and the canon). On the page, each bucket is a symptom
+// question, an impact line in the owner's terms, and plain-words offerings.
 const buckets = [
   {
     index: "01",
-    label: "Demand",
-    heading: "How customers find you.",
-    intro:
-      "The front of the business: getting seen, getting understood, getting chosen. We build the pieces that pull people in, and we measure whether they're working.",
+    label: "Getting found",
+    door: "Selling something great behind a web presence that doesn't do it justice?",
+    impact:
+      "What changes: more people find you, and more of them buy. Measured in things you already watch: calls, orders, bookings, customers who say they found you online.",
     services: [
+      "New websites that do your work justice",
       "Brand and positioning that sounds like you, not like marketing",
-      "A web presence that does your work justice",
-      "Optimizing the site you already have: speed, conversion, search",
-      "Content people actually want, on a rhythm you can keep",
-      "Performance marketing with honest measurement",
-      "E-commerce that turns interest into orders",
+      "Content and marketing that pull their weight, honestly measured",
+      "Online stores and a smooth path to the first order",
     ],
   },
   {
     index: "02",
-    label: "Operations",
-    heading: "How the work gets done.",
-    intro:
-      "The middle of the business, where the hours go. We map how the operation actually flows, find the places it leaks time or money, and build the tools that close the gaps.",
+    label: "Coming back",
+    door: "People buy from you once, then you never hear from them again?",
+    impact:
+      "What changes: customers come back more often. Repeat orders, active members, regulars you can actually reach.",
     services: [
-      "Service blueprinting: the whole operation, mapped honestly",
-      "Finding the efficiencies worth chasing (and naming the ones that aren't)",
-      "AI agents and tools built on your real workflows",
-      "Small tools with one job: a what's-fresh board, a field map, a review digest, an availability broadcast",
+      "Loyalty programs and memberships worth joining",
+      "Repeat and standing ordering that makes coming back easy",
+      "Win-back and lifecycle email and SMS",
+      "Reviews: earning them, answering them, learning from them",
     ],
-    flagship: true,
   },
   {
     index: "03",
-    label: "Channel & fulfillment",
-    heading: "How it reaches people.",
-    intro:
-      "The back of the business: the path between someone wanting what you make and having it. We build direct channels and smooth the road behind them.",
+    label: "Running smoother",
+    door: "Watching the week disappear into work that software should be doing?",
+    impact:
+      "What changes: hours back every week. Work that runs itself, fewer mistakes, a shorter Monday.",
     services: [
-      "Direct-to-consumer channels you own",
-      "Online ordering and booking that works the first time",
-      "Fulfillment support that keeps pace with the front door",
+      "Workflow fixes that close the places time leaks",
+      "Small tools with one job: a what's-fresh board, a review digest, an availability broadcast",
+      "Agentic AI in your operation, built on your real workflows",
     ],
+    flagship: true,
   },
 ];
 
@@ -54,7 +52,7 @@ export default function Services() {
     <div className="space-y-24">
       <PageMeta
         title="Services"
-        description="Madrona works across the whole arc of a business: demand (brand, web, content, marketing, e-commerce), operations (blueprinting, efficiencies, AI agents), and channel & fulfillment (DTC, ordering, booking)."
+        description="Getting found, coming back, running smoother. New websites, brand, and online stores; loyalty and repeat ordering; workflow fixes and agentic AI on your real workflows. Every engagement names what would change."
       />
 
       {/* Intro */}
@@ -62,9 +60,9 @@ export default function Services() {
         <h1 className="mb-8">What we do</h1>
         <div className="max-w-2xl">
           <Breath>
-            Every business runs the same arc: customers find you, the work
-            gets done, and what you sell reaches people. We work across all
-            three. Pick the part that hurts; we meet you there.
+            Three ways a business gets better: more people find you, more of
+            them come back, and the work behind the counter runs smoother.
+            Pick the part that hurts; we meet you there.
           </Breath>
         </div>
       </section>
@@ -73,8 +71,8 @@ export default function Services() {
         <section key={bucket.index} className="max-w-2xl">
           <div className="mb-6"><Marker index={bucket.index} /></div>
           <Label className="block mb-4">{bucket.label}</Label>
-          <h2 className="mb-6">{bucket.heading}</h2>
-          <p className="text-ink70 leading-relaxed mb-8">{bucket.intro}</p>
+          <h2 className="mb-6">{bucket.door}</h2>
+          <p className="text-ink70 leading-relaxed mb-8">{bucket.impact}</p>
           <ul className="border-t border-line divide-y divide-line-soft list-none m-0 p-0">
             {bucket.services.map((s) => (
               <li key={s} className="py-4 text-ink leading-relaxed">
@@ -101,26 +99,16 @@ export default function Services() {
         </section>
       ))}
 
-      {/* Signal — the cross-cutting practice */}
-      <section className="max-w-2xl">
-        <div className="mb-6"><Marker index="04" /></div>
-        <Label className="block mb-4">Signal · how we de-risk all of it</Label>
-        <h2 className="mb-6">Real customers, before real money.</h2>
-        <div className="space-y-6 text-ink70 leading-relaxed">
-          <p>
-            Before anything expensive gets built, we make the idea testable
-            and put it in front of real customers: moderated tests through
-            panels like UserTesting, smoke-test pages with a small ad budget,
-            instrumented betas, and plain old conversations. We run this loop
-            on our own products, and it's the cheapest insurance an idea can
-            buy.
-          </p>
-          <p>
-            A validation test also makes a natural first engagement: small,
-            fast, and the signal is yours to keep whatever you decide to
-            build.
-          </p>
-        </div>
+      {/* Success criteria — the standing promise */}
+      <section className="max-w-2xl border-l-2 border-madrona/30 pl-6">
+        <p className="text-ink text-lg leading-relaxed mb-3">
+          Every engagement names its win before work starts, in your terms,
+          and we measure against it. An honest expectation with a way to
+          check it, never a guarantee.
+        </p>
+        <Link to="/how-it-works" className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
+          How that works &rarr;
+        </Link>
       </section>
 
       {/* CTA */}

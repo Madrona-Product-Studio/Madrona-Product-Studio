@@ -223,23 +223,15 @@ export function HomeBody() {
           {[
             {
               question: "Selling something great behind a web presence that doesn't do it justice?",
-              services: "Brand, websites, content, marketing, e-commerce.",
+              services: "New websites, brand, content and marketing, online stores.",
+            },
+            {
+              question: "People buy from you once, then you never hear from them again?",
+              services: "Loyalty and memberships, repeat ordering, win-back email and SMS, reviews.",
             },
             {
               question: "Watching the week disappear into work that software should be doing?",
-              services: "Service blueprinting, efficiencies, AI agents on your real workflows.",
-            },
-            {
-              question: "Pretty sure AI could help your business, but nobody's shown you how?",
-              services: "We build with it daily. Honest answers on where it helps, and where it doesn't.",
-            },
-            {
-              question: "Want customers ordering and booking from you directly?",
-              services: "Direct channels, online ordering, booking, fulfillment.",
-            },
-            {
-              question: "Not sure people will pay for the idea before you spend real money on it?",
-              services: "Concept tests, user panels, smoke tests. Real signal, kept small.",
+              services: "Workflow fixes, small tools with one job, agentic AI on your real workflows.",
             },
           ].map((row) => (
             <Link
