@@ -149,7 +149,11 @@ impact line in the owner's terms, and plain-words offerings:
 1. **Grow — "Getting found."** Door: "Selling something great behind a
    web presence that doesn't do it justice?" Offerings: new websites,
    brand, content and marketing, online stores. Impact: more people find
-   you, and more of them buy.
+   you, and more of them buy. **Flagship: selling online** — an e-commerce
+   callout on `/services` (parallel to agentic operations under Operate),
+   framed copy-first around best-practice work: Shopify builds/replatforms,
+   the integrations that matter, checkout that converts. No dedicated page
+   yet; copy-first until proof lands.
 2. **Retain — "Coming back."** Door: "People buy from you once, then you
    never hear from them again?" Offerings: loyalty and memberships,
    repeat ordering, win-back and lifecycle email/SMS, reviews. Impact:

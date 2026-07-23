@@ -34,9 +34,9 @@ const pages = {
   },
   '/services': {
     title: 'Services · Madrona Product Studio',
-    description: 'Getting found, coming back, running smoother. New websites, brand, and online stores; loyalty and repeat ordering; workflow fixes and agentic AI on your real workflows. Every engagement names what would change.',
+    description: 'Getting found, coming back, running smoother. New websites, brand, and online stores on Shopify; loyalty and repeat ordering; workflow fixes and AI agents on your real workflows. For good businesses of every shape around the Pacific Northwest.',
     h1: 'What we do',
-    body: 'Getting found: new websites, brand and positioning, content and marketing, online stores. Coming back: loyalty programs and memberships, repeat ordering, win-back and lifecycle email and SMS, reviews. Running smoother: workflow fixes, small tools with one job, agentic AI on your real workflows, with agentic operations as the flagship. Every engagement names its win before work starts.',
+    body: 'The shop, the clinic, the outfitter, the family farm: good businesses around here come in every shape. Getting found: new websites, brand and positioning, content and marketing, online stores on Shopify, with selling online as a flagship. Coming back: loyalty and memberships, repeat ordering, win-back emails and texts, reviews. Running smoother: workflow fixes, small tools with one job, AI agents on your real workflows, with agentic operations as the flagship. Every engagement names its win before work starts.',
   },
   '/services/agentic-operations': {
     title: 'Agentic operations · Madrona Product Studio',

@@ -209,20 +209,24 @@ export function HomeBody() {
       <section>
         <div className="mb-6"><Marker index="02" /></div>
         <Label className="block mb-4">What we do</Label>
-        <h2 className="mb-10">Wherever the business hurts.</h2>
+        <h2 className="mb-4">Wherever the business hurts.</h2>
+        <p className="text-ink70 text-lg leading-relaxed max-w-2xl mb-10">
+          The shop, the clinic, the outfitter, the family farm. Good
+          businesses around here come in every shape, and the problems rhyme.
+        </p>
         <div className="max-w-3xl border-t border-line divide-y divide-line-soft">
           {[
             {
               question: "Selling something great behind a web presence that doesn't do it justice?",
-              services: "New websites, brand, content and marketing, online stores.",
+              services: "New websites, brand, content, online stores that sell.",
             },
             {
               question: "People buy from you once, then you never hear from them again?",
-              services: "Loyalty and memberships, repeat ordering, win-back email and SMS, reviews.",
+              services: "Loyalty and memberships, repeat ordering, win-back emails and texts, reviews.",
             },
             {
               question: "Watching the week disappear into work that software should be doing?",
-              services: "Workflow fixes, small tools with one job, agentic AI on your real workflows.",
+              services: "Workflow fixes, small tools with one job, AI agents for the busywork.",
             },
           ].map((row) => (
             <Link

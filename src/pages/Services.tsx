@@ -6,19 +6,26 @@ import { Label, Marker, Breath } from "../components/swiss";
 // The service architecture is Grow / Retain / Operate (internal vocabulary;
 // see CLAUDE.md and the canon). On the page, each bucket is a symptom
 // question, an impact line in the owner's terms, and plain-words offerings.
+// Two buckets carry a "flagship" callout — selling online (Getting found)
+// and agentic operations (Running smoother).
 const buckets = [
   {
     index: "01",
     label: "Getting found",
     door: "Selling something great behind a web presence that doesn't do it justice?",
     impact:
-      "What changes: more people find you, and more of them buy. Measured in things you already watch: calls, orders, bookings, customers who say they found you online.",
+      "What changes: more people find you, and more of them buy. You feel it in the numbers you already watch, calls, orders, bookings, the customers who say they found you online.",
     services: [
       "New websites that do your work justice",
-      "Brand and positioning that sounds like you, not like marketing",
+      "Brand and positioning that sound like you, not like marketing",
       "Content and marketing that pull their weight, honestly measured",
-      "Online stores and a smooth path to the first order",
+      "Online stores that turn browsers into buyers",
     ],
+    callout: {
+      heading: "Selling online, handled.",
+      body:
+        "Most online stores leak sales to friction: a checkout that fights the customer, a catalog that's a chore to keep current, a storefront bolted on as an afterthought. We build and upgrade stores on Shopify (or the platform you're already on), wire in the integrations that matter, and shorten the path from found you to bought from you. A new store, a replatform, or fixing the one you've got.",
+    },
   },
   {
     index: "02",
@@ -27,9 +34,9 @@ const buckets = [
     impact:
       "What changes: customers come back more often. Repeat orders, active members, regulars you can actually reach.",
     services: [
-      "Loyalty programs and memberships worth joining",
-      "Repeat and standing ordering that makes coming back easy",
-      "Win-back and lifecycle email and SMS",
+      "Loyalty and memberships worth joining",
+      "Repeat and standing orders that make coming back easy",
+      "Win-back and reminder emails and texts",
       "Reviews: earning them, answering them, learning from them",
     ],
   },
@@ -41,10 +48,16 @@ const buckets = [
       "What changes: hours back every week. Work that runs itself, fewer mistakes, a shorter Monday.",
     services: [
       "Workflow fixes that close the places time leaks",
-      "Small tools with one job: a what's-fresh board, a review digest, an availability broadcast",
-      "Agentic AI in your operation, built on your real workflows",
+      "Small tools with one job: a booking page that stays in sync, a review digest, a low-stock heads-up",
+      "AI agents that handle the busywork, built on your real workflows",
     ],
-    flagship: true,
+    callout: {
+      heading: "The flagship: agentic operations.",
+      body:
+        "Business agents on your real workflows, and one command surface that shows the whole operation. We run our own studio this way.",
+      to: "/services/agentic-operations",
+      linkText: "How agentic operations works →",
+    },
   },
 ];
 
@@ -53,7 +66,7 @@ export default function Services() {
     <div className="space-y-24">
       <PageMeta
         title="Services"
-        description="Getting found, coming back, running smoother. New websites, brand, and online stores; loyalty and repeat ordering; workflow fixes and agentic AI on your real workflows. Every engagement names what would change."
+        description="Getting found, coming back, running smoother. New websites, brand, and online stores on Shopify; loyalty and repeat ordering; workflow fixes and AI agents on your real workflows. Every engagement names what would change."
       />
 
       {/* Intro */}
@@ -61,9 +74,11 @@ export default function Services() {
         <h1 className="mb-8">What we do</h1>
         <div className="max-w-2xl">
           <Breath>
-            Three ways a business gets better: more people find you, more of
-            them come back, and the work behind the counter runs smoother.
-            Pick the part that hurts; we meet you there.
+            The shop, the clinic, the outfitter, the family farm. Good
+            businesses around here come in every shape, and the software
+            rarely keeps up. We help in three ways: more people find you,
+            more of them come back, and the work behind the counter runs
+            smoother. Pick the part that hurts; we meet you there.
           </Breath>
         </div>
       </section>
@@ -81,20 +96,20 @@ export default function Services() {
               </li>
             ))}
           </ul>
-          {bucket.flagship && (
+          {bucket.callout && (
             <div className="mt-10 border-l-2 border-madrona/30 pl-6">
               <p className="text-ink leading-relaxed mb-3">
-                <span className="font-medium">The flagship: agentic operations.</span>{" "}
-                Business agents on your real workflows, and one command
-                surface that shows the whole operation. We run our own studio
-                this way.
+                <span className="font-medium">{bucket.callout.heading}</span>{" "}
+                {bucket.callout.body}
               </p>
-              <Link
-                to="/services/agentic-operations"
-                className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors"
-              >
-                How agentic operations works &rarr;
-              </Link>
+              {bucket.callout.to && (
+                <Link
+                  to={bucket.callout.to}
+                  className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors"
+                >
+                  {bucket.callout.linkText}
+                </Link>
+              )}
             </div>
           )}
         </section>
