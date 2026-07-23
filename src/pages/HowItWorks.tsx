@@ -1,27 +1,8 @@
-import { Link } from "react-router-dom";
 import PageMeta from "../components/PageMeta";
 import OfferingCard from "../components/OfferingCard";
+import BookCta from "../components/BookCta";
 import { offerings } from "../data/offerings";
 import { Label, Marker, Breath } from "../components/swiss";
-
-// Booking destination. When the Cal.com (or similar) account exists, set
-// this to the scheduling URL and the CTAs below switch from the contact
-// form to direct booking.
-const BOOKING_URL: string | null = null;
-
-function BookButton({ children }: { children: React.ReactNode }) {
-  const cls =
-    "press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline";
-  return BOOKING_URL ? (
-    <a href={BOOKING_URL} className={cls}>
-      {children}
-    </a>
-  ) : (
-    <Link to="/contact" className={cls}>
-      {children}
-    </Link>
-  );
-}
 
 const agenda = [
   {
@@ -169,7 +150,7 @@ export default function HowItWorks() {
           Tell us a little about your business and a couple of times that
           work. We'll take it from there.
         </p>
-        <BookButton>Book a 30m free chat</BookButton>
+        <BookCta fallbackTo="/contact">Book a 30m free chat</BookCta>
       </section>
     </div>
   );

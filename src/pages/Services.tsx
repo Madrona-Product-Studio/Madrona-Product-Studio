@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PageMeta from "../components/PageMeta";
+import BookCta from "../components/BookCta";
 import { Label, Marker, Breath } from "../components/swiss";
 
 // The service architecture is Grow / Retain / Operate (internal vocabulary;
@@ -119,12 +120,7 @@ export default function Services() {
           free, with a published agenda. We'll tell you where we'd start,
           in writing, whether or not you hire us.
         </p>
-        <Link
-          to="/how-it-works"
-          className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
-        >
-          Book a 30m free chat
-        </Link>
+        <BookCta>Book a 30m free chat</BookCta>
       </section>
     </div>
   );

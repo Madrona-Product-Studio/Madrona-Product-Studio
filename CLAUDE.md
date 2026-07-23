@@ -131,8 +131,12 @@ Every page should be able to route here. Three steps, published on
    deliberately small, with visible payback. No prices published yet
    (Charlie's call, pending).
 
-Booking currently routes through `/contact`; a Cal.com link will replace
-it when the account exists (see `BOOKING_URL` in `HowItWorks.tsx`).
+Booking currently routes through the site funnel (/how-it-works →
+/contact). The swap point is `BOOKING_URL` in `src/data/booking.ts`:
+set it to the Google Calendar appointment-schedule share link (the
+settled recommendation, not Cal.com) and every "Book a 30m free chat"
+CTA sitewide switches to direct booking via the shared `<BookCta>`
+component.
 
 ## Service architecture (Grow / Retain / Operate — site IA follows it)
 

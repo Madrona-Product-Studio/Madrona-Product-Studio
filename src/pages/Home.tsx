@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
 import CaseStudyCard from "../components/CaseStudyCard";
+import BookCta from "../components/BookCta";
 import PageMeta from "../components/PageMeta";
 import { Label, Marker } from "../components/swiss";
 
@@ -85,13 +86,6 @@ function useTypeCycler() {
   return displayed;
 }
 
-function Cta({ to = "/how-it-works", children }: { to?: string; children: React.ReactNode }) {
-  return (
-    <Link to={to} className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline">
-      {children}
-    </Link>
-  );
-}
 
 export default function Home() {
   const phrase = useTypeCycler();
@@ -155,13 +149,10 @@ export default function Home() {
             </div>
 
             <div className="mt-9">
-              <Link
-                to="/how-it-works"
-                className="press inline-flex items-center gap-3 bg-madrona text-paper px-7 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
-              >
+              <BookCta className="press inline-flex items-center gap-3 bg-madrona text-paper px-7 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline">
                 Book a 30m free chat
                 <span aria-hidden="true">&rarr;</span>
-              </Link>
+              </BookCta>
             </div>
           </div>
         </div>
@@ -284,7 +275,7 @@ export function HomeBody() {
       {/* CTA */}
       <section className="max-w-2xl border-t border-line pt-14">
         <h2 className="mb-6">Tell us about your business.</h2>
-        <Cta>Book a 30m free chat</Cta>
+        <BookCta>Book a 30m free chat</BookCta>
       </section>
     </>
   );

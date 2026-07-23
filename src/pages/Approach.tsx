@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PageMeta from "../components/PageMeta";
+import BookCta from "../components/BookCta";
 
 export default function Approach() {
   return (
@@ -56,12 +57,7 @@ export default function Approach() {
           or start where every engagement starts: a free 30-minute
           conversation with a published agenda.
         </p>
-        <Link
-          to="/how-it-works"
-          className="press inline-block bg-madrona text-paper px-8 py-3.5 rounded font-medium text-sm hover:bg-madrona-dark no-underline"
-        >
-          Book a 30m free chat
-        </Link>
+        <BookCta>Book a 30m free chat</BookCta>
       </section>
     </div>
   );

@@ -10,14 +10,14 @@ import { Label, Breath } from "../components/swiss";
 const sections = [
   {
     lifecycle: "demand" as const,
-    label: "Demand",
+    label: "Getting found",
     heading: "Earning attention, honestly.",
     intro:
       "Brand, content, launch, growth. Both of these went from nothing to a live audience, and the marketing work is as much the story as the software.",
   },
   {
     lifecycle: "operations" as const,
-    label: "Operations",
+    label: "Running smoother",
     heading: "Running the studio on agents.",
     intro:
       "Our own operation is the ops proof: agents on real workflows, and a command surface that renders the whole business. Helm is the visible part.",
@@ -39,7 +39,7 @@ export default function Work() {
     <div className="space-y-24">
       <PageMeta
         title="Work"
-        description="The work behind the offer: demand built for live products, an operation run on agents, and prototypes as the deliverable of strategy work."
+        description="The work behind the offer: audiences earned for live products, an operation run on agents, and prototypes as the deliverable of strategy work."
       />
 
       <section className="max-w-3xl">
@@ -48,7 +48,7 @@ export default function Work() {
           <Breath>
             Everything here is ours: built, shipped, and run by the studio.
             We show it because it's the same work clients hire us for:
-            earning demand, running an operation, and turning strategy into
+            getting found, running smoother, and turning strategy into
             something you can touch.
           </Breath>
         </div>
