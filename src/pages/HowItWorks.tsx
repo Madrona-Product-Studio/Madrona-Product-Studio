@@ -1,6 +1,7 @@
 import PageMeta from "../components/PageMeta";
-import OfferingCard from "../components/OfferingCard";
 import ConnectCta from "../components/ConnectCta";
+import EngagementComparison from "../components/EngagementComparison";
+import ProcessSteps from "../components/ProcessSteps";
 import { offerings } from "../data/offerings";
 import { Label, Breath } from "../components/swiss";
 
@@ -39,7 +40,7 @@ export default function HowItWorks() {
       <section className="grid gap-8 md:grid-cols-[.8fr_1.2fr] md:items-end">
         <div>
           <Label className="mb-5 block">How it works</Label>
-          <h1>No black box. No hard sell.</h1>
+          <h1>A straightforward way to begin.</h1>
         </div>
         <div className="max-w-2xl">
           <Breath>
@@ -50,20 +51,25 @@ export default function HowItWorks() {
       </section>
 
       <section>
-        <div className="grid border-y border-line md:grid-cols-3 md:divide-x md:divide-line">
-          {[
-            ["01", "Talk", "A 30-minute conversation. Free.", "We talk about your business, not about us. You do most of the talking."],
-            ["02", "Assess", "A short written assessment.", "Within a week, you get our honest read on where to start. It is yours to keep."],
-            ["03", "Start", "A scoped first move.", "If there is somewhere worth going, we propose one specific thing with visible payback."],
-          ].map(([number, label, title, body]) => (
-            <article key={number} className="border-b border-line py-8 last:border-0 md:min-h-[24rem] md:border-0 md:px-8 md:first:pl-0 md:last:pr-0">
-              <span className="mb-16 block text-xs font-semibold text-madrona">{number}</span>
-              <Label className="mb-4 block">{label}</Label>
-              <h2 className="mb-5 text-[1.75rem]">{title}</h2>
-              <p className="leading-relaxed text-ink70">{body}</p>
-            </article>
-          ))}
-        </div>
+        <ProcessSteps
+          steps={[
+            {
+              index: "01",
+              title: "Talk for 30 minutes",
+              body: "A free conversation with a public agenda. We talk about your business, not about us.",
+            },
+            {
+              index: "02",
+              title: "Receive a written assessment",
+              body: "Within a week, you get our honest read on the problem, the opportunity, and how success could be measured.",
+            },
+            {
+              index: "03",
+              title: "Start with focused work",
+              body: "If there is a fit, we propose the smallest useful engagement with visible payback.",
+            },
+          ]}
+        />
       </section>
 
       <section className="grid gap-10 md:grid-cols-[.7fr_1.3fr] md:gap-20">
@@ -110,11 +116,7 @@ export default function HowItWorks() {
           Beyond that first engagement, most proposals land in one of three
           shapes. The assessment tells us which one fits.
         </p>
-        <div className="grid md:grid-cols-3 gap-10 lg:gap-12">
-          {offerings.map((o) => (
-            <OfferingCard key={o.slug} offering={o} />
-          ))}
-        </div>
+        <EngagementComparison offerings={offerings} />
       </section>
 
       {/* CTA */}

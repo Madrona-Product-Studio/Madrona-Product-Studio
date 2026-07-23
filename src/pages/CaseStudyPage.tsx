@@ -5,6 +5,7 @@ import type { CaseStudy, HowItWorks } from "../data/caseStudies";
 import PageMeta from "../components/PageMeta";
 import ArchitectureDiagram from "../components/ArchitectureDiagram";
 import Img from "../components/Img";
+import CaseStudySummary from "../components/CaseStudySummary";
 
 /** Render inline markdown: links [text](url), bold **text**, italics *text*, ~~principle~~ */
 let inlineKey = 0;
@@ -92,18 +93,6 @@ export default function CaseStudyPage() {
           <p className="text-xl text-ink70 leading-relaxed">
             {study.tagline}
           </p>
-          {study.highlights && study.highlights.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-5">
-              {study.highlights.map((h) => (
-                <span
-                  key={h}
-                  className="text-xs font-medium text-madrona bg-madrona/8 px-3 py-1.5 rounded"
-                >
-                  {h}
-                </span>
-              ))}
-            </div>
-          )}
           {study.externalUrl && (
             <div className="mt-6">
               <a
@@ -118,6 +107,8 @@ export default function CaseStudyPage() {
           )}
         </header>
       </div>
+
+      <CaseStudySummary study={study} />
 
       {study.heroImage ? (
         <Img
@@ -134,8 +125,8 @@ export default function CaseStudyPage() {
       )}
 
       <div className="space-y-16">
-        <TextSection title="Opportunity" content={study.opportunity} />
-        <TextSection title="Thesis" content={study.thesis} />
+        <TextSection title="The business problem" content={study.opportunity} />
+        <TextSection title="The opportunity and thesis" content={study.thesis} />
         {study.architecture && (
           <ArchitectureDiagram architecture={study.architecture} />
         )}
@@ -218,7 +209,7 @@ function WhatWeDidSection({ study }: { study: CaseStudy }) {
     <section>
       <div className="max-w-3xl">
         <h2 className="text-xl font-serif font-medium mb-4 text-ink">
-          What we did
+          What we built
         </h2>
         <p className="text-ink70 text-lg leading-relaxed max-w-2xl">
           {renderInline(study.whatWeDid.lead)}
@@ -226,6 +217,9 @@ function WhatWeDidSection({ study }: { study: CaseStudy }) {
       </div>
       {study.whatWeDid.items.length > 0 && (
         <div className="mt-12 space-y-16">
+          <h3 className="max-w-3xl text-xl text-ink">
+            Key product decisions and visual walkthrough
+          </h3>
           {study.whatWeDid.items.map((item) => (
             <div key={item.label}>
               {item.image && (

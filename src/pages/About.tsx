@@ -23,8 +23,9 @@ export default function About() {
           <h1 className="mb-8">Senior attention, all the way through.</h1>
           <p className="max-w-xl text-xl leading-relaxed text-ink70">
             Madrona is led by Charlie Koch, a product leader who has spent
-            fifteen years figuring out what to build and helping small teams
-            bring it to life.
+            fifteen years figuring out what to build, leading products at
+            meaningful consumer scale, and helping small teams bring the work
+            to life.
           </p>
         </div>
         <figure>
@@ -70,7 +71,9 @@ export default function About() {
           <p>
             Madrona keeps one senior product lead at the center and brings in
             a trusted network of designers, engineers, and researchers when
-            the work calls for them. Every engagement is led personally.
+            the work calls for them. Every engagement is led personally, with
+            product design and development staying close to the decisions
+            instead of passing through layers.
           </p>
         </div>
       </section>
@@ -105,8 +108,8 @@ export default function About() {
         </article>
       </section>
 
-      <section className="grid gap-10 border-t border-line pt-12 md:grid-cols-[1fr_auto] md:items-end">
-        <div>
+      <section className="grid gap-10 border-t border-line pt-12 md:grid-cols-[1fr_.72fr] md:items-end">
+        <div className="md:pb-4">
           <Label className="mb-4 block">The name</Label>
           <h2 className="mb-4">Named for the tree at the water&apos;s edge.</h2>
           <p className="max-w-2xl text-lg leading-relaxed text-ink70">
@@ -114,8 +117,18 @@ export default function About() {
             the sea. Resilient, unmistakably local, and comfortable at the
             edge of two worlds.
           </p>
+          <ConnectCta className="mt-8">Start the conversation</ConnectCta>
         </div>
-        <ConnectCta>Let&apos;s connect</ConnectCta>
+        <figure>
+          <img
+            src="/images/IMG_2301.jpeg"
+            alt="A rocky shoreline on the Salish Sea at sunset"
+            className="aspect-[4/3] w-full rounded-card object-cover"
+          />
+          <figcaption className="mt-3 text-xs text-muted">
+            The water&apos;s edge, close to home.
+          </figcaption>
+        </figure>
       </section>
     </div>
   );

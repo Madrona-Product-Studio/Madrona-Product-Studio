@@ -51,20 +51,19 @@ export default function AgenticOperations() {
   return (
     <div className="space-y-28 md:space-y-36">
       <PageMeta
-        title="Agentic operations"
-        description="Business agents on your real workflows, and one command surface that shows the whole operation. Madrona runs its own studio this way, and builds the same architecture for clients."
+        title="Workflow automation and practical AI"
+        description="Less repetitive work, fewer handoffs, and a clearer view of the operation. Practical automation and AI built around real business workflows."
       />
 
       {/* Intro */}
       <section className="max-w-3xl">
-        <Label className="block mb-4">Operations · the flagship</Label>
-        <h1 className="mb-8">Agentic operations</h1>
+        <Label className="block mb-4">Workflow automation and practical AI</Label>
+        <h1 className="mb-8">Make repetitive work run itself.</h1>
         <div className="max-w-2xl">
           <Breath>
-            Business agents working your real workflows, and one command
-            surface where the whole operation is legible. Not a chatbot
-            bolted onto the side of the business. The business itself,
-            running with less friction.
+            Less repetitive work. Fewer handoffs. One clear view of what
+            changed and what needs attention. We use automation and AI where
+            they genuinely make the operation easier to run.
           </Breath>
         </div>
       </section>

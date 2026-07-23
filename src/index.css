@@ -88,6 +88,10 @@
     transition: color 0.15s ease;
   }
   a:hover { color: var(--color-madrona-dark); }
+  :where(a, button, input, textarea, select):focus-visible {
+    outline: 2px solid var(--color-madrona);
+    outline-offset: 3px;
+  }
 
   ::selection { background-color: var(--color-madrona-light); color: var(--color-ink); }
 }
@@ -119,10 +123,8 @@
       background-color 150ms ease,
       color 150ms ease;
   }
-  @media (hover: hover) and (pointer: fine) {
-    .press:active {
-      transform: scale(0.97);
-    }
+  .press:active {
+    transform: scale(0.97);
   }
 }
 

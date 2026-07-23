@@ -3,7 +3,6 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Work from "./pages/Work";
 import CaseStudyPage from "./pages/CaseStudyPage";
-import Approach from "./pages/Approach";
 import HowItWorks from "./pages/HowItWorks";
 import Services from "./pages/Services";
 import AgenticOperations from "./pages/AgenticOperations";
@@ -24,7 +23,7 @@ export default function App() {
           <Route path="how-it-works" element={<HowItWorks />} />
           <Route path="services" element={<Services />} />
           <Route path="services/agentic-operations" element={<AgenticOperations />} />
-          <Route path="approach" element={<Approach />} />
+          <Route path="approach" element={<Navigate to="/how-it-works" replace />} />
           <Route path="writing" element={<Writing />} />
           <Route path="about" element={<About />} />
           <Route path="connect" element={<Connect />} />

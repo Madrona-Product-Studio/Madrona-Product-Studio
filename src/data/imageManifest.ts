@@ -167,6 +167,10 @@ export const imageManifest: Record<string, { width: number; height: number }> = 
     "width": 1600,
     "height": 1200
   },
+  "/images/examples/berry-good-site.png": {
+    "width": 1600,
+    "height": 7561
+  },
   "/images/hero-harbor-dusk.jpg": {
     "width": 1600,
     "height": 1200

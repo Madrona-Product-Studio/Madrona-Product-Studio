@@ -9,7 +9,7 @@ import type { ReactNode } from "react";
 /** Uppercase, tracked micro-label — the system's quiet caption/eyebrow. */
 export function Label({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <span className={`text-[11px] font-semibold uppercase tracking-[0.16em] text-muted ${className}`}>
+    <span className={`text-xs font-semibold uppercase tracking-[0.13em] text-muted ${className}`}>
       {children}
     </span>
   );

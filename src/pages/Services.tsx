@@ -52,11 +52,11 @@ const buckets = [
       "AI agents that handle the busywork, built on your real workflows",
     ],
     callout: {
-      heading: "The flagship: agentic operations.",
+      heading: "Workflow automation and practical AI.",
       body:
-        "Business agents on your real workflows, and one command surface that shows the whole operation. We run our own studio this way.",
+        "Less repetitive work. Fewer handoffs. More time for the work only your team can do. Deeper in, that can include agents on real workflows and one clear command surface. We run our own studio this way.",
       to: "/services/agentic-operations",
-      linkText: "How agentic operations works →",
+      linkText: "See how practical automation works →",
     },
   },
 ];
@@ -97,7 +97,7 @@ export default function Services() {
                 {bucket.label}
               </p>
               <h2 className="text-[1.75rem] text-ink transition-colors group-hover:text-madrona-dark">
-                {bucket.index === "01" ? "Get found." : bucket.index === "02" ? "Bring people back." : "Get hours back."}
+                {bucket.index === "01" ? "Get found." : bucket.index === "02" ? "Bring customers back." : "Run smoother."}
               </h2>
             </div>
           </a>
@@ -114,7 +114,7 @@ export default function Services() {
             <div className="mb-6"><Marker index={bucket.index} /></div>
             <Label className="mb-4 block">{bucket.label}</Label>
             <h2 className="mb-6">
-              {bucketIndex === 0 ? "Get found." : bucketIndex === 1 ? "Bring people back." : "Get hours back."}
+              {bucketIndex === 0 ? "Get found." : bucketIndex === 1 ? "Bring customers back." : "Run smoother."}
             </h2>
             <p className="text-lg leading-relaxed text-ink70">{bucket.impact}</p>
           </div>
@@ -130,6 +130,62 @@ export default function Services() {
                 </li>
               ))}
             </ul>
+            {bucketIndex === 0 && (
+              <Link to="/work/san-juan-boating-guide" className="group mt-8 block no-underline">
+                <img
+                  src="/case-studies/san-juan-boating-guide/hero.jpg"
+                  alt="The map-first San Juan Boating Guide"
+                  className="aspect-[16/9] w-full rounded-card border border-line-soft object-cover object-top"
+                />
+                <div className="mt-4 flex items-start justify-between gap-5">
+                  <div>
+                    <Label className="mb-2 block">Relevant example</Label>
+                    <p className="font-semibold text-ink">San Juan Boating Guide</p>
+                    <p className="mt-1 text-sm text-ink70">A useful regional product taken from idea to live service.</p>
+                  </div>
+                  <span className="text-madrona" aria-hidden="true">&rarr;</span>
+                </div>
+              </Link>
+            )}
+            {bucketIndex === 1 && (
+              <div className="mt-8 bg-paper p-6 md:p-8">
+                <Label className="mb-6 block">The customer loop</Label>
+                <div className="grid gap-3 sm:grid-cols-4 sm:items-center">
+                  {["First purchase", "Useful follow-up", "Reason to return", "Repeat customer"].map((step, index) => (
+                    <div key={step} className="contents">
+                      <div className="border-t-2 border-madrona/35 pt-3 text-sm font-medium text-ink">
+                        <span className="mb-1 block text-xs text-madrona">0{index + 1}</span>
+                        {step}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-6 text-sm leading-relaxed text-ink70">
+                  The work is not sending more messages. It is giving customers
+                  a useful, well-timed reason to come back.
+                </p>
+              </div>
+            )}
+            {bucketIndex === 2 && (
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
+                <div className="border-t border-line bg-paper p-6">
+                  <Label className="mb-5 block">Before</Label>
+                  <ul className="m-0 list-none space-y-3 p-0 text-sm text-ink70">
+                    <li>Check five different systems</li>
+                    <li>Reconcile the details by hand</li>
+                    <li>Remember who needs the next step</li>
+                  </ul>
+                </div>
+                <div className="border-t-2 border-madrona bg-paper p-6">
+                  <Label className="mb-5 block">After</Label>
+                  <ul className="m-0 list-none space-y-3 p-0 text-sm text-ink">
+                    <li>Systems are watched automatically</li>
+                    <li>Changes arrive in one clear digest</li>
+                    <li>The next action is already attached</li>
+                  </ul>
+                </div>
+              </div>
+            )}
             {bucket.callout && (
               <div className="mt-8 rounded-card bg-paper p-6 md:p-8">
                 <p className="mb-3 text-ink">

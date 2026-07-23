@@ -1,113 +1,73 @@
-import { Link } from "react-router-dom";
 import { caseStudies } from "../data/caseStudies";
-import WorkRow from "../components/WorkRow";
 import CaseStudyCard from "../components/CaseStudyCard";
+import WorkRow from "../components/WorkRow";
 import PageMeta from "../components/PageMeta";
 import { Label, Breath } from "../components/swiss";
 
-// The /work index groups by the lifecycle muscle each project demonstrates,
-// mirroring the service architecture — not by product maturity. Prototypes
-// are presented as the deliverable of strategy work, not unfinished apps.
-const sections = [
-  {
-    lifecycle: "demand" as const,
-    label: "Getting found",
-    heading: "Earning attention, honestly.",
-    intro:
-      "Brand, content, launch, growth. Both of these went from nothing to a live audience, and the marketing work is as much the story as the software.",
-  },
-  {
-    lifecycle: "operations" as const,
-    label: "Running smoother",
-    heading: "Running the studio on agents.",
-    intro:
-      "Our own operation is the ops proof: agents on real workflows, and a command surface that renders the whole business. Helm is the visible part.",
-    link: { to: "/services/agentic-operations", text: "How we build this for clients" },
-  },
-  {
-    lifecycle: "strategy" as const,
-    label: "Strategy, made tangible",
-    heading: "What strategy work leaves behind.",
-    intro:
-      "A strategy engagement here doesn't end in a deck; it ends in something you can touch. These are ours: some validated with real users through betas and testing panels, some still open theses. Every one of them started as a question.",
-  },
-];
-
 export default function Work() {
-  const recentWork = caseStudies.filter((s) => s.category === "recent" && !s.hidden);
+  const visible = caseStudies.filter((study) => study.category === "recent" && !study.hidden);
+  const operated = visible.filter((study) => study.stage === "live" || study.stage === "beta");
+  const experiments = visible.filter(
+    (study) => study.stage === "prototype" || study.stage === "concept",
+  );
 
   return (
     <div className="space-y-28 md:space-y-36">
       <PageMeta
         title="Work"
-        description="The work behind the offer: audiences earned for live products, an operation run on agents, and prototypes as the deliverable of strategy work."
+        description="Products Madrona actively runs, plus prototypes and experiments used to test product direction, methods, and technology."
       />
 
       <section className="grid gap-8 md:grid-cols-[.8fr_1.2fr] md:items-end">
         <div>
           <Label className="mb-5 block">Selected work</Label>
-          <h1>Ideas made tangible.</h1>
+          <h1>Evidence, not decoration.</h1>
         </div>
         <div className="max-w-2xl">
           <Breath>
-            Everything here was built, shipped, and run by the studio. The
-            work spans live businesses, tools used every day, and product
-            theses made real enough to test.
+            Some of this work is live and operated by the studio. Some was
+            built to test a product thesis. The stage is part of the story,
+            so we show it plainly.
           </Breath>
         </div>
       </section>
 
       <section>
-        <div className="mb-8 flex items-end justify-between gap-5">
+        <div className="mb-10 grid gap-5 md:grid-cols-[.72fr_1.28fr] md:items-end">
           <div>
-            <Label className="mb-4 block">The clearest proof</Label>
-            <h2>Live and in use.</h2>
+            <Label className="mb-4 block">Products we run</Label>
+            <h2>Live and in active use.</h2>
           </div>
+          <p className="max-w-2xl leading-relaxed text-ink70">
+            Products designed, built, launched, and operated by Madrona. They
+            make the studio accountable to real users, real maintenance, and
+            the decisions that only appear after launch.
+          </p>
         </div>
-        <div className="grid gap-10 md:grid-cols-3">
-          {recentWork
-            .filter((study) => ["lila-trips", "san-juan-boating-guide", "helm"].includes(study.slug))
-            .map((study) => <CaseStudyCard key={study.slug} study={study} />)}
+        <div className="grid gap-x-8 gap-y-14 md:grid-cols-3">
+          {operated.map((study) => (
+            <CaseStudyCard key={study.slug} study={study} />
+          ))}
         </div>
       </section>
 
-      <div className="border-t border-line pt-12">
-        <Label>More from the studio</Label>
-      </div>
-
-      {sections.map((section) => {
-        const items = recentWork.filter(
-          (study) =>
-            study.lifecycle === section.lifecycle &&
-            !["lila-trips", "san-juan-boating-guide", "helm"].includes(study.slug),
-        );
-        if (items.length === 0) return null;
-        return (
-          <section key={section.lifecycle}>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="h-[3px] w-8 shrink-0 bg-madrona" aria-hidden="true" />
-              <Label>{section.label}</Label>
-            </div>
-            <h2 className="mb-5">{section.heading}</h2>
-            <p className="text-ink70 leading-relaxed mb-10 max-w-2xl">{section.intro}</p>
-            <div>
-              {items.map((study) => (
-                <WorkRow key={study.slug} study={study} />
-              ))}
-            </div>
-            {section.link && (
-              <div className="mt-8">
-                <Link
-                  to={section.link.to}
-                  className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors"
-                >
-                  {section.link.text} &rarr;
-                </Link>
-              </div>
-            )}
-          </section>
-        );
-      })}
+      <section className="border-t border-line pt-12">
+        <div className="mb-10 grid gap-5 md:grid-cols-[.72fr_1.28fr] md:items-end">
+          <div>
+            <Label className="mb-4 block">Prototypes and experiments</Label>
+            <h2>Built to answer a question.</h2>
+          </div>
+          <p className="max-w-2xl leading-relaxed text-ink70">
+            Working products and concepts used to test direction, behavior,
+            or technology. They are not presented as finished client work.
+          </p>
+        </div>
+        <div>
+          {experiments.map((study) => (
+            <WorkRow key={study.slug} study={study} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
