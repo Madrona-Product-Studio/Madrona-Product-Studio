@@ -1,0 +1,66 @@
+{
+  "generatedAt": "2026-07-24",
+  "authoritativeLogoColors": {
+    "forest": "#1F342D",
+    "bark": "#C65A2E",
+    "ink": "#222222",
+    "gray": "#A3A3A3"
+  },
+  "placeholders": [
+    {
+      "file": "placeholders/photography/hero-pnw-coast-wide.webp",
+      "size": "1800x1200",
+      "status": "temporary placeholder",
+      "note": "Hero landscape. Temporary visual-direction asset."
+    },
+    {
+      "file": "placeholders/photography/studio-collaboration-wide.webp",
+      "size": "1600x1000",
+      "status": "temporary placeholder",
+      "note": "Studio collaboration. Replace with Charlie and a real collaborator."
+    },
+    {
+      "file": "placeholders/photography/audience-farms-food.webp",
+      "size": "900x900",
+      "status": "temporary placeholder",
+      "note": "Farms and food audience context."
+    },
+    {
+      "file": "placeholders/photography/audience-outdoor-travel.webp",
+      "size": "900x900",
+      "status": "temporary placeholder",
+      "note": "Outdoor and travel audience context."
+    },
+    {
+      "file": "placeholders/photography/audience-health-wellness.webp",
+      "size": "900x900",
+      "status": "temporary placeholder",
+      "note": "Health and wellness audience context."
+    },
+    {
+      "file": "placeholders/photography/audience-shops-services.webp",
+      "size": "900x900",
+      "status": "temporary placeholder",
+      "note": "Shops and services audience context."
+    },
+    {
+      "file": "placeholders/product-proof/berry-good-brand-system-wide.webp",
+      "size": "1500x1125",
+      "status": "temporary placeholder",
+      "note": "Berry Good brand-system placeholder. Replace from Berry Good repo."
+    },
+    {
+      "file": "placeholders/product-proof/lila-product-proof-wide.webp",
+      "size": "1500x1125",
+      "status": "temporary placeholder",
+      "note": "Lila Trips layout placeholder. Replace from Lila repo."
+    },
+    {
+      "file": "placeholders/product-proof/san-juan-product-proof-wide.webp",
+      "size": "1500x1125",
+      "status": "temporary placeholder",
+      "note": "San Juan layout placeholder. Replace from San Juan repo."
+    }
+  ],
+  "instructions": "Generated people, place, and product images are temporary. Use repository-accurate assets where available and replace all generated photography before production launch."
+}

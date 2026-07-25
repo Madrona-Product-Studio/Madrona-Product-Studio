@@ -5,7 +5,7 @@ import Wordmark from "./Wordmark";
 const navLinks = [
   { to: "/services", label: "What we do" },
   { to: "/how-it-works", label: "How it works" },
-  { to: "/work", label: "Work" },
+  { to: "/work", label: "Studio work" },
   // Approach folded out of the nav in the local-first structure (route
   // still resolves); Writing stays hidden until content is ready.
   { to: "/about", label: "About" },

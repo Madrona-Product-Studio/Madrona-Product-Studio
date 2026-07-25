@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="420" version="1.1" viewBox="0 0 340 420" width="340">
+  <title>Madrona Product Studio standalone mark</title>
+  <desc>Orange madrona tree emerging from a forest-green coastal bluff inside an open circle.</desc>
+  <defs/>
+  <g transform="translate(0,0) scale(1.0)">
+    <path d="M 17.3 179.8 A 145 145 0 1 1 300.1 242.5" fill="none" stroke="#1F342D" stroke-linecap="round" stroke-width="9"/>
+    <path d="M 39 283 C 76 282 108 284 136 293 C 154 299 167 308 181 310 C 194 312 204 317 203 325 C 202 332 191 337 180 341 C 166 346 159 354 166 363 C 176 375 198 380 225 376 C 210 390 185 397 157 395 C 108 392 68 369 47 335 C 38 320 35 301 39 283 Z" fill="#1F342D"/>
+    <g fill="none" stroke="#C65A2E" stroke-linecap="round" stroke-linejoin="round" stroke-width="13">
+      <path d="M 166 316 C 161 291 166 269 180 252 C 193 236 198 218 197 198 C 196 183 193 169 201 153"/>
+      <path d="M 179 253 C 165 243 156 229 153 212"/>
+      <path d="M 185 242 C 205 234 221 221 231 205"/>
+      <path d="M 197 199 C 220 202 240 195 254 182"/>
+      <path d="M 199 181 C 184 171 176 159 175 145"/>
+    </g>
+    <g fill="#C65A2E">
+      <circle cx="199" cy="132" r="33"/>
+      <circle cx="170" cy="145" r="27"/>
+      <circle cx="226" cy="145" r="29"/>
+      <circle cx="184" cy="116" r="25"/>
+      <circle cx="217" cy="116" r="23"/>
+      <circle cx="202" cy="103" r="21"/>
+      <circle cx="142" cy="208" r="22"/>
+      <circle cx="123" cy="214" r="17"/>
+      <circle cx="157" cy="211" r="17"/>
+      <circle cx="140" cy="194" r="17"/>
+      <circle cx="252" cy="199" r="23"/>
+      <circle cx="234" cy="207" r="17"/>
+      <circle cx="270" cy="208" r="17"/>
+      <circle cx="252" cy="185" r="17"/>
+    </g>
+    <g fill="none" stroke="#1F342D" stroke-linecap="round" stroke-width="5">
+      <line x1="207" x2="286" y1="351" y2="351"/>
+      <line x1="221" x2="274" y1="365" y2="365"/>
+      <line x1="235" x2="262" y1="379" y2="379"/>
+    </g>
+  </g>
+</svg>

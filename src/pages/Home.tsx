@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-import { caseStudies } from "../data/caseStudies";
 import ConnectCta from "../components/ConnectCta";
-import FeaturedCaseStudy from "../components/FeaturedCaseStudy";
 import OutcomeGrid, { type Outcome } from "../components/OutcomeGrid";
 import PageMeta from "../components/PageMeta";
 import ProcessSteps from "../components/ProcessSteps";
@@ -56,13 +54,8 @@ const logos = [
 ];
 
 export default function Home() {
-  const lila = caseStudies.find((study) => study.slug === "lila-trips");
-  const sanJuan = caseStudies.find((study) => study.slug === "san-juan-boating-guide");
-
-  if (!lila || !sanJuan) return null;
-
   return (
-    <div className="space-y-28 md:space-y-40">
+    <div className="space-y-20 md:space-y-28">
       <PageMeta />
 
       <section className="relative left-1/2 -mt-16 w-screen -translate-x-1/2 overflow-hidden bg-ink md:-mt-24">
@@ -98,29 +91,17 @@ export default function Home() {
         </p>
       </section>
 
-      <section>
+      <section id="outcomes" className="scroll-mt-24">
         <div className="mb-10 max-w-3xl">
           <Label className="mb-5 block">What we do</Label>
           <h2 className="text-[clamp(2.35rem,4.5vw,3.75rem)]">
-            Three ways the business gets better.
+            More customers. More repeat business. Less busywork.
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink70">
-            More customers. Stronger relationships. Less manual work.
+            The right first move depends on where the business is getting stuck.
           </p>
         </div>
         <OutcomeGrid outcomes={outcomes} />
-      </section>
-
-      <section>
-        <Label className="mb-5 block">Featured work</Label>
-        <FeaturedCaseStudy
-          study={lila}
-          problem="Planning a thoughtful trip meant piecing together dozens of disconnected sources, recommendations, maps, and booking sites."
-          built="A destination-intelligence and itinerary platform combining trusted travel guidance with AI-assisted planning."
-          proves="Product strategy, information architecture, AI interaction design, editorial content, and the discipline to operate a live product."
-          secondaryImage="/case-studies/lila-trips/planner.jpg"
-          secondaryImageAlt="A day-by-day itinerary in the Lila Trips planner"
-        />
       </section>
 
       <section className="grid gap-10 md:grid-cols-[.8fr_1.2fr] md:gap-20">
@@ -182,32 +163,26 @@ export default function Home() {
               Healthline, and Microsoft, now applied where focused work can
               make an immediate difference.
             </p>
+            <p>
+              We also build and run our own products. They are not client case
+              studies. They are how we stay close to the realities of shipping,
+              operating, and learning from real use.
+            </p>
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-x-9 gap-y-5">
             {logos.map(([src, alt]) => (
               <img key={alt} src={src} alt={alt} className="h-6 w-auto opacity-55 grayscale" />
             ))}
           </div>
-          <Link to="/about" className="mt-8 text-sm font-medium">
-            About the studio &rarr;
-          </Link>
+          <div className="mt-8 flex flex-wrap gap-x-7 gap-y-3">
+            <Link to="/about" className="text-sm font-medium">
+              About the studio &rarr;
+            </Link>
+            <Link to="/work" className="text-sm font-medium">
+              Products we run &rarr;
+            </Link>
+          </div>
         </div>
-      </section>
-
-      <section>
-        <div className="mb-6 flex flex-wrap items-end justify-between gap-5">
-          <Label>More work</Label>
-          <Link to="/work" className="text-sm font-medium">
-            See all work &rarr;
-          </Link>
-        </div>
-        <FeaturedCaseStudy
-          compact
-          study={sanJuan}
-          problem="Boaters needed one trustworthy place to find nearby marinas, anchorages, restaurants, and practical local guidance."
-          built="A map-first regional guide designed to be useful on the water, not another generic directory."
-          proves="Focused product strategy, local information design, and a useful public product taken from idea to live service."
-        />
       </section>
 
       <section className="relative left-1/2 w-screen -translate-x-1/2 bg-ink text-paper">

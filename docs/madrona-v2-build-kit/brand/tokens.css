@@ -1,0 +1,29 @@
+:root {
+  --madrona-paper: #f6f2e9;
+  --madrona-surface: #fffdf8;
+  --madrona-shell: #efe8dc;
+  --madrona-sand: #e3dac5;
+
+  --madrona-ink: #222222;
+  --madrona-ink-soft: #3a3c39;
+  --madrona-muted: #767873;
+  --madrona-line: rgba(34, 34, 34, 0.14);
+
+  --madrona-forest: #1f342d;
+  --madrona-forest-soft: #506b58;
+  --madrona-bark: #c65a2e;
+  --madrona-bark-dark: #a94728;
+
+  --madrona-success: #607b5e;
+  --madrona-warning: #a66d2f;
+  --madrona-error: #a94739;
+
+  --madrona-radius-sm: 10px;
+  --madrona-radius-md: 16px;
+  --madrona-radius-lg: 24px;
+  --madrona-radius-pill: 999px;
+
+  --madrona-content-editorial: 720px;
+  --madrona-content-standard: 1180px;
+  --madrona-content-wide: 1360px;
+}

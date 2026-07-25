@@ -11,11 +11,17 @@ import About from "./pages/About";
 import Connect from "./pages/Connect";
 import StudioBrief from "./pages/StudioBrief";
 import HomeLab from "./pages/HomeLab";
+import MadronaV2 from "./pages/lab/MadronaV2";
+import MadronaV2Services from "./pages/lab/MadronaV2Services";
+import MadronaSystem from "./pages/lab/MadronaSystem";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="lab/madrona-v2" element={<MadronaV2 />} />
+        <Route path="lab/madrona-v2/services" element={<MadronaV2Services />} />
+        <Route path="lab/madrona-system" element={<MadronaSystem />} />
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="work" element={<Work />} />

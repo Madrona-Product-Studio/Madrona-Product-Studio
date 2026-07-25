@@ -1,0 +1,25 @@
+{
+  "brand": "Madrona Product Studio",
+  "colors": {
+    "forest_green": "#1F3B33",
+    "terracotta": "#C86A3D",
+    "charcoal": "#222222",
+    "mist_gray": "#A8A8A8",
+    "off_white": "#F7F4EF",
+    "white": "#FFFFFF"
+  },
+  "recommended_assets": {
+    "header_light": "madrona_primary_horizontal_logo.svg",
+    "header_dark": "madrona_primary_horizontal_logo_reversed.svg",
+    "footer_dark": "madrona_primary_horizontal_logo_reversed.svg",
+    "favicon": "madrona_standalone_mark.svg",
+    "app_icon_light": "madrona_app_icon_light.svg",
+    "app_icon_dark": "madrona_app_icon_dark.svg"
+  },
+  "minimum_sizes": {
+    "primary_horizontal_digital_px": 120,
+    "standalone_mark_digital_px": 32,
+    "stacked_lockup_digital_px": 140
+  },
+  "clear_space_rule": "Maintain clear space around the logo equal to approximately the height of the lowercase m in the wordmark."
+}

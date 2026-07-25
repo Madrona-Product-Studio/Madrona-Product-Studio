@@ -20,14 +20,14 @@ export default function Work() {
 
       <section className="grid gap-8 md:grid-cols-[.8fr_1.2fr] md:items-end">
         <div>
-          <Label className="mb-5 block">Selected work</Label>
-          <h1>Evidence, not decoration.</h1>
+          <Label className="mb-5 block">Studio work</Label>
+          <h1>Products we build and run.</h1>
         </div>
         <div className="max-w-2xl">
           <Breath>
-            Some of this work is live and operated by the studio. Some was
-            built to test a product thesis. The stage is part of the story,
-            so we show it plainly.
+            These are Madrona&apos;s own products and experiments, not client
+            case studies. Some are live and actively operated. Others were
+            built to test a product thesis. We show the stage plainly.
           </Breath>
         </div>
       </section>

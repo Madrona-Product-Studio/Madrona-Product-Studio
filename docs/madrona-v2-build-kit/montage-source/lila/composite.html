@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=1500, initial-scale=1" />
+  <title>Lila Trips product-proof composite</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; overflow: hidden; width: 100%; }
+    body { background: #f5f1ea; }
+    .plate {
+      background: url("../../placeholders/product-proof/lila-product-proof-wide.webp") center / cover no-repeat;
+      height: 1125px;
+      overflow: hidden;
+      position: relative;
+      width: 1500px;
+    }
+    .device {
+      background: #f8f5ef;
+      box-shadow: 0 28px 70px rgba(27, 34, 35, .2);
+      overflow: hidden;
+      position: absolute;
+    }
+    .device img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      width: 100%;
+    }
+    .left {
+      border: 10px solid rgba(31, 38, 41, .93);
+      border-radius: 36px;
+      height: 670px;
+      left: 214px;
+      top: 302px;
+      transform: rotate(-.8deg);
+      width: 332px;
+    }
+    .left::after, .right::after {
+      background: rgba(255,255,255,.82);
+      border-radius: 999px;
+      content: "";
+      height: 5px;
+      left: 50%;
+      position: absolute;
+      top: 10px;
+      transform: translateX(-50%);
+      width: 44px;
+      z-index: 2;
+    }
+    .center {
+      border: 15px solid #171b1d;
+      border-radius: 70px;
+      height: 920px;
+      left: 506px;
+      top: 116px;
+      width: 443px;
+      z-index: 3;
+    }
+    .center::before {
+      background: #171b1d;
+      border-radius: 0 0 15px 15px;
+      content: "";
+      height: 23px;
+      left: 50%;
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      width: 116px;
+      z-index: 2;
+    }
+    .center img { object-fit: fill; }
+    .right {
+      border: 10px solid rgba(31, 38, 41, .93);
+      border-radius: 36px;
+      height: 674px;
+      left: 965px;
+      top: 306px;
+      transform: rotate(.65deg);
+      width: 336px;
+    }
+    .lila-stamp {
+      align-items: center;
+      background: rgba(253,252,250,.94);
+      border: 1px solid rgba(26,23,20,.11);
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(27,34,35,.12);
+      color: #1a1714;
+      display: flex;
+      font: 600 16px/1 Arial, sans-serif;
+      gap: 10px;
+      left: 78px;
+      letter-spacing: .06em;
+      padding: 9px 17px 9px 10px;
+      position: absolute;
+      top: 74px;
+    }
+    .lila-stamp img { border-radius: 50%; height: 34px; width: 34px; }
+  </style>
+</head>
+<body>
+  <main class="plate" aria-label="Lila Trips interface montage">
+    <div class="lila-stamp"><img src="logo-120.svg" alt="" />LILA TRIPS</div>
+    <div class="device left"><img src="lila-home.png" alt="" /></div>
+    <div class="device center"><img src="big-sur-destination.png" alt="" /></div>
+    <div class="device right"><img src="terrain-and-parks.png" alt="" /></div>
+  </main>
+</body>
+</html>

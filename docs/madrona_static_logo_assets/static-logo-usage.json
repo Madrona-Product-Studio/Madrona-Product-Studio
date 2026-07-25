@@ -1,0 +1,17 @@
+{
+  "status": "temporary-raster-source-of-truth",
+  "background_rgb": [
+    253,
+    249,
+    246
+  ],
+  "recommended": {
+    "desktop_header": "madrona-approved-logo-offwhite.png",
+    "mobile_header": "madrona-logo-180px-at-2x.png",
+    "dark_footer": "madrona-approved-logo-reversed-transparent.png",
+    "dark_compact_mark": "madrona-approved-emblem-reversed-transparent.png",
+    "favicon_32": "madrona-favicon-32.png",
+    "favicon_64": "madrona-favicon-64.png",
+    "social_avatar": "madrona-approved-emblem-offwhite.png"
+  }
+}

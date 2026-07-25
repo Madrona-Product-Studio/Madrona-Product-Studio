@@ -12,6 +12,7 @@ const buckets = [
   {
     index: "01",
     label: "Getting found",
+    summary: "Help the right people find you, understand you, and buy.",
     door: "Selling something great behind a web presence that doesn't do it justice?",
     impact:
       "What changes: more people find you, and more of them buy. You feel it in the numbers you already watch, calls, orders, bookings, the customers who say they found you online.",
@@ -30,6 +31,7 @@ const buckets = [
   {
     index: "02",
     label: "Coming back",
+    summary: "Give customers a useful reason to return.",
     door: "People buy from you once, then you never hear from them again?",
     impact:
       "What changes: customers come back more often. Repeat orders, active members, regulars you can actually reach.",
@@ -43,6 +45,7 @@ const buckets = [
   {
     index: "03",
     label: "Running smoother",
+    summary: "Hand repetitive work to systems built to handle it.",
     door: "Watching the week disappear into work that software should be doing?",
     impact:
       "What changes: hours back every week. Work that runs itself, fewer mistakes, a shorter Monday.",
@@ -89,17 +92,13 @@ export default function Services() {
           <a
             key={bucket.index}
             href={`#service-${bucket.index}`}
-            className="group flex min-h-64 flex-col justify-between border-b border-line py-7 no-underline last:border-0 md:border-0 md:px-7 md:first:pl-0 md:last:pr-0"
+            className="group block border-b border-line py-8 no-underline last:border-0 md:border-0 md:px-7 md:py-10 md:first:pl-0 md:last:pr-0"
           >
-            <span className="text-xs font-semibold text-madrona">{bucket.index}</span>
-            <div className="mt-12">
-              <p className="mb-2 text-xs font-semibold uppercase tracking-[.16em] text-muted">
-                {bucket.label}
-              </p>
-              <h2 className="text-[1.75rem] text-ink transition-colors group-hover:text-madrona-dark">
-                {bucket.index === "01" ? "Get found." : bucket.index === "02" ? "Bring customers back." : "Run smoother."}
-              </h2>
-            </div>
+            <span className="mb-10 block font-serif text-3xl font-medium text-madrona/80">{bucket.index}</span>
+            <h2 className="mb-3 text-[1.65rem] text-ink transition-colors group-hover:text-madrona-dark">
+              {bucket.index === "01" ? "Get found." : bucket.index === "02" ? "Bring customers back." : "Run smoother."}
+            </h2>
+            <p className="max-w-sm leading-relaxed text-ink70">{bucket.summary}</p>
           </a>
         ))}
       </section>

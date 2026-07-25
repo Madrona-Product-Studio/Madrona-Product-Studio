@@ -1,0 +1,23 @@
+{
+  "package": "Berry Good case study tabs",
+  "version": 1,
+  "production_assets": [
+    "assets/brand/berry-good-mark.svg",
+    "assets/brand/berry-good-mark-one-color.svg"
+  ],
+  "specifications": [
+    "berry-good-case-study-tabs-spec.md",
+    "berry-good-brand-guide.md",
+    "berry-good-site-implementation-brief.md"
+  ],
+  "reference_assets": [
+    "assets/reference/01-brand-system-reference.png",
+    "assets/reference/02-digital-storefront-reference.png",
+    "assets/reference/03-customer-journey-reference.png",
+    "assets/reference/04-operations-reference.png",
+    "assets/reference/05-ai-assistance-reference.png",
+    "assets/reference/brand-style-guide-reference.png",
+    "assets/reference/case-study-tabs-master-reference.png",
+    "assets/reference/current-site-section.png"
+  ]
+}
