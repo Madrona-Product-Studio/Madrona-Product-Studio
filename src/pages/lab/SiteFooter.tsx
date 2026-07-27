@@ -69,8 +69,6 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
         </div>
         <div className="m2-fc-foot-legal">
           <span>© 2026 Madrona Product Studio</span>
-          <span className="m2-fc-legal-sep" aria-hidden="true">|</span>
-          <a href="#">Privacy</a>
         </div>
       </div>
     </section>
