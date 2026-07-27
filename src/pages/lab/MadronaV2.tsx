@@ -275,7 +275,7 @@ export default function MadronaV2() {
 
       <section id="studio" className="m2-studio">
         <div><p className="m2-kicker">How we work</p><h2>Senior team. Direct partnership. Real outcomes.</h2><div className="m2-studio-facts"><p><strong>15+ years</strong><span>Building products and brands</span></p><p><strong>Founder led</strong><span>No layers between you and the work</span></p><p><strong>Small by design</strong><span>The right specialists, when needed</span></p></div></div>
-        <figure><img src={studioImage} alt="Two people collaborating outdoors in the Pacific Northwest" /><figcaption>Temporary concept image for layout direction</figcaption></figure>
+        <figure><img src={studioImage} alt="Two people collaborating outdoors in the Pacific Northwest" /></figure>
       </section>
 
       <HowWeWork />
