@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title">
+  <title id="title">Madrona tree-circle bonsai companion mark</title>
+  <circle cx="120" cy="120" r="104" fill="none" stroke="#1f3b33" stroke-width="7"/>
+  <path fill="#1f3b33" d="M22 163c31-18 60-19 84-3 21 14 43 23 111 5-14 33-46 54-84 57-48 3-91-20-111-59Z"/>
+  <path fill="#f7f4ef" d="M68 187c31-9 56-5 75 7 16 9 34 10 54 4-17 15-39 23-66 22-29-1-50-12-63-33Z"/>
+  <path d="M110 165c1-22 0-39-4-55m4 20c11-7 20-16 26-27m-29 14c-9-5-17-12-23-20" fill="none" stroke="#c86a3d" stroke-width="10" stroke-linecap="round"/>
+  <g fill="#c86a3d">
+    <circle cx="83" cy="91" r="16"/><circle cx="105" cy="84" r="21"/><circle cx="132" cy="91" r="19"/>
+    <circle cx="145" cy="74" r="14"/><circle cx="118" cy="66" r="17"/><circle cx="93" cy="69" r="14"/>
+  </g>
+  <path d="M98 187c23-7 42-6 59 1M103 198c19-5 35-4 49 1" fill="none" stroke="#1f3b33" stroke-width="4" stroke-linecap="round"/>
+</svg>
+

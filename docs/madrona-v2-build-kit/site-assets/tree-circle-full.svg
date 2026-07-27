@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title">
+  <title id="title">Madrona tree-circle full companion mark</title>
+  <circle cx="120" cy="120" r="104" fill="none" stroke="#1f3b33" stroke-width="7"/>
+  <path fill="#1f3b33" d="M21 157c26-12 49-14 71-5 17 7 30 20 46 25 18 6 41 3 80-10-12 30-39 49-72 55-51 9-103-17-125-65Z"/>
+  <path fill="#f7f4ef" d="M70 181c32-10 58-6 80 7 17 10 32 10 53 4-20 20-47 29-75 27-24-1-43-10-58-38Z"/>
+  <path d="M101 165c4-29 5-54 2-76m4 35c12-9 22-20 29-34m-32 20c-11-8-20-17-27-28" fill="none" stroke="#c86a3d" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#c86a3d">
+    <circle cx="101" cy="70" r="22"/><circle cx="76" cy="78" r="18"/><circle cx="126" cy="78" r="20"/>
+    <circle cx="145" cy="59" r="18"/><circle cx="122" cy="50" r="17"/><circle cx="91" cy="48" r="16"/>
+    <circle cx="63" cy="60" r="13"/><circle cx="151" cy="87" r="14"/>
+  </g>
+  <path d="M99 184c24-10 43-9 61 0M94 194c22-7 42-6 59 1M104 204c17-4 31-3 45 1" fill="none" stroke="#1f3b33" stroke-width="4" stroke-linecap="round"/>
+</svg>
+

@@ -1,0 +1,78 @@
+import MadronaLogo from "./MadronaLogo";
+
+const EMAIL = "hello@madronaproduct.com";
+const CONTACT = "/connect";
+
+function I({ d }: { d: string }) {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={d} /></svg>;
+}
+
+const P = {
+  chat: "M5 5h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H9l-4 3.5V6a1 1 0 0 1 1-1z",
+  upload: "M12 15V4m0 0L8 8m4-4 4 4M5 16v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2",
+  clock: "M12 12V8m0 4 2.5 2.5M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z",
+  lock: "M7 10V8a5 5 0 0 1 10 0v2M6 10h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1Z",
+  people: "M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-6 8a6 6 0 0 1 12 0M17 11a2.5 2.5 0 1 0 0-5M18 19a5 5 0 0 0-3-4.6",
+  mail: "M4 6h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm0 1.5 8 5.5 8-5.5",
+  clip: "M20 11.5 12 19.5a5 5 0 0 1-7-7l8.5-8.5a3.3 3.3 0 0 1 4.7 4.7L9.4 16.6a1.6 1.6 0 0 1-2.3-2.3L15 6.4",
+  arrow: "M5 12h13m-5-6 6 6-6 6",
+};
+
+export default function SiteFooter({ cta = true }: { cta?: boolean }) {
+  return (
+    <section className="m2-fc" aria-label="Contact and site footer">
+      {cta && (
+        <div className="m2-fc-cta">
+          <div className="m2-fc-half m2-fc-talk">
+            <span className="m2-fc-icon"><I d={P.chat} /></span>
+            <h2>Ready to talk?</h2>
+            <p>Tell us what’s not working, ask a question, or introduce yourself. We’ll set up a time to explore how we can help.</p>
+            <div className="m2-fc-btns">
+              <a className="m2-fc-btn" href={CONTACT}><I d={P.chat} /> Let’s connect <I d={P.arrow} /></a>
+            </div>
+            <ul className="m2-fc-trust">
+              <li><span><I d={P.clock} /></span><p>30 min call<br />if you’re ready</p></li>
+              <li><span><I d={P.lock} /></span><p>No prep<br />needed</p></li>
+              <li><span><I d={P.people} /></span><p>Senior team<br />from the start</p></li>
+            </ul>
+          </div>
+
+          <div className="m2-fc-half m2-fc-started">
+            <span className="m2-fc-icon"><I d={P.upload} /></span>
+            <h2>Already have <span className="m2-keep-together">something started?</span></h2>
+            <p>Send us the site, store, prototype, or workflow you want help improving. We’ll take a look and respond with a clear next step.</p>
+            <div className="m2-fc-btns">
+              <a className="m2-fc-btn" href={CONTACT}><I d={P.clip} /> Share your project <I d={P.arrow} /></a>
+            </div>
+            <p className="m2-fc-confidential"><I d={P.lock} /> Everything you share stays confidential.</p>
+            <svg className="m2-fc-trees" viewBox="0 0 260 120" preserveAspectRatio="xMaxYMax slice" aria-hidden="true"><g fill="rgba(10,22,16,.16)"><polygon points="150,120 174,52 198,120" /><polygon points="188,120 218,26 248,120" /><polygon points="228,120 250,58 272,120" /></g></svg>
+          </div>
+        </div>
+      )}
+
+      <div className="m2-fc-foot">
+        <div className="m2-fc-foot-main">
+          <a className="m2-fc-logo" href="/" aria-label="Madrona Product Studio home"><MadronaLogo variant="horizontal" decorative /></a>
+          <nav className="m2-fc-nav" aria-label="Footer">
+            <a href="/services">Services</a>
+            <a href="/apps">Our apps</a>
+            <a href="/#process">Process</a>
+            <a href="/about">About</a>
+          </nav>
+          <div className="m2-fc-contact">
+            <p>Bellingham, Washington</p>
+            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          </div>
+          <a className="m2-fc-social" href="https://www.linkedin.com/company/madrona-product-studio" target="_blank" rel="noopener noreferrer" aria-label="Madrona on LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9.75h4V21H3V9.75zM9 9.75h3.8v1.54h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-4.9c0-1.17-.02-2.68-1.63-2.68-1.63 0-1.88 1.27-1.88 2.59V21H9V9.75z" /></svg>
+          </a>
+        </div>
+        <div className="m2-fc-foot-legal">
+          <span>© 2026 Madrona Product Studio</span>
+          <span className="m2-fc-legal-sep" aria-hidden="true">|</span>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+    </section>
+  );
+}

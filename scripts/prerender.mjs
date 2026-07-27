@@ -16,47 +16,15 @@ const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
 const pages = {
   '/': {
     title: 'Madrona Product Studio · Bellingham, Washington',
-    description: 'A small, senior product studio in Bellingham, Washington. We help companies figure out what to build, then build it. Every engagement starts with a free 30-minute conversation.',
+    description: 'A small, senior product studio in Bellingham, Washington. We help established businesses improve how they look, sell, and operate. We clarify the problem, design the right solution, and build it with a small senior team.',
     h1: 'Good businesses around here deserve software as good as they are.',
-    body: 'Madrona is a small, senior digital team in the PNW. We focus on the problems holding your business back, then build the solutions ourselves. Every engagement starts with a free 30-minute conversation with a published agenda, then a written assessment that is yours to keep.',
-  },
-  '/work': {
-    title: 'Work · Madrona Product Studio',
-    description: 'The work behind the offer: audiences earned for live products, an operation run on agents, and prototypes as the deliverable of strategy work.',
-    h1: 'The work',
-    body: 'Getting found: Lila Trips and the San Juan Boating Guide, brand and content taken to live audiences. Running smoother: Helm, the command surface our own studio runs on. Strategy made tangible: GardenHQ, Plainly, Aria Health, Lila Yoga, HikerLink, Utah Trip Guide.',
-  },
-  '/how-it-works': {
-    title: 'How it works · Madrona Product Studio',
-    description: 'A free 30-minute conversation with a published agenda, a short written assessment, then a scoped proposal if it makes sense. How every Madrona engagement starts.',
-    h1: 'How it works',
-    body: 'Step one: a free 30-minute conversation with a published agenda covering where you are at, where you have been, what would better look like, your biggest opportunities to grow or get more efficient, and what is already on your mind. Step two: a short written assessment where every recommendation names its measure. Step three: a scoped proposal with scope, cost, approach, and what changes and how we will know.',
+    body: 'Madrona is a small, senior digital product studio in the Pacific Northwest. We help established businesses improve how they look, sell, and operate: their brand and web presence, growing and keeping customers, and streamlining operations with practical tools and AI. Every engagement is led personally by Charlie Koch, with senior specialists brought in as the work calls for them. We also build and run our own products.',
   },
   '/services': {
     title: 'Services · Madrona Product Studio',
-    description: 'Getting found, coming back, running smoother. New websites, brand, and online stores on Shopify; loyalty and repeat ordering; workflow fixes and AI agents on your real workflows. For good businesses of every shape around the Pacific Northwest.',
-    h1: 'What we do',
-    body: 'The shop, the clinic, the outfitter, the family farm: good businesses around here come in every shape. Getting found: new websites, brand and positioning, content and marketing, online stores on Shopify, with selling online as a flagship. Coming back: loyalty and memberships, repeat ordering, win-back emails and texts, reviews. Running smoother: workflow fixes, small tools with one job, AI agents on your real workflows, with agentic operations as the flagship. Every engagement names its win before work starts.',
-  },
-  '/services/agentic-operations': {
-    title: 'Agentic operations · Madrona Product Studio',
-    description: 'Business agents on your real workflows, and one command surface that shows the whole operation. Madrona runs its own studio this way, and builds the same architecture for clients.',
-    h1: 'Agentic operations',
-    body: 'Business agents working real workflows on a schedule, and a command surface rendered from one source of truth. The worked example is Berry Good Berry Farm, our demonstration business: an industry agent, an invoicing agent, a customer service agent, and the ordering surface. We run our own operation this way, with Helm as the command center. First engagements start with one agent and one dashboard card.',
-  },
-  '/approach': {
-    title: 'Approach · Madrona Product Studio',
-    description: 'The philosophy behind Madrona Product Studio: strategy and software made by the same people, in short, high-signal engagements.',
-    h1: 'How we work',
-    body: 'Strategy without software is a slide deck. Software without strategy is a feature factory. We do both, together: one senior lead, a trusted network, AI where it pulls its weight.',
-  },
-  '/writing': {
-    title: 'Writing · Madrona Product Studio',
-    description: 'Articles and essays from Madrona Product Studio.',
-    h1: 'Writing',
-    body: 'Articles and essays on product strategy, design, and building things that matter.',
-    // Placeholder content — keep out of the sitemap and search index until real articles ship.
-    noindex: true,
+    description: 'Three ways to move a business forward: your brand and web presence, growing and keeping customers, and operations and AI. Strategy, design, and technology from a small senior team in the Pacific Northwest.',
+    h1: 'Services',
+    body: 'Madrona helps established businesses improve how they look, sell, and operate. Brand and web presence: new websites, brand and identity, content, and online stores. Customers and growth: acquisition, loyalty and retention, lifecycle email and text, reviews. Operations and AI: workflow fixes, small internal tools, and AI agents on your real workflows. Every engagement names its win before the work starts.',
   },
   '/about': {
     title: 'About · Madrona Product Studio',
@@ -64,34 +32,19 @@ const pages = {
     h1: 'About',
     body: 'Founded by Charlie Koch. A senior product leader at the center, with a trusted network of designers, engineers, and researchers. Based in Bellingham, Washington, serving Whatcom County and the Pacific Northwest.',
   },
+  '/apps': {
+    title: 'Our apps · Madrona Product Studio',
+    description: 'The products Madrona builds and runs: Lila Trips, the San Juan Boating Guide, Lila Yoga, Aria Health, Helm, Garden HQ, Plainly, and Hiker Link. Operating our own products keeps the work honest.',
+    h1: 'Our apps',
+    body: 'We build and operate our own products to solve real problems, test new ideas, and stay close to what it takes to make useful software last. Live today: Lila Trips and the San Juan Boating Guide. In development: Lila Yoga, Aria Health, Helm, Garden HQ, Plainly, and Hiker Link.',
+  },
   '/connect': {
     title: 'Connect · Madrona Product Studio',
-    description: 'Three ways to start: book a 30-minute call, send a message, or text. Every path begins with a free 30-minute conversation with a published agenda.',
+    description: 'Book a 30-minute call or send us a message about your project. Every path begins with a free 30-minute conversation with a published agenda.',
     h1: "Let's connect.",
-    body: "Whatever's easiest: book a 30-minute call, send a message, or text. Every way in starts the same, a free 30-minute conversation with a published agenda. Email hello@madronaproduct.com.",
+    body: "Whatever's easiest: book a 30-minute call or send a message about your project. Every way in starts the same, a free 30-minute conversation with a published agenda. Email hello@madronaproduct.com.",
   },
 };
-
-// Load case study data by parsing the TS file for slugs, titles, taglines, and opportunities
-const caseStudiesFile = fs.readFileSync(
-  path.resolve('src/data/caseStudies.ts'),
-  'utf-8'
-);
-
-// Extract case studies with a simple regex approach
-const studyRegex = /slug:\s*"([^"]+)"[\s\S]*?title:\s*"([^"]+)"[\s\S]*?tagline:\s*\n?\s*"([^"]+)"[\s\S]*?opportunity:\s*\n?\s*"((?:[^"\\]|\\.)*)"/g;
-
-let match;
-while ((match = studyRegex.exec(caseStudiesFile)) !== null) {
-  const [, slug, title, tagline, opportunity] = match;
-  const opp = opportunity.replace(/\\"/g, '"').replace(/\\n/g, ' ');
-  pages[`/work/${slug}`] = {
-    title: `${title} · Madrona Product Studio`,
-    description: tagline,
-    h1: title,
-    body: `${tagline} ${opp}`,
-  };
-}
 
 function generateHtml(route, meta) {
   let html = template;

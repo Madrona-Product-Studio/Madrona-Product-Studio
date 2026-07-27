@@ -115,6 +115,11 @@ alternative fonts for variety — stick to these two, vary weight and size.
    landscape illustrations, no generic consultancy graphics. Photography
    (when real) should be environmental and PNW-coded.
 
+## Motion / animation
+
+Motion follows the `madrona-motion` skill (`.claude/skills/madrona-motion/`).
+Before shipping any animation or transition, run its REVIEW.md bar.
+
 ## The engagement model (the front door)
 
 Every page should be able to route here. Three steps, published on

@@ -1,44 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import LabMeta from "./LabMeta";
 import MadronaLogo from "./MadronaLogo";
 import BerryGoodCaseStudy from "./BerryGoodCaseStudy";
+import SiteFooter from "./SiteFooter";
+import { ServiceIcon } from "./ServiceIcon";
+import { useReveal } from "./useReveal";
+import { serviceAreas } from "../../data/services";
 import "./madrona-v2.css";
 
-import heroImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/hero-pnw-coast-wide.webp";
-import heroMountain from "../../../docs/madrona-v2-build-kit/hero-options/hero-mountain-dawn.webp";
-import heroCoast from "../../../docs/madrona-v2-build-kit/hero-options/hero-coastal-sunset.webp";
-import heroIslandNatural from "../../../docs/madrona-v2-build-kit/hero-options/hero-island-natural.webp";
-import heroIslandEditorial from "../../../docs/madrona-v2-build-kit/hero-options/hero-island-editorial.webp";
-import heroIslandEnhanced from "../../../docs/madrona-v2-build-kit/hero-options/hero-island-ai-enhanced.webp";
+import hero1 from "../../../docs/madrona-v2-build-kit/site-assets/hero-1.webp";
+import hero2 from "../../../docs/madrona-v2-build-kit/site-assets/hero-2.webp";
+import hero3 from "../../../docs/madrona-v2-build-kit/site-assets/hero-3.webp";
+import hero4 from "../../../docs/madrona-v2-build-kit/site-assets/hero-4.webp";
+import hero5 from "../../../docs/madrona-v2-build-kit/site-assets/hero-5.webp";
+import hero6 from "../../../docs/madrona-v2-build-kit/site-assets/hero-6.webp";
 import studioImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/studio-collaboration-wide.webp";
-import berryImage from "../../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp";
-import berryOperationsImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-card.webp";
 import farmsImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-farms-food.webp";
 import outdoorsImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-outdoor-travel.webp";
 import healthImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-health-wellness.webp";
 import shopsImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-shops-services.webp";
 import lilaHero from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-madrona-hero.webp";
-import lilaHeroMobile from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-edge-of-the-continent-mobile.webp";
-import lilaSupporting from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-madrona-supporting.webp";
 import lilaWordmark from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-wordmark-dark.svg";
+import lilaTile from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp";
+import sjbgTile from "../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp";
 import sanImage from "../../../docs/madrona-v2-build-kit/placeholders/product-proof/san-juan-product-proof-wide.webp";
-
-const services = [
-  { title: "Brand and growth", lead: "Stand out and stay top of mind.", body: "Positioning, identity, commerce, and customer journeys that help people choose you—and keep coming back.", type: "brand" },
-  { title: "New Products & Services", lead: "Build what’s next with real evidence.", body: "Research, prototypes, and focused builds that test demand before the larger investment.", type: "product" },
-  { title: "Operations and AI", lead: "Give busywork back to software.", body: "Practical tools and automation that reduce handoffs, simplify decisions, and protect your team’s time.", type: "ops" },
-] as const;
-
-const routes = [
-  { label: "Direct crossing", distance: "Approx. 20 NM", duration: "2.5–3.5 hours", note: "Faster, with fewer protected fallback points.", verify: "Wind · visibility · fuel · notices" },
-  { label: "Island-protected", distance: "Approx. 25 NM", duration: "3.5–5 hours", note: "Longer, with more route choices and possible stops.", verify: "Depths · currents · anchorages · restrictions" },
-] as const;
-
-function OfferIcon({ type }: { type: typeof services[number]["type"] }) {
-  if (type === "brand") return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 35c8-1 13-6 15-15M17 30c-3-2-5-5-5-9 5 0 9 2 11 6m5-6c0-5 3-9 8-11 1 7-1 12-8 15m-15 12h24" /></svg>;
-  if (type === "product") return <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 34c5-12 11-19 20-22 1 9-2 17-12 22m-8 0h20M19 29l-5-5m13 3 7 1" /><circle cx="25" cy="20" r="2.5" /></svg>;
-  return <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="8"/><path d="M24 7v6m0 22v6M7 24h6m22 0h6M12 12l5 5m14 14 5 5m0-24-5 5M17 31l-5 5" /></svg>;
-}
 
 function AudienceIcon({ type }: { type: "farms" | "outdoors" | "health" | "shops" }) {
   if (type === "farms") return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V9m0 5c-4 0-7-2.4-7-6 4 0 7 2.4 7 6Zm0-4c0-3.6 2.7-6 7-6 0 3.6-2.7 6-7 6Z" /></svg>;
@@ -47,80 +32,162 @@ function AudienceIcon({ type }: { type: "farms" | "outdoors" | "health" | "shops
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16M6 10v10h12V10M5 10l1.5-5h11l1.5 5M9 20v-6h6v6" /></svg>;
 }
 
-function EvidenceOverlay({ label, flow, detail }: { label: string; flow: string; detail: string }) {
-  return <div className="m2-evidence-overlay"><small>{label}</small><strong>{flow}</strong><span><i />{detail}</span></div>;
-}
-
-function OfferVisual({ type }: { type: typeof services[number]["type"] }) {
-  if (type === "brand") return <div className="m2-offer-visual m2-offer-brand"><img src={berryImage} alt="Berry Good demonstration brand and commerce system shown across packaging and a digital interface" /><EvidenceOverlay label="Customer path" flow="Attention → purchase → loyalty" detail="A clearer reason to choose and return" /></div>;
-  if (type === "product") return <div className="m2-offer-visual m2-offer-product"><img src={sanImage} alt="A route-planning product prototype shown across digital interfaces" /><EvidenceOverlay label="Validation path" flow="Problem → prototype → pilot" detail="Evidence before investment" /></div>;
-  return <div className="m2-offer-visual m2-offer-ops"><img src={berryOperationsImage} alt="Berry Good wholesale order moving through inventory, pickup scheduling, and an AI operations assistant" /><EvidenceOverlay label="Operations path" flow="Request → decision → action" detail="Less manual coordination" /></div>;
-}
-
 const ownApps = [
-  { name: "Lila Trips", short: "Lila", wordmark: lilaWordmark, status: "Live", tagline: "Adventure travel, authored not generated.", blurb: "Destination knowledge, live context, and personal intent, shaped into trips that hold together.", image: lilaHero, href: "https://lilatrips.com" },
-  { name: "San Juan Boating Guide", short: "San Juan Boating Guide", wordmark: null, status: "Beta", tagline: "Route context for the Salish Sea.", blurb: "Local planning and on-water context for boaters exploring the San Juan Islands.", image: sanImage, href: "#" },
+  { name: "Lila Trips", short: "Lila", domain: "lilatrips.com", wordmark: lilaWordmark, media: lilaTile, status: "Live", tagline: "Adventure travel, authored not generated.", blurb: "Handpicked travel experiences for curious travelers. Discover, plan, book.", image: lilaHero, href: "https://lilatrips.com" },
+  { name: "San Juan Boating Guide", short: "San Juan Boating Guide", domain: "sjiboating.com", wordmark: null, media: sjbgTile, status: "Live", tagline: "Route context for the Salish Sea.", blurb: "Tide-aware routes, local knowledge, and real-time marine conditions.", image: sanImage, href: "https://www.sjiboating.com/" },
 ] as const;
 
-function AppCard({ app, className = "" }: { app: (typeof ownApps)[number]; className?: string }) {
+function SeeAllApps({ className = "" }: { className?: string }) {
+  return <a className={`m2-text-link ${className}`} href="/apps">See all our apps <span>→</span></a>;
+}
+
+function AppRowCard({ app }: { app: (typeof ownApps)[number] }) {
   return (
-    <a className={`m2-app-card ${className}`} href={app.href}>
-      <div className="m2-app-shot" role="img" aria-label={`${app.name} preview image placeholder`}><span>{app.name}</span><small>App preview</small></div>
-      <div className="m2-app-meta">
-        <span className="m2-chip">Madrona-owned · {app.status}</span>
-        {app.wordmark ? <img className="m2-app-wordmark" src={app.wordmark} alt={app.name} /> : <h3>{app.name}</h3>}
-        <p className="m2-app-tagline">{app.tagline}</p>
-        <p className="m2-app-blurb">{app.blurb}</p>
-        <span className="m2-text-link">Visit {app.short} <span>→</span></span>
+    <a className="m2-app-rowcard" href={app.href} data-reveal>
+      {app.media ? (
+        <div className="m2-app-rowcard-media m2-app-rowcard-media-image">
+          <span className="m2-chip">{app.status}</span>
+          <img src={app.media} alt={`${app.name} shown across tablet and phone`} />
+        </div>
+      ) : (
+        <div className="m2-app-rowcard-media">
+          <span className="m2-chip">{app.status}</span>
+          <div className="m2-app-rowcard-brand">{app.wordmark ? <img src={app.wordmark} alt={app.name} /> : <strong>{app.name}</strong>}</div>
+          <div className="m2-app-rowcard-shot" role="img" aria-label={`${app.name} preview image placeholder`}><small>App preview</small></div>
+        </div>
+      )}
+      <div className="m2-app-rowcard-body">
+        <h3>{app.name}</h3>
+        <p>{app.blurb}</p>
+        <span className="m2-text-link">Visit {app.domain} <span>→</span></span>
       </div>
     </a>
   );
 }
 
-function SeeAllApps({ className = "" }: { className?: string }) {
-  return <a className={`m2-text-link ${className}`} href="#">See all our apps <span>→</span></a>;
+function RailedApps() {
+  return (
+    <div className="m2-apps-railed">
+      <div className="m2-apps-rail">
+        <p className="m2-kicker">Apps from Madrona</p>
+        <h2>We build and run our own apps, too.</h2>
+        <p>We design, build, and operate our own products to solve real problems we care about, and to keep our judgment close to real customers.</p>
+        <SeeAllApps />
+      </div>
+      <div className="m2-apps-rail-cards">{ownApps.map((app) => <AppRowCard app={app} key={app.name} />)}</div>
+    </div>
+  );
 }
 
-function AppsShowcase({ variant }: { variant: string }) {
-  if (variant === "b") {
-    return (
-      <div className="m2-apps-feature">
-        <AppCard app={ownApps[0]} className="m2-app-featured" />
-        <AppCard app={ownApps[1]} />
-      </div>
-    );
-  }
-  if (variant === "c") {
-    return (
-      <div className="m2-apps-shelf">
-        {ownApps.map((app) => <AppCard app={app} key={app.name} />)}
-        <a className="m2-apps-more" href="#"><span className="m2-kicker">More from the studio</span><strong>See all our apps</strong><span className="m2-apps-more-arrow">→</span></a>
-      </div>
-    );
-  }
-  return <div className="m2-apps-grid">{ownApps.map((app) => <AppCard app={app} key={app.name} />)}</div>;
+const HWW_ICONS: Record<string, ReactNode> = {
+  calendar: <><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 9.5h18M8 3v4M16 3v4" /></>,
+  document: <><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z" /><path d="M14 3v5h5M8.5 13h7M8.5 16.5h5" /></>,
+  clipboard: <><rect x="5" y="4" width="14" height="17" rx="2" /><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1M9 11h6M9 15h4" /></>,
+  chat: <path d="M5 4h14a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 3.5V5a1 1 0 0 1 1-1z" />,
+  warning: <><path d="M12 4 21 19H3z" /><path d="M12 10.5v4M12 17h.01" /></>,
+  trend: <><path d="M4 15l5-4 4 3 7-8" /><path d="M17 6h3v3" /></>,
+  target: <><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3.2" /></>,
+  clock: <><circle cx="12" cy="12" r="8" /><path d="M12 8v4l3 2" /></>,
+  people: <><circle cx="9" cy="8" r="3" /><path d="M3.5 19a5.5 5.5 0 0 1 11 0" /><circle cx="16.6" cy="9.6" r="2.2" /><path d="M15.2 19a5 5 0 0 1 5.3-4.6" /></>,
+  flag: <><path d="M6 21V4" /><path d="M6 4.5h11l-2.2 3L17 10.5H6z" /></>,
+};
+
+function HwwIcon({ name }: { name: string }) {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">{HWW_ICONS[name]}</svg>;
 }
+
+type HwwCard =
+  | { icon: string; label: string; kind: "bullets"; items: string[] }
+  | { icon: string; label: string; kind: "rows"; items: { icon: string; text: string }[] }
+  | { icon: string; label: string; kind: "spec"; items: { icon: string; k: string; v: string }[] };
+
+const hwwSteps: { num: string; title: string; sub: string; desc: string; card: HwwCard }[] = [
+  {
+    num: "01", title: "Talk it through", sub: "A focused 30-minute conversation",
+    desc: "We learn where the business is today, what you have already tried, and where the friction is showing up.",
+    card: { icon: "calendar", label: "Meeting agenda", kind: "bullets", items: ["Where you are now", "What you have tried", "What better looks like", "Biggest opportunities", "What is on your mind"] },
+  },
+  {
+    num: "02", title: "Get a clear point of view", sub: "A short written assessment",
+    desc: "We identify the highest-leverage opportunity, explain what we think is happening, and define how improvement could be measured.",
+    card: { icon: "document", label: "Assessment excerpt", kind: "rows", items: [{ icon: "chat", text: "What we heard" }, { icon: "warning", text: "The central problem" }, { icon: "trend", text: "Strongest opportunity" }, { icon: "target", text: "What better looks like" }] },
+  },
+  {
+    num: "03", title: "Decide what to build", sub: "A focused proposal, if it makes sense",
+    desc: "We recommend the smallest engagement that can create something useful, visible, and worth learning from.",
+    card: { icon: "clipboard", label: "Proposed sprint scope", kind: "spec", items: [{ icon: "target", k: "Focus", v: "Validate onboarding flow" }, { icon: "clock", k: "Timeline", v: "2–3 weeks" }, { icon: "people", k: "Team", v: "Madrona + your team" }, { icon: "flag", k: "Outcome", v: "Tested solution and clear next step" }] },
+  },
+];
+
+function HwwStepCard({ card }: { card: HwwCard }) {
+  return (
+    <div className="m2-hww-card">
+      <div className="m2-hww-card-head"><span className="m2-hww-card-icon"><HwwIcon name={card.icon} /></span><small>{card.label}</small></div>
+      {card.kind === "bullets" && <ul className="m2-hww-bullets">{card.items.map((i) => <li key={i}>{i}</li>)}</ul>}
+      {card.kind === "rows" && <ul className="m2-hww-rows">{card.items.map((i) => <li key={i.text}><span className="m2-hww-row-ic"><HwwIcon name={i.icon} /></span>{i.text}<b className="m2-hww-bar" /></li>)}</ul>}
+      {card.kind === "spec" && <ul className="m2-hww-spec">{card.items.map((i) => <li key={i.k}><span className="m2-hww-row-ic"><HwwIcon name={i.icon} /></span><strong>{i.k}</strong><span>{i.v}</span></li>)}</ul>}
+    </div>
+  );
+}
+
+function HowWeWork() {
+  return (
+    <section id="process" className="m2-hww">
+      <div className="m2-hww-rail">
+        <p className="m2-kicker">How we work</p>
+        <h2>A straightforward way to begin.</h2>
+        <p>We start by understanding what is not working, define what better looks like, and recommend the smallest useful next step.</p>
+        <span className="m2-hww-rule" aria-hidden="true" />
+      </div>
+      <div className="m2-hww-steps">
+        {hwwSteps.map((s, i) => (
+          <div className="m2-hww-step" key={s.num} data-reveal>
+            <div className="m2-hww-step-head">
+              <span className="m2-hww-num">{s.num}</span>
+              {i < hwwSteps.length - 1 && <span className="m2-hww-arrow" aria-hidden="true">→</span>}
+            </div>
+            <h3>{s.title}</h3>
+            <p className="m2-hww-sub">{s.sub}</p>
+            <p className="m2-hww-desc">{s.desc}</p>
+            <HwwStepCard card={s.card} />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+const HERO_IMAGES = [
+  { src: hero1, alt: "Pebble beach and forested headland under a warm Pacific Northwest sunset" },
+  { src: hero2, alt: "Sunrise light over a forested island in the Salish Sea" },
+  { src: hero3, alt: "Tulip fields in bloom beneath the North Cascades at dusk" },
+  { src: hero4, alt: "Sea kayak gliding across calm Salish Sea water at sunset" },
+  { src: hero5, alt: "Sunset over the Salish Sea with rocks and forested islands" },
+  { src: hero6, alt: "Sailboats moored in a Bellingham marina at sunset" },
+];
+// Dwell per hero image. Keep in sync with the --m2-hero-interval CSS var below.
+const HERO_INTERVAL = 9000;
 
 export default function MadronaV2() {
-  const [route, setRoute] = useState(0);
-  const heroChoice = new URLSearchParams(window.location.search).get("hero");
-  const heroOptions = {
-    coast: { image: heroCoast, className: "m2-hero-coast", alt: "Pebble shoreline and forested headland at sunset" },
-    mountain: { image: heroMountain, className: "m2-hero-mountain", alt: "Pacific Northwest mountain ridge beneath a softly colored dawn sky" },
-    island: { image: heroIslandNatural, className: "m2-hero-island", alt: "Sun rays breaking through clouds above a forested island" },
-    editorial: { image: heroIslandEditorial, className: "m2-hero-island", alt: "Warm sunlight breaking through clouds above a forested island" },
-    enhanced: { image: heroIslandEnhanced, className: "m2-hero-island m2-hero-enhanced", alt: "Golden sunlight breaking through clouds above a forested island" },
-    original: { image: heroImage, className: "m2-hero-original", alt: "Rocky Pacific Northwest coastline with evergreen trees" },
-  } as const;
-  const selectedHero = heroOptions[heroChoice as keyof typeof heroOptions] ?? heroOptions.enhanced;
-  const appsVariant = new URLSearchParams(window.location.search).get("apps") ?? "a";
+  useReveal();
+  const [heroIndex, setHeroIndex] = useState(0);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (HERO_IMAGES.length < 2) return;
+    // setTimeout keyed on heroIndex: each advance (auto or via a dot click)
+    // reschedules a fresh HERO_INTERVAL, keeping the countdown fill in sync.
+    const id = window.setTimeout(() => {
+      setHeroIndex((i) => (i + 1) % HERO_IMAGES.length);
+    }, HERO_INTERVAL);
+    return () => window.clearTimeout(id);
+  }, [heroIndex]);
 
   return (
     <main className="m2">
       <LabMeta title="Madrona Product Studio · V2 Concept" />
       <header className="m2-nav">
         <a className="m2-logo-link" href="#top" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></a>
-        <nav aria-label="Primary"><a href="#services">Services</a><a href="#process">Approach</a><a href="#products">Our apps</a><a href="#studio">About</a></nav>
+        <nav aria-label="Primary"><a href="/services">Services</a><a href="/apps">Our apps</a><a href="/about">About</a></nav>
         <a className="m2-button m2-nav-cta" href="/connect">Let’s connect</a>
       </header>
 
@@ -131,7 +198,30 @@ export default function MadronaV2() {
           <p className="m2-lead">Madrona helps established businesses improve how they look, sell, and operate. We clarify the problem, design the right solution, and build it with a small senior team.</p>
           <div className="m2-actions"><a className="m2-button" href="/connect">Start a conversation</a><a className="m2-button m2-button-secondary" href="#process">See how we work</a></div>
         </div>
-        <div className={`m2-hero-visual ${selectedHero.className}`}><img src={selectedHero.image} alt={selectedHero.alt} /></div>
+        <div className="m2-hero-visual m2-hero-island m2-hero-rotate">
+          {HERO_IMAGES.map((img, i) => (
+            <img
+              key={img.src}
+              src={img.src}
+              alt={i === 0 ? "Pacific Northwest landscapes near Bellingham, Washington" : ""}
+              aria-hidden={i === 0 ? undefined : true}
+              className={i === heroIndex ? "is-active" : ""}
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          ))}
+          <button
+            type="button"
+            className="m2-hero-cycle"
+            aria-label={`Hero image ${heroIndex + 1} of ${HERO_IMAGES.length}. Show next image.`}
+            onClick={() => setHeroIndex((i) => (i + 1) % HERO_IMAGES.length)}
+          >
+            {/* keyed on heroIndex so the sweep remounts and restarts in sync with the swap timer */}
+            <svg key={heroIndex} className="m2-hero-cycle-ring" viewBox="0 0 36 36" aria-hidden="true">
+              <circle className="m2-hero-cycle-track" cx="18" cy="18" r="15" />
+              <circle className="m2-hero-cycle-arc" cx="18" cy="18" r="15" />
+            </svg>
+          </button>
+        </div>
       </section>
 
       <section className="m2-audiences" aria-labelledby="audience-title">
@@ -142,79 +232,45 @@ export default function MadronaV2() {
             { image: outdoorsImage, type: "outdoors" as const, title: "Outdoor and travel", copy: "Journeys with substance" },
             { image: healthImage, type: "health" as const, title: "Health and wellness", copy: "Care through clarity" },
             { image: shopsImage, type: "shops" as const, title: "Shops and services", copy: "Local businesses, stronger" },
-          ].map(({ image, type, title, copy }) => <article className="m2-audience" key={title}><div className="m2-audience-image"><img src={image} alt="" /></div><div className="m2-audience-caption"><span className="m2-audience-icon"><AudienceIcon type={type} /></span><div><h3>{title}</h3><p>{copy}</p></div></div></article>)}
+          ].map(({ image, type, title, copy }) => <article className="m2-audience" key={title} data-reveal><div className="m2-audience-image"><img src={image} alt="" /></div><div className="m2-audience-caption"><span className="m2-audience-icon"><AudienceIcon type={type} /></span><div><h3>{title}</h3><p>{copy}</p></div></div></article>)}
         </div>
       </section>
 
-      <section id="services" className="m2-services">
-        <div className="m2-services-intro">
+      <section id="services" className="m2-svcmod">
+        <div className="m2-svcmod-intro">
           <p className="m2-kicker">What we do</p>
-          <h2><span>Three ways to move</span><span>a business forward.</span></h2>
+          <h2>Three ways to move a business forward.</h2>
           <p>Win and keep customers, build what’s next, and make the work behind it all run better.</p>
-          <a className="m2-text-link" href="/lab/madrona-v2/services">Learn more <span>→</span></a>
+          <a className="m2-text-link" href="/services">See all services <span>→</span></a>
         </div>
-        <div className="m2-offering-grid">
-          {services.map((item) => <article className="m2-offering" key={item.title}>
-            <div className="m2-offer-heading"><span className="m2-offer-icon"><OfferIcon type={item.type} /></span><div><h3>{item.title}</h3><p>{item.lead}</p></div></div>
-            <p className="m2-offer-body">{item.body}</p>
-            <OfferVisual type={item.type} />
-          </article>)}
+        <div className="m2-svcmod-cards">
+          {serviceAreas.map((s) => {
+            const total = s.capabilityGroups.reduce((n, g) => n + g.items.length, 0);
+            return (
+              <a className="m2-svcmod-card" href={`/services#${s.id}`} key={s.id} data-reveal aria-label={`${s.name} — see on the services page`}>
+                <div className="m2-svcmod-head">
+                  <ServiceIcon id={s.id} />
+                  <h3>{s.name}</h3>
+                </div>
+                <p className="m2-svcmod-outcome">{s.outcome}</p>
+                <ul className="m2-svcmod-items">
+                  {s.homepageItems.map((it) => <li key={it}>{it}<span aria-hidden="true">→</span></li>)}
+                </ul>
+                <span className="m2-svcmod-more">See {total - s.homepageItems.length} more included <span aria-hidden="true">→</span></span>
+                <div className="m2-svcmod-art">
+                  <img src={s.artifact.src} alt={s.artifact.alt} loading="lazy" />
+                  <span className="m2-svcmod-path">{s.pathSteps.join(" → ")}</span>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </section>
 
       <BerryGoodCaseStudy />
 
       <section id="products" className="m2-products">
-        <div className="m2-products-intro m2-apps-intro">
-          <p className="m2-kicker">Apps from Madrona</p>
-          <h2>We build and run our own apps, too.</h2>
-          <div className="m2-apps-intro-aside">
-            <p>Built and operated by Madrona, these keep our product judgment close to real customers, real constraints, and the consequences of product decisions.</p>
-            {appsVariant !== "c" && appsVariant !== "full" && <SeeAllApps className="m2-apps-intro-link" />}
-          </div>
-        </div>
-        {appsVariant === "full" ? (
-          <>
-            <article className="m2-lila-story">
-              <header className="m2-lila-story-header">
-                <div>
-                  <span className="m2-chip">Madrona-owned · Live product</span>
-                  <img className="m2-lila-wordmark" src={lilaWordmark} alt="Lila Trips" />
-                  <h3>From place intelligence to days that hold together.</h3>
-                </div>
-                <div>
-                  <p>Lila combines trustworthy destination knowledge, live context, and personal intention to shape trips that feel authored—not generated.</p>
-                  <a className="m2-text-link" href="https://lilatrips.com">Visit Lila Trips <span>→</span></a>
-                </div>
-              </header>
-              <figure className="m2-lila-hero">
-                <picture>
-                  <source media="(max-width: 720px)" srcSet={lilaHeroMobile} />
-                  <img src={lilaHero} alt="Lila Trips showing a place-aware Big Sur itinerary across desktop and mobile screens" />
-                </picture>
-              </figure>
-              <div className="m2-lila-support">
-                <figure><img src={lilaSupporting} alt="Lila Trips destination intelligence shown across tablet and mobile interfaces" /></figure>
-                <div>
-                  <p className="m2-kicker">Product in practice</p>
-                  <h4>Know the place. Understand the traveler. Shape the days.</h4>
-                  <p>The product carries the same point of view from early inspiration through planning and on-trip decisions.</p>
-                  <ul>
-                    <li><strong>Curated context</strong><span>Place knowledge with enough depth to make useful choices.</span></li>
-                    <li><strong>Intent-led planning</strong><span>A trip shaped around pace, energy, and what matters now.</span></li>
-                    <li><strong>Useful on the road</strong><span>The itinerary and its details travel together.</span></li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-            <article className="m2-product-proof m2-san">
-              <div><span className="m2-chip">Madrona-owned · Beta</span><h3>San Juan Boating Guide</h3><p>Local route context and planning support for boaters exploring the Salish Sea.</p><div className="m2-segmented">{routes.map((item,index)=><button aria-pressed={route===index} onClick={()=>setRoute(index)} key={item.label}>{item.label}</button>)}</div></div>
-              <div className="m2-product-stage"><img src={sanImage} alt="San Juan Boating Guide route-planning interface" /><div className="m2-route"><h4>{routes[route].label}</h4><div><strong>{routes[route].distance}</strong><span>{routes[route].duration}</span></div><p>{routes[route].note}</p><small>Verify: {routes[route].verify}. Interface demonstration only, not current navigational guidance.</small></div></div>
-            </article>
-          </>
-        ) : (
-          <AppsShowcase variant={appsVariant} />
-        )}
+        <RailedApps />
       </section>
 
       <section id="studio" className="m2-studio">
@@ -222,17 +278,9 @@ export default function MadronaV2() {
         <figure><img src={studioImage} alt="Two people collaborating outdoors in the Pacific Northwest" /><figcaption>Temporary concept image for layout direction</figcaption></figure>
       </section>
 
-      <section id="process" className="m2-capabilities">
-        <div><p className="m2-kicker">Strategy to launch and beyond</p><h2>From first questions to products that last.</h2></div>
-        <ol>{[["01","Direction","Define the problem",heroImage],["02","Identity","Make it coherent",berryImage],["03","Prototype","Make it tangible",lilaHero],["04","Build","Make it real",sanImage],["05","Stewardship","Keep it useful",studioImage]].map(([number,title,copy,image])=><li key={title}><span>{number}</span><div className="m2-capability-art" aria-hidden="true"><img src={image} alt="" /></div><h3>{title}</h3><p>{copy}</p></li>)}</ol>
-      </section>
+      <HowWeWork />
 
-      <section className="m2-cta">
-        <div><p className="m2-kicker">Ready to talk?</p><h2>Tell us where the business is getting stuck.</h2><p>Start with a free 30-minute conversation. No pitch deck and no obligation.</p><a className="m2-text-link m2-light-link" href="/connect">Book a time <span>→</span></a></div>
-        <div><p className="m2-kicker">Already have something started?</p><h2>Bring the work in progress.</h2><p>We will take a clear-eyed look and reply quickly.</p><a className="m2-text-link m2-light-link" href="/connect">Share your project <span>→</span></a></div>
-      </section>
-
-      <footer className="m2-footer"><MadronaLogo variant="horizontal-reversed" /><div><a href="#work">Work</a><a href="#services">Services</a><a href="#process">Process</a><a href="/about">About</a></div><p>Bellingham, Washington<br />hello@madronastudio.com</p><small>V2 concept lab · noindex</small></footer>
+      <SiteFooter />
     </main>
   );
 }
