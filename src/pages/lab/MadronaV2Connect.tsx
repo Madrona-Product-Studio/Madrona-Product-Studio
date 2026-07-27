@@ -7,7 +7,6 @@ import { useCalEmbed, bookProps, bookHref } from "./useCalEmbed";
 import "./madrona-v2.css";
 
 import connectHero from "../../../docs/madrona-v2-build-kit/site-assets/services-hero.webp";
-import startedArt from "../../../docs/madrona-v2-build-kit/site-assets/footer-landscape.webp";
 
 const CX_ICONS: Record<string, ReactNode> = {
   leaf: <path d="M5 19c0-8 6-13 14-13 0 8-6 13-14 13Zm0 0c2-5 5-8 9-10" />,
@@ -37,8 +36,6 @@ const expectItems = [
   { icon: "eye", title: "An honest point of view", body: "You’ll get straightforward feedback and ideas you can use." },
   { icon: "compass", title: "No pressure if it’s not a fit", body: "If we’re not the right partner, we’ll help point you in the right direction." },
 ];
-
-const bestForItems = ["Consumer & B2B products", "SaaS & digital platforms", "Operations & workflow tools"];
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -176,26 +173,6 @@ export default function MadronaV2Connect() {
             <div><strong>We usually respond</strong><p>Within 2 business days</p></div>
           </div>
         </aside>
-      </section>
-
-      <section className="m2-cx-bestfor">
-        <span className="m2-cx-bestfor-ic"><CxIcon name="people" /></span>
-        <div className="m2-cx-bestfor-copy">
-          <h3>Best for</h3>
-          <p>We partner with established businesses and mission-driven teams ready to solve meaningful problems and create lasting impact for their customers and communities.</p>
-        </div>
-        <ul className="m2-cx-bestfor-list">
-          {bestForItems.map((b) => <li key={b}><CxIcon name="check" />{b}</li>)}
-        </ul>
-      </section>
-
-      <section className="m2-cx-started">
-        <div className="m2-cx-started-art"><img src={startedArt} alt="" aria-hidden="true" /></div>
-        <div className="m2-cx-started-copy">
-          <h2>Already have something started?</h2>
-          <p>We can help you move it forward with clarity and purpose.</p>
-        </div>
-        <a className="m2-button" href="/services">Explore our services <span>↗</span></a>
       </section>
 
       <SiteFooter cta={false} />
