@@ -158,8 +158,8 @@ function HowWeWork() {
 }
 
 const HERO_IMAGES = [
-  { src: hero1, alt: "Pebble beach and forested headland under a warm Pacific Northwest sunset" },
   { src: hero2, alt: "Sunrise light over a forested island in the Salish Sea" },
+  { src: hero1, alt: "Pebble beach and forested headland under a warm Pacific Northwest sunset" },
   { src: hero3, alt: "Tulip fields in bloom beneath the North Cascades at dusk" },
   { src: hero4, alt: "Sea kayak gliding across calm Salish Sea water at sunset" },
   { src: hero5, alt: "Sunset over the Salish Sea with rocks and forested islands" },
