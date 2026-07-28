@@ -8,6 +8,7 @@ import Writing from "./pages/Writing";
 import StudioBrief from "./pages/StudioBrief";
 import HomeLab from "./pages/HomeLab";
 import MadronaV2 from "./pages/lab/MadronaV2";
+import MadronaV2Home from "./pages/lab/MadronaV2Home";
 import MadronaV2Services from "./pages/lab/MadronaV2Services";
 import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
@@ -18,8 +19,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Madrona V2 is now the canonical site. */}
-        <Route path="/" element={<MadronaV2 />} />
+        {/* Story rethink: new studio front-door home; current homepage preserved as /consulting. */}
+        <Route path="/" element={<MadronaV2Home />} />
+        <Route path="consulting" element={<MadronaV2 />} />
         <Route path="services" element={<MadronaV2Services />} />
         <Route path="apps" element={<MadronaV2Apps />} />
         <Route path="connect" element={<MadronaV2Connect />} />

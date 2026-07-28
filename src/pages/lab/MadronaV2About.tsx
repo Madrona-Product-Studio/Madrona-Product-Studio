@@ -1,5 +1,5 @@
 import LabMeta from "./LabMeta";
-import MadronaLogo from "./MadronaLogo";
+import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import { studioProfile } from "../../data/studioProfile";
@@ -75,15 +75,7 @@ export default function MadronaV2About() {
   return (
     <main className="m2 m2-ab-page">
       <LabMeta title="About · Madrona Product Studio" />
-      <header className="m2-nav">
-        <a className="m2-logo-link" href="/" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></a>
-        <nav aria-label="Primary">
-          <a href="/services">Services</a>
-          <a href="/apps">Our apps</a>
-          <a aria-current="page" href="/about">About</a>
-        </nav>
-        <a className="m2-button m2-nav-cta" href="/connect">Let’s connect</a>
-      </header>
+      <M2Nav active="about" />
 
       {/* Hero: title + positioning + proof points | team network diagram */}
       <section className="m2-ab-intro">

@@ -183,9 +183,40 @@ const HERO_IMAGES = [
 // Dwell per hero image. Keep in sync with the --m2-hero-interval CSS var below.
 const HERO_INTERVAL = 9000;
 
-export default function MadronaV2() {
+// EXPLORATION: three homepage identity directions, switchable live via the
+// on-page control (or ?hero=1|2|3). Collapse to the chosen one before shipping.
+const HERO_VARIANTS = [
+  {
+    kicker: "A studio of makers · Bellingham",
+    headline: "A studio of makers, from Bellingham.",
+    lead: "Product leads, marketers, and builders who make good things, for other businesses and for ourselves. This is where we share the work, and where you find a way in.",
+    primary: { label: "See what we make", href: "#work" },
+    secondary: { label: "Work with us", href: "/consulting" },
+  },
+  {
+    kicker: "Bellingham product studio",
+    headline: "We figure out what to build, then build it.",
+    lead: "A small studio of senior makers doing the work for good businesses, and for ourselves. Consulting is one way in. The rest is what we make.",
+    primary: { label: "See the work", href: "#work" },
+    secondary: { label: "Ways to work together", href: "/consulting" },
+  },
+  {
+    kicker: "Bellingham product studio",
+    headline: "A studio that makes things worth keeping.",
+    lead: "We help businesses build what they need, and we build our own products too. Have a look around, then choose how to work with us.",
+    primary: { label: "Our work", href: "#work" },
+    secondary: { label: "Consulting", href: "/consulting" },
+  },
+] as const;
+
+export default function MadronaV2Home() {
   useReveal();
   const [heroIndex, setHeroIndex] = useState(0);
+  const [heroV, setHeroV] = useState(() => {
+    const n = parseInt(new URLSearchParams(window.location.search).get("hero") || "1", 10);
+    return Number.isFinite(n) ? Math.min(3, Math.max(1, n)) - 1 : 0;
+  });
+  const hero = HERO_VARIANTS[heroV];
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (HERO_IMAGES.length < 2) return;
@@ -199,15 +230,22 @@ export default function MadronaV2() {
 
   return (
     <main className="m2">
-      <LabMeta title="Madrona Product Studio · V2 Concept" />
-      <M2Nav active="consulting" />
+      <LabMeta title="Madrona Product Studio" />
+      {/* EXPLORATION control — remove once a hero direction is chosen. */}
+      <div style={{ position: "fixed", top: 12, right: 12, zIndex: 200, display: "flex", gap: 6, alignItems: "center", background: "rgba(26,23,20,.9)", padding: "6px 9px", borderRadius: 9, fontSize: 12, boxShadow: "0 6px 18px rgba(0,0,0,.2)" }}>
+        <span style={{ color: "#b8b0a2", marginRight: 2 }}>Hero</span>
+        {[0, 1, 2].map((i) => (
+          <button key={i} onClick={() => setHeroV(i)} style={{ color: heroV === i ? "#1a1714" : "#fff", background: heroV === i ? "#e8a999" : "transparent", border: "1px solid rgba(255,255,255,.28)", borderRadius: 6, padding: "3px 9px", cursor: "pointer", fontWeight: 600 }}>{i + 1}</button>
+        ))}
+      </div>
+      <M2Nav />
 
       <section id="top" className="m2-hero">
         <div className="m2-hero-copy">
-          <p className="m2-kicker">PNW-based digital product studio</p>
-          <h1>Good businesses around here deserve software as good as <span className="m2-keep-together">they are.</span></h1>
-          <p className="m2-lead">Madrona helps established businesses improve how they look, sell, and operate. We clarify the problem, design the right solution, and build it with a small senior team.</p>
-          <div className="m2-actions"><a className="m2-button" href="/connect">Start a conversation</a><a className="m2-button m2-button-secondary" href="#process">See how we work</a></div>
+          <p className="m2-kicker">{hero.kicker}</p>
+          <h1>{hero.headline}</h1>
+          <p className="m2-lead">{hero.lead}</p>
+          <div className="m2-actions"><a className="m2-button" href={hero.primary.href}>{hero.primary.label}</a><a className="m2-button m2-button-secondary" href={hero.secondary.href}>{hero.secondary.label}</a></div>
         </div>
         <div className="m2-hero-visual m2-hero-island m2-hero-rotate">
           {HERO_IMAGES.map((img, i) => (
@@ -235,61 +273,41 @@ export default function MadronaV2() {
         </div>
       </section>
 
-      <section className="m2-audiences" aria-labelledby="audience-title">
-        <div className="m2-audience-intro"><p className="m2-kicker">Built for businesses that care deeply</p><h2 id="audience-title">Where people, place, and purpose <span className="m2-keep-together">come first.</span></h2><p>We partner with grounded teams whose work makes everyday life richer.</p></div>
-        <div className="m2-audience-grid">
-          {[
-            { image: farmsImage, type: "farms" as const, title: "Farms and food", copy: "From soil to shelf" },
-            { image: outdoorsImage, type: "outdoors" as const, title: "Outdoor and travel", copy: "Journeys with substance" },
-            { image: healthImage, type: "health" as const, title: "Health and wellness", copy: "Care through clarity" },
-            { image: shopsImage, type: "shops" as const, title: "Shops and services", copy: "Local businesses, stronger" },
-          ].map(({ image, type, title, copy }) => <article className="m2-audience" key={title} data-reveal><div className="m2-audience-image"><img src={image} alt="" /></div><div className="m2-audience-caption"><span className="m2-audience-icon"><AudienceIcon type={type} /></span><div><h3>{title}</h3><p>{copy}</p></div></div></article>)}
-        </div>
-      </section>
-
-      <section id="services" className="m2-svcmod">
-        <div className="m2-svcmod-intro">
-          <p className="m2-kicker">What we do</p>
-          <h2>Three ways to move a business forward.</h2>
-          <p>Win and keep customers, build what’s next, and make the work behind it all run better.</p>
-          <a className="m2-text-link" href="/services">See all services <span>→</span></a>
-        </div>
-        <div className="m2-svcmod-cards">
-          {serviceAreas.map((s) => {
-            const total = s.capabilityGroups.reduce((n, g) => n + g.items.length, 0);
-            return (
-              <a className="m2-svcmod-card" href={`/services#${s.id}`} key={s.id} data-reveal aria-label={`${s.name} — see on the services page`}>
-                <div className="m2-svcmod-head">
-                  <ServiceIcon id={s.id} />
-                  <h3>{s.name}</h3>
-                </div>
-                <p className="m2-svcmod-outcome">{s.outcome}</p>
-                <ul className="m2-svcmod-items">
-                  {s.homepageItems.map((it) => <li key={it}>{it}<span aria-hidden="true">→</span></li>)}
-                </ul>
-                <span className="m2-svcmod-more">See {total - s.homepageItems.length} more included <span aria-hidden="true">→</span></span>
-                <div className="m2-svcmod-art">
-                  <img src={s.artifact.src} alt={s.artifact.alt} loading="lazy" />
-                  <span className="m2-svcmod-path">{s.pathSteps.join(" → ")}</span>
-                </div>
-              </a>
-            );
-          })}
-        </div>
+      <section id="work" className="m2-products">
+        <RailedApps />
       </section>
 
       <BerryGoodCaseStudy />
 
-      <section id="products" className="m2-products">
-        <RailedApps />
-      </section>
-
       <section id="studio" className="m2-studio">
-        <div><p className="m2-kicker">How we work</p><h2>Senior team. Direct partnership. Real outcomes.</h2><div className="m2-studio-facts"><p><strong>15+ years</strong><span>Building products and brands</span></p><p><strong>Founder led</strong><span>No layers between you and the work</span></p><p><strong>Small by design</strong><span>The right specialists, when needed</span></p></div></div>
+        <div><p className="m2-kicker">Who we are</p><h2>A studio of makers, not a vendor.</h2><div className="m2-studio-facts"><p><strong>Product & design</strong><span>Leads who have shipped at scale</span></p><p><strong>Build & growth</strong><span>Engineers, marketers, makers</span></p><p><strong>Small by design</strong><span>The right people, when it counts</span></p></div></div>
         <figure><img src={studioImage} alt="Two people collaborating outdoors in the Pacific Northwest" /></figure>
       </section>
 
-      <HowWeWork />
+      <section id="engage" className="m2-svcmod">
+        <div className="m2-svcmod-intro">
+          <p className="m2-kicker">Ways to work with us</p>
+          <h2>Pick a door.</h2>
+          <p>However you found us, there is a way in.</p>
+        </div>
+        <div className="m2-svcmod-cards">
+          <a className="m2-svcmod-card" href="/consulting" data-reveal>
+            <div className="m2-svcmod-head"><h3>Consulting</h3></div>
+            <p className="m2-svcmod-outcome">Help your business get found, keep customers, and run smoother.</p>
+            <span className="m2-svcmod-more">Explore consulting <span aria-hidden="true">→</span></span>
+          </a>
+          <a className="m2-svcmod-card" href="/apps" data-reveal>
+            <div className="m2-svcmod-head"><h3>Our apps</h3></div>
+            <p className="m2-svcmod-outcome">The products we make, for the world and for ourselves.</p>
+            <span className="m2-svcmod-more">See our apps <span aria-hidden="true">→</span></span>
+          </a>
+          <a className="m2-svcmod-card" href="/connect" data-reveal>
+            <div className="m2-svcmod-head"><h3>Start a conversation</h3></div>
+            <p className="m2-svcmod-outcome">A free 30-minute chat about what you are trying to do.</p>
+            <span className="m2-svcmod-more">Book a chat <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </section>
 
       <SiteFooter />
     </main>

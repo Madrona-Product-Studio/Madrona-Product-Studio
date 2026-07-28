@@ -1,6 +1,6 @@
 import { useState, type FormEvent, type ReactNode } from "react";
 import LabMeta from "./LabMeta";
-import MadronaLogo from "./MadronaLogo";
+import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import { useCalEmbed, bookProps, bookHref } from "./useCalEmbed";
@@ -75,15 +75,7 @@ export default function MadronaV2Connect() {
   return (
     <main className="m2 m2-cx-page">
       <LabMeta title="Let’s connect · Madrona Product Studio" />
-      <header className="m2-nav">
-        <a className="m2-logo-link" href="/" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></a>
-        <nav aria-label="Primary">
-          <a href="/services">Services</a>
-          <a href="/apps">Our apps</a>
-          <a href="/about">About</a>
-        </nav>
-        <a className="m2-button m2-nav-cta" href="#send">Let’s connect</a>
-      </header>
+      <M2Nav />
 
       <section className="m2-cx-hero">
         <div className="m2-cx-hero-copy">
