@@ -130,6 +130,21 @@ function HwwStepCard({ card }: { card: HwwCard }) {
   );
 }
 
+// The example artifact is always shown on desktop; on mobile it collapses behind
+// a toggle so the three-step narrative stays short (button is CSS-hidden ≥761px).
+function HwwExample({ card, label }: { card: HwwCard; label: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`m2-hww-example${open ? " is-open" : ""}`}>
+      <button aria-expanded={open} className="m2-hww-example-btn" onClick={() => setOpen((o) => !o)} type="button">
+        {open ? "Hide example" : `See example ${label.toLowerCase()}`}
+        <span aria-hidden="true" className="m2-hww-example-caret">›</span>
+      </button>
+      <HwwStepCard card={card} />
+    </div>
+  );
+}
+
 function HowWeWork() {
   return (
     <section id="process" className="m2-hww">
@@ -149,7 +164,7 @@ function HowWeWork() {
             <h3>{s.title}</h3>
             <p className="m2-hww-sub">{s.sub}</p>
             <p className="m2-hww-desc">{s.desc}</p>
-            <HwwStepCard card={s.card} />
+            <HwwExample card={s.card} label={s.card.label} />
           </div>
         ))}
       </div>

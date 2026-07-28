@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import berryImage from "../../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp";
 import berryStorefrontDesktop from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-storefront-desktop.webp";
@@ -153,13 +153,61 @@ function DesktopCaseStudy() {
 }
 
 function MobileCaseStudy() {
+  const [active, setActive] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const pillRefs = useRef<Array<HTMLButtonElement | null>>([]);
+
+  function goTo(index: number) {
+    const track = trackRef.current;
+    if (track) track.scrollTo({ left: track.clientWidth * index, behavior: "smooth" });
+  }
+
+  function handleScroll() {
+    const track = trackRef.current;
+    if (!track) return;
+    const index = Math.round(track.scrollLeft / track.clientWidth);
+    setActive((current) => (current === index ? current : index));
+  }
+
+  // Keep the active pill centered in its own scroller without moving the page.
+  useEffect(() => {
+    const tabs = tabsRef.current;
+    const pill = pillRefs.current[active];
+    if (tabs && pill) tabs.scrollTo({ left: pill.offsetLeft - tabs.clientWidth / 2 + pill.clientWidth / 2, behavior: "smooth" });
+  }, [active]);
+
   return (
     <div className="berry-case-mobile">
-      {berryViews.map((view) => <article key={view.id}>
-        <header><span>{view.number}</span><strong>{view.tab}</strong></header>
-        <PanelNarrative view={view} />
-        <div className={`berry-panel-visual berry-panel-visual-${view.id}`}><ViewVisual id={view.id} /></div>
-      </article>)}
+      <div className="berry-mobile-tabs" role="tablist" aria-label="Berry Good business system" ref={tabsRef}>
+        {berryViews.map((view, index) => <button
+          aria-controls={`berry-mpanel-${view.id}`}
+          aria-selected={active === index}
+          className={active === index ? "is-active" : ""}
+          id={`berry-mtab-${view.id}`}
+          key={view.id}
+          onClick={() => goTo(index)}
+          ref={(element) => { pillRefs.current[index] = element; }}
+          role="tab"
+          tabIndex={active === index ? 0 : -1}
+          type="button"
+        ><span>{view.number}</span>{view.tab}</button>)}
+      </div>
+      <div className="berry-mobile-track" onScroll={handleScroll} ref={trackRef}>
+        {berryViews.map((view) => <article
+          aria-labelledby={`berry-mtab-${view.id}`}
+          className="berry-mobile-panel"
+          id={`berry-mpanel-${view.id}`}
+          key={view.id}
+          role="tabpanel"
+        >
+          <PanelNarrative view={view} />
+          <div className={`berry-panel-visual berry-panel-visual-${view.id}`}><ViewVisual id={view.id} /></div>
+        </article>)}
+      </div>
+      <div className="berry-mobile-dots" aria-hidden="true">
+        {berryViews.map((view, index) => <i className={active === index ? "is-active" : ""} key={view.id} />)}
+      </div>
     </div>
   );
 }
