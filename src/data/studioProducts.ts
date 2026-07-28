@@ -138,7 +138,7 @@ export const studioProducts: StudioProduct[] = [
     builtFor: "People considering therapy who want to arrive prepared.",
     helpsThem: "Turn a short spoken conversation into a profile a therapist can read in a minute.",
     rightNow: "Refining the voice conversation and how it generates a shareable profile.",
-    primaryAction: { label: "Visit Plainly", href: "https://plainly.vercel.app", external: true },
+    primaryAction: { label: "Visit Plainly", href: "https://plainly-therapy.vercel.app/", external: true },
     sortOrder: 3,
   },
   {
