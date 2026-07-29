@@ -1,6 +1,6 @@
 import { useState } from "react";
 import LabMeta from "./LabMeta";
-import MadronaLogo from "./MadronaLogo";
+import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import "./madrona-v2.css";
@@ -73,15 +73,7 @@ export default function MadronaV2Apps() {
   return (
     <main className="m2 m2-ap-page">
       <LabMeta title="Our apps · Madrona Product Studio" />
-      <header className="m2-nav">
-        <a className="m2-logo-link" href="/" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></a>
-        <nav aria-label="Primary">
-          <a href="/services">Services</a>
-          <a aria-current="page" href="/apps">Our apps</a>
-          <a href="/about">About</a>
-        </nav>
-        <a className="m2-button m2-nav-cta" href="/connect">Let’s connect</a>
-      </header>
+      <M2Nav active="apps" />
 
       <section className="m2-ap-intro">
         <h1>Our apps</h1>

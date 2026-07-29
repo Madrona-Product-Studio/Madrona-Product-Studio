@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import LabMeta from "./LabMeta";
-import MadronaLogo from "./MadronaLogo";
+import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { ServiceIcon } from "./ServiceIcon";
 import { useReveal } from "./useReveal";
@@ -40,15 +40,7 @@ export default function MadronaV2Services() {
   return (
     <main className="m2 m2-sp-page">
       <LabMeta title="Services · Madrona Product Studio" />
-      <header className="m2-nav">
-        <a className="m2-logo-link" href="/" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></a>
-        <nav aria-label="Primary">
-          <a aria-current="page" href="/services">Services</a>
-          <a href="/apps">Our apps</a>
-          <a href="/about">About</a>
-        </nav>
-        <a className="m2-button m2-nav-cta" href="/connect">Let’s connect</a>
-      </header>
+      <M2Nav active="consulting" />
 
       <section className="m2-sp-intro">
         <p className="m2-kicker m2-sp-eyebrow">Services</p>
