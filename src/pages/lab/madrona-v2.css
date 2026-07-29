@@ -1907,7 +1907,13 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-dualcta { grid-template-columns: 1fr; }
   .m2-dualcta-col:first-child { border-bottom: 1px solid rgba(255,255,255,.16); border-right: 0; padding-bottom: 28px; padding-right: 0; }
 }
-@media (max-width: 560px) { .m2-hp-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .m2-hp-grid { grid-template-columns: 1fr; }
+  /* Tighten desktop-sized vertical padding on phones for consistent rhythm */
+  .m2-bridge { padding: 52px 20px; }
+  .m2-bridge > h2 { margin-bottom: 32px; }
+  .m2-consult-body { padding: 56px 20px; }
+}
 
 /* Homepage hero — Option A: contained rounded image + balanced spacing (2026-07-28) */
 .m2-hero--home { align-items: center; gap: clamp(40px, 4.5vw, 72px); grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr); min-height: clamp(560px, 72vh, 700px); padding: 40px 40px 60px; }
