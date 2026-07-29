@@ -1851,7 +1851,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-hero-founder { color: var(--muted); font-size: .85rem; line-height: 1.5; margin: 22px 0 0; max-width: 44ch; }
 
 /* Products grid (4-up) */
-.m2-home-products { margin: 0 auto; max-width: 1300px; padding: 30px 0 10px; }
+.m2-home-products { margin: 0 auto; max-width: 1300px; padding: 30px 20px 10px; }
 .m2-hp-head { align-items: end; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 34px; }
 .m2-hp-head .m2-kicker { margin-bottom: 12px; }
 .m2-hp-intro { color: var(--muted); line-height: 1.55; margin: 0; max-width: 560px; }
@@ -1870,7 +1870,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-hp-card-body .m2-text-link { color: var(--bark-dark); font-size: .85rem; font-weight: 600; margin-top: 2px; }
 
 /* Bridge */
-.m2-bridge { margin: 0 auto; max-width: 1120px; padding: 74px 0; text-align: center; }
+.m2-bridge { margin: 0 auto; max-width: 1120px; padding: 74px 20px; text-align: center; }
 .m2-bridge > h2 { font-size: clamp(1.7rem, 2.6vw, 2.35rem); font-weight: 560; letter-spacing: -.035em; line-height: 1.08; margin: 0 auto 46px; max-width: 21ch; }
 .m2-bridge-grid { display: grid; gap: 40px; grid-template-columns: repeat(3, 1fr); text-align: left; }
 .m2-bridge-item { display: flex; gap: 16px; }
@@ -1881,7 +1881,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 
 /* Consulting split */
 .m2-consult { background: var(--surface); }
-.m2-consult-body { align-items: center; display: grid; gap: clamp(30px, 4vw, 64px); grid-template-columns: 1.1fr .9fr; margin: 0 auto; max-width: 1300px; padding: 80px 0; }
+.m2-consult-body { align-items: center; display: grid; gap: clamp(30px, 4vw, 64px); grid-template-columns: 1.1fr .9fr; margin: 0 auto; max-width: 1300px; padding: 80px 20px; }
 .m2-consult-intro h2 { font-size: clamp(1.8rem, 2.7vw, 2.5rem); font-weight: 560; letter-spacing: -.04em; line-height: 1.04; margin: 0 0 14px; max-width: 17ch; }
 .m2-consult-intro > p { color: var(--muted); line-height: 1.55; margin: 0 0 30px; max-width: 470px; }
 .m2-consult-items { display: grid; gap: 24px; margin-bottom: 26px; }
