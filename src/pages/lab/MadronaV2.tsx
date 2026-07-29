@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import BerryGoodCaseStudy from "./BerryGoodCaseStudy";
@@ -8,12 +8,6 @@ import { useReveal } from "./useReveal";
 import { serviceAreas } from "../../data/services";
 import "./madrona-v2.css";
 
-import hero1 from "../../../docs/madrona-v2-build-kit/site-assets/hero-1.webp";
-import hero2 from "../../../docs/madrona-v2-build-kit/site-assets/hero-2.webp";
-import hero3 from "../../../docs/madrona-v2-build-kit/site-assets/hero-3.webp";
-import hero4 from "../../../docs/madrona-v2-build-kit/site-assets/hero-4.webp";
-import hero5 from "../../../docs/madrona-v2-build-kit/site-assets/hero-5.webp";
-import hero6 from "../../../docs/madrona-v2-build-kit/site-assets/hero-6.webp";
 import studioImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/studio-collaboration-wide.webp";
 import farmsImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-farms-food.webp";
 import outdoorsImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-outdoor-travel.webp";
@@ -172,67 +166,18 @@ function HowWeWork() {
   );
 }
 
-const HERO_IMAGES = [
-  { src: hero2, alt: "Sunrise light over a forested island in the Salish Sea" },
-  { src: hero1, alt: "Pebble beach and forested headland under a warm Pacific Northwest sunset" },
-  { src: hero3, alt: "Tulip fields in bloom beneath the North Cascades at dusk" },
-  { src: hero4, alt: "Sea kayak gliding across calm Salish Sea water at sunset" },
-  { src: hero5, alt: "Sunset over the Salish Sea with rocks and forested islands" },
-  { src: hero6, alt: "Sailboats moored in a Bellingham marina at sunset" },
-];
-// Dwell per hero image. Keep in sync with the --m2-hero-interval CSS var below.
-const HERO_INTERVAL = 9000;
-
 export default function MadronaV2() {
   useReveal();
-  const [heroIndex, setHeroIndex] = useState(0);
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (HERO_IMAGES.length < 2) return;
-    // setTimeout keyed on heroIndex: each advance (auto or via a dot click)
-    // reschedules a fresh HERO_INTERVAL, keeping the countdown fill in sync.
-    const id = window.setTimeout(() => {
-      setHeroIndex((i) => (i + 1) % HERO_IMAGES.length);
-    }, HERO_INTERVAL);
-    return () => window.clearTimeout(id);
-  }, [heroIndex]);
 
   return (
     <main className="m2">
       <LabMeta title="Madrona Product Studio · V2 Concept" />
       <M2Nav active="consulting" />
 
-      <section id="top" className="m2-hero">
-        <div className="m2-hero-copy">
-          <p className="m2-kicker">PNW-based digital product studio</p>
-          <h1>Good businesses around here deserve software as good as <span className="m2-keep-together">they are.</span></h1>
-          <p className="m2-lead">Madrona helps established businesses improve how they look, sell, and operate. We clarify the problem, design the right solution, and build it with a small senior team.</p>
-          <div className="m2-actions"><a className="m2-button" href="/connect">Start a conversation</a><a className="m2-button m2-button-secondary" href="#process">See how we work</a></div>
-        </div>
-        <div className="m2-hero-visual m2-hero-island m2-hero-rotate">
-          {HERO_IMAGES.map((img, i) => (
-            <img
-              key={img.src}
-              src={img.src}
-              alt={i === 0 ? "Pacific Northwest landscapes near Bellingham, Washington" : ""}
-              aria-hidden={i === 0 ? undefined : true}
-              className={i === heroIndex ? "is-active" : ""}
-              loading={i === 0 ? "eager" : "lazy"}
-            />
-          ))}
-          <button
-            type="button"
-            className="m2-hero-cycle"
-            aria-label={`Hero image ${heroIndex + 1} of ${HERO_IMAGES.length}. Show next image.`}
-            onClick={() => setHeroIndex((i) => (i + 1) % HERO_IMAGES.length)}
-          >
-            {/* keyed on heroIndex so the sweep remounts and restarts in sync with the swap timer */}
-            <svg key={heroIndex} className="m2-hero-cycle-ring" viewBox="0 0 36 36" aria-hidden="true">
-              <circle className="m2-hero-cycle-track" cx="18" cy="18" r="15" />
-              <circle className="m2-hero-cycle-arc" cx="18" cy="18" r="15" />
-            </svg>
-          </button>
-        </div>
+      <section className="m2-ap-intro">
+        <h1>Consulting</h1>
+        <p>Madrona helps established businesses improve how they look, sell, and operate. We clarify the problem, design the right solution, and build it with a small senior team.</p>
+        <a className="m2-ap-jump" href="#process">See how we work <span aria-hidden="true">↓</span></a>
       </section>
 
       <section className="m2-audiences" aria-labelledby="audience-title">
