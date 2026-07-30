@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import AudienceSection from "./AudienceSection";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -100,6 +101,9 @@ export default function MadronaV2Home() {
           </button>
         </div>
       </section>
+
+      {/* The kinds of businesses and products we care about */}
+      <AudienceSection />
 
       {/* Products we're building and operating */}
       <section id="work" className="m2-home-products">
