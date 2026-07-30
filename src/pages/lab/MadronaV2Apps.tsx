@@ -72,12 +72,13 @@ export default function MadronaV2Apps() {
 
   return (
     <main className="m2 m2-ap-page">
-      <LabMeta title="Our apps · Madrona Product Studio" />
+      <LabMeta title="Products · Madrona Product Studio" />
       <M2Nav active="apps" />
 
       <section className="m2-ap-intro">
-        <h1>Our apps</h1>
-        <p>We build and operate our own products to solve real problems, test new ideas, and stay close to what it takes to make useful software last.</p>
+        <p className="m2-kicker">Products from Madrona</p>
+        <h1>Our products</h1>
+        <p>We build our own products because the best way to understand a new way of working is to practice it. Each product begins with a real customer problem and gives us a place to test ideas, improve our methods, and create something useful in its own right.</p>
         <a className="m2-ap-jump" href="#why">Why we build our own products <span aria-hidden="true">↓</span></a>
       </section>
 

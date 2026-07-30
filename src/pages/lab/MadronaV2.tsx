@@ -20,6 +20,27 @@ const ownApps = [
   { name: "San Juan Boating Guide", short: "San Juan Boating Guide", domain: "sjiboating.com", wordmark: null, media: sjbgTile, status: "Live", tagline: "Route context for the Salish Sea.", blurb: "Tide-aware routes, local knowledge, and real-time marine conditions.", image: sanImage, href: "https://www.sjiboating.com/" },
 ] as const;
 
+const engagementPaths = [
+  {
+    id: "brand-and-web" as const,
+    title: "Build with us",
+    outcome: "For organizations that need a senior team to shape and ship the work.",
+    items: ["Websites and digital experiences", "Commerce", "Prototypes and MVPs", "Product redesign", "AI-enabled features and tools"],
+  },
+  {
+    id: "customers-and-growth" as const,
+    title: "Shape the opportunity",
+    outcome: "For organizations that need clarity before or during a build.",
+    items: ["Product strategy", "Customer and market framing", "Positioning", "Experience strategy", "Prototyping and validation"],
+  },
+  {
+    id: "operations-and-ai" as const,
+    title: "Build differently",
+    outcome: "For teams evolving how they build products with modern tools.",
+    items: ["Workflow assessment", "AI-enabled discovery and prototyping", "Cross-functional collaboration", "Evaluation and learning methods", "Embedded product leadership"],
+  },
+];
+
 function SeeAllApps({ className = "" }: { className?: string }) {
   return <a className={`m2-text-link ${className}`} href="/apps">See all our apps <span>→</span></a>;
 }
@@ -160,43 +181,60 @@ export default function MadronaV2() {
 
   return (
     <main className="m2">
-      <LabMeta title="Madrona Product Studio · V2 Concept" />
+      <LabMeta title="How we help · Madrona Product Studio" />
       <M2Nav active="consulting" />
 
       <section className="m2-ap-intro">
-        <h1>Consulting</h1>
-        <p>Madrona helps established businesses improve how they look, sell, and operate. We clarify the problem, design the right solution, and build it with a small senior team.</p>
+        <p className="m2-kicker">How we help</p>
+        <h1>Build the product. Strengthen the team.</h1>
+        <p>Madrona works with founders, local businesses, and product teams to clarify what should exist, create it, and build the capabilities needed to keep moving.</p>
         <a className="m2-ap-jump" href="#process">See how we work <span aria-hidden="true">↓</span></a>
       </section>
 
       <section id="services" className="m2-svcmod">
         <div className="m2-svcmod-intro">
           <p className="m2-kicker">What we do</p>
-          <h2>Three ways to move a business forward.</h2>
-          <p>Win and keep customers, build what’s next, and make the work behind it all run better.</p>
-          <a className="m2-text-link" href="/services">See all services <span>→</span></a>
+          <h2>Three ways to work together.</h2>
+          <p>Engagements adapt to your organization’s current stage, constraints, and existing strengths.</p>
+          <a className="m2-text-link" href="/services">Explore detailed capabilities <span>→</span></a>
         </div>
         <div className="m2-svcmod-cards">
-          {serviceAreas.map((s) => {
-            const total = s.capabilityGroups.reduce((n, g) => n + g.items.length, 0);
+          {engagementPaths.map((path) => {
+            const service = serviceAreas.find((s) => s.id === path.id)!;
             return (
-              <a className="m2-svcmod-card" href={`/services#${s.id}`} key={s.id} data-reveal aria-label={`${s.name} — see on the services page`}>
+              <a className="m2-svcmod-card" href={`/services#${path.id}`} key={path.id} data-reveal aria-label={`${path.title} — see related capabilities`}>
                 <div className="m2-svcmod-head">
-                  <ServiceIcon id={s.id} />
-                  <h3>{s.name}</h3>
+                  <ServiceIcon id={path.id} />
+                  <h3>{path.title}</h3>
                 </div>
-                <p className="m2-svcmod-outcome">{s.outcome}</p>
+                <p className="m2-svcmod-outcome">{path.outcome}</p>
                 <ul className="m2-svcmod-items">
-                  {s.homepageItems.map((it) => <li key={it}>{it}<span aria-hidden="true">→</span></li>)}
+                  {path.items.map((it) => <li key={it}>{it}<span aria-hidden="true">→</span></li>)}
                 </ul>
-                <span className="m2-svcmod-more">See {total - s.homepageItems.length} more included <span aria-hidden="true">→</span></span>
+                <span className="m2-svcmod-more">See related capabilities <span aria-hidden="true">→</span></span>
                 <div className="m2-svcmod-art">
-                  <img src={s.artifact.src} alt={s.artifact.alt} loading="lazy" />
-                  <span className="m2-svcmod-path">{s.pathSteps.join(" → ")}</span>
+                  <img src={service.artifact.src} alt={service.artifact.alt} loading="lazy" />
                 </div>
               </a>
             );
           })}
+        </div>
+      </section>
+
+      <section className="m2-bridge">
+        <p className="m2-kicker">Local and growing businesses</p>
+        <h2>Modern capability without a massive team.</h2>
+        <div className="m2-bridge-grid">
+          <div className="m2-bridge-item">
+            <div>
+              <p>Local and growing businesses should not need an enterprise budget to create a strong digital experience. New tools let small, senior teams deliver work that once required much larger agencies.</p>
+            </div>
+          </div>
+          <div className="m2-bridge-item">
+            <div>
+              <p>Madrona brings that leverage to websites, commerce, customer journeys, products, and operating workflows without adding unnecessary complexity.</p>
+            </div>
+          </div>
         </div>
       </section>
 

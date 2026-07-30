@@ -25,10 +25,10 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
         <div className="m2-fc-cta">
           <div className="m2-fc-half m2-fc-talk">
             <span className="m2-fc-icon"><I d={P.chat} /></span>
-            <h2>Ready to talk?</h2>
-            <p>Tell us what’s not working, ask a question, or introduce yourself. We’ll set up a time to explore how we can help.</p>
+            <h2>Have something worth building?</h2>
+            <p>Bring us an important problem, an early idea, or a product that needs a new direction. We can help shape it, build it, or strengthen how your team does both.</p>
             <div className="m2-fc-btns">
-              <a className="m2-fc-btn" href={CONTACT}><I d={P.chat} /> Let’s connect <I d={P.arrow} /></a>
+              <a className="m2-fc-btn" href={CONTACT}><I d={P.chat} /> Start a project <I d={P.arrow} /></a>
             </div>
             <ul className="m2-fc-trust">
               <li><span><I d={P.clock} /></span><p>30 min call<br />if you’re ready</p></li>
@@ -54,9 +54,12 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
         <div className="m2-fc-foot-main">
           <a className="m2-fc-logo" href="/" aria-label="Madrona Product Studio home"><MadronaLogo variant="horizontal" decorative /></a>
           <nav className="m2-fc-nav" aria-label="Footer">
+            <a href="/work">Work</a>
+            <a href="/apps">Products</a>
+            <a href="/consulting">How we help</a>
             <a href="/services">Services</a>
-            <a href="/apps">Our apps</a>
-            <a href="/#process">Process</a>
+            <a href="/consulting#process">Process</a>
+            <a href="/thinking">Thinking</a>
             <a href="/about">About</a>
           </nav>
           <div className="m2-fc-contact">

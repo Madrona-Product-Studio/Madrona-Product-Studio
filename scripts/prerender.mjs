@@ -16,9 +16,15 @@ const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
 const pages = {
   '/': {
     title: 'Madrona Product Studio · Bellingham, Washington',
-    description: 'A small, senior product studio in Bellingham, Washington. We help established businesses improve how they look, sell, and operate. We clarify the problem, design the right solution, and build it with a small senior team.',
-    h1: 'Good businesses around here deserve software as good as they are.',
-    body: 'Madrona is a small, senior digital product studio in the Pacific Northwest. We help established businesses improve how they look, sell, and operate: their brand and web presence, growing and keeping customers, and streamlining operations with practical tools and AI. Every engagement is led personally by Charlie Koch, with senior specialists brought in as the work calls for them. We also build and run our own products.',
+    description: 'Madrona is a small senior product studio building digital products, websites, and experiences, and helping teams adopt better ways of creating them in the AI era.',
+    h1: 'We build what should exist next.',
+    body: 'Madrona builds products and digital experiences for clients, builds its own products, and helps organizations strengthen how they build. The studio combines strategy, design, software, and practical AI-enabled methods in service of meaningful work.',
+  },
+  '/consulting': {
+    title: 'How we help · Madrona Product Studio',
+    description: 'Build the product and strengthen the team. Madrona helps organizations shape opportunities, create digital products and experiences, and evolve how they build.',
+    h1: 'Build the product. Strengthen the team.',
+    body: 'Work with Madrona to build products and experiences, shape an opportunity, or help your team build differently. Engagements adapt to the organization’s current stage, constraints, and strengths.',
   },
   '/services': {
     title: 'Services · Madrona Product Studio',
@@ -28,15 +34,21 @@ const pages = {
   },
   '/about': {
     title: 'About · Madrona Product Studio',
-    description: 'About Charlie Koch and Madrona Product Studio. A senior product leader with a network of designers, engineers, and researchers. Based in Bellingham, Washington.',
+    description: 'Madrona is a product-building practice led by Charlie Koch, combining client work, original products, and public learning in service of meaningful problems.',
     h1: 'About',
-    body: 'Founded by Charlie Koch. A senior product leader at the center, with a trusted network of designers, engineers, and researchers. Based in Bellingham, Washington, serving Whatcom County and the Pacific Northwest.',
+    body: 'Madrona exists to explore how great software is built in the AI era and direct that capability toward problems that matter. Charlie Koch leads each engagement with a trusted network of senior specialists.',
   },
   '/apps': {
-    title: 'Our apps · Madrona Product Studio',
-    description: 'The products Madrona builds and runs: Lila Trips, the San Juan Boating Guide, Lila Yoga, Aria Health, Helm, Garden HQ, Plainly, and Hiker Link. Operating our own products keeps the work honest.',
-    h1: 'Our apps',
-    body: 'We build and operate our own products to solve real problems, test new ideas, and stay close to what it takes to make useful software last. Live today: Lila Trips and the San Juan Boating Guide. In development: Lila Yoga, Aria Health, Helm, Garden HQ, Plainly, and Hiker Link.',
+    title: 'Products · Madrona Product Studio',
+    description: 'Products Madrona builds to solve real customer problems, create useful software, and practice better ways of building.',
+    h1: 'Our products',
+    body: 'Each Madrona product begins with a real customer problem and creates a place to test ideas, improve our methods, and make something useful in its own right.',
+  },
+  '/thinking': {
+    title: 'Thinking · Madrona Product Studio',
+    description: 'Notes from Madrona on product leadership, small teams, responsible AI, and the changing craft of software creation.',
+    h1: 'What we’re learning',
+    body: 'Madrona shares what the work teaches us about product leadership, small teams, responsible AI, and the changing craft of software creation. The Teams That Build Next is forthcoming.',
   },
   '/connect': {
     title: 'Connect · Madrona Product Studio',

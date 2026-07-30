@@ -51,10 +51,10 @@ export interface StudioProfile {
 export const studioProfile: StudioProfile = {
   intro: {
     heading: "About",
-    headline: "We’re a small product studio with big depth.",
+    headline: "A product-building practice for things worth making.",
     body: [
-      "Charlie leads each engagement and brings in the right senior specialists, so you get the expertise you need, exactly when you need it.",
-      "Madrona stays small by design: fewer layers, faster decisions, and direct accountability from strategy through execution.",
+      "Madrona exists to explore how great software is built in the AI era and to direct that capability toward problems that matter.",
+      "Charlie leads each engagement and brings in the right senior specialists. Client work, Madrona products, and what we share are all part of one practice: build, observe, learn, and help others apply what works.",
     ],
     portraitSrc: portrait,
     portraitAlt:
@@ -91,26 +91,26 @@ export const studioProfile: StudioProfile = {
     { id: "content", title: "Content / Brand", tags: "Messaging, Copy, Brand voice", icon: "content", x: 85, y: 80 },
   ],
   experience: {
-    heading: "Experience that moves things forward.",
+    heading: "Experience at scale, brought close to the work.",
     description:
-      "The value is not the logos. It is knowing where to focus, what to test, when to simplify, and how to turn an unclear problem into a useful product.",
+      "Charlie spent years leading products and teams at scale. Building directly again sharpened a belief that product leadership is about creating the conditions for multidisciplinary teams to solve important customer problems.",
     companies: ["REI", "Healthline", "Microsoft"],
     years: "15+ years",
   },
   ownedProducts: {
-    eyebrow: "Building in the open",
-    heading: "We build our own things, too.",
+    eyebrow: "Practice, not theory",
+    heading: "We build our own products, too.",
     description:
-      "Travel products, wellness tools, trail-safety apps, and community guides. Some are businesses and some simply deserve to exist. Doing the work ourselves keeps our advice honest.",
+      "Each product is designed to create value in its own right while keeping us close to customers, craft, operating decisions, and the realities of learning through working software.",
     href: "/apps",
     action: "See what we build",
     imageSrc: ownedProductsImg,
   },
   community: {
-    eyebrow: "Participating here",
-    heading: "We support the community and the land we call home.",
+    eyebrow: "Work worth doing",
+    heading: "We want to direct our energy toward meaningful problems.",
     description:
-      "Madrona supports local organizations working on food access and land conservation because a healthy business community depends on healthy people and places.",
+      "We are especially drawn to work that improves health and well-being, strengthens local businesses and communities, expands access, and supports a healthier relationship with the places around us.",
     images: [communityFood, communityLand],
   },
   nameStory: {

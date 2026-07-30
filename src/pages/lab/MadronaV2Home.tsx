@@ -46,9 +46,9 @@ const PeopleIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentCol
 const GearIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2" /><path d="M12 2.8v2.6M12 18.6v2.6M4.2 7.5l2.2 1.3M17.6 15.2l2.2 1.3M4.2 16.5l2.2-1.3M17.6 8.8l2.2-1.3" /></svg>;
 
 const consulting = [
-  { icon: <PenIcon />, title: "Brand & Web", body: "Sharpen the story and build a digital presence that reflects the quality of the work." },
-  { icon: <PeopleIcon />, title: "Customers & Growth", body: "Understand your customers and create experiences that drive trust, action, and growth." },
-  { icon: <GearIcon />, title: "Operations & AI", body: "Streamline work, surface insight, and put tools in place that make the team more effective." },
+  { icon: <PenIcon />, title: "Build products and experiences", body: "Websites, commerce, customer experiences, prototypes, AI-enabled features, and new digital products." },
+  { icon: <PeopleIcon />, title: "Shape what comes next", body: "Product strategy, positioning, experience direction, growth opportunities, and rapid validation." },
+  { icon: <GearIcon />, title: "Help your team build differently", body: "Practical AI-enabled workflows, prototyping methods, cross-functional collaboration, and coaching." },
 ];
 
 const HERO_IMAGES = [
@@ -79,17 +79,16 @@ export default function MadronaV2Home() {
       {/* Hero — one studio, two ways of building */}
       <section id="top" className="m2-hero">
         <div className="m2-hero-copy">
-          <p className="m2-kicker">A Pacific Northwest product studio</p>
+          <p className="m2-kicker">A small senior product studio</p>
           <h1>We build what should exist next.</h1>
           <span className="m2-hero-rule" aria-hidden="true" />
           <p className="m2-lead">
-            Madrona is a small product studio. We create and operate our own
-            products, and partner with good businesses to solve meaningful
-            problems through strategy, design, and software.
+            Madrona builds digital products, websites, and experiences, and
+            helps teams adopt better ways of creating them in the AI era.
           </p>
           <div className="m2-actions">
-            <a className="m2-button" href="/apps">Explore our products</a>
-            <a className="m2-button m2-button-secondary" href="/consulting">Work with the studio</a>
+            <a className="m2-button" href="/connect">Start a project</a>
+            <a className="m2-button m2-button-secondary" href="/consulting">Explore how we help</a>
           </div>
         </div>
         <div className="m2-hero-visual m2-hero-island m2-hero-rotate">
@@ -110,7 +109,7 @@ export default function MadronaV2Home() {
         <div className="m2-hp-head">
           <div>
             <p className="m2-kicker">Products we&rsquo;re building and operating</p>
-            <p className="m2-hp-intro">We make products around travel, place, health, nature, and the ways people organize their lives. Some become businesses. Some are experiments. All start with a problem worth solving.</p>
+            <p className="m2-hp-intro">Our products are where we put the practice to work. Each one is built to solve a real problem and teaches us something about how small teams can create useful, thoughtful software.</p>
           </div>
           <a className="m2-text-link m2-hp-viewall" href="/apps">View all products <span aria-hidden="true">→</span></a>
         </div>
@@ -129,6 +128,31 @@ export default function MadronaV2Home() {
               </div>
             </a>
           ))}
+        </div>
+      </section>
+
+      <section className="m2-bridge">
+        <p className="m2-kicker">What we believe</p>
+        <h2>Great products still take different kinds of thinkers.</h2>
+        <div className="m2-bridge-grid">
+          <div className="m2-bridge-item">
+            <div>
+              <h3>The disciplines remain</h3>
+              <p>AI is changing what small teams can accomplish, not making Product, Design, Engineering, or Research irrelevant.</p>
+            </div>
+          </div>
+          <div className="m2-bridge-item">
+            <div>
+              <h3>The boundaries become more fluid</h3>
+              <p>The strongest teams preserve specialized craft while working together more closely around customer problems.</p>
+            </div>
+          </div>
+          <div className="m2-bridge-item">
+            <div>
+              <h3>Working software helps us learn</h3>
+              <p>We practice this model by building products ourselves and help other organizations apply what works.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -153,7 +177,7 @@ export default function MadronaV2Home() {
         <div className="m2-consult-body">
           <div className="m2-consult-intro">
             <h2>Good businesses around here deserve software as good as they are.</h2>
-            <p>Senior product help for companies ready to turn a meaningful opportunity into a clearer strategy, a stronger experience, and better software.</p>
+            <p>We can help shape the opportunity, build the product, or strengthen how your team carries the work forward.</p>
             <div className="m2-consult-items">
               {consulting.map((c) => (
                 <div className="m2-consult-item" key={c.title}>
@@ -165,7 +189,7 @@ export default function MadronaV2Home() {
                 </div>
               ))}
             </div>
-            <a className="m2-text-link" href="/consulting">See how we work with companies <span aria-hidden="true">→</span></a>
+            <a className="m2-text-link" href="/consulting">Explore how we help <span aria-hidden="true">→</span></a>
           </div>
           <figure className="m2-consult-art">
             <img src={studioImage} alt="Working through a problem with a client in the Pacific Northwest" loading="lazy" />
@@ -173,17 +197,36 @@ export default function MadronaV2Home() {
         </div>
       </section>
 
+      <section className="m2-bridge">
+        <p className="m2-kicker">Meaningful work</p>
+        <h2>We want to spend our energy on things worth building.</h2>
+        <div className="m2-bridge-grid">
+          <div className="m2-bridge-item">
+            <div>
+              <p>We are especially drawn to work that improves health and well-being, strengthens local businesses and communities, expands access, or creates a healthier relationship with the places around us.</p>
+            </div>
+          </div>
+          <div className="m2-bridge-item">
+            <div>
+              <h3>Notes from the studio</h3>
+              <p>We share what the work teaches us about small teams, product leadership, responsible AI, and the craft of building software.</p>
+              <a className="m2-text-link" href="/thinking">See what we’re learning <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Dual closing choice */}
       <section className="m2-dualcta">
         <div className="m2-dualcta-col">
-          <h2>Have a business problem?</h2>
-          <p>See how we work with companies to solve meaningful problems.</p>
-          <a className="m2-button m2-button-onink" href="/consulting">Explore consulting <span aria-hidden="true">→</span></a>
+          <h2>Have something worth building?</h2>
+          <p>Bring us an important problem, an early idea, or a product that needs a new direction.</p>
+          <a className="m2-button m2-button-onink" href="/connect">Start a project <span aria-hidden="true">→</span></a>
         </div>
         <div className="m2-dualcta-col">
-          <h2>Curious what we&rsquo;re building?</h2>
-          <p>See the products taking shape inside the studio.</p>
-          <a className="m2-button m2-button-onink" href="/apps">Explore our products <span aria-hidden="true">→</span></a>
+          <h2>Want to build differently?</h2>
+          <p>See how we help teams evolve their product-building practice from where they are today.</p>
+          <a className="m2-button m2-button-onink" href="/consulting">Explore how we help <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
