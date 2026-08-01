@@ -250,10 +250,9 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-svcmod-intro > .m2-text-link { flex: none; white-space: nowrap; }
 .m2-svcmod-cards { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .m2-svcmod-card { background: var(--surface); border: 1px solid var(--sand); border-radius: 18px; color: inherit; display: flex; flex-direction: column; padding: 24px; }
-.m2-svcmod-head { align-items: center; display: flex; gap: 11px; min-height: 50px; }
-.m2-svcmod-head .m2-svc-ico-ring { flex: none; height: 44px; width: 44px; }
-.m2-svcmod-head .m2-svc-ico-ring svg { height: 23px; width: 23px; }
-.m2-svcmod-head h3 { font-size: 1.06rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.15; margin: 0; }
+.m2-svcmod-head { align-items: flex-start; display: flex; flex-direction: column; gap: 16px; }
+.m2-svcmod-head .m2-svc-ico-ring { flex: none; }
+.m2-svcmod-head h3 { font-size: 1.08rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.2; margin: 0; min-height: 2.4em; }
 .m2-svcmod-outcome { color: var(--ink-soft); font-size: .88rem; line-height: 1.45; margin: 12px 0 0; min-height: 44px; }
 .m2-svcmod-items { border-top: 1px solid var(--line-soft, rgba(26,23,20,.08)); list-style: none; margin: 16px 0 0; padding: 0; }
 .m2-svcmod-items li { align-items: center; border-bottom: 1px solid var(--line-soft, rgba(26,23,20,.07)); color: var(--ink); display: flex; font-size: .85rem; gap: 10px; justify-content: space-between; line-height: 1.25; min-height: 42px; }
@@ -289,7 +288,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 /* Shared service icon family (homepage + services page) */
 .m2-svc-ico { flex: none; }
 .m2-svc-ico-tree { border-radius: 50%; height: 44px; width: 44px; }
-.m2-svc-ico-ring { align-items: center; border: 1.5px solid var(--bark); border-radius: 50%; color: var(--forest); display: inline-flex; height: 44px; justify-content: center; width: 44px; }
+.m2-svc-ico-ring { align-items: center; background: #f8e6d8; border-radius: 50%; color: var(--bark); display: inline-flex; height: 48px; justify-content: center; width: 48px; }
 .m2-svc-ico-ring svg { height: 24px; width: 24px; }
 
 /* ===== Services page (Iteration C: menu style) ===== */
@@ -1731,9 +1730,7 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-svcmod-cards { grid-template-columns: 1fr; }
   .m2-svcmod-card { padding: 24px; }
   .m2-svcmod-art { display: none; }
-  .m2-svcmod-head { min-height: 0; }
-  .m2-svcmod-head .m2-svc-ico-ring { height: 48px; width: 48px; }
-  .m2-svcmod-head .m2-svc-ico-ring svg { height: 25px; width: 25px; }
+  .m2-svcmod-head h3 { min-height: 0; }
   .m2-svcmod-outcome { min-height: 0; }
   .m2-svcmod-items li { min-height: 44px; }
   .berry-case-study { border-radius: 0; display: block; margin: 0 0 60px; padding: 60px 20px; }
