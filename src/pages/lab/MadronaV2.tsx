@@ -217,7 +217,6 @@ export default function MadronaV2() {
               <span className="m2-svcmod-more">See related capabilities <span aria-hidden="true">→</span></span>
               <div className="m2-svcmod-art">
                 <img src={service.artifact.src} alt={service.artifact.alt} loading="lazy" />
-                <small className="m2-svcmod-proof">Demonstrated through {service.artifact.caption}</small>
               </div>
             </a>
           ))}

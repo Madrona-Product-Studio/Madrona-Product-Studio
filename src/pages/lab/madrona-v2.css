@@ -262,7 +262,6 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-svcmod-more { align-items: center; color: var(--bark-dark); display: inline-flex; font-size: .8rem; font-weight: 600; gap: 6px; margin: 12px 0 16px; }
 .m2-svcmod-art { aspect-ratio: 16 / 11; background: var(--shell); border-radius: 12px; margin-top: auto; overflow: hidden; position: relative; }
 .m2-svcmod-art img { height: 100%; object-fit: cover; object-position: top center; width: 100%; }
-.m2-svcmod-proof { background: rgba(31, 59, 51, .9); bottom: 0; color: #fff; font-size: .66rem; left: 0; padding: 6px 9px; position: absolute; right: 0; }
 
 /* Who we help — left-aligned editorial spread (claim rail + audience list) */
 .m2-who { display: grid; gap: clamp(32px, 4vw, 70px); grid-template-columns: minmax(280px, .9fr) minmax(0, 1.1fr); margin: 0 auto; max-width: 1300px; padding: 90px 0 0; }
