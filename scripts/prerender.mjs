@@ -22,15 +22,15 @@ const pages = {
   },
   '/consulting': {
     title: 'How we help · Madrona Product Studio',
-    description: 'Build the product and strengthen the team. Madrona helps organizations shape opportunities, create digital products and experiences, and evolve how they build.',
-    h1: 'Build the product. Strengthen the team.',
-    body: 'Work with Madrona to build products and experiences, shape an opportunity, or help your team build differently. Engagements adapt to the organization’s current stage, constraints, and strengths.',
+    description: 'We help you figure out what to build, then build it. Madrona works with founders, local businesses, and product teams; every engagement starts small and grows from there.',
+    h1: 'Figure out what to build. Then build it.',
+    body: 'Madrona works with founders, local businesses, and product teams. Four ways in, one practice: build trust, grow your business, work smarter, and build something worth using. We start with a 30-minute conversation, follow with a short written assessment, and recommend the smallest engagement worth doing.',
   },
   '/services': {
     title: 'Services · Madrona Product Studio',
-    description: 'Three ways to move a business forward: your brand and web presence, growing and keeping customers, and operations and AI. Strategy, design, and technology from a small senior team in the Pacific Northwest.',
+    description: 'Four ways in, one practice: build trust, grow your business, work smarter, and build something worth using. Strategy, design, and technology from a small senior team in the Pacific Northwest.',
     h1: 'Services',
-    body: 'Madrona helps established businesses improve how they look, sell, and operate. Brand and web presence: new websites, brand and identity, content, and online stores. Customers and growth: acquisition, loyalty and retention, lifecycle email and text, reviews. Operations and AI: workflow fixes, small internal tools, and AI agents on your real workflows. Every engagement names its win before the work starts.',
+    body: 'We help you figure out what to build, then build it. Build trust: brand, websites, and digital experience. Grow your business: customer journeys, commerce, loyalty, and retention. Work smarter: workflow fixes, small internal tools, and practical AI on real workflows. Build something worth using: prototypes, MVPs, and new products taken from idea to real. Every engagement names its win before the work starts.',
   },
   '/about': {
     title: 'About · Madrona Product Studio',

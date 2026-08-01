@@ -20,26 +20,6 @@ const ownApps = [
   { name: "San Juan Boating Guide", short: "San Juan Boating Guide", domain: "sjiboating.com", wordmark: null, media: sjbgTile, status: "Live", tagline: "Route context for the Salish Sea.", blurb: "Tide-aware routes, local knowledge, and real-time marine conditions.", image: sanImage, href: "https://www.sjiboating.com/" },
 ] as const;
 
-const engagementPaths = [
-  {
-    id: "brand-and-web" as const,
-    title: "Build with us",
-    outcome: "For organizations that need a senior team to shape and ship the work.",
-    items: ["Websites, commerce, and digital experiences", "Prototypes and MVPs", "New products and AI-enabled features"],
-  },
-  {
-    id: "customers-and-growth" as const,
-    title: "Shape the opportunity",
-    outcome: "For organizations that need clarity before or during a build.",
-    items: ["Product, customer, and market strategy", "Positioning and experience direction", "Prototyping and validation"],
-  },
-  {
-    id: "operations-and-ai" as const,
-    title: "Strengthen your product team",
-    outcome: "Discover, prototype, and ship faster without sacrificing thoughtful product work.",
-    items: ["Discovery and prototyping workflows", "Product, design, and engineering collaboration", "Embedded product leadership and coaching"],
-  },
-];
 
 function SeeAllApps({ className = "" }: { className?: string }) {
   return <a className={`m2-text-link ${className}`} href="/apps">See all our apps <span>→</span></a>;
@@ -186,39 +166,36 @@ export default function MadronaV2() {
 
       <section className="m2-ap-intro">
         <p className="m2-kicker">How we help</p>
-        <h1>Build the product. Strengthen the team.</h1>
-        <p>Madrona works with founders, local businesses, and product teams to clarify what should exist, create it, and build the capabilities needed to keep moving.</p>
+        <h1>Figure out what to build. Then build it.</h1>
+        <p>Madrona works with founders, local businesses, and product teams. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
         <a className="m2-ap-jump" href="#process">See how we work <span aria-hidden="true">↓</span></a>
       </section>
 
       <section id="services" className="m2-svcmod">
         <div className="m2-svcmod-intro">
           <p className="m2-kicker">What we do</p>
-          <h2>Three ways to work together.</h2>
-          <p>Engagements adapt to your organization’s current stage, constraints, and existing strengths.</p>
+          <h2>Four ways in. One practice.</h2>
+          <p>The doors are different; the work behind them is the same. We find the most valuable thing to do next, then build it with you.</p>
           <a className="m2-text-link" href="/services">Explore detailed capabilities <span>→</span></a>
         </div>
         <div className="m2-svcmod-cards">
-          {engagementPaths.map((path) => {
-            const service = serviceAreas.find((s) => s.id === path.id)!;
-            return (
-              <a className="m2-svcmod-card" href={`/services#${path.id}`} key={path.id} data-reveal aria-label={`${path.title} — see related capabilities`}>
-                <div className="m2-svcmod-head">
-                  <ServiceIcon id={path.id} />
-                  <h3>{path.title}</h3>
-                </div>
-                <p className="m2-svcmod-outcome">{path.outcome}</p>
-                <ul className="m2-svcmod-items">
-                  {path.items.map((it) => <li key={it}>{it}<span aria-hidden="true">→</span></li>)}
-                </ul>
-                <span className="m2-svcmod-more">See related capabilities <span aria-hidden="true">→</span></span>
-                <div className="m2-svcmod-art">
-                  <img src={service.artifact.src} alt={service.artifact.alt} loading="lazy" />
-                  <small className="m2-svcmod-proof">Demonstrated through {service.artifact.caption}</small>
-                </div>
-              </a>
-            );
-          })}
+          {serviceAreas.map((service) => (
+            <a className="m2-svcmod-card" href={`/services#${service.id}`} key={service.id} data-reveal aria-label={`${service.door} — see related capabilities`}>
+              <div className="m2-svcmod-head">
+                <ServiceIcon id={service.id} />
+                <h3>{service.door}</h3>
+              </div>
+              <p className="m2-svcmod-outcome">{service.outcome}</p>
+              <ul className="m2-svcmod-items">
+                {service.homepageItems.slice(0, 3).map((it) => <li key={it}>{it}<span aria-hidden="true">→</span></li>)}
+              </ul>
+              <span className="m2-svcmod-more">See related capabilities <span aria-hidden="true">→</span></span>
+              <div className="m2-svcmod-art">
+                <img src={service.artifact.src} alt={service.artifact.alt} loading="lazy" />
+                <small className="m2-svcmod-proof">Demonstrated through {service.artifact.caption}</small>
+              </div>
+            </a>
+          ))}
         </div>
       </section>
 

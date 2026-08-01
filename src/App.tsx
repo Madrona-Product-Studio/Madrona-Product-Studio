@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import CaseStudyPage from "./pages/CaseStudyPage";
-import HowItWorks from "./pages/HowItWorks";
 import AgenticOperations from "./pages/AgenticOperations";
 import StudioBrief from "./pages/StudioBrief";
 import HomeLab from "./pages/HomeLab";
@@ -37,9 +36,10 @@ export default function App() {
         {/* Legacy pages not yet rebuilt in V2 (still old chrome). */}
         <Route element={<Layout />}>
           <Route path="work/:slug" element={<CaseStudyPage />} />
-          <Route path="how-it-works" element={<HowItWorks />} />
+          {/* Engagement-model content now lives on the practice page (V2). */}
+          <Route path="how-it-works" element={<Navigate to="/consulting" replace />} />
           <Route path="services/agentic-operations" element={<AgenticOperations />} />
-          <Route path="approach" element={<Navigate to="/how-it-works" replace />} />
+          <Route path="approach" element={<Navigate to="/consulting" replace />} />
           <Route path="writing" element={<Navigate to="/thinking" replace />} />
           <Route path="contact" element={<Navigate to="/connect" replace />} />
           <Route path="brief" element={<StudioBrief />} />

@@ -1,15 +1,18 @@
-// Single source of truth for the three Madrona service areas. Both the homepage
-// "What we do" module and the Services page render from this. Canonical labels
-// live here — do not restate service content in components.
+// Single source of truth for the four Madrona expression doors (the practice
+// frame, adopted 2026-08-01 — canon: charlie-hq briefs/2026-08-01-offering-
+// evolution-integration.md). The consulting page module and the Services page
+// render from this. Canonical labels live here — do not restate in components.
 import brandArtifact from "../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp";
 import customersArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp";
 import operationsArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp";
+import newProductsArtifact from "../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp";
 
-export type ServiceId = "brand-and-web" | "customers-and-growth" | "operations-and-ai";
+export type ServiceId = "brand-and-web" | "customers-and-growth" | "operations-and-ai" | "new-products";
 
 export interface ServiceArea {
   id: ServiceId;
-  name: string;
+  door: string; // the plain-language door phrase (section title on surfaces)
+  name: string; // the descriptive label (eyebrow + side nav)
   outcome: string;
   summary: string;
   homepageItems: string[];
@@ -26,6 +29,7 @@ export interface ServiceArea {
 export const serviceAreas: ServiceArea[] = [
   {
     id: "brand-and-web",
+    door: "Build trust",
     name: "Brand and web",
     outcome: "Give people a clear reason to understand, trust, and choose you.",
     summary:
@@ -44,7 +48,7 @@ export const serviceAreas: ServiceArea[] = [
     ],
     outputs: ["Positioning brief", "Messaging system", "Brand guide", "Website", "Commerce experience", "Content system"],
     valuePoints: [
-      { title: "Build trust", description: "Show up clearly and consistently across every customer touchpoint." },
+      { title: "Earn confidence", description: "Show up clearly and consistently across every customer touchpoint." },
       { title: "Drive action", description: "Make it easier for people to understand, decide, and take the next step." },
       { title: "Scale with confidence", description: "Build a system that can grow with the business." },
     ],
@@ -55,6 +59,7 @@ export const serviceAreas: ServiceArea[] = [
   },
   {
     id: "customers-and-growth",
+    door: "Grow your business",
     name: "Customers and growth",
     outcome: "Make it easier for customers to buy, return, and stay connected.",
     summary:
@@ -85,6 +90,7 @@ export const serviceAreas: ServiceArea[] = [
   },
   {
     id: "operations-and-ai",
+    door: "Work smarter",
     name: "Operations and AI",
     outcome: "Reduce repetitive work and give your team better tools to run the business.",
     summary:
@@ -112,5 +118,35 @@ export const serviceAreas: ServiceArea[] = [
     startingPoint: "A workflow audit followed by a focused automation or internal-tool prototype. From there, we expand what earns its place.",
     pathSteps: ["Request", "decision", "action"],
     artifact: { src: operationsArtifact, alt: "Berry Good operations dashboard with an order-intake agent and structured orders", caption: "Berry Good operations dashboard" },
+  },
+  {
+    id: "new-products",
+    door: "Build something worth using",
+    name: "New products",
+    outcome: "Take a new product from idea to something real people use.",
+    summary:
+      "We help you decide what deserves to exist, prove it cheaply, and build the first real version. Strategy, design, and engineering from one senior team.",
+    homepageItems: ["Product strategy and validation", "Prototypes and MVPs", "AI-enabled features", "Launch and iteration"],
+    capabilityGroups: [
+      { title: "Figure out what to build", items: ["Product and market strategy", "Concept development", "Prototyping and validation", "Positioning"] },
+      { title: "Build and launch it", items: ["MVP design and development", "AI-enabled features", "Launch and early growth", "Iteration from real usage"] },
+    ],
+    problems: [
+      "The idea is promising but unproven.",
+      "A prototype would answer more than another meeting.",
+      "The team knows roughly what to build but lacks the hands to make it real.",
+      "An AI feature makes sense but nobody owns making it real.",
+      "The first version needs senior judgment, not a big agency.",
+    ],
+    outputs: ["Validation read", "Working prototype", "MVP in market", "AI-enabled feature", "Launch plan", "Iteration roadmap"],
+    valuePoints: [
+      { title: "Prove it cheaply", description: "Test the idea with real people before committing a real budget." },
+      { title: "Ship the real thing", description: "One senior team takes the first version all the way to users." },
+      { title: "Learn fast", description: "Working software tells you more than any document." },
+    ],
+    bestFor: "Founders and teams with an important idea that needs to become real.",
+    startingPoint: "A validation sprint that tests demand before a real budget is committed. From there, we build the smallest version worth shipping.",
+    pathSteps: ["Idea", "prototype", "in use"],
+    artifact: { src: newProductsArtifact, alt: "Lila Trips shown across tablet and phone", caption: "Lila Trips, built and operated by Madrona" },
   },
 ];

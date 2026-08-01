@@ -11,6 +11,7 @@ const CTA_LABEL: Record<ServiceId, string> = {
   "brand-and-web": "your brand and web presence",
   "customers-and-growth": "your customer journey",
   "operations-and-ai": "your operations and AI opportunities",
+  "new-products": "your product idea",
 };
 
 function Check() {
@@ -45,7 +46,7 @@ export default function MadronaV2Services() {
       <section className="m2-sp-intro">
         <p className="m2-kicker m2-sp-eyebrow">Services</p>
         <h1>Services</h1>
-        <p>We help established businesses improve how they look, sell, and operate—with strategy, design, and technology that lasts.</p>
+        <p>We help you figure out what to build, then build it. Four ways in, one practice: every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
       </section>
 
       <div className="m2-sp-layout">
@@ -60,7 +61,8 @@ export default function MadronaV2Services() {
             <section className="m2-sp-section" id={s.id} key={s.id} data-reveal>
               <div className="m2-sp-head">
                 <div className="m2-sp-head-copy">
-                  <div className="m2-sp-title"><ServiceIcon id={s.id} /><h2>{s.name}</h2></div>
+                  <p className="m2-kicker">{s.name}</p>
+                  <div className="m2-sp-title"><ServiceIcon id={s.id} /><h2>{s.door}</h2></div>
                   <p className="m2-sp-outcome">{s.outcome}</p>
                   <p className="m2-sp-summary">{s.summary}</p>
                   <ul className="m2-sp-values">

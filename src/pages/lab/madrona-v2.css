@@ -247,7 +247,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-svcmod-intro .m2-kicker { margin-bottom: 18px; }
 .m2-svcmod-intro h2 { font-size: clamp(2rem, 2.9vw, 2.7rem); font-weight: 560; letter-spacing: -.04em; line-height: 1.02; margin: 0 0 16px; }
 .m2-svcmod-intro > p { color: var(--muted); line-height: 1.55; margin: 0 0 18px; max-width: 300px; }
-.m2-svcmod-cards { display: grid; gap: 20px; grid-template-columns: repeat(3, 1fr); }
+.m2-svcmod-cards { display: grid; gap: 20px; grid-template-columns: repeat(2, 1fr); }
 .m2-svcmod-card { background: var(--surface); border: 1px solid var(--sand); border-radius: 18px; color: inherit; display: flex; flex-direction: column; padding: 30px; }
 .m2-svcmod-head { align-items: center; display: flex; gap: 13px; min-height: 52px; }
 .m2-svcmod-head .m2-svc-ico-ring { height: 52px; width: 52px; }

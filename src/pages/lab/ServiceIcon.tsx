@@ -1,8 +1,9 @@
 import type { ServiceId } from "../../data/services";
 
-// One icon family shared by the homepage module and the Services page.
+// One icon family shared by the consulting-page module and the Services page.
 // Bark ring + forest line-art, with bark accents (arrow, sun) per design.
-// Brand = browser + leaf · Customers = people + rising arrow · Operations = workflow + gear + sun.
+// Brand = browser + leaf · Customers = people + rising arrow · Operations =
+// workflow + gear + sun · New products = cube + bark spark.
 const BARK = "var(--bark)";
 
 function Glyph({ id }: { id: ServiceId }) {
@@ -16,6 +17,19 @@ function Glyph({ id }: { id: ServiceId }) {
         <circle cx="9.2" cy="6.7" r=".55" fill={BARK} stroke="none" />
         <path d="M5.6 11.3h5.4M5.6 13.7h3.4" />
         <path d="M13.6 12.2c.5-2.5 2.9-4 6-3.7.3 3.1-1.4 5.6-4.5 5.9M15 19l2.9-5.4" />
+      </>
+    );
+  }
+  if (id === "new-products") {
+    return (
+      <>
+        <path d="M11 6.2 4.6 9.8v7.2L11 20.6l6.4-3.6V9.8L11 6.2Z" />
+        <path d="M4.6 9.8 11 13.4l6.4-3.6" />
+        <path d="M11 13.4v7.2" />
+        <g stroke={BARK}>
+          <path d="M18.6 3.2v2.4M17.4 4.4h2.4" />
+          <path d="M20.8 7.4v1.6M20 8.2h1.6" />
+        </g>
       </>
     );
   }
