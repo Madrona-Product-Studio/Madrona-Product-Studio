@@ -262,6 +262,53 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-svcmod-art { aspect-ratio: 16 / 11; background: var(--shell); border-radius: 12px; margin-top: auto; overflow: hidden; position: relative; }
 .m2-svcmod-art img { height: 100%; object-fit: cover; object-position: top center; width: 100%; }
 
+/* ---- About V3 — founder-led editorial essay ---- */
+.m2-ab3 { margin: 0 auto; max-width: 1300px; }
+.m2-ab3 h2 { font-family: Fraunces, Georgia, serif; font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 540; letter-spacing: -.015em; line-height: 1.08; margin: 0 0 20px; }
+.m2-ab3-hero { align-items: center; display: grid; gap: clamp(40px, 5vw, 90px); grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); padding: 80px 0 30px; }
+.m2-ab3-hero h1 { font-family: Fraunces, Georgia, serif; font-size: clamp(2.5rem, 4vw, 3.7rem); font-weight: 540; letter-spacing: -.015em; line-height: 1.06; margin: 0 0 26px; max-width: 16ch; }
+.m2-ab3-body p { color: var(--ink-soft); font-size: 1.05rem; line-height: 1.65; margin: 0 0 18px; max-width: 54ch; }
+.m2-ab3-body p:last-child { margin-bottom: 0; }
+.m2-ab3-portrait { margin: 0; }
+.m2-ab3-portrait img { aspect-ratio: 4 / 5; border-radius: 18px; object-fit: cover; width: 100%; }
+.m2-ab3-portrait figcaption { color: var(--muted); font-size: .84rem; margin-top: 12px; }
+.m2-ab3-thesis { padding: 90px 0 0; }
+.m2-ab3-quote { border-left: 2px solid var(--bark); margin: 26px 0 0; padding: 6px 0 6px clamp(24px, 3vw, 46px); }
+.m2-ab3-quote p { color: var(--ink); font-family: Fraunces, Georgia, serif; font-size: clamp(1.45rem, 2.3vw, 2.05rem); font-weight: 500; letter-spacing: -.01em; line-height: 1.32; margin: 0; max-width: 32ch; }
+.m2-ab3-ideas { display: grid; gap: 0; grid-template-columns: repeat(3, 1fr); list-style: none; margin: 54px 0 6px; padding: 0; }
+.m2-ab3-ideas li { padding: 0 28px; }
+.m2-ab3-ideas li:first-child { padding-left: 0; }
+.m2-ab3-ideas li + li { border-left: 1px solid var(--line-soft, rgba(26,23,20,.09)); }
+.m2-ab3-ideas h3 { font-size: 1.06rem; font-weight: 600; letter-spacing: -.02em; margin: 0 0 12px; }
+.m2-ab3-underline { background: var(--bark); display: block; height: 2px; margin: 0 0 14px; width: 40px; }
+.m2-ab3-ideas p { color: var(--muted); font-size: .95rem; line-height: 1.55; margin: 0; max-width: 30ch; }
+.m2-ab3-theory { padding: 100px 0 0; }
+.m2-ab3-question { color: var(--ink); font-family: Fraunces, Georgia, serif; font-size: clamp(1.35rem, 2vw, 1.75rem); font-weight: 500; line-height: 1.35; margin: 0 0 16px; max-width: 34ch; }
+.m2-ab3-theory-body { color: var(--muted); font-size: 1.02rem; line-height: 1.6; margin: 0 0 34px; max-width: 52ch; }
+.m2-ab3-loop { align-items: center; color: var(--forest); display: flex; flex-wrap: wrap; gap: 14px 18px; font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; }
+.m2-ab3-loop svg { color: var(--bark); height: 20px; width: 20px; }
+.m2-ab3-loop-back { margin-left: 6px; opacity: .75; }
+.m2-ab3-evidence { padding: 100px 0 0; }
+.m2-ab3-evidence-grid { display: grid; gap: clamp(30px, 4vw, 70px); grid-template-columns: 1fr 1fr; margin-top: 12px; }
+.m2-ab3-evidence-grid h3 { font-size: 1.08rem; font-weight: 600; letter-spacing: -.02em; margin: 0 0 12px; }
+.m2-ab3-evidence-grid p { color: var(--ink-soft); line-height: 1.6; margin: 0; max-width: 48ch; }
+.m2-ab3-people { display: grid; gap: clamp(36px, 5vw, 80px); grid-template-columns: minmax(0, 1.1fr) minmax(240px, .9fr); padding: 100px 0 0; }
+.m2-ab3-people-copy p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.62; margin: 0 0 18px; max-width: 54ch; }
+.m2-ab3-exp { align-items: center; border-top: 1px solid var(--line-soft, rgba(26,23,20,.09)); display: flex; flex-wrap: wrap; gap: 18px 28px; margin-top: 28px; padding-top: 22px; }
+.m2-ab3-logos { align-items: center; display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
+.m2-ab3-logos img { filter: grayscale(1); height: 20px; opacity: .55; width: auto; }
+.m2-ab3-exp > p { color: var(--muted); font-size: .9rem; margin: 0; }
+.m2-ab3-exp > p strong { color: var(--ink); font-weight: 650; }
+.m2-ab3-chips { align-content: center; display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.m2-ab3-chips li { border: 1px solid var(--line-soft, rgba(26,23,20,.12)); border-radius: 999px; color: var(--ink-soft); font-size: .92rem; padding: 9px 18px; }
+.m2-ab3-chips li:nth-child(3n+1) { background: #edefdf; border-color: transparent; }
+.m2-ab3-chips li:nth-child(3n+2) { background: #f8e6d8; border-color: transparent; }
+.m2-ab3-chips li:nth-child(3n) { background: #e4ebf2; border-color: transparent; }
+.m2-ab3-worth { align-items: center; display: grid; gap: clamp(36px, 5vw, 80px); grid-template-columns: minmax(0, 1.05fr) minmax(280px, .95fr); padding: 100px 0 90px; }
+.m2-ab3-worth-copy p { color: var(--ink-soft); font-size: 1.05rem; line-height: 1.65; margin: 0; max-width: 52ch; }
+.m2-ab3-invite { margin-top: 22px !important; }
+.m2-ab3-invite a { color: var(--bark-dark); font-weight: 650; }
+
 /* Who we help — claim rail + three tinted audience columns (Charlie's mockup) */
 .m2-who { display: grid; gap: clamp(36px, 5vw, 90px); grid-template-columns: minmax(300px, .95fr) minmax(0, 1.05fr); margin: 0 auto; max-width: 1300px; padding: 90px 0 0; }
 .m2-kicker.m2-who-kicker { color: var(--bark-dark); margin-bottom: 16px; }
@@ -1596,7 +1643,12 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-hero { grid-template-columns: 1fr 1fr; padding-inline: 28px; }
   .m2-hero-copy { padding-left: 0; }
   .m2-hero h1 { font-size: 3.35rem; }
-  .m2-audiences, .m2-services, .m2-products, .m2-hww, .m2-svcmod, .m2-who { margin-inline: 28px; }
+  .m2-audiences, .m2-services, .m2-products, .m2-hww, .m2-svcmod, .m2-who, .m2-ab3 { margin-inline: 28px; }
+  .m2-ab3-hero, .m2-ab3-people, .m2-ab3-worth { grid-template-columns: 1fr; }
+  .m2-ab3-ideas { grid-template-columns: 1fr; }
+  .m2-ab3-ideas li { padding: 18px 0 0; }
+  .m2-ab3-ideas li + li { border-left: 0; border-top: 1px solid var(--line-soft, rgba(26,23,20,.09)); margin-top: 18px; }
+  .m2-ab3-evidence-grid { grid-template-columns: 1fr; }
   .m2-svcmod-cards { grid-template-columns: repeat(2, 1fr); }
   .m2-svcmod-card { padding: 28px; }
   .m2-who { grid-template-columns: 1fr; gap: 38px; }
@@ -1721,6 +1773,10 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-offering-grid { grid-template-columns: 1fr; }
   .m2-offering { min-height: 440px; }
   .m2-svcmod { margin-inline: 20px; padding: 60px 0; }
+  .m2-ab3 { margin-inline: 20px; }
+  .m2-ab3-hero { padding: 48px 0 10px; }
+  .m2-ab3-thesis, .m2-ab3-theory, .m2-ab3-evidence, .m2-ab3-people { padding: 64px 0 0; }
+  .m2-ab3-worth { padding: 64px 0 60px; }
   .m2-who { gap: 30px; margin-inline: 20px; padding: 56px 0 0; }
   .m2-who-grid { grid-template-columns: 1fr; }
   .m2-who-col { padding: 22px 0 0; }

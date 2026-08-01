@@ -34,9 +34,9 @@ const pages = {
   },
   '/about': {
     title: 'About · Madrona Product Studio',
-    description: 'Madrona is a product-building practice led by Charlie Koch, combining client work, original products, and public learning in service of meaningful problems.',
-    h1: 'About',
-    body: 'Madrona exists to explore how great software is built in the AI era and direct that capability toward problems that matter. Charlie Koch leads each engagement with a trusted network of senior specialists.',
+    description: 'Building changed what Charlie Koch believes product leadership is for. Madrona is a working theory: can small, senior, AI-enabled teams build products differently, and better?',
+    h1: 'Building changed what I believe product leadership is for.',
+    body: 'Madrona exists to put the Product Builder Thesis into practice. Our own products and client work are the evidence, built with trusted people across disciplines, and pointed at work that leaves the world a little better than we found it.',
   },
   '/apps': {
     title: 'Products · Madrona Product Studio',

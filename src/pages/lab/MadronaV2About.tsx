@@ -11,155 +11,153 @@ const LOGOS: Record<string, string> = {
   Microsoft: "/images/logos/microsoft-logo.svg",
 };
 
-// Simple line icons (single path each) for proof points + specialist nodes.
-const ICON_PATHS: Record<string, string> = {
-  // proof points
-  senior: "M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-6 8a6 6 0 0 1 12 0M17 11a2.5 2.5 0 1 0 0-5M18 19a5 5 0 0 0-3-4.6",
-  founder: "M12 3.6l2.5 5.2 5.7.8-4.1 4 1 5.7L12 16.6 6.9 19.3l1-5.7-4.1-4 5.7-.8L12 3.6z",
-  sprig: "M11 20c0-6 3.5-10.5 9-11-.3 6-4 10.3-9 11zM11 20c.6-3.8 2.6-6.4 5.5-8.2",
-  // specialists
-  design: "M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17v3zM13.5 6.5l3 3",
-  research: "M11 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM20 20l-4.35-4.35",
-  analytics: "M4 20h16M7 20v-4.5M12 20V8M17 20v-8",
-  engineer: "M9 8l-4 4 4 4M15 8l4 4-4 4",
-  marketing: "M3 10v4a1 1 0 0 0 1 1h3l5 4V5L7 9H4a1 1 0 0 0-1 1zM16 9a3.5 3.5 0 0 1 0 6",
-  content: "M5 20l1-4L17 5a2 2 0 0 1 3 3L9 19l-4 1zM15 7l3 3",
-};
+// About V3 — founder-led point of view (implementation brief 2026-08-01).
+// The page reads as a short essay: building changed the belief -> the thesis ->
+// Madrona as a working theory -> the work as evidence -> trusted people ->
+// work worth doing. It introduces the thesis; the full thesis lives at /thesis.
 
-function Icon({ name }: { name: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d={ICON_PATHS[name]} />
-    </svg>
-  );
-}
+const DISCIPLINES = [
+  "Designers",
+  "Engineers",
+  "Researchers",
+  "Marketers",
+  "Strategists",
+  "Data scientists",
+  "Writers",
+  "Product leaders",
+];
 
-function TeamNetworkDiagram() {
-  const { intro, charlie, specialists } = studioProfile;
-  return (
-    <div className="m2-ab-net">
-      <svg className="m2-ab-net-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        {specialists.map((s) => {
-          const mx = (50 + s.x) / 2; // horizontal-out, vertical-transition, horizontal-in elbow
-          return <path key={s.id} d={`M50 50 C ${mx} 50 ${mx} ${s.y} ${s.x} ${s.y}`} vectorEffect="non-scaling-stroke" />;
-        })}
-      </svg>
+const IDEAS = [
+  {
+    title: "Clarity matters more",
+    body: "As execution gets cheaper, choosing the right problems and creating focus become the scarce skills.",
+  },
+  {
+    title: "Product leadership is evolving",
+    body: "From managing the work to creating the conditions for great work.",
+  },
+  {
+    title: "Everyone builds differently",
+    body: "Each discipline carries the product forward from its own vector of strength.",
+  },
+];
 
-      <figure className="m2-ab-net-portrait">
-        <img src={intro.portraitSrc} alt={intro.portraitAlt} />
-        <figcaption className="m2-ab-net-pill">
-          <strong>{charlie.name}</strong>
-          <span>{charlie.role}</span>
-        </figcaption>
-      </figure>
-
-      <div className="m2-ab-net-nodes">
-        {specialists.map((s) => (
-          <div className="m2-ab-node" key={s.id} style={{ left: `${s.x}%`, top: `${s.y}%` }}>
-            <span className="m2-ab-node-ico"><Icon name={s.icon} /></span>
-            <span className="m2-ab-node-label">
-              <strong>{s.title}</strong>
-              <span>{s.tags}</span>
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+const LoopArrow = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M4 12h15m-5-6 6 6-6 6" />
+  </svg>
+);
 
 export default function MadronaV2About() {
   useReveal();
-  const { intro, proofPoints, experience, ownedProducts, community, nameStory } = studioProfile;
+  const { intro, experience, community } = studioProfile;
 
   return (
     <main className="m2 m2-ab-page">
       <LabMeta title="About · Madrona Product Studio" />
       <M2Nav active="about" />
 
-      {/* Hero: title + positioning + proof points | team network diagram */}
-      <section className="m2-ab-intro">
-        <div className="m2-ab-intro-copy">
-          <h1>{intro.heading}</h1>
-          <span className="m2-ab-rule" aria-hidden="true" />
-          <p className="m2-ab-headline">{intro.headline}</p>
-          <div className="m2-ab-body">
-            {intro.body.map((p) => <p key={p}>{p}</p>)}
+      {/* 1 · Founder opening */}
+      <section className="m2-ab3 m2-ab3-hero">
+        <div>
+          <p className="m2-kicker m2-who-kicker">About Madrona</p>
+          <h1>Building changed what I believe product leadership is for.</h1>
+          <div className="m2-ab3-body">
+            <p>For most of my career I led product teams at companies with real scale. I loved the work. But somewhere along the way, leading products came to mean managing software instead of making it.</p>
+            <p>Then the tools changed. AI collapsed the distance between an important problem and working software, and I started building again. Not because I became an engineer, but because a small group of experienced people can now carry an idea all the way to something real.</p>
+            <p>That changed what I believe product leadership is for: creating the conditions for a small, multidisciplinary team to solve problems that matter.</p>
           </div>
-          <ul className="m2-ab-proof">
-            {proofPoints.map((pp) => (
-              <li key={pp.id}>
-                <span className="m2-ab-proof-ico"><Icon name={pp.icon} /></span>
-                <strong>{pp.title}</strong>
-                <span>{pp.description}</span>
-              </li>
-            ))}
-          </ul>
         </div>
-        <div className="m2-ab-intro-visual">
-          <TeamNetworkDiagram />
-        </div>
-      </section>
-
-      {/* Experience and credibility */}
-      <section className="m2-ab-exp">
-        <div className="m2-ab-exp-copy">
-          <h2>{experience.heading}</h2>
-          <p>{experience.description}</p>
-        </div>
-        <div className="m2-ab-exp-proof">
-          <ul className="m2-ab-exp-logos">
-            {experience.companies.map((c) => (
-              <li key={c}><img src={LOGOS[c]} alt={c} /></li>
-            ))}
-          </ul>
-          <p className="m2-ab-exp-years"><strong>{experience.years}</strong><span>in product leadership</span></p>
-        </div>
-      </section>
-
-      {/* Two supporting panels: owned products + community */}
-      <section className="m2-ab-panels">
-        <article className="m2-ab-panel" data-reveal>
-          <div className="m2-ab-panel-copy">
-            <p className="m2-kicker">{ownedProducts.eyebrow}</p>
-            <h2>{ownedProducts.heading}</h2>
-            <p>{ownedProducts.description}</p>
-            <a className="m2-text-link" href={ownedProducts.href}>{ownedProducts.action} <span aria-hidden="true">→</span></a>
-          </div>
-          <div className="m2-ab-panel-media m2-ab-panel-media--single">
-            <img src={ownedProducts.imageSrc} alt="A Madrona product shown on a laptop and phone" loading="lazy" />
-          </div>
-        </article>
-
-        <article className="m2-ab-panel" data-reveal>
-          <div className="m2-ab-panel-copy">
-            <p className="m2-kicker">{community.eyebrow}</p>
-            <h2>{community.heading}</h2>
-            <p>{community.description}</p>
-            {community.href && (
-              <a className="m2-text-link" href={community.href}>Learn more <span aria-hidden="true">→</span></a>
-            )}
-          </div>
-          <div className="m2-ab-panel-media m2-ab-panel-media--pair">
-            <img src={community.images[0]} alt="Fresh local produce at a Whatcom County market" loading="lazy" />
-            <img src={community.images[1]} alt="Conserved Pacific Northwest land above the water" loading="lazy" />
-          </div>
-        </article>
-      </section>
-
-      {/* The name */}
-      <section className="m2-ab-name">
-        <div className="m2-ab-name-copy">
-          <p className="m2-kicker">{nameStory.eyebrow}</p>
-          <h2>{nameStory.heading}</h2>
-          <p>{nameStory.description}</p>
-        </div>
-        <figure className="m2-ab-name-media">
-          <img src={nameStory.imageSrc} alt="A Pacific madrona with peeling red-orange bark at the rocky water’s edge" loading="lazy" />
+        <figure className="m2-ab3-portrait">
+          <img src={intro.portraitSrc} alt={intro.portraitAlt} />
+          <figcaption>Charlie Koch · Founder</figcaption>
         </figure>
       </section>
 
-      <SiteFooter />
+      {/* 2 · The Product Builder Thesis (preview) */}
+      <section className="m2-ab3 m2-ab3-thesis">
+        <p className="m2-kicker m2-who-kicker">The Product Builder Thesis</p>
+        <blockquote className="m2-ab3-quote">
+          <p>AI is not eliminating Product, Design, or Engineering. It is expanding what each discipline can contribute as the cost of building software falls. The future is not fewer disciplines. It is more integrated ones.</p>
+        </blockquote>
+        <ul className="m2-ab3-ideas">
+          {IDEAS.map((idea) => (
+            <li key={idea.title}>
+              <h3>{idea.title}</h3>
+              <span className="m2-ab3-underline" aria-hidden="true" />
+              <p>{idea.body}</p>
+            </li>
+          ))}
+        </ul>
+        <a className="m2-text-link" href="/thesis">Read the full Product Builder Thesis <span aria-hidden="true">→</span></a>
+      </section>
+
+      {/* 3 · Madrona is a working theory */}
+      <section className="m2-ab3 m2-ab3-theory">
+        <h2>Madrona is a working theory.</h2>
+        <p className="m2-ab3-question">Can small, senior, AI-enabled teams build products differently, and better?</p>
+        <p className="m2-ab3-theory-body">That is the question underneath everything we do. Every product we ship and every client engagement adds evidence.</p>
+        <div className="m2-ab3-loop" role="img" aria-label="The learning loop: build, learn, refine, share, and repeat">
+          <span>Build</span><LoopArrow /><span>Learn</span><LoopArrow /><span>Refine</span><LoopArrow /><span>Share</span>
+          <svg className="m2-ab3-loop-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M12 5a7 7 0 1 1-6.3 4" /><path d="M5 4.5v4.7h4.7" />
+          </svg>
+        </div>
+      </section>
+
+      {/* 4 · The work is the evidence */}
+      <section className="m2-ab3 m2-ab3-evidence">
+        <h2>The work is the evidence.</h2>
+        <div className="m2-ab3-evidence-grid">
+          <div>
+            <h3>Our own products</h3>
+            <p>We build and operate our own products because they keep us close to customers, ideas, and reality. They are experiments with real stakes, and they teach us more than any document could.</p>
+            <a className="m2-text-link" href="/apps">See what we're building <span aria-hidden="true">→</span></a>
+          </div>
+          <div>
+            <h3>Client work</h3>
+            <p>Every organization we work with teaches us something different about how software creates value. The practice sharpens the philosophy, and the philosophy sharpens the practice.</p>
+            <a className="m2-text-link" href="/consulting">See how we help <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      {/* 5 · Built with people I trust */}
+      <section className="m2-ab3 m2-ab3-people">
+        <div className="m2-ab3-people-copy">
+          <h2>Built with people I trust.</h2>
+          <p>Over the last fifteen years, I have worked alongside exceptional designers, engineers, researchers, marketers, strategists, data scientists, and writers. Many of those relationships have lasted for years. Madrona is a way to keep building together.</p>
+          <p>Every project is different, so instead of maintaining a large organization, we assemble a small senior team around each meaningful problem. It is a deliberate operating model, not a staffing model.</p>
+          <div className="m2-ab3-exp">
+            <ul className="m2-ab3-logos">
+              {experience.companies.map((c) => (
+                <li key={c}><img src={LOGOS[c]} alt={c} /></li>
+              ))}
+            </ul>
+            <p><strong>{experience.years}</strong> building consumer products at scale</p>
+          </div>
+        </div>
+        <ul className="m2-ab3-chips" aria-label="Disciplines in the trusted network">
+          {DISCIPLINES.map((d) => (
+            <li key={d}>{d}</li>
+          ))}
+        </ul>
+      </section>
+
+      {/* 6 · Work worth doing */}
+      <section className="m2-ab3 m2-ab3-worth">
+        <div className="m2-ab3-worth-copy">
+          <h2>Work worth doing.</h2>
+          <p>AI creates extraordinary leverage, and that makes where we choose to apply it more important than ever. We want to spend ours helping people stay healthier, helping local businesses thrive, helping communities grow stronger, and helping people give more of their time to work that matters.</p>
+          <p className="m2-ab3-invite">If you're working on something that matters, we'd love to hear about it. <a href="/connect">Start a conversation <span aria-hidden="true">→</span></a></p>
+        </div>
+        <div className="m2-ab-panel-media m2-ab-panel-media--pair m2-ab3-worth-media">
+          <img src={community.images[0]} alt="Fresh local produce at a Whatcom County market" loading="lazy" />
+          <img src={community.images[1]} alt="Conserved Pacific Northwest land above the water" loading="lazy" />
+        </div>
+      </section>
+
+      <SiteFooter cta={false} />
     </main>
   );
 }

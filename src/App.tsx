@@ -26,6 +26,9 @@ export default function App() {
         <Route path="connect" element={<MadronaV2Connect />} />
         <Route path="about" element={<MadronaV2About />} />
         <Route path="thinking" element={<MadronaV2Thinking />} />
+        {/* The full Product Builder Thesis gets its own page; until it ships,
+            About's preview link lands on the Thinking surface. */}
+        <Route path="thesis" element={<Navigate to="/thinking" replace />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />
