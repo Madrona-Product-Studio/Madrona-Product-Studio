@@ -85,20 +85,20 @@ type HwwCard =
   | { icon: string; label: string; kind: "rows"; items: { icon: string; text: string }[] }
   | { icon: string; label: string; kind: "spec"; items: { icon: string; k: string; v: string }[] };
 
-const hwwSteps: { num: string; title: string; sub: string; desc: string; card: HwwCard }[] = [
+const hwwSteps: { num: string; title: string; sub: string; price: string; paid?: boolean; desc: string; card: HwwCard }[] = [
   {
-    num: "01", title: "Talk it through", sub: "A focused 30-minute conversation",
+    num: "01", title: "Talk it through", sub: "A focused 30-minute conversation", price: "Free",
     desc: "We learn where the business is today, what you have already tried, and where the friction is showing up.",
     card: { icon: "calendar", label: "Meeting agenda", kind: "bullets", items: ["Where you are now", "What you have tried", "What better looks like", "Biggest opportunities", "What is on your mind"] },
   },
   {
-    num: "02", title: "Get a clear point of view", sub: "A short written assessment",
-    desc: "We identify the highest-leverage opportunity, explain what we think is happening, and define how improvement could be measured.",
+    num: "02", title: "Get a clear point of view", sub: "A short written assessment", price: "Free",
+    desc: "We identify the highest-leverage opportunity, explain what we think is happening, and define how improvement could be measured. You keep it either way.",
     card: { icon: "document", label: "Assessment excerpt", kind: "rows", items: [{ icon: "chat", text: "What we heard" }, { icon: "warning", text: "The central problem" }, { icon: "trend", text: "Strongest opportunity" }, { icon: "target", text: "What better looks like" }] },
   },
   {
-    num: "03", title: "Decide what to build", sub: "A focused proposal, if it makes sense",
-    desc: "We recommend the smallest engagement that can create something useful, visible, and worth learning from.",
+    num: "03", title: "Decide what to build", sub: "A focused proposal, if it makes sense", price: "Paid engagement", paid: true,
+    desc: "Based on what the first two steps reveal, we recommend the smallest engagement that can create something useful, visible, and worth learning from.",
     card: { icon: "clipboard", label: "Proposed sprint scope", kind: "spec", items: [{ icon: "target", k: "Focus", v: "Validate onboarding flow" }, { icon: "clock", k: "Timeline", v: "2–3 weeks" }, { icon: "people", k: "Team", v: "Madrona + your team" }, { icon: "flag", k: "Outcome", v: "Tested solution and clear next step" }] },
   },
 ];
@@ -146,7 +146,7 @@ function HowWeWork() {
               {i < hwwSteps.length - 1 && <span className="m2-hww-arrow" aria-hidden="true">→</span>}
             </div>
             <h3>{s.title}</h3>
-            <p className="m2-hww-sub">{s.sub}</p>
+            <p className="m2-hww-sub">{s.sub} <span className={`m2-hww-price${s.paid ? " is-paid" : ""}`}>{s.price}</span></p>
             <p className="m2-hww-desc">{s.desc}</p>
             <HwwExample card={s.card} label={s.card.label} />
           </div>
@@ -171,12 +171,39 @@ export default function MadronaV2() {
         <a className="m2-ap-jump" href="#process">See how we work <span aria-hidden="true">↓</span></a>
       </section>
 
+      {/* Who we help — the capability claim + the three audiences */}
+      <section className="m2-who">
+        <div className="m2-who-rail">
+          <p className="m2-kicker">Who we help</p>
+          <h2>Modern capability without a massive team.</h2>
+          <p>New tools let a small, senior team deliver work that once required much larger agencies. We bring that leverage to websites, commerce, customer journeys, products, and operating workflows, without adding unnecessary complexity.</p>
+        </div>
+        <ul className="m2-who-list">
+          <li>
+            <h3>Founders</h3>
+            <p>Taking an important idea from concept to a product people actually use.</p>
+          </li>
+          <li>
+            <h3>Local and growing businesses</h3>
+            <p>Great at what they do, and ready for software that works as hard as they do.</p>
+          </li>
+          <li>
+            <h3>Product teams</h3>
+            <p>Evolving how they discover, prototype, and ship in the AI era.</p>
+          </li>
+        </ul>
+      </section>
+
       <section id="services" className="m2-svcmod">
         <div className="m2-svcmod-intro">
-          <p className="m2-kicker">What we do</p>
-          <h2>Four ways in. One practice.</h2>
-          <p>The doors are different; the work behind them is the same. We find the most valuable thing to do next, then build it with you.</p>
-          <a className="m2-text-link" href="/services">Explore detailed capabilities <span>→</span></a>
+          <div>
+            <p className="m2-kicker">What we do</p>
+            <h2>Four ways in. One practice.</h2>
+          </div>
+          <div className="m2-svcmod-intro-side">
+            <p>The doors are different; the work behind them is the same. We find the most valuable thing to do next, then build it with you.</p>
+            <a className="m2-text-link" href="/services">Explore detailed capabilities <span>→</span></a>
+          </div>
         </div>
         <div className="m2-svcmod-cards">
           {serviceAreas.map((service) => (
@@ -196,23 +223,6 @@ export default function MadronaV2() {
               </div>
             </a>
           ))}
-        </div>
-      </section>
-
-      <section className="m2-bridge">
-        <p className="m2-kicker">Local and growing businesses</p>
-        <h2>Modern capability without a massive team.</h2>
-        <div className="m2-bridge-grid">
-          <div className="m2-bridge-item">
-            <div>
-              <p>Local and growing businesses should not need an enterprise budget to create a strong digital experience. New tools let small, senior teams deliver work that once required much larger agencies.</p>
-            </div>
-          </div>
-          <div className="m2-bridge-item">
-            <div>
-              <p>Madrona brings that leverage to websites, commerce, customer journeys, products, and operating workflows without adding unnecessary complexity.</p>
-            </div>
-          </div>
         </div>
       </section>
 

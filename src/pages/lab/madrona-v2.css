@@ -242,26 +242,38 @@ html:has(.m2) { scroll-behavior: smooth; }
 }
 
 /* ===== Homepage "What we do" module (Iteration C) ===== */
-.m2-svcmod { display: grid; gap: clamp(32px, 4vw, 60px); grid-template-columns: minmax(210px, .82fr) minmax(0, 3fr); margin: 0 auto; max-width: 1300px; padding: 100px 0; }
-.m2-svcmod-intro { align-self: start; }
-.m2-svcmod-intro .m2-kicker { margin-bottom: 18px; }
-.m2-svcmod-intro h2 { font-size: clamp(2rem, 2.9vw, 2.7rem); font-weight: 560; letter-spacing: -.04em; line-height: 1.02; margin: 0 0 16px; }
-.m2-svcmod-intro > p { color: var(--muted); line-height: 1.55; margin: 0 0 18px; max-width: 300px; }
-.m2-svcmod-cards { display: grid; gap: 20px; grid-template-columns: repeat(2, 1fr); }
-.m2-svcmod-card { background: var(--surface); border: 1px solid var(--sand); border-radius: 18px; color: inherit; display: flex; flex-direction: column; padding: 30px; }
-.m2-svcmod-head { align-items: center; display: flex; gap: 13px; min-height: 52px; }
-.m2-svcmod-head .m2-svc-ico-ring { height: 52px; width: 52px; }
-.m2-svcmod-head .m2-svc-ico-ring svg { height: 27px; width: 27px; }
-.m2-svcmod-head h3 { font-size: 1.28rem; font-weight: 600; letter-spacing: -.03em; line-height: 1.08; margin: 0; }
-.m2-svcmod-outcome { color: var(--ink-soft); font-size: .92rem; line-height: 1.45; margin: 14px 0 0; min-height: 58px; }
-.m2-svcmod-items { border-top: 1px solid var(--line-soft, rgba(26,23,20,.08)); list-style: none; margin: 20px 0 0; padding: 0; }
-.m2-svcmod-items li { align-items: center; border-bottom: 1px solid var(--line-soft, rgba(26,23,20,.07)); color: var(--ink); display: flex; font-size: .9rem; gap: 12px; justify-content: space-between; line-height: 1.25; min-height: 46px; }
+.m2-svcmod { margin: 0 auto; max-width: 1300px; padding: 100px 0; }
+.m2-svcmod-intro { align-items: end; display: flex; flex-wrap: wrap; gap: 20px 60px; justify-content: space-between; margin-bottom: 38px; }
+.m2-svcmod-intro .m2-kicker { margin-bottom: 14px; }
+.m2-svcmod-intro h2 { font-size: clamp(2rem, 2.9vw, 2.7rem); font-weight: 560; letter-spacing: -.04em; line-height: 1.02; margin: 0; }
+.m2-svcmod-intro-side { max-width: 430px; }
+.m2-svcmod-intro-side p { color: var(--muted); line-height: 1.55; margin: 0 0 10px; }
+.m2-svcmod-cards { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.m2-svcmod-card { background: var(--surface); border: 1px solid var(--sand); border-radius: 18px; color: inherit; display: flex; flex-direction: column; padding: 24px; }
+.m2-svcmod-head { align-items: center; display: flex; gap: 11px; min-height: 50px; }
+.m2-svcmod-head .m2-svc-ico-ring { flex: none; height: 44px; width: 44px; }
+.m2-svcmod-head .m2-svc-ico-ring svg { height: 23px; width: 23px; }
+.m2-svcmod-head h3 { font-size: 1.06rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.15; margin: 0; }
+.m2-svcmod-outcome { color: var(--ink-soft); font-size: .88rem; line-height: 1.45; margin: 12px 0 0; min-height: 44px; }
+.m2-svcmod-items { border-top: 1px solid var(--line-soft, rgba(26,23,20,.08)); list-style: none; margin: 16px 0 0; padding: 0; }
+.m2-svcmod-items li { align-items: center; border-bottom: 1px solid var(--line-soft, rgba(26,23,20,.07)); color: var(--ink); display: flex; font-size: .85rem; gap: 10px; justify-content: space-between; line-height: 1.25; min-height: 42px; }
 .m2-svcmod-items li:last-child { border-bottom: 0; }
-.m2-svcmod-items li > span { color: var(--bark); flex: none; font-size: .95rem; }
-.m2-svcmod-more { align-items: center; color: var(--bark-dark); display: inline-flex; font-size: .84rem; font-weight: 600; gap: 6px; margin-top: 13px; }
-.m2-svcmod-art { aspect-ratio: 16 / 11; background: var(--shell); border-radius: 12px; margin-top: 18px; overflow: hidden; position: relative; }
+.m2-svcmod-items li > span { color: var(--bark); flex: none; font-size: .9rem; }
+.m2-svcmod-more { align-items: center; color: var(--bark-dark); display: inline-flex; font-size: .8rem; font-weight: 600; gap: 6px; margin: 12px 0 16px; }
+.m2-svcmod-art { aspect-ratio: 16 / 11; background: var(--shell); border-radius: 12px; margin-top: auto; overflow: hidden; position: relative; }
 .m2-svcmod-art img { height: 100%; object-fit: cover; object-position: top center; width: 100%; }
-.m2-svcmod-proof { background: rgba(31, 59, 51, .9); bottom: 0; color: #fff; font-size: .7rem; left: 0; padding: 7px 10px; position: absolute; right: 0; }
+.m2-svcmod-proof { background: rgba(31, 59, 51, .9); bottom: 0; color: #fff; font-size: .66rem; left: 0; padding: 6px 9px; position: absolute; right: 0; }
+
+/* Who we help — left-aligned editorial spread (claim rail + audience list) */
+.m2-who { display: grid; gap: clamp(32px, 4vw, 70px); grid-template-columns: minmax(280px, .9fr) minmax(0, 1.1fr); margin: 0 auto; max-width: 1300px; padding: 90px 0 0; }
+.m2-who-rail .m2-kicker { margin-bottom: 14px; }
+.m2-who-rail h2 { font-size: clamp(2rem, 2.9vw, 2.7rem); font-weight: 560; letter-spacing: -.04em; line-height: 1.02; margin: 0 0 16px; max-width: 15ch; }
+.m2-who-rail p { color: var(--muted); line-height: 1.55; margin: 0; max-width: 46ch; }
+.m2-who-list { align-self: center; display: grid; list-style: none; margin: 0; padding: 0; }
+.m2-who-list li { border-top: 1px solid var(--line-soft, rgba(26,23,20,.08)); display: grid; gap: 4px 28px; grid-template-columns: minmax(150px, 230px) 1fr; padding: 22px 0; }
+.m2-who-list li:last-child { border-bottom: 1px solid var(--line-soft, rgba(26,23,20,.08)); }
+.m2-who-list h3 { font-size: 1.02rem; font-weight: 600; letter-spacing: -.02em; margin: 0; }
+.m2-who-list p { color: var(--muted); font-size: .92rem; line-height: 1.5; margin: 0; }
 .m2-svcmod-path { background: linear-gradient(transparent, rgba(10, 22, 16, .74)); bottom: 0; color: #fff; font-size: .82rem; font-weight: 550; left: 0; letter-spacing: -.01em; padding: 22px 14px 11px; position: absolute; right: 0; text-align: center; }
 
 /* Shared service icon family (homepage + services page) */
@@ -953,7 +965,9 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-hww-num { color: var(--bark); font-family: Fraunces, serif; font-size: 2rem; font-weight: 500; }
 .m2-hww-arrow { color: var(--bark); font-size: 1.5rem; }
 .m2-hww-step h3 { font-size: 1.32rem; font-weight: 600; letter-spacing: -.025em; margin: 0 0 6px; }
-.m2-hww-sub { color: var(--forest); font-size: .92rem; font-weight: 550; margin: 0 0 12px; }
+.m2-hww-sub { align-items: center; color: var(--forest); display: flex; flex-wrap: wrap; font-size: .92rem; font-weight: 550; gap: 8px; margin: 0 0 12px; }
+.m2-hww-price { border: 1px solid color-mix(in srgb, var(--forest) 32%, transparent); border-radius: 999px; color: var(--forest); font-size: .68rem; font-weight: 650; letter-spacing: .04em; line-height: 1; padding: 4px 9px; text-transform: uppercase; white-space: nowrap; }
+.m2-hww-price.is-paid { border-color: color-mix(in srgb, var(--bark) 40%, transparent); color: var(--bark-dark); }
 .m2-hww-desc { color: var(--muted); font-size: .9rem; line-height: 1.5; margin: 0 0 26px; text-wrap: pretty; }
 
 .m2-hww-card { background: #faf8f2; border: 1px solid var(--sand); border-radius: 14px; padding: 20px 22px; }
@@ -1573,8 +1587,10 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-hero { grid-template-columns: 1fr 1fr; padding-inline: 28px; }
   .m2-hero-copy { padding-left: 0; }
   .m2-hero h1 { font-size: 3.35rem; }
-  .m2-audiences, .m2-services, .m2-products, .m2-hww, .m2-svcmod { margin-inline: 28px; }
-  .m2-svcmod { grid-template-columns: 1fr; gap: 34px; }
+  .m2-audiences, .m2-services, .m2-products, .m2-hww, .m2-svcmod, .m2-who { margin-inline: 28px; }
+  .m2-svcmod-cards { grid-template-columns: repeat(2, 1fr); }
+  .m2-svcmod-card { padding: 28px; }
+  .m2-who { grid-template-columns: 1fr; gap: 30px; }
   .m2-cta { margin-inline: 28px; }
   .m2-fc { margin-inline: 28px; }
   .m2-fc-foot-main { gap: 24px; grid-template-columns: auto 1fr auto; }
@@ -1696,6 +1712,8 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-offering-grid { grid-template-columns: 1fr; }
   .m2-offering { min-height: 440px; }
   .m2-svcmod { margin-inline: 20px; padding: 60px 0; }
+  .m2-who { gap: 26px; margin-inline: 20px; padding: 56px 0 0; }
+  .m2-who-list li { grid-template-columns: 1fr; padding: 16px 0; }
   .m2-svcmod-cards { grid-template-columns: 1fr; }
   .m2-svcmod-card { padding: 24px; }
   .m2-svcmod-art { display: none; }
