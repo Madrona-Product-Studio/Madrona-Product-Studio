@@ -57,8 +57,6 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
             <a href="/work">Work</a>
             <a href="/apps">Products</a>
             <a href="/consulting">How we help</a>
-            <a href="/services">Services</a>
-            <a href="/consulting#process">Process</a>
             <a href="/thinking">Thinking</a>
             <a href="/about">About</a>
           </nav>

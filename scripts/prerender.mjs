@@ -16,9 +16,9 @@ const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
 const pages = {
   '/': {
     title: 'Madrona Product Studio · Bellingham, Washington',
-    description: 'Madrona is a small senior product studio building digital products, websites, and experiences, and helping teams adopt better ways of creating them in the AI era.',
+    description: 'Madrona builds digital products, websites, and experiences for organizations doing meaningful work, and builds its own products to explore better ways of creating software.',
     h1: 'We build what should exist next.',
-    body: 'Madrona builds products and digital experiences for clients, builds its own products, and helps organizations strengthen how they build. The studio combines strategy, design, software, and practical AI-enabled methods in service of meaningful work.',
+    body: 'Madrona builds digital products, websites, and experiences for organizations doing meaningful work. We also build our own products to explore better ways of creating software in the AI era.',
   },
   '/consulting': {
     title: 'How we help · Madrona Product Studio',

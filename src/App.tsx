@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
-import Work from "./pages/Work";
 import CaseStudyPage from "./pages/CaseStudyPage";
 import HowItWorks from "./pages/HowItWorks";
 import AgenticOperations from "./pages/AgenticOperations";
@@ -24,6 +23,7 @@ export default function App() {
         <Route path="consulting" element={<MadronaV2 />} />
         <Route path="services" element={<MadronaV2Services />} />
         <Route path="apps" element={<MadronaV2Apps />} />
+        <Route path="work" element={<MadronaV2Apps />} />
         <Route path="connect" element={<MadronaV2Connect />} />
         <Route path="about" element={<MadronaV2About />} />
         <Route path="thinking" element={<MadronaV2Thinking />} />
@@ -36,7 +36,6 @@ export default function App() {
 
         {/* Legacy pages not yet rebuilt in V2 (still old chrome). */}
         <Route element={<Layout />}>
-          <Route path="work" element={<Work />} />
           <Route path="work/:slug" element={<CaseStudyPage />} />
           <Route path="how-it-works" element={<HowItWorks />} />
           <Route path="services/agentic-operations" element={<AgenticOperations />} />

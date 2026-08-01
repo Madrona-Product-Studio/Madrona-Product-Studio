@@ -29,17 +29,6 @@ const products = [
   { name: "Garden HQ", icon: gardenHqIcon, tile: gardenHqTile, status: "In build", blurb: "Plan your garden, track what you grow, and make better use of your space.", href: "/apps" },
 ] as const;
 
-// ---- The bridge (own products make the work better) ----------------------
-const LeafIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 19c0-7 5-13 14-13 0 8-5 13-14 13Z" /><path d="M5 19c3-5 6.5-8 11-9.5" /></svg>;
-const CompassIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z" /></svg>;
-const CycleIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 0 1 12.6-5.5L20 9" /><path d="M20 4v5h-5" /><path d="M19.5 12a7.5 7.5 0 0 1-12.6 5.5L4 15" /><path d="M4 20v-5h5" /></svg>;
-
-const bridge = [
-  { icon: <LeafIcon />, title: "We stay close to the consequences", body: "We make decisions, ship software, feel the results, and see what comes next." },
-  { icon: <CompassIcon />, title: "We test ideas in the real world", body: "Our recommendations come from operating real products, not only presenting concepts." },
-  { icon: <CycleIcon />, title: "The lessons move both ways", body: "What we learn building our own products improves the client work, and client problems sharpen how we build." },
-];
-
 // ---- Consulting (three service areas) ------------------------------------
 const PenIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-3-3L5 17v3Z" /><path d="M14.5 7.5 17 10" /></svg>;
 const PeopleIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3" /><path d="M3.5 19a5.5 5.5 0 0 1 11 0" /><circle cx="16.8" cy="9.4" r="2.3" /><path d="M15.3 19a5 5 0 0 1 5.4-4.6" /></svg>;
@@ -83,8 +72,9 @@ export default function MadronaV2Home() {
           <h1>We build what should exist next.</h1>
           <span className="m2-hero-rule" aria-hidden="true" />
           <p className="m2-lead">
-            Madrona builds digital products, websites, and experiences, and
-            helps teams adopt better ways of creating them in the AI era.
+            Madrona builds digital products, websites, and experiences for
+            organizations doing meaningful work. We also build our own
+            products to explore better ways of creating software in the AI era.
           </p>
           <div className="m2-actions">
             <a className="m2-button" href="/connect">Start a project</a>
@@ -131,44 +121,29 @@ export default function MadronaV2Home() {
         </div>
       </section>
 
-      <section className="m2-bridge">
-        <p className="m2-kicker">What we believe</p>
-        <h2>Great products still take different kinds of thinkers.</h2>
+      <section className="m2-bridge m2-bridge--compact">
+        <p className="m2-kicker">How we work</p>
+        <h2>Great products still come from different kinds of thinkers.</h2>
         <div className="m2-bridge-grid">
           <div className="m2-bridge-item">
             <div>
-              <h3>The disciplines remain</h3>
-              <p>AI is changing what small teams can accomplish, not making Product, Design, Engineering, or Research irrelevant.</p>
-            </div>
-          </div>
-          <div className="m2-bridge-item">
-            <div>
-              <h3>The boundaries become more fluid</h3>
-              <p>The strongest teams preserve specialized craft while working together more closely around customer problems.</p>
-            </div>
-          </div>
-          <div className="m2-bridge-item">
-            <div>
-              <h3>Working software helps us learn</h3>
-              <p>We practice this model by building products ourselves and help other organizations apply what works.</p>
+              <p>AI changes what small teams can accomplish, not the value of Product, Design, Engineering, or Research. We believe the best teams stay close to customers, build early, learn continuously, and share responsibility for creating something meaningful.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The bridge: building our own makes the work better */}
-      <section className="m2-bridge">
-        <h2>Building our own products makes the work better.</h2>
+      {/* Building alongside clients */}
+      <section className="m2-bridge m2-bridge--compact">
+        <p className="m2-kicker">Practice, not theory</p>
+        <h2>We build alongside our clients.</h2>
         <div className="m2-bridge-grid">
-          {bridge.map((b) => (
-            <div className="m2-bridge-item" key={b.title} data-reveal>
-              <span className="m2-bridge-icon">{b.icon}</span>
-              <div>
-                <h3>{b.title}</h3>
-                <p>{b.body}</p>
-              </div>
+          <div className="m2-bridge-item" data-reveal>
+            <div>
+              <p>The products we build ourselves keep us close to the work. Every product teaches us something about discovery, design, AI, and customer experience that makes us better partners.</p>
+              <h3>We build because it’s the fastest way to learn.</h3>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
@@ -189,30 +164,12 @@ export default function MadronaV2Home() {
                 </div>
               ))}
             </div>
+            <p>Madrona is led by Charlie Koch, a product leader with fifteen years of experience building consumer products at scale and bringing new ideas to life with small teams.</p>
             <a className="m2-text-link" href="/consulting">Explore how we help <span aria-hidden="true">→</span></a>
           </div>
           <figure className="m2-consult-art">
             <img src={studioImage} alt="Working through a problem with a client in the Pacific Northwest" loading="lazy" />
           </figure>
-        </div>
-      </section>
-
-      <section className="m2-bridge">
-        <p className="m2-kicker">Meaningful work</p>
-        <h2>We want to spend our energy on things worth building.</h2>
-        <div className="m2-bridge-grid">
-          <div className="m2-bridge-item">
-            <div>
-              <p>We are especially drawn to work that improves health and well-being, strengthens local businesses and communities, expands access, or creates a healthier relationship with the places around us.</p>
-            </div>
-          </div>
-          <div className="m2-bridge-item">
-            <div>
-              <h3>Notes from the studio</h3>
-              <p>We share what the work teaches us about small teams, product leadership, responsible AI, and the craft of building software.</p>
-              <a className="m2-text-link" href="/thinking">See what we’re learning <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
         </div>
       </section>
 

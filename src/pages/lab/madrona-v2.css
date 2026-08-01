@@ -261,6 +261,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-svcmod-more { align-items: center; color: var(--bark-dark); display: inline-flex; font-size: .84rem; font-weight: 600; gap: 6px; margin-top: 13px; }
 .m2-svcmod-art { aspect-ratio: 16 / 11; background: var(--shell); border-radius: 12px; margin-top: 18px; overflow: hidden; position: relative; }
 .m2-svcmod-art img { height: 100%; object-fit: cover; object-position: top center; width: 100%; }
+.m2-svcmod-proof { background: rgba(31, 59, 51, .9); bottom: 0; color: #fff; font-size: .7rem; left: 0; padding: 7px 10px; position: absolute; right: 0; }
 .m2-svcmod-path { background: linear-gradient(transparent, rgba(10, 22, 16, .74)); bottom: 0; color: #fff; font-size: .82rem; font-weight: 550; left: 0; letter-spacing: -.01em; padding: 22px 14px 11px; position: absolute; right: 0; text-align: center; }
 
 /* Shared service icon family (homepage + services page) */
@@ -1874,6 +1875,10 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-bridge > h2 { font-size: clamp(1.7rem, 2.6vw, 2.35rem); font-weight: 560; letter-spacing: -.035em; line-height: 1.08; margin: 0 auto 46px; max-width: 21ch; }
 .m2-bridge-grid { display: grid; gap: 40px; grid-template-columns: repeat(3, 1fr); text-align: left; }
 .m2-bridge-item { display: flex; gap: 16px; }
+.m2-bridge--compact { max-width: 900px; }
+.m2-bridge--compact .m2-bridge-grid { display: block; margin: 0 auto; max-width: 720px; text-align: center; }
+.m2-bridge--compact .m2-bridge-item { display: block; }
+.m2-bridge--compact .m2-bridge-item h3 { margin-top: 22px; }
 .m2-bridge-icon { color: var(--forest); flex: none; }
 .m2-bridge-icon svg { height: 30px; width: 30px; }
 .m2-bridge-item h3 { font-size: 1.02rem; font-weight: 600; letter-spacing: -.02em; line-height: 1.25; margin: 2px 0 8px; }

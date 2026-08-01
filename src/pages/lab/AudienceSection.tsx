@@ -13,7 +13,7 @@ function AudienceIcon({ type }: { type: "farms" | "outdoors" | "health" | "shops
 export default function AudienceSection() {
   return (
     <section className="m2-audiences" aria-labelledby="audience-title">
-      <div className="m2-audience-intro"><p className="m2-kicker">Where we focus</p><h2 id="audience-title">Where people, place, and purpose <span className="m2-keep-together">come first.</span></h2><p>The products we build and the businesses we partner with share a thread: grounded work that makes everyday life richer.</p></div>
+      <div className="m2-audience-intro"><p className="m2-kicker">The work we’re drawn to</p><h2 id="audience-title">Where people, place, and purpose <span className="m2-keep-together">come first.</span></h2><p>The products we build and the businesses we partner with share a thread: grounded work that makes everyday life richer.</p></div>
       <div className="m2-audience-grid">
         {[
           { image: farmsImage, type: "farms" as const, title: "Farms and food", copy: "From soil to shelf" },

@@ -25,19 +25,19 @@ const engagementPaths = [
     id: "brand-and-web" as const,
     title: "Build with us",
     outcome: "For organizations that need a senior team to shape and ship the work.",
-    items: ["Websites and digital experiences", "Commerce", "Prototypes and MVPs", "Product redesign", "AI-enabled features and tools"],
+    items: ["Websites, commerce, and digital experiences", "Prototypes and MVPs", "New products and AI-enabled features"],
   },
   {
     id: "customers-and-growth" as const,
     title: "Shape the opportunity",
     outcome: "For organizations that need clarity before or during a build.",
-    items: ["Product strategy", "Customer and market framing", "Positioning", "Experience strategy", "Prototyping and validation"],
+    items: ["Product, customer, and market strategy", "Positioning and experience direction", "Prototyping and validation"],
   },
   {
     id: "operations-and-ai" as const,
-    title: "Build differently",
-    outcome: "For teams evolving how they build products with modern tools.",
-    items: ["Workflow assessment", "AI-enabled discovery and prototyping", "Cross-functional collaboration", "Evaluation and learning methods", "Embedded product leadership"],
+    title: "Strengthen your product team",
+    outcome: "Discover, prototype, and ship faster without sacrificing thoughtful product work.",
+    items: ["Discovery and prototyping workflows", "Product, design, and engineering collaboration", "Embedded product leadership and coaching"],
   },
 ];
 
@@ -214,6 +214,7 @@ export default function MadronaV2() {
                 <span className="m2-svcmod-more">See related capabilities <span aria-hidden="true">→</span></span>
                 <div className="m2-svcmod-art">
                   <img src={service.artifact.src} alt={service.artifact.alt} loading="lazy" />
+                  <small className="m2-svcmod-proof">Demonstrated through {service.artifact.caption}</small>
                 </div>
               </a>
             );
