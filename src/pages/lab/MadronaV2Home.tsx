@@ -123,30 +123,34 @@ export default function MadronaV2Home() {
         </div>
       </section>
 
-      <section className="m2-bridge m2-bridge--compact">
-        <p className="m2-kicker">How we work</p>
-        <h2>Great products still come from different kinds of thinkers.</h2>
-        <div className="m2-bridge-grid">
-          <div className="m2-bridge-item">
-            <div>
-              <p>AI changes what small teams can accomplish, not the value of Product, Design, Engineering, or Research. We believe the best teams stay close to customers, build early, learn continuously, and share responsibility for creating something meaningful.</p>
-            </div>
-          </div>
+      {/* How we work — the thesis-lite bridge, in the who-we-help idiom */}
+      <section className="m2-who">
+        <div className="m2-who-rail">
+          <p className="m2-kicker m2-who-kicker">How we work</p>
+          <h2>Great products still come from different kinds of thinkers.</h2>
+          <span className="m2-who-rule" aria-hidden="true" />
+          <p>AI changes what a small team can accomplish. It does not change what great products need: real customer understanding, strong craft, and fast learning.</p>
         </div>
-      </section>
-
-      {/* Building alongside clients */}
-      <section className="m2-bridge m2-bridge--compact">
-        <p className="m2-kicker">Practice, not theory</p>
-        <h2>We build alongside our clients.</h2>
-        <div className="m2-bridge-grid">
-          <div className="m2-bridge-item" data-reveal>
-            <div>
-              <p>The products we build ourselves keep us close to the work. Every product teaches us something about discovery, design, AI, and customer experience that makes us better partners.</p>
-              <h3>We build because it’s the fastest way to learn.</h3>
-            </div>
-          </div>
-        </div>
+        <ul className="m2-who-grid">
+          <li className="m2-who-col" data-tone="sprout">
+            <span className="m2-who-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="8" r="3" /><path d="M3.5 19a5.5 5.5 0 0 1 11 0" /><circle cx="16.8" cy="9.4" r="2.3" /><path d="M15.3 19a5 5 0 0 1 5.4-4.6" /></svg></span>
+            <h3>The disciplines remain</h3>
+            <span className="m2-who-underline" aria-hidden="true" />
+            <p>Product, Design, Engineering, and Research each still matter. The boundaries between them just get more permeable.</p>
+          </li>
+          <li className="m2-who-col" data-tone="storefront">
+            <span className="m2-who-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="8.2" /><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z" /></svg></span>
+            <h3>Close to customers</h3>
+            <span className="m2-who-underline" aria-hidden="true" />
+            <p>The best teams build early, learn continuously, and share responsibility for the outcome.</p>
+          </li>
+          <li className="m2-who-col" data-tone="layers">
+            <span className="m2-who-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3.5 4.5 8 12 12.5 19.5 8 12 3.5Z" /><path d="m4.5 12 7.5 4.5L19.5 12" /><path d="m4.5 16 7.5 4.5 7.5-4.5" /></svg></span>
+            <h3>Practice, not theory</h3>
+            <span className="m2-who-underline" aria-hidden="true" />
+            <p>We build and operate our own products because it is the fastest way to learn.</p>
+          </li>
+        </ul>
       </section>
 
       {/* We also help good businesses build what's next */}
