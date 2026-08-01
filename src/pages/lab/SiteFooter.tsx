@@ -26,7 +26,7 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
           <div className="m2-fc-half m2-fc-talk">
             <span className="m2-fc-icon"><I d={P.chat} /></span>
             <h2>Have something worth building?</h2>
-            <p>Bring us an important problem, an early idea, or a product that needs a new direction. We can help shape it, build it, or strengthen how your team does both.</p>
+            <p>Bring us an important problem, an early idea, or a product that needs a new direction. We help you figure out what to build, then build it.</p>
             <div className="m2-fc-btns">
               <a className="m2-fc-btn" href={CONTACT}><I d={P.chat} /> Start a project <I d={P.arrow} /></a>
             </div>

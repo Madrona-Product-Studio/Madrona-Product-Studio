@@ -29,15 +29,17 @@ const products = [
   { name: "Garden HQ", icon: gardenHqIcon, tile: gardenHqTile, status: "In build", blurb: "Plan your garden, track what you grow, and make better use of your space.", href: "/apps" },
 ] as const;
 
-// ---- Consulting (three service areas) ------------------------------------
+// ---- How we help (the four expression doors of one practice) -------------
 const PenIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-3-3L5 17v3Z" /><path d="M14.5 7.5 17 10" /></svg>;
 const PeopleIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3" /><path d="M3.5 19a5.5 5.5 0 0 1 11 0" /><circle cx="16.8" cy="9.4" r="2.3" /><path d="M15.3 19a5 5 0 0 1 5.4-4.6" /></svg>;
 const GearIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.2" /><path d="M12 2.8v2.6M12 18.6v2.6M4.2 7.5l2.2 1.3M17.6 15.2l2.2 1.3M4.2 16.5l2.2-1.3M17.6 8.8l2.2-1.3" /></svg>;
+const CubeIcon = () => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Z" /><path d="M4 7.5 12 12l8-4.5" /><path d="M12 12v9" /></svg>;
 
 const consulting = [
-  { icon: <PenIcon />, title: "Build products and experiences", body: "Websites, commerce, customer experiences, prototypes, AI-enabled features, and new digital products." },
-  { icon: <PeopleIcon />, title: "Shape what comes next", body: "Product strategy, positioning, experience direction, growth opportunities, and rapid validation." },
-  { icon: <GearIcon />, title: "Help your team build differently", body: "Practical AI-enabled workflows, prototyping methods, cross-functional collaboration, and coaching." },
+  { icon: <PenIcon />, title: "Build trust", body: "A brand, website, and digital experience that show up as well as you do." },
+  { icon: <PeopleIcon />, title: "Grow your business", body: "Help more people find you, buy from you, and come back again." },
+  { icon: <GearIcon />, title: "Work smarter", body: "Get hours back every week with workflow fixes, small tools, and practical AI." },
+  { icon: <CubeIcon />, title: "Build something worth using", body: "Take a new product from idea to real. Prototypes, MVPs, and AI-enabled features." },
 ];
 
 const HERO_IMAGES = [
@@ -152,7 +154,7 @@ export default function MadronaV2Home() {
         <div className="m2-consult-body">
           <div className="m2-consult-intro">
             <h2>Good businesses around here deserve software as good as they are.</h2>
-            <p>We can help shape the opportunity, build the product, or strengthen how your team carries the work forward.</p>
+            <p>We help you figure out what to build, then build it. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
             <div className="m2-consult-items">
               {consulting.map((c) => (
                 <div className="m2-consult-item" key={c.title}>
@@ -173,21 +175,7 @@ export default function MadronaV2Home() {
         </div>
       </section>
 
-      {/* Dual closing choice */}
-      <section className="m2-dualcta">
-        <div className="m2-dualcta-col">
-          <h2>Have something worth building?</h2>
-          <p>Bring us an important problem, an early idea, or a product that needs a new direction.</p>
-          <a className="m2-button m2-button-onink" href="/connect">Start a project <span aria-hidden="true">→</span></a>
-        </div>
-        <div className="m2-dualcta-col">
-          <h2>Want to build differently?</h2>
-          <p>See how we help teams evolve their product-building practice from where they are today.</p>
-          <a className="m2-button m2-button-onink" href="/consulting">Explore how we help <span aria-hidden="true">→</span></a>
-        </div>
-      </section>
-
-      <SiteFooter cta={false} />
+      <SiteFooter />
     </main>
   );
 }
