@@ -54,7 +54,6 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
         <div className="m2-fc-foot-main">
           <a className="m2-fc-logo" href="/" aria-label="Madrona Product Studio home"><MadronaLogo variant="horizontal" decorative /></a>
           <nav className="m2-fc-nav" aria-label="Footer">
-            <a href="/work">Work</a>
             <a href="/apps">Products</a>
             <a href="/consulting">How we help</a>
             <a href="/thinking">Thinking</a>

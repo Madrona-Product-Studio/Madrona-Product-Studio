@@ -23,7 +23,7 @@ export default function App() {
         <Route path="consulting" element={<MadronaV2 />} />
         <Route path="services" element={<MadronaV2Services />} />
         <Route path="apps" element={<MadronaV2Apps />} />
-        <Route path="work" element={<MadronaV2Apps />} />
+        <Route path="work" element={<Navigate to="/apps" replace />} />
         <Route path="connect" element={<MadronaV2Connect />} />
         <Route path="about" element={<MadronaV2About />} />
         <Route path="thinking" element={<MadronaV2Thinking />} />
