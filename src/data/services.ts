@@ -5,7 +5,7 @@
 import brandArtifact from "../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp";
 import customersArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp";
 import operationsArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp";
-import newProductsArtifact from "../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp";
+import newProductsArtifact from "../../docs/madrona-v2-build-kit/product-proof/lila/new-products-idea-to-real.webp";
 
 export type ServiceId = "brand-and-web" | "customers-and-growth" | "operations-and-ai" | "new-products";
 
@@ -147,6 +147,6 @@ export const serviceAreas: ServiceArea[] = [
     bestFor: "Founders and teams with an important idea that needs to become real.",
     startingPoint: "A validation sprint that tests demand before a real budget is committed. From there, we build the smallest version worth shipping.",
     pathSteps: ["Idea", "prototype", "in use"],
-    artifact: { src: newProductsArtifact, alt: "Lila Trips shown across tablet and phone", caption: "Lila Trips, built and operated by Madrona" },
+    artifact: { src: newProductsArtifact, alt: "Lila Trips on a laptop and phone beside an early route sketch, from idea to product in use", caption: "Lila Trips, built and operated by Madrona" },
   },
 ];
