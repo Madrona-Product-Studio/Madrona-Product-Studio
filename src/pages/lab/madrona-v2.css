@@ -245,9 +245,9 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-svcmod { margin: 0 auto; max-width: 1300px; padding: 100px 0; }
 .m2-svcmod-intro { align-items: end; display: flex; flex-wrap: wrap; gap: 20px 60px; justify-content: space-between; margin-bottom: 38px; }
 .m2-svcmod-intro .m2-kicker { margin-bottom: 14px; }
-.m2-svcmod-intro h2 { font-size: clamp(2rem, 2.9vw, 2.7rem); font-weight: 560; letter-spacing: -.04em; line-height: 1.02; margin: 0; }
-.m2-svcmod-intro-side { max-width: 430px; }
-.m2-svcmod-intro-side p { color: var(--muted); line-height: 1.55; margin: 0 0 10px; }
+.m2-svcmod-intro h2 { font-size: clamp(2rem, 2.9vw, 2.7rem); font-weight: 560; letter-spacing: -.04em; line-height: 1.02; margin: 0 0 14px; }
+.m2-svcmod-lead { color: var(--muted); line-height: 1.55; margin: 0; max-width: 52ch; }
+.m2-svcmod-intro > .m2-text-link { flex: none; white-space: nowrap; }
 .m2-svcmod-cards { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .m2-svcmod-card { background: var(--surface); border: 1px solid var(--sand); border-radius: 18px; color: inherit; display: flex; flex-direction: column; padding: 24px; }
 .m2-svcmod-head { align-items: center; display: flex; gap: 11px; min-height: 50px; }

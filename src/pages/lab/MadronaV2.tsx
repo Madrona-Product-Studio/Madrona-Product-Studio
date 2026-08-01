@@ -199,11 +199,9 @@ export default function MadronaV2() {
           <div>
             <p className="m2-kicker">What we do</p>
             <h2>Four ways in. One practice.</h2>
+            <p className="m2-svcmod-lead">The doors are different; the work behind them is the same. We find the most valuable thing to do next, then build it with you.</p>
           </div>
-          <div className="m2-svcmod-intro-side">
-            <p>The doors are different; the work behind them is the same. We find the most valuable thing to do next, then build it with you.</p>
-            <a className="m2-text-link" href="/services">Explore detailed capabilities <span>→</span></a>
-          </div>
+          <a className="m2-text-link" href="/services">Explore detailed capabilities <span>→</span></a>
         </div>
         <div className="m2-svcmod-cards">
           {serviceAreas.map((service) => (
