@@ -363,7 +363,19 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-ab3-invite a { color: var(--bark-dark); font-weight: 650; }
 
 /* ---- The Product Builder Thesis (public rendering) ---- */
-.m2-th-hero { padding: 84px 0 0; }
+.m2-th4-rows { align-self: center; display: grid; gap: 0; list-style: none; margin: 0; padding: 0; }
+.m2-th4-rows li { align-items: center; border-top: 1px solid var(--line-soft, rgba(26,23,20,.09)); display: flex; gap: 18px; padding: 15px 0; }
+.m2-th4-rows li:last-child { border-bottom: 1px solid var(--line-soft, rgba(26,23,20,.09)); }
+.m2-th4-rows p { color: var(--ink-soft); font-size: 1rem; line-height: 1.45; margin: 0; }
+.m2-th4-rows strong { color: var(--ink); font-weight: 650; }
+.m2-th4-constraints { align-self: center; }
+.m2-th4-label { color: var(--muted); font-size: .92rem; margin: 0 0 18px; }
+.m2-th4-fullhead { margin-bottom: 40px; }
+.m2-th4-fullbody { max-width: 62ch; }
+.m2-th4-stages h3 { margin-top: 8px; }
+.m2-th4-point { align-self: center; }
+.m2-th4-point .m2-th-close-links { margin-top: 24px; }
+.m2-th-hero { padding: 84px 0 56px; }
 .m2-th-hero h1 { font-family: Fraunces, Georgia, serif; font-size: clamp(2.7rem, 4.4vw, 4.1rem); font-weight: 540; letter-spacing: -.015em; line-height: 1.04; margin: 0 0 22px; }
 .m2-th-standfirst { color: var(--ink-soft); font-size: clamp(1.08rem, 1.4vw, 1.25rem); line-height: 1.6; margin: 0 0 18px; max-width: 56ch; }
 .m2-th-byline { color: var(--muted); font-size: .88rem; margin: 0; }
