@@ -32,6 +32,12 @@ const pages = {
     h1: 'Services',
     body: 'We help you figure out what to build, then build it. Build trust: brand, websites, and digital experience. Grow your business: customer journeys, commerce, loyalty, and retention. Work smarter: workflow fixes, small internal tools, and practical AI on real workflows. Build something worth using: prototypes, MVPs, and new products taken from idea to real. Every engagement names its win before the work starts.',
   },
+  '/thesis': {
+    title: 'The Product Builder Thesis · Madrona Product Studio',
+    description: 'AI is not eliminating Product, Design, or Engineering. It is expanding what each discipline can contribute as the cost of building software falls. A working theory from building.',
+    h1: 'The Product Builder Thesis',
+    body: 'A point of view on how great software gets built in the AI era. The disciplines remain; the boundaries become more permeable. The advantage is no longer shipping more software, it is learning faster through software. Product leadership creates the conditions for a multidisciplinary team to solve important customer problems. AI is leverage; what matters is where we choose to apply it.',
+  },
   '/about': {
     title: 'About · Madrona Product Studio',
     description: 'Building changed what Charlie Koch believes product leadership is for. Madrona is a working theory: can small, senior, AI-enabled teams build products differently, and better?',
