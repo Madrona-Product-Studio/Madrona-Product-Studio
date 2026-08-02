@@ -101,7 +101,7 @@ function generateHtml(route, meta) {
   );
 
   // Add canonical URL
-  const canonical = `<link rel="canonical" href="https://madronaproduct.com${route === '/' ? '' : route}" />`;
+  const canonical = `<link rel="canonical" href="https://www.madronaproduct.com${route === '/' ? '' : route}" />`;
   html = html.replace('</head>', `  ${canonical}\n  </head>`);
 
   // Keep placeholder routes out of the search index
@@ -144,7 +144,7 @@ const sitemap =
   `<?xml version="1.0" encoding="UTF-8"?>\n` +
   `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   sitemapRoutes
-    .map((route) => `  <url><loc>https://madronaproduct.com${route}</loc></url>`)
+    .map((route) => `  <url><loc>https://www.madronaproduct.com${route}</loc></url>`)
     .join('\n') +
   `\n</urlset>\n`;
 

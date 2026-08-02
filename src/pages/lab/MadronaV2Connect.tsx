@@ -156,7 +156,6 @@ export default function MadronaV2Connect() {
             <h3>Contact information</h3>
             <ul className="m2-cx-contact">
               <li><CxIcon name="mail" />hello@madronaproduct.com</li>
-              <li><CxIcon name="linkedin" />linkedin.com/company/madrona-product-studio</li>
               <li><CxIcon name="pin" />Based in Bellingham, Washington</li>
             </ul>
           </div>

@@ -57,9 +57,6 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
             <p>Bellingham, Washington</p>
             <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
           </div>
-          <a className="m2-fc-social" href="https://www.linkedin.com/company/madrona-product-studio" target="_blank" rel="noopener noreferrer" aria-label="Madrona on LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9.75h4V21H3V9.75zM9 9.75h3.8v1.54h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-4.9c0-1.17-.02-2.68-1.63-2.68-1.63 0-1.88 1.27-1.88 2.59V21H9V9.75z" /></svg>
-          </a>
         </div>
         <div className="m2-fc-foot-legal">
           <span>© 2026 Madrona Product Studio</span>
