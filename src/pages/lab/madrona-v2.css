@@ -271,6 +271,10 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-ab4-body p:last-child { margin-bottom: 0; }
 .m2-ab4-portrait { margin: 0; }
 .m2-ab4-portrait img { aspect-ratio: 21 / 20; border-radius: 14px; object-fit: cover; object-position: 50% 45%; width: 100%; }
+.m2-ab4-hero .m2-ab-proof { margin-top: 34px; }
+.m2-ab4-hero .m2-ab-proof strong { display: block; font-size: .95rem; font-weight: 600; letter-spacing: -.02em; margin-bottom: 4px; }
+.m2-ab4-hero .m2-ab-proof li > span:last-child { color: var(--muted); font-size: .86rem; line-height: 1.45; }
+.m2-ab4-why { align-self: center; }
 .m2-ab4-sec { border-top: 1px solid var(--line-soft, rgba(26,23,20,.09)); display: grid; gap: clamp(44px, 6vw, 100px); grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); padding: 70px 0; }
 .m2-ab4-sec--full { display: block; }
 .m2-ab4-rail .m2-kicker { margin-bottom: 18px; }

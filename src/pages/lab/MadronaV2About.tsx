@@ -66,30 +66,102 @@ const LOOP_ARCS = [
 
 const CHIPS = ["Design", "Engineering", "Product", "Research", "Marketing", "Data", "Content", "Strategy"];
 
+// Hero proof-point icons (original About hero).
+const PROOF_ICONS: Record<string, string> = {
+  senior: "M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-6 8a6 6 0 0 1 12 0M17 11a2.5 2.5 0 1 0 0-5M18 19a5 5 0 0 0-3-4.6",
+  founder: "M12 3.6l2.5 5.2 5.7.8-4.1 4 1 5.7L12 16.6 6.9 19.3l1-5.7-4.1-4 5.7-.8L12 3.6z",
+  sprig: "M11 20c0-6 3.5-10.5 9-11-.3 6-4 10.3-9 11zM11 20c.6-3.8 2.6-6.4 5.5-8.2",
+};
+
+// Specialist node icons for the team network diagram (hero visual).
+const SPECIALIST_ICONS: Record<string, string> = {
+  design: "M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17v3zM13.5 6.5l3 3",
+  research: "M11 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM20 20l-4.35-4.35",
+  analytics: "M4 20h16M7 20v-4.5M12 20V8M17 20v-8",
+  engineer: "M9 8l-4 4 4 4M15 8l4 4-4 4",
+  marketing: "M3 10v4a1 1 0 0 0 1 1h3l5 4V5L7 9H4a1 1 0 0 0-1 1zM16 9a3.5 3.5 0 0 1 0 6",
+  content: "M5 20l1-4L17 5a2 2 0 0 1 3 3L9 19l-4 1zM15 7l3 3",
+};
+
+function TeamNetworkDiagram() {
+  const { intro, charlie, specialists } = studioProfile;
+  return (
+    <div className="m2-ab-net">
+      <svg className="m2-ab-net-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        {specialists.map((s) => {
+          const mx = (50 + s.x) / 2; // horizontal-out, vertical-transition, horizontal-in elbow
+          return <path key={s.id} d={`M50 50 C ${mx} 50 ${mx} ${s.y} ${s.x} ${s.y}`} vectorEffect="non-scaling-stroke" />;
+        })}
+      </svg>
+
+      <figure className="m2-ab-net-portrait">
+        <img src={intro.portraitSrc} alt={intro.portraitAlt} />
+        <figcaption className="m2-ab-net-pill">
+          <strong>{charlie.name}</strong>
+          <span>{charlie.role}</span>
+        </figcaption>
+      </figure>
+
+      <div className="m2-ab-net-nodes">
+        {specialists.map((s) => (
+          <div className="m2-ab-node" key={s.id} style={{ left: `${s.x}%`, top: `${s.y}%` }}>
+            <span className="m2-ab-node-ico"><I d={SPECIALIST_ICONS[s.icon]} /></span>
+            <span className="m2-ab-node-label">
+              <strong>{s.title}</strong>
+              <span>{s.tags}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function MadronaV2About() {
   useReveal();
-  const { intro, experience, community } = studioProfile;
+  const { experience, community } = studioProfile;
 
   return (
     <main className="m2 m2-ab-page">
       <LabMeta title="About · Madrona Product Studio" />
       <M2Nav active="about" />
 
-      {/* 1 · Founder opening */}
+      {/* 1 · The studio (original intro copy) */}
       <section className="m2-ab4 m2-ab4-hero">
         <div>
           <p className="m2-kicker m2-who-kicker">About Madrona</p>
-          <h1>Building changed what I believe product leadership is for.</h1>
+          <h1>We're a small product studio with big depth.</h1>
           <span className="m2-who-rule" aria-hidden="true" />
           <div className="m2-ab4-body">
-            <p>For most of my career I led product teams at companies with real scale. I loved the work. But somewhere along the way, making products came to mean managing software instead of making it.</p>
-            <p>Then the tools changed. AI collapsed the distance between an important problem and working software, and I started building again. Not because I became an engineer, but because a small group of experienced people can now carry an idea all the way to something real.</p>
-            <p>That changed what I believe product leadership is for: creating the conditions for a small, senior team to solve problems that matter.</p>
+            <p>Charlie leads each engagement and brings in the right senior specialists, so you get the expertise you need, exactly when you need it.</p>
+            <p>Madrona stays small by design: fewer layers, faster decisions, and direct accountability from strategy through execution.</p>
           </div>
+          <ul className="m2-ab-proof">
+            {studioProfile.proofPoints.map((pp) => (
+              <li key={pp.id}>
+                <span className="m2-ab-proof-ico"><I d={PROOF_ICONS[pp.icon]} /></span>
+                <strong>{pp.title}</strong>
+                <span>{pp.description}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <figure className="m2-ab4-portrait">
-          <img src={intro.portraitSrc} alt={intro.portraitAlt} />
-        </figure>
+        <div className="m2-ab-intro-visual">
+          <TeamNetworkDiagram />
+        </div>
+      </section>
+
+      {/* 2 · Why Madrona exists (the founder turning point) */}
+      <section className="m2-ab4 m2-ab4-sec">
+        <div className="m2-ab4-rail">
+          <p className="m2-kicker m2-who-kicker">Why Madrona exists</p>
+          <h2>Building changed what I believe product leadership is for.</h2>
+        </div>
+        <div className="m2-ab4-body m2-ab4-why">
+          <p>For most of my career I led product teams at companies with real scale. I loved the work. But somewhere along the way, making products came to mean managing software instead of making it.</p>
+          <p>Then the tools changed. AI collapsed the distance between an important problem and working software, and I started building again. Not because I became an engineer, but because a small group of experienced people can now carry an idea all the way to something real.</p>
+          <p>That changed what I believe product leadership is for: creating the conditions for a small, senior team to solve problems that matter.</p>
+        </div>
       </section>
 
       {/* 2 · The Product Builder Thesis (preview) */}
