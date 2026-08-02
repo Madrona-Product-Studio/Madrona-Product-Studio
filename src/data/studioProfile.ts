@@ -60,7 +60,7 @@ export const studioProfile: StudioProfile = {
     portraitAlt:
       "Charlie Koch, founder of Madrona Product Studio, outdoors at sunset.",
   },
-  charlie: { name: "Charlie", role: "Engagement Lead" },
+  charlie: { name: "Charlie", role: "Founder/Principal" },
   proofPoints: [
     {
       id: "senior-team",
