@@ -128,6 +128,14 @@ alternative fonts for variety — stick to these two, vary weight and size.
    one clean motif per icon, anchor columns. Copy lives in narrow measures;
    walls of centered text are banned. When a section feels flat, the fix is
    structure on the right side, not more copy.
+7. **The madrona flash (Charlie, 2026-08-01).** Madrona trees surprise you
+   with sudden red-orange. The brand echo: an occasional load-bearing word
+   or phrase inside an ink headline flashes bark (`.m2-pop` — e.g. hero
+   "…exist **next.**", "Four ways in. **One practice.**", "…figure out what
+   to build, **then build it.**", About's bark closing line). At most one
+   flash per viewport; always the phrase carrying the meaning, never
+   decoration. Section kickers are bark-dark sitewide (the muted-gray
+   kicker was retired 2026-08-01).
 
 ## Motion / animation
 

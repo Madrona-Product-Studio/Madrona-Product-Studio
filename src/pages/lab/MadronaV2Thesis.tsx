@@ -64,13 +64,13 @@ export default function MadronaV2Thesis() {
 
   return (
     <main className="m2 m2-ab-page">
-      <LabMeta title="The Product Builder Thesis · Madrona Product Studio" />
+      <LabMeta title="The Madrona Product Thesis · Madrona Product Studio" />
       <M2Nav />
 
       {/* Hero */}
       <section className="m2-ab4 m2-th-hero">
         <p className="m2-kicker m2-who-kicker">A working theory</p>
-        <h1>The Product Builder Thesis</h1>
+        <h1>The Madrona Product Thesis</h1>
         <p className="m2-th-standfirst">A point of view on how great software gets built in the AI era, and what that changes about product leadership. It comes from building, and we revise it as the work teaches us.</p>
         <p className="m2-th-byline">Charlie Koch · Founder, Madrona Product Studio</p>
       </section>

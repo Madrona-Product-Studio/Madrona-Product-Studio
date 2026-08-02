@@ -207,7 +207,7 @@ export default function MadronaV2() {
         <div className="m2-svcmod-intro">
           <div>
             <p className="m2-kicker">What we do</p>
-            <h2>Four ways in. One practice.</h2>
+            <h2>Four ways in. <span className="m2-pop">One practice.</span></h2>
             <p className="m2-svcmod-lead">The doors are different; the work behind them is the same. We find the most valuable thing to do next, then build it with you.</p>
           </div>
           <a className="m2-text-link" href="/services">Explore detailed capabilities <span>→</span></a>

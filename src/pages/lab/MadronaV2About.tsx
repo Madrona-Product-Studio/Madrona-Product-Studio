@@ -170,7 +170,7 @@ export default function MadronaV2About() {
           <p className="m2-kicker m2-who-kicker">What we believe</p>
           <h2>Madrona Product Thesis</h2>
           <p className="m2-ab4-substatement">AI is not eliminating Product, Design, or Engineering. It is expanding what each discipline can contribute as the cost of building software falls. The future is not fewer disciplines. It is more integrated ones.</p>
-          <a className="m2-text-link" href="/thesis">Read the full Product Builder Thesis <span aria-hidden="true">→</span></a>
+          <a className="m2-text-link" href="/thesis">Read the full Madrona Product Thesis <span aria-hidden="true">→</span></a>
         </div>
         <ul className="m2-ab4-cols">
           {IDEAS.map((idea) => (

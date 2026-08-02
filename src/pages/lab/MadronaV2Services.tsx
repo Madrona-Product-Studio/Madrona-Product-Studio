@@ -46,7 +46,7 @@ export default function MadronaV2Services() {
       <section className="m2-sp-intro">
         <h1>Services</h1>
         <span className="m2-ab-rule" aria-hidden="true" />
-        <p className="m2-ph-sub">We help you figure out what to build, then build it.</p>
+        <p className="m2-ph-sub">We help you figure out what to build, <span className="m2-pop">then build it.</span></p>
         <p>Four ways in, one practice: every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
       </section>
 

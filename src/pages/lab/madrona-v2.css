@@ -82,7 +82,8 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-button:active { transform: translateY(0) scale(.98); }
 .m2-button-secondary { background: transparent; color: var(--forest) !important; }
 .m2-button-secondary:hover { background: rgba(31,52,45,.06); }
-.m2-kicker { color: var(--muted); font-size: .68rem; font-weight: 750; letter-spacing: .12em; margin-bottom: 14px; text-transform: uppercase; }
+.m2-kicker { color: var(--bark-dark); font-size: .68rem; font-weight: 750; letter-spacing: .12em; margin-bottom: 14px; text-transform: uppercase; }
+.m2-pop { color: var(--bark); }
 .m2-text-link { color: var(--bark-dark) !important; display: inline-flex; font-size: .86rem; font-weight: 700; gap: 9px; margin-top: 14px; }
 .m2-text-link span { transition: transform 140ms cubic-bezier(.23, 1, .32, 1); }
 
