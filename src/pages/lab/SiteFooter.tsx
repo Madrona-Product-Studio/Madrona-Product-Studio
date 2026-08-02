@@ -24,17 +24,21 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
       {cta && (
         <div className="m2-fc-cta m2-fc-cta--solo">
           <div className="m2-fc-half m2-fc-talk">
-            <span className="m2-fc-icon"><I d={P.chat} /></span>
-            <h2>Have something worth building?</h2>
-            <p>Bring us an important problem, an early idea, or something already in motion. We help you figure out what to build, then build it.</p>
-            <div className="m2-fc-btns">
-              <a className="m2-fc-btn" href={CONTACT}><I d={P.chat} /> Get in touch <I d={P.arrow} /></a>
+            <div className="m2-fc-solo-inner">
+              <div>
+                <span className="m2-fc-icon"><I d={P.chat} /></span>
+                <h2>Have something worth building?</h2>
+                <p>Bring us an important problem, an early idea, or something already in motion. We help you figure out what to build, then build it.</p>
+              </div>
+              <div className="m2-fc-solo-actions">
+                <a className="m2-fc-btn" href={CONTACT}><I d={P.chat} /> Get in touch <I d={P.arrow} /></a>
+                <ul className="m2-fc-trust">
+                  <li><span><I d={P.clock} /></span><p>30 minute call if you’re ready</p></li>
+                  <li><span><I d={P.people} /></span><p>Senior team from the start</p></li>
+                  <li><span><I d={P.lock} /></span><p>Everything you share stays confidential</p></li>
+                </ul>
+              </div>
             </div>
-            <ul className="m2-fc-trust">
-              <li><span><I d={P.clock} /></span><p>30 min call<br />if you’re ready</p></li>
-              <li><span><I d={P.people} /></span><p>Senior team<br />from the start</p></li>
-              <li><span><I d={P.lock} /></span><p>Everything you share<br />stays confidential</p></li>
-            </ul>
             <svg className="m2-fc-trees" viewBox="0 0 260 120" preserveAspectRatio="xMaxYMax slice" aria-hidden="true"><g fill="rgba(255,255,255,.10)"><polygon points="150,120 174,52 198,120" /><polygon points="188,120 218,26 248,120" /><polygon points="228,120 250,58 272,120" /></g></svg>
           </div>
         </div>
