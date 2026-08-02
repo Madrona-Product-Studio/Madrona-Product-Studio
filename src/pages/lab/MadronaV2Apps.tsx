@@ -76,9 +76,10 @@ export default function MadronaV2Apps() {
       <M2Nav active="apps" />
 
       <section className="m2-ap-intro">
-        <p className="m2-kicker">Products from Madrona</p>
         <h1>Our products</h1>
-        <p>We build our own products because the best way to understand a new way of working is to practice it. Each product begins with a real customer problem and gives us a place to test ideas, improve our methods, and create something useful in its own right.</p>
+        <span className="m2-ab-rule" aria-hidden="true" />
+        <p className="m2-ph-sub">We build our own products because the best way to understand a new way of working is to practice it.</p>
+        <p>Each product begins with a real customer problem and gives us a place to test ideas, improve our methods, and create something useful in its own right.</p>
         <a className="m2-ap-jump" href="#why">Why we build our own products <span aria-hidden="true">↓</span></a>
       </section>
 

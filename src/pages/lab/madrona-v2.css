@@ -430,7 +430,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 /* ===== Services page (Iteration C: menu style) ===== */
 .m2-sp-intro { margin: 0 auto; max-width: 1300px; padding: 58px 0 32px; }
 .m2-sp-eyebrow { color: var(--bark); margin-bottom: 12px; }
-.m2-sp-intro h1 { color: var(--ink); font-size: clamp(3rem, 5.5vw, 4.6rem); font-weight: 570; letter-spacing: -.035em; line-height: 1; margin: 0 0 18px; }
+.m2-sp-intro h1 { color: var(--ink); font-size: clamp(3rem, 5vw, 4.4rem); font-weight: 570; letter-spacing: -.035em; line-height: 1; margin: 0; }
 .m2-sp-intro > p:last-child { color: var(--muted); font-size: clamp(1.05rem, 1.4vw, 1.2rem); line-height: 1.55; margin: 0; max-width: 560px; }
 
 .m2-sp-layout { display: grid; gap: clamp(30px, 4vw, 60px); grid-template-columns: 200px minmax(0, 1fr); margin: 0 auto; max-width: 1300px; }
@@ -1463,7 +1463,8 @@ html:has(.m2) { scroll-behavior: smooth; }
 /* Intro */
 .m2-ap-page .m2-nav { border-bottom: 1px solid var(--line-soft, rgba(26,23,20,.08)); }
 .m2-ap-intro { margin: 0 auto; max-width: 1300px; padding: 58px 0 26px; }
-.m2-ap-intro h1 { color: var(--forest); font-size: clamp(3rem, 5vw, 4.4rem); font-weight: 570; letter-spacing: -.035em; line-height: 1; margin: 0 0 18px; }
+.m2-ap-intro h1 { color: var(--ink); font-size: clamp(3rem, 5vw, 4.4rem); font-weight: 570; letter-spacing: -.035em; line-height: 1; margin: 0; }
+.m2 p.m2-ph-sub { color: var(--ink); font-size: clamp(1.4rem, 2vw, 1.85rem); font-weight: 600; letter-spacing: -.02em; line-height: 1.2; margin: 0 0 18px; max-width: 30ch; }
 .m2-ap-intro > p { color: var(--muted); font-size: 1.1rem; line-height: 1.55; margin: 0; max-width: 620px; }
 .m2-ap-jump { color: var(--bark-dark) !important; display: inline-flex; font-size: .86rem; font-weight: 600; gap: 6px; margin-top: 18px; }
 

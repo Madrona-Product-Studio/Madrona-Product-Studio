@@ -23,7 +23,7 @@ const pages = {
   '/consulting': {
     title: 'How we help · Madrona Product Studio',
     description: 'We help you figure out what to build, then build it. Madrona works with founders, local businesses, and product teams; every engagement starts small and grows from there.',
-    h1: 'Figure out what to build. Then build it.',
+    h1: 'How we help',
     body: 'Madrona works with founders, local businesses, and product teams. Four ways in, one practice: build trust, grow your business, work smarter, and build something worth using. We start with a 30-minute conversation, follow with a short written assessment, and recommend the smallest engagement worth doing.',
   },
   '/services': {
@@ -41,7 +41,7 @@ const pages = {
   '/about': {
     title: 'About · Madrona Product Studio',
     description: 'Building changed what Charlie Koch believes product leadership is for. Madrona is a working theory: can small, senior, AI-enabled teams build products differently, and better?',
-    h1: 'Building changed what I believe product leadership is for.',
+    h1: 'About',
     body: 'Madrona exists to put the Product Builder Thesis into practice. Our own products and client work are the evidence, built with trusted people across disciplines, and pointed at work that leaves the world a little better than we found it.',
   },
   '/apps': {

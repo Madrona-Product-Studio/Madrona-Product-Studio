@@ -166,8 +166,9 @@ export default function MadronaV2() {
       <M2Nav active="consulting" />
 
       <section className="m2-ap-intro">
-        <p className="m2-kicker">How we help</p>
-        <h1>Figure out what to build. Then build it.</h1>
+        <h1>How we help</h1>
+        <span className="m2-ab-rule" aria-hidden="true" />
+        <p className="m2-ph-sub">Figure out what to build. Then build it.</p>
         <p>Madrona works with founders, local businesses, and product teams. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
         <a className="m2-ap-jump" href="#process">See how we work <span aria-hidden="true">↓</span></a>
       </section>
