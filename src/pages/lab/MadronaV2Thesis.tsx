@@ -161,7 +161,7 @@ export default function MadronaV2Thesis() {
           <p>Madrona exists to put this thesis into practice. Our products and client work are the evidence, and we share what we learn as we go. This is a working document; the moment it stops changing, it has stopped doing its job.</p>
           <div className="m2-th-close-links">
             <a className="m2-text-link" href="/about">Why Madrona exists <span aria-hidden="true">→</span></a>
-            <a className="m2-text-link" href="/thinking">What we're learning <span aria-hidden="true">→</span></a>
+            <a className="m2-text-link" href="/consulting">How we put it into practice <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </section>

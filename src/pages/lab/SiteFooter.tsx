@@ -50,7 +50,7 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
           <nav className="m2-fc-nav" aria-label="Footer">
             <a href="/apps">Products</a>
             <a href="/consulting">How we help</a>
-            <a href="/thinking">Thinking</a>
+            <a href="/services">Services</a>
             <a href="/about">About</a>
           </nav>
           <div className="m2-fc-contact">
