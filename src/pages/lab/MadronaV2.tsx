@@ -6,6 +6,7 @@ import SiteFooter from "./SiteFooter";
 import { ServiceIcon } from "./ServiceIcon";
 import { useReveal } from "./useReveal";
 import { serviceAreas } from "../../data/services";
+import { studioProfile } from "../../data/studioProfile";
 import "./madrona-v2.css";
 
 import studioImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/studio-collaboration-wide.webp";
@@ -237,7 +238,16 @@ export default function MadronaV2() {
       </section>
 
       <section id="studio" className="m2-studio">
-        <div><p className="m2-kicker">How we work</p><h2>Senior team. Direct partnership. Real outcomes.</h2><div className="m2-studio-facts"><p><strong>15+ years</strong><span>Building products and brands</span></p><p><strong>Founder led</strong><span>No layers between you and the work</span></p><p><strong>Small by design</strong><span>The right specialists, when needed</span></p></div></div>
+        <div>
+          <p className="m2-kicker">Who you'll work with</p>
+          <h2>Senior team. Direct partnership. Real outcomes.</h2>
+          <div className="m2-studio-facts">
+            <p><strong>{studioProfile.experience.years}</strong><span>Building consumer products at scale</span></p>
+            {studioProfile.proofPoints.filter((pp) => pp.id !== "senior-team").map((pp) => (
+              <p key={pp.id}><strong>{pp.title}</strong><span>{pp.description}</span></p>
+            ))}
+          </div>
+        </div>
         <figure><img src={studioImage} alt="Two people collaborating outdoors in the Pacific Northwest" /></figure>
       </section>
 
