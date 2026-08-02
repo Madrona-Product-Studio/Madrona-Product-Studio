@@ -27,7 +27,7 @@ const products = [
   { name: "Lila Trips", icon: lilaWordmark, tile: lilaTile, status: "Live", blurb: "Thoughtful travel planning built around place, pace, and what matters to you.", href: "https://lilatrips.com" },
   { name: "San Juan Boating Guide", icon: null, tile: sjbgTile, status: "Live", blurb: "Tide, weather, and anchorage info for safer days on the San Juan Islands.", href: "https://www.sjiboating.com/" },
   { name: "Lila Yoga", icon: lilaYogaIcon, tile: lilaYogaTile, status: "V1", blurb: "A guided introduction to yoga, with style breakdowns, tools, and gentle practice.", href: "https://lila.yoga" },
-  { name: "Garden HQ", icon: gardenHqIcon, tile: gardenHqTile, status: "In build", blurb: "Plan your garden, track what you grow, and make better use of your space.", href: "/apps" },
+  { name: "Garden HQ", icon: gardenHqIcon, tile: gardenHqTile, status: "In build", blurb: "Plan your garden, track what you grow, and make better use of your space.", href: "https://www.gardenhq.app/" },
 ] as const;
 
 // ---- How we help (the four expression doors of one practice) -------------

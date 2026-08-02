@@ -125,7 +125,7 @@ export const studioProducts: StudioProduct[] = [
     builtFor: "Home gardeners and small hobby farmers.",
     helpsThem: "See the whole garden and make observation-driven improvements year over year.",
     rightNow: "Building the map foundation — zones, beds, and semantic zoom.",
-    primaryAction: { label: "See the demo", href: "https://garden-hq.vercel.app", external: true },
+    primaryAction: { label: "See the demo", href: "https://www.gardenhq.app/", external: true },
     sortOrder: 2,
   },
   {
