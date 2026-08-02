@@ -123,10 +123,11 @@ export default function MadronaV2Home() {
       <section id="work" className="m2-home-products">
         <div className="m2-hp-head">
           <div>
-            <p className="m2-kicker">Products we&rsquo;re building and operating</p>
-            <p className="m2-hp-intro">Our products are where we put the practice to work. Each one is built to solve a real problem and teaches us something about how small teams can create useful, thoughtful software.</p>
+            <p className="m2-kicker">Apps from Madrona</p>
+            <h2>We build and run our own apps, too.</h2>
+            <p className="m2-hp-intro">We design, build, and operate our own products to solve real problems we care about, and to keep our judgment close to real customers.</p>
           </div>
-          <a className="m2-text-link m2-hp-viewall" href="/apps">View all products <span aria-hidden="true">→</span></a>
+          <a className="m2-text-link m2-hp-viewall" href="/apps">See all our apps <span aria-hidden="true">→</span></a>
         </div>
         <div className="m2-hp-grid">
           {products.map((p) => (

@@ -2042,8 +2042,9 @@ html:has(.m2) { scroll-behavior: smooth; }
 
 /* Products grid (4-up) */
 .m2-home-products { margin: 0 auto; max-width: 1300px; padding: 30px 20px 10px; }
-.m2-hp-head { align-items: end; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 34px; }
-.m2-hp-head .m2-kicker { margin-bottom: 12px; }
+.m2-hp-head { align-items: end; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; margin-bottom: 38px; }
+.m2-hp-head .m2-kicker { margin-bottom: 14px; }
+.m2-hp-head h2 { font-size: clamp(1.8rem, 2.7vw, 2.5rem); font-weight: 560; letter-spacing: -.035em; line-height: 1.06; margin: 0 0 14px; }
 .m2-hp-intro { color: var(--muted); line-height: 1.55; margin: 0; max-width: 560px; }
 .m2-hp-viewall { flex: none; }
 .m2-hp-grid { display: grid; gap: 24px; grid-template-columns: repeat(4, 1fr); }
