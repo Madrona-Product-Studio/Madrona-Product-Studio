@@ -51,10 +51,10 @@ export interface StudioProfile {
 export const studioProfile: StudioProfile = {
   intro: {
     heading: "About",
-    headline: "A product-building practice for things worth making.",
+    headline: "We're a small product studio with big depth.",
     body: [
-      "Madrona exists to explore how great software is built in the AI era and to direct that capability toward problems that matter.",
-      "Charlie leads each engagement and brings in the right senior specialists. Client work, Madrona products, and what we share are all part of one practice: build, observe, learn, and help others apply what works.",
+      "Charlie leads each engagement and brings in the right senior specialists, so you get the expertise you need, exactly when you need it.",
+      "Madrona stays small by design: fewer layers, faster decisions, and direct accountability from strategy through execution.",
     ],
     portraitSrc: portrait,
     portraitAlt:

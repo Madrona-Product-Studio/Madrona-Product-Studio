@@ -126,15 +126,14 @@ export default function MadronaV2About() {
       <LabMeta title="About · Madrona Product Studio" />
       <M2Nav active="about" />
 
-      {/* 1 · The studio (original intro copy) */}
-      <section className="m2-ab4 m2-ab4-hero">
-        <div>
-          <p className="m2-kicker m2-who-kicker">About Madrona</p>
-          <h1>We're a small product studio with big depth.</h1>
-          <span className="m2-who-rule" aria-hidden="true" />
-          <div className="m2-ab4-body">
-            <p>Charlie leads each engagement and brings in the right senior specialists, so you get the expertise you need, exactly when you need it.</p>
-            <p>Madrona stays small by design: fewer layers, faster decisions, and direct accountability from strategy through execution.</p>
+      {/* 1 · The studio (original hero: copy + proof points | network diagram) */}
+      <section className="m2-ab-intro">
+        <div className="m2-ab-intro-copy">
+          <h1>{studioProfile.intro.heading}</h1>
+          <span className="m2-ab-rule" aria-hidden="true" />
+          <p className="m2-ab-headline">{studioProfile.intro.headline}</p>
+          <div className="m2-ab-body">
+            {studioProfile.intro.body.map((p) => <p key={p}>{p}</p>)}
           </div>
           <ul className="m2-ab-proof">
             {studioProfile.proofPoints.map((pp) => (
