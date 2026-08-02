@@ -35,3 +35,10 @@ export function bookHref(): string {
   if (CAL_LINK) return `https://cal.com/${CAL_LINK}`;
   return BOOKING_URL || "/connect";
 }
+
+// When the embed is active, the modal handles the click — suppress the
+// anchor's own navigation so a new tab doesn't open alongside the modal.
+// With JS disabled the handler never runs and the href still works.
+export function bookClick(e: { preventDefault: () => void }): void {
+  if (CAL_LINK) e.preventDefault();
+}

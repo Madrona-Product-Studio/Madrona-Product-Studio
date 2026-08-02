@@ -3,7 +3,7 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import { useCalEmbed, bookProps, bookHref } from "./useCalEmbed";
+import { useCalEmbed, bookProps, bookHref, bookClick } from "./useCalEmbed";
 import "./madrona-v2.css";
 
 import connectHero from "../../../docs/madrona-v2-build-kit/site-assets/services-hero.webp";
@@ -97,7 +97,7 @@ export default function MadronaV2Connect() {
           <div>
             <h3>Book a conversation</h3>
             <p>A focused 30-minute call to talk through where you are and where we can make the biggest difference. Free, no prep needed.</p>
-            <a className="m2-button" href={bookHref()} target="_blank" rel="noopener noreferrer" {...bookProps()}>Schedule a call <span>↗</span></a>
+            <a className="m2-button" href={bookHref()} onClick={bookClick} target="_blank" rel="noopener noreferrer" {...bookProps()}>Schedule a call <span>↗</span></a>
           </div>
         </div>
         <div className="m2-cx-action" data-reveal>
