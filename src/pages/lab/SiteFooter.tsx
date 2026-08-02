@@ -22,30 +22,20 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
   return (
     <section className="m2-fc" aria-label="Contact and site footer">
       {cta && (
-        <div className="m2-fc-cta">
+        <div className="m2-fc-cta m2-fc-cta--solo">
           <div className="m2-fc-half m2-fc-talk">
             <span className="m2-fc-icon"><I d={P.chat} /></span>
             <h2>Have something worth building?</h2>
-            <p>Bring us an important problem, an early idea, or a product that needs a new direction. We help you figure out what to build, then build it.</p>
+            <p>Bring us an important problem, an early idea, or something already in motion. We help you figure out what to build, then build it.</p>
             <div className="m2-fc-btns">
-              <a className="m2-fc-btn" href={CONTACT}><I d={P.chat} /> Start a project <I d={P.arrow} /></a>
+              <a className="m2-fc-btn" href={CONTACT}><I d={P.chat} /> Get in touch <I d={P.arrow} /></a>
             </div>
             <ul className="m2-fc-trust">
               <li><span><I d={P.clock} /></span><p>30 min call<br />if you’re ready</p></li>
-              <li><span><I d={P.lock} /></span><p>No prep<br />needed</p></li>
               <li><span><I d={P.people} /></span><p>Senior team<br />from the start</p></li>
+              <li><span><I d={P.lock} /></span><p>Everything you share<br />stays confidential</p></li>
             </ul>
-          </div>
-
-          <div className="m2-fc-half m2-fc-started">
-            <span className="m2-fc-icon"><I d={P.upload} /></span>
-            <h2>Already have <span className="m2-keep-together">something started?</span></h2>
-            <p>Send us the site, store, prototype, or workflow you want help improving. We’ll take a look and respond with a clear next step.</p>
-            <div className="m2-fc-btns">
-              <a className="m2-fc-btn" href={CONTACT}><I d={P.clip} /> Share your project <I d={P.arrow} /></a>
-            </div>
-            <p className="m2-fc-confidential"><I d={P.lock} /> Everything you share stays confidential.</p>
-            <svg className="m2-fc-trees" viewBox="0 0 260 120" preserveAspectRatio="xMaxYMax slice" aria-hidden="true"><g fill="rgba(10,22,16,.16)"><polygon points="150,120 174,52 198,120" /><polygon points="188,120 218,26 248,120" /><polygon points="228,120 250,58 272,120" /></g></svg>
+            <svg className="m2-fc-trees" viewBox="0 0 260 120" preserveAspectRatio="xMaxYMax slice" aria-hidden="true"><g fill="rgba(255,255,255,.10)"><polygon points="150,120 174,52 198,120" /><polygon points="188,120 218,26 248,120" /><polygon points="228,120 250,58 272,120" /></g></svg>
           </div>
         </div>
       )}

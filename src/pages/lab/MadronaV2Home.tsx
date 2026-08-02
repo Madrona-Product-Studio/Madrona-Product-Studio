@@ -75,7 +75,7 @@ export default function MadronaV2Home() {
             products to explore better ways of creating software in the AI era.
           </p>
           <div className="m2-actions">
-            <a className="m2-button" href="/connect">Start a project</a>
+            <a className="m2-button" href="/connect">Get in touch</a>
             <a className="m2-button m2-button-secondary" href="/consulting">Explore how we help</a>
           </div>
         </div>

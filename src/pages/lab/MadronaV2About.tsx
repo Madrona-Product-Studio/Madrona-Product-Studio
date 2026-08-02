@@ -257,7 +257,7 @@ export default function MadronaV2About() {
             <p>AI gives small teams extraordinary leverage. That makes where we choose to apply it more important, not less.</p>
             <p>We're drawn to work that improves health and well-being, strengthens local businesses and communities, expands access, supports stewardship, and helps people spend more time doing meaningful work. We believe software can leave the world a little better than it found it.</p>
           </div>
-          <a className="m2-text-link" href="/connect">Start a conversation <span aria-hidden="true">→</span></a>
+          <a className="m2-text-link" href="/connect">Get in touch <span aria-hidden="true">→</span></a>
         </div>
         <div className="m2-ab4-worth-media">
           <img src={community.images[0]} alt="Fresh local produce at a Whatcom County market" loading="lazy" />

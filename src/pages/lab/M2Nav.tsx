@@ -11,7 +11,7 @@ export default function M2Nav({ active }: { active?: NavKey }) {
         <a href="/consulting" aria-current={active === "consulting" ? "page" : undefined}>How we help</a>
         <a href="/about" aria-current={active === "about" ? "page" : undefined}>About</a>
       </nav>
-      <a className="m2-button m2-nav-cta" href="/connect">Start a project</a>
+      <a className="m2-button m2-nav-cta" href="/connect">Get in touch</a>
     </header>
   );
 }

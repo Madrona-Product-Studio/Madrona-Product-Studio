@@ -1156,6 +1156,8 @@ html:has(.m2) { scroll-behavior: smooth; }
 /* ============ Footer + CTA (shared SiteFooter) ============ */
 .m2-fc { border: 1px solid var(--sand); border-radius: 24px; margin: 0 auto 40px; max-width: 1300px; overflow: hidden; }
 .m2-fc-cta { display: grid; grid-template-columns: 1fr 1fr; }
+.m2-fc-cta--solo { grid-template-columns: 1fr; }
+.m2-fc-cta--solo .m2-fc-trust { max-width: 620px; }
 .m2-fc-half { color: #fff; overflow: hidden; padding: clamp(38px, 4vw, 62px); position: relative; }
 .m2-fc-talk { background: var(--forest); }
 .m2-fc-started { background: var(--bark-dark); }

@@ -110,7 +110,7 @@ export default function MadronaV2Services() {
           <h2>Not sure where to begin?</h2>
           <p>We’ll help you find the right starting point.</p>
         </div>
-        <a className="m2-button" href="/connect">Tell us what you’re working on <span aria-hidden="true">→</span></a>
+        <a className="m2-button" href="/connect">Get in touch <span aria-hidden="true">→</span></a>
       </section>
 
       <SiteFooter />

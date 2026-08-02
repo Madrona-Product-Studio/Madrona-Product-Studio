@@ -81,11 +81,11 @@ export default function MadronaV2Connect() {
         <div className="m2-cx-hero-copy">
           <h1>Let’s connect.</h1>
           <span className="m2-cx-rule" aria-hidden="true" />
-          <p>Madrona helps established businesses strengthen brand, customer experience, and operations so they can grow with clarity and confidence.</p>
+          <p>Bring us an important problem, an early idea, or something already in motion. We help you figure out what to build, then build it.</p>
           <div className="m2-cx-tags">
-            <span><CxIcon name="leaf" />Rooted in strategy</span>
-            <span><CxIcon name="tree" />Built for impact</span>
-            <span><CxIcon name="waves" />Made to last</span>
+            <span><CxIcon name="clock" />30-minute conversation</span>
+            <span><CxIcon name="check" />No prep needed</span>
+            <span><CxIcon name="people" />Senior team from the start</span>
           </div>
         </div>
         <div className="m2-cx-hero-media"><img src={connectHero} alt="Pacific Northwest coastline in warm light" /></div>
@@ -96,16 +96,16 @@ export default function MadronaV2Connect() {
           <span className="m2-cx-action-icon m2-cx-action-icon--bark"><CxIcon name="calendar" /></span>
           <div>
             <h3>Book a conversation</h3>
-            <p>Schedule a 30-minute call to talk through your challenges and see how we can help.</p>
+            <p>A focused 30-minute call to talk through where you are and where we can make the biggest difference. Free, no prep needed.</p>
             <a className="m2-button" href={bookHref()} target="_blank" rel="noopener noreferrer" {...bookProps()}>Schedule a call <span>↗</span></a>
           </div>
         </div>
         <div className="m2-cx-action" data-reveal>
           <span className="m2-cx-action-icon m2-cx-action-icon--forest"><CxIcon name="plane" /></span>
           <div>
-            <h3>Share your project</h3>
-            <p>Tell us about your project and get a thoughtful response, usually within two business days.</p>
-            <a className="m2-button m2-button-secondary" href="#send">Start a project brief <span>↗</span></a>
+            <h3>Send a message</h3>
+            <p>Tell us what you’re working on and get a thoughtful response, usually within two business days.</p>
+            <a className="m2-button m2-button-secondary" href="#send">Write to us <span>↓</span></a>
           </div>
         </div>
       </section>
