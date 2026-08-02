@@ -154,12 +154,13 @@ export default function MadronaV2About() {
       <section className="m2-ab4 m2-ab4-sec">
         <div className="m2-ab4-rail">
           <p className="m2-kicker m2-who-kicker">Why Madrona exists</p>
-          <h2>Building changed what I believe product leadership is for.</h2>
+          <h2>Building changed what I believe great product leadership is for.</h2>
         </div>
         <div className="m2-ab4-body m2-ab4-why">
           <p>For most of my career I led product teams at companies with real scale. I loved the work. But somewhere along the way, making products came to mean managing software instead of making it.</p>
           <p>Then the tools changed. AI collapsed the distance between an important problem and working software, and I started building again. Not because I became an engineer, but because a small group of experienced people can now carry an idea all the way to something real.</p>
           <p>That changed what I believe product leadership is for: creating the conditions for a small, senior team to solve problems that matter.</p>
+          <p className="m2-ab4-why-close">Madrona exists to put that belief into practice.</p>
         </div>
       </section>
 

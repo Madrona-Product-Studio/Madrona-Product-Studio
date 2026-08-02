@@ -272,6 +272,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-ab4-portrait { margin: 0; }
 .m2-ab4-portrait img { aspect-ratio: 21 / 20; border-radius: 14px; object-fit: cover; object-position: 50% 45%; width: 100%; }
 .m2-ab4-why { align-self: center; }
+.m2-ab4-body .m2-ab4-why-close { color: var(--bark-dark); font-weight: 600; }
 .m2-ab4-sec { border-top: 1px solid var(--line-soft, rgba(26,23,20,.09)); display: grid; gap: clamp(44px, 6vw, 100px); grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); padding: 70px 0; }
 .m2-ab4-sec--full { display: block; }
 .m2-ab4-rail .m2-kicker { margin-bottom: 18px; }
