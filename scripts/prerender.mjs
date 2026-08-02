@@ -51,6 +51,7 @@ const pages = {
     body: 'Each Madrona product begins with a real customer problem and creates a place to test ideas, improve our methods, and make something useful in its own right.',
   },
   '/thinking': {
+    noindex: true,
     title: 'Thinking · Madrona Product Studio',
     description: 'Notes from Madrona on product leadership, small teams, responsible AI, and the changing craft of software creation.',
     h1: 'What we’re learning',

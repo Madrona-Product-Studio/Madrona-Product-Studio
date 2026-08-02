@@ -2,8 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import CaseStudyPage from "./pages/CaseStudyPage";
 import AgenticOperations from "./pages/AgenticOperations";
-import StudioBrief from "./pages/StudioBrief";
-import HomeLab from "./pages/HomeLab";
 import MadronaV2 from "./pages/lab/MadronaV2";
 import MadronaV2Home from "./pages/lab/MadronaV2Home";
 import MadronaV2Services from "./pages/lab/MadronaV2Services";
@@ -33,6 +31,8 @@ export default function App() {
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />
         <Route path="lab/madrona-v2/services" element={<Navigate to="/services" replace />} />
         <Route path="lab/madrona-v2/apps" element={<Navigate to="/apps" replace />} />
+        {/* Internal design-system study — kept routable for working sessions,
+            but never linked from the public site. */}
         <Route path="lab/madrona-system" element={<MadronaSystem />} />
 
         {/* Legacy pages not yet rebuilt in V2 (still old chrome). */}
@@ -44,9 +44,10 @@ export default function App() {
           <Route path="approach" element={<Navigate to="/consulting" replace />} />
           <Route path="writing" element={<Navigate to="/thinking" replace />} />
           <Route path="contact" element={<Navigate to="/connect" replace />} />
-          <Route path="brief" element={<StudioBrief />} />
-          <Route path="home-lab" element={<HomeLab />} />
         </Route>
+
+        {/* Unknown URLs land home rather than on a blank screen. */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
