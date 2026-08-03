@@ -82,5 +82,5 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done (committed on branch) 
 - [?] **Section-heading type scale is inconsistent (Image #10).** The "WHO WE HELP / Modern capability, without the overhead." heading renders much larger than other section headings. CSS has several different h2 clamps (`m2-ab4-rail h2`, `m2-ab3 h2`, `m2-ab4 h2`, etc.). Do a consistency pass so section headings share one type scale sitewide. Ties to the broader consistency theme (hero templates, connectedness).
 
 ## Parking lot (needs a decision / later)
-- [ ] **Cross-section connectedness theme.** Several sections feel disconnected. Addressed: Home "what we do" ↔ "Four ways in". Still open: About "Work worth doing" ↔ Home audience section.
+- [x] **Cross-section connectedness theme — resolved.** Home "what we do" ↔ "Four ways in" (earlier batch); About "Work worth doing" ↔ Home audience section (2026-08-03, copy differentiation). No open threads.
 - [ ] **Update `charlie-hq/madrona-positioning.md`** to reflect the Bellingham → Pacific Northwest positioning shift.
