@@ -45,7 +45,7 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done (committed on branch) 
 - [→] Hero template — see Sitewide hero-template item.
 
 ## Apps (`/apps`)
-- [→] **Lila Yoga screenshots out of date (Home + Apps).** Confirmed stale: current tile shows the old Lila UI (Library/Practice/Favorites, "Morning Grounding Flow"); live is a full redesign ("Welcome to yoga / Five ways in"). Needs a fresh capture + regenerated art-directed tile (madrona-image-studio, [[feedback_app_imagery_process]]).
+- [x] **Lila Yoga tile refreshed (Home + Apps) — DONE (2026-08-03).** The stale tile showed the old Lila UI (Library/Practice/Favorites, "Morning Grounding Flow"); live is a full redesign. Captured the current live app (lila.yoga), cropped clean tablet-hero ("Welcome to yoga." + breath wave) and phone ("Five ways in" list) screens, and regenerated the art-directed tile via madrona-image-studio Method A (Codex/gpt-image-2) — same approved serene PNW practice-space scene as the old tile (the current tile handed in as style/composition ref), new UI on the screens. Generated two composition options (A warm/lifestyle · B clean face-on); Charlie picked **A**. Delivered `site-assets/lila-yoga-tile.webp` @ 1600×1000 (16/10). Verified real renders: Apps artifact (desktop + mobile) and Home 4-up grid — new UI reads at every size, stale UI gone. Source + hero screens archived to creative-system `product-marketing/lila-yoga/`. ([[feedback_app_imagery_process]])
 
 ## Connect (`/connect`)
 - [x] **Simplified the confusing two-path top section (Image #9).** Removed the redundant two-card block; "Send us a message" form is now the primary left path; booking moved to the sidebar as a secondary "Prefer to talk first?" card (schedule a 30-min call + what to expect).
