@@ -770,6 +770,55 @@ html:has(.m2) { scroll-behavior: smooth; }
 .berry-color-dots i:nth-child(2) { background: var(--berry-raspberry); }
 .berry-color-dots i:nth-child(3) { background: var(--berry-gold); }
 .berry-color-dots i:nth-child(4) { background: #d7d1c4; }
+
+/* Condensed worked-example teaser — Home "What we do" column. Mirrors the
+   /consulting Berry Good module in miniature; the full module lives there. */
+.berry-teaser {
+  --berry-cream: #faf5ea;
+  --berry-paper: #fffdf6;
+  --berry-currant: #2b161f;
+  --berry-ink: #33202a;
+  --berry-muted: #6b5560;
+  --berry-raspberry: #b81f4d;
+  --berry-leaf: #3d6b35;
+  --berry-gold: #e0a232;
+  background: var(--berry-paper);
+  border: 1px solid rgba(43,22,31,.14);
+  border-radius: 18px;
+  color: var(--berry-ink);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  overflow: hidden;
+}
+.berry-teaser-head { padding: 22px clamp(20px,2.4vw,26px) 0; }
+.berry-teaser-head .m2-chip { margin: 0 0 12px; }
+.berry-teaser-head p { color: var(--berry-muted); font-size: .78rem; line-height: 1.5; margin: 0; max-width: 34ch; }
+.berry-teaser-tabs { display: flex; flex-wrap: wrap; gap: 7px; padding: 16px clamp(20px,2.4vw,26px) 18px; }
+.berry-teaser-tabs button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid rgba(43,22,31,.18);
+  border-radius: 999px;
+  color: var(--berry-ink);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: .72rem;
+  gap: 6px;
+  padding: 6px 11px;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+  white-space: nowrap;
+}
+.berry-teaser-tabs button span { color: var(--berry-raspberry); font-family: Fraunces, "Fraunces Fallback", Georgia, serif; font-size: .74rem; }
+.berry-teaser-tabs button:hover { border-color: rgba(43,22,31,.4); }
+.berry-teaser-tabs button.is-active { background: var(--berry-raspberry); border-color: var(--berry-raspberry); color: #fff; }
+.berry-teaser-tabs button.is-active span { color: #fff; }
+.berry-teaser-panel { display: flex; flex-direction: column; }
+.berry-teaser-visual { aspect-ratio: 16/11; border-top: 1px solid rgba(43,22,31,.1); overflow: hidden; }
+.berry-teaser-narrative { padding: 20px clamp(20px,2.4vw,26px) 26px; }
+.berry-teaser-narrative > p { color: var(--berry-currant); font-size: .6rem; font-weight: 800; letter-spacing: .12em; margin: 0 0 10px; text-transform: uppercase; }
+.berry-teaser-narrative h3 { font-family: Fraunces, "Fraunces Fallback", Georgia, serif; font-size: 1.55rem; font-weight: 600; letter-spacing: -.025em; line-height: 1.02; margin: 0; }
+.berry-teaser-narrative > span { color: var(--berry-muted); display: block; font-size: .78rem; line-height: 1.55; margin-top: 11px; }
 .berry-lockup { align-items: center; color: var(--berry-currant); display: inline-flex; gap: 7px; }
 .berry-lockup > img { height: 30px; width: 30px; }
 .berry-lockup > span { display: flex; flex-direction: column; }

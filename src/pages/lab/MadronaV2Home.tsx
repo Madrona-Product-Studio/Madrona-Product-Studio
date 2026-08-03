@@ -14,7 +14,7 @@ import hero3 from "../../../docs/madrona-v2-build-kit/site-assets/hero-3.webp";
 import hero4 from "../../../docs/madrona-v2-build-kit/site-assets/hero-4.webp";
 import hero5 from "../../../docs/madrona-v2-build-kit/site-assets/hero-5.webp";
 import hero6 from "../../../docs/madrona-v2-build-kit/site-assets/hero-6.webp";
-import studioImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/studio-collaboration-wide.webp";
+import BerryGoodTeaser from "./BerryGoodTeaser";
 import lilaTile from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp";
 import sjbgTile from "../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp";
 import lilaYogaTile from "../../../docs/madrona-v2-build-kit/site-assets/lila-yoga-tile.webp";
@@ -112,9 +112,7 @@ export default function MadronaV2Home() {
             <p>Madrona is led by Charlie Koch, a product leader with fifteen years of experience building consumer products at scale and bringing new ideas to life with small teams.</p>
             <a className="m2-text-link" href="/consulting">Explore how we help <span aria-hidden="true">→</span></a>
           </div>
-          <figure className="m2-consult-art">
-            <img src={studioImage} alt="Working through a problem with a client in the Pacific Northwest" loading="lazy" />
-          </figure>
+          <BerryGoodTeaser />
         </div>
       </section>
 

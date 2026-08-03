@@ -7,7 +7,7 @@ import berryJourneyImage from "../../../docs/madrona-v2-build-kit/product-proof/
 import berryOperationsImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp";
 import berryAiImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-ai-assistance.webp";
 
-const berryViews = [
+export const berryViews = [
   {
     id: "brand",
     number: "01",
@@ -56,7 +56,7 @@ const berryViews = [
 ] as const;
 
 type BerryView = (typeof berryViews)[number];
-type BerryViewId = BerryView["id"];
+export type BerryViewId = BerryView["id"];
 
 function CapabilityList({ items }: { items: readonly string[] }) {
   return <ul className="berry-capabilities">{items.map((item) => <li key={item}><i aria-hidden="true">✓</i>{item}</li>)}</ul>;
@@ -89,7 +89,7 @@ function ReferenceVisual({ alt, src }: { alt: string; src: string }) {
   );
 }
 
-function ViewVisual({ id }: { id: BerryViewId }) {
+export function ViewVisual({ id }: { id: BerryViewId }) {
   if (id === "brand") return <BrandVisual />;
   if (id === "storefront") return <StorefrontVisual />;
   if (id === "journey") return <ReferenceVisual src={berryJourneyImage} alt="Berry Good customer journey from discovering ripe fruit through ordering, confirmation, and pickup" />;
