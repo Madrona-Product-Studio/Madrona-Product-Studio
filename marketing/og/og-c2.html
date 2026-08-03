@@ -1,0 +1,41 @@
+<!doctype html>
+<!--
+  OG image source, candidate C2 — split: type-forward field + bark plate band.
+  The Cash App composition: brand field left, one striking visual inset right.
+  Plate: plate-bark.png (codex / $madrona-image-studio). Wordmark live in Poppins 600
+  (close match to the approved raster face; approximation until the vector lands).
+  Render: node ~/.claude-tools/screenshot/shot.mjs "file://$(pwd)/marketing/og/og-c2.html" <out.png> 1200 630
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body { background: #f5f1ea; font-family: "Poppins", sans-serif; display: flex; }
+  .field {
+    width: 690px; height: 630px;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-left: 90px; gap: 12px;
+  }
+  .emblem { width: 150px; height: auto; object-fit: contain; margin-bottom: 26px; }
+  .madrona { font-size: 112px; font-weight: 600; color: #26221e; line-height: 1; letter-spacing: -0.005em; }
+  .studio { font-size: 27px; font-weight: 300; color: #6f6657; letter-spacing: 0.4em; line-height: 1; }
+  .band { width: 510px; height: 630px; overflow: hidden; }
+  .band img { width: 100%; height: 100%; object-fit: cover; object-position: 78% 50%; }
+</style>
+</head>
+<body>
+  <div class="field">
+    <img class="emblem" src="../../docs/madrona_static_logo_assets/madrona-approved-emblem-transparent.png" />
+    <div class="madrona">madrona</div>
+    <div class="studio">product studio</div>
+  </div>
+  <div class="band">
+    <img src="plate-bark.png" />
+  </div>
+</body>
+</html>
