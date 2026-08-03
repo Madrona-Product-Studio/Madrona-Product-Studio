@@ -28,3 +28,4 @@ public/**/*.webp
 *.sw?
 .vercel
 .env*
+contact-sheets/
