@@ -404,7 +404,8 @@ html:has(.m2) { scroll-behavior: smooth; }
 /* Who we help — claim rail + three tinted audience columns (Charlie's mockup) */
 .m2-who { display: grid; gap: clamp(36px, 5vw, 90px); grid-template-columns: minmax(300px, .95fr) minmax(0, 1.05fr); margin: 0 auto; max-width: 1300px; padding: 90px 0 0; }
 .m2-kicker.m2-who-kicker { color: var(--bark-dark); margin-bottom: 16px; }
-.m2-who-rail h2 { font-family: Fraunces, Georgia, serif; font-size: clamp(2.3rem, 3.5vw, 3.2rem); font-weight: 540; letter-spacing: -.015em; line-height: 1.06; margin: 0 0 22px; max-width: 15ch; }
+/* Section statement scale, shared with .m2-ab4-rail h2 so labeled two-column spreads match. */
+.m2-who-rail h2 { font-family: Fraunces, Georgia, serif; font-size: clamp(1.95rem, 2.8vw, 2.55rem); font-weight: 540; letter-spacing: -.018em; line-height: 1.12; margin: 0 0 18px; max-width: 18ch; }
 .m2-who-rule { background: var(--bark); display: block; height: 2px; margin: 0 0 24px; width: 52px; }
 .m2-who-rail > p { color: var(--muted); font-size: 1.02rem; line-height: 1.6; margin: 0; max-width: 48ch; }
 .m2-who-grid { align-self: start; display: grid; gap: 0; grid-template-columns: repeat(3, 1fr); list-style: none; margin: 0; padding: 0; }

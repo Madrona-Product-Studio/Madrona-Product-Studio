@@ -64,14 +64,14 @@ export default function MadronaV2Home() {
       {/* Hero — one studio, two ways of building */}
       <section id="top" className="m2-hero">
         <div className="m2-hero-copy">
-          <p className="m2-kicker">A small, senior product studio in the Pacific Northwest</p>
+          <p className="m2-kicker">A small, senior product studio in the PNW</p>
           <h1>We build what should exist <span className="m2-pop">next.</span></h1>
           <span className="m2-hero-rule" aria-hidden="true" />
           <p className="m2-lead">
             Madrona builds digital products, websites, and experiences for
-            organizations doing meaningful work, here in the Pacific Northwest
-            and beyond. We also build our own products to explore better ways
-            of creating software in the AI era.
+            organizations doing meaningful work, here in the PNW and beyond.
+            We also build our own products to explore better ways of creating
+            software in the AI era.
           </p>
           <div className="m2-actions">
             <a className="m2-button" href="/connect">Get in touch</a>

@@ -54,6 +54,15 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done (committed on branch) 
 - [→] **Page hero templates inconsistent.** About is a rich two-column spread (eyebrow + statement + right-side visual + proof points); Services/Apps/Connect are sparser. **Rec: keep About as the standard, bring the others to parity** — but each needs a bespoke right-side visual (Services → the four doors; Apps → a product montage; Connect → keep its hero image, align text treatment). Real design work → focused session, not a safe autonomous edit.
 - [→] **Logo legibility / rework** (deferred by decision). Baked raster; grey "product studio" too light + muddies small. Path: componentized live-text lockup. Dedicated session.
 
+## New (batch, uncommitted / to execute)
+- [x] **Home: "Pacific Northwest" → "PNW"** in visible hero copy (eyebrow + body). Alt text kept spelled out.
+- [x] **Font flash on load (FOUT) — fixed.** Self-hosted Inter + Fraunces variable woff2 (latin subset, vendored to `public/fonts/` from @fontsource-variable), aliased to the existing "Inter"/"Fraunces" family names in `index.css`, `font-display: optional` + `<link rel="preload">` in index.html, Google Fonts `<link>` removed. Real font is ready at first paint → no swap.
+- [x] **Section-heading outlier — fixed.** `.m2-who-rail h2` ("WHO WE HELP / Modern capability…") brought down to the shared two-column-spread scale (matches `.m2-ab4-rail h2`).
+- [?] **Full section-heading type-scale normalization (follow-up).** ~30 different h2 clamp rules exist across the CSS (1.7rem–4.5rem). A proper pass would define one shared scale (page-title / section-statement / sub) and map all headings to it. Larger, higher-risk — recommend a dedicated pass.
+- [?] **Favicon (Image: current is a bark circle with a thin outlined M, illegible small).** 5 options presented (A bark/white · B forest/white · C ink/bark · D paper/bark · E bark/serif), all legible at 16px. Awaiting pick, then wire up favicon.svg + png + apple-touch.
+
+- [?] **Section-heading type scale is inconsistent (Image #10).** The "WHO WE HELP / Modern capability, without the overhead." heading renders much larger than other section headings. CSS has several different h2 clamps (`m2-ab4-rail h2`, `m2-ab3 h2`, `m2-ab4 h2`, etc.). Do a consistency pass so section headings share one type scale sitewide. Ties to the broader consistency theme (hero templates, connectedness).
+
 ## Parking lot (needs a decision / later)
 - [ ] **Cross-section connectedness theme.** Several sections feel disconnected. Addressed: Home "what we do" ↔ "Four ways in". Still open: About "Work worth doing" ↔ Home audience section.
 - [ ] **Update `charlie-hq/madrona-positioning.md`** to reflect the Bellingham → Pacific Northwest positioning shift.
