@@ -187,8 +187,8 @@ export default function MadronaV2About() {
           <p className="m2-kicker m2-who-kicker">Work worth doing</p>
           <h2>We want to spend our energy on things that matter.</h2>
           <div className="m2-ab4-body">
-            <p>AI gives small teams extraordinary leverage. That makes where we choose to apply it more important, not less.</p>
-            <p>We're drawn to work that improves health and well-being, strengthens local businesses and communities, expands access, supports stewardship, and helps people spend more time doing meaningful work. We believe software can leave the world a little better than it found it.</p>
+            <p>AI gives small teams extraordinary leverage. That makes where we point it matter more, not less.</p>
+            <p>So we choose deliberately, and take on the work we'd be proud to have built. We believe software can leave the world a little better than it found it.</p>
           </div>
           <a className="m2-text-link" href="/connect">Get in touch <span aria-hidden="true">→</span></a>
         </div>

@@ -55,7 +55,7 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done (committed on branch) 
 - [x] **Removed two sections (Image #6):** "Madrona is a working theory" (loop) + "The work is the evidence" (3-col), plus now-unused consts/import.
 - [x] **REI logo enlarged (Image #7)** to match the other credibility marks' optical weight.
 - [x] Bellingham → Pacific Northwest (image alt).
-- [?] **"WORK WORTH DOING" overlaps the Home audience section (Image #8).** Decision pending: align the treatment, or differentiate so they don't feel redundant. (Left as-is this batch.)
+- [x] **"WORK WORTH DOING" overlap with Home audience — DONE (2026-08-03, differentiate via copy, Charlie's call).** The echo was that About re-enumerated Home's sectors ("we're drawn to work that improves health and well-being, strengthens local businesses…") and repeated the "drawn to" phrasing from Home's "The work we're drawn to" kicker. Fix: reworked the About body to be principle-first (leverage → deliberate choice → "work we'd be proud to have built" → keep the "software can leave the world a little better" closer). Dropped the domain re-list, the "drawn to" echo, and avoided a fresh "people/place/purpose" echo. Home audience section unchanged (it owns the sectors). Copy-only; twin PNW photos on About kept (visual differentiation was offered and declined). Verified desktop + mobile.
 
 ## How it works (`/how-it-works`)
 - [ ] _(none captured)_
