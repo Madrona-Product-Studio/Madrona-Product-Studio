@@ -9,6 +9,23 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done (committed on branch) 
 - **Logo → deferred** to a dedicated session (skip in this batch).
 - **Bellingham → "Pacific Northwest"** in visible copy; keep Bellingham in SEO schema/meta. (Follow-up: update `charlie-hq/madrona-positioning.md`.)
 
+## ▶ RESUME HERE (handoff 2026-08-03)
+
+**Branch:** `site-updates-2026-08-02` (5 commits ahead of `origin/main`, rebased onto latest live, typecheck clean, NOT pushed). Review on the dev server: `npm run dev` → the changed pages are `/`, `/about`, `/connect`.
+
+**Done & committed:** PNW hero + "PNW" abbrev · sector category names · Home "What we do" ↔ services.ts · About section trims + REI logo · Connect restructure · Bellingham→PNW (visible copy) · self-hosted fonts w/ `font-display: block` (no flash) · favicon Option A · "WHO WE HELP" heading outlier.
+
+**NEXT TASK (chosen, plan ready): Hero-template consistency.** Bring Services/Apps/Connect heroes into the same two-column family as About. No new assets needed. Plan:
+- **Target pattern** = the Connect hero grid (`.m2-cx-hero`): `grid-template-columns: minmax(0,1fr) minmax(0,1.05fr)`, left copy + right rounded image (`.m2-cx-hero-media` treatment), collapses to 1fr at the 900px + mobile breakpoints.
+- **Services** (`MadronaV2Services.tsx` `.m2-sp-intro`, CSS ~line 435): wrap hero in two columns — left keeps `<h1>Services</h1>` + `.m2-ab-rule` + `.m2-ph-sub` + paragraph; add right-side image using `docs/madrona-v2-build-kit/site-assets/services-hero.webp`. Convert `.m2-sp-intro` to a grid like `.m2-cx-hero` + responsive collapse.
+- **Apps** (`MadronaV2Apps.tsx` `.m2-ap-intro`, CSS ~line 1468): same treatment; right image = `apps-hero.webp`; keep the `.m2-ap-jump` link in the left copy.
+- **Connect** (`.m2-cx-hero`): already two-column with image — just confirm scale/spacing matches the others (it's the reference).
+- After: screenshot `/services`, `/apps`, `/connect`, `/about` at desktop + mobile to confirm the family reads consistently; commit.
+
+**Then remaining (see items below):** full section-heading type-scale normalization (`[?]`), About "Work worth doing" alignment (`[?]`), imagery session (Lila tile + Home section photo), logo rework (deferred by decision).
+
+**Safety refs:** `wip-scratch-2026-08-02` branch holds the old unpushed OG-D4 commit; two git stashes hold earlier scratch. Another agent/session has pushed to `origin/main` during this work (OG versioned-URL) — always fetch + rebase before merging.
+
 ### Commits this batch
 - `c3a7637` — Batch 1: PNW copy, sector categories, What-we-do connection, About trims
 - `e00aa2c` — Connect: Send-a-message primary, scheduling secondary
