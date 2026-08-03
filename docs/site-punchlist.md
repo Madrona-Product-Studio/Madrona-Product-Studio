@@ -11,7 +11,9 @@ Status key: `[ ]` todo · `[~]` in progress · `[x]` done (committed on branch) 
 
 ## ▶ RESUME HERE (handoff 2026-08-03, updated)
 
-**Branch:** `hero-template-consistency` (off `main` @ `d447324`; prior `site-updates-2026-08-02` batch is merged to `main`). Typecheck clean, committed locally, **NOT pushed** (Charlie reviewing). Dev server: `npm run dev`.
+**Status: SHIPPED ✅ (2026-08-03).** The `hero-template-consistency` batch is **merged to `main` (ff, @ `d0a7365`) and live in production** at madronaproduct.com (Vercel prod deploy green; Home "What we do" Berry Good card + Lila tile refresh verified live). Nothing left uncommitted. The branch can be deleted. Dev server: `npm run dev`.
+
+**Still open (deferred sessions):** logo rework; `/consulting` "Who you'll work with" still uses the AI stock `studio-collaboration-wide.webp` (could get the same treatment as Home's #4); update `charlie-hq/madrona-positioning.md` for the Bellingham → PNW shift.
 
 **Just done: shared page-header template ✅.** Introduced one canonical hero class `.m2-hero` derived from About's exact spec (max-width 1320, `padding-inline: clamp(20px,4vw,48px)`, grid `1fr / 1.22fr`, shared h1/rule/`.m2-ab-headline`/`.m2-ab-body` type). Applied to the three visible non-About pages, each reusing About's `.m2-ab-intro-copy` + `.m2-ab-intro-visual` wrappers with a right-side rounded image (`.m2-hero-media`):
 - **How we help** (`/consulting`, `MadronaV2.tsx`) — was BROKEN: it shared `.m2-ap-intro` with Products, so the grid auto-flowed its unwrapped children. Now fixed. Image: `hero-3.webp` (Skagit tulip fields).
