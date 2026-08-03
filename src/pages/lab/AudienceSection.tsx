@@ -16,10 +16,10 @@ export default function AudienceSection() {
       <div className="m2-audience-intro"><p className="m2-kicker">The work we’re drawn to</p><h2 id="audience-title">Where people, place, and purpose <span className="m2-keep-together">come first.</span></h2><p>The products we build and the businesses we partner with share a thread: grounded work that makes everyday life richer.</p></div>
       <div className="m2-audience-grid">
         {[
-          { image: farmsImage, type: "farms" as const, title: "Farms and food", copy: "From soil to shelf" },
-          { image: outdoorsImage, type: "outdoors" as const, title: "Outdoor and travel", copy: "Journeys with substance" },
-          { image: healthImage, type: "health" as const, title: "Health and wellness", copy: "Care through clarity" },
-          { image: shopsImage, type: "shops" as const, title: "Shops and services", copy: "Local businesses, stronger" },
+          { image: farmsImage, type: "farms" as const, title: "Food & agriculture", copy: "From soil to shelf" },
+          { image: outdoorsImage, type: "outdoors" as const, title: "Travel & hospitality", copy: "Journeys with substance" },
+          { image: healthImage, type: "health" as const, title: "Health & wellness", copy: "Care through clarity" },
+          { image: shopsImage, type: "shops" as const, title: "Retail & commerce", copy: "Local businesses, stronger" },
         ].map(({ image, type, title, copy }) => <article className="m2-audience" key={title} data-reveal><div className="m2-audience-image"><img src={image} alt="" /></div><div className="m2-audience-caption"><span className="m2-audience-icon"><AudienceIcon type={type} /></span><div><h3>{title}</h3><p>{copy}</p></div></div></article>)}
       </div>
     </section>

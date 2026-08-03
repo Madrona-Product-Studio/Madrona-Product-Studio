@@ -3,6 +3,7 @@ import AudienceSection from "./AudienceSection";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import { ServiceIcon } from "./ServiceIcon";
+import { serviceAreas } from "../../data/services";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import "./madrona-v2.css";
@@ -31,12 +32,9 @@ const products = [
 ] as const;
 
 // ---- How we help (the four expression doors of one practice) -------------
-const consulting = [
-  { id: "brand-and-web" as const, title: "Build trust", body: "A brand, website, and digital experience that show up as well as you do." },
-  { id: "customers-and-growth" as const, title: "Grow your business", body: "Help more people find you, buy from you, and come back again." },
-  { id: "operations-and-ai" as const, title: "Work smarter", body: "Get hours back every week with workflow fixes, small tools, and practical AI." },
-  { id: "new-products" as const, title: "Build something worth using", body: "Take a new product from idea to real. Prototypes, MVPs, and AI-enabled features." },
-];
+// Sourced from the single source of truth (services.ts) so the four doors read
+// identically here and in the "Four ways in. One practice." What We Do section.
+const consulting = serviceAreas.map((s) => ({ id: s.id, title: s.door, body: s.outcome }));
 
 const HERO_IMAGES = [
   { src: hero2, alt: "Sunrise light over a forested island in the Salish Sea" },
@@ -66,13 +64,14 @@ export default function MadronaV2Home() {
       {/* Hero — one studio, two ways of building */}
       <section id="top" className="m2-hero">
         <div className="m2-hero-copy">
-          <p className="m2-kicker">A small senior product studio</p>
+          <p className="m2-kicker">A small, senior product studio in the Pacific Northwest</p>
           <h1>We build what should exist <span className="m2-pop">next.</span></h1>
           <span className="m2-hero-rule" aria-hidden="true" />
           <p className="m2-lead">
             Madrona builds digital products, websites, and experiences for
-            organizations doing meaningful work. We also build our own
-            products to explore better ways of creating software in the AI era.
+            organizations doing meaningful work, here in the Pacific Northwest
+            and beyond. We also build our own products to explore better ways
+            of creating software in the AI era.
           </p>
           <div className="m2-actions">
             <a className="m2-button" href="/connect">Get in touch</a>
@@ -81,7 +80,7 @@ export default function MadronaV2Home() {
         </div>
         <div className="m2-hero-visual m2-hero-island m2-hero-rotate">
           {HERO_IMAGES.map((img, i) => (
-            <img key={img.src} src={img.src} alt={i === 0 ? "Pacific Northwest landscapes near Bellingham, Washington" : ""} aria-hidden={i === 0 ? undefined : true} className={i === heroIndex ? "is-active" : ""} loading={i === 0 ? "eager" : "lazy"} />
+            <img key={img.src} src={img.src} alt={i === 0 ? "Pacific Northwest landscapes across the Salish Sea" : ""} aria-hidden={i === 0 ? undefined : true} className={i === heroIndex ? "is-active" : ""} loading={i === 0 ? "eager" : "lazy"} />
           ))}
           <button type="button" className="m2-hero-cycle" aria-label={`Hero image ${heroIndex + 1} of ${HERO_IMAGES.length}. Show next image.`} onClick={() => setHeroIndex((i) => (i + 1) % HERO_IMAGES.length)}>
             <svg key={heroIndex} className="m2-hero-cycle-ring" viewBox="0 0 36 36" aria-hidden="true"><circle className="m2-hero-cycle-track" cx="18" cy="18" r="15" /><circle className="m2-hero-cycle-arc" cx="18" cy="18" r="15" /></svg>
@@ -96,6 +95,7 @@ export default function MadronaV2Home() {
       <section className="m2-consult">
         <div className="m2-consult-body">
           <div className="m2-consult-intro">
+            <p className="m2-kicker">What we do</p>
             <h2>Good businesses around here deserve software as good as they are.</h2>
             <p>We help you figure out what to build, then build it. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
             <div className="m2-consult-items">

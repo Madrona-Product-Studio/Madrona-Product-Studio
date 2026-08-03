@@ -112,7 +112,7 @@ function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm text-ink70">
           <div className="space-y-3">
             <Wordmark size="sm" />
-            <p>Bellingham, Washington</p>
+            <p>Pacific Northwest</p>
           </div>
           <div className="space-y-2">
             <p>

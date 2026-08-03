@@ -5,8 +5,6 @@ import { useReveal } from "./useReveal";
 import { studioProfile } from "../../data/studioProfile";
 import "./madrona-v2.css";
 
-import emblem from "../../../docs/madrona_static_logo_assets/madrona-approved-emblem-transparent.png";
-
 const LOGOS: Record<string, string> = {
   REI: "/images/logos/rei-logo.svg",
   Healthline: "/images/logos/healthline-logo.svg",
@@ -39,29 +37,6 @@ const IDEAS = [
   { icon: P.target, tone: "sprout", title: "Clarity matters more.", body: "As execution gets easier, the hard work moves toward customer understanding, judgment, and learning." },
   { icon: P.people, tone: "storefront", title: "Product leadership is evolving.", body: "From managing the work to creating the conditions for great work." },
   { icon: P.venn, tone: "layers", title: "Everyone builds differently.", body: "Each discipline contributes in its own way. AI adds leverage to all of it." },
-];
-
-const EVIDENCE = [
-  { icon: P.cube, tone: "sprout", title: "Our own products", body: "We build and operate our own products to stay close to customers, ideas, and reality.", href: "/apps", action: "See our products" },
-  { icon: P.case, tone: "storefront", title: "Client work", body: "Every organization we work with teaches us something different about the problems they're trying to solve.", href: "/consulting", action: "See how we help" },
-  { icon: P.people, tone: "layers", title: "Team evolution", body: "We help product teams adopt better ways of discovering, prototyping, and building with AI.", href: "/consulting", action: "Explore our approach" },
-];
-
-// Circular learning loop: five nodes clockwise from the top, emblem center.
-const LOOP_NODES = [
-  { label: "Build", icon: P.hammer, tone: "sprout", x: 50, y: 10 },
-  { label: "Learn", icon: P.book, tone: "storefront", x: 88, y: 37.6 },
-  { label: "Refine", icon: P.sliders, tone: "layers", x: 73.5, y: 82.4 },
-  { label: "Share", icon: P.leaf, tone: "sprout", x: 26.5, y: 82.4 },
-  { label: "Build better", icon: P.chart, tone: "storefront", x: 12, y: 37.6 },
-];
-
-const LOOP_ARCS = [
-  "M 61.7 11.7 A 40 40 0 0 1 82.8 27.1",
-  "M 90.0 49.3 A 40 40 0 0 1 81.9 74.1",
-  "M 63.0 87.8 A 40 40 0 0 1 37.0 87.8",
-  "M 18.1 74.1 A 40 40 0 0 1 10.0 49.3",
-  "M 17.2 27.1 A 40 40 0 0 1 38.3 11.7",
 ];
 
 const CHIPS = ["Design", "Engineering", "Product", "Research", "Marketing", "Data", "Content", "Strategy"];
@@ -183,48 +158,6 @@ export default function MadronaV2About() {
         </ul>
       </section>
 
-      {/* 3 · Madrona is a working theory */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">Madrona is a working theory</p>
-          <h2>Can small, senior, AI-enabled teams build products differently, and better?</h2>
-          <p className="m2-ab4-railbody">That's the question we're constantly testing. Every product we ship and every client engagement adds evidence.</p>
-          <p className="m2-ab4-loopline" aria-hidden="true">Build <span>→</span> Learn <span>→</span> Refine <span>→</span> Share <span>→</span> Build better</p>
-        </div>
-        <div className="m2-ab4-loop" role="img" aria-label="The Madrona learning loop: build, learn, refine, share, build better, and repeat">
-          <svg className="m2-ab4-loop-arcs" viewBox="0 0 100 100" aria-hidden="true">
-            {LOOP_ARCS.map((d) => <path key={d} d={d} markerEnd="url(#loopArrow)" />)}
-            <defs>
-              <marker id="loopArrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
-                <path d="M0 0.6 5.4 3.5 0 6.4" fill="none" stroke="currentColor" strokeWidth="1.1" />
-              </marker>
-            </defs>
-          </svg>
-          <span className="m2-ab4-loop-center"><img src={emblem} alt="" /></span>
-          {LOOP_NODES.map((n) => (
-            <span className="m2-ab4-loop-node" data-tone={n.tone} key={n.label} style={{ left: `${n.x}%`, top: `${n.y}%` }}>
-              <span className="m2-ab4-loop-ico"><I d={n.icon} /></span>
-              <span className="m2-ab4-loop-label">{n.label}</span>
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* 4 · The work is the evidence */}
-      <section className="m2-ab4 m2-ab4-sec m2-ab4-sec--full">
-        <p className="m2-kicker m2-who-kicker">The work is the evidence</p>
-        <ul className="m2-ab4-cols m2-ab4-cols--evidence">
-          {EVIDENCE.map((e) => (
-            <li key={e.title}>
-              <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={e.tone}><I d={e.icon} /></span>
-              <h3>{e.title}</h3>
-              <p>{e.body}</p>
-              <a className="m2-text-link" href={e.href}>{e.action} <span aria-hidden="true">→</span></a>
-            </li>
-          ))}
-        </ul>
-      </section>
-
       {/* 5 · Built with people I trust */}
       <section className="m2-ab4 m2-ab4-sec">
         <div className="m2-ab4-rail">
@@ -260,7 +193,7 @@ export default function MadronaV2About() {
           <a className="m2-text-link" href="/connect">Get in touch <span aria-hidden="true">→</span></a>
         </div>
         <div className="m2-ab4-worth-media">
-          <img src={community.images[0]} alt="Fresh local produce at a Whatcom County market" loading="lazy" />
+          <img src={community.images[0]} alt="Fresh local produce at a Pacific Northwest market" loading="lazy" />
           <img src={community.images[1]} alt="Conserved Pacific Northwest land above the water" loading="lazy" />
         </div>
       </section>
