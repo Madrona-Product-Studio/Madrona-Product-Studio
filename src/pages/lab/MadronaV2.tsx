@@ -10,6 +10,7 @@ import { studioProfile } from "../../data/studioProfile";
 import "./madrona-v2.css";
 
 import studioImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/studio-collaboration-wide.webp";
+import howHero from "../../../docs/madrona-v2-build-kit/site-assets/hero-3.webp";
 import lilaHero from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-madrona-hero.webp";
 import lilaWordmark from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-wordmark-dark.svg";
 import lilaTile from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp";
@@ -165,12 +166,19 @@ export default function MadronaV2() {
       <LabMeta title="How we help · Madrona Product Studio" />
       <M2Nav active="consulting" />
 
-      <section className="m2-ap-intro">
-        <h1>How we help</h1>
-        <span className="m2-ab-rule" aria-hidden="true" />
-        <p className="m2-ph-sub">Figure out what to build. Then build it.</p>
-        <p>Madrona works with founders, local businesses, and product teams. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
-        <a className="m2-ap-jump" href="#process">See how we work <span aria-hidden="true">↓</span></a>
+      <section className="m2-phead">
+        <div className="m2-ab-intro-copy">
+          <h1>How we help</h1>
+          <span className="m2-ab-rule" aria-hidden="true" />
+          <p className="m2-ab-headline">Figure out what to build. <span className="m2-pop">Then build it.</span></p>
+          <div className="m2-ab-body">
+            <p>Madrona works with founders, local businesses, and product teams. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
+          </div>
+          <a className="m2-ap-jump" href="#process">See how we work <span aria-hidden="true">↓</span></a>
+        </div>
+        <div className="m2-ab-intro-visual">
+          <div className="m2-phead-media"><img src={howHero} alt="Skagit Valley tulip fields at first light" /></div>
+        </div>
       </section>
 
       {/* Who we help — the capability claim + the three audiences (Charlie's mockup 2026-08-01) */}

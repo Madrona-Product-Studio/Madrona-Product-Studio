@@ -5,6 +5,7 @@ import SiteFooter from "./SiteFooter";
 import { ServiceIcon } from "./ServiceIcon";
 import { useReveal } from "./useReveal";
 import { serviceAreas, type ServiceId } from "../../data/services";
+import servicesHero from "../../../docs/madrona-v2-build-kit/site-assets/hero-2.webp";
 import "./madrona-v2.css";
 
 const CTA_LABEL: Record<ServiceId, string> = {
@@ -43,11 +44,18 @@ export default function MadronaV2Services() {
       <LabMeta title="Services · Madrona Product Studio" />
       <M2Nav active="consulting" />
 
-      <section className="m2-sp-intro">
-        <h1>Services</h1>
-        <span className="m2-ab-rule" aria-hidden="true" />
-        <p className="m2-ph-sub">We help you figure out what to build, <span className="m2-pop">then build it.</span></p>
-        <p>Four ways in, one practice: every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
+      <section className="m2-phead">
+        <div className="m2-ab-intro-copy">
+          <h1>Services</h1>
+          <span className="m2-ab-rule" aria-hidden="true" />
+          <p className="m2-ab-headline">We help you figure out what to build, <span className="m2-pop">then build it.</span></p>
+          <div className="m2-ab-body">
+            <p>Four ways in, one practice: every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
+          </div>
+        </div>
+        <div className="m2-ab-intro-visual">
+          <div className="m2-phead-media"><img src={servicesHero} alt="Sun breaking over a forested island in the Salish Sea" /></div>
+        </div>
       </section>
 
       <div className="m2-sp-layout">

@@ -3,6 +3,7 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
+import appsHero from "../../../docs/madrona-v2-build-kit/site-assets/apps-hero.webp";
 import "./madrona-v2.css";
 import {
   studioProducts, STAGE_META, STAGE_ORDER, stageCounts, sortProducts,
@@ -75,12 +76,19 @@ export default function MadronaV2Apps() {
       <LabMeta title="Products · Madrona Product Studio" />
       <M2Nav active="apps" />
 
-      <section className="m2-ap-intro">
-        <h1>Our products</h1>
-        <span className="m2-ab-rule" aria-hidden="true" />
-        <p className="m2-ph-sub">We build our own products because the best way to understand a new way of working is to practice it.</p>
-        <p>Each product begins with a real customer problem and gives us a place to test ideas, improve our methods, and create something useful in its own right.</p>
-        <a className="m2-ap-jump" href="#why">Why we build our own products <span aria-hidden="true">↓</span></a>
+      <section className="m2-phead">
+        <div className="m2-ab-intro-copy">
+          <h1>Our products</h1>
+          <span className="m2-ab-rule" aria-hidden="true" />
+          <p className="m2-ab-headline">We build our own products because the best way to understand a new way of working is to practice it.</p>
+          <div className="m2-ab-body">
+            <p>Each product begins with a real customer problem and gives us a place to test ideas, improve our methods, and create something useful in its own right.</p>
+          </div>
+          <a className="m2-ap-jump" href="#why">Why we build our own products <span aria-hidden="true">↓</span></a>
+        </div>
+        <div className="m2-ab-intro-visual">
+          <div className="m2-phead-media"><img src={appsHero} alt="Fog lifting off a forested Salish Sea shoreline" /></div>
+        </div>
       </section>
 
       <div className="m2-ap-filters" role="group" aria-label="Filter apps by stage">

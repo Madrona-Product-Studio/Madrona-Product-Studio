@@ -431,11 +431,9 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-svc-ico-ring { align-items: center; background: #f8e6d8; border-radius: 50%; color: var(--bark); display: inline-flex; height: 48px; justify-content: center; width: 48px; }
 .m2-svc-ico-ring svg { height: 24px; width: 24px; }
 
-/* ===== Services page (Iteration C: menu style) ===== */
-.m2-sp-intro { margin: 0 auto; max-width: 1300px; padding: 58px 0 32px; }
+/* ===== Services page (Iteration C: menu style) =====
+   Hero now uses the shared .m2-phead template (see About-page section). */
 .m2-sp-eyebrow { color: var(--bark); margin-bottom: 12px; }
-.m2-sp-intro h1 { color: var(--ink); font-size: clamp(3rem, 5vw, 4.4rem); font-weight: 570; letter-spacing: -.035em; line-height: 1; margin: 0; }
-.m2-sp-intro > p:last-child { color: var(--muted); font-size: clamp(1.05rem, 1.4vw, 1.2rem); line-height: 1.55; margin: 0; max-width: 560px; }
 
 .m2-sp-layout { display: grid; gap: clamp(30px, 4vw, 60px); grid-template-columns: 200px minmax(0, 1fr); margin: 0 auto; max-width: 1300px; }
 .m2-sp-nav { align-self: start; display: flex; flex-direction: column; gap: 2px; position: sticky; top: 28px; }
@@ -476,17 +474,27 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-sp-begin-copy p { color: var(--muted); margin: 0; }
 
 /* ===== About page (network-diagram hero) ===== */
-.m2-ab-intro, .m2-ab-exp, .m2-ab-panels, .m2-ab-name {
+.m2-ab-intro, .m2-ab-exp, .m2-ab-panels, .m2-ab-name, .m2-phead {
   box-sizing: border-box; margin: 0 auto; max-width: 1320px; padding-inline: clamp(20px, 4vw, 48px); width: 100%;
 }
 
-/* Hero: positioning copy + proof points | team network diagram */
-.m2-ab-intro { align-items: center; display: grid; gap: clamp(28px, 4vw, 56px); grid-template-columns: minmax(0, 1fr) minmax(0, 1.22fr); padding-block: clamp(40px, 5vw, 72px); }
+/* Shared page-header template. About (.m2-ab-intro) is the reference;
+   Products / How-we-help / Services reuse .m2-phead for one consistent
+   header. Both are top-aligned so every page title lands on the SAME
+   plane (title sits at padding-top, independent of right-column height).
+   NB: .m2-hero is a different class (the Home page hero) — do not merge. */
+.m2-ab-intro, .m2-phead { align-items: start; display: grid; gap: clamp(28px, 4vw, 56px); grid-template-columns: minmax(0, 1fr) minmax(0, 1.22fr); padding-block: clamp(40px, 5vw, 72px); }
 .m2-ab-intro-copy h1 { color: var(--ink); font-family: "Inter", system-ui, sans-serif; font-size: clamp(2.8rem, 5vw, 4.4rem); font-weight: 570; letter-spacing: -.035em; line-height: 1; margin: 0; }
 .m2-ab-rule { background: var(--bark); border-radius: 2px; display: block; height: 3px; margin: 20px 0 26px; width: 54px; }
 .m2-ab-headline { color: var(--ink); font-size: clamp(1.4rem, 2vw, 1.85rem); font-weight: 600; letter-spacing: -.02em; line-height: 1.2; margin: 0 0 18px; max-width: 19ch; }
+.m2-phead .m2-ab-headline { max-width: 30ch; }
 .m2-ab-body { color: var(--ink-soft); display: grid; gap: 14px; margin: 0 0 40px; max-width: 46ch; }
 .m2-ab-body p { font-size: 1rem; line-height: 1.6; margin: 0; }
+/* Shared header visual: rounded organic-radius image, centred in its column
+   (echoes About's centred diagram) and sized to sit near the copy height. */
+.m2-phead-media { aspect-ratio: 16 / 11; border-radius: 44% 44% 40% 40% / 52% 52% 34% 34%; margin: 0 auto; max-width: 520px; overflow: hidden; width: 100%; }
+.m2-phead-media img { display: block; height: 100%; object-fit: cover; width: 100%; }
+.m2-phead .m2-ap-jump { margin-top: 4px; }
 
 /* Proof points row (3, integrated, hairline dividers on desktop) */
 .m2-ab-proof { display: grid; gap: clamp(16px, 2vw, 28px); grid-template-columns: repeat(3, 1fr); list-style: none; margin: 0; padding: 0; }
@@ -1806,10 +1814,11 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-srv-hero, .m2-srv-panels, .m2-srv-cta { margin-inline: 28px; }
   .m2-srv-panel { gap: 30px 40px; grid-template-columns: 1fr 1fr; }
   .m2-srv-visual { grid-column: 1 / -1; order: 3; }
-  .m2-sp-intro, .m2-sp-layout, .m2-sp-begin { margin-inline: 28px; }
+  .m2-sp-layout, .m2-sp-begin { margin-inline: 28px; }
   .m2-sp-layout { grid-template-columns: 1fr; }
-  .m2-ab-intro, .m2-ab-exp, .m2-ab-name { grid-template-columns: 1fr; }
-  .m2-ab-intro { gap: 40px; }
+  .m2-ab-intro, .m2-ab-exp, .m2-ab-name, .m2-phead { grid-template-columns: 1fr; }
+  .m2-ab-intro, .m2-phead { gap: 40px; }
+  .m2-phead-media { margin: 0 auto; max-width: 460px; }
   .m2-ab-panels { grid-template-columns: 1fr; }
   .m2-sp-nav { flex-direction: row; flex-wrap: wrap; gap: 8px; position: static; }
   .m2-sp-nav a { border: 1px solid var(--sand); border-left: 1px solid var(--sand); border-radius: 999px; padding: 7px 15px; }
@@ -1839,7 +1848,8 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-srv-offers { border-left: 0; border-top: 1px solid var(--line-soft, rgba(26,23,20,.08)); padding: 16px 0 0; }
   .m2-srv-cta { gap: 18px; grid-template-columns: 1fr; }
   .m2-srv-cta .m2-button { justify-self: start; }
-  .m2-sp-intro, .m2-sp-layout, .m2-sp-begin { margin-inline: 20px; }
+  .m2-sp-layout, .m2-sp-begin { margin-inline: 20px; }
+  .m2-phead-media { max-width: 100%; }
   .m2-ab-proof { column-gap: 22px; grid-template-columns: 1fr 1fr; }
   .m2-ab-proof li + li::before { display: none; }
   /* Simplify the network on mobile: portrait + 2-col role grid, no connectors */
