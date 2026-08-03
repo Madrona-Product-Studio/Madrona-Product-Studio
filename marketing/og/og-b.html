@@ -1,0 +1,35 @@
+<!doctype html>
+<!--
+  OG image source, candidate B — full-bleed madrona bark plate + wordmark.
+  Plate: plate-bark.png (generated via codex / $madrona-image-studio — no text/logos in plate).
+  Render: node ~/.claude-tools/screenshot/shot.mjs "file://$(pwd)/marketing/og/og-b.html" <out.png> 1200 630
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; position: relative; }
+  body { font-family: "Inter", sans-serif; }
+  .plate { position: absolute; inset: 0; width: 1200px; height: 630px; object-fit: cover; }
+  .scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(26,23,20,0.45) 0%, rgba(26,23,20,0.18) 55%, rgba(26,23,20,0) 100%);
+  }
+  .logo {
+    /* approved reversed logo (dark-background variant, over the scrim);
+       native 1138x400 — 520px CSS keeps the 2x render under native res */
+    position: absolute; left: 96px; top: 50%; transform: translateY(-50%);
+    width: 520px; height: auto; object-fit: contain;
+  }
+</style>
+</head>
+<body>
+  <img class="plate" src="plate-bark.png" />
+  <div class="scrim"></div>
+  <img class="logo" src="../../docs/madrona_static_logo_assets/madrona-approved-logo-reversed-transparent.png" />
+</body>
+</html>

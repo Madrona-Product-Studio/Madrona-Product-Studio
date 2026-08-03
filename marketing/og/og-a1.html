@@ -1,0 +1,21 @@
+<!doctype html>
+<!--
+  OG image source, candidate A1 — approved reversed logo on ink.
+  Uses docs/madrona_static_logo_assets (approved raster system; reversed variant is for dark backgrounds).
+  Native asset is 1138x400 — CSS width capped at 569px so the 2x render never upscales it.
+  Render: node ~/.claude-tools/screenshot/shot.mjs "file://$(pwd)/marketing/og/og-a1.html" <out.png> 1200 630
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body { background: #1a1714; display: grid; place-items: center; } /* ink */
+  img { width: 569px; height: auto; object-fit: contain; }
+</style>
+</head>
+<body>
+  <img src="../../docs/madrona_static_logo_assets/madrona-approved-logo-reversed-transparent.png" />
+</body>
+</html>
