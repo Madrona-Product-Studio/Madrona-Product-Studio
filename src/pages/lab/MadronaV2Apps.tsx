@@ -3,7 +3,7 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import appsHero from "../../../docs/madrona-v2-build-kit/site-assets/apps-hero.webp";
+import ProductsCycleDiagram from "./ProductsCycleDiagram";
 import "./madrona-v2.css";
 import {
   studioProducts, STAGE_META, STAGE_ORDER, stageCounts, sortProducts,
@@ -58,12 +58,6 @@ function ProductRow({ product }: { product: StudioProduct }) {
   );
 }
 
-const WHY = [
-  { title: "Keeps the work honest", body: "Real users and real constraints expose weak assumptions quickly." },
-  { title: "Sharpens our judgment", body: "Operating products changes how we think about scope, quality, launch, and maintenance." },
-  { title: "Creates a feedback loop", body: "What we learn from our products makes its way into every client engagement." },
-];
-
 export default function MadronaV2Apps() {
   useReveal();
   const [filter, setFilter] = useState<ProductStage | "all">("all");
@@ -84,10 +78,9 @@ export default function MadronaV2Apps() {
           <div className="m2-ab-body">
             <p>Each product begins with a real customer problem and gives us a place to test ideas, improve our methods, and create something useful in its own right.</p>
           </div>
-          <a className="m2-ap-jump" href="#why">Why we build our own products <span aria-hidden="true">↓</span></a>
         </div>
         <div className="m2-ab-intro-visual">
-          <div className="m2-phead-media"><img src={appsHero} alt="Fog lifting off a forested Salish Sea shoreline" /></div>
+          <ProductsCycleDiagram />
         </div>
       </section>
 
@@ -106,16 +99,6 @@ export default function MadronaV2Apps() {
           <p className="m2-ap-empty">No products are currently in this stage. <button type="button" className="m2-text-link" onClick={() => setFilter("all")}>Show all apps →</button></p>
         )}
       </div>
-
-      <section className="m2-ap-why" id="why">
-        <div className="m2-ap-why-intro">
-          <h2>Why we build our own products</h2>
-          <p>Operating our own products keeps the work honest. We make the strategy, design the experience, build the software, respond to users, and decide what to improve next.</p>
-        </div>
-        <ul className="m2-ap-why-list">
-          {WHY.map((w) => <li key={w.title} data-reveal><strong>{w.title}</strong><p>{w.body}</p></li>)}
-        </ul>
-      </section>
 
       <SiteFooter />
     </main>

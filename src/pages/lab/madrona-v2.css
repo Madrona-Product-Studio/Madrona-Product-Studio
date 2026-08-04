@@ -97,9 +97,12 @@ html:has(.m2) { scroll-behavior: smooth; }
   gap: clamp(48px, 5vw, 76px);
   grid-template-columns: minmax(0, 1.08fr) minmax(440px, .92fr);
   margin: 0 auto;
-  max-width: 1420px;
+  /* Share the nav's container (max-width 1360 + 32px left pad) so the hero
+     content edge aligns with the nav logo at every width. Right pad stays 40
+     for the bleeding photo. */
+  max-width: 1360px;
   min-height: 580px;
-  padding: 44px 40px 68px;
+  padding: 44px 40px 68px 32px;
 }
 .m2-hero-copy { align-self: start; min-width: 0; padding-top: 42px; position: relative; z-index: 2; }
 .m2-hero-copy .m2-kicker { margin-bottom: 18px; }
@@ -248,6 +251,10 @@ html:has(.m2) { scroll-behavior: smooth; }
 
 /* ===== Homepage "What we do" module (Iteration C) ===== */
 .m2-svcmod { margin: 0 auto; max-width: 1300px; padding: 100px 0; }
+/* /consulting header carries the how-we-help diagram; center it against the
+   copy and pull the following section up tight (mirrors the /apps header). */
+.m2-consult-page .m2-phead { align-items: center; padding-bottom: clamp(40px, 5vw, 72px); }
+.m2-consult-page .m2-svcmod { border-top: 1px solid var(--sand); padding-top: clamp(40px, 4vw, 64px); }
 .m2-svcmod-intro { align-items: end; display: flex; flex-wrap: wrap; gap: 20px 60px; justify-content: space-between; margin-bottom: 38px; }
 .m2-svcmod-intro .m2-kicker { margin-bottom: 14px; }
 .m2-svcmod-intro h2 { font-size: var(--m2-h-section); font-weight: 560; letter-spacing: -.04em; line-height: 1.02; margin: 0 0 14px; }
@@ -513,7 +520,72 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-ab-intro-visual { min-width: 0; }
 .m2-ab-net { aspect-ratio: 1; margin: 0 auto; max-width: 600px; position: relative; width: 100%; }
 .m2-ab-net-lines { height: 100%; inset: 0; position: absolute; width: 100%; z-index: 0; }
+/* Non-photo center core — same footprint as .m2-ab-net-portrait, tinted hub
+   for infographics that orbit a concept rather than a person. */
+.m2-ab-net-core { align-items: center; aspect-ratio: 1; background: #f8e6d8; border: 3px solid var(--paper); border-radius: 50%; box-shadow: 0 6px 24px rgba(26, 23, 20, .12); color: var(--bark); display: flex; justify-content: center; left: 50%; position: absolute; top: 50%; transform: translate(-50%, -50%); width: 46%; z-index: 2; }
+.m2-ab-net-core-ico { width: 34%; }
+.m2-ab-net-core-ico svg { display: block; height: auto; width: 100%; }
+
 .m2-ab-net-lines path { fill: none; stroke: rgba(200, 106, 61, .5); stroke-linecap: round; stroke-width: 1.5; }
+
+/* ---- Products practice CYCLE (square ring, flowing arrows) ------------- */
+.pcy { aspect-ratio: 1; margin: 0 auto; max-width: 430px; position: relative; width: 100%; }
+.pcy-lines { height: 100%; inset: 0; overflow: visible; position: absolute; width: 100%; z-index: 0; }
+.pcy-lines path { fill: none; stroke: rgba(200, 106, 61, .55); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+/* center caption — names the loop, not a hub node */
+.pcy-hub { align-items: center; color: var(--bark); display: flex; flex-direction: column; gap: 8px; left: 50%; position: absolute; top: 50%; text-align: center; transform: translate(-50%, -50%); width: 44%; z-index: 1; }
+.pcy-hub-ico { height: 30px; width: 30px; }
+.pcy-hub-ico svg { height: 100%; width: 100%; }
+.pcy-hub-label { color: var(--muted); font-size: .74rem; letter-spacing: .01em; line-height: 1.35; }
+/* nodes */
+.pcy-node { align-items: center; display: flex; position: absolute; transform: translate(-50%, -50%); z-index: 2; }
+.pcy-chip { align-items: center; background: var(--surface); border: 1px solid var(--sand); border-radius: 50%; box-shadow: 0 1px 3px rgba(26, 23, 20, .07); color: var(--bark); display: flex; flex: 0 0 auto; height: 56px; justify-content: center; width: 56px; }
+.pcy-chip svg { height: 23px; width: 23px; }
+.pcy-chip--sage { box-shadow: 0 0 0 5px #edefdf; } .pcy-chip--bark { box-shadow: 0 0 0 5px #f8e6d8; } .pcy-chip--slate { box-shadow: 0 0 0 5px #e4ebf2; }
+.pcy-label { position: absolute; white-space: nowrap; }
+.pcy-label strong { color: var(--ink); display: block; font-size: .84rem; font-weight: 600; }
+.pcy-label span { color: var(--muted); display: block; font-size: .72rem; margin-top: 1px; }
+.pcy-node--top .pcy-label { bottom: calc(100% + 9px); left: 50%; text-align: center; transform: translateX(-50%); }
+.pcy-node--bottom .pcy-label { left: 50%; text-align: center; top: calc(100% + 9px); transform: translateX(-50%); }
+.pcy-node--right .pcy-label { left: calc(100% + 12px); text-align: left; top: 50%; transform: translateY(-50%); }
+.pcy-node--left .pcy-label { right: calc(100% + 12px); text-align: right; top: 50%; transform: translateY(-50%); }
+
+@media (max-width: 860px) {
+  .pcy { max-width: 340px; }
+  .pcy-chip { height: 48px; width: 48px; }
+  .pcy-chip svg { height: 20px; width: 20px; }
+  .pcy-label span { display: none; }
+  .pcy-label strong { font-size: .78rem; }
+  .pcy-hub-label { font-size: .68rem; }
+}
+
+/* ---- "How we help" header diagram (engagement orbits the audiences) ------ */
+.hc-arc { aspect-ratio: 1; margin: 0 auto; max-width: 452px; position: relative; width: 100%; }
+.hc-arc-lines { height: 100%; inset: 0; overflow: visible; position: absolute; width: 100%; z-index: 0; }
+.hc-arc-lines path { fill: none; stroke: rgba(200, 106, 61, .55); stroke-width: 1.4; vector-effect: non-scaling-stroke; }
+.hc-chip { background: var(--surface); border-radius: 50%; box-shadow: 0 1px 3px rgba(26, 23, 20, .07); color: var(--bark); display: grid; flex: 0 0 auto; height: 56px; place-content: center; width: 56px; }
+.hc-chip svg { display: block; }
+.hc-chip--sage { box-shadow: 0 0 0 5px #edefdf, 0 1px 3px rgba(26, 23, 20, .05); color: #6f7a4e; }
+.hc-chip--bark { box-shadow: 0 0 0 5px #f8e6d8, 0 1px 3px rgba(26, 23, 20, .05); }
+.hc-chip--slate { box-shadow: 0 0 0 5px #e4ebf2, 0 1px 3px rgba(26, 23, 20, .05); color: #5c7189; }
+.hc-arc-node { position: absolute; transform: translate(-50%, -50%); z-index: 2; }
+.hc-arc-label { position: absolute; text-align: center; white-space: nowrap; }
+.hc-arc-label strong { color: var(--ink); display: block; font-size: .84rem; font-weight: 600; }
+.hc-arc-label span { color: var(--muted); display: block; font-size: .71rem; line-height: 1.3; margin-top: 1px; }
+.hc-arc-node--top .hc-arc-label { bottom: calc(100% + 9px); left: 50%; transform: translateX(-50%); }
+.hc-arc-node--bottom .hc-arc-label { left: 50%; top: calc(100% + 9px); transform: translateX(-50%); }
+.hc-arc-node--right .hc-arc-label { left: calc(100% + 12px); text-align: left; top: 50%; transform: translateY(-50%); }
+.hc-arc-node--left .hc-arc-label { right: calc(100% + 12px); text-align: right; top: 50%; transform: translateY(-50%); }
+.hc-arc-center { left: 50%; position: absolute; text-align: center; top: 50%; transform: translate(-50%, -50%); width: 50%; z-index: 1; }
+.hc-arc-ctitle { color: var(--bark-dark); display: block; font-size: .58rem; font-weight: 700; letter-spacing: .13em; margin-bottom: 12px; text-transform: uppercase; }
+.hc-arc-clist { display: flex; flex-direction: column; gap: 11px; list-style: none; margin: 0; padding: 0; }
+.hc-arc-clist li { align-items: center; color: var(--ink); display: flex; font-size: .84rem; font-weight: 600; gap: 11px; justify-content: center; line-height: 1.12; text-align: center; }
+.hc-arc-ci { align-items: center; background: var(--surface); border-radius: 50%; display: grid; flex: 0 0 auto; height: 32px; place-content: center; width: 32px; }
+.hc-arc-ci svg { display: block; height: 17px; width: 17px; }
+.hc-arc-ci--sage { box-shadow: 0 0 0 3px #edefdf; color: #6f7a4e; }
+.hc-arc-ci--bark { box-shadow: 0 0 0 3px #f8e6d8; color: var(--bark); }
+.hc-arc-ci--slate { box-shadow: 0 0 0 3px #e4ebf2; color: #5c7189; }
+
 .m2-ab-net-portrait { aspect-ratio: 1; left: 50%; margin: 0; position: absolute; top: 50%; transform: translate(-50%, -50%); width: 46%; z-index: 2; }
 .m2-ab-net-portrait img { border: 3px solid var(--paper); border-radius: 50%; box-shadow: 0 6px 24px rgba(26, 23, 20, .12); display: block; height: 100%; object-fit: cover; object-position: center 32%; width: 100%; }
 .m2-ab-net-pill { align-items: center; background: var(--forest); border-radius: 999px; bottom: -6%; color: #fff; display: flex; flex-direction: column; left: 50%; line-height: 1.15; padding: 8px 22px; position: absolute; text-align: center; transform: translateX(-50%); white-space: nowrap; z-index: 3; }
@@ -1534,6 +1606,9 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-ap-jump { color: var(--bark-dark) !important; display: inline-flex; font-size: .86rem; font-weight: 600; gap: 6px; margin-top: 18px; }
 
 /* Filters (also the stage summary) */
+/* /apps header carries the cycle diagram; trim its bottom padding + center the
+   ring against the copy so the filters pull up the page. */
+.m2-ap-page .m2-phead { align-items: center; padding-bottom: clamp(16px, 2vw, 32px); }
 .m2-ap-filters { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 auto 28px; max-width: 1300px; }
 .m2-ap-filters button { align-items: center; background: transparent; border: 1px solid var(--sand); border-radius: 999px; color: var(--ink-soft); cursor: pointer; display: inline-flex; font-size: .84rem; font-weight: 500; gap: 8px; padding: 8px 15px; transition: background .2s ease, color .2s ease, border-color .2s ease; }
 .m2-ap-filters button b { color: var(--muted); font-weight: 600; }
@@ -1909,6 +1984,7 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-ab-net { align-items: center; aspect-ratio: auto; display: flex; flex-direction: column; gap: 26px; max-width: 380px; }
   .m2-ab-net-lines { display: none; }
   .m2-ab-net-portrait { left: auto; position: relative; top: auto; transform: none; width: 188px; }
+  .m2-ab-net-core { left: auto; position: relative; top: auto; transform: none; width: 168px; }
   .m2-ab-net-nodes { display: grid; gap: 24px 16px; grid-template-columns: 1fr 1fr; margin-top: 10px; width: 100%; }
   .m2-ab-node { align-items: center; display: flex; flex-direction: column; position: static; transform: none; }
   .m2-ab-node-label { left: auto; margin-top: 8px; position: static; top: auto; transform: none; width: auto; }
@@ -2165,7 +2241,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-consult { background: var(--surface); }
 .m2-consult-body { align-items: center; display: grid; gap: clamp(30px, 4vw, 64px); grid-template-columns: 1.1fr .9fr; margin: 0 auto; max-width: 1300px; padding: 80px 20px; }
 .m2-consult-intro h2 { font-size: var(--m2-h-section); font-weight: 560; letter-spacing: -.04em; line-height: 1.04; margin: 0 0 14px; max-width: 17ch; }
-.m2-consult-intro > p { color: var(--muted); line-height: 1.55; margin: 0 0 30px; max-width: 470px; }
+.m2-consult-intro > p:not(.m2-kicker) { color: var(--muted); line-height: 1.55; margin: 0 0 30px; max-width: 470px; }
 .m2-consult-items { display: grid; gap: 24px; margin-bottom: 26px; }
 .m2-consult-item { display: flex; gap: 15px; }
 .m2-consult-item h3 { font-size: 1.02rem; font-weight: 600; letter-spacing: -.02em; margin: 4px 0 6px; }

@@ -7,10 +7,10 @@ import { ServiceIcon } from "./ServiceIcon";
 import { useReveal } from "./useReveal";
 import { serviceAreas } from "../../data/services";
 import { studioProfile } from "../../data/studioProfile";
+import HowWeHelpDiagram from "./HowWeHelpDiagram";
 import "./madrona-v2.css";
 
 import studioImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/studio-collaboration-wide.webp";
-import howHero from "../../../docs/madrona-v2-build-kit/site-assets/hero-3.webp";
 import lilaHero from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-madrona-hero.webp";
 import lilaWordmark from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-wordmark-dark.svg";
 import lilaTile from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp";
@@ -162,7 +162,7 @@ export default function MadronaV2() {
   useReveal();
 
   return (
-    <main className="m2">
+    <main className="m2 m2-consult-page">
       <LabMeta title="How we help · Madrona Product Studio" />
       <M2Nav active="consulting" />
 
@@ -177,38 +177,8 @@ export default function MadronaV2() {
           <a className="m2-ap-jump" href="#process">See how we work <span aria-hidden="true">↓</span></a>
         </div>
         <div className="m2-ab-intro-visual">
-          <div className="m2-phead-media"><img src={howHero} alt="Skagit Valley tulip fields at first light" /></div>
+          <HowWeHelpDiagram />
         </div>
-      </section>
-
-      {/* Who we help — the capability claim + the three audiences (Charlie's mockup 2026-08-01) */}
-      <section className="m2-who">
-        <div className="m2-who-rail">
-          <p className="m2-kicker m2-who-kicker">Who we help</p>
-          <h2>Modern capability, without the overhead.</h2>
-          <span className="m2-who-rule" aria-hidden="true" />
-          <p>New tools let a small, senior team deliver work that once required much larger agencies. We bring that leverage to websites, commerce, customer journeys, products, and operating workflows, without adding unnecessary complexity.</p>
-        </div>
-        <ul className="m2-who-grid">
-          <li className="m2-who-col" data-tone="sprout">
-            <span className="m2-who-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20.2v-7.4" /><path d="M12 12.8C11.6 9.4 9.3 7.5 5.8 7.3c.2 3.5 2.5 5.6 6.2 5.5Z" /><path d="M12 11.2c.3-2.7 2.1-4.3 5.2-4.5-.2 2.8-2.1 4.6-5.2 4.5Z" /><path d="M5.4 20.2c2-.9 4.1-1.3 6.6-1.3s4.6.4 6.6 1.3" /></svg></span>
-            <h3>Founders</h3>
-            <span className="m2-who-underline" aria-hidden="true" />
-            <p>Taking an important idea from concept to a product people actually use.</p>
-          </li>
-          <li className="m2-who-col" data-tone="storefront">
-            <span className="m2-who-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M4.6 7h14.8l.9 3c-.4 1.2-1.4 1.9-2.7 1.9-1 0-1.9-.5-2.4-1.3-.5.8-1.4 1.3-2.4 1.3s-1.9-.5-2.4-1.3c-.5.8-1.4 1.3-2.4 1.3-1.3 0-2.3-.7-2.7-1.9l.9-3Z" /><path d="M5.6 12.6V19h12.8v-6.4" /><path d="M10 19v-3.8h4V19" /></svg></span>
-            <h3>Local and growing businesses</h3>
-            <span className="m2-who-underline" aria-hidden="true" />
-            <p>Great at what they do, and ready for software that works as hard as they do.</p>
-          </li>
-          <li className="m2-who-col" data-tone="layers">
-            <span className="m2-who-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4 4.8 8 12 12l7.2-4L12 4Z" /><path d="m4.8 12 7.2 4 7.2-4" /><path d="m4.8 16 7.2 4 7.2-4" /></svg></span>
-            <h3>Product teams</h3>
-            <span className="m2-who-underline" aria-hidden="true" />
-            <p>Evolving how they discover, prototype, and ship in the AI era.</p>
-          </li>
-        </ul>
       </section>
 
       <section id="services" className="m2-svcmod">
