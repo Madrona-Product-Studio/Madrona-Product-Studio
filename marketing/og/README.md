@@ -2,10 +2,8 @@
 
 Production OG image: `public/og-image.jpg` (1200×630 JPG, referenced from `index.html` OG/Twitter/JSON-LD tags).
 
-**Shipped design: D4** (`og-d4.html`) — the vector **stacked reversed lockup** (emblem over the
-Lexend/DM Sans logotype, `lockup-stacked-reversed.svg`) over `hero-1.webp` (golden-hour Salish Sea
-bluff) with a radial ink scrim. (Superseded the earlier Poppins-approximation wordmark once the
-official vector logotype landed, 2026-08-03.)
+**Shipped design: D4** (`og-d4.html`) — approved reversed emblem (large, leading) + wordmark set live in
+Poppins 600 over `hero-1.webp` (golden-hour Salish Sea bluff) with a radial ink scrim.
 
 Built per the fleet `/og-image` skill (`~/Developer/.claude/skills/og-image/`).
 

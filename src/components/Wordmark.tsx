@@ -1,60 +1,53 @@
 import { Link } from "react-router-dom";
-import logotype from "../assets/brand/madrona-logotype.svg";
-import logotypeReversed from "../assets/brand/madrona-logotype-reversed.svg";
-import mark from "../assets/brand/madrona-mark.svg";
 
-// Heights (px) of the locked logotype artwork per size.
-const heights = {
-  sm: { full: 30, mark: 26 },
-  md: { full: 40, mark: 34 },
-  lg: { full: 58, mark: 48 },
+const sizes = {
+  sm: { text: "text-[16px]", bullet: "w-[10px] h-[10px]", gap1: "gap-1.5", gap2: "gap-2" },
+  md: { text: "text-[22px]", bullet: "w-[14px] h-[14px]", gap1: "gap-2", gap2: "gap-2.5" },
+  lg: { text: "text-[32px]", bullet: "w-[20px] h-[20px]", gap1: "gap-2.5", gap2: "gap-3" },
 } as const;
 
 interface Props {
   size?: "sm" | "md" | "lg";
   variant?: "full" | "mark";
   as?: "div" | "a";
-  /** Use the reversed (paper + light terracotta) artwork for dark backgrounds. */
-  reversed?: boolean;
   className?: string;
 }
 
-export default function Wordmark({
-  size = "md",
-  variant = "full",
-  as = "div",
-  reversed = false,
-  className = "",
-}: Props) {
-  const height = heights[size][variant];
-  const src = variant === "mark" ? mark : reversed ? logotypeReversed : logotype;
+export default function Wordmark({ size = "md", variant = "full", as = "div", className = "" }: Props) {
+  const s = sizes[size];
 
-  const img = (
-    <img
-      src={src}
-      alt="Madrona Product Studio"
-      height={height}
-      style={{ height, width: "auto" }}
-      className="block select-none"
-      draggable={false}
-    />
+  const content = (
+    <>
+      <span
+        className={`${s.bullet} rounded-full bg-madrona shrink-0`}
+        aria-hidden="true"
+      />
+      {variant === "full" && (
+        <span className={`flex items-baseline ${s.gap2} ${s.text} tracking-[-0.01em] leading-none`}>
+          <span className="font-medium text-ink lowercase">madrona</span>
+          <span className="font-light text-ink70 lowercase">product studio</span>
+        </span>
+      )}
+    </>
   );
+
+  const sharedClassName = `inline-flex items-center ${s.gap1} no-underline ${className}`;
 
   if (as === "a") {
     return (
       <Link
         to="/"
-        className={`inline-flex items-center no-underline hover:opacity-80 transition-opacity ${className}`}
+        className={`${sharedClassName} hover:opacity-80 transition-opacity`}
         aria-label="Madrona Product Studio, home"
       >
-        {img}
+        {content}
       </Link>
     );
   }
 
   return (
-    <div className={`inline-flex items-center ${className}`} aria-label="Madrona Product Studio">
-      {img}
+    <div className={sharedClassName} aria-label="Madrona Product Studio">
+      {content}
     </div>
   );
 }
