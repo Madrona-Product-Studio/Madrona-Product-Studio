@@ -57,6 +57,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2 .madrona-static-logo { object-fit: contain; }
 .m2-nav nav { display: flex; align-items: center; gap: 30px; font-size: .84rem; justify-self: end; }
 .m2-nav nav a { padding: 10px 4px; }
+.m2-nav nav a.is-primary { color: var(--bark); }
 .m2-nav-cta { justify-self: end; margin-left: 30px; }
 /* Consulting dropdown (umbrella over Services; desktop-only — nav hides ≤760px) */
 .m2-nav-dd { position: relative; display: inline-flex; }
@@ -87,20 +88,27 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-navmenu-close { -webkit-tap-highlight-color: transparent; background: none; border: 0; cursor: pointer; display: grid; height: 44px; place-content: center; width: 44px; }
 .m2-navmenu-links { display: flex; flex-direction: column; gap: 2px; padding: 34px 24px 0; }
 .m2-navmenu-links a { color: var(--ink); font-size: clamp(2rem, 9vw, 2.5rem); font-weight: 600; letter-spacing: -.02em; line-height: 1.32; text-decoration: none; }
-.m2-navmenu-links a[aria-current="page"] { color: var(--bark); }
-.m2-navmenu-foot { margin-top: auto; padding: 24px; }
-.m2-navmenu-foot .m2-button { width: 100%; }
-.m2-navmenu-meta { color: var(--muted); font-size: .84rem; margin: 16px 0 0; }
-/* the "settle": links + CTA rise and land in sequence */
-.m2-navmenu-links a, .m2-navmenu-foot { opacity: 0; transform: translateY(16px); transition: opacity .42s ease, transform .5s cubic-bezier(.22,1,.36,1); }
-.m2-navmenu.is-open .m2-navmenu-links a, .m2-navmenu.is-open .m2-navmenu-foot { opacity: 1; transform: none; }
+.m2-navmenu-links a.is-primary { color: var(--bark); }
+/* Contact foot — "Let's connect" invitation drawn from the /connect page:
+   a serif headline, a warm line, then a solid primary + outlined secondary. */
+.m2-navmenu-foot { border-top: 1px solid var(--sand); display: flex; flex-direction: column; gap: 12px; margin: auto 24px 0; padding: 24px 0 max(24px, env(safe-area-inset-bottom)); }
+.m2-navmenu-title { color: var(--ink); font-family: Fraunces, "Fraunces Fallback", Georgia, serif; font-size: clamp(1.8rem, 8vw, 2.05rem); font-weight: 500; letter-spacing: -.01em; line-height: 1.05; margin: 0; }
+.m2-navmenu-invite { color: var(--muted); font-size: .9rem; line-height: 1.5; margin: -2px 0 4px; }
+.m2-navmenu-foot .m2-button { min-height: 52px; width: 100%; }
+.m2-navmenu-secondary { border-color: rgba(31, 59, 51, .26) !important; gap: 8px; }
+/* the "settle": links + foot rows rise and land in sequence */
+.m2-navmenu-links a, .m2-navmenu-foot > * { opacity: 0; transform: translateY(16px); transition: opacity .42s ease, transform .5s cubic-bezier(.22,1,.36,1); }
+.m2-navmenu.is-open .m2-navmenu-links a, .m2-navmenu.is-open .m2-navmenu-foot > * { opacity: 1; transform: none; }
 .m2-navmenu.is-open .m2-navmenu-links a:nth-child(1) { transition-delay: .10s; }
 .m2-navmenu.is-open .m2-navmenu-links a:nth-child(2) { transition-delay: .17s; }
 .m2-navmenu.is-open .m2-navmenu-links a:nth-child(3) { transition-delay: .24s; }
-.m2-navmenu.is-open .m2-navmenu-foot { transition-delay: .34s; }
+.m2-navmenu.is-open .m2-navmenu-foot > *:nth-child(1) { transition-delay: .30s; }
+.m2-navmenu.is-open .m2-navmenu-foot > *:nth-child(2) { transition-delay: .35s; }
+.m2-navmenu.is-open .m2-navmenu-foot > *:nth-child(3) { transition-delay: .40s; }
+.m2-navmenu.is-open .m2-navmenu-foot > *:nth-child(4) { transition-delay: .45s; }
 @media (prefers-reduced-motion: reduce) {
   .m2-navmenu { transition: opacity .15s ease; }
-  .m2-navmenu-links a, .m2-navmenu-foot { transition: opacity .2s ease; transform: none; }
+  .m2-navmenu-links a, .m2-navmenu-foot > * { transition: opacity .2s ease; transform: none; }
   .m2-burger span { transition: none; }
 }
 

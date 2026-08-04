@@ -1,13 +1,24 @@
 import { useEffect, useState } from "react";
 import MadronaLogo from "./MadronaLogo";
+import { CAL_LINK, BOOKING_URL } from "../../data/booking";
 
 type NavKey = "apps" | "consulting" | "thinking" | "about";
 
-const LINKS: { href: string; label: string; key: NavKey }[] = [
-  { href: "/apps", label: "Products", key: "apps" },
-  { href: "/consulting", label: "How we help", key: "consulting" },
-  { href: "/about", label: "About", key: "about" },
+// Direct booking link (matches bookHref() without pulling the Cal embed into
+// the global nav bundle — booking.ts is just string constants).
+const SCHEDULE_HREF = CAL_LINK ? `https://cal.com/${CAL_LINK}` : (BOOKING_URL ?? "/connect");
+
+// "How we help" leads (the front door), then our own products, then about.
+// It carries the bark accent as the primary way in.
+const LINKS: { href: string; label: string; key: NavKey; primary?: boolean }[] = [
+  { href: "/consulting", label: "How we help", key: "consulting", primary: true },
+  { href: "/apps", label: "Our products", key: "apps" },
+  { href: "/about", label: "About Us", key: "about" },
 ];
+
+const ArrowUpRight = () => (
+  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+);
 
 export default function M2Nav({ active }: { active?: NavKey }) {
   const [open, setOpen] = useState(false);
@@ -30,7 +41,7 @@ export default function M2Nav({ active }: { active?: NavKey }) {
         <a className="m2-logo-link" href="/" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></a>
         <nav aria-label="Primary">
           {LINKS.map((l) => (
-            <a key={l.key} href={l.href} aria-current={active === l.key ? "page" : undefined}>{l.label}</a>
+            <a key={l.key} href={l.href} className={l.primary ? "is-primary" : undefined} aria-current={active === l.key ? "page" : undefined}>{l.label}</a>
           ))}
         </nav>
         <a className="m2-button m2-nav-cta" href="/connect">Get in touch</a>
@@ -48,12 +59,14 @@ export default function M2Nav({ active }: { active?: NavKey }) {
         </div>
         <nav className="m2-navmenu-links" aria-label="Primary">
           {LINKS.map((l) => (
-            <a key={l.key} href={l.href} aria-current={active === l.key ? "page" : undefined} onClick={() => setOpen(false)}>{l.label}</a>
+            <a key={l.key} href={l.href} className={l.primary ? "is-primary" : undefined} aria-current={active === l.key ? "page" : undefined} onClick={() => setOpen(false)}>{l.label}</a>
           ))}
         </nav>
         <div className="m2-navmenu-foot">
-          <a className="m2-button" href="/connect" onClick={() => setOpen(false)}>Get in touch</a>
-          <p className="m2-navmenu-meta">hello@madronaproduct.com</p>
+          <h2 className="m2-navmenu-title">Let’s connect.</h2>
+          <p className="m2-navmenu-invite">Tell us what you’re working on, or book a free 30-minute chat. We usually reply within a day.</p>
+          <a className="m2-button m2-navmenu-primary" href="/connect#send" onClick={() => setOpen(false)}>Send a message</a>
+          <a className="m2-button m2-button-secondary m2-navmenu-secondary" href={SCHEDULE_HREF} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>Schedule a 30-min call <ArrowUpRight /></a>
         </div>
       </div>
     </>
