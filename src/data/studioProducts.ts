@@ -134,11 +134,11 @@ export const studioProducts: StudioProduct[] = [
     stage: "in-development",
     logoSrc: iconPlainly,
     shortDescription: "A voice-first intake tool that turns a conversation into a therapy-ready profile.",
-    artifact: { src: plainlyArtifact, alt: "Plainly shown on a tablet and phone, a voice-first therapy intake tool", type: "prototype" },
+    artifact: { src: plainlyArtifact, alt: "Plainly shown on a laptop and phone, a voice-first therapy intake tool", type: "prototype" },
     builtFor: "People considering therapy who want to arrive prepared.",
     helpsThem: "Turn a short spoken conversation into a profile a therapist can read in a minute.",
     rightNow: "Refining the voice conversation and how it generates a shareable profile.",
-    primaryAction: { label: "Visit Plainly", href: "https://plainly-therapy.vercel.app/", external: true },
+    primaryAction: { label: "Visit Plainly", href: "https://www.plainlytherapy.com/", external: true },
     sortOrder: 3,
   },
   {
