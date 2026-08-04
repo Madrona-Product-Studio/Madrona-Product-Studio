@@ -6,8 +6,6 @@ import { useReveal } from "./useReveal";
 import { useCalEmbed, bookProps, bookHref, bookClick } from "./useCalEmbed";
 import "./madrona-v2.css";
 
-import connectHero from "../../../docs/madrona-v2-build-kit/site-assets/services-hero.webp";
-
 const CX_ICONS: Record<string, ReactNode> = {
   leaf: <path d="M5 19c0-8 6-13 14-13 0 8-6 13-14 13Zm0 0c2-5 5-8 9-10" />,
   tree: <path d="M12 3 6 12h4l-3 5h10l-3-5h4L12 3ZM12 17v4" />,
@@ -88,7 +86,6 @@ export default function MadronaV2Connect() {
             <span><CxIcon name="people" />Senior team from the start</span>
           </div>
         </div>
-        <div className="m2-cx-hero-media"><img src={connectHero} alt="Pacific Northwest coastline in warm light" /></div>
       </section>
 
       <section className="m2-cx-main" id="send">

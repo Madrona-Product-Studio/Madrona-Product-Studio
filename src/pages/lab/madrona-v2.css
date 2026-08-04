@@ -623,6 +623,14 @@ html:has(.m2) { scroll-behavior: smooth; }
   .hc-arc-ci svg { height: 13px; width: 13px; }
 }
 
+/* TEMP: the header infographics (products cycle, how-we-help orbit) are too
+   dense on phones. Hide them on mobile until the mobile layout is reworked.
+   Scoped to Apps + Consulting so the About network diagram is untouched. */
+@media (max-width: 600px) {
+  .m2-ap-page .m2-ab-intro-visual,
+  .m2-consult-page .m2-ab-intro-visual { display: none; }
+}
+
 .m2-ab-net-portrait { aspect-ratio: 1; left: 50%; margin: 0; position: absolute; top: 50%; transform: translate(-50%, -50%); width: 46%; z-index: 2; }
 .m2-ab-net-portrait img { border: 3px solid var(--paper); border-radius: 50%; box-shadow: 0 6px 24px rgba(26, 23, 20, .12); display: block; height: 100%; object-fit: cover; object-position: center 32%; width: 100%; }
 .m2-ab-net-pill { align-items: center; background: var(--forest); border-radius: 999px; bottom: -6%; color: #fff; display: flex; flex-direction: column; left: 50%; line-height: 1.15; padding: 8px 22px; position: absolute; text-align: center; transform: translateX(-50%); white-space: nowrap; z-index: 3; }
@@ -1740,15 +1748,13 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-srv-cta-copy p { color: var(--muted); margin: 0; }
 
 /* ============ Connect page (mockup: Let's connect) ============ */
-.m2-cx-hero { align-items: center; display: grid; gap: 48px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); margin: 0 auto; max-width: 1300px; padding: 60px 0 40px; }
+.m2-cx-hero { margin: 0 auto; max-width: 1300px; padding: 60px 0 40px; }
 .m2-cx-hero-copy h1 { color: var(--ink); font-size: clamp(3.6rem, 7vw, 6rem); font-weight: 570; letter-spacing: -.035em; line-height: .95; margin: 0; }
 .m2-cx-rule { background: var(--bark); display: block; height: 3px; margin: 22px 0; width: 66px; }
 .m2-cx-hero-copy > p { color: var(--muted); font-size: clamp(1.05rem, 1.4vw, 1.2rem); line-height: 1.55; margin: 0; max-width: 440px; }
 .m2-cx-tags { color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 24px; margin-top: 30px; }
 .m2-cx-tags span { align-items: center; display: inline-flex; font-size: .86rem; gap: 8px; }
 .m2-cx-tags svg { color: var(--forest); height: 18px; width: 18px; }
-.m2-cx-hero-media { aspect-ratio: 5 / 4; border-radius: 44% 44% 40% 40% / 52% 52% 34% 34%; margin-left: auto; max-width: 560px; overflow: hidden; width: 100%; }
-.m2-cx-hero-media img { height: 100%; object-fit: cover; width: 100%; }
 
 .m2-cx-actions { display: grid; gap: 22px; grid-template-columns: 1fr 1fr; margin: 0 auto 26px; max-width: 1300px; }
 .m2-cx-action { align-items: start; background: var(--surface); border: 1px solid var(--sand); border-radius: 16px; display: flex; gap: 20px; padding: 28px 30px; }
@@ -2019,8 +2025,6 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-sp-begin { grid-template-columns: 1fr; }
   .m2-sp-begin .m2-button { justify-self: start; }
   .m2-cx-hero, .m2-cx-actions, .m2-cx-main, .m2-cx-bestfor, .m2-cx-started { margin-inline: 20px; }
-  .m2-cx-hero { grid-template-columns: 1fr; }
-  .m2-cx-hero-media { margin: 0; max-width: 100%; }
   .m2-cx-actions { grid-template-columns: 1fr; }
   .m2-cx-row { grid-template-columns: 1fr; }
   .m2-cx-bestfor { gap: 20px; grid-template-columns: 1fr; }
