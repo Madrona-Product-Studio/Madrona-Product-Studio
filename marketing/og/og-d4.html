@@ -22,20 +22,16 @@
   }
   .lockup {
     position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    filter: drop-shadow(0 2px 28px rgba(26,23,20,0.35));
   }
-  .emblem { width: 184px; height: auto; object-fit: contain; margin-bottom: 30px; }
-  .madrona { font-size: 96px; font-weight: 600; color: #fdfcfa; line-height: 1; letter-spacing: -0.005em; text-shadow: 0 2px 28px rgba(26,23,20,0.35); }
-  .studio { font-size: 25px; font-weight: 300; color: #fdfcfa; letter-spacing: 0.4em; line-height: 1; opacity: 0.95; }
+  .lockup img { display: block; height: 360px; width: auto; }
 </style>
 </head>
 <body>
   <img class="photo" src="../../docs/madrona-v2-build-kit/site-assets/hero-1.webp" />
   <div class="scrim"></div>
   <div class="lockup">
-    <img class="emblem" src="../../docs/madrona_static_logo_assets/madrona-approved-emblem-reversed-transparent.png" />
-    <div class="madrona">madrona</div>
-    <div class="studio">product studio</div>
+    <img src="./lockup-stacked-reversed.svg" alt="Madrona Product Studio" />
   </div>
 </body>
 </html>
