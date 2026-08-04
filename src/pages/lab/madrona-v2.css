@@ -558,6 +558,18 @@ html:has(.m2) { scroll-behavior: smooth; }
   .pcy-label strong { font-size: .78rem; }
   .pcy-hub-label { font-size: .68rem; }
 }
+/* Narrow phones: side-node labels can't fit horizontally beside the chips,
+   so drop them below (centered) like the top/bottom nodes, and shrink the
+   ring so nothing clips the container edge. */
+@media (max-width: 560px) {
+  .pcy { max-width: 300px; }
+  .pcy-chip { height: 44px; width: 44px; }
+  .pcy-chip svg { height: 19px; width: 19px; }
+  .pcy-label strong { font-size: .74rem; }
+  .pcy-node--left .pcy-label, .pcy-node--right .pcy-label {
+    left: 50%; right: auto; text-align: center; top: calc(100% + 7px); transform: translateX(-50%);
+  }
+}
 
 /* ---- "How we help" header diagram (engagement orbits the audiences) ------ */
 .hc-arc { aspect-ratio: 1; margin: 0 auto; max-width: 452px; position: relative; width: 100%; }
@@ -585,6 +597,26 @@ html:has(.m2) { scroll-behavior: smooth; }
 .hc-arc-ci--sage { box-shadow: 0 0 0 3px #edefdf; color: #6f7a4e; }
 .hc-arc-ci--bark { box-shadow: 0 0 0 3px #f8e6d8; color: var(--bark); }
 .hc-arc-ci--slate { box-shadow: 0 0 0 3px #e4ebf2; color: #5c7189; }
+/* Narrow phones: the long side labels ("Then we build it", "A point of view")
+   can't sit horizontally beside the chips, so wrap them and drop them below
+   (centered). Shrink the ring + center list so nothing clips or collides. */
+@media (max-width: 560px) {
+  .hc-arc { max-width: 300px; }
+  .hc-chip { height: 44px; width: 44px; }
+  .hc-chip svg { height: 20px; width: 20px; }
+  .hc-arc-label strong { font-size: .72rem; }
+  .hc-arc-node--left .hc-arc-label, .hc-arc-node--right .hc-arc-label {
+    left: 50%; right: auto; text-align: center; top: calc(100% + 6px);
+    transform: translateX(-50%); white-space: normal; width: 82px;
+  }
+  .hc-arc-node--left .hc-arc-label span, .hc-arc-node--right .hc-arc-label span { display: none; }
+  .hc-arc-center { width: 46%; }
+  .hc-arc-ctitle { font-size: .52rem; margin-bottom: 8px; }
+  .hc-arc-clist { gap: 8px; }
+  .hc-arc-clist li { font-size: .74rem; gap: 8px; }
+  .hc-arc-ci { height: 26px; width: 26px; }
+  .hc-arc-ci svg { height: 14px; width: 14px; }
+}
 
 .m2-ab-net-portrait { aspect-ratio: 1; left: 50%; margin: 0; position: absolute; top: 50%; transform: translate(-50%, -50%); width: 46%; z-index: 2; }
 .m2-ab-net-portrait img { border: 3px solid var(--paper); border-radius: 50%; box-shadow: 0 6px 24px rgba(26, 23, 20, .12); display: block; height: 100%; object-fit: cover; object-position: center 32%; width: 100%; }
