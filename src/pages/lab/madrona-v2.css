@@ -601,21 +601,26 @@ html:has(.m2) { scroll-behavior: smooth; }
    can't sit horizontally beside the chips, so wrap them and drop them below
    (centered). Shrink the ring + center list so nothing clips or collides. */
 @media (max-width: 560px) {
-  .hc-arc { max-width: 300px; }
-  .hc-chip { height: 44px; width: 44px; }
-  .hc-chip svg { height: 20px; width: 20px; }
+  .hc-arc { max-width: min(340px, 100%); }
+  .hc-chip { height: 42px; width: 42px; }
+  .hc-chip svg { height: 19px; width: 19px; }
+  .hc-chip--sage, .hc-chip--bark, .hc-chip--slate { box-shadow: 0 0 0 4px currentColor; }
+  .hc-chip--sage { box-shadow: 0 0 0 4px #edefdf, 0 1px 3px rgba(26, 23, 20, .05); }
+  .hc-chip--bark { box-shadow: 0 0 0 4px #f8e6d8, 0 1px 3px rgba(26, 23, 20, .05); }
+  .hc-chip--slate { box-shadow: 0 0 0 4px #e4ebf2, 0 1px 3px rgba(26, 23, 20, .05); }
   .hc-arc-label strong { font-size: .72rem; }
   .hc-arc-node--left .hc-arc-label, .hc-arc-node--right .hc-arc-label {
     left: 50%; right: auto; text-align: center; top: calc(100% + 6px);
-    transform: translateX(-50%); white-space: normal; width: 82px;
+    transform: translateX(-50%); white-space: normal; width: 84px;
   }
   .hc-arc-node--left .hc-arc-label span, .hc-arc-node--right .hc-arc-label span { display: none; }
-  .hc-arc-center { width: 46%; }
-  .hc-arc-ctitle { font-size: .52rem; margin-bottom: 8px; }
-  .hc-arc-clist { gap: 8px; }
-  .hc-arc-clist li { font-size: .74rem; gap: 8px; }
-  .hc-arc-ci { height: 26px; width: 26px; }
-  .hc-arc-ci svg { height: 14px; width: 14px; }
+  /* Keep the center audiences compact so they clear the ring nodes. */
+  .hc-arc-center { width: 40%; }
+  .hc-arc-ctitle { font-size: .5rem; margin-bottom: 7px; }
+  .hc-arc-clist { gap: 9px; }
+  .hc-arc-clist li { font-size: .68rem; gap: 7px; }
+  .hc-arc-ci { height: 25px; width: 25px; }
+  .hc-arc-ci svg { height: 13px; width: 13px; }
 }
 
 .m2-ab-net-portrait { aspect-ratio: 1; left: 50%; margin: 0; position: absolute; top: 50%; transform: translate(-50%, -50%); width: 46%; z-index: 2; }
@@ -1248,23 +1253,6 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-app-rowcard-body p { color: var(--muted); font-size: .88rem; line-height: 1.5; margin: 0; }
 .m2-app-rowcard-body .m2-text-link { margin-top: 4px; }
 
-.m2-studio {
-  align-items: center;
-  background: var(--surface);
-  display: grid;
-  gap: 65px;
-  grid-template-columns: 1fr .8fr;
-  padding: 100px max(32px, calc((100vw - 1300px) / 2));
-}
-.m2-studio h2 { font-size: var(--m2-h-section); max-width: 750px; }
-.m2-studio-facts { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 45px; }
-.m2-studio-facts p { border-left: 1px solid var(--sand); display: flex; flex-direction: column; margin: 0; padding: 0 24px; }
-.m2-studio-facts p:first-child { border: 0; padding-left: 0; }
-.m2-studio-facts strong { font-size: 1rem; }
-.m2-studio-facts span { color: var(--muted); font-size: .72rem; margin-top: 4px; }
-.m2-studio figure { margin: 0; }
-.m2-studio figure img { border-radius: 48% 52% 12px 12px / 30% 30% 12px 12px; height: 370px; object-fit: cover; width: 100%; }
-.m2-studio figcaption { color: var(--muted); font-size: .64rem; margin-top: 8px; }
 
 /* How we work — "A straightforward way to begin" */
 .m2-hww { display: grid; gap: clamp(40px, 5vw, 80px); grid-template-columns: 280px 1fr; margin: 0 auto; max-width: 1300px; padding: 100px 0; }
@@ -2170,10 +2158,6 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-product-proof { padding: 25px; }
   .m2-product-stage { min-height: 480px; }
   .m2-product-stage > .m2-plan, .m2-product-stage > .m2-route { bottom: 14px; right: 14px; width: calc(100% - 28px); }
-  .m2-studio { grid-template-columns: 1fr; padding: 60px 20px; }
-  .m2-studio figure img { height: 300px; }
-  .m2-studio-facts { grid-template-columns: 1fr; }
-  .m2-studio-facts p, .m2-studio-facts p:first-child { border-left: 0; border-top: 1px solid var(--sand); padding: 15px 0; }
   .m2-hww { margin-inline: 20px; padding: 60px 0; }
   .m2-hww-steps { grid-template-columns: 1fr; gap: 30px; }
   /* Mobile: collapse each step's example artifact behind a toggle. */
