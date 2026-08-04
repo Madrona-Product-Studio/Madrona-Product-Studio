@@ -1,7 +1,5 @@
-// Wordmark-bearing lockups: same emblem art, new Lexend/DM Sans wordmark.
-import horizontal from "../../assets/brand/madrona-logo-horizontal.svg";
-import horizontalReversed from "../../assets/brand/madrona-logo-horizontal-reversed.svg";
-// Emblem-only marks: unchanged (existing approved emblem).
+import horizontal from "../../../docs/madrona_static_logo_assets/madrona-approved-logo-transparent.png";
+import horizontalReversed from "../../../docs/madrona_static_logo_assets/madrona-approved-logo-reversed-transparent.png";
 import standalone from "../../../docs/madrona_static_logo_assets/madrona-approved-emblem-transparent.png";
 import standaloneReversed from "../../../docs/madrona_static_logo_assets/madrona-approved-emblem-reversed-transparent.png";
 
