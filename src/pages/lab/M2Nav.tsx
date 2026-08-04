@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
 import { CAL_LINK, BOOKING_URL } from "../../data/booking";
 
@@ -38,13 +39,13 @@ export default function M2Nav({ active }: { active?: NavKey }) {
   return (
     <>
       <header className="m2-nav">
-        <a className="m2-logo-link" href="/" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></a>
+        <Link className="m2-logo-link" to="/" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></Link>
         <nav aria-label="Primary">
           {LINKS.map((l) => (
-            <a key={l.key} href={l.href} className={l.primary ? "is-primary" : undefined} aria-current={active === l.key ? "page" : undefined}>{l.label}</a>
+            <Link key={l.key} to={l.href} className={l.primary ? "is-primary" : undefined} aria-current={active === l.key ? "page" : undefined}>{l.label}</Link>
           ))}
         </nav>
-        <a className="m2-button m2-nav-cta" href="/connect">Get in touch</a>
+        <Link className="m2-button m2-nav-cta" to="/connect">Get in touch</Link>
         <button className="m2-nav-burger" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
           <span className="m2-burger" aria-hidden="true"><span /><span /><span /></span>
         </button>
@@ -52,20 +53,20 @@ export default function M2Nav({ active }: { active?: NavKey }) {
 
       <div className={`m2-navmenu${open ? " is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Menu">
         <div className="m2-navmenu-bar">
-          <a className="m2-navmenu-logo" href="/" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></a>
+          <Link className="m2-navmenu-logo" to="/" aria-label="Madrona Product Studio home" onClick={() => setOpen(false)}><MadronaLogo decorative /></Link>
           <button className="m2-navmenu-close" aria-label="Close menu" onClick={() => setOpen(false)}>
             <span className="m2-burger is-x" aria-hidden="true"><span /><span /><span /></span>
           </button>
         </div>
         <nav className="m2-navmenu-links" aria-label="Primary">
           {LINKS.map((l) => (
-            <a key={l.key} href={l.href} className={l.primary ? "is-primary" : undefined} aria-current={active === l.key ? "page" : undefined} onClick={() => setOpen(false)}>{l.label}</a>
+            <Link key={l.key} to={l.href} className={l.primary ? "is-primary" : undefined} aria-current={active === l.key ? "page" : undefined} onClick={() => setOpen(false)}>{l.label}</Link>
           ))}
         </nav>
         <div className="m2-navmenu-foot">
           <h2 className="m2-navmenu-title">Let’s connect.</h2>
           <p className="m2-navmenu-invite">Tell us what you’re working on, or book a free 30-minute chat. We usually reply within a day.</p>
-          <a className="m2-button m2-navmenu-primary" href="/connect#send" onClick={() => setOpen(false)}>Send a message</a>
+          <Link className="m2-button m2-navmenu-primary" to="/connect#send" onClick={() => setOpen(false)}>Send a message</Link>
           <a className="m2-button m2-button-secondary m2-navmenu-secondary" href={SCHEDULE_HREF} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>Schedule a 30-min call <ArrowUpRight /></a>
         </div>
       </div>

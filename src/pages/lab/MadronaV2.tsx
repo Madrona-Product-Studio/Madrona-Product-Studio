@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import BerryGoodCaseStudy from "./BerryGoodCaseStudy";
@@ -21,7 +22,7 @@ const ownApps = [
 
 
 function SeeAllApps({ className = "" }: { className?: string }) {
-  return <a className={`m2-text-link ${className}`} href="/apps">See all our apps <span>→</span></a>;
+  return <Link className={`m2-text-link ${className}`} to="/apps">See all our apps <span>→</span></Link>;
 }
 
 function AppRowCard({ app }: { app: (typeof ownApps)[number] }) {
@@ -185,11 +186,11 @@ export default function MadronaV2() {
             <h2>Four ways in. <span className="m2-pop">One practice.</span></h2>
             <p className="m2-svcmod-lead">The doors are different; the work behind them is the same. We find the most valuable thing to do next, then build it with you.</p>
           </div>
-          <a className="m2-text-link" href="/services">Explore detailed capabilities <span>→</span></a>
+          <Link className="m2-text-link" to="/services">Explore detailed capabilities <span>→</span></Link>
         </div>
         <div className="m2-svcmod-cards">
           {serviceAreas.map((service) => (
-            <a className="m2-svcmod-card" href={`/services#${service.id}`} key={service.id} data-reveal aria-label={`${service.door} — see related capabilities`}>
+            <Link className="m2-svcmod-card" to={`/services#${service.id}`} key={service.id} data-reveal aria-label={`${service.door} — see related capabilities`}>
               <div className="m2-svcmod-head">
                 <ServiceIcon id={service.id} />
                 <h3>{service.door}</h3>
@@ -202,7 +203,7 @@ export default function MadronaV2() {
               <div className="m2-svcmod-art">
                 <img src={service.artifact.src} alt={service.artifact.alt} loading="lazy" />
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import AudienceSection from "./AudienceSection";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
@@ -74,8 +75,8 @@ export default function MadronaV2Home() {
             software in the AI era.
           </p>
           <div className="m2-actions">
-            <a className="m2-button" href="/connect">Get in touch</a>
-            <a className="m2-button m2-button-secondary" href="/consulting">Explore how we help</a>
+            <Link className="m2-button" to="/connect">Get in touch</Link>
+            <Link className="m2-button m2-button-secondary" to="/consulting">Explore how we help</Link>
           </div>
         </div>
         <div className="m2-hero-visual m2-hero-island m2-hero-rotate">
@@ -110,7 +111,7 @@ export default function MadronaV2Home() {
               ))}
             </div>
             <p>Madrona is led by Charlie Koch, a product leader with fifteen years of experience building consumer products at scale and bringing new ideas to life with small teams.</p>
-            <a className="m2-text-link" href="/consulting">Explore how we help <span aria-hidden="true">→</span></a>
+            <Link className="m2-text-link" to="/consulting">Explore how we help <span aria-hidden="true">→</span></Link>
           </div>
           <BerryGoodTeaser />
         </div>
@@ -125,7 +126,7 @@ export default function MadronaV2Home() {
             <h2>We build and run our own apps, too.</h2>
             <p className="m2-hp-intro">We design, build, and operate our own products to solve real problems we care about, and to keep our judgment close to real customers.</p>
           </div>
-          <a className="m2-text-link m2-hp-viewall" href="/apps">See all our apps <span aria-hidden="true">→</span></a>
+          <Link className="m2-text-link m2-hp-viewall" to="/apps">See all our apps <span aria-hidden="true">→</span></Link>
         </div>
         <div className="m2-hp-grid">
           {products.map((p) => (

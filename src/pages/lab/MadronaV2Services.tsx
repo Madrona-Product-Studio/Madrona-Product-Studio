@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -105,7 +106,7 @@ export default function MadronaV2Services() {
                 <div className="m2-sp-col">
                   <h3>How we start</h3>
                   <p className="m2-sp-start">{s.startingPoint}</p>
-                  <a className="m2-text-link m2-sp-cta" href="/connect">Talk with us about {CTA_LABEL[s.id]} <span>→</span></a>
+                  <Link className="m2-text-link m2-sp-cta" to="/connect">Talk with us about {CTA_LABEL[s.id]} <span>→</span></Link>
                 </div>
               </div>
             </section>
@@ -119,7 +120,7 @@ export default function MadronaV2Services() {
           <h2>Not sure where to begin?</h2>
           <p>We’ll help you find the right starting point.</p>
         </div>
-        <a className="m2-button" href="/connect">Get in touch <span aria-hidden="true">→</span></a>
+        <Link className="m2-button" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
       </section>
 
       <SiteFooter />

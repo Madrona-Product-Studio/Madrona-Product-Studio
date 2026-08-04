@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { ScrollToTop, PageFade } from "./components/RouteMotion";
 import Layout from "./components/Layout";
 import CaseStudyPage from "./pages/CaseStudyPage";
 import AgenticOperations from "./pages/AgenticOperations";
@@ -15,6 +16,8 @@ import MadronaSystem from "./pages/lab/MadronaSystem";
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+      <PageFade>
       <Routes>
         {/* Story rethink: new studio front-door home; current homepage preserved as /consulting. */}
         <Route path="/" element={<MadronaV2Home />} />
@@ -49,6 +52,7 @@ export default function App() {
         {/* Unknown URLs land home rather than on a blank screen. */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      </PageFade>
     </BrowserRouter>
   );
 }

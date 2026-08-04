@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LabMeta from "./LabMeta";
 import MadronaLogo from "./MadronaLogo";
 import "./madrona-v2.css";
@@ -27,7 +28,7 @@ export default function MadronaSystem() {
         <p className="m2-kicker">Internal design lab · noindex</p>
         <h1>A warm, practical system for serious work.</h1>
         <p>Editorial hierarchy, grounded materials, and useful product evidence. Calm enough to trust. Specific enough to remember.</p>
-        <a className="m2-text-link" href="/lab/madrona-v2">View the homepage concept <span>→</span></a>
+        <Link className="m2-text-link" to="/lab/madrona-v2">View the homepage concept <span>→</span></Link>
       </header>
 
       <section className="m2-system-section" aria-labelledby="logo-title">
@@ -75,7 +76,7 @@ export default function MadronaSystem() {
       <section className="m2-system-section" aria-labelledby="elements-title">
         <div className="m2-section-heading"><p className="m2-kicker">Elements</p><h2 id="elements-title">Actions and surfaces</h2></div>
         <div className="m2-element-grid">
-          <div className="m2-element-row"><a className="m2-button" href="/connect">Let’s connect</a><button className="m2-button m2-button-secondary">Explore the work</button><a className="m2-text-link" href="#principles">See our process <span>→</span></a></div>
+          <div className="m2-element-row"><Link className="m2-button" to="/connect">Let’s connect</Link><button className="m2-button m2-button-secondary">Explore the work</button><a className="m2-text-link" href="#principles">See our process <span>→</span></a></div>
           <article className="m2-mini-card"><span className="m2-chip">Live product</span><h3>Evidence, not decoration</h3><p>Each interface example should help a visitor understand a real capability.</p></article>
           <article className="m2-agent-card"><div className="m2-agent-head"><span className="m2-avatar">BG</span><div><strong>Order intake</strong><small>Ready for review</small></div></div><p>12 flats · strawberries<br />Thursday, 9–11 AM</p></article>
         </div>

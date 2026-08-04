@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
 
 const EMAIL = "hello@madronaproduct.com";
@@ -31,7 +32,7 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
                 <p>Bring us an important problem, an early idea, or something already in motion. We help you figure out what to build, then build it.</p>
               </div>
               <div className="m2-fc-solo-actions">
-                <a className="m2-fc-btn" href={CONTACT}><I d={P.chat} /> Get in touch <I d={P.arrow} /></a>
+                <Link className="m2-fc-btn" to={CONTACT}><I d={P.chat} /> Get in touch <I d={P.arrow} /></Link>
                 <ul className="m2-fc-trust">
                   <li><span><I d={P.clock} /></span><p>30 minute call if you’re ready</p></li>
                   <li><span><I d={P.people} /></span><p>Senior team from the start</p></li>
@@ -46,12 +47,12 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
 
       <div className="m2-fc-foot">
         <div className="m2-fc-foot-main">
-          <a className="m2-fc-logo" href="/" aria-label="Madrona Product Studio home"><MadronaLogo variant="horizontal" decorative /></a>
+          <Link className="m2-fc-logo" to="/" aria-label="Madrona Product Studio home"><MadronaLogo variant="horizontal" decorative /></Link>
           <nav className="m2-fc-nav" aria-label="Footer">
-            <a href="/apps">Products</a>
-            <a href="/consulting">How we help</a>
-            <a href="/services">Services</a>
-            <a href="/about">About</a>
+            <Link to="/apps">Products</Link>
+            <Link to="/consulting">How we help</Link>
+            <Link to="/services">Services</Link>
+            <Link to="/about">About</Link>
           </nav>
           <div className="m2-fc-contact">
             <p>Pacific Northwest</p>

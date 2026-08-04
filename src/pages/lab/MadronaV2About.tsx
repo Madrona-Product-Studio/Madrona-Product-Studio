@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -145,7 +146,7 @@ export default function MadronaV2About() {
           <p className="m2-kicker m2-who-kicker">What we believe</p>
           <h2>Madrona Product Thesis</h2>
           <p className="m2-ab4-substatement">AI is not eliminating Product, Design, or Engineering. It is expanding what each discipline can contribute as the cost of building software falls. The future is not fewer disciplines. It is more integrated ones.</p>
-          <a className="m2-text-link" href="/thesis">Read the full Madrona Product Thesis <span aria-hidden="true">→</span></a>
+          <Link className="m2-text-link" to="/thesis">Read the full Madrona Product Thesis <span aria-hidden="true">→</span></Link>
         </div>
         <ul className="m2-ab4-cols">
           {IDEAS.map((idea) => (
@@ -190,7 +191,7 @@ export default function MadronaV2About() {
             <p>AI gives small teams extraordinary leverage. That makes where we point it matter more, not less.</p>
             <p>So we choose deliberately, and take on the work we'd be proud to have built. We believe software can leave the world a little better than it found it.</p>
           </div>
-          <a className="m2-text-link" href="/connect">Get in touch <span aria-hidden="true">→</span></a>
+          <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
         </div>
         <div className="m2-ab4-worth-media">
           <img src={community.images[0]} alt="Fresh local produce at a Pacific Northwest market" loading="lazy" />

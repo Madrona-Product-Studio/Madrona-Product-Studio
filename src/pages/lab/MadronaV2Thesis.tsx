@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -160,8 +161,8 @@ export default function MadronaV2Thesis() {
           <p>The hopeful part of this moment is not that companies can build more cheaply. It is that important problems may be more solvable than they have ever been.</p>
           <p>Madrona exists to put this thesis into practice. Our products and client work are the evidence, and we share what we learn as we go. This is a working document; the moment it stops changing, it has stopped doing its job.</p>
           <div className="m2-th-close-links">
-            <a className="m2-text-link" href="/about">Why Madrona exists <span aria-hidden="true">→</span></a>
-            <a className="m2-text-link" href="/consulting">How we put it into practice <span aria-hidden="true">→</span></a>
+            <Link className="m2-text-link" to="/about">Why Madrona exists <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/consulting">How we put it into practice <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>

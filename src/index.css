@@ -187,6 +187,9 @@
   .press:active {
     transform: none;
   }
+  .route-fade {
+    animation: none;
+  }
   .animate-dot-bounce,
   .animate-\[cursor-blink_1s_steps\(2\,start\)_infinite\] {
     animation: none !important;
@@ -201,4 +204,15 @@
 @keyframes dot-bounce {
   0%, 100% { transform: translateY(0); opacity: 1; }
   50% { transform: translateY(-4px); opacity: 0.5; }
+}
+
+/* Page-to-page settle: the routed view fades + rises a few px on each path
+   change, so client-side navigation feels continuous instead of snapping.
+   Keyed by pathname in <PageFade> (RouteMotion.tsx). */
+.route-fade {
+  animation: routeSettle 360ms var(--ease-snap, cubic-bezier(0.23, 1, 0.32, 1)) both;
+}
+@keyframes routeSettle {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
 }
