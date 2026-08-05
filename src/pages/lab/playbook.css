@@ -1,0 +1,131 @@
+/* /playbook — the engine diagrams + notes feed.
+   Diagram language ported from madrona-studio design/diagrams/app-engine
+   (approved 2026-08-05), restated on the site's tokens. Scoped .m2-pb*. */
+
+.m2-pb-figure { margin-top: 40px; grid-column: 1 / -1; min-width: 0; }
+.m2-pb-board {
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  padding: 40px 44px;
+  overflow: hidden;
+}
+.m2-pb-mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+
+/* ── E1 · substrate ─────────────────────────────────────── */
+.m2-pb-pipe { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.m2-pb-stage {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 8px;
+  padding: 13px 14px;
+  position: relative;
+}
+.m2-pb-stage .num { font: 500 11px/1 var(--font-serif); color: var(--color-faint); }
+.m2-pb-stage .name { font: 600 12px/1.2 var(--font-sans); letter-spacing: .07em; text-transform: uppercase; margin-top: 6px; }
+.m2-pb-stage .d { font: 400 10.8px/1.45 var(--font-sans); color: var(--color-clay); margin-top: 6px; }
+.m2-pb-stage .d b { color: var(--color-ink); font-weight: 600; }
+.m2-pb-stage:not(:last-child)::after {
+  content: "\2192"; position: absolute; right: -13px; top: 44%;
+  color: var(--color-clay); font-size: 13px; background: var(--color-bg); z-index: 2; line-height: 1;
+}
+.m2-pb-stage.gate { border-top: 3px solid var(--color-madrona); }
+.m2-pb-gate-tag {
+  position: absolute; top: -9px; right: 10px;
+  background: var(--color-madrona); color: #fff;
+  font: 600 8px/1 var(--font-sans); letter-spacing: .08em; text-transform: uppercase;
+  border-radius: 3px; padding: 3px 6px;
+}
+.m2-pb-drawline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; height: 30px; margin: 2px 0; }
+.m2-pb-drawline span { display: flex; justify-content: center; align-items: center; color: var(--color-faint); font-size: 12px; }
+.m2-pb-substrate { background: var(--color-ink); border-radius: 8px; padding: 20px 22px 18px; color: var(--color-paper); }
+.m2-pb-substrate .stitle { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; gap: 12px; flex-wrap: wrap; }
+.m2-pb-substrate .stitle .t { font: 500 15px/1 var(--font-serif); }
+.m2-pb-substrate .stitle .m { font: 400 10.5px/1 var(--font-sans); color: rgba(253, 252, 250, .6); }
+.m2-pb-slayers { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.m2-pb-slayer { border: 1px solid rgba(253, 252, 250, .18); border-radius: 6px; padding: 10px 11px; }
+.m2-pb-slayer .n { font: 600 10px/1.3 var(--font-sans); letter-spacing: .09em; text-transform: uppercase; color: var(--color-madrona-light); }
+.m2-pb-slayer .i { font: 400 10px/1.5 var(--font-sans); color: rgba(253, 252, 250, .75); margin-top: 5px; }
+.m2-pb-learnline { margin-top: 22px; border-top: 1px dashed var(--color-line); padding-top: 10px; text-align: center; }
+.m2-pb-learnline span {
+  font: 500 10px/1.4 var(--font-sans); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--color-madrona-dark);
+}
+
+/* ── E2 · strata ────────────────────────────────────────── */
+.m2-pb-apps { display: grid; grid-template-columns: repeat(4, 1fr) 150px; gap: 12px; align-items: end; }
+.m2-pb-app {
+  background: var(--color-card); border: 1px solid var(--color-line);
+  border-radius: 8px 8px 0 0; border-bottom: 0; padding: 12px 13px;
+}
+.m2-pb-app .an { font: 600 12px/1.2 var(--font-sans); }
+.m2-pb-app .as { font: 400 10px/1.4 var(--font-sans); color: var(--color-muted); margin-top: 3px; }
+.m2-pb-app.next { background: transparent; border-style: dashed; border-color: var(--color-madrona); }
+.m2-pb-app.next .an { color: var(--color-madrona); }
+.m2-pb-strata { display: flex; flex-direction: column; border: 1px solid var(--color-ink); border-radius: 0 0 8px 8px; overflow: hidden; }
+.m2-pb-stratum {
+  display: grid; grid-template-columns: 190px 1fr 240px; gap: 16px;
+  padding: 13px 18px; align-items: baseline; background: var(--color-card);
+}
+.m2-pb-stratum + .m2-pb-stratum { border-top: 1px solid var(--color-line); }
+.m2-pb-stratum:nth-child(2) { background: var(--color-paper); }
+.m2-pb-stratum:nth-child(3) { background: #f8f4ed; }
+.m2-pb-stratum:nth-child(4) { background: #f3eee5; }
+.m2-pb-stratum:nth-child(5) { background: #eee8dd; }
+.m2-pb-stratum .sn { font: 600 10.5px/1.3 var(--font-sans); letter-spacing: .09em; text-transform: uppercase; }
+.m2-pb-stratum .sn small { display: block; font: 500 9px/1.4 ui-monospace, Menlo, monospace; color: var(--color-madrona); letter-spacing: 0; text-transform: none; margin-top: 2px; }
+.m2-pb-stratum .sd { font: 400 11.5px/1.5 var(--font-sans); color: var(--color-ink70); }
+.m2-pb-stratum .sp { font: 400 10px/1.5 var(--font-sans); color: var(--color-muted); }
+.m2-pb-gates { display: flex; gap: 20px; margin-top: 18px; align-items: flex-start; }
+.m2-pb-gates .g { flex: 1; border-left: 2px solid var(--color-madrona); padding-left: 12px; }
+.m2-pb-gates .g .t { font: 600 10.5px/1.3 var(--font-sans); letter-spacing: .08em; text-transform: uppercase; }
+.m2-pb-gates .g .m { font: 400 10.5px/1.5 var(--font-sans); color: var(--color-clay); margin-top: 3px; }
+
+/* ── E3 · blueprint ─────────────────────────────────────── */
+.m2-pb-bp { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.m2-pb-bpgrid { display: grid; grid-template-columns: 236px 76px 1fr 76px 236px; grid-template-rows: auto 22px auto; align-items: start; }
+.m2-pb-wire { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; align-self: center; color: var(--color-muted); }
+.m2-pb-wire span { font: 500 9px/1 ui-monospace, Menlo, monospace; }
+.m2-pb-wire i { font-style: normal; font-size: 15px; line-height: 1; color: var(--color-clay); }
+.m2-pb-plate { background: var(--color-card); border: 1px solid var(--color-ink); border-radius: 2px; padding: 14px 16px; position: relative; }
+.m2-pb-plate .pnum { position: absolute; top: -9px; left: 12px; background: var(--color-card); padding: 0 6px; font: 500 10px/1.4 ui-monospace, Menlo, monospace; color: var(--color-madrona); }
+.m2-pb-plate h4 { font: 600 11.5px/1.3 var(--font-sans); letter-spacing: .06em; text-transform: uppercase; }
+.m2-pb-plate ul { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.m2-pb-plate li { font: 400 10.5px/1.45 ui-monospace, Menlo, monospace; color: var(--color-ink70); }
+.m2-pb-plate li::before { content: "·"; color: var(--color-madrona); margin-right: 6px; }
+.m2-pb-plate.core { border-width: 2px; background: var(--color-paper); }
+.m2-pb-plate.dark { background: var(--color-ink); border-color: var(--color-ink); }
+.m2-pb-plate.dark h4 { color: var(--color-paper); }
+.m2-pb-plate.dark li { color: rgba(253, 252, 250, .75); }
+.m2-pb-bpreturn { display: flex; align-items: center; gap: 10px; margin-top: 24px; color: var(--color-madrona); }
+.m2-pb-bpreturn i { font-style: normal; font-size: 16px; }
+.m2-pb-bpreturn span { font: 400 10.5px/1.4 ui-monospace, Menlo, monospace; }
+.m2-pb-bpnote { font: 400 10px/1.5 ui-monospace, Menlo, monospace; color: var(--color-muted); margin-top: 26px; border-top: 1px solid var(--color-line); padding-top: 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* ── notes feed ─────────────────────────────────────────── */
+.m2-pb-notes { display: flex; flex-direction: column; }
+.m2-pb-note { display: grid; grid-template-columns: 92px 1fr auto; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--color-line-soft); align-items: baseline; }
+.m2-pb-note:first-child { border-top: 1px solid var(--color-line); }
+.m2-pb-note .nd { font: 500 11px/1.4 ui-monospace, Menlo, monospace; color: var(--color-muted); }
+.m2-pb-note .nt { font: 600 14px/1.35 var(--font-sans); }
+.m2-pb-note .nm { font: 400 12px/1.5 var(--font-sans); color: var(--color-clay); margin-top: 3px; }
+.m2-pb-note .ns { font: 500 9.5px/1 var(--font-sans); letter-spacing: .08em; text-transform: uppercase; color: var(--color-madrona-dark); border: 1px solid var(--color-line); border-radius: 99px; padding: 4px 9px; white-space: nowrap; }
+
+/* ── responsive ─────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .m2-pb-board { padding: 22px 16px; }
+  .m2-pb-pipe, .m2-pb-slayers, .m2-pb-apps { grid-template-columns: 1fr; }
+  .m2-pb-pipe { gap: 20px; }
+  .m2-pb-drawline { display: none; }
+  .m2-pb-substrate { margin-top: 14px; }
+  .m2-pb-stage:not(:last-child)::after { content: "\2193"; right: auto; left: 50%; top: auto; bottom: -16px; }
+  .m2-pb-apps { gap: 8px; }
+  .m2-pb-app { border-radius: 8px; border-bottom: 1px solid var(--color-line); }
+  .m2-pb-stratum { grid-template-columns: 1fr; gap: 4px; }
+  .m2-pb-gates { flex-direction: column; gap: 12px; }
+  .m2-pb-bpgrid { grid-template-columns: 1fr; grid-template-rows: none; gap: 14px; }
+  .m2-pb-bpgrid .m2-pb-plate { grid-column: auto !important; grid-row: auto !important; }
+  .m2-pb-wire { display: none; }
+  .m2-pb-note { grid-template-columns: 1fr; gap: 4px; }
+  .m2-pb-pipe > *, .m2-pb-slayers > *, .m2-pb-apps > *, .m2-pb-bpgrid > * { min-width: 0; }
+}

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
 import { CAL_LINK, BOOKING_URL } from "../../data/booking";
 
-type NavKey = "apps" | "consulting" | "thinking" | "about";
+type NavKey = "apps" | "consulting" | "playbook" | "about";
 
 // Direct booking link (matches bookHref() without pulling the Cal embed into
 // the global nav bundle — booking.ts is just string constants).
@@ -14,6 +14,7 @@ const SCHEDULE_HREF = CAL_LINK ? `https://cal.com/${CAL_LINK}` : (BOOKING_URL ??
 const LINKS: { href: string; label: string; key: NavKey; primary?: boolean }[] = [
   { href: "/consulting", label: "How we help", key: "consulting", primary: true },
   { href: "/apps", label: "Our products", key: "apps" },
+  { href: "/playbook", label: "Playbook", key: "playbook" },
   { href: "/about", label: "About Us", key: "about" },
 ];
 

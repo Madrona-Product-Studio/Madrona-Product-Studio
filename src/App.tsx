@@ -9,8 +9,8 @@ import MadronaV2Services from "./pages/lab/MadronaV2Services";
 import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
 import MadronaV2About from "./pages/lab/MadronaV2About";
-import MadronaV2Thinking from "./pages/lab/MadronaV2Thinking";
 import MadronaV2Thesis from "./pages/lab/MadronaV2Thesis";
+import MadronaV2Playbook from "./pages/lab/MadronaV2Playbook";
 import MadronaSystem from "./pages/lab/MadronaSystem";
 
 export default function App() {
@@ -27,7 +27,9 @@ export default function App() {
         <Route path="work" element={<Navigate to="/apps" replace />} />
         <Route path="connect" element={<MadronaV2Connect />} />
         <Route path="about" element={<MadronaV2About />} />
-        <Route path="thinking" element={<MadronaV2Thinking />} />
+        <Route path="playbook" element={<MadronaV2Playbook />} />
+        {/* Thinking folded into the Playbook (2026-08-05): method + notes live together. */}
+        <Route path="thinking" element={<Navigate to="/playbook" replace />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
@@ -45,7 +47,7 @@ export default function App() {
           <Route path="how-it-works" element={<Navigate to="/consulting" replace />} />
           <Route path="services/agentic-operations" element={<AgenticOperations />} />
           <Route path="approach" element={<Navigate to="/consulting" replace />} />
-          <Route path="writing" element={<Navigate to="/thinking" replace />} />
+          <Route path="writing" element={<Navigate to="/playbook" replace />} />
           <Route path="contact" element={<Navigate to="/connect" replace />} />
         </Route>
 

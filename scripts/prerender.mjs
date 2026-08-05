@@ -50,12 +50,11 @@ const pages = {
     h1: 'Our products',
     body: 'Each Madrona product begins with a real customer problem and creates a place to test ideas, improve our methods, and make something useful in its own right.',
   },
-  '/thinking': {
-    noindex: true,
-    title: 'Thinking · Madrona Product Studio',
-    description: 'Notes from Madrona on product leadership, small teams, responsible AI, and the changing craft of software creation.',
-    h1: 'What we’re learning',
-    body: 'Madrona shares what the work teaches us about product leadership, small teams, responsible AI, and the changing craft of software creation. The Teams That Build Next is forthcoming.',
+  '/playbook': {
+    title: 'Playbook · Madrona Product Studio',
+    description: 'How Madrona builds, written down: the platform every project inherits, the gates that hold the bar, and the learning loop that compounds with every launch.',
+    h1: 'How we build, written down.',
+    body: 'Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the playbook is the judgment it executes. Notes from real launches publish here as they are banked.',
   },
   '/connect': {
     title: 'Connect · Madrona Product Studio',
