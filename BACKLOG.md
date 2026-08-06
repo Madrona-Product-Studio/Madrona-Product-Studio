@@ -1,7 +1,12 @@
 # Madrona Product Studio — Site Backlog
 
+## In flight
+- [ ] **Our POV section (`feature/playbook` branch, unmerged)** — the studio feed at /pov with four articles on the Thesis content template: the Product Thesis, Madrona: under the hood, The era of agentic operations, A starter guide to building with AI. Charlie is iterating before merge; two more pieces (launch checklist, Madrona Principles) sit in the drawer as unrouted components.
+
 ## SEO & Discoverability
-- [ ] Writing section content — 3-4 articles targeting search terms (fractional product leadership, prototype before PRD, AI-native product development)
+- [ ] **NEXT: Google Search Console access** — verify the domain + service-account API access so we can see which queries the /pov articles (a deliberate traffic play) rank and get clicked for. Same setup pattern as the Vercel analytics tool in `~/.claude-tools/analytics/`.
+- [ ] Branded OG cards for the four /pov articles (via the /og-image fleet skill) — shares should unfurl on-brand for a traffic-driving section
+- [ ] Writing section content — superseded in part by /pov; remaining article targets: fractional product leadership, prototype before PRD
 - [ ] Dedicated offering pages — Strategy Sprints, Rapid Prototyping, Fractional Product Leadership as standalone pages with their own URLs
 
 ## Design & Brand
