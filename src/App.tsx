@@ -14,6 +14,8 @@ import MadronaV2Current from "./pages/lab/MadronaV2Current";
 import MadronaV2EngineNote from "./pages/lab/MadronaV2EngineNote";
 import MadronaV2AgenticNote from "./pages/lab/MadronaV2AgenticNote";
 import MadronaV2StarterGuideNote from "./pages/lab/MadronaV2StarterGuideNote";
+import MadronaV2ChecklistNote from "./pages/lab/MadronaV2ChecklistNote";
+import MadronaV2PrinciplesNote from "./pages/lab/MadronaV2PrinciplesNote";
 import MadronaSystem from "./pages/lab/MadronaSystem";
 
 export default function App() {
@@ -35,6 +37,8 @@ export default function App() {
         <Route path="current/under-the-hood" element={<MadronaV2EngineNote />} />
         <Route path="current/the-era-of-agentic-operations" element={<MadronaV2AgenticNote />} />
         <Route path="current/starter-guide-to-building-with-ai" element={<MadronaV2StarterGuideNote />} />
+        <Route path="current/the-checklist-our-launches-taught-us" element={<MadronaV2ChecklistNote />} />
+        <Route path="current/madrona-principles" element={<MadronaV2PrinciplesNote />} />
         <Route path="current/the-studio-that-runs-itself" element={<Navigate to="/current/the-era-of-agentic-operations" replace />} />
         <Route path="journal" element={<Navigate to="/current" replace />} />
         <Route path="journal/the-madrona-engine" element={<Navigate to="/current/under-the-hood" replace />} />

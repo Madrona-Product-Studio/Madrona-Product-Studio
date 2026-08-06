@@ -251,6 +251,29 @@
 .m2-hq-railfoot p { font: 400 12px/1.5 var(--font-sans); color: var(--color-clay); max-width: 640px; }
 .m2-hq-railfoot p b { font-weight: 600; color: var(--color-ink); }
 
+/* ── checklist + principles entries ─────────────────────── */
+.m2-ck-list { display: flex; flex-direction: column; }
+.m2-ck-item { display: grid; grid-template-columns: 26px 1fr; gap: 10px; padding: 13px 0; border-bottom: 1px solid var(--color-line-soft); align-items: baseline; }
+.m2-ck-item:first-child { border-top: 1px solid var(--color-line); }
+.m2-ck-item .tick { color: var(--color-madrona); font-size: 13px; font-weight: 600; }
+.m2-ck-item p { font: 400 13px/1.6 var(--font-sans); color: var(--color-clay); }
+.m2-ck-item p b { font-weight: 600; color: var(--color-ink); }
+
+.m2-pr-list { display: flex; flex-direction: column; }
+.m2-pr-item { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--color-line-soft); align-items: baseline; }
+.m2-pr-item:first-child { border-top: 1px solid var(--color-line); }
+.m2-pr-item .n { font: 500 15px/1 var(--font-serif); color: var(--color-madrona); }
+.m2-pr-item p { font: 400 13.5px/1.6 var(--font-sans); color: var(--color-clay); }
+.m2-pr-item p b { font-weight: 600; color: var(--color-ink); }
+
+.m2-cu-plate-check { gap: 7px; }
+.m2-cu-plate-check .ln { display: flex; align-items: center; gap: 8px; }
+.m2-cu-plate-check .ln i { font-style: normal; color: var(--color-madrona); font-size: 11px; font-weight: 600; }
+.m2-cu-plate-check .ln span { flex: 1; height: 8px; border-radius: 3px; background: var(--color-bg); border: 1px solid var(--color-line-soft); }
+.m2-cu-plate-num { align-items: center; text-align: center; gap: 4px; }
+.m2-cu-plate-num .big { font: 500 44px/1 var(--font-serif); color: var(--color-madrona); }
+.m2-cu-plate-num .cap { font: 600 9.5px/1 var(--font-sans); letter-spacing: .14em; text-transform: uppercase; color: var(--color-muted); }
+
 /* ── responsive ─────────────────────────────────────────── */
 @media (max-width: 760px) {
   .m2-jr-lead { grid-template-columns: 1fr; gap: 22px; padding: 28px 0 30px; }

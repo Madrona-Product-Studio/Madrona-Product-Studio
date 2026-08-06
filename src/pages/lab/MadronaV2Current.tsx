@@ -20,7 +20,7 @@ type Entry = {
   title: string;
   excerpt: string;
   href: string;
-  plate: "engine" | "thesis-quote" | "helm-loop" | "terminal";
+  plate: "engine" | "thesis-quote" | "helm-loop" | "terminal" | "checklist" | "fourteen";
 };
 
 // Charlie's chosen order: the thesis leads, then the engine, then the ops piece.
@@ -57,6 +57,22 @@ const ENTRIES: Entry[] = [
     href: "/current/starter-guide-to-building-with-ai",
     plate: "terminal",
   },
+  {
+    date: "Aug 2026",
+    type: "Learning",
+    title: "The checklist our launches taught us",
+    excerpt: "Our pre-launch checklist for shipping web apps, learned the hard way across real products. Every item traces to a specific launch and lesson.",
+    href: "/current/the-checklist-our-launches-taught-us",
+    plate: "checklist",
+  },
+  {
+    date: "Aug 2026",
+    type: "Essay",
+    title: "Madrona Principles",
+    excerpt: "Fourteen working principles for building software worth building: tested against the work, revised when the evidence changes.",
+    href: "/current/madrona-principles",
+    plate: "fourteen",
+  },
 ];
 
 function Plate({ kind }: { kind: Entry["plate"] }) {
@@ -78,6 +94,24 @@ function Plate({ kind }: { kind: Entry["plate"] }) {
           <div className="term-line dim">Describe what you want to build.</div>
           <div className="term-line"><i>&gt;</i> a guide for boaters in the San Juans<span className="caret" /></div>
         </div>
+      </div>
+    );
+  }
+  if (kind === "checklist") {
+    return (
+      <div className="m2-cu-plate m2-cu-plate-check" aria-hidden="true">
+        <div className="ln"><i>✓</i><span style={{ maxWidth: "72%" }} /></div>
+        <div className="ln"><i>✓</i><span style={{ maxWidth: "88%" }} /></div>
+        <div className="ln"><i>✓</i><span style={{ maxWidth: "60%" }} /></div>
+        <div className="ln"><i>✓</i><span style={{ maxWidth: "80%" }} /></div>
+      </div>
+    );
+  }
+  if (kind === "fourteen") {
+    return (
+      <div className="m2-cu-plate m2-cu-plate-num" aria-hidden="true">
+        <span className="big">14</span>
+        <span className="cap">working principles</span>
       </div>
     );
   }
