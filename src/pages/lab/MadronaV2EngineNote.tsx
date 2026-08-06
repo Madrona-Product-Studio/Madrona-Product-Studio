@@ -52,9 +52,10 @@ export default function MadronaV2EngineNote() {
 
       {/* Hero */}
       <section className="m2-ab4 m2-th-hero">
-        <p className="m2-kicker m2-who-kicker"><Link className="m2-pb-crumb" to="/current">Current</Link> · Artifact · Aug 2026</p>
+        <p className="m2-kicker m2-who-kicker">Inside the practice</p>
         <h1>Madrona: <span className="m2-pop">under the hood.</span></h1>
         <p className="m2-th-standfirst">Fifteen years of product judgment, encoded into a platform every project inherits. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new.</p>
+        <p className="m2-th-byline">Charlie Koch · Founder, Madrona Product Studio · August 2026</p>
       </section>
 
       {/* 1 · The engine */}
@@ -201,7 +202,7 @@ export default function MadronaV2EngineNote() {
         </div>
       </section>
 
-      <SiteFooter />
+      <SiteFooter cta={false} />
     </main>
   );
 }

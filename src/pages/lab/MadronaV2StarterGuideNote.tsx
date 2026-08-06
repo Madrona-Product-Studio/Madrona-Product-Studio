@@ -16,6 +16,18 @@ const Arrow = () => (
   <svg viewBox="0 0 14 12" width="18" height="15" fill="none" aria-hidden="true"><path d="M1 6h11m0 0L8 2m4 4-4 4" stroke="currentColor" strokeWidth="1.2" /></svg>
 );
 
+const I = ({ d }: { d: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
+);
+
+const P = {
+  sprout: "M12 21V11M12 11c0-4 3-7 8-7 0 4-3 7-8 7ZM12 13c0-3-2.5-5.5-6.5-5.5 0 3.2 2.5 5.5 6.5 5.5Z",
+  question: "M9 9a3 3 0 1 1 4.6 2.5c-1 .7-1.6 1.3-1.6 2.5M12 17.5h.01",
+  clarity: "M12 5c5 0 8.5 3.5 9.5 7-1 3.5-4.5 7-9.5 7s-8.5-3.5-9.5-7c1-3.5 4.5-7 9.5-7ZM12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0",
+  commits: "M3 12h5M16 12h5M12 12m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0-7 0",
+  person: "M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21c1.5-4 5-6 8-6s6.5 2 8 6",
+};
+
 const STEPS = [
   {
     n: "01", name: "GitHub", time: "~15 min",
@@ -50,11 +62,11 @@ const STEPS = [
 ];
 
 const HABITS = [
-  { lead: "Build something real and small.", body: "Not a tutorial project. Something you will actually use this month: a guide for a place you love, a tracker for something you do. Real stakes teach faster than exercises." },
-  { lead: "Ask why, not just what.", body: "When the agent does something you do not understand, ask it to explain. You are not just building an app; you are building your own judgment." },
-  { lead: "Look at everything it makes.", body: "Screenshot the result. Open it on your phone. Taste is your contribution, and taste only works if you look." },
-  { lead: "Commit small and often.", body: "Ask the agent to save its work in small, described steps. When something breaks, and it will, you can walk back one step instead of losing an afternoon." },
-  { lead: "You do not need to become an engineer.", body: "You need to know what good looks like, what matters, and what to build. The agents supply the syntax. You supply the judgment." },
+  { icon: P.sprout, tone: "sprout", strong: "Build something real and small.", text: "Not a tutorial. Something you will actually use this month." },
+  { icon: P.question, tone: "storefront", strong: "Ask why, not just what.", text: "You are building your own judgment, not just an app." },
+  { icon: P.clarity, tone: "layers", strong: "Look at everything it makes.", text: "On your phone too. Taste only works if you look." },
+  { icon: P.commits, tone: "sprout", strong: "Commit small and often.", text: "When something breaks, you walk back one step, not one afternoon." },
+  { icon: P.person, tone: "storefront", strong: "You do not need to become an engineer.", text: "The agents supply the syntax. You supply the judgment." },
 ];
 
 export default function MadronaV2StarterGuideNote() {
@@ -67,9 +79,10 @@ export default function MadronaV2StarterGuideNote() {
 
       {/* Hero */}
       <section className="m2-ab4 m2-th-hero">
-        <p className="m2-kicker m2-who-kicker"><Link className="m2-pb-crumb" to="/current">Current</Link> · Guide · Aug 2026</p>
+        <p className="m2-kicker m2-who-kicker">From the workshop</p>
         <h1>A starter guide to <span className="m2-pop">building with AI.</span></h1>
         <p className="m2-th-standfirst">This is the piece I wish someone had handed me when I started. You do not need a computer science degree to build real software with AI anymore. You need a handful of tools set up the right way, a few habits, and something worth building. Here is the whole setup, in an afternoon.</p>
+        <p className="m2-th-byline">Charlie Koch · Founder, Madrona Product Studio · August 2026</p>
       </section>
 
       {/* 1 · The shape */}
@@ -173,12 +186,18 @@ export default function MadronaV2StarterGuideNote() {
         <div className="m2-ab4-rail">
           <p className="m2-kicker m2-who-kicker">The habits</p>
           <p className="m2-ab4-statement">The tools are the easy part.</p>
+          <div className="m2-ab4-body">
+            <p>Everything above takes an afternoon. What separates people who ship from people who stall is not the setup. It is these.</p>
+          </div>
         </div>
-        <div className="m2-ab4-body">
+        <ul className="m2-th4-rows">
           {HABITS.map((h) => (
-            <p key={h.lead}><b>{h.lead}</b> {h.body}</p>
+            <li key={h.strong}>
+              <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={h.tone}><I d={h.icon} /></span>
+              <p><strong>{h.strong}</strong> <span>{h.text}</span></p>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* Close */}
@@ -196,7 +215,7 @@ export default function MadronaV2StarterGuideNote() {
         </div>
       </section>
 
-      <SiteFooter />
+      <SiteFooter cta={false} />
     </main>
   );
 }

@@ -70,20 +70,6 @@ const pages = {
     h1: 'A starter guide to building with AI.',
     body: 'You do not need a computer science degree to build real software with AI. This guide covers the whole setup in an afternoon: a GitHub account as your source of truth, comfort in the terminal, Claude Code and Codex as AI coding agents, Vercel deploying every change live, and Claude connectors that give your agent reach. Then the habits: build something real and small, ask why, look at everything, commit often. The tools are the easy part.',
   },
-  '/current/the-checklist-our-launches-taught-us': {
-    title: 'The pre-launch checklist our launches taught us · Madrona Product Studio',
-    description: 'A pre-launch checklist for shipping web apps, learned the hard way across real products: first-impression checks, production gotchas, demo and security rules, and the details that decide how a launch lands.',
-    article: { datePublished: '2026-08-05' },
-    h1: 'The checklist our launches taught us.',
-    body: 'Every product we ship ends with an audit, and every audit gets banked. The checklist: say what it is on screen one, never ship an empty first screen, every link must advertise a ready destination, handle app updates that crash returning users, rate limit anything with a public URL, a demo that can write to real data is a P0, screenshot at phone and desktop widths before calling anything done, version your share images, and more. Learned on real launches, not copied from a listicle.',
-  },
-  '/current/madrona-principles': {
-    title: 'Madrona Principles: fourteen working principles for building software · Madrona Product Studio',
-    description: 'Fourteen working principles for building software worth building in the AI era: start with people, stay close to the customer, protect craft, use AI to expand people. Tested against the work, revised when the evidence changes.',
-    article: { datePublished: '2026-08-05' },
-    h1: 'Fourteen working principles.',
-    body: 'Build things worth building. Start with people, not technology. Stay close to the customer. Working software is a learning tool. The disciplines remain. Everyone contributes to building. Product leadership creates clarity. Small senior teams have unusual leverage. Use AI to expand people. Learning speed matters more than output volume. Evolution beats theater. Share what the work teaches. Protect craft. Leave the world better than we found it.',
-  },
   '/current/under-the-hood': {
     title: 'Madrona: under the hood — how we build software with AI · Madrona Product Studio',
     description: 'Inside an AI-assisted software development process that ships real products: the platform every project inherits, the quality gates that hold the bar, and the learning loop that compounds with every launch.',

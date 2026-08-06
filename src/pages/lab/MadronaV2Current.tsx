@@ -57,22 +57,6 @@ const ENTRIES: Entry[] = [
     href: "/current/starter-guide-to-building-with-ai",
     plate: "terminal",
   },
-  {
-    date: "Aug 2026",
-    type: "Learning",
-    title: "The checklist our launches taught us",
-    excerpt: "Our pre-launch checklist for shipping web apps, learned the hard way across real products. Every item traces to a specific launch and lesson.",
-    href: "/current/the-checklist-our-launches-taught-us",
-    plate: "checklist",
-  },
-  {
-    date: "Aug 2026",
-    type: "Essay",
-    title: "Madrona Principles",
-    excerpt: "Fourteen working principles for building software worth building: tested against the work, revised when the evidence changes.",
-    href: "/current/madrona-principles",
-    plate: "fourteen",
-  },
 ];
 
 function Plate({ kind }: { kind: Entry["plate"] }) {
