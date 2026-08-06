@@ -50,16 +50,16 @@ const pages = {
     h1: 'Our products',
     body: 'Each Madrona product begins with a real customer problem and creates a place to test ideas, improve our methods, and make something useful in its own right.',
   },
-  '/journal': {
-    title: 'The Madrona Journal · Madrona Product Studio',
-    description: 'When the work teaches us something, we organize the thinking and publish it: artifacts, essays, and learnings from inside a working product studio.',
-    h1: 'The Madrona Journal.',
-    body: 'When the work teaches us something, we write it down and organize the thinking, so we can build on it and so can you. The Madrona engine in three diagrams, the Madrona Product Thesis, and more as the work teaches us.',
+  '/current': {
+    title: 'Current · Madrona Product Studio',
+    description: 'What is moving through the studio right now: learnings, artifacts, essays, and announcements from inside a working product studio. Published when ready.',
+    h1: 'Current.',
+    body: 'The latest from inside Madrona: learnings, artifacts, announcements, and anything worth sharing. When the work teaches us something, we organize the thinking here so we can build on it, and so can you.',
   },
-  '/journal/the-madrona-engine': {
-    title: 'The Madrona engine, in three diagrams · The Madrona Journal',
-    description: 'The platform every Madrona project inherits, the gates that hold the bar, and the learning loop that compounds with every launch. Our build engine, opened up.',
-    h1: 'The Madrona engine, in three diagrams.',
+  '/current/under-the-hood': {
+    title: 'Madrona: under the hood · Current',
+    description: 'The engine behind every product we ship: the platform each project inherits, the gates that hold the bar, and the learning loop that compounds with every launch.',
+    h1: 'Madrona: under the hood.',
     body: 'Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new.',
   },
   '/connect': {
