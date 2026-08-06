@@ -12,6 +12,7 @@ import MadronaV2About from "./pages/lab/MadronaV2About";
 import MadronaV2Thesis from "./pages/lab/MadronaV2Thesis";
 import MadronaV2Current from "./pages/lab/MadronaV2Current";
 import MadronaV2EngineNote from "./pages/lab/MadronaV2EngineNote";
+import MadronaV2AgenticNote from "./pages/lab/MadronaV2AgenticNote";
 import MadronaSystem from "./pages/lab/MadronaSystem";
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
         {/* Current — the studio feed (2026-08-05). */}
         <Route path="current" element={<MadronaV2Current />} />
         <Route path="current/under-the-hood" element={<MadronaV2EngineNote />} />
+        <Route path="current/the-studio-that-runs-itself" element={<MadronaV2AgenticNote />} />
         <Route path="journal" element={<Navigate to="/current" replace />} />
         <Route path="journal/the-madrona-engine" element={<Navigate to="/current/under-the-hood" replace />} />
         <Route path="notes" element={<Navigate to="/current" replace />} />

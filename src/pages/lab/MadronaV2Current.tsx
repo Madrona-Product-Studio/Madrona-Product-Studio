@@ -23,8 +23,16 @@ type Entry = {
   plate: "engine" | "thesis-quote" | "helm-loop";
 };
 
-// Newest first.
+// Charlie's chosen order: the thesis leads, then the engine, then the ops piece.
 const ENTRIES: Entry[] = [
+  {
+    date: "Aug 2026",
+    type: "Essay",
+    title: "The Madrona Product Thesis",
+    excerpt: "A working theory of how great software gets built in the AI era, and what that changes about product leadership.",
+    href: "/thesis",
+    plate: "thesis-quote",
+  },
   {
     date: "Aug 2026",
     type: "Artifact",
@@ -35,11 +43,11 @@ const ENTRIES: Entry[] = [
   },
   {
     date: "Aug 2026",
-    type: "Essay",
-    title: "The Madrona Product Thesis",
-    excerpt: "A working theory of how great software gets built in the AI era, and what that changes about product leadership.",
-    href: "/thesis",
-    plate: "thesis-quote",
+    type: "Learning",
+    title: "The studio that runs itself",
+    excerpt: "How agentic operations work, shown on the operation we actually run: one source of truth, agents on a rhythm, and Helm as the command surface.",
+    href: "/current/the-studio-that-runs-itself",
+    plate: "helm-loop",
   },
 ];
 
