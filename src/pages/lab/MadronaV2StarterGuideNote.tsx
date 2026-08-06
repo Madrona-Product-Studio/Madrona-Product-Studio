@@ -90,10 +90,10 @@ export default function MadronaV2StarterGuideNote() {
         <div className="m2-ab4-rail">
           <p className="m2-kicker m2-who-kicker">The shape of it</p>
           <p className="m2-ab4-statement">Five pieces, one loop.</p>
-        </div>
-        <div className="m2-ab4-body">
-          <p>Every AI coding setup worth having reduces to the same loop: you describe what you want, agents in your terminal build it, GitHub keeps the source of truth, Vercel puts it on the internet, and what you learn from the live thing feeds the next round.</p>
-          <p>Everything below exists to stand this loop up.</p>
+          <div className="m2-ab4-body">
+            <p>Every AI coding setup worth having reduces to the same loop: you describe what you want, agents in your terminal build it, GitHub keeps the source of truth, Vercel puts it on the internet, and what you learn from the live thing feeds the next round.</p>
+            <p>Everything below exists to stand this loop up.</p>
+          </div>
         </div>
         <div className="m2-pb-figure">
           <div className="m2-pb-board">
@@ -156,9 +156,9 @@ export default function MadronaV2StarterGuideNote() {
         <div className="m2-ab4-rail">
           <p className="m2-kicker m2-who-kicker">The setup</p>
           <p className="m2-ab4-statement">Six steps, one afternoon.</p>
-        </div>
-        <div className="m2-ab4-body">
-          <p>In order, because each step makes the next one easier. None of these require a credit card to start.</p>
+          <div className="m2-ab4-body">
+            <p>In order, because each step makes the next one easier. None of these require a credit card to start.</p>
+          </div>
         </div>
         <div className="m2-pb-figure">
           <div className="m2-pb-board">

@@ -63,10 +63,10 @@ export default function MadronaV2EngineNote() {
         <div className="m2-ab4-rail">
           <p className="m2-kicker m2-who-kicker">The engine</p>
           <p className="m2-ab4-statement">Every product rides on the same engine.</p>
-        </div>
-        <div className="m2-ab4-body">
-          <p>A new product starts dialed-in on day one, passes the same gates as every app before it, and what it teaches us hardens the engine for the next one.</p>
-          <p>This is why a small studio ships in weeks what used to take quarters, without lowering the bar.</p>
+          <div className="m2-ab4-body">
+            <p>A new product starts dialed-in on day one, passes the same gates as every app before it, and what it teaches us hardens the engine for the next one.</p>
+            <p>This is why a small studio ships in weeks what used to take quarters, without lowering the bar.</p>
+          </div>
         </div>
         <div className="m2-pb-figure">
           <div className="m2-pb-board">
@@ -102,10 +102,10 @@ export default function MadronaV2EngineNote() {
         <div className="m2-ab4-rail">
           <p className="m2-kicker m2-who-kicker">The foundation</p>
           <p className="m2-ab4-statement">What our products stand on.</p>
-        </div>
-        <div className="m2-ab4-body">
-          <p>Every product we ship sits on the same five layers. That is why a new one starts at the studio's craft bar instead of from zero, and why each launch makes the ground more solid.</p>
-          <p>When we build for a client, their product stands on the same ground. The engine is part of what we leave behind.</p>
+          <div className="m2-ab4-body">
+            <p>Every product we ship sits on the same five layers. That is why a new one starts at the studio's craft bar instead of from zero, and why each launch makes the ground more solid.</p>
+            <p>When we build for a client, their product stands on the same ground. The engine is part of what we leave behind.</p>
+          </div>
         </div>
         <div className="m2-pb-figure">
           <div className="m2-pb-board">
@@ -138,9 +138,9 @@ export default function MadronaV2EngineNote() {
         <div className="m2-ab4-rail">
           <p className="m2-kicker m2-who-kicker">For the technically curious</p>
           <p className="m2-ab4-statement">The same engine, as a schematic.</p>
-        </div>
-        <div className="m2-ab4-body">
-          <p>One platform repository composes every new product. Gates hold the bar. Launches feed the learning bank. The loop compounds.</p>
+          <div className="m2-ab4-body">
+            <p>One platform repository composes every new product. Gates hold the bar. Launches feed the learning bank. The loop compounds.</p>
+          </div>
         </div>
         <div className="m2-pb-figure">
           <div className="m2-pb-board m2-pb-bp">
