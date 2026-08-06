@@ -50,11 +50,17 @@ const pages = {
     h1: 'Our products',
     body: 'Each Madrona product begins with a real customer problem and creates a place to test ideas, improve our methods, and make something useful in its own right.',
   },
-  '/playbook': {
-    title: 'Playbook · Madrona Product Studio',
-    description: 'How Madrona builds, written down: the platform every project inherits, the gates that hold the bar, and the learning loop that compounds with every launch.',
-    h1: 'How we build, written down.',
-    body: 'Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the playbook is the judgment it executes. Notes from real launches publish here as they are banked.',
+  '/notes': {
+    title: 'Studio Notes · Madrona Product Studio',
+    description: 'Learnings, artifacts, and essays from inside Madrona: how we build, what the work keeps teaching us, and the thinking behind the products. Dated and specific.',
+    h1: 'Studio Notes.',
+    body: 'Learnings, artifacts, and essays from the workshop, published as they happen. The Madrona engine in three diagrams, the Madrona Product Thesis, and notes banked from real launches.',
+  },
+  '/notes/the-madrona-engine': {
+    title: 'The Madrona engine, in three diagrams · Studio Notes',
+    description: 'The platform every Madrona project inherits, the gates that hold the bar, and the learning loop that compounds with every launch. Our build engine, opened up.',
+    h1: 'The Madrona engine, in three diagrams.',
+    body: 'Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new.',
   },
   '/connect': {
     title: 'Connect · Madrona Product Studio',

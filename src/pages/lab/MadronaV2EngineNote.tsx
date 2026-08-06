@@ -6,11 +6,10 @@ import { useReveal } from "./useReveal";
 import "./madrona-v2.css";
 import "./playbook.css";
 
-// The Playbook — the studio's engine (platform, gates, learning loop) made
-// public, plus the notes feed where banked learnings publish. The three
-// diagrams are the approved app-engine directions from
+// Studio Notes entry 001 (Artifact): the build engine in three diagrams.
+// The diagrams are the approved app-engine directions from
 // madrona-studio/design/diagrams/app-engine (2026-08-05), restated in JSX.
-// /thesis stays the belief layer; this page is method and evidence.
+// /thesis stays the belief layer; this artifact is method and evidence.
 
 const STAGES = [
   { num: "1", name: "Bootstrap", d: <>A new app composes the platform: <b>design system, integrations, standards pre-wired.</b></> },
@@ -43,24 +42,19 @@ const APPS = [
   { an: "Helm", as: "operations surface" },
 ];
 
-const NOTES = [
-  { d: "In the works", t: "The checklist our launches taught us", m: "Twenty-plus dated findings from shipping real products, and what each one changed about how we build.", s: "First note" },
-  { d: "Forthcoming", t: "The Teams That Build Next", m: "How small, senior, AI-enabled teams change what product organizations look like.", s: "Essay" },
-];
-
-export default function MadronaV2Playbook() {
+export default function MadronaV2EngineNote() {
   useReveal();
 
   return (
     <main className="m2 m2-ab-page">
-      <LabMeta title="Playbook · Madrona Product Studio" />
-      <M2Nav active="playbook" />
+      <LabMeta title="The Madrona engine, in three diagrams · Studio Notes" />
+      <M2Nav active="notes" />
 
       {/* Hero */}
       <section className="m2-ab4 m2-th-hero">
-        <p className="m2-kicker m2-who-kicker">The playbook</p>
-        <h1>How we build, <span className="m2-pop">written down.</span></h1>
-        <p className="m2-th-standfirst">Fifteen years of product judgment, encoded into a platform every project inherits. AI is the power tool; the playbook is the judgment it executes. Every launch teaches it something new.</p>
+        <p className="m2-kicker m2-who-kicker"><Link className="m2-pb-crumb" to="/notes">Studio Notes</Link> · Artifact · Aug 2026</p>
+        <h1>The Madrona engine, in <span className="m2-pop">three diagrams.</span></h1>
+        <p className="m2-th-standfirst">Fifteen years of product judgment, encoded into a platform every project inherits. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new.</p>
       </section>
 
       {/* 1 · The engine */}
@@ -192,37 +186,17 @@ export default function MadronaV2Playbook() {
         </div>
       </section>
 
-      {/* 4 · Notes */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">Notes</p>
-          <p className="m2-ab4-statement">What the work keeps teaching us.</p>
-          <div className="m2-ab4-body">
-            <p>Short, dated, and specific. Notes are banked from real launches and published here as they are written, so this section grows the way the engine does.</p>
-          </div>
-        </div>
-        <div className="m2-pb-notes">
-          {NOTES.map((n) => (
-            <div key={n.t} className="m2-pb-note">
-              <span className="nd">{n.d}</span>
-              <div><div className="nt">{n.t}</div><div className="nm">{n.m}</div></div>
-              <span className="ns">{n.s}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Close */}
       <section className="m2-ab4 m2-ab4-sec">
         <div className="m2-ab4-rail">
           <p className="m2-kicker m2-who-kicker">Where this points</p>
-          <p className="m2-ab4-statement">Builders who teach.</p>
+          <p className="m2-ab4-statement">The engine is part of what we leave behind.</p>
         </div>
         <div className="m2-ab4-body">
           <p>We build it, set it up, and teach you to run it. A client engagement ends with your product standing on this engine and your team holding the keys. The deliverable is a business that does not need us.</p>
           <div className="m2-th-close-links">
+            <Link className="m2-text-link" to="/notes">More Studio Notes <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/thesis">Read the thesis <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>

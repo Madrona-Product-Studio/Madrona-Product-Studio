@@ -52,7 +52,7 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
             <Link to="/apps">Products</Link>
             <Link to="/consulting">How we help</Link>
             <Link to="/services">Services</Link>
-            <Link to="/playbook">Playbook</Link>
+            <Link to="/notes">Studio Notes</Link>
             <Link to="/about">About</Link>
           </nav>
           <div className="m2-fc-contact">
