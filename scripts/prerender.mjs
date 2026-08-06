@@ -57,14 +57,16 @@ const pages = {
     body: 'The latest from inside Madrona: learnings, artifacts, announcements, and anything worth sharing. When the work teaches us something, we organize the thinking here so we can build on it, and so can you.',
   },
   '/current/the-era-of-agentic-operations': {
-    title: 'The era of agentic operations · Current',
-    description: 'A business can now run on one source of truth and agents on a rhythm, with a person firmly in charge. What changes, and how to start small.',
+    title: 'The era of agentic operations: running a business on AI agents · Madrona Product Studio',
+    description: 'What agentic AI means for a real business: AI agents handle the workflow automation on a rhythm, one source of truth holds the state, and a person stays in charge. What changes, and how to start small.',
+    article: { datePublished: '2026-08-05' },
     h1: 'The era of agentic operations.',
     body: 'A business used to run on scattered tools and someone’s memory. It can now run on one source of truth and a handful of agents on a rhythm: a nightly sweep, a morning pulse, a daily brief, a weekly sync, rendered live on a command surface. Agents propose; the owner decides and sends. The point is not automation, it is attention. We sell what we run: Madrona itself operates on this exact pattern.',
   },
   '/current/under-the-hood': {
-    title: 'Madrona: under the hood · Current',
-    description: 'The engine behind every product we ship: the platform each project inherits, the gates that hold the bar, and the learning loop that compounds with every launch.',
+    title: 'Madrona: under the hood — how we build software with AI · Madrona Product Studio',
+    description: 'Inside an AI-assisted software development process that ships real products: the platform every project inherits, the quality gates that hold the bar, and the learning loop that compounds with every launch.',
+    article: { datePublished: '2026-08-05' },
     h1: 'Madrona: under the hood.',
     body: 'Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new.',
   },
@@ -118,6 +120,21 @@ function generateHtml(route, meta) {
   // Keep placeholder routes out of the search index
   if (meta.noindex) {
     html = html.replace('</head>', `  <meta name="robots" content="noindex" />\n  </head>`);
+  }
+
+  // Article structured data for Current entries (journal-style pages)
+  if (meta.article) {
+    const ld = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: meta.h1.replace(/\.$/, ''),
+      description: meta.description,
+      datePublished: meta.article.datePublished,
+      author: { '@type': 'Person', name: 'Charlie Koch' },
+      publisher: { '@type': 'Organization', name: 'Madrona Product Studio', url: 'https://www.madronaproduct.com' },
+      mainEntityOfPage: `https://www.madronaproduct.com${route}`,
+    };
+    html = html.replace('</head>', `  <script type="application/ld+json">${JSON.stringify(ld)}</script>\n  </head>`);
   }
 
   // Inject SEO content in a noscript block so Google sees real text

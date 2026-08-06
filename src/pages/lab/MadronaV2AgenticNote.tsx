@@ -43,7 +43,7 @@ export default function MadronaV2AgenticNote() {
       <section className="m2-ab4 m2-th-hero">
         <p className="m2-kicker m2-who-kicker"><Link className="m2-pb-crumb" to="/current">Current</Link> · Essay · Aug 2026</p>
         <h1>The era of <span className="m2-pop">agentic operations.</span></h1>
-        <p className="m2-th-standfirst">A business used to run on scattered tools and someone's memory. It can now run on one source of truth and a handful of agents on a rhythm, with a person firmly in charge. The change is not AI doing your work. It is your operation briefing you, so your attention goes to deciding.</p>
+        <p className="m2-th-standfirst">A business used to run on scattered tools and someone's memory. It can now run on one source of truth and a handful of AI agents on a rhythm, with a person firmly in charge. The change is not AI doing your work. It is your operation briefing you, so your attention goes to deciding.</p>
       </section>
 
       {/* 1 · The shift */}
@@ -53,8 +53,8 @@ export default function MadronaV2AgenticNote() {
           <p className="m2-ab4-statement">One source of truth, agents that prepare, one surface, a human who decides.</p>
         </div>
         <div className="m2-ab4-body">
-          <p>Most businesses run on tool sprawl: a task app, a spreadsheet, an inbox, and the owner's head stitching them together. The agentic version inverts that. Everything the business knows lives in one place. Agents enrich it on a schedule. One surface renders it. A person acts on it.</p>
-          <p>The agents never act outward on their own. They read, sort, rank, and prepare. Sending, signing, and deciding stay human.</p>
+          <p>Most businesses run on tool sprawl: a task app, a spreadsheet, an inbox, and the owner's head stitching them together. The agentic version inverts that. Everything the business knows lives in one place. AI agents enrich it on a schedule. One surface renders it. A person acts on it.</p>
+          <p>This is agentic AI put to work on operations, and the boundary matters: the agents never act outward on their own. They read, sort, rank, and prepare. Sending, signing, and deciding stay human.</p>
         </div>
         <div className="m2-pb-figure">
           <div className="m2-pb-board">
@@ -120,6 +120,7 @@ export default function MadronaV2AgenticNote() {
             </div>
             <div className="m2-hq-return"><span>Every action writes back to the source of truth, so tomorrow starts smarter</span></div>
           </div>
+          <p className="m2-pb-figcap">One example of what the next iteration of an agentic business can look like. There will be many shapes; this is the one we run every day.</p>
         </div>
       </section>
 
@@ -130,7 +131,7 @@ export default function MadronaV2AgenticNote() {
           <p className="m2-ab4-statement">A day in an agentic operation.</p>
         </div>
         <div className="m2-ab4-body">
-          <p>The system works while you sleep and briefs you when you sit down. Here is what a representative day looks like when the operation prepares itself.</p>
+          <p>The system works while you sleep and briefs you when you sit down. This is what AI workflow automation looks like when it serves attention instead of replacing people: a representative day in an operation that prepares itself.</p>
         </div>
         <div className="m2-pb-figure">
           <div className="m2-pb-board">
@@ -226,7 +227,7 @@ export default function MadronaV2AgenticNote() {
           <p className="m2-ab4-statement">We sell what we run.</p>
         </div>
         <div className="m2-ab4-body">
-          <p>The diagrams above are not a concept. They are how Madrona itself runs, every day: our studio operates on this exact pattern, with a surface called Helm as the command center. An engagement starts small, one agent on one real workflow and one card on a command surface, with visible payback before anything grows.</p>
+          <p>The diagrams above are not a concept. They are how Madrona itself runs, every day: our studio operates on this exact pattern, with a surface called Helm as the command center. And it scales down honestly: this works for a small business the same way it works for a studio. An engagement starts small, one AI agent on one real workflow and one card on a command surface, with visible payback before anything grows.</p>
           <div className="m2-th-close-links">
             <Link className="m2-text-link" to="/current">More from Current <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
