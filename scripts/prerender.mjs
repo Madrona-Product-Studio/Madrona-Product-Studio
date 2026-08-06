@@ -63,6 +63,13 @@ const pages = {
     h1: 'The era of agentic operations.',
     body: 'A business used to run on scattered tools and someone’s memory. It can now run on one source of truth and a handful of agents on a rhythm: a nightly sweep, a morning pulse, a daily brief, a weekly sync, rendered live on a command surface. Agents propose; the owner decides and sends. The point is not automation, it is attention. We sell what we run: Madrona itself operates on this exact pattern.',
   },
+  '/current/starter-guide-to-building-with-ai': {
+    title: 'A starter guide to building with AI: tools, setup, and first steps · Madrona Product Studio',
+    description: 'How to start building software with AI: setting up GitHub, the terminal, Claude Code and Codex, deploying with Vercel, and the habits that make AI coding tools actually work. The guide I wish I had on day one.',
+    article: { datePublished: '2026-08-05' },
+    h1: 'A starter guide to building with AI.',
+    body: 'You do not need a computer science degree to build real software with AI. This guide covers the whole setup in an afternoon: a GitHub account as your source of truth, comfort in the terminal, Claude Code and Codex as AI coding agents, Vercel deploying every change live, and Claude connectors that give your agent reach. Then the habits: build something real and small, ask why, look at everything, commit often. The tools are the easy part.',
+  },
   '/current/under-the-hood': {
     title: 'Madrona: under the hood — how we build software with AI · Madrona Product Studio',
     description: 'Inside an AI-assisted software development process that ships real products: the platform every project inherits, the quality gates that hold the bar, and the learning loop that compounds with every launch.',

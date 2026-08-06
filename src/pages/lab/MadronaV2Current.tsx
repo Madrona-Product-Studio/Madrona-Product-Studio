@@ -12,7 +12,7 @@ import "./playbook.css";
 // sharing. Card-grid feed; every card carries an entry plate (a small
 // designed visual, never a naked text row). Published work only.
 
-type EntryType = "Artifact" | "Essay" | "Learning" | "Announcement";
+type EntryType = "Artifact" | "Essay" | "Learning" | "Guide" | "Announcement";
 
 type Entry = {
   date: string;
@@ -20,7 +20,7 @@ type Entry = {
   title: string;
   excerpt: string;
   href: string;
-  plate: "engine" | "thesis-quote" | "helm-loop";
+  plate: "engine" | "thesis-quote" | "helm-loop" | "terminal";
 };
 
 // Charlie's chosen order: the thesis leads, then the engine, then the ops piece.
@@ -49,6 +49,14 @@ const ENTRIES: Entry[] = [
     href: "/current/the-era-of-agentic-operations",
     plate: "helm-loop",
   },
+  {
+    date: "Aug 2026",
+    type: "Guide",
+    title: "A starter guide to building with AI",
+    excerpt: "The piece I wish someone had handed me on day one: the tools, the setup, and the habits that take you from zero to shipping real software.",
+    href: "/current/starter-guide-to-building-with-ai",
+    plate: "terminal",
+  },
 ];
 
 function Plate({ kind }: { kind: Entry["plate"] }) {
@@ -58,6 +66,18 @@ function Plate({ kind }: { kind: Entry["plate"] }) {
         <div className="m2-jr-plate-pipe"><span /><span /><span className="gate" /><span className="gate" /><span /></div>
         <div className="m2-jr-plate-band"><span /><span /><span /><span /><span /></div>
         <div className="m2-jr-plate-return" />
+      </div>
+    );
+  }
+  if (kind === "terminal") {
+    return (
+      <div className="m2-cu-plate m2-cu-plate-term" aria-hidden="true">
+        <div className="term">
+          <div className="term-bar"><span /><span /><span /></div>
+          <div className="term-line"><i>$</i> claude</div>
+          <div className="term-line dim">Describe what you want to build.</div>
+          <div className="term-line"><i>&gt;</i> a guide for boaters in the San Juans<span className="caret" /></div>
+        </div>
       </div>
     );
   }
