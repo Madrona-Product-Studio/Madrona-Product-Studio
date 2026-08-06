@@ -47,8 +47,8 @@ export default function MadronaV2EngineNote() {
 
   return (
     <main className="m2 m2-ab-page">
-      <LabMeta title="Madrona: under the hood · Current" />
-      <M2Nav active="current" />
+      <LabMeta title="Madrona: under the hood · Our POV" />
+      <M2Nav active="pov" />
 
       {/* Hero */}
       <section className="m2-ab4 m2-th-hero">
@@ -196,7 +196,7 @@ export default function MadronaV2EngineNote() {
         <div className="m2-ab4-body">
           <p>We build it, set it up, and teach you to run it. A client engagement ends with your product standing on this engine and your team holding the keys. The deliverable is a business that does not need us.</p>
           <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/current">More from Current <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/pov">More from Our POV <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
           </div>
         </div>

@@ -63,8 +63,8 @@ export default function MadronaV2AgenticNote() {
 
   return (
     <main className="m2 m2-ab-page">
-      <LabMeta title="The era of agentic operations · Current" />
-      <M2Nav active="current" />
+      <LabMeta title="The era of agentic operations · Our POV" />
+      <M2Nav active="pov" />
 
       {/* Hero */}
       <section className="m2-ab4 m2-th-hero">
@@ -300,7 +300,7 @@ export default function MadronaV2AgenticNote() {
           <p>The diagrams above are not a concept. They are how Madrona itself runs, every day: our studio operates on this exact pattern, with a surface called Helm as the command center. And it scales down honestly; this works for a small business the same way it works for a studio.</p>
           <p>An engagement starts small, one AI agent on one real workflow and one card on a command surface, with visible payback before anything grows. Like everything we publish, this is a working document; as the pattern teaches us more, the page changes.</p>
           <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/current">More from Current <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/pov">More from Our POV <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
           </div>
         </div>

@@ -10,7 +10,7 @@ import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
 import MadronaV2About from "./pages/lab/MadronaV2About";
 import MadronaV2Thesis from "./pages/lab/MadronaV2Thesis";
-import MadronaV2Current from "./pages/lab/MadronaV2Current";
+import MadronaV2Pov from "./pages/lab/MadronaV2Pov";
 import MadronaV2EngineNote from "./pages/lab/MadronaV2EngineNote";
 import MadronaV2AgenticNote from "./pages/lab/MadronaV2AgenticNote";
 import MadronaV2StarterGuideNote from "./pages/lab/MadronaV2StarterGuideNote";
@@ -30,17 +30,21 @@ export default function App() {
         <Route path="work" element={<Navigate to="/apps" replace />} />
         <Route path="connect" element={<MadronaV2Connect />} />
         <Route path="about" element={<MadronaV2About />} />
-        {/* Current — the studio feed (2026-08-05). */}
-        <Route path="current" element={<MadronaV2Current />} />
-        <Route path="current/under-the-hood" element={<MadronaV2EngineNote />} />
-        <Route path="current/the-era-of-agentic-operations" element={<MadronaV2AgenticNote />} />
-        <Route path="current/starter-guide-to-building-with-ai" element={<MadronaV2StarterGuideNote />} />
-        <Route path="current/the-studio-that-runs-itself" element={<Navigate to="/current/the-era-of-agentic-operations" replace />} />
-        <Route path="journal" element={<Navigate to="/current" replace />} />
-        <Route path="journal/the-madrona-engine" element={<Navigate to="/current/under-the-hood" replace />} />
-        <Route path="notes" element={<Navigate to="/current" replace />} />
-        <Route path="playbook" element={<Navigate to="/current" replace />} />
-        <Route path="thinking" element={<Navigate to="/current" replace />} />
+        {/* Our POV — the studio feed (named 2026-08-06). */}
+        <Route path="pov" element={<MadronaV2Pov />} />
+        <Route path="pov/under-the-hood" element={<MadronaV2EngineNote />} />
+        <Route path="pov/the-era-of-agentic-operations" element={<MadronaV2AgenticNote />} />
+        <Route path="pov/starter-guide-to-building-with-ai" element={<MadronaV2StarterGuideNote />} />
+        <Route path="current" element={<Navigate to="/pov" replace />} />
+        <Route path="current/under-the-hood" element={<Navigate to="/pov/under-the-hood" replace />} />
+        <Route path="current/the-era-of-agentic-operations" element={<Navigate to="/pov/the-era-of-agentic-operations" replace />} />
+        <Route path="current/starter-guide-to-building-with-ai" element={<Navigate to="/pov/starter-guide-to-building-with-ai" replace />} />
+        <Route path="current/the-studio-that-runs-itself" element={<Navigate to="/pov/the-era-of-agentic-operations" replace />} />
+        <Route path="journal" element={<Navigate to="/pov" replace />} />
+        <Route path="journal/the-madrona-engine" element={<Navigate to="/pov/under-the-hood" replace />} />
+        <Route path="notes" element={<Navigate to="/pov" replace />} />
+        <Route path="playbook" element={<Navigate to="/pov" replace />} />
+        <Route path="thinking" element={<Navigate to="/pov" replace />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
@@ -58,7 +62,7 @@ export default function App() {
           <Route path="how-it-works" element={<Navigate to="/consulting" replace />} />
           <Route path="services/agentic-operations" element={<AgenticOperations />} />
           <Route path="approach" element={<Navigate to="/consulting" replace />} />
-          <Route path="writing" element={<Navigate to="/current" replace />} />
+          <Route path="writing" element={<Navigate to="/pov" replace />} />
           <Route path="contact" element={<Navigate to="/connect" replace />} />
         </Route>
 

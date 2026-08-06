@@ -33,12 +33,12 @@ export default function MadronaV2PrinciplesNote() {
 
   return (
     <main className="m2 m2-ab-page">
-      <LabMeta title="Madrona Principles · Current" />
-      <M2Nav active="current" />
+      <LabMeta title="Madrona Principles · Our POV" />
+      <M2Nav active="pov" />
 
       {/* Hero */}
       <section className="m2-ab4 m2-th-hero">
-        <p className="m2-kicker m2-who-kicker"><Link className="m2-pb-crumb" to="/current">Current</Link> · Essay · Aug 2026</p>
+        <p className="m2-kicker m2-who-kicker"><Link className="m2-pb-crumb" to="/pov">Current</Link> · Essay · Aug 2026</p>
         <h1>Fourteen working <span className="m2-pop">principles.</span></h1>
         <p className="m2-th-standfirst">These are the principles Madrona works by: how we decide what to build, how we build it, and when to say no. They are working principles in the honest sense. We test them against the work and revise them when the evidence changes.</p>
       </section>
@@ -72,7 +72,7 @@ export default function MadronaV2PrinciplesNote() {
           <p>Share what the work teaches. Publishing these makes them testable by people outside the building, which is the fastest way to find out which ones are wrong. If the work disagrees with this page, the page changes.</p>
           <div className="m2-th-close-links">
             <Link className="m2-text-link" to="/thesis">Read the thesis <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/current">More from Current <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/pov">More from Current <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>

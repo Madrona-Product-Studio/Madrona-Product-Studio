@@ -38,7 +38,7 @@ const ENTRIES: Entry[] = [
     type: "Artifact",
     title: "Madrona: under the hood",
     excerpt: "The engine behind every product we ship: the platform each project inherits, the gates that hold the bar, and the learning loop that compounds.",
-    href: "/current/under-the-hood",
+    href: "/pov/under-the-hood",
     plate: "engine",
   },
   {
@@ -46,7 +46,7 @@ const ENTRIES: Entry[] = [
     type: "Essay",
     title: "The era of agentic operations",
     excerpt: "A business can now run on one source of truth and agents on a rhythm, with a person firmly in charge. What changes, and how to start small.",
-    href: "/current/the-era-of-agentic-operations",
+    href: "/pov/the-era-of-agentic-operations",
     plate: "helm-loop",
   },
   {
@@ -54,7 +54,7 @@ const ENTRIES: Entry[] = [
     type: "Guide",
     title: "A starter guide to building with AI",
     excerpt: "The piece I wish someone had handed me on day one: the tools, the setup, and the habits that take you from zero to shipping real software.",
-    href: "/current/starter-guide-to-building-with-ai",
+    href: "/pov/starter-guide-to-building-with-ai",
     plate: "terminal",
   },
 ];
@@ -114,7 +114,7 @@ function Plate({ kind }: { kind: Entry["plate"] }) {
   );
 }
 
-export default function MadronaV2Current() {
+export default function MadronaV2Pov() {
   useReveal();
   const [filter, setFilter] = useState<"All" | EntryType>("All");
   const types = Array.from(new Set(ENTRIES.map((e) => e.type)));
@@ -122,14 +122,14 @@ export default function MadronaV2Current() {
 
   return (
     <main className="m2 m2-ab-page">
-      <LabMeta title="Current · Madrona Product Studio" />
-      <M2Nav active="current" />
+      <LabMeta title="Our POV · Madrona Product Studio" />
+      <M2Nav active="pov" />
 
       {/* Masthead */}
       <section className="m2-ab4 m2-th-hero">
         <p className="m2-kicker m2-who-kicker">From inside the studio</p>
-        <h1><span className="m2-pop">Current.</span></h1>
-        <p className="m2-th-standfirst">What is moving through the studio right now: learnings, artifacts, announcements, and anything worth sharing. When the work teaches us something, we organize the thinking here so we can build on it, and so can you.</p>
+        <h1>Our <span className="m2-pop">point of view.</span></h1>
+        <p className="m2-th-standfirst">Learnings, artifacts, and guides from inside the studio. When the work teaches us something, we organize the thinking here so we can build on it, and so can you.</p>
       </section>
 
       {/* Filters + grid */}
