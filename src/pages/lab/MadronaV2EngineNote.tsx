@@ -47,12 +47,12 @@ export default function MadronaV2EngineNote() {
 
   return (
     <main className="m2 m2-ab-page">
-      <LabMeta title="The Madrona engine, in three diagrams · Studio Notes" />
-      <M2Nav active="notes" />
+      <LabMeta title="The Madrona engine, in three diagrams · The Madrona Journal" />
+      <M2Nav active="journal" />
 
       {/* Hero */}
       <section className="m2-ab4 m2-th-hero">
-        <p className="m2-kicker m2-who-kicker"><Link className="m2-pb-crumb" to="/notes">Studio Notes</Link> · Artifact · Aug 2026</p>
+        <p className="m2-kicker m2-who-kicker"><Link className="m2-pb-crumb" to="/journal">The Madrona Journal</Link> · Artifact · Aug 2026</p>
         <h1>The Madrona engine, in <span className="m2-pop">three diagrams.</span></h1>
         <p className="m2-th-standfirst">Fifteen years of product judgment, encoded into a platform every project inherits. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new.</p>
       </section>
@@ -195,7 +195,7 @@ export default function MadronaV2EngineNote() {
         <div className="m2-ab4-body">
           <p>We build it, set it up, and teach you to run it. A client engagement ends with your product standing on this engine and your team holding the keys. The deliverable is a business that does not need us.</p>
           <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/notes">More Studio Notes <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/journal">More from the Journal <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
           </div>
         </div>
