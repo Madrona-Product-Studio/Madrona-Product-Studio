@@ -32,7 +32,8 @@ export default function App() {
         {/* Current — the studio feed (2026-08-05). */}
         <Route path="current" element={<MadronaV2Current />} />
         <Route path="current/under-the-hood" element={<MadronaV2EngineNote />} />
-        <Route path="current/the-studio-that-runs-itself" element={<MadronaV2AgenticNote />} />
+        <Route path="current/the-era-of-agentic-operations" element={<MadronaV2AgenticNote />} />
+        <Route path="current/the-studio-that-runs-itself" element={<Navigate to="/current/the-era-of-agentic-operations" replace />} />
         <Route path="journal" element={<Navigate to="/current" replace />} />
         <Route path="journal/the-madrona-engine" element={<Navigate to="/current/under-the-hood" replace />} />
         <Route path="notes" element={<Navigate to="/current" replace />} />

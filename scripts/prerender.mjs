@@ -56,11 +56,11 @@ const pages = {
     h1: 'Current.',
     body: 'The latest from inside Madrona: learnings, artifacts, announcements, and anything worth sharing. When the work teaches us something, we organize the thinking here so we can build on it, and so can you.',
   },
-  '/current/the-studio-that-runs-itself': {
-    title: 'The studio that runs itself · Current',
-    description: 'How agentic operations work, shown on the operation we actually run: one source of truth, agents on a rhythm, and Helm as the command surface.',
-    h1: 'The studio that runs itself.',
-    body: 'Madrona runs on one git repository and a handful of agents on a rhythm: a nightly sweep, a morning pulse, a daily brief, and a weekly chief-of-staff sync, rendered live by Helm as a command center. Agents propose; the owner decides and sends. This is the pattern we sell, doing its day job.',
+  '/current/the-era-of-agentic-operations': {
+    title: 'The era of agentic operations · Current',
+    description: 'A business can now run on one source of truth and agents on a rhythm, with a person firmly in charge. What changes, and how to start small.',
+    h1: 'The era of agentic operations.',
+    body: 'A business used to run on scattered tools and someone’s memory. It can now run on one source of truth and a handful of agents on a rhythm: a nightly sweep, a morning pulse, a daily brief, a weekly sync, rendered live on a command surface. Agents propose; the owner decides and sends. The point is not automation, it is attention. We sell what we run: Madrona itself operates on this exact pattern.',
   },
   '/current/under-the-hood': {
     title: 'Madrona: under the hood · Current',

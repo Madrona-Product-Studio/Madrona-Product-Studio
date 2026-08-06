@@ -43,10 +43,10 @@ const ENTRIES: Entry[] = [
   },
   {
     date: "Aug 2026",
-    type: "Learning",
-    title: "The studio that runs itself",
-    excerpt: "How agentic operations work, shown on the operation we actually run: one source of truth, agents on a rhythm, and Helm as the command surface.",
-    href: "/current/the-studio-that-runs-itself",
+    type: "Essay",
+    title: "The era of agentic operations",
+    excerpt: "A business can now run on one source of truth and agents on a rhythm, with a person firmly in charge. What changes, and how to start small.",
+    href: "/current/the-era-of-agentic-operations",
     plate: "helm-loop",
   },
 ];
