@@ -53,15 +53,23 @@
 }
 
 /* ── E2 · strata ────────────────────────────────────────── */
-.m2-pb-apps { display: grid; grid-template-columns: repeat(4, 1fr) 150px; gap: 12px; align-items: end; }
+.m2-pb-apps { display: grid; grid-template-columns: repeat(5, 1fr) 150px; gap: 12px; align-items: end; }
 .m2-pb-app {
   background: var(--color-card); border: 1px solid var(--color-line);
   border-radius: 8px 8px 0 0; border-bottom: 0; padding: 12px 13px;
+  display: block; text-decoration: none; color: inherit;
 }
+a.m2-pb-app { transition: border-color .15s ease; }
+a.m2-pb-app:hover { border-color: var(--color-madrona); }
 .m2-pb-app .an { font: 600 12px/1.2 var(--font-sans); }
 .m2-pb-app .as { font: 400 10px/1.4 var(--font-sans); color: var(--color-muted); margin-top: 3px; }
 .m2-pb-app.next { background: transparent; border-style: dashed; border-color: var(--color-madrona); }
 .m2-pb-app.next .an { color: var(--color-madrona); }
+
+/* Evidence — one real learned check quoted verbatim in the engine essay. */
+.m2-pb-evidence { display: flex; flex-direction: column; gap: 14px; }
+.m2-pb-evidence .m2-ab3-quote { margin: 0; }
+.m2-pb-evidence-src { font: 400 13.5px/1.6 var(--font-sans); color: var(--color-clay, var(--color-muted)); max-width: 56ch; margin: 0; }
 .m2-pb-strata { display: flex; flex-direction: column; border: 1px solid var(--color-ink); border-radius: 0 0 8px 8px; overflow: hidden; }
 .m2-pb-stratum {
   display: grid; grid-template-columns: 190px 1fr 240px; gap: 16px;
@@ -170,6 +178,11 @@
 .m2-cu-card:hover h2 { color: var(--color-madrona-dark); }
 .m2-cu-card-body p { font: 400 12.5px/1.55 var(--font-sans); color: var(--color-clay); }
 .m2-cu-card-meta { font: 500 10.5px/1 ui-monospace, Menlo, monospace; color: var(--color-muted); padding: 14px 20px 18px; }
+
+/* POV thumbnail plate — holds an SVG illustration from the Madrona POV
+   illustration system (see PovThumb.tsx). 16:9, image-forward, hairline base. */
+.m2-pov-plate { border-bottom: 1px solid var(--color-line-soft); background: var(--color-card); }
+.m2-pov-plate .m2-pov-svg { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
 
 .m2-cu-plate {
   background: var(--color-paper); border-bottom: 1px solid var(--color-line-soft);
@@ -303,4 +316,43 @@
   .m2-pb-wire { display: none; }
   .m2-pb-note { grid-template-columns: 1fr; gap: 4px; }
   .m2-pb-pipe > *, .m2-pb-slayers > *, .m2-pb-apps > *, .m2-pb-bpgrid > * { min-width: 0; }
+}
+
+/* ── Starter guide: keystrokes, prompts, FAQ ─────────────────────────────── */
+
+/* Guide steps: narrative left, keystrokes right, lands chips below narrative */
+.m2-sg-rail .right { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px 28px; }
+.m2-sg-rail .right .m2-sg-do { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; }
+.m2-sg-rail .right .m2-hq-lands { grid-column: 1; align-self: end; }
+
+/* Per-step "the keystrokes" block inside the setup rail */
+.m2-sg-do { background: var(--color-card); border: 1px solid var(--color-line); border-radius: 8px; margin-top: 12px; padding: 12px 16px; }
+.m2-sg-do .lbl { color: var(--color-muted); display: block; font: 600 9.5px/1 var(--font-sans); letter-spacing: .12em; margin-bottom: 8px; text-transform: uppercase; }
+.m2-sg-do ol { color: var(--color-ink70); font: 400 12.5px/1.7 var(--font-sans); margin: 0; padding-left: 18px; }
+.m2-sg-do ol li + li { margin-top: 4px; }
+.m2-sg-do code { background: var(--color-bg); border: 1px solid var(--color-line-soft); border-radius: 4px; font: 500 11.5px/1.6 ui-monospace, Menlo, monospace; overflow-wrap: anywhere; padding: 1px 5px; }
+
+/* The prompts grid */
+.m2-sg-prompts { display: grid; gap: 18px; grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); }
+.m2-sg-prompt { background: var(--color-card); border: 1px solid var(--color-line); border-radius: 10px; padding: 18px 20px; }
+.m2-sg-prompt h3 { font: 600 14.5px/1.35 var(--font-sans); letter-spacing: -.01em; margin: 0 0 6px; }
+.m2-sg-prompt .why { color: var(--color-clay); font: 400 12.5px/1.6 var(--font-sans); margin: 0 0 12px; }
+.m2-sg-prompt .p { background: var(--color-bg); border-left: 2px solid color-mix(in srgb, var(--color-madrona) 30%, transparent); border-radius: 0 6px 6px 0; color: var(--color-ink70); font: 450 12px/1.65 ui-monospace, Menlo, monospace; margin: 0; padding: 10px 14px; white-space: pre-wrap; }
+.m2-sg-prompt--solo { margin: 14px 0 16px; padding: 16px 18px; }
+
+/* FAQ rows */
+.m2-sg-faq { border-top: 1px solid var(--color-line); grid-column: 1 / -1; }
+.m2-sg-faq > div { border-bottom: 1px solid var(--color-line-soft); display: grid; gap: 18px; grid-template-columns: minmax(0, 34%) 1fr; padding: 16px 0; }
+.m2-sg-faq h3 { font: 600 14px/1.45 var(--font-sans); letter-spacing: -.01em; margin: 0; }
+.m2-sg-faq p { color: var(--color-ink70); font: 400 13px/1.65 var(--font-sans); margin: 0; max-width: 62ch; }
+
+@media (max-width: 1080px) {
+  .m2-sg-prompts { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .m2-sg-prompts { grid-template-columns: 1fr; gap: 14px; }
+  .m2-sg-faq > div { grid-template-columns: 1fr; gap: 6px; }
+  .m2-sg-rail .right { grid-template-columns: 1fr; }
+  .m2-sg-rail .right .m2-sg-do { grid-column: 1; grid-row: auto; }
+  .m2-sg-rail .right .m2-hq-lands { grid-column: 1; }
 }

@@ -38,6 +38,7 @@ const STRATA = [
 const APPS = [
   { an: "Lila Trips", as: "AI travel planning · live" },
   { an: "San Juan Boating", as: "local guide · live" },
+  { an: "Aria Health", as: "menopause guidance · beta" },
   { an: "Garden HQ", as: "garden planner" },
   { an: "Helm", as: "operations surface" },
 ];
@@ -47,15 +48,15 @@ export default function MadronaV2EngineNote() {
 
   return (
     <main className="m2 m2-ab-page">
-      <LabMeta title="Madrona: under the hood · Our POV" />
+      <LabMeta title="The engine behind everything we ship · Thinking" />
       <M2Nav active="pov" />
 
       {/* Hero */}
-      <section className="m2-ab4 m2-th-hero">
+      <section className="m2-ab4 m2-th-hero m2-pov-hero">
         <p className="m2-kicker m2-who-kicker">Inside the practice</p>
-        <h1>Madrona: <span className="m2-pop">under the hood.</span></h1>
+        <h1>The engine behind everything we ship.</h1>
         <p className="m2-th-standfirst">Fifteen years of product judgment, encoded into a platform every project inherits. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new.</p>
-        <p className="m2-th-byline">Charlie Koch · Founder, Madrona Product Studio · August 2026</p>
+        <p className="m2-th-byline"><Link to="/about">Charlie Koch</Link> · Founder, Madrona Product Studio · August 2026</p>
       </section>
 
       {/* 1 · The engine */}
@@ -111,7 +112,7 @@ export default function MadronaV2EngineNote() {
           <div className="m2-pb-board">
             <div className="m2-pb-apps">
               {APPS.map((a) => (
-                <div key={a.an} className="m2-pb-app"><div className="an">{a.an}</div><div className="as">{a.as}</div></div>
+                <Link key={a.an} to="/apps" className="m2-pb-app"><div className="an">{a.an}</div><div className="as">{a.as}</div></Link>
               ))}
               <div className="m2-pb-app next"><div className="an">Your product</div><div className="as">starts here, day one</div></div>
             </div>
@@ -131,6 +132,13 @@ export default function MadronaV2EngineNote() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Evidence — one real learned check, quoted verbatim from the bank */}
+      <section className="m2-ab4 m2-pb-evidence">
+        <p className="m2-kicker m2-who-kicker">From the learning bank</p>
+        <blockquote className="m2-ab3-quote"><p>A demo that can write to real data is a P0. Nobody outside should ever be one tap from your production records.</p></blockquote>
+        <p className="m2-pb-evidence-src">One of twenty-plus dated findings, each banked after a real launch and folded back into the checklist every new product inherits. This one cost us a late night; now it is a gate nothing gets past.</p>
       </section>
 
       {/* 3 · The schematic */}
@@ -196,7 +204,8 @@ export default function MadronaV2EngineNote() {
         <div className="m2-ab4-body">
           <p>We build it, set it up, and teach you to run it. A client engagement ends with your product standing on this engine and your team holding the keys. The deliverable is a business that does not need us.</p>
           <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/pov">More from Our POV <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/thinking/the-era-of-agentic-operations">Read next: The era of agentic operations <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/thinking">More from Thinking <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
           </div>
         </div>

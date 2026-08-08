@@ -24,6 +24,8 @@ export interface ServiceArea {
   startingPoint: string;
   pathSteps: string[];
   artifact: { src: string; alt: string; caption: string };
+  // Optional pointer to a POV article that makes the case for this area.
+  pov?: { label: string; to: string };
 }
 
 export const serviceAreas: ServiceArea[] = [
@@ -118,6 +120,7 @@ export const serviceAreas: ServiceArea[] = [
     startingPoint: "A workflow audit followed by a focused automation or internal-tool prototype. From there, we expand what earns its place.",
     pathSteps: ["Request", "decision", "action"],
     artifact: { src: operationsArtifact, alt: "Berry Good operations dashboard with an order-intake agent and structured orders", caption: "Berry Good operations dashboard" },
+    pov: { label: "Thinking: The era of agentic operations", to: "/thinking/the-era-of-agentic-operations" },
   },
   {
     id: "new-products",

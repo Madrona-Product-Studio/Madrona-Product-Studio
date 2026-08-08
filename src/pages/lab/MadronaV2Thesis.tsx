@@ -73,7 +73,7 @@ export default function MadronaV2Thesis() {
         <p className="m2-kicker m2-who-kicker">A working theory</p>
         <h1>The Madrona Product Thesis</h1>
         <p className="m2-th-standfirst">A point of view on how great software gets built in the AI era, and what that changes about product leadership. It comes from building, and we revise it as the work teaches us.</p>
-        <p className="m2-th-byline">Charlie Koch · Founder, Madrona Product Studio</p>
+        <p className="m2-th-byline"><Link to="/about">Charlie Koch</Link> · Founder, Madrona Product Studio · August 2026</p>
       </section>
 
       {/* 1 · The core thesis */}
@@ -161,6 +161,7 @@ export default function MadronaV2Thesis() {
           <p>The hopeful part of this moment is not that companies can build more cheaply. It is that important problems may be more solvable than they have ever been.</p>
           <p>Madrona exists to put this thesis into practice. Our products and client work are the evidence, and we share what we learn as we go. This is a working document; the moment it stops changing, it has stopped doing its job.</p>
           <div className="m2-th-close-links">
+            <Link className="m2-text-link" to="/thinking/under-the-hood">Read next: The engine behind everything we ship <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/about">Why Madrona exists <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/consulting">How we put it into practice <span aria-hidden="true">→</span></Link>
           </div>

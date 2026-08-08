@@ -46,6 +46,12 @@ const STAGES = [
   { num: "03", title: "Agentic", body: "AI agents maintain the operation on a rhythm and brief the owner. People spend their attention on judgment, relationships, and the work only they can do." },
 ];
 
+const START = [
+  { icon: P.target, tone: "sprout", strong: "Pick the workflow that steals the most attention.", text: "Not the biggest one, the most repeated: the thing you redo every morning or keep in your head. That is where one agent pays for itself first." },
+  { icon: P.monitor, tone: "storefront", strong: "Put one agent on it, and one card on a surface.", text: "The agent reads, sorts, and prepares on a rhythm; you get one place to see it and approve. Nothing acts outward without you." },
+  { icon: P.outcome, tone: "layers", strong: "Name the payback before you build.", text: "Hours back, a faster reply, nothing dropped. If the first agent does not earn its keep in a few weeks, it does not get a second." },
+];
+
 const Arrow = () => (
   <svg viewBox="0 0 14 12" width="18" height="15" fill="none" aria-hidden="true"><path d="M1 6h11m0 0L8 2m4 4-4 4" stroke="currentColor" strokeWidth="1.2" /></svg>
 );
@@ -63,15 +69,15 @@ export default function MadronaV2AgenticNote() {
 
   return (
     <main className="m2 m2-ab-page">
-      <LabMeta title="The era of agentic operations · Our POV" />
+      <LabMeta title="The era of agentic operations · Thinking" />
       <M2Nav active="pov" />
 
       {/* Hero */}
-      <section className="m2-ab4 m2-th-hero">
+      <section className="m2-ab4 m2-th-hero m2-pov-hero">
         <p className="m2-kicker m2-who-kicker">A point of view</p>
-        <h1>The era of <span className="m2-pop">agentic operations.</span></h1>
+        <h1>The era of agentic operations.</h1>
         <p className="m2-th-standfirst">A business used to run on scattered tools and someone's memory. It can now run on one source of truth and a handful of AI agents on a rhythm, with a person firmly in charge. The change is not AI doing your work. It is your operation briefing you, so your attention goes to deciding.</p>
-        <p className="m2-th-byline">Charlie Koch · Founder, Madrona Product Studio · August 2026</p>
+        <p className="m2-th-byline"><Link to="/about">Charlie Koch</Link> · Founder, Madrona Product Studio · August 2026</p>
       </section>
 
       {/* 1 · The shift */}
@@ -237,7 +243,27 @@ export default function MadronaV2AgenticNote() {
         </ol>
       </section>
 
-      {/* 6 · The schematic */}
+      {/* 6 · How to start */}
+      <section className="m2-ab4 m2-ab4-sec">
+        <div className="m2-ab4-rail">
+          <p className="m2-kicker m2-who-kicker">How to start</p>
+          <p className="m2-ab4-statement">One workflow, one agent, one card, one number.</p>
+          <div className="m2-ab4-body">
+            <p>You do not migrate a business to this. You take a single painful, repeatable workflow, give it a rhythm, and prove the payback before adding the next one.</p>
+            <p>It is the smallest honest version of the pattern, and it is how every engagement we take begins.</p>
+          </div>
+        </div>
+        <ul className="m2-th4-rows">
+          {START.map((s) => (
+            <li key={s.strong}>
+              <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={s.tone}><I d={s.icon} /></span>
+              <p><strong>{s.strong}</strong> <span>{s.text}</span></p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* 7 · The schematic */}
       <section className="m2-ab4 m2-ab4-sec">
         <div className="m2-ab4-rail">
           <p className="m2-kicker m2-who-kicker">For the technically curious</p>
@@ -290,7 +316,7 @@ export default function MadronaV2AgenticNote() {
         </div>
       </section>
 
-      {/* 7 · Close */}
+      {/* 8 · Close */}
       <section className="m2-ab4 m2-ab4-sec">
         <div className="m2-ab4-rail">
           <p className="m2-kicker m2-who-kicker">How we know</p>
@@ -298,9 +324,10 @@ export default function MadronaV2AgenticNote() {
         </div>
         <div className="m2-ab4-body m2-th4-point">
           <p>The diagrams above are not a concept. They are how Madrona itself runs, every day: our studio operates on this exact pattern, with a surface called Helm as the command center. And it scales down honestly; this works for a small business the same way it works for a studio.</p>
-          <p>An engagement starts small, one AI agent on one real workflow and one card on a command surface, with visible payback before anything grows. Like everything we publish, this is a working document; as the pattern teaches us more, the page changes.</p>
+          <p>The first step is the one above: a single agent on a single workflow, with visible payback before anything grows. Like everything we publish, this is a working document; as the pattern teaches us more, the page changes.</p>
           <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/pov">More from Our POV <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/thinking/starter-guide-to-building-with-ai">Read next: A starter guide to building with AI <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/services#operations-and-ai">Our Operations and AI services <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
           </div>
         </div>

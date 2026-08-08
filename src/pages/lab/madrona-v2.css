@@ -439,8 +439,13 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-th4-point .m2-th-close-links { margin-top: 24px; }
 .m2-th-hero { padding: 84px 0 56px; }
 .m2-th-hero h1 { font-family: Fraunces, "Fraunces Fallback", Georgia, serif; font-size: clamp(2.7rem, 4.4vw, 4.1rem); font-weight: 540; letter-spacing: -.015em; line-height: 1.04; margin: 0 0 22px; }
+/* /thinking index masthead: tight Inter, all ink — aligned to the homepage hero,
+   not the Fraunces content heroes (Charlie, 2026-08-06). Scoped to POV only. */
+.m2-pov-hero h1 { font-family: Inter, "Inter Fallback", system-ui, sans-serif; font-weight: 570; letter-spacing: -.035em; line-height: 1.02; }
 .m2-th-standfirst { color: var(--ink-soft); font-size: clamp(1.08rem, 1.4vw, 1.25rem); line-height: 1.6; margin: 0 0 18px; max-width: 56ch; }
 .m2-th-byline { color: var(--muted); font-size: .88rem; margin: 0; }
+.m2-th-byline a { color: inherit; text-decoration: underline; text-decoration-color: var(--sand); text-underline-offset: 3px; }
+.m2-th-byline a:hover { color: var(--bark-dark); text-decoration-color: currentColor; }
 .m2-th-section { padding: 90px 0 0; }
 .m2-th-body { color: var(--ink-soft); font-size: 1.05rem; line-height: 1.65; margin: 22px 0 0; max-width: 62ch; }
 .m2-th-section .m2-ab3-quote { margin-top: 30px; }
@@ -523,6 +528,9 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-sp-problems li::before { background: var(--bark); border-radius: 50%; content: ""; height: 4px; left: 0; position: absolute; top: 8px; width: 4px; }
 .m2-sp-outputs li { color: var(--ink-soft); font-size: .85rem; padding: 5px 0; }
 .m2-sp-start { color: var(--muted); font-size: .85rem; line-height: 1.5; margin: 0 0 14px; }
+/* Stacked links in the How-we-start column: one per line. */
+.m2-sp-cta { display: flex; }
+.m2-sp-cta + .m2-sp-cta { margin-top: 10px; }
 
 .m2-sp-begin { align-items: center; background: var(--surface); border: 1px solid var(--sand); border-radius: 18px; display: grid; gap: 22px; grid-template-columns: auto minmax(0, 1fr) auto; margin: 44px auto; max-width: 1300px; padding: 26px 30px; }
 .m2-sp-begin-mark { width: 46px; }

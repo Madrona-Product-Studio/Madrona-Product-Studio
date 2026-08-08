@@ -30,21 +30,25 @@ export default function App() {
         <Route path="work" element={<Navigate to="/apps" replace />} />
         <Route path="connect" element={<MadronaV2Connect />} />
         <Route path="about" element={<MadronaV2About />} />
-        {/* Our POV — the studio feed (named 2026-08-06). */}
-        <Route path="pov" element={<MadronaV2Pov />} />
-        <Route path="pov/under-the-hood" element={<MadronaV2EngineNote />} />
-        <Route path="pov/the-era-of-agentic-operations" element={<MadronaV2AgenticNote />} />
-        <Route path="pov/starter-guide-to-building-with-ai" element={<MadronaV2StarterGuideNote />} />
-        <Route path="current" element={<Navigate to="/pov" replace />} />
-        <Route path="current/under-the-hood" element={<Navigate to="/pov/under-the-hood" replace />} />
-        <Route path="current/the-era-of-agentic-operations" element={<Navigate to="/pov/the-era-of-agentic-operations" replace />} />
-        <Route path="current/starter-guide-to-building-with-ai" element={<Navigate to="/pov/starter-guide-to-building-with-ai" replace />} />
-        <Route path="current/the-studio-that-runs-itself" element={<Navigate to="/pov/the-era-of-agentic-operations" replace />} />
-        <Route path="journal" element={<Navigate to="/pov" replace />} />
-        <Route path="journal/the-madrona-engine" element={<Navigate to="/pov/under-the-hood" replace />} />
-        <Route path="notes" element={<Navigate to="/pov" replace />} />
-        <Route path="playbook" element={<Navigate to="/pov" replace />} />
-        <Route path="thinking" element={<Navigate to="/pov" replace />} />
+        {/* Thinking — the studio feed (renamed from Our POV 2026-08-07). */}
+        <Route path="thinking" element={<MadronaV2Pov />} />
+        <Route path="thinking/under-the-hood" element={<MadronaV2EngineNote />} />
+        <Route path="thinking/the-era-of-agentic-operations" element={<MadronaV2AgenticNote />} />
+        <Route path="thinking/starter-guide-to-building-with-ai" element={<MadronaV2StarterGuideNote />} />
+        {/* Old /pov URLs redirect into /thinking. */}
+        <Route path="pov" element={<Navigate to="/thinking" replace />} />
+        <Route path="pov/under-the-hood" element={<Navigate to="/thinking/under-the-hood" replace />} />
+        <Route path="pov/the-era-of-agentic-operations" element={<Navigate to="/thinking/the-era-of-agentic-operations" replace />} />
+        <Route path="pov/starter-guide-to-building-with-ai" element={<Navigate to="/thinking/starter-guide-to-building-with-ai" replace />} />
+        <Route path="current" element={<Navigate to="/thinking" replace />} />
+        <Route path="current/under-the-hood" element={<Navigate to="/thinking/under-the-hood" replace />} />
+        <Route path="current/the-era-of-agentic-operations" element={<Navigate to="/thinking/the-era-of-agentic-operations" replace />} />
+        <Route path="current/starter-guide-to-building-with-ai" element={<Navigate to="/thinking/starter-guide-to-building-with-ai" replace />} />
+        <Route path="current/the-studio-that-runs-itself" element={<Navigate to="/thinking/the-era-of-agentic-operations" replace />} />
+        <Route path="journal" element={<Navigate to="/thinking" replace />} />
+        <Route path="journal/the-madrona-engine" element={<Navigate to="/thinking/under-the-hood" replace />} />
+        <Route path="notes" element={<Navigate to="/thinking" replace />} />
+        <Route path="playbook" element={<Navigate to="/thinking" replace />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
@@ -62,7 +66,7 @@ export default function App() {
           <Route path="how-it-works" element={<Navigate to="/consulting" replace />} />
           <Route path="services/agentic-operations" element={<AgenticOperations />} />
           <Route path="approach" element={<Navigate to="/consulting" replace />} />
-          <Route path="writing" element={<Navigate to="/pov" replace />} />
+          <Route path="writing" element={<Navigate to="/thinking" replace />} />
           <Route path="contact" element={<Navigate to="/connect" replace />} />
         </Route>
 

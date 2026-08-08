@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
+import PovThumb, { type PovMotif } from "./PovThumb";
 import { useReveal } from "./useReveal";
 import "./madrona-v2.css";
 import "./playbook.css";
@@ -20,10 +21,12 @@ type Entry = {
   title: string;
   excerpt: string;
   href: string;
-  plate: "engine" | "thesis-quote" | "helm-loop" | "terminal" | "checklist" | "fourteen";
+  motif: PovMotif;
 };
 
 // Charlie's chosen order: the thesis leads, then the engine, then the ops piece.
+// Each entry carries a motif from the Madrona POV illustration system
+// (see the madrona-pov-thumbnail skill): target · modules · flow · structure.
 const ENTRIES: Entry[] = [
   {
     date: "Aug 2026",
@@ -31,88 +34,33 @@ const ENTRIES: Entry[] = [
     title: "The Madrona Product Thesis",
     excerpt: "A working theory of how great software gets built in the AI era, and what that changes about product leadership.",
     href: "/thesis",
-    plate: "thesis-quote",
+    motif: "target",
   },
   {
     date: "Aug 2026",
     type: "Artifact",
-    title: "Madrona: under the hood",
-    excerpt: "The engine behind every product we ship: the platform each project inherits, the gates that hold the bar, and the learning loop that compounds.",
-    href: "/pov/under-the-hood",
-    plate: "engine",
+    title: "The engine behind everything we ship",
+    excerpt: "Fifteen years of product judgment, encoded into a platform every project inherits, held to the same gates, and compounding with every launch.",
+    href: "/thinking/under-the-hood",
+    motif: "modules",
   },
   {
     date: "Aug 2026",
     type: "Essay",
     title: "The era of agentic operations",
     excerpt: "A business can now run on one source of truth and agents on a rhythm, with a person firmly in charge. What changes, and how to start small.",
-    href: "/pov/the-era-of-agentic-operations",
-    plate: "helm-loop",
+    href: "/thinking/the-era-of-agentic-operations",
+    motif: "flow",
   },
   {
     date: "Aug 2026",
     type: "Guide",
-    title: "A starter guide to building with AI",
-    excerpt: "The piece I wish someone had handed me on day one: the tools, the setup, and the habits that take you from zero to shipping real software.",
-    href: "/pov/starter-guide-to-building-with-ai",
-    plate: "terminal",
+    title: "A starter guide to building real software with AI",
+    excerpt: "The piece I wish someone had handed me on day one: the tools, the setup, the working prompts, and the habits that take you from zero to shipping.",
+    href: "/thinking/starter-guide-to-building-with-ai",
+    motif: "structure",
   },
 ];
-
-function Plate({ kind }: { kind: Entry["plate"] }) {
-  if (kind === "engine") {
-    return (
-      <div className="m2-cu-plate" aria-hidden="true">
-        <div className="m2-jr-plate-pipe"><span /><span /><span className="gate" /><span className="gate" /><span /></div>
-        <div className="m2-jr-plate-band"><span /><span /><span /><span /><span /></div>
-        <div className="m2-jr-plate-return" />
-      </div>
-    );
-  }
-  if (kind === "terminal") {
-    return (
-      <div className="m2-cu-plate m2-cu-plate-term" aria-hidden="true">
-        <div className="term">
-          <div className="term-bar"><span /><span /><span /></div>
-          <div className="term-line"><i>$</i> claude</div>
-          <div className="term-line dim">Describe what you want to build.</div>
-          <div className="term-line"><i>&gt;</i> a guide for boaters in the San Juans<span className="caret" /></div>
-        </div>
-      </div>
-    );
-  }
-  if (kind === "checklist") {
-    return (
-      <div className="m2-cu-plate m2-cu-plate-check" aria-hidden="true">
-        <div className="ln"><i>✓</i><span style={{ maxWidth: "72%" }} /></div>
-        <div className="ln"><i>✓</i><span style={{ maxWidth: "88%" }} /></div>
-        <div className="ln"><i>✓</i><span style={{ maxWidth: "60%" }} /></div>
-        <div className="ln"><i>✓</i><span style={{ maxWidth: "80%" }} /></div>
-      </div>
-    );
-  }
-  if (kind === "fourteen") {
-    return (
-      <div className="m2-cu-plate m2-cu-plate-num" aria-hidden="true">
-        <span className="big">14</span>
-        <span className="cap">working principles</span>
-      </div>
-    );
-  }
-  if (kind === "helm-loop") {
-    return (
-      <div className="m2-cu-plate m2-cu-plate-loop" aria-hidden="true">
-        <div className="row"><span className="box" /><i>→</i><span className="box core" /><i>→</i><span className="box" /></div>
-        <div className="m2-jr-plate-return" />
-      </div>
-    );
-  }
-  return (
-    <div className="m2-cu-plate m2-cu-plate-quote" aria-hidden="true">
-      <p>&ldquo;Everyone builds, but they build different things.&rdquo;</p>
-    </div>
-  );
-}
 
 export default function MadronaV2Pov() {
   useReveal();
@@ -122,13 +70,13 @@ export default function MadronaV2Pov() {
 
   return (
     <main className="m2 m2-ab-page">
-      <LabMeta title="Our POV · Madrona Product Studio" />
+      <LabMeta title="Thinking · Madrona Product Studio" />
       <M2Nav active="pov" />
 
       {/* Masthead */}
-      <section className="m2-ab4 m2-th-hero">
+      <section className="m2-ab4 m2-th-hero m2-pov-hero">
         <p className="m2-kicker m2-who-kicker">From inside the studio</p>
-        <h1>Our <span className="m2-pop">point of view.</span></h1>
+        <h1>Thinking.</h1>
         <p className="m2-th-standfirst">Learnings, artifacts, and guides from inside the studio. When the work teaches us something, we organize the thinking here so we can build on it, and so can you.</p>
       </section>
 
@@ -144,7 +92,7 @@ export default function MadronaV2Pov() {
         <div className="m2-cu-grid">
           {shown.map((e) => (
             <Link key={e.title} to={e.href} className="m2-cu-card">
-              <Plate kind={e.plate} />
+              <div className="m2-pov-plate"><PovThumb motif={e.motif} /></div>
               <div className="m2-cu-card-body">
                 <h2>{e.title}</h2>
                 <p>{e.excerpt}</p>

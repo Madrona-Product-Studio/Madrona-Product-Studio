@@ -64,12 +64,12 @@ export default function MadronaV2ChecklistNote() {
 
   return (
     <main className="m2 m2-ab-page">
-      <LabMeta title="The checklist our launches taught us · Our POV" />
+      <LabMeta title="The checklist our launches taught us · Thinking" noindex />
       <M2Nav active="pov" />
 
       {/* Hero */}
       <section className="m2-ab4 m2-th-hero">
-        <p className="m2-kicker m2-who-kicker"><Link className="m2-pb-crumb" to="/pov">Current</Link> · Learning · Aug 2026</p>
+        <p className="m2-kicker m2-who-kicker"><Link className="m2-pb-crumb" to="/thinking">Thinking</Link> · Learning · Aug 2026</p>
         <h1>The checklist our launches <span className="m2-pop">taught us.</span></h1>
         <p className="m2-th-standfirst">Every product we ship ends with an audit, and every audit teaches us something we did not know. The findings get banked, dated and specific, and the next launch inherits them. This is our pre-launch checklist for shipping web apps, learned the hard way across real products, not copied from a listicle.</p>
       </section>
@@ -99,10 +99,10 @@ export default function MadronaV2ChecklistNote() {
           <p className="m2-ab4-statement">The bank keeps growing.</p>
         </div>
         <div className="m2-ab4-body">
-          <p>Every one of these entries traces to a specific launch and a specific lesson. That is the point of the practice: findings get folded back into the playbooks, so the checklist is not a document we wrote once. It is a system that gets harder to surprise. That loop is the engine we describe in Madrona: under the hood.</p>
+          <p>Every one of these entries traces to a specific launch and a specific lesson. That is the point of the practice: findings get folded back into the playbooks, so the checklist is not a document we wrote once. It is a system that gets harder to surprise. That loop is the engine behind everything we ship.</p>
           <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/current/under-the-hood">Read Under the hood <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/pov">More from Current <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/thinking/under-the-hood">Read: The engine behind everything we ship <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/thinking">More from Thinking <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>
