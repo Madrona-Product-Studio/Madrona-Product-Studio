@@ -4,7 +4,6 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { ServiceIcon } from "./ServiceIcon";
-import { ServicePath } from "./ServicePath";
 import { useReveal } from "./useReveal";
 import { serviceAreas, type ServiceId } from "../../data/services";
 import servicesHero from "../../../docs/madrona-v2-build-kit/site-assets/hero-2.webp";
@@ -80,8 +79,9 @@ export default function MadronaV2Services() {
                     {s.valuePoints.map((v) => <li key={v.title}><strong>{v.title}</strong><p>{v.description}</p></li>)}
                   </ul>
                 </div>
-                <figure className="m2-sp-artifact m2-sp-artifact--path">
-                  <ServicePath id={s.id} steps={s.pathSteps} />
+                <figure className="m2-sp-artifact">
+                  <img src={s.artifact.src} alt={s.artifact.alt} loading="lazy" />
+                  <figcaption>{s.artifact.caption}</figcaption>
                 </figure>
               </div>
 
