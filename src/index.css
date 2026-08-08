@@ -89,8 +89,11 @@
   --color-faint: #b8b0a2;
 
   /* The one accent — Madrona bark (kept; used scarcely, the swiss way) */
-  --color-madrona: #c4553a;
-  --color-madrona-dark: #a3432d;
+  /* Kept in sync with the lab bark tokens (madrona-v2.css --bark/--bark-dark)
+     so the accent is one color site-wide. These only render on the older
+     non-lab pages; unified here to prevent drift if any get relinked. */
+  --color-madrona: #c86a3d;
+  --color-madrona-dark: #a94728;
   --color-madrona-light: #e8a999;
 
   /* Hairlines */

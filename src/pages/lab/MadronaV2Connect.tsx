@@ -50,8 +50,8 @@ export default function MadronaV2Connect() {
     const form = e.currentTarget;
     const val = (n: string) => (form.elements.namedItem(n) as HTMLInputElement | HTMLTextAreaElement)?.value ?? "";
     const message = [
-      `What's not working: ${val("notWorking")}`,
-      `Hoping to improve: ${val("improve")}`,
+      val("notWorking") && `What's not working: ${val("notWorking")}`,
+      val("improve") && `Hoping to improve: ${val("improve")}`,
       val("organization") && `Organization: ${val("organization")}`,
       val("website") && `Website: ${val("website")}`,
       val("notes") && `Anything else: ${val("notes")}`,
@@ -108,8 +108,8 @@ export default function MadronaV2Connect() {
                 <label className="m2-cx-field"><span>Business / Organization <b>*</b></span><input name="organization" type="text" required placeholder="Company or organization name" /></label>
                 <label className="m2-cx-field"><span>Website or prototype URL</span><input name="website" type="text" placeholder="https://yourwebsite.com" /></label>
               </div>
-              <label className="m2-cx-field"><span>What’s not working right now? <b>*</b></span><textarea name="notWorking" required rows={2} placeholder="Share the challenges, gaps, or friction you’re facing." /></label>
-              <label className="m2-cx-field"><span>What are you hoping to improve? <b>*</b></span><textarea name="improve" required rows={2} placeholder="What would success look like for this project?" /></label>
+              <label className="m2-cx-field"><span>What’s not working right now?</span><textarea name="notWorking" rows={2} placeholder="Share the challenges, gaps, or friction you’re facing." /></label>
+              <label className="m2-cx-field"><span>What are you hoping to improve?</span><textarea name="improve" rows={2} placeholder="What would success look like for this project?" /></label>
               <label className="m2-cx-field"><span>Anything else we should know?</span><textarea name="notes" rows={3} placeholder="Share any additional context, goals, or timeline." /></label>
               <input name="company" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" className="m2-cx-hp" />
               <div className="m2-cx-submit">
