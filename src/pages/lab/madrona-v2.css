@@ -131,7 +131,9 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-button:active { transform: translateY(0) scale(.98); }
 .m2-button-secondary { background: transparent; color: var(--forest) !important; }
 .m2-button-secondary:hover { background: rgba(31,52,45,.06); }
-.m2-kicker { color: var(--bark-dark); font-size: .68rem; font-weight: 750; letter-spacing: .12em; margin-bottom: 14px; text-transform: uppercase; }
+/* Eyebrows/labels use the bright --bark so they match the .m2-pop flash
+   (one accent). --bark-dark is reserved for hover/pressed + darker fills. */
+.m2-kicker { color: var(--bark); font-size: .68rem; font-weight: 750; letter-spacing: .12em; margin-bottom: 14px; text-transform: uppercase; }
 .m2-pop { color: var(--bark); }
 .m2-text-link { color: var(--bark-dark) !important; display: inline-flex; font-size: .86rem; font-weight: 700; gap: 9px; margin-top: 14px; }
 .m2-text-link span { transition: transform 140ms cubic-bezier(.23, 1, .32, 1); }
@@ -464,7 +466,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 
 /* Who we help — claim rail + three tinted audience columns (Charlie's mockup) */
 .m2-who { display: grid; gap: clamp(36px, 5vw, 90px); grid-template-columns: minmax(300px, .95fr) minmax(0, 1.05fr); margin: 0 auto; max-width: 1300px; padding: 90px 0 0; }
-.m2-kicker.m2-who-kicker { color: var(--bark-dark); margin-bottom: 16px; }
+.m2-kicker.m2-who-kicker { color: var(--bark); margin-bottom: 16px; }
 /* Section statement scale, shared with .m2-ab4-rail h2 so labeled two-column spreads match. */
 .m2-who-rail h2 { font-family: Fraunces, "Fraunces Fallback", Georgia, serif; font-size: var(--m2-h-section); font-weight: 540; letter-spacing: -.018em; line-height: 1.12; margin: 0 0 18px; max-width: 18ch; }
 .m2-who-rule { background: var(--bark); display: block; height: 2px; margin: 0 0 24px; width: 52px; }
@@ -642,7 +644,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .hc-arc-node--right .hc-arc-label { left: calc(100% + 12px); text-align: left; top: 50%; transform: translateY(-50%); }
 .hc-arc-node--left .hc-arc-label { right: calc(100% + 12px); text-align: right; top: 50%; transform: translateY(-50%); }
 .hc-arc-center { left: 50%; position: absolute; text-align: center; top: 50%; transform: translate(-50%, -50%); width: 50%; z-index: 1; }
-.hc-arc-ctitle { color: var(--bark-dark); display: block; font-size: .58rem; font-weight: 700; letter-spacing: .13em; margin-bottom: 12px; text-transform: uppercase; }
+.hc-arc-ctitle { color: var(--bark); display: block; font-size: .58rem; font-weight: 700; letter-spacing: .13em; margin-bottom: 12px; text-transform: uppercase; }
 .hc-arc-clist { display: flex; flex-direction: column; gap: 11px; list-style: none; margin: 0; padding: 0; }
 .hc-arc-clist li { align-items: center; color: var(--ink); display: flex; font-size: .84rem; font-weight: 600; gap: 11px; justify-content: center; line-height: 1.12; text-align: center; }
 .hc-arc-ci { align-items: center; background: var(--surface); border-radius: 50%; display: grid; flex: 0 0 auto; height: 32px; place-content: center; width: 32px; }
@@ -829,7 +831,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-order-panel { display: grid; grid-template-columns: repeat(3, 1fr); min-height: 430px; padding: 34px; }
 .m2-order-panel > div { padding: 26px; }
 .m2-order-panel > div + div { border-left: 1px solid var(--sand); }
-.m2-product > span { color: var(--bark-dark); font-size: .7rem; font-weight: 700; }
+.m2-product > span { color: var(--bark); font-size: .7rem; font-weight: 700; }
 .m2-berry-bowl { color: #344f37; font-size: 2.3rem; letter-spacing: .2em; line-height: .8; margin: 55px 0; text-align: center; }
 .m2-product h3 { font-size: 1.3rem; }
 .m2-checkout label { color: var(--muted); display: block; font-size: .72rem; margin: 16px 0; }
