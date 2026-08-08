@@ -137,6 +137,7 @@ export default function MadronaV2Thesis() {
       <section className="m2-ab4 m2-ab4-sec m2-ab4-sec--full">
         <div className="m2-th4-fullhead">
           <p className="m2-kicker m2-who-kicker">Evolution over revolution</p>
+          <p className="m2-ab4-statement">Every team starts somewhere different. The goal is one stage forward.</p>
           <p className="m2-ab4-railbody m2-th4-fullbody">This is not an argument that traditional product organizations are obsolete. Many companies have real constraints: existing systems, customers, compliance needs, organizational scale. The market is in transition, and the opportunity is to help teams move one meaningful stage forward from wherever they are today.</p>
         </div>
         <ol className="m2-ab4-cols m2-th4-stages">

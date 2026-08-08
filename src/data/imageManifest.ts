@@ -39,22 +39,6 @@ export const imageManifest: Record<string, { width: number; height: number }> = 
     "width": 1600,
     "height": 1000
   },
-  "/case-studies/hikerlink/check-in.png": {
-    "width": 1600,
-    "height": 1000
-  },
-  "/case-studies/hikerlink/emergency.png": {
-    "width": 1600,
-    "height": 1000
-  },
-  "/case-studies/hikerlink/hero.png": {
-    "width": 1600,
-    "height": 1000
-  },
-  "/case-studies/hikerlink/trail-feed.png": {
-    "width": 1600,
-    "height": 1000
-  },
   "/case-studies/lila-trips/destination-guide.jpg": {
     "width": 1600,
     "height": 1000
