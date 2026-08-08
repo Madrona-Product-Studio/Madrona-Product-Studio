@@ -8,7 +8,6 @@ import ariaArtifact from "../../docs/madrona-v2-build-kit/site-assets/aria-healt
 import helmArtifact from "../../docs/madrona-v2-build-kit/site-assets/helm-tile.webp";
 import gardenArtifact from "../../docs/madrona-v2-build-kit/site-assets/garden-hq-tile.webp";
 import plainlyArtifact from "../../docs/madrona-v2-build-kit/site-assets/plainly-tile.webp";
-import hikerArtifact from "../../docs/madrona-v2-build-kit/site-assets/hiker-link-tile.webp";
 import iconLilaTrips from "../../docs/madrona-v2-build-kit/site-assets/app-icons/lila-trips.svg";
 import iconSanJuan from "../../docs/madrona-v2-build-kit/site-assets/app-icons/san-juan-boating-guide.svg";
 import iconLilaYoga from "../../docs/madrona-v2-build-kit/site-assets/app-icons/lila-yoga.svg";
@@ -16,7 +15,6 @@ import iconAria from "../../docs/madrona-v2-build-kit/site-assets/app-icons/aria
 import iconHelm from "../../docs/madrona-v2-build-kit/site-assets/app-icons/helm.svg";
 import iconGardenHq from "../../docs/madrona-v2-build-kit/site-assets/app-icons/garden-hq.svg";
 import iconPlainly from "../../docs/madrona-v2-build-kit/site-assets/app-icons/plainly.svg";
-import iconHikerLink from "../../docs/madrona-v2-build-kit/site-assets/app-icons/hiker-link.svg";
 
 export type ProductStage = "live" | "beta" | "in-development" | "prototype" | "concept";
 
@@ -105,7 +103,7 @@ export const studioProducts: StudioProduct[] = [
   {
     id: "helm",
     name: "Helm",
-    stage: "in-development",
+    stage: "beta",
     logoSrc: iconHelm,
     shortDescription: "A personal command center for life and work, built on versioned markdown.",
     artifact: { src: helmArtifact, alt: "Helm shown on a tablet and phone, a personal command center in markdown", type: "screenshot" },
@@ -140,19 +138,6 @@ export const studioProducts: StudioProduct[] = [
     rightNow: "Refining the voice conversation and how it generates a shareable profile.",
     primaryAction: { label: "Visit Plainly", href: "https://www.plainlytherapy.com/", external: true },
     sortOrder: 3,
-  },
-  {
-    id: "hiker-link",
-    name: "Hiker Link",
-    stage: "in-development",
-    logoSrc: iconHikerLink,
-    shortDescription: "An offline-first safety app for backcountry hikers, with trip plans and mesh check-ins.",
-    artifact: { src: hikerArtifact, alt: "Hiker Link shown on a phone and tablet, offline-first backcountry safety", type: "prototype" },
-    builtFor: "Hikers heading into areas without cell service, like Mount Baker.",
-    helpsThem: "File a trip plan, check in at waypoints, and reach help when there's no signal.",
-    rightNow: "Building the core planning and check-in flow and refining the mobile experience.",
-    primaryAction: { label: "Explore Hiker Link", href: "https://baker-five.vercel.app", external: true },
-    sortOrder: 4,
   },
 ];
 

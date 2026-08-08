@@ -8,7 +8,7 @@ import sharp from "sharp";
 
 const CS = "/Users/charliekoch/Developer/studio/madrona-creative-system/product-marketing";
 const OUT = path.resolve("docs/madrona-v2-build-kit/site-assets");
-const folders = ["lila-yoga", "aria-health", "helm", "garden-hq", "plainly", "hiker-link"];
+const folders = ["lila-yoga", "aria-health", "helm", "garden-hq", "plainly"];
 
 for (const folder of folders) {
   const genDir = path.join(CS, folder, "compositions/generated");
