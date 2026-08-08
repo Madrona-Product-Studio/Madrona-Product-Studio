@@ -518,6 +518,8 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-sp-artifact { border: 1px solid var(--sand); border-radius: 14px; margin: 0; overflow: hidden; }
 .m2-sp-artifact img { aspect-ratio: 16 / 11; display: block; object-fit: cover; object-position: top center; width: 100%; }
 .m2-sp-artifact figcaption { color: var(--muted); font-size: .72rem; letter-spacing: .02em; padding: 10px 14px; }
+/* Path graphic variant — SVG journey on a paper plate instead of a photo. */
+.m2-sp-artifact--path { align-items: center; background: var(--card, #fff); display: flex; padding: clamp(8px, 1.6vw, 20px); }
 
 .m2-sp-detail { border-top: 1px solid var(--line-soft, rgba(26,23,20,.08)); display: grid; gap: clamp(22px, 2.4vw, 38px); grid-template-columns: repeat(4, 1fr); margin-top: 28px; padding-top: 26px; }
 .m2-sp-detail h3 { color: var(--ink); font-size: .74rem; font-weight: 700; letter-spacing: .05em; margin: 0 0 16px; text-transform: uppercase; }
