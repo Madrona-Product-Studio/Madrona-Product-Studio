@@ -23,7 +23,7 @@ const colors = [
 export default function MadronaSystem() {
   return (
     <main className="m2 m2-system">
-      <LabMeta title="Madrona V2 System Lab" />
+      <LabMeta title="Madrona V2 System Lab" noindex />
       <header className="m2-system-hero">
         <p className="m2-kicker">Internal design lab · noindex</p>
         <h1>A warm, practical system for serious work.</h1>

@@ -35,7 +35,9 @@ const pages = {
   '/thesis': {
     title: 'The Madrona Product Thesis · Madrona Product Studio',
     description: 'AI is not eliminating Product, Design, or Engineering. It is expanding what each discipline can contribute as the cost of building software falls. A working theory from building.',
+    article: { datePublished: '2026-08-05', dateModified: '2026-08-07' },
     h1: 'The Madrona Product Thesis',
+    ogImage: '/og-pov-thesis.png',
     body: 'A point of view on how great software gets built in the AI era. The disciplines remain; the boundaries become more permeable. The advantage is no longer shipping more software, it is learning faster through software. Product leadership creates the conditions for a multidisciplinary team to solve important customer problems. AI is leverage; what matters is where we choose to apply it.',
   },
   '/about': {
@@ -51,11 +53,42 @@ const pages = {
     body: 'Each Madrona product begins with a real customer problem and creates a place to test ideas, improve our methods, and make something useful in its own right.',
   },
   '/thinking': {
-    noindex: true,
     title: 'Thinking · Madrona Product Studio',
-    description: 'Notes from Madrona on product leadership, small teams, responsible AI, and the changing craft of software creation.',
-    h1: 'What we’re learning',
-    body: 'Madrona shares what the work teaches us about product leadership, small teams, responsible AI, and the changing craft of software creation. The Teams That Build Next is forthcoming.',
+    description: 'How we see building software in the AI era: essays, artifacts, and guides from inside a working product studio. Published when the work has taught us something worth sharing.',
+    h1: 'Thinking.',
+    body: 'Learnings, artifacts, and guides from inside Madrona. When the work teaches us something, we organize the thinking here so we can build on it, and so can you. The Madrona Product Thesis, the engine behind everything we ship, the era of agentic operations, and a starter guide to building real software with AI.',
+  },
+  '/thinking/the-era-of-agentic-operations': {
+    title: 'The era of agentic operations: running a business on AI agents · Madrona Product Studio',
+    description: 'What agentic AI means for a real business: AI agents handle the workflow automation on a rhythm, one source of truth holds the state, and a person stays in charge. What changes, and how to start small.',
+    article: { datePublished: '2026-08-05', dateModified: '2026-08-07' },
+    h1: 'The era of agentic operations.',
+    ogImage: '/og-pov-agentic-operations.png',
+    body: 'A business used to run on scattered tools and someone’s memory. It can now run on one source of truth and a handful of agents on a rhythm: a nightly sweep, a morning pulse, a daily brief, a weekly sync, rendered live on a command surface. Agents propose; the owner decides and sends. The point is not automation, it is attention. We sell what we run: Madrona itself operates on this exact pattern.',
+  },
+  '/thinking/starter-guide-to-building-with-ai': {
+    title: 'A starter guide to building real software with AI: setup, prompts, first steps · Madrona Product Studio',
+    description: 'How to start building software with AI, in an afternoon: install Claude Code and Codex, set up GitHub and Vercel, the six copy-paste prompts that make AI coding agents actually work, your first build, and an honest FAQ.',
+    article: { datePublished: '2026-08-05', dateModified: '2026-08-07' },
+    h1: 'A starter guide to building real software with AI.',
+    ogImage: '/og-pov-starter-guide.png',
+    faq: [
+      { q: 'What does building software with AI cost?', a: 'GitHub and Vercel have free tiers that will carry you a long way. The agents are the real cost: Claude Code comes with Claude Pro and Codex comes with ChatGPT Plus, each about $20 a month. Starting with just Claude Code is fine.' },
+      { q: 'I am not on a Mac. Does this still work?', a: 'Yes. Everything runs on Windows and Linux too, and both installers cover all three. The guide reads Mac because that is what we work on, but nothing about the loop is Mac-only.' },
+      { q: 'Do I need to know how to code?', a: 'No. You need to describe what you want clearly and look carefully at what you get back. The agents supply the syntax; you supply the judgment.' },
+      { q: 'Can it break something?', a: 'The agents ask before running commands or changing files, and git means every committed change is saved and reversible. The honest risk is not a broken computer, it is shipping something you did not look at, which is what the habits are for.' },
+      { q: 'What if the agent gets stuck?', a: 'Commit what works, clear the conversation, and restate the goal in one sentence. If it is still circling, ask the other agent. A second opinion usually breaks the loop, which is half the reason we run two.' },
+      { q: 'How long until I have something real?', a: 'An afternoon for the setup, a weekend for a first version you can put in front of someone. The loop is fast; the judgment takes longer, and that part is the fun.' },
+    ],
+    body: 'You do not need a computer science degree to build real software with AI. This guide covers the whole setup in an afternoon, with the actual keystrokes: install Claude Code (curl -fsSL https://claude.ai/install.sh | bash) and Codex as terminal AI coding agents, GitHub as your source of truth, Vercel deploying every change live, and connectors that give your agent reach. Then the six working prompts that do the heavy lifting: ask for a plan first, make the agent screenshot and check its own work, ask for options not answers, keep a ship gate, make it teach you, and write the rules down once in a CLAUDE.md file. Plus what to build first, the habits that separate shipping from stalling, and answers on cost, Windows vs Mac, safety, and what to do when the agent gets stuck.',
+  },
+  '/thinking/under-the-hood': {
+    title: 'The engine behind everything we ship — how we build software with AI · Madrona Product Studio',
+    description: 'Inside an AI-assisted software development process that ships real products: the platform every project inherits, the quality gates that hold the bar, and the learning loop that compounds with every launch.',
+    article: { datePublished: '2026-08-05', dateModified: '2026-08-07' },
+    h1: 'The engine behind everything we ship.',
+    ogImage: '/og-pov-under-the-hood.png',
+    body: 'Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new.',
   },
   '/connect': {
     title: 'Connect · Madrona Product Studio',
@@ -100,6 +133,40 @@ function generateHtml(route, meta) {
     `<meta name="twitter:description" content="${meta.description.replace(/"/g, '&quot;')}" />`
   );
 
+  // og:url should reflect the actual page, not the homepage default.
+  const routeUrl = `https://www.madronaproduct.com${route === '/' ? '' : route}`;
+  html = html.replace(
+    /<meta property="og:url" content="[^"]*" \/>/,
+    `<meta property="og:url" content="${routeUrl}" />`
+  );
+
+  // Per-article social image (falls back to the sitewide OG when unset).
+  if (meta.ogImage) {
+    const ogUrl = `https://www.madronaproduct.com${meta.ogImage}`;
+    const ogAlt = `${meta.h1.replace(/\.$/, '')} — Thinking, Madrona Product Studio`;
+    html = html.replace(
+      /<meta property="og:image" content="[^"]*" \/>/,
+      `<meta property="og:image" content="${ogUrl}" />`
+    );
+    html = html.replace(
+      /<meta name="twitter:image" content="[^"]*" \/>/,
+      `<meta name="twitter:image" content="${ogUrl}" />`
+    );
+    html = html.replace(
+      /<meta property="og:image:alt" content="[^"]*" \/>/,
+      `<meta property="og:image:alt" content="${ogAlt.replace(/"/g, '&quot;')}" />`
+    );
+  }
+
+  // Article pages advertise the right OpenGraph type + publish date.
+  if (meta.article) {
+    html = html.replace(
+      /<meta property="og:type" content="[^"]*" \/>/,
+      `<meta property="og:type" content="article" />`
+    );
+    html = html.replace('</head>', `  <meta property="article:published_time" content="${meta.article.datePublished}" />\n  </head>`);
+  }
+
   // Add canonical URL
   const canonical = `<link rel="canonical" href="https://www.madronaproduct.com${route === '/' ? '' : route}" />`;
   html = html.replace('</head>', `  ${canonical}\n  </head>`);
@@ -107,6 +174,36 @@ function generateHtml(route, meta) {
   // Keep placeholder routes out of the search index
   if (meta.noindex) {
     html = html.replace('</head>', `  <meta name="robots" content="noindex" />\n  </head>`);
+  }
+
+  // Article structured data for Current entries (journal-style pages)
+  if (meta.article) {
+    const ld = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: meta.h1.replace(/\.$/, ''),
+      description: meta.description,
+      datePublished: meta.article.datePublished,
+      dateModified: meta.article.dateModified || meta.article.datePublished,
+      author: { '@type': 'Person', name: 'Charlie Koch' },
+      publisher: { '@type': 'Organization', name: 'Madrona Product Studio', url: 'https://www.madronaproduct.com' },
+      mainEntityOfPage: `https://www.madronaproduct.com${route}`,
+    };
+    html = html.replace('</head>', `  <script type="application/ld+json">${JSON.stringify(ld)}</script>\n  </head>`);
+  }
+
+  // FAQ structured data, where a page carries a Q&A section.
+  if (meta.faq) {
+    const faqLd = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: meta.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    };
+    html = html.replace('</head>', `  <script type="application/ld+json">${JSON.stringify(faqLd)}</script>\n  </head>`);
   }
 
   // Inject SEO content in a noscript block so Google sees real text

@@ -9,8 +9,11 @@ import MadronaV2Services from "./pages/lab/MadronaV2Services";
 import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
 import MadronaV2About from "./pages/lab/MadronaV2About";
-import MadronaV2Thinking from "./pages/lab/MadronaV2Thinking";
 import MadronaV2Thesis from "./pages/lab/MadronaV2Thesis";
+import MadronaV2Pov from "./pages/lab/MadronaV2Pov";
+import MadronaV2EngineNote from "./pages/lab/MadronaV2EngineNote";
+import MadronaV2AgenticNote from "./pages/lab/MadronaV2AgenticNote";
+import MadronaV2StarterGuideNote from "./pages/lab/MadronaV2StarterGuideNote";
 import MadronaSystem from "./pages/lab/MadronaSystem";
 
 export default function App() {
@@ -27,7 +30,25 @@ export default function App() {
         <Route path="work" element={<Navigate to="/apps" replace />} />
         <Route path="connect" element={<MadronaV2Connect />} />
         <Route path="about" element={<MadronaV2About />} />
-        <Route path="thinking" element={<MadronaV2Thinking />} />
+        {/* Thinking — the studio feed (renamed from Our POV 2026-08-07). */}
+        <Route path="thinking" element={<MadronaV2Pov />} />
+        <Route path="thinking/under-the-hood" element={<MadronaV2EngineNote />} />
+        <Route path="thinking/the-era-of-agentic-operations" element={<MadronaV2AgenticNote />} />
+        <Route path="thinking/starter-guide-to-building-with-ai" element={<MadronaV2StarterGuideNote />} />
+        {/* Old /pov URLs redirect into /thinking. */}
+        <Route path="pov" element={<Navigate to="/thinking" replace />} />
+        <Route path="pov/under-the-hood" element={<Navigate to="/thinking/under-the-hood" replace />} />
+        <Route path="pov/the-era-of-agentic-operations" element={<Navigate to="/thinking/the-era-of-agentic-operations" replace />} />
+        <Route path="pov/starter-guide-to-building-with-ai" element={<Navigate to="/thinking/starter-guide-to-building-with-ai" replace />} />
+        <Route path="current" element={<Navigate to="/thinking" replace />} />
+        <Route path="current/under-the-hood" element={<Navigate to="/thinking/under-the-hood" replace />} />
+        <Route path="current/the-era-of-agentic-operations" element={<Navigate to="/thinking/the-era-of-agentic-operations" replace />} />
+        <Route path="current/starter-guide-to-building-with-ai" element={<Navigate to="/thinking/starter-guide-to-building-with-ai" replace />} />
+        <Route path="current/the-studio-that-runs-itself" element={<Navigate to="/thinking/the-era-of-agentic-operations" replace />} />
+        <Route path="journal" element={<Navigate to="/thinking" replace />} />
+        <Route path="journal/the-madrona-engine" element={<Navigate to="/thinking/under-the-hood" replace />} />
+        <Route path="notes" element={<Navigate to="/thinking" replace />} />
+        <Route path="playbook" element={<Navigate to="/thinking" replace />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
