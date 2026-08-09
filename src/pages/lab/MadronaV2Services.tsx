@@ -39,6 +39,8 @@ export default function MadronaV2Services() {
   useReveal();
   const ids = serviceAreas.map((s) => s.id);
   const active = useActiveSection(ids);
+  const activeIdx = ids.indexOf(active);
+  const fill = ids.length > 1 ? (activeIdx / (ids.length - 1)) * 100 : 0;
 
   return (
     <main className="m2 m2-sp-page">
@@ -60,10 +62,20 @@ export default function MadronaV2Services() {
       </section>
 
       <div className="m2-sp-layout">
-        <nav className="m2-sp-nav" aria-label="Service areas">
-          {serviceAreas.map((s) => (
-            <a key={s.id} href={`#${s.id}`} className={active === s.id ? "is-active" : ""} aria-current={active === s.id ? "true" : undefined}>{s.name}</a>
-          ))}
+        <nav className="m2-sp-rail" aria-label="Service areas">
+          <span className="m2-sp-rail-line" aria-hidden="true" />
+          <span className="m2-sp-rail-fill" style={{ height: `calc(${fill}% * 0.92)` }} aria-hidden="true" />
+          {serviceAreas.map((s, i) => {
+            const on = active === s.id;
+            return (
+              <a key={s.id} href={`#${s.id}`} className={on ? "is-active" : ""} aria-current={on ? "true" : undefined}
+                onClick={(e) => { e.preventDefault(); document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}>
+                <span className="m2-sp-rail-dot" aria-hidden="true" />
+                <span className="m2-sp-rail-num">{`0${i + 1}`}</span>
+                <span className="m2-sp-rail-label">{s.door}</span>
+              </a>
+            );
+          })}
         </nav>
 
         <div className="m2-sp-sections">
