@@ -20,7 +20,10 @@
   font-family: Inter, "Inter Fallback", system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.55;
-  overflow: hidden;
+  /* clip (not hidden) contains horizontal overflow WITHOUT creating a scroll
+     container — hidden here silently breaks position: sticky for descendants
+     like the /services rail nav. */
+  overflow-x: clip;
 }
 
 .m2 *, .m2 *::before, .m2 *::after { box-sizing: border-box; }
@@ -502,6 +505,20 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-sp-nav { align-self: start; display: flex; flex-direction: column; gap: 2px; position: sticky; top: 28px; }
 .m2-sp-nav a { border-left: 2px solid transparent; color: var(--muted); font-size: .95rem; font-weight: 500; padding: 9px 0 9px 14px; transition: color .2s ease, border-color .2s ease; }
 .m2-sp-nav a.is-active { border-left-color: var(--bark); color: var(--ink); font-weight: 600; }
+
+/* Sticky wayfinding rail — numbered progress rail for the four service doors.
+   Tracks the section you're in and fills with bark as you move through them. */
+.m2-sp-rail { align-self: start; padding-left: 26px; position: sticky; top: 28px; }
+.m2-sp-rail-line { background: var(--sand); bottom: 10px; left: 8px; position: absolute; top: 10px; width: 2px; }
+.m2-sp-rail-fill { background: var(--bark); left: 8px; position: absolute; top: 10px; transition: height .35s cubic-bezier(.22,1,.36,1); width: 2px; }
+.m2-sp-rail a { display: block; padding: 12px 0; position: relative; text-decoration: none; }
+.m2-sp-rail-dot { background: var(--card, #fff); border: 2px solid var(--sand); border-radius: 50%; height: 12px; left: -22px; position: absolute; top: 15px; transition: background .25s ease, border-color .25s ease; width: 12px; }
+.m2-sp-rail a.is-active .m2-sp-rail-dot { background: var(--bark); border-color: var(--bark); }
+.m2-sp-rail-num { color: var(--muted); display: block; font-size: .7rem; font-weight: 700; letter-spacing: .1em; }
+.m2-sp-rail a.is-active .m2-sp-rail-num { color: var(--bark); }
+.m2-sp-rail-label { color: var(--muted); display: block; font-size: .98rem; font-weight: 500; letter-spacing: -.01em; transition: color .2s ease; }
+.m2-sp-rail a:hover .m2-sp-rail-label { color: var(--ink-soft); }
+.m2-sp-rail a.is-active .m2-sp-rail-label { color: var(--ink); font-weight: 700; }
 
 .m2-sp-sections { display: flex; flex-direction: column; min-width: 0; }
 .m2-sp-section { border-top: 1px solid var(--sand); padding: 44px 0; scroll-margin-top: 24px; }
@@ -2034,6 +2051,12 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-sp-nav { flex-direction: row; flex-wrap: wrap; gap: 8px; position: static; }
   .m2-sp-nav a { border: 1px solid var(--sand); border-left: 1px solid var(--sand); border-radius: 999px; padding: 7px 15px; }
   .m2-sp-nav a.is-active { background: var(--forest); border-color: var(--forest); color: #fff; }
+  /* Rail collapses to a row of pills once the layout is single-column. */
+  .m2-sp-rail { display: flex; flex-wrap: wrap; gap: 8px; padding-left: 0; position: static; }
+  .m2-sp-rail-line, .m2-sp-rail-fill, .m2-sp-rail-dot, .m2-sp-rail-num { display: none; }
+  .m2-sp-rail a { border: 1px solid var(--sand); border-radius: 999px; padding: 7px 15px; }
+  .m2-sp-rail a.is-active { background: var(--forest); border-color: var(--forest); }
+  .m2-sp-rail a.is-active .m2-sp-rail-label { color: #fff; }
   .m2-sp-detail { grid-template-columns: repeat(2, 1fr); }
   .m2-cx-hero, .m2-cx-actions, .m2-cx-main, .m2-cx-bestfor, .m2-cx-started { margin-inline: 28px; }
   .m2-cx-main { grid-template-columns: 1fr; }
@@ -2079,6 +2102,8 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-sp-detail { grid-template-columns: 1fr; }
   .m2-sp-nav { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
   .m2-sp-nav a { flex: none; white-space: nowrap; }
+  .m2-sp-rail { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  .m2-sp-rail a { flex: none; white-space: nowrap; }
   .m2-sp-begin { grid-template-columns: 1fr; }
   .m2-sp-begin .m2-button { justify-self: start; }
   .m2-cx-hero, .m2-cx-actions, .m2-cx-main, .m2-cx-bestfor, .m2-cx-started { margin-inline: 20px; }
