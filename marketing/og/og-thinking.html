@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- OG card options for the /thinking FEED index (T7 #4). Matches the
+     og-pov-* article family: bark THINKING kicker, ink headline, logo + bark
+     URL bottom-left, PovThumb motif on the right. Three directions to pick
+     from; render the winner to public/og-thinking.png. -->
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #8a8a8a; font-family: 'Inter', system-ui, sans-serif; padding: 40px; display: flex; flex-direction: column; gap: 40px; align-items: center; }
+  .label { color: #fff; font-size: 20px; font-weight: 600; align-self: flex-start; margin-left: 4px; }
+  .og { width: 1200px; height: 630px; background: #f4efe6; display: flex; flex-shrink: 0; overflow: hidden; position: relative; }
+  .copy { width: 690px; padding: 70px 40px 60px 72px; display: flex; flex-direction: column; }
+  .kicker { color: #c86a3d; font-size: 22px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+  h1 { font-size: 74px; font-weight: 600; color: #1a1714; letter-spacing: -0.035em; line-height: 1.02; margin-top: 34px; }
+  h1.small { font-size: 58px; letter-spacing: -0.03em; line-height: 1.05; max-width: 15ch; }
+  .pop { color: #c86a3d; }
+  .sub { margin-top: 26px; font-size: 25px; line-height: 1.45; color: #6f6657; max-width: 22ch; }
+  .foot { margin-top: auto; display: flex; align-items: center; gap: 16px; }
+  .foot img { height: 40px; display: block; }
+  .url { color: #a3432d; font-size: 22px; font-weight: 600; }
+  .art { flex: 1; border-left: 1px solid rgba(26,23,20,0.07); position: relative; background: #f6f2ea; }
+  .art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .grid { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+  .grid > div { position: relative; }
+  .grid > div + div { }
+  .grid svg { position: absolute; inset: 12%; width: 76%; height: 76%; }
+</style>
+</head>
+<body>
+
+<!-- ══ V1 — "Thinking." + collection grid (a body of work) ══ -->
+<div class="label">A · "Thinking." + collection grid</div>
+<div class="og">
+  <div class="copy">
+    <div class="kicker">Thinking</div>
+    <h1>Notes from<br>the work.</h1>
+    <div class="sub">Essays, artifacts, and guides from inside a working product studio.</div>
+    <div class="foot"><img src="../../docs/madrona_static_logo_assets/madrona-approved-logo-transparent.png" alt=""><span class="url">madronaproduct.com/thinking</span></div>
+  </div>
+  <div class="art">
+    <div class="grid">
+      <div><svg viewBox="0 0 1600 900" data-motif="target"></svg></div>
+      <div><svg viewBox="0 0 1600 900" data-motif="flow"></svg></div>
+      <div><svg viewBox="0 0 1600 900" data-motif="modules"></svg></div>
+      <div><svg viewBox="0 0 1600 900" data-motif="structure"></svg></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ V2 — "Thinking." big + single flow motif ══ -->
+<div class="label">B · "Thinking." + flow motif</div>
+<div class="og">
+  <div class="copy">
+    <div class="kicker">Thinking</div>
+    <h1>Thinking.</h1>
+    <div class="sub">How we see building software in the AI era, from inside the work.</div>
+    <div class="foot"><img src="../../docs/madrona_static_logo_assets/madrona-approved-logo-transparent.png" alt=""><span class="url">madronaproduct.com/thinking</span></div>
+  </div>
+  <div class="art"><svg viewBox="0 0 1600 900" data-motif="flow"></svg></div>
+</div>
+
+<!-- ══ V3 — statement headline + structure motif ══ -->
+<div class="label">C · statement + structure motif</div>
+<div class="og" id="ogC">
+  <div class="copy">
+    <div class="kicker">Thinking</div>
+    <h1 class="small">How great software gets <span class="pop">built.</span></h1>
+    <div class="sub">Learnings, artifacts, and guides from inside Madrona.</div>
+    <div class="foot"><img src="../../docs/madrona_static_logo_assets/madrona-approved-logo-transparent.png" alt=""><span class="url">madronaproduct.com/thinking</span></div>
+  </div>
+  <div class="art"><svg viewBox="0 0 1600 900" data-motif="structure"></svg></div>
+</div>
+
+<script>
+// PovThumb motifs, inlined (forest lines, one bark accent, plate = card bg).
+const FOREST = '#1f3b33', BARK = '#c86a3d', PLATE = '#f6f2ea';
+const motifs = {
+  target: () => `
+    <g stroke="${FOREST}" stroke-opacity="0.05" stroke-width="2">
+      <line x1="300" y1="60" x2="300" y2="840"/><line x1="1300" y1="60" x2="1300" y2="840"/>
+      <line x1="130" y1="230" x2="1470" y2="230"/><line x1="130" y1="670" x2="1470" y2="670"/></g>
+    <line x1="140" y1="450" x2="1460" y2="450" stroke="${FOREST}" stroke-opacity="0.3" stroke-width="2.5" stroke-dasharray="9 13"/>
+    <line x1="800" y1="95" x2="800" y2="805" stroke="${BARK}" stroke-opacity="0.4" stroke-width="2.5" stroke-dasharray="9 13"/>
+    <circle cx="800" cy="450" r="330" fill="none" stroke="${BARK}" stroke-opacity="0.6" stroke-width="3.5" stroke-dasharray="11 15"/>
+    <circle cx="800" cy="450" r="250" fill="none" stroke="${FOREST}" stroke-width="4"/>
+    <circle cx="800" cy="450" r="150" fill="none" stroke="${FOREST}" stroke-opacity="0.45" stroke-width="3.5" stroke-dasharray="9 13"/>
+    <circle cx="800" cy="120" r="11" fill="${FOREST}"/><circle cx="800" cy="780" r="11" fill="${FOREST}"/>
+    <circle cx="150" cy="450" r="11" fill="${FOREST}"/><circle cx="1450" cy="450" r="11" fill="${FOREST}"/>
+    <circle cx="800" cy="450" r="16" fill="${BARK}"/>`,
+  modules: () => {
+    const cy = 450, centers = [380,590,800,1010,1220], w=148, h=96, r=18;
+    let mods = '';
+    for (const x of centers) { const a = x===800; mods += `<rect x="${x-w/2}" y="${cy-h/2}" width="${w}" height="${h}" rx="${r}" fill="${a?BARK:PLATE}" stroke="${a?'none':FOREST}" stroke-width="${a?0:3.5}"/>`; }
+    return `
+    <g stroke="${FOREST}" stroke-opacity="0.05" stroke-width="2">
+      <line x1="250" y1="70" x2="250" y2="830"/><line x1="800" y1="70" x2="800" y2="830"/><line x1="1350" y1="70" x2="1350" y2="830"/>
+      <line x1="140" y1="250" x2="1460" y2="250"/><line x1="140" y1="650" x2="1460" y2="650"/></g>
+    <ellipse cx="700" cy="${cy}" rx="150" ry="215" fill="none" stroke="${FOREST}" stroke-opacity="0.32" stroke-width="2.5" stroke-dasharray="6 10"/>
+    <ellipse cx="900" cy="${cy}" rx="150" ry="215" fill="none" stroke="${FOREST}" stroke-opacity="0.32" stroke-width="2.5" stroke-dasharray="6 10"/>
+    <line x1="240" y1="${cy}" x2="1360" y2="${cy}" stroke="${FOREST}" stroke-width="3"/>${mods}`;
+  },
+  flow: () => {
+    const cy=450, rows=[165,300,600,735], gL=748, gR=852;
+    let sig = '<g fill="none" stroke="'+FOREST+'" stroke-opacity="0.42" stroke-width="2.5" stroke-dasharray="7 9">';
+    for (const y of rows) sig += `<path d="M 168 ${y} C 470 ${y}, 540 ${cy}, ${gL} ${cy}"/>`;
+    for (const y of rows) sig += `<path d="M ${gR} ${cy} C 1060 ${cy}, 1130 ${y}, 1432 ${y}"/>`;
+    sig += '</g>';
+    let nodes = '';
+    for (const y of rows) nodes += `<circle cx="165" cy="${y}" r="10" fill="${FOREST}"/>`;
+    for (const y of rows) nodes += `<circle cx="1435" cy="${y}" r="10" fill="${FOREST}"/>`;
+    return `<line x1="150" y1="${cy}" x2="1450" y2="${cy}" stroke="${FOREST}" stroke-width="2.5"/>${sig}${nodes}
+    <circle cx="150" cy="${cy}" r="22" fill="${FOREST}"/><circle cx="1450" cy="${cy}" r="22" fill="${BARK}"/>
+    <circle cx="800" cy="${cy}" r="48" fill="none" stroke="${BARK}" stroke-width="3"/><circle cx="800" cy="${cy}" r="15" fill="${BARK}"/>`;
+  },
+  structure: () => {
+    const fTL=[520,340],fTR=[880,340],fBR=[880,700],fBL=[520,700], vp=[1255,235], t=0.42;
+    const v=([x,y])=>[x+(vp[0]-x)*t,y+(vp[1]-y)*t];
+    const [bTL,bTR,bBR,bBL]=[fTL,fTR,fBR,fBL].map(v);
+    const L=(a,b,o=1)=>`<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${FOREST}" stroke-opacity="${o}" stroke-width="2.5"/>`;
+    return `
+    <g stroke="${BARK}" stroke-opacity="0.5" stroke-width="2.5" stroke-dasharray="3 10" fill="none">
+      <line x1="${vp[0]}" y1="${vp[1]}" x2="${vp[0]}" y2="90"/><line x1="${vp[0]}" y1="${vp[1]}" x2="1470" y2="130"/>
+      <line x1="${vp[0]}" y1="${vp[1]}" x2="1500" y2="355"/><line x1="${vp[0]}" y1="${vp[1]}" x2="${vp[0]}" y2="560"/></g>
+    <circle cx="${vp[0]}" cy="${vp[1]}" r="15" fill="${BARK}"/>
+    <polygon points="690,500 855,500 855,665 690,665" fill="${FOREST}"/>
+    ${L(bTL,bTR)}${L(bTR,bBR)}${L(bBR,bBL)}${L(bBL,bTL)}
+    ${L(fTL,bTL,0.5)}${L(fTR,bTR,0.5)}${L(fBR,bBR,0.5)}${L(fBL,bBL,0.5)}
+    ${L(fTL,fTR)}${L(fTR,fBR)}${L(fBR,fBL)}${L(fBL,fTL)}`;
+  },
+};
+document.querySelectorAll('svg[data-motif]').forEach((s) => { s.innerHTML = motifs[s.dataset.motif](); });
+</script>
+</body>
+</html>

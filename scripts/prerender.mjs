@@ -56,6 +56,7 @@ const pages = {
     title: 'Thinking · Madrona Product Studio',
     description: 'How we see building software in the AI era: essays, artifacts, and guides from inside a working product studio. Published when the work has taught us something worth sharing.',
     h1: 'Thinking.',
+    ogImage: '/og-thinking.png',
     body: 'Learnings, artifacts, and guides from inside Madrona. When the work teaches us something, we organize the thinking here so we can build on it, and so can you. The Madrona Product Thesis, the engine behind everything we ship, the era of agentic operations, and a starter guide to building real software with AI.',
   },
   '/thinking/the-era-of-agentic-operations': {
