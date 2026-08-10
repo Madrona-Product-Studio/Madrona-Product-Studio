@@ -35,6 +35,8 @@ export interface StudioProduct {
   rightNow: string;
   primaryAction?: { label: string; href: string; external?: boolean };
   sortOrder?: number;
+  // Force this product to the end of the list, regardless of stage order.
+  pinLast?: boolean;
 }
 
 export const STAGE_META: Record<ProductStage, { label: string; order: number; definition: string }> = {
@@ -99,6 +101,7 @@ export const studioProducts: StudioProduct[] = [
     rightNow: "Refining stage-aware guidance and how content adapts to each person.",
     primaryAction: { label: "Visit Aria", href: "https://aria-health-mp.vercel.app", external: true },
     sortOrder: 4,
+    pinLast: true,
   },
   {
     id: "helm",
@@ -149,6 +152,8 @@ export function stageCounts(products: StudioProduct[]): Record<ProductStage | "a
 
 export function sortProducts(products: StudioProduct[]): StudioProduct[] {
   return [...products].sort((a, b) => {
+    // Pinned-last products sink below everything else, whatever their stage.
+    if (!!a.pinLast !== !!b.pinLast) return a.pinLast ? 1 : -1;
     const stageDiff = STAGE_META[a.stage].order - STAGE_META[b.stage].order;
     if (stageDiff !== 0) return stageDiff;
     return (a.sortOrder ?? 99) - (b.sortOrder ?? 99);
