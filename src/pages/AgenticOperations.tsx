@@ -3,8 +3,8 @@ import PageMeta from "../components/PageMeta";
 import ConnectCta from "../components/ConnectCta";
 import { Label, Marker, Breath } from "../components/swiss";
 
-// Public demo only. Never link the real HQ / Helm instance from the site.
-const HELM_DEMO_URL = "https://helm-os1.vercel.app/?demo=1";
+// helm.day is the public, demo-first landing. Never link the real HQ instance.
+const HELM_DEMO_URL = "https://helm.day";
 
 // The Berry Good cast: each agent is one beat for the farm, one beat for
 // the reader's business. Berry Good is openly ours — a demonstration
@@ -198,7 +198,7 @@ export default function AgenticOperations() {
             rel="noopener noreferrer"
             className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors"
           >
-            See Helm in demo mode &rarr;
+            See Helm &rarr;
           </a>
           <Link
             to="/work/helm"

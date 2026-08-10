@@ -113,7 +113,7 @@ export const studioProducts: StudioProduct[] = [
     builtFor: "Makers who work alongside AI agents and live in text.",
     helpsThem: "Keep work, projects, and priorities in one place people and agents can both read.",
     rightNow: "Building agent-native features and a clearer daily operating view.",
-    primaryAction: { label: "See the demo", href: "https://helm-os1.vercel.app/editor?demo=1", external: true },
+    primaryAction: { label: "See Helm", href: "https://helm.day", external: true },
     sortOrder: 1,
   },
   {
