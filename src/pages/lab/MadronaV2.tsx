@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
@@ -6,7 +6,7 @@ import BerryGoodCaseStudy from "./BerryGoodCaseStudy";
 import SiteFooter from "./SiteFooter";
 import { ServiceIcon } from "./ServiceIcon";
 import { useReveal } from "./useReveal";
-import { serviceAreas } from "../../data/services";
+import { serviceAreas, type ServiceId } from "../../data/services";
 import HowWeHelpDiagram from "./HowWeHelpDiagram";
 import "./madrona-v2.css";
 import lilaHero from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-madrona-hero.webp";
@@ -156,6 +156,119 @@ function HowWeWork() {
   );
 }
 
+// ---- The four doors, in depth (formerly the standalone /services page) ----
+
+const CTA_LABEL: Record<ServiceId, string> = {
+  "brand-and-web": "your brand and web presence",
+  "customers-and-growth": "your customer journey",
+  "operations-and-ai": "your operations and AI opportunities",
+  "new-products": "your product idea",
+};
+
+function Check() {
+  return <svg className="m2-sp-check" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" strokeWidth="1.4" /><path d="M6 10.2l2.5 2.5L14 7.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>;
+}
+
+function useActiveSection(ids: ServiceId[]) {
+  const [active, setActive] = useState<ServiceId>(ids[0]);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setActive(e.target.id as ServiceId);
+      },
+      { rootMargin: "-38% 0px -55% 0px", threshold: 0 }
+    );
+    ids.forEach((id) => { const el = document.getElementById(id); if (el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, [ids]);
+  return active;
+}
+
+function ServiceDoors() {
+  const ids = serviceAreas.map((s) => s.id);
+  const active = useActiveSection(ids);
+  const activeIdx = ids.indexOf(active);
+  const fill = ids.length > 1 ? (activeIdx / (ids.length - 1)) * 100 : 0;
+
+  return (
+    <section id="services" className="m2-svcmod">
+      <div className="m2-svcmod-intro">
+        <div>
+          <p className="m2-kicker">What we do</p>
+          <h2>Four ways in. <span className="m2-pop">One practice.</span></h2>
+          <p className="m2-svcmod-lead">The doors are different; the work behind them is the same. We find the most valuable thing to do next, then build it with you.</p>
+        </div>
+      </div>
+
+      <div className="m2-sp-layout">
+        <nav className="m2-sp-rail" aria-label="Service areas">
+          <span className="m2-sp-rail-line" aria-hidden="true" />
+          <span className="m2-sp-rail-fill" style={{ height: `calc(${fill}% * 0.92)` }} aria-hidden="true" />
+          {serviceAreas.map((s, i) => {
+            const on = active === s.id;
+            return (
+              <a key={s.id} href={`#${s.id}`} className={on ? "is-active" : ""} aria-current={on ? "true" : undefined}
+                onClick={(e) => { e.preventDefault(); document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}>
+                <span className="m2-sp-rail-dot" aria-hidden="true" />
+                <span className="m2-sp-rail-num">{`0${i + 1}`}</span>
+                <span className="m2-sp-rail-label">{s.door}</span>
+              </a>
+            );
+          })}
+        </nav>
+
+        <div className="m2-sp-sections">
+          {serviceAreas.map((s) => (
+            <section className="m2-sp-section" id={s.id} key={s.id} data-reveal>
+              <div className="m2-sp-head">
+                <div className="m2-sp-head-copy">
+                  <p className="m2-kicker">{s.name}</p>
+                  <div className="m2-sp-title"><ServiceIcon id={s.id} /><h3>{s.door}</h3></div>
+                  <p className="m2-sp-outcome">{s.outcome}</p>
+                  <p className="m2-sp-summary">{s.summary}</p>
+                  <ul className="m2-sp-values">
+                    {s.valuePoints.map((v) => <li key={v.title}><strong>{v.title}</strong><p>{v.description}</p></li>)}
+                  </ul>
+                </div>
+                <figure className="m2-sp-artifact">
+                  <img src={s.artifact.src} alt={s.artifact.alt} loading="lazy" />
+                  <figcaption>{s.artifact.caption}</figcaption>
+                </figure>
+              </div>
+
+              <div className="m2-sp-detail">
+                <div className="m2-sp-col m2-sp-included">
+                  <h4>Included services</h4>
+                  {s.capabilityGroups.map((g) => (
+                    <div className="m2-sp-capgroup" key={g.title}>
+                      <p className="m2-sp-capgroup-title">{g.title}</p>
+                      <ul>{g.items.map((i) => <li key={i}><Check />{i}</li>)}</ul>
+                    </div>
+                  ))}
+                </div>
+                <div className="m2-sp-col">
+                  <h4>Typical problems</h4>
+                  <ul className="m2-sp-problems">{s.problems.slice(0, 5).map((p) => <li key={p}>{p}</li>)}</ul>
+                </div>
+                <div className="m2-sp-col">
+                  <h4>What we might make</h4>
+                  <ul className="m2-sp-outputs">{s.outputs.map((o) => <li key={o}>{o}</li>)}</ul>
+                </div>
+                <div className="m2-sp-col">
+                  <h4>How we start</h4>
+                  <p className="m2-sp-start">{s.startingPoint}</p>
+                  <Link className="m2-text-link m2-sp-cta" to="/connect">Talk with us about {CTA_LABEL[s.id]} <span>→</span></Link>
+                  {s.pov && <Link className="m2-text-link m2-sp-cta" to={s.pov.to}>{s.pov.label} <span>→</span></Link>}
+                </div>
+              </div>
+            </section>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function MadronaV2() {
   useReveal();
 
@@ -179,34 +292,7 @@ export default function MadronaV2() {
         </div>
       </section>
 
-      <section id="services" className="m2-svcmod">
-        <div className="m2-svcmod-intro">
-          <div>
-            <p className="m2-kicker">What we do</p>
-            <h2>Four ways in. <span className="m2-pop">One practice.</span></h2>
-            <p className="m2-svcmod-lead">The doors are different; the work behind them is the same. We find the most valuable thing to do next, then build it with you.</p>
-          </div>
-          <Link className="m2-text-link" to="/services">Explore detailed capabilities <span>→</span></Link>
-        </div>
-        <div className="m2-svcmod-cards">
-          {serviceAreas.map((service) => (
-            <Link className="m2-svcmod-card" to={`/services#${service.id}`} key={service.id} data-reveal aria-label={`${service.door} — see related capabilities`}>
-              <div className="m2-svcmod-head">
-                <ServiceIcon id={service.id} />
-                <h3>{service.door}</h3>
-              </div>
-              <p className="m2-svcmod-outcome">{service.outcome}</p>
-              <ul className="m2-svcmod-items">
-                {service.homepageItems.slice(0, 3).map((it) => <li key={it}>{it}<span aria-hidden="true">→</span></li>)}
-              </ul>
-              <span className="m2-svcmod-more">See related capabilities <span aria-hidden="true">→</span></span>
-              <div className="m2-svcmod-art">
-                <img src={service.artifact.src} alt={service.artifact.alt} loading="lazy" />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <ServiceDoors />
 
       <BerryGoodCaseStudy />
 

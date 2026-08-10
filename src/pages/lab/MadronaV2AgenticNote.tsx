@@ -327,7 +327,7 @@ export default function MadronaV2AgenticNote() {
           <p>The first step is the one above: a single agent on a single workflow, with visible payback before anything grows. Like everything we publish, this is a working document; as the pattern teaches us more, the page changes.</p>
           <div className="m2-th-close-links">
             <Link className="m2-text-link" to="/thinking/starter-guide-to-building-with-ai">Read next: A starter guide to building with AI <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/services#operations-and-ai">Our Operations and AI services <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/consulting#operations-and-ai">Our Operations and AI services <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
           </div>
         </div>

@@ -5,7 +5,6 @@ import CaseStudyPage from "./pages/CaseStudyPage";
 import AgenticOperations from "./pages/AgenticOperations";
 import MadronaV2 from "./pages/lab/MadronaV2";
 import MadronaV2Home from "./pages/lab/MadronaV2Home";
-import MadronaV2Services from "./pages/lab/MadronaV2Services";
 import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
 import MadronaV2About from "./pages/lab/MadronaV2About";
@@ -25,7 +24,9 @@ export default function App() {
         {/* Story rethink: new studio front-door home; current homepage preserved as /consulting. */}
         <Route path="/" element={<MadronaV2Home />} />
         <Route path="consulting" element={<MadronaV2 />} />
-        <Route path="services" element={<MadronaV2Services />} />
+        {/* Services folded into the one "How we help" page (2026-08-10) —
+            the four doors now live in depth on /consulting. */}
+        <Route path="services" element={<Navigate to="/consulting#services" replace />} />
         <Route path="apps" element={<MadronaV2Apps />} />
         <Route path="work" element={<Navigate to="/apps" replace />} />
         <Route path="connect" element={<MadronaV2Connect />} />
@@ -53,7 +54,7 @@ export default function App() {
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />
-        <Route path="lab/madrona-v2/services" element={<Navigate to="/services" replace />} />
+        <Route path="lab/madrona-v2/services" element={<Navigate to="/consulting#services" replace />} />
         <Route path="lab/madrona-v2/apps" element={<Navigate to="/apps" replace />} />
         {/* Internal design-system study — kept routable for working sessions,
             but never linked from the public site. */}

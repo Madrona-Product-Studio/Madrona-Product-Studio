@@ -22,15 +22,9 @@ const pages = {
   },
   '/consulting': {
     title: 'How we help · Madrona Product Studio',
-    description: 'We help you figure out what to build, then build it. Madrona works with founders, local businesses, and product teams; every engagement starts small and grows from there.',
+    description: 'We help you figure out what to build, then build it. Four ways in, one practice: brand and web, customers and growth, operations and AI, and new products, from a small senior team in the Pacific Northwest.',
     h1: 'How we help',
-    body: 'Madrona works with founders, local businesses, and product teams. Four ways in, one practice: build trust, grow your business, work smarter, and build something worth using. We start with a 30-minute conversation, follow with a short written assessment, and recommend the smallest engagement worth doing.',
-  },
-  '/services': {
-    title: 'Services · Madrona Product Studio',
-    description: 'Four ways in, one practice: build trust, grow your business, work smarter, and build something worth using. Strategy, design, and technology from a small senior team in the Pacific Northwest.',
-    h1: 'Services',
-    body: 'We help you figure out what to build, then build it. Build trust: brand, websites, and digital experience. Grow your business: customer journeys, commerce, loyalty, and retention. Work smarter: workflow fixes, small internal tools, and practical AI on real workflows. Build something worth using: prototypes, MVPs, and new products taken from idea to real. Every engagement names its win before the work starts.',
+    body: 'Madrona works with founders, local businesses, and product teams. Four ways in, one practice. Build trust: brand, websites, and digital experience. Grow your business: customer journeys, commerce, loyalty, and retention. Work smarter: workflow fixes, small internal tools, and practical AI on real workflows. Build something worth using: prototypes, MVPs, and new products taken from idea to real. Every engagement names its win before the work starts. We begin with a 30-minute conversation, follow with a short written assessment, and recommend the smallest engagement worth doing.',
   },
   '/thesis': {
     title: 'The Madrona Product Thesis · Madrona Product Studio',
