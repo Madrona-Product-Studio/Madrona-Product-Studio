@@ -51,10 +51,10 @@ export interface StudioProfile {
 export const studioProfile: StudioProfile = {
   intro: {
     heading: "About",
-    headline: "We're a small product studio with big depth.",
+    headline: "Hi, I'm Charlie. I build products, and I started Madrona to build the ones that matter.",
     body: [
-      "Charlie leads each engagement and brings in the right senior specialists, so you get the expertise you need, exactly when you need it.",
-      "Madrona stays small by design: fewer layers, faster decisions, and direct accountability from strategy through execution.",
+      "For fifteen years I've built products, at scale at REI and Healthline, and from a blank page here at Madrona. Somewhere in there I got clear about how the good ones actually get made, and what I want to spend that on.",
+      "Madrona is where I do that deliberately: a small, senior studio that stays close to the craft, uses AI where it genuinely helps, and points its energy at work that matters.",
     ],
     portraitSrc: portrait,
     portraitAlt:
@@ -75,9 +75,9 @@ export const studioProfile: StudioProfile = {
       icon: "founder",
     },
     {
-      id: "small-by-design",
-      title: "Small by design",
-      description: "Fewer layers. Faster decisions. Clear ownership.",
+      id: "work-that-matters",
+      title: "Work that matters",
+      description: "Energy pointed at good for people and place.",
       icon: "sprig",
     },
   ],
