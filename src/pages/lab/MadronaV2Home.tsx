@@ -20,14 +20,15 @@ import lilaTile from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila
 import sjbgTile from "../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp";
 import lilaYogaTile from "../../../docs/madrona-v2-build-kit/site-assets/lila-yoga-tile.webp";
 import gardenHqTile from "../../../docs/madrona-v2-build-kit/site-assets/garden-hq-tile.webp";
+import lilaTripsIcon from "../../../docs/madrona-v2-build-kit/site-assets/app-icons/lila-trips.svg";
+import sanJuanIcon from "../../../docs/madrona-v2-build-kit/site-assets/app-icons/san-juan-boating-guide.svg";
 import lilaYogaIcon from "../../../docs/madrona-v2-build-kit/site-assets/app-icons/lila-yoga.svg";
 import gardenHqIcon from "../../../docs/madrona-v2-build-kit/site-assets/app-icons/garden-hq.svg";
-import lilaWordmark from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-wordmark-dark.svg";
 
 // ---- Products (homepage 4-up) --------------------------------------------
 const products = [
-  { name: "Lila Trips", icon: lilaWordmark, tile: lilaTile, status: "Live", blurb: "Thoughtful travel planning built around place, pace, and what matters to you.", href: "https://lilatrips.com" },
-  { name: "San Juan Boating Guide", icon: null, tile: sjbgTile, status: "Live", blurb: "Tide, weather, and anchorage info for safer days on the San Juan Islands.", href: "https://www.sjiboating.com/" },
+  { name: "Lila Trips", icon: lilaTripsIcon, tile: lilaTile, status: "Live", blurb: "Thoughtful travel planning built around place, pace, and what matters to you.", href: "https://lilatrips.com" },
+  { name: "San Juan Boating Guide", icon: sanJuanIcon, tile: sjbgTile, status: "Live", blurb: "Tide, weather, and anchorage info for safer days on the San Juan Islands.", href: "https://www.sjiboating.com/" },
   { name: "Lila Yoga", icon: lilaYogaIcon, tile: lilaYogaTile, status: "V1", blurb: "A guided introduction to yoga, with style breakdowns, tools, and gentle practice.", href: "https://lila.yoga" },
   { name: "Garden HQ", icon: gardenHqIcon, tile: gardenHqTile, status: "In build", blurb: "Plan your garden, track what you grow, and make better use of your space.", href: "https://www.gardenhq.app/" },
 ] as const;

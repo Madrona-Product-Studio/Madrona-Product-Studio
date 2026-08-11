@@ -55,7 +55,7 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
             <Link to="/about">About</Link>
           </nav>
           <div className="m2-fc-contact">
-            <p>Pacific Northwest</p>
+            <p>PNW, Earth</p>
             <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
           </div>
         </div>
