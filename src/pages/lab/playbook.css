@@ -356,3 +356,6 @@ a.m2-pb-app:hover { border-color: var(--color-madrona); }
   .m2-sg-rail .right .m2-sg-do { grid-column: 1; grid-row: auto; }
   .m2-sg-rail .right .m2-hq-lands { grid-column: 1; }
 }
+
+/* Solve-the-system essay — keep the criteria card aligned to the top of its column */
+.m2-sys-artifact { align-self: start; }

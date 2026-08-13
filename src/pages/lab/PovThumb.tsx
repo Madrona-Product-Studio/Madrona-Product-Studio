@@ -12,7 +12,7 @@
 // Design canvas is 1600×900 (16:9). Stroke widths are in viewBox units and
 // tuned to read at small card size (~1px–2px rendered).
 
-export type PovMotif = "target" | "modules" | "flow" | "structure";
+export type PovMotif = "target" | "modules" | "flow" | "structure" | "source";
 
 const FOREST = "var(--forest)";
 const BARK = "var(--bark)";
@@ -201,9 +201,45 @@ function Structure() {
   );
 }
 
+// ── Source — one upstream node feeds a surface of outputs; fix it, all rise ──
+function Source() {
+  const outputs = [400, 600, 800, 1000, 1200];
+  const surfaceY = 235;
+  const srcX = 800;
+  const srcY = 700;
+  return (
+    <Frame>
+      {/* faint grid */}
+      <g stroke={FOREST} strokeOpacity={0.05} strokeWidth={2}>
+        <line x1={300} y1={70} x2={300} y2={830} />
+        <line x1={1300} y1={70} x2={1300} y2={830} />
+        <line x1={140} y1={235} x2={1460} y2={235} />
+        <line x1={140} y1={640} x2={1460} y2={640} />
+      </g>
+      {/* branches from the source up to each surface output */}
+      <g fill="none" stroke={FOREST} strokeOpacity={0.4} strokeWidth={2.5} strokeDasharray="7 10">
+        {outputs.map((x) => (
+          <path key={x} d={`M ${srcX} ${srcY - 28} C ${srcX} 470, ${x} 500, ${x} ${surfaceY + 26}`} />
+        ))}
+      </g>
+      {/* the surface line and its output nodes */}
+      <line x1={330} y1={surfaceY} x2={1270} y2={surfaceY} stroke={FOREST} strokeWidth={3} />
+      {outputs.map((x) => (
+        <circle key={`o${x}`} cx={x} cy={surfaceY} r={11} fill={FOREST} />
+      ))}
+      {/* the symptom: the one output you were tempted to fix */}
+      <circle cx={800} cy={surfaceY} r={30} fill="none" stroke={BARK} strokeOpacity={0.55} strokeWidth={3} strokeDasharray="6 8" />
+      {/* the source: the point of leverage, fix here and everything above rises */}
+      <circle cx={srcX} cy={srcY} r={46} fill="none" stroke={FOREST} strokeOpacity={0.4} strokeWidth={3} />
+      <circle cx={srcX} cy={srcY} r={22} fill={BARK} />
+    </Frame>
+  );
+}
+
 export default function PovThumb({ motif }: { motif: PovMotif }) {
   if (motif === "target") return <Target />;
   if (motif === "modules") return <Modules />;
   if (motif === "flow") return <Flow />;
+  if (motif === "source") return <Source />;
   return <Structure />;
 }
