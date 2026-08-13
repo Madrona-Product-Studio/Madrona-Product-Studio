@@ -220,6 +220,7 @@ export default function MadronaV2SystemNote() {
           <p>None of this is a trick, and it is not really about AI. It is about where you decide to spend your attention. You can spend it on the artifact and get a better artifact. Or you can spend it on the system and get a better everything.</p>
           <p>I keep choosing the system, not because it is faster, but because it is the only version of the work that compounds. Like everything we publish, this is a working note; as the practice teaches me more, the page will change.</p>
           <div className="m2-th-close-links">
+            <Link className="m2-text-link" to="/open">See the machines we've shared: Madrona Open <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/thinking/the-era-of-agentic-operations">Read next: The era of agentic operations <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
           </div>

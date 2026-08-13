@@ -359,3 +359,14 @@ a.m2-pb-app:hover { border-color: var(--color-madrona); }
 
 /* Solve-the-system essay — keep the criteria card aligned to the top of its column */
 .m2-sys-artifact { align-self: start; }
+
+/* Open page — tool cards (the Madrona Open catalog) */
+.m2-open-grid { display: grid; gap: 16px; grid-column: 1 / -1; grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 640px) { .m2-open-grid { grid-template-columns: 1fr; } }
+.m2-open-card { display: block; text-decoration: none; color: inherit; background: var(--color-card); border: 1px solid var(--color-line); border-radius: 14px; padding: 20px 22px; transition: border-color .15s ease; }
+.m2-open-card:hover { border-color: var(--color-madrona); }
+.m2-open-card h3 { font: 600 15px/1.3 ui-monospace, Menlo, monospace; letter-spacing: -.01em; margin: 0 0 7px; color: var(--color-ink); }
+.m2-open-card .why { color: var(--color-clay); font: 400 13px/1.55 var(--font-sans); margin: 0 0 12px; }
+.m2-open-card .p { background: var(--color-bg); border-left: 2px solid color-mix(in srgb, var(--color-madrona) 30%, transparent); border-radius: 0 6px 6px 0; color: var(--color-ink70); font: 450 11.5px/1.6 ui-monospace, Menlo, monospace; margin: 0 0 12px; padding: 8px 12px; white-space: pre-wrap; }
+.m2-open-card .m2-open-gh { font: 600 12px/1 var(--font-sans); color: var(--color-madrona); }
+.m2-open-card--feature { align-self: start; }
