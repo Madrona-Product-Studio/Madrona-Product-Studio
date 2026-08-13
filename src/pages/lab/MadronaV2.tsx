@@ -283,7 +283,7 @@ export default function MadronaV2() {
           <span className="m2-ab-rule" aria-hidden="true" />
           <p className="m2-ab-headline">Figure out what to build. <span className="m2-pop">Then build it.</span></p>
           <div className="m2-ab-body">
-            <p>Madrona works with founders, local businesses, and product teams. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
+            <p>Madrona works with founders, local businesses, and product teams. More and more, the work starts with one question: what could AI and modern tools actually do for this business? Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
           </div>
           <a className="m2-ap-jump" href="#process">See how we work <span aria-hidden="true">↓</span></a>
         </div>

@@ -12,19 +12,55 @@ import path from 'path';
 const distDir = path.resolve('dist');
 const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8');
 
+// Full, verbatim article prose per route (headings, paragraphs, lists, quotes),
+// extracted from the article components. Baked into the static SEO block below so
+// crawlers see the complete essay on the first pass, not just a teaser. Keep in
+// sync with the React article components when their copy changes.
+const articleContent = JSON.parse(
+  fs.readFileSync(path.resolve('scripts/thinking-content.json'), 'utf-8')
+);
+
+const escapeHtml = (s) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// Render an ordered section list to semantic HTML, grouping runs of list items
+// into a single <ul>. Skips empty/purely-numeric fragments.
+function renderSections(sections) {
+  const out = [];
+  let inList = false;
+  const closeList = () => { if (inList) { out.push('</ul>'); inList = false; } };
+  for (const { type, text } of sections) {
+    const t = (text || '').trim();
+    if (!t || /^[\d\s.]+$/.test(t)) continue;
+    if (type === 'li') {
+      if (!inList) { out.push('<ul>'); inList = true; }
+      out.push(`<li>${escapeHtml(t)}</li>`);
+      continue;
+    }
+    closeList();
+    if (type === 'h1') out.push(`<h1>${escapeHtml(t)}</h1>`);
+    else if (type === 'h2') out.push(`<h2>${escapeHtml(t)}</h2>`);
+    else if (type === 'h3') out.push(`<h3>${escapeHtml(t)}</h3>`);
+    else if (type === 'quote') out.push(`<blockquote>${escapeHtml(t)}</blockquote>`);
+    else out.push(`<p>${escapeHtml(t)}</p>`);
+  }
+  closeList();
+  return out.join('\n      ');
+}
+
 // Page metadata for static pages
 const pages = {
   '/': {
     title: 'Madrona Product Studio · Bellingham, Washington',
-    description: 'Madrona builds digital products, websites, and experiences for organizations doing meaningful work, and builds its own products to explore better ways of creating software.',
+    description: 'Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. Smoother operations, customers who come back, a web presence that earns trust.',
     h1: 'We build what should exist next.',
-    body: 'Madrona builds digital products, websites, and experiences for organizations doing meaningful work. We also build our own products to explore better ways of creating software in the AI era.',
+    body: 'Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. Smoother operations, customers who come back, a web presence that earns trust. We run our own products and operations the same way, here in the PNW and beyond.',
   },
   '/consulting': {
     title: 'How we help · Madrona Product Studio',
-    description: 'We help you figure out what to build, then build it. Four ways in, one practice: brand and web, customers and growth, operations and AI, and new products, from a small senior team in the Pacific Northwest.',
+    description: 'We help you figure out what to build, then build it. Four ways in, one practice: operations and AI, customers and growth, brand and web, and new products, from a small senior team in the Pacific Northwest.',
     h1: 'How we help',
-    body: 'Madrona works with founders, local businesses, and product teams. Four ways in, one practice. Build trust: brand, websites, and digital experience. Grow your business: customer journeys, commerce, loyalty, and retention. Work smarter: workflow fixes, small internal tools, and practical AI on real workflows. Build something worth using: prototypes, MVPs, and new products taken from idea to real. Every engagement names its win before the work starts. We begin with a 30-minute conversation, follow with a short written assessment, and recommend the smallest engagement worth doing.',
+    body: 'Madrona works with founders, local businesses, and product teams. Four ways in, one practice. Work smarter: practical AI and agents on real workflows, workflow fixes, and small internal tools. Grow your business: customer journeys, commerce, loyalty, and retention. Build trust: brand, websites, and digital experience. Build something worth using: prototypes, MVPs, and new products taken from idea to real. Every engagement names its win before the work starts. We begin with a 30-minute conversation, follow with a short written assessment, and recommend the smallest engagement worth doing.',
   },
   '/thesis': {
     title: 'The Madrona Product Thesis · Madrona Product Studio',
@@ -201,11 +237,14 @@ function generateHtml(route, meta) {
     html = html.replace('</head>', `  <script type="application/ld+json">${JSON.stringify(faqLd)}</script>\n  </head>`);
   }
 
-  // Inject SEO content in a noscript block so Google sees real text
+  // Inject SEO content in a noscript block so Google sees real text. Article
+  // routes emit their full verbatim prose; other routes fall back to the summary.
+  const innerSeo = articleContent[route]
+    ? renderSections(articleContent[route])
+    : `<h1>${escapeHtml(meta.h1)}</h1>\n      <p>${escapeHtml(meta.body)}</p>`;
   const seoBlock = `
     <noscript>
-      <h1>${meta.h1}</h1>
-      <p>${meta.body}</p>
+      ${innerSeo}
     </noscript>`;
   html = html.replace('<div id="root"></div>', `<div id="root"></div>${seoBlock}`);
 

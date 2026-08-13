@@ -20,14 +20,15 @@ import lilaTile from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila
 import sjbgTile from "../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp";
 import lilaYogaTile from "../../../docs/madrona-v2-build-kit/site-assets/lila-yoga-tile.webp";
 import gardenHqTile from "../../../docs/madrona-v2-build-kit/site-assets/garden-hq-tile.webp";
+import lilaTripsIcon from "../../../docs/madrona-v2-build-kit/site-assets/app-icons/lila-trips.svg";
+import sanJuanIcon from "../../../docs/madrona-v2-build-kit/site-assets/app-icons/san-juan-boating-guide.svg";
 import lilaYogaIcon from "../../../docs/madrona-v2-build-kit/site-assets/app-icons/lila-yoga.svg";
 import gardenHqIcon from "../../../docs/madrona-v2-build-kit/site-assets/app-icons/garden-hq.svg";
-import lilaWordmark from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-wordmark-dark.svg";
 
 // ---- Products (homepage 4-up) --------------------------------------------
 const products = [
-  { name: "Lila Trips", icon: lilaWordmark, tile: lilaTile, status: "Live", blurb: "Thoughtful travel planning built around place, pace, and what matters to you.", href: "https://lilatrips.com" },
-  { name: "San Juan Boating Guide", icon: null, tile: sjbgTile, status: "Live", blurb: "Tide, weather, and anchorage info for safer days on the San Juan Islands.", href: "https://www.sjiboating.com/" },
+  { name: "Lila Trips", icon: lilaTripsIcon, tile: lilaTile, status: "Live", blurb: "Thoughtful travel planning built around place, pace, and what matters to you.", href: "https://lilatrips.com" },
+  { name: "San Juan Boating Guide", icon: sanJuanIcon, tile: sjbgTile, status: "Live", blurb: "Tide, weather, and anchorage info for safer days on the San Juan Islands.", href: "https://www.sjiboating.com/" },
   { name: "Lila Yoga", icon: lilaYogaIcon, tile: lilaYogaTile, status: "V1", blurb: "A guided introduction to yoga, with style breakdowns, tools, and gentle practice.", href: "https://lila.yoga" },
   { name: "Garden HQ", icon: gardenHqIcon, tile: gardenHqTile, status: "In build", blurb: "Plan your garden, track what you grow, and make better use of your space.", href: "https://www.gardenhq.app/" },
 ] as const;
@@ -69,10 +70,11 @@ export default function MadronaV2Home() {
           <h1>We build what should exist <span className="m2-pop">next.</span></h1>
           <span className="m2-hero-rule" aria-hidden="true" />
           <p className="m2-lead">
-            Madrona builds digital products, websites, and experiences for
-            organizations doing meaningful work, here in the PNW and beyond.
-            We also build our own products to explore better ways of creating
-            software in the AI era.
+            Madrona helps businesses figure out what AI and modern tools can
+            actually do for them, then builds it. Smoother operations,
+            customers who come back, a web presence that earns trust. We run
+            our own products and operations the same way, here in the PNW
+            and beyond.
           </p>
           <div className="m2-actions">
             <Link className="m2-button" to="/connect">Get in touch</Link>
@@ -98,7 +100,7 @@ export default function MadronaV2Home() {
           <div className="m2-consult-intro">
             <p className="m2-kicker">What we do</p>
             <h2>Good businesses around here deserve software as good as they are.</h2>
-            <p>We help you figure out what to build, then build it. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
+            <p>We help you figure out what to build, including where AI genuinely helps, then build it. We run our own operations on agents, so the guidance comes from daily practice. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
             <div className="m2-consult-items">
               {consulting.map((c) => (
                 <div className="m2-consult-item" key={c.title}>
