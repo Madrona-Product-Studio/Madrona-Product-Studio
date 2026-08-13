@@ -15,6 +15,7 @@ import MadronaV2AgenticNote from "./pages/lab/MadronaV2AgenticNote";
 import MadronaV2StarterGuideNote from "./pages/lab/MadronaV2StarterGuideNote";
 import MadronaV2SystemNote from "./pages/lab/MadronaV2SystemNote";
 import MadronaSystem from "./pages/lab/MadronaSystem";
+import MadronaV2Checkup from "./pages/lab/MadronaV2Checkup";
 
 export default function App() {
   return (
@@ -53,6 +54,8 @@ export default function App() {
         <Route path="notes" element={<Navigate to="/thinking" replace />} />
         <Route path="playbook" element={<Navigate to="/thinking" replace />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
+        {/* PROTOTYPE — AI checkup; unlinked + noindexed until approved. */}
+        <Route path="checkup" element={<MadronaV2Checkup />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />
