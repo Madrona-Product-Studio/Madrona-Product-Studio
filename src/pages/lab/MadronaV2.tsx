@@ -258,6 +258,7 @@ function ServiceDoors() {
                   <h4>How we start</h4>
                   <p className="m2-sp-start">{s.startingPoint}</p>
                   <Link className="m2-text-link m2-sp-cta" to="/connect">Talk with us about {CTA_LABEL[s.id]} <span>→</span></Link>
+                  {s.tryIt && <Link className="m2-text-link m2-sp-cta" to={s.tryIt.to}>{s.tryIt.label} <span>→</span></Link>}
                   {s.pov && <Link className="m2-text-link m2-sp-cta" to={s.pov.to}>{s.pov.label} <span>→</span></Link>}
                 </div>
               </div>

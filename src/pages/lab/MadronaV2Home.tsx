@@ -113,7 +113,10 @@ export default function MadronaV2Home() {
               ))}
             </div>
             <p>Madrona is led by Charlie Koch, a product leader with fifteen years of experience building consumer products at scale and bringing new ideas to life with small teams.</p>
-            <Link className="m2-text-link" to="/consulting">Explore how we help <span aria-hidden="true">→</span></Link>
+            <div className="m2-consult-links">
+              <Link className="m2-text-link" to="/consulting">Explore how we help <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/checkup">Not sure where to start? Get a free five-minute read <span aria-hidden="true">→</span></Link>
+            </div>
           </div>
           <BerryGoodTeaser />
         </div>

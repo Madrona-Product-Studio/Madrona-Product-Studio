@@ -60,6 +60,14 @@ const ENTRIES: Entry[] = [
     href: "/thinking/starter-guide-to-building-with-ai",
     motif: "structure",
   },
+  {
+    date: "Aug 2026",
+    type: "Essay",
+    title: "Solve the system, not the symptom",
+    excerpt: "The higher-leverage fix is rarely the output in front of you. It is the system that produced it. Why AI made fixing the machine the default, the prompts that help you do it, and how to tell which symptoms are worth it.",
+    href: "/thinking/solve-the-system-not-the-symptom",
+    motif: "source",
+  },
 ];
 
 export default function MadronaV2Pov() {
