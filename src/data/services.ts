@@ -2,6 +2,8 @@
 // frame, adopted 2026-08-01 — canon: charlie-hq briefs/2026-08-01-offering-
 // evolution-integration.md). The consulting page module and the Services page
 // render from this. Canonical labels live here — do not restate in components.
+// Order is meaningful: "Work smarter" leads sitewide (agentic-forward
+// re-weight, 2026-08-13 — canon header note + §4).
 import brandArtifact from "../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp";
 import customersArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp";
 import operationsArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp";
@@ -30,34 +32,37 @@ export interface ServiceArea {
 
 export const serviceAreas: ServiceArea[] = [
   {
-    id: "brand-and-web",
-    door: "Build trust",
-    name: "Brand and web",
-    outcome: "Give people a clear reason to understand, trust, and choose you.",
+    id: "operations-and-ai",
+    door: "Work smarter",
+    name: "Operations and AI",
+    outcome: "Put AI to work on your real workflows, and get hours back every week.",
     summary:
-      "We clarify what makes the business valuable, turn that into a coherent identity and message, and build digital experiences that help people take action.",
-    homepageItems: ["Positioning and strategy", "Messaging and voice", "Visual identity", "Websites and stores"],
+      "We map how work actually happens, identify the highest-friction handoffs, and build practical tools, automations, and AI agents around the real workflow. We run our own studio this way.",
+    homepageItems: ["Workflow and process design", "Automation", "AI assistants and agents", "Internal tools and dashboards"],
     capabilityGroups: [
-      { title: "Strategy and identity", items: ["Positioning and strategy", "Messaging and voice", "Visual identity", "Brand systems"] },
-      { title: "Digital experience", items: ["Websites", "Online stores", "Content systems", "UX and conversion improvement"] },
+      { title: "Improve the workflow", items: ["Workflow and process design", "Internal tools", "Systems and integrations", "Dashboards and reporting"] },
+      { title: "Add practical AI", items: ["Automation", "AI assistants and agents", "Research and knowledge workflows", "Human-review systems"] },
     ],
     problems: [
-      "The website undersells the business.",
-      "Customers need a personal explanation before they understand the offer.",
-      "The brand feels inconsistent or dated.",
-      "The site is difficult to update or use.",
-      "The online store creates unnecessary friction.",
+      "Everyone says AI would help, but nobody has shown you where to start.",
+      "Orders arrive in multiple formats and must be re-entered manually.",
+      "Important information lives across inboxes, documents, and spreadsheets.",
+      "AI experiments exist but are disconnected from real work.",
+      "Owners cannot easily see what needs attention.",
+      "Repetitive decisions consume senior time.",
     ],
-    outputs: ["Positioning brief", "Messaging system", "Brand guide", "Website", "Commerce experience", "Content system"],
+    outputs: ["Order-intake agent", "Research assistant", "Internal operations dashboard", "Automated reporting workflow", "Customer-support drafting assistant", "Connected knowledge system", "Approval and review workflow"],
     valuePoints: [
-      { title: "Earn confidence", description: "Show up clearly and consistently across every customer touchpoint." },
-      { title: "Drive action", description: "Make it easier for people to understand, decide, and take the next step." },
-      { title: "Scale with confidence", description: "Build a system that can grow with the business." },
+      { title: "Reduce manual work", description: "Remove repetitive copying, checking, and coordination." },
+      { title: "Improve decisions", description: "Bring the right information together when someone needs to act." },
+      { title: "Keep people in control", description: "Use human review wherever judgment, trust, or accountability matters." },
     ],
-    bestFor: "Businesses whose quality has outgrown how they currently present themselves.",
-    startingPoint: "A focused positioning and digital-direction sprint. From there, we design and build what creates the biggest impact.",
-    pathSteps: ["Understand", "trust", "choose"],
-    artifact: { src: brandArtifact, alt: "Berry Good brand system shown across a palette, packaging, and a storefront", caption: "Berry Good brand system" },
+    bestFor: "Teams spending too much time copying information, coordinating across tools, or repeating the same decisions.",
+    startingPoint:
+      "An agentic ops setup sprint: we set up agent tooling on the systems you already use, teach it how your business actually works, and teach you to run it. From there, we expand what earns its place.",
+    pathSteps: ["Request", "decision", "action"],
+    artifact: { src: operationsArtifact, alt: "Berry Good operations dashboard with an order-intake agent and structured orders", caption: "Berry Good operations dashboard" },
+    pov: { label: "Thinking: The era of agentic operations", to: "/thinking/the-era-of-agentic-operations" },
   },
   {
     id: "customers-and-growth",
@@ -91,36 +96,34 @@ export const serviceAreas: ServiceArea[] = [
     artifact: { src: customersArtifact, alt: "Berry Good customer order journey from browse to checkout", caption: "Berry Good customer order journey" },
   },
   {
-    id: "operations-and-ai",
-    door: "Work smarter",
-    name: "Operations and AI",
-    outcome: "Reduce repetitive work and give your team better tools to run the business.",
+    id: "brand-and-web",
+    door: "Build trust",
+    name: "Brand and web",
+    outcome: "Give people a clear reason to understand, trust, and choose you.",
     summary:
-      "We map how work actually happens, identify the highest-friction handoffs, and build practical tools, automations, and AI assistants around the real workflow.",
-    homepageItems: ["Workflow and process design", "Automation", "AI assistants and agents", "Internal tools and dashboards"],
+      "We clarify what makes the business valuable, turn that into a coherent identity and message, and build digital experiences that help people take action.",
+    homepageItems: ["Positioning and strategy", "Messaging and voice", "Visual identity", "Websites and stores"],
     capabilityGroups: [
-      { title: "Improve the workflow", items: ["Workflow and process design", "Internal tools", "Systems and integrations", "Dashboards and reporting"] },
-      { title: "Add practical AI", items: ["Automation", "AI assistants and agents", "Research and knowledge workflows", "Human-review systems"] },
+      { title: "Strategy and identity", items: ["Positioning and strategy", "Messaging and voice", "Visual identity", "Brand systems"] },
+      { title: "Digital experience", items: ["Websites", "Online stores", "Content systems", "UX and conversion improvement"] },
     ],
     problems: [
-      "Orders arrive in multiple formats and must be re-entered manually.",
-      "Important information lives across inboxes, documents, and spreadsheets.",
-      "Teams spend time preparing reports instead of acting on them.",
-      "AI experiments exist but are disconnected from real work.",
-      "Owners cannot easily see what needs attention.",
-      "Repetitive decisions consume senior time.",
+      "The website undersells the business.",
+      "Customers need a personal explanation before they understand the offer.",
+      "The brand feels inconsistent or dated.",
+      "The site is difficult to update or use.",
+      "The online store creates unnecessary friction.",
     ],
-    outputs: ["Order-intake agent", "Research assistant", "Internal operations dashboard", "Automated reporting workflow", "Customer-support drafting assistant", "Connected knowledge system", "Approval and review workflow"],
+    outputs: ["Positioning brief", "Messaging system", "Brand guide", "Website", "Commerce experience", "Content system"],
     valuePoints: [
-      { title: "Reduce manual work", description: "Remove repetitive copying, checking, and coordination." },
-      { title: "Improve decisions", description: "Bring the right information together when someone needs to act." },
-      { title: "Keep people in control", description: "Use human review wherever judgment, trust, or accountability matters." },
+      { title: "Earn confidence", description: "Show up clearly and consistently across every customer touchpoint." },
+      { title: "Drive action", description: "Make it easier for people to understand, decide, and take the next step." },
+      { title: "Scale with confidence", description: "Build a system that can grow with the business." },
     ],
-    bestFor: "Teams spending too much time copying information, coordinating across tools, or repeating the same decisions.",
-    startingPoint: "A workflow audit followed by a focused automation or internal-tool prototype. From there, we expand what earns its place.",
-    pathSteps: ["Request", "decision", "action"],
-    artifact: { src: operationsArtifact, alt: "Berry Good operations dashboard with an order-intake agent and structured orders", caption: "Berry Good operations dashboard" },
-    pov: { label: "Thinking: The era of agentic operations", to: "/thinking/the-era-of-agentic-operations" },
+    bestFor: "Businesses whose quality has outgrown how they currently present themselves.",
+    startingPoint: "A focused positioning and digital-direction sprint. From there, we design and build what creates the biggest impact.",
+    pathSteps: ["Understand", "trust", "choose"],
+    artifact: { src: brandArtifact, alt: "Berry Good brand system shown across a palette, packaging, and a storefront", caption: "Berry Good brand system" },
   },
   {
     id: "new-products",

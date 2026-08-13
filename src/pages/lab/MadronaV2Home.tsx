@@ -70,10 +70,11 @@ export default function MadronaV2Home() {
           <h1>We build what should exist <span className="m2-pop">next.</span></h1>
           <span className="m2-hero-rule" aria-hidden="true" />
           <p className="m2-lead">
-            Madrona builds digital products, websites, and experiences for
-            organizations doing meaningful work, here in the PNW and beyond.
-            We also build our own products to explore better ways of creating
-            software in the AI era.
+            Madrona helps businesses figure out what AI and modern tools can
+            actually do for them, then builds it. Smoother operations,
+            customers who come back, a web presence that earns trust. We run
+            our own products and operations the same way, here in the PNW
+            and beyond.
           </p>
           <div className="m2-actions">
             <Link className="m2-button" to="/connect">Get in touch</Link>
@@ -99,7 +100,7 @@ export default function MadronaV2Home() {
           <div className="m2-consult-intro">
             <p className="m2-kicker">What we do</p>
             <h2>Good businesses around here deserve software as good as they are.</h2>
-            <p>We help you figure out what to build, then build it. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
+            <p>We help you figure out what to build, including where AI genuinely helps, then build it. We run our own operations on agents, so the guidance comes from daily practice. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
             <div className="m2-consult-items">
               {consulting.map((c) => (
                 <div className="m2-consult-item" key={c.title}>
