@@ -8,6 +8,7 @@
 // thinking/madrona/working/ai-checkup-2026-08-13.md
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import ArchPlate from "./CheckupArchPlate";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -78,12 +79,14 @@ export type ArchetypeId = "secret" | "ducttape" | "skeptic" | "onevisit" | "foun
 const ARCHETYPES: Record<ArchetypeId, {
   name: string;
   portrait: string;
+  range: string; // the field-guide one-liner under the plate
   help: string;
   doors: { title: string; to: string }[];
 }> = {
   secret: {
     name: "The Best-Kept Secret",
     portrait: "Great at the work, undersold by the website. People who find you love you. The problem is the finding.",
+    range: "Range: everywhere good work goes underpriced. Rarely photographed.",
     help: "We build the brand, site, content, and store that finally match the work.",
     doors: [
       { title: "Build trust", to: "/consulting#brand-and-web" },
@@ -93,6 +96,7 @@ const ARCHETYPES: Record<ArchetypeId, {
   ducttape: {
     name: "The Duct-Tape Operator",
     portrait: "The business runs on texts, spreadsheets, and memory. It works, because you personally hold it together every week.",
+    range: "Habitat: the front counter, the back office, and the inbox, simultaneously.",
     help: "We map how the work actually happens, then build the tools and agents that hand the busywork to software. Channels you own: online ordering, booking, fulfillment.",
     doors: [
       { title: "Work smarter", to: "/consulting#operations-and-ai" },
@@ -102,18 +106,21 @@ const ARCHETYPES: Record<ArchetypeId, {
   skeptic: {
     name: "The Curious Skeptic",
     portrait: "You're pretty sure AI could help the business. Nobody has shown you how, and you're not buying the hype.",
+    range: "Diet: proof. Will wait as long as it takes.",
     help: "We work in AI every day. We'll tell you straight where it pays off for your business, and where it won't.",
     doors: [{ title: "Work smarter", to: "/consulting#operations-and-ai" }],
   },
   onevisit: {
     name: "The One-Visit Wonder",
     portrait: "Customers show up, love it, and vanish. The product isn't the problem. The path back is.",
+    range: "Sightings: unforgettable. Return schedule: unknown.",
     help: "We give customers useful reasons to return: repeat ordering, memberships, follow-up that doesn't depend on anyone's memory.",
     doors: [{ title: "Grow your business", to: "/consulting#customers-and-growth" }],
   },
   founder: {
     name: "The Kitchen-Table Founder",
     portrait: "The idea is real and it won't leave you alone. You just don't want to bet real money before real people say yes.",
+    range: "Migration: upstream, always. Carries everything it owns.",
     help: "We get you real customer signal before real money: concept tests, smoke tests, a prototype kept deliberately small.",
     doors: [{ title: "Build something worth using", to: "/consulting#new-products" }],
   },
@@ -351,9 +358,12 @@ export default function MadronaV2Checkup() {
             <>
               {guessReady && (
                 <div className="ck-guess">
-                  <strong>Early guess</strong>
-                  <span className="ck-arch-name">{arch.name}</span>
-                  <p>{arch.portrait}</p>
+                  <span className="ck-arch-plate"><ArchPlate id={primary} /></span>
+                  <div>
+                    <strong>Early guess</strong>
+                    <span className="ck-arch-name">{arch.name}</span>
+                    <p>{arch.portrait}</p>
+                  </div>
                 </div>
               )}
               <ul className="ck-card-rows">
@@ -380,10 +390,14 @@ export default function MadronaV2Checkup() {
           {read && (
             <div className="ck-read">
               <div className="ck-arch">
-                <strong>You read as</strong>
-                <span className="ck-arch-name">{arch.name}</span>
-                {secondary && <span className="ck-arch-streak">with a streak of {ARCHETYPES[secondary].name}</span>}
-                <p>{arch.portrait}</p>
+                <span className="ck-arch-plate ck-arch-plate-lg"><ArchPlate id={primary} /></span>
+                <div>
+                  <strong>You read as</strong>
+                  <span className="ck-arch-name">{arch.name}</span>
+                  {secondary && <span className="ck-arch-streak">with a streak of {ARCHETYPES[secondary].name}</span>}
+                  <p>{arch.portrait}</p>
+                  <p className="ck-arch-range">{arch.range}</p>
+                </div>
               </div>
               <div><strong>What we heard</strong><p>{read.whatWeHeard}</p></div>
               <div><strong>The central problem</strong><p>{read.centralProblem}</p></div>
