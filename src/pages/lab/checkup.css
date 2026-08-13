@@ -34,6 +34,19 @@
 .ck-card-rows strong { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .05em; margin-bottom: 3px; text-transform: uppercase; }
 .ck-card-rows span { color: var(--ink-soft); font-size: .92rem; line-height: 1.5; }
 
+/* The sounds-like-you beat renders statements as spoken lines, not pills. */
+.ck-chips-quotes { flex-direction: column; }
+.ck-chips-quotes .ck-chip { border-radius: 10px; font-style: italic; padding: 12px 16px; text-align: left; width: fit-content; }
+
+/* Archetype: the live early guess and the result reveal. */
+.ck-guess { background: #f2ede2; border-radius: 10px; margin: 14px 0 4px; padding: 14px 16px; }
+.ck-guess strong, .ck-arch strong { display: block; font-size: .68rem; font-weight: 700; letter-spacing: .06em; margin-bottom: 4px; text-transform: uppercase; }
+.ck-arch-name { color: var(--bark-dark); display: block; font-family: Fraunces, "Fraunces Fallback", Georgia, serif; font-size: 1.35rem; font-weight: 560; letter-spacing: -.015em; line-height: 1.15; }
+.ck-guess p, .ck-arch p { color: var(--ink-soft); font-size: .9rem; line-height: 1.5; margin: 7px 0 0; }
+.ck-arch { background: #f2ede2; border-bottom: 0 !important; border-radius: 10px; margin-bottom: 8px; padding: 15px 16px !important; }
+.ck-arch-streak { color: var(--muted); display: block; font-size: .85rem; font-style: italic; margin-top: 2px; }
+.ck-help { margin-bottom: 4px !important; }
+
 .ck-read > div { border-bottom: 1px solid rgba(26, 23, 20, .06); padding: 13px 0; }
 .ck-read > div:last-child { border-bottom: 0; }
 .ck-read strong { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .05em; margin-bottom: 4px; text-transform: uppercase; }

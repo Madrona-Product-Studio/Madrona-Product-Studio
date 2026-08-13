@@ -37,33 +37,6 @@ function deriveStage(aiTried: string): { label: string; note: string } {
   }
 }
 
-const DOOR_LABELS: Record<string, string> = {
-  "operations-and-ai": "Work smarter",
-  "customers-and-growth": "Grow your business",
-  "brand-and-web": "Build trust",
-  "new-products": "Build something worth using",
-};
-
-function deriveDoors(friction: string[], customerStuck: string[], win: string): string[] {
-  const scores = new Map<string, number>();
-  const bump = (id: string, by = 1) => scores.set(id, (scores.get(id) ?? 0) + by);
-  if (friction.length) bump("operations-and-ai", friction.length + 1);
-  for (const c of customerStuck) {
-    if (c === "finding" || c === "understanding") bump("brand-and-web", 2);
-    if (c === "ordering") bump("customers-and-growth", 2);
-    if (c === "return") bump("customers-and-growth", 2);
-  }
-  if (win === "hours") bump("operations-and-ai", 2);
-  if (win === "new-customers") bump("brand-and-web", 2);
-  if (win === "repeat") bump("customers-and-growth", 2);
-  if (win === "idea") bump("new-products", 3);
-  if (win === "clarity") bump("operations-and-ai", 2);
-  return [...scores.entries()]
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 2)
-    .map(([id]) => id);
-}
-
 const READ_SCHEMA = {
   type: "object",
   properties: {
@@ -97,14 +70,15 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   const business = String(data.business ?? "").slice(0, 60);
-  const friction = (Array.isArray(data.friction) ? data.friction : []).map(String).slice(0, 8);
+  const statements = (Array.isArray(data.statements) ? data.statements : []).map(String).slice(0, 10);
+  const burned = Boolean(data.burned);
   const aiTried = String(data.aiTried ?? "").slice(0, 30);
-  const customerStuck = (Array.isArray(data.customerStuck) ? data.customerStuck : []).map(String).slice(0, 8);
   const win = String(data.win ?? "").slice(0, 30);
+  const archetype = String(data.archetype ?? "").slice(0, 60);
+  const archetypePortrait = String(data.archetypePortrait ?? "").slice(0, 300);
   if (!business || !aiTried || !win) return json({ error: "Missing answers." }, 400);
 
   const stage = deriveStage(aiTried);
-  const doors = deriveDoors(friction, customerStuck, win);
 
   if (!process.env.ANTHROPIC_API_KEY) return json({ error: "offline" }, 503);
 
@@ -119,14 +93,14 @@ export async function POST(request: Request): Promise<Response> {
           role: "user",
           content: `Their answers:
 - Kind of business: ${business}
-- Where the week disappears (their words for repetitive friction): ${friction.join("; ") || "they did not flag any"}
+- Statements they said sound like them: ${statements.length ? statements.map((s) => `"${s}"`).join("; ") : "none rang true (things mostly work)"}
 - AI so far: ${stage.label}. ${stage.note}
-- Where customers get stuck: ${customerStuck.join("; ") || "they say this part mostly works"}
 - The one thing they want working better: ${win}
+- They were burned before (paid someone, got a half-finished handoff): ${burned ? "YES. The first move should lean on the free written assessment and keep-it-either-way trust move, without dwelling on the past." : "no"}
 
-Madrona's internal routing put them nearest these service areas: ${doors.map((d) => DOOR_LABELS[d]).join(" and ")}. Do not name the service areas in the read; write the read so it naturally points that direction.
+Their owner archetype (already revealed to them, playful but respectful): ${archetype || "none"}. Portrait: ${archetypePortrait || "n/a"}. You may nod to the archetype once, lightly; do not repeat its name in every field, and never mock.
 
-Write the read.`,
+Write the read so it speaks to their exact statements, in their own vocabulary.`,
         },
       ],
       output_config: { format: { type: "json_schema", schema: READ_SCHEMA } },
@@ -134,7 +108,7 @@ Write the read.`,
 
     const text = response.content.find((b) => b.type === "text")?.text;
     if (!text) return json({ error: "offline" }, 503);
-    return json({ read: JSON.parse(text), stage, doors });
+    return json({ read: JSON.parse(text), stage });
   } catch {
     return json({ error: "offline" }, 503);
   }
