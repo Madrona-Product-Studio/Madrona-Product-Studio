@@ -274,7 +274,7 @@ export default function MadronaV2Checkup() {
 
   return (
     <main className="m2">
-      <LabMeta title="Where could we help? · Madrona Product Studio" noindex />
+      <LabMeta title="Where could we help? · Madrona Product Studio" />
       <M2Nav />
 
       <section className="ck-head">
@@ -331,7 +331,7 @@ export default function MadronaV2Checkup() {
             <div className="ck-beat">
               <h2>Your read is ready.</h2>
               <p className="ck-beat-note">
-                Drafted by our AI from your answers{offline ? " (offline draft, the live version is generated fresh)" : ""}.
+                {offline ? "Assembled from your answers." : "Drafted by our AI from your answers."}{" "}
                 It is a starting point, not a verdict. If you want the human
                 version, Charlie reads these personally.
               </p>

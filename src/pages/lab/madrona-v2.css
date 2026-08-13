@@ -2344,6 +2344,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-consult-intro h2 { font-size: var(--m2-h-section); font-weight: 560; letter-spacing: -.04em; line-height: 1.04; margin: 0 0 14px; max-width: 17ch; }
 .m2-consult-intro > p:not(.m2-kicker) { color: var(--muted); line-height: 1.55; margin: 0 0 30px; max-width: 470px; }
 .m2-consult-items { display: grid; gap: 24px; margin-bottom: 26px; }
+.m2-consult-links { display: flex; flex-direction: column; gap: 8px; }
 .m2-consult-item { display: flex; gap: 15px; }
 .m2-consult-item h3 { font-size: 1.02rem; font-weight: 600; letter-spacing: -.02em; margin: 4px 0 6px; }
 .m2-consult-item p { color: var(--muted); font-size: .9rem; line-height: 1.5; margin: 0; max-width: 42ch; }
