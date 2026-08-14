@@ -3,7 +3,7 @@
 // diagrammatic, one idea, one bark accent, lab tokens), on a square canvas
 // sized for the small reveal slot (~72–96px), so weights run bolder than the
 // 16:9 POV plates.
-import type { ArchetypeId } from "./MadronaV2Checkup";
+import type { ArchetypeId } from "./checkupData";
 
 const FOREST = "var(--forest)";
 const BARK = "var(--bark)";

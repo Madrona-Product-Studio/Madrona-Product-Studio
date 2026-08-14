@@ -17,6 +17,8 @@ import MadronaV2SystemNote from "./pages/lab/MadronaV2SystemNote";
 import MadronaV2Open from "./pages/lab/MadronaV2Open";
 import MadronaSystem from "./pages/lab/MadronaSystem";
 import MadronaV2Checkup from "./pages/lab/MadronaV2Checkup";
+import MadronaV2CheckupB from "./pages/lab/MadronaV2CheckupB";
+import CheckupC from "./pages/lab/CheckupC";
 
 export default function App() {
   return (
@@ -58,6 +60,9 @@ export default function App() {
         <Route path="thesis" element={<MadronaV2Thesis />} />
         {/* PROTOTYPE — AI checkup; unlinked + noindexed until approved. */}
         <Route path="checkup" element={<MadronaV2Checkup />} />
+        {/* TEMP — checkup interface variants under review (unlinked, noindex). */}
+        <Route path="lab/checkup-b" element={<MadronaV2CheckupB />} />
+        <Route path="lab/checkup-c" element={<CheckupC />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />
