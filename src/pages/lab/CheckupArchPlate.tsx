@@ -46,15 +46,15 @@ function Ducttape() {
     const off = { x: Math.cos((a * Math.PI) / 180) * 20, y: Math.sin((a * Math.PI) / 180) * 20 };
     return (
       <g stroke={FOREST} strokeWidth={12} strokeLinecap="round">
-        <line x1={x - dx - off.x} y1={y - dy - off.y} x2={x + dx - off.x} y2={y + dy - off.y} />
-        <line x1={x - dx + off.x} y1={y - dy + off.y} x2={x + dx + off.x} y2={y + dy + off.y} />
+        <line className="ckb-draw" pathLength="1" x1={x - dx - off.x} y1={y - dy - off.y} x2={x + dx - off.x} y2={y + dy - off.y} />
+        <line className="ckb-draw" pathLength="1" x1={x - dx + off.x} y1={y - dy + off.y} x2={x + dx + off.x} y2={y + dy + off.y} />
       </g>
     );
   };
   return (
     <Frame>
       <g stroke={FOREST} strokeOpacity={0.55} strokeWidth={10} strokeLinecap="round">
-        {arms.map(([x, y], i) => <line key={i} x1={x} y1={y} x2={c} y2={c} />)}
+        {arms.map(([x, y], i) => <line className="ckb-draw" pathLength="1" key={i} x1={x} y1={y} x2={c} y2={c} />)}
       </g>
       {splice(285, 300, 42)}
       {splice(605, 575, 39)}
@@ -73,11 +73,11 @@ function Skeptic() {
     <Frame>
       <circle cx={c} cy={c} r={310} fill="none" stroke={FOREST} strokeWidth={11}
         strokeOpacity={0.55} strokeDasharray="26 30" />
-      <circle cx={c} cy={c} r={200} fill="none" stroke={FOREST} strokeWidth={12} />
+      <circle className="ckb-draw" pathLength="1" cx={c} cy={c} r={200} fill="none" stroke={FOREST} strokeWidth={12} />
       {/* the claim under inspection */}
-      <rect x={c - 52} y={c - 52} width={104} height={104} rx={20} fill="none" stroke={BARK} strokeWidth={13} />
+      <rect className="ckb-draw" pathLength="1" x={c - 52} y={c - 52} width={104} height={104} rx={20} fill="none" stroke={BARK} strokeWidth={13} />
       {/* the gaze */}
-      <line x1={c + 145} y1={c + 145} x2={790} y2={790} stroke={FOREST} strokeWidth={13} strokeLinecap="round" />
+      <line className="ckb-draw" pathLength="1" x1={c + 145} y1={c + 145} x2={790} y2={790} stroke={FOREST} strokeWidth={13} strokeLinecap="round" />
     </Frame>
   );
 }
@@ -92,11 +92,11 @@ function Onevisit() {
       <circle cx={c} cy={c} r={r} fill="none" stroke={FOREST} strokeOpacity={0.25} strokeWidth={9}
         strokeDasharray="24 30" />
       {/* the actual visit: three quarters of the loop, then gone */}
-      <path d={`M ${c + r} ${c} A ${r} ${r} 0 1 1 ${c} ${c - r}`} fill="none" stroke={FOREST}
+      <path className="ckb-draw" pathLength="1" d={`M ${c + r} ${c} A ${r} ${r} 0 1 1 ${c} ${c - r}`} fill="none" stroke={FOREST}
         strokeWidth={13} strokeLinecap="round" />
       <circle cx={c + r} cy={c} r={30} fill={FOREST} />
       {/* departure, tangent, bark */}
-      <line x1={c} y1={c - r} x2={c + 265} y2={c - r - 88} stroke={BARK} strokeWidth={13} strokeLinecap="round" />
+      <line className="ckb-draw" pathLength="1" x1={c} y1={c - r} x2={c + 265} y2={c - r - 88} stroke={BARK} strokeWidth={13} strokeLinecap="round" />
       <circle cx={c + 285} cy={c - r - 95} r={34} fill={BARK} />
     </Frame>
   );
@@ -113,9 +113,9 @@ function Founder() {
       </g>
       {/* construction lines */}
       <g stroke={FOREST} strokeOpacity={0.35} strokeWidth={8} strokeLinecap="round">
-        <line x1={300} y1={620} x2={470} y2={440} />
-        <line x1={445} y1={620} x2={630} y2={440} />
-        <line x1={300} y1={765} x2={780} y2={285} />
+        <line className="ckb-draw" pathLength="1" x1={300} y1={620} x2={470} y2={440} />
+        <line className="ckb-draw" pathLength="1" x1={445} y1={620} x2={630} y2={440} />
+        <line className="ckb-draw" pathLength="1" x1={300} y1={765} x2={780} y2={285} />
       </g>
       {/* the small real thing, shipped */}
       <rect x={165} y={620} width={145} height={145} rx={18} fill={BARK} />

@@ -59,7 +59,10 @@ export default function MadronaV2CheckupB() {
   const [offline, setOffline] = useState(false);
   const [revealed, setRevealed] = useState(false);
   const [note, setNote] = useState(0);
+  const [direction, setDirection] = useState<"forward" | "back">("forward");
+  const [closeVisible, setCloseVisible] = useState(false);
   const advanceTimer = useRef<number | null>(null);
+  const closeRef = useRef<HTMLDivElement | null>(null);
 
   const steps: StepDef[] = useMemo(() => [
     { kind: "intro" },
@@ -83,13 +86,14 @@ export default function MadronaV2CheckupB() {
   const arch = ARCHETYPES[primary];
 
   const go = useCallback((next: number) => {
+    setDirection(next < step ? "back" : "forward");
     setLeaving(true);
     window.setTimeout(() => {
       setStep(next);
       setLeaving(false);
       window.scrollTo(0, 0);
-    }, 230);
-  }, []);
+    }, 170);
+  }, [step]);
 
   const advance = useCallback(() => go(Math.min(step + 1, steps.length - 1)), [go, step, steps.length]);
   const back = useCallback(() => { if (step > 0 && step < steps.length - 2) go(step - 1); }, [go, step, steps.length]);
@@ -170,6 +174,19 @@ export default function MadronaV2CheckupB() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, steps, statements]);
 
+  useEffect(() => {
+    const node = closeRef.current;
+    if (!node || steps[step]?.kind !== "result") return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setCloseVisible(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.18 });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [step, read, steps]);
+
   function restart() {
     setBusiness(""); setStatements([]); setAiTried(""); setWin("");
     setRead(null); setOffline(false); setRevealed(false);
@@ -186,12 +203,12 @@ export default function MadronaV2CheckupB() {
       <header className="ckb-chrome">
         <Link to="/" className="ckb-word">madrona</Link>
         <div className="ckb-progresswrap" aria-hidden="true">
-          <span className="ckb-progress" style={{ transform: `scaleX(${progress})` }} />
+          <span className="ckb-progress" style={{ "--progress": progress, transform: `scaleX(${progress})` } as React.CSSProperties} />
         </div>
         <span className="ckb-time">{s.kind === "result" ? "" : "About a minute"}</span>
       </header>
 
-      <div className={`ckb-stage${leaving ? " is-leaving" : ""}`}>
+      <div className={`ckb-stage is-${direction}${leaving ? " is-leaving" : ""}`}>
         {s.kind === "intro" && (
           <section className="ckb-screen ckb-intro">
             <div>
@@ -251,6 +268,7 @@ export default function MadronaV2CheckupB() {
                 <circle className="ckb-ring2" cx="60" cy="60" r="52" />
                 <circle className="ckb-ring" cx="60" cy="60" r="40" />
                 <circle className="ckb-dot" cx="60" cy="60" r="7" />
+                <path className="ckb-written-line" d="M30 60 C44 52 69 68 91 57" pathLength="1" />
               </svg>
             </span>
             <p className="ckb-eyebrow">Reading your answers</p>
@@ -291,7 +309,7 @@ export default function MadronaV2CheckupB() {
               </ol>
             </div>
 
-            <div className="ckb-close">
+            <div ref={closeRef} className={`ckb-close${closeVisible ? " is-visible" : ""}`}>
               <p className="ckb-eyebrow">How we help {arch.name.replace(/^The /, "the ")}</p>
               <h2>{arch.help}</h2>
               <div className="ckb-doorlinks">
