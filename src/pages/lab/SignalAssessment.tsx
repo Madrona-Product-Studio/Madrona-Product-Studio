@@ -18,6 +18,7 @@ const BOOK_HREF = CAL_LINK ? `https://cal.com/${CAL_LINK}` : (BOOKING_URL ?? "/c
 const BOOK_EXTERNAL = BOOK_HREF.startsWith("http");
 import { computeEngineState, computeResult } from "../../assessment/engine/index.ts";
 import { generateCurrentRead } from "../../assessment/brain/currentRead.ts";
+import { CLOSE_PATHWAY_GAP } from "../../assessment/brain/model.ts";
 import { answerIds } from "../../assessment/types.ts";
 import type { AnswerMap, EngineState } from "../../assessment/types.ts";
 import MadronaLogo from "./MadronaLogo.tsx";
@@ -488,7 +489,16 @@ export default function SignalAssessment() {
               focusedSignal={showResult ? focusedSignal : null}
             />
           </div>
-          {showResult && result && (
+          {showResult && result && (() => {
+            // A genuinely close runner-up stays on the record: the map keeps
+            // its anchor lit and the readout names it, instead of pretending
+            // the call was decisive.
+            const closeSecond =
+              engine.pathwayGap < CLOSE_PATHWAY_GAP &&
+              engine.secondaryPathway !== result.archetype.primaryPathway
+                ? engine.secondaryPathway
+                : null;
+            return (
             <>
               <p className="sa-key-label">What that adds up to</p>
               <ul className="sa-signals">
@@ -512,8 +522,19 @@ export default function SignalAssessment() {
                   </li>
                 ))}
               </ul>
+              {closeSecond && (
+                <div className="sa-also">
+                  <p className="sa-key-label">A close second</p>
+                  <p className="sa-also-name">{PATHWAY_COPY[closeSecond].name}</p>
+                  <p className="sa-also-note">
+                    Your answers kept this pathway close behind. Worth bringing
+                    into the same conversation.
+                  </p>
+                </div>
+              )}
             </>
-          )}
+            );
+          })()}
           {!showResult && (
             <footer className="sa-brain-foot" aria-live="polite">
               {currentRead ?? "The map fills in as you answer."}

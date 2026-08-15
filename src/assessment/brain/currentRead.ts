@@ -1,5 +1,6 @@
 // Deterministic "current read" one-liners from engine state (spec 03 §27, copy 04 §7).
 import type { EngineState } from "../types.ts";
+import { CLOSE_PATHWAY_GAP } from "./model.ts";
 
 export function generateCurrentRead(
   state: EngineState,
@@ -49,7 +50,7 @@ export function generateCurrentRead(
   if (s.retention.relativeStrength >= 0.99 && state.answeredCount >= 3) {
     candidates.push("The pattern is pointing beyond acquisition toward what happens after the first sale.");
   }
-  if (state.pathwayGap < 0.07 && state.answeredCount >= 3) {
+  if (state.pathwayGap < CLOSE_PATHWAY_GAP && state.answeredCount >= 3) {
     candidates.push("Two paths are still plausible.");
   }
   if (state.certainty > 0.6 && state.answeredCount >= 4) {

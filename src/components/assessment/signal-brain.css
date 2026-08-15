@@ -141,6 +141,18 @@
   stroke: var(--sb-green);
   opacity: 0.4;
 }
+/* Close second: a contested runner-up stays visibly in the picture */
+.sb-pw--contested .sb-pw-dot {
+  stroke: var(--sb-green-bright);
+}
+.sb-pw--contested .sb-pw-halo {
+  stroke: var(--sb-green);
+  stroke-dasharray: none;
+  opacity: 0.5;
+}
+.sb-pw--contested .sb-pw-label {
+  opacity: 0.88;
+}
 .sb-pw-label {
   fill: var(--sb-text);
   opacity: 0.7;
@@ -384,11 +396,18 @@
   opacity: 0.18 !important;
   transition: opacity 600ms ease;
 }
+/* ...except a contested close second, which the result deliberately keeps lit. */
+.sb--resolved .sb-pw--secondary.sb-pw--contested {
+  opacity: 0.62 !important;
+}
 .sb-pw-sublabel {
   fill: var(--sb-orange-bright);
   font-size: 8.5px;
   letter-spacing: 0.14em;
   opacity: 0.9;
+}
+.sb-pw-sublabel--second {
+  fill: var(--sb-green-bright);
 }
 .sb--resolved .sb-pw--primary .sb-pw-label {
   opacity: 0.95;

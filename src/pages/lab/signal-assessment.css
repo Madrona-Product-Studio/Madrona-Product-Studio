@@ -689,6 +689,18 @@
   outline: 2px solid var(--a-green);
   outline-offset: 1px;
 }
+.sa-also-name {
+  margin: 0 0 2px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--a-text);
+}
+.sa-also-note {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--a-text-3);
+  line-height: 1.5;
+}
 
 /* ---- Enter transitions ---- */
 .sa-enter {

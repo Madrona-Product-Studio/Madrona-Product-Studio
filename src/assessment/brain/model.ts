@@ -73,7 +73,16 @@ export type BrainModel = {
   answeredCount: number;
   /** False until any signal has real evidence — everything stays latent. */
   hasEvidence: boolean;
+  /** True when the runner-up pathway is close enough to stay called out. */
+  contested: boolean;
 };
+
+/**
+ * Below this gap the top two pathways are genuinely close: the map keeps the
+ * runner-up visibly in the picture and the result names it. One threshold
+ * shared by brain, current-read copy, and the result readout.
+ */
+export const CLOSE_PATHWAY_GAP = 0.09;
 
 const MAX_SIGNAL_DRIFT = 24;
 
@@ -236,6 +245,8 @@ export function deriveBrainModel(state: EngineState): BrainModel {
     outcome,
     answeredCount: state.answeredCount,
     hasEvidence,
+    contested:
+      hasEvidence && state.answeredCount >= 3 && state.pathwayGap < CLOSE_PATHWAY_GAP,
   };
 }
 

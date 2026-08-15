@@ -221,7 +221,9 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
       const base = vis.isPrimary
         ? 0.25 + 0.4 * emphasis
         : vis.isSecondary
-          ? 0.18 + 0.15 * emphasis
+          ? model.contested
+            ? 0.32 + 0.24 * emphasis
+            : 0.18 + 0.15 * emphasis
           : model.hasEvidence
             ? 0.14
             : 0.3;
@@ -280,7 +282,11 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
     setTarget(
       "route2:o",
       model.secondaryChain.length > 0
-        ? Math.max(0.08, (1 - model.displayCertainty * 0.75) * 0.4 * secStrength)
+        ? model.contested
+          ? // A contested runner-up keeps its dashed route clearly visible
+            // instead of fading as the leader's certainty grows.
+            Math.max(0.34, 0.5 * secStrength)
+          : Math.max(0.08, (1 - model.displayCertainty * 0.75) * 0.4 * secStrength)
         : 0,
       SPRING_FIRM,
       0,
@@ -308,6 +314,8 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
       const focusPts = [
         ...(focusSignals.length > 0 ? focusSignals : pts.slice(1, -2)),
         PATHWAY_ANCHORS[model.primaryPathway],
+        // A close second stays in the snapshot frame.
+        ...(model.contested ? [PATHWAY_ANCHORS[model.secondaryPathway]] : []),
         model.outcome,
       ];
       const xs = focusPts.map((p) => p.x);
@@ -756,6 +764,7 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
             "sb-pw",
             vis.isPrimary ? "sb-pw--primary" : "",
             vis.isSecondary ? "sb-pw--secondary" : "",
+            vis.isSecondary && model.contested ? "sb-pw--contested" : "",
             !vis.isPrimary && vis.relative > 0.55 ? "sb-pw--warm" : "",
           ]
             .filter(Boolean)
@@ -764,26 +773,36 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
             <g key={p} className={cls} style={{ opacity: o }}>
               <circle cx={vis.pos.x} cy={vis.pos.y} r={r + 6} className="sb-pw-halo" style={{ strokeWidth: 1 * wComp }} />
               <circle cx={vis.pos.x} cy={vis.pos.y} r={r} className="sb-pw-dot" style={{ strokeWidth: (vis.isPrimary ? 1.7 : 1.4) * wComp }} />
-              {(showPathwayAnchors || phase === "locked") && (
-                <text
-                  x={vis.pos.x}
-                  y={vis.pos.y - r - (resolved && vis.isPrimary ? 22 : 10) * fComp}
-                  className="sb-pw-label"
-                  style={{ fontSize: `${10 * fComp}px` }}
-                >
-                  {PATHWAY_COPY[p].name}
-                  {resolved && vis.isPrimary && (
-                    <tspan
-                      x={vis.pos.x}
-                      dy={13 * fComp}
-                      className="sb-pw-sublabel"
-                      style={{ fontSize: `${8.5 * fComp}px` }}
-                    >
-                      Leading pathway
-                    </tspan>
-                  )}
-                </text>
-              )}
+              {(showPathwayAnchors || phase === "locked") && (() => {
+                const contestedSecond = vis.isSecondary && model.contested;
+                const sublabel = resolved
+                  ? vis.isPrimary
+                    ? "Leading pathway"
+                    : contestedSecond
+                      ? "Close second"
+                      : null
+                  : null;
+                return (
+                  <text
+                    x={vis.pos.x}
+                    y={vis.pos.y - r - (sublabel ? 22 : 10) * fComp}
+                    className="sb-pw-label"
+                    style={{ fontSize: `${10 * fComp}px` }}
+                  >
+                    {PATHWAY_COPY[p].name}
+                    {sublabel && (
+                      <tspan
+                        x={vis.pos.x}
+                        dy={13 * fComp}
+                        className={`sb-pw-sublabel${vis.isPrimary ? "" : " sb-pw-sublabel--second"}`}
+                        style={{ fontSize: `${8.5 * fComp}px` }}
+                      >
+                        {sublabel}
+                      </tspan>
+                    )}
+                  </text>
+                );
+              })()}
             </g>
           );
         })}
