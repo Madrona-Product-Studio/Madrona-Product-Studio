@@ -8,7 +8,13 @@ import type { SignalBrainHandle } from "../../components/assessment/SignalBrain.
 import { QUESTIONS } from "../../assessment/data/questions.ts";
 import { PATHWAY_COPY } from "../../assessment/data/pathways.ts";
 import { serviceAreas } from "../../data/services.ts";
+import { BOOKING_URL, CAL_LINK } from "../../data/booking.ts";
 import type { Pathway } from "../../assessment/types.ts";
+
+// Same swap point the rest of the site uses: cal.com when configured,
+// otherwise the contact page.
+const BOOK_HREF = CAL_LINK ? `https://cal.com/${CAL_LINK}` : (BOOKING_URL ?? "/connect");
+const BOOK_EXTERNAL = BOOK_HREF.startsWith("http");
 import { computeEngineState, computeResult } from "../../assessment/engine/index.ts";
 import { generateCurrentRead } from "../../assessment/brain/currentRead.ts";
 import { answerIds } from "../../assessment/types.ts";
@@ -399,6 +405,26 @@ export default function SignalAssessment() {
                       <p className="sa-rec-desc">{result.recommendation.description}</p>
                     </div>
 
+                    <div className="sa-cta-block">
+                      <p className="sa-cta-note">
+                        Bring your result. We’ll talk through what it means and
+                        find a practical next step.
+                      </p>
+                      {BOOK_EXTERNAL ? (
+                        <a className="sa-primary sa-primary--wide" href={BOOK_HREF}>
+                          Book a 30m free chat <span aria-hidden="true">→</span>
+                        </a>
+                      ) : (
+                        <Link className="sa-primary sa-primary--wide" to={BOOK_HREF}>
+                          Book a 30m free chat <span aria-hidden="true">→</span>
+                        </Link>
+                      )}
+                      <p className="sa-cta-fine">
+                        Free. No email required. Your answers stay in this session.
+                      </p>
+                    </div>
+
+                    <p className="sa-help-includes">Work this often includes</p>
                     <ul className="sa-help-items">
                       {(service ? service.homepageItems : PATHWAY_COPY[result.archetype.primaryPathway].capabilities).map(
                         (item) => (
@@ -406,24 +432,10 @@ export default function SignalAssessment() {
                         ),
                       )}
                     </ul>
-                    <Link className="sa-help-link" to="/consulting">
-                      See how we work on this <span aria-hidden="true">→</span>
+                    <Link className="sa-quiet-link" to="/consulting">
+                      Learn how we work
                     </Link>
                   </div>
-                </div>
-
-                <div className="sa-result-band">
-                  <Link className="sa-primary" to="/connect">
-                    Talk through the result <span aria-hidden="true">→</span>
-                  </Link>
-                  <button className="sa-back" onClick={restart}>
-                    Start over
-                  </button>
-                  <p className="sa-fine">
-                    This assessment looks for patterns in your answers and maps
-                    them to common business opportunities. Your answers stay in
-                    this session unless you choose to share them.
-                  </p>
                 </div>
               </section>
             );
@@ -472,6 +484,14 @@ export default function SignalAssessment() {
               ? `${PATHWAY_COPY[result.archetype.primaryPathway].name} is the leading pathway.`
               : currentRead ?? "The map fills in as you answer."}
           </footer>
+          {showResult && (
+            <div className="sa-retake">
+              <button className="sa-back" onClick={restart}>
+                Retake the assessment
+              </button>
+              <p>This assessment maps patterns in your answers to common business opportunities.</p>
+            </div>
+          )}
         </aside>
         </div>
       </div>

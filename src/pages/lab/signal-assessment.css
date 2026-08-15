@@ -460,26 +460,63 @@
   border-radius: 50%;
   background: var(--a-green);
 }
-.sa-help-link {
+/* One conversion: the book-a-chat block sits where motivation peaks. */
+.sa-cta-block {
+  margin: 0 0 20px;
+}
+.sa-cta-note {
   font-size: 13px;
-  color: var(--a-green-bright);
-  text-decoration: none;
-}
-.sa-help-link:hover {
-  color: var(--a-text);
-}
-.sa-result-band {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  border-top: 1px solid var(--a-border);
-  margin-top: 26px;
-  padding-top: 20px;
-}
-.sa-result-band .sa-fine {
-  margin: 0 0 0 auto;
+  line-height: 1.5;
+  color: var(--a-text-2);
+  margin: 0 0 12px;
   max-width: 42ch;
-  text-align: right;
+}
+.sa-primary--wide {
+  width: 100%;
+  justify-content: center;
+  font-size: 15px;
+  padding: 14px 22px;
+}
+.sa-cta-fine {
+  font-size: 11.5px;
+  color: var(--a-text-3);
+  margin: 10px 0 0;
+  text-align: center;
+}
+.sa-help-includes {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--a-text-3);
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+.sa-quiet-link {
+  font-size: 12.5px;
+  color: var(--a-text-3);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(226, 232, 226, 0.25);
+}
+.sa-quiet-link:hover {
+  color: var(--a-text-2);
+}
+.sa-retake {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.sa-retake .sa-back {
+  padding-left: 0;
+  font-size: 12.5px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(226, 232, 226, 0.25);
+}
+.sa-retake p {
+  margin: 6px 0 0;
+  font-size: 11px;
+  color: var(--a-text-3);
+  line-height: 1.5;
 }
 .sa-signals {
   list-style: none;
@@ -686,14 +723,6 @@
     padding-left: 0;
     border-top: 1px solid var(--a-border);
     padding-top: 20px;
-  }
-  .sa-result-band {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .sa-result-band .sa-fine {
-    margin-left: 0;
-    text-align: left;
   }
 }
 
