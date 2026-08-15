@@ -7,6 +7,8 @@ import SignalBrain from "../../components/assessment/SignalBrain.tsx";
 import type { SignalBrainHandle } from "../../components/assessment/SignalBrain.tsx";
 import { QUESTIONS } from "../../assessment/data/questions.ts";
 import { PATHWAY_COPY } from "../../assessment/data/pathways.ts";
+import { serviceAreas } from "../../data/services.ts";
+import type { Pathway } from "../../assessment/types.ts";
 import { computeEngineState, computeResult } from "../../assessment/engine/index.ts";
 import { generateCurrentRead } from "../../assessment/brain/currentRead.ts";
 import { answerIds } from "../../assessment/types.ts";
@@ -47,6 +49,34 @@ const LEVEL_NOTES: Record<string, string> = {
   Emerging: "A pattern taking shape",
   Supporting: "Present in the background",
 };
+
+/** Assessment pathway → the site's service area (src/data/services.ts). */
+const PATHWAY_SERVICE: Record<Pathway, string> = {
+  brandWeb: "brand-and-web",
+  customersGrowth: "customers-and-growth",
+  operationsAI: "operations-and-ai",
+  newProduct: "new-products",
+};
+
+/** The user's own words: symptom answers ranked by evidence weight, top 4. */
+function whatWeHeard(answers: AnswerMap): string[] {
+  const symptomQuestions = ["q2-friction", "q3-reality", "q4-time", "q6-workaround"];
+  const heard: { label: string; weight: number }[] = [];
+  for (const qid of symptomQuestions) {
+    const q = QUESTIONS.find((x) => x.id === qid);
+    if (!q) continue;
+    for (const id of answerIds(answers, qid)) {
+      const a = q.answers.find((x) => x.id === id);
+      if (!a) continue;
+      const weight = Object.values(a.weights).reduce((s, w) => s + Math.max(0, w ?? 0), 0);
+      heard.push({ label: a.label, weight });
+    }
+  }
+  return heard
+    .sort((a, b) => b.weight - a.weight)
+    .slice(0, 4)
+    .map((h) => h.label);
+}
 
 function usePrefersReducedMotion(): boolean {
   const [reduced, setReduced] = useState(
@@ -327,54 +357,77 @@ export default function SignalAssessment() {
             </section>
           )}
 
-          {showResult && result && (
-            <section className="sa-result sa-enter" aria-labelledby="sa-r">
-              <p className="sa-eyebrow">Your current pattern</p>
-              <h1 id="sa-r" ref={headingRef} tabIndex={-1}>
-                {result.archetype.name}
-              </h1>
-              <p className="sa-interpretation">{result.archetype.full}</p>
+          {showResult && result && (() => {
+            const service = serviceAreas.find(
+              (s) => s.id === PATHWAY_SERVICE[result.archetype.primaryPathway],
+            );
+            const heard = whatWeHeard(answers);
+            return (
+              <section className="sa-result sa-enter" aria-labelledby="sa-r">
+                <div className="sa-result-cols">
+                  <div className="sa-result-main">
+                    <p className="sa-eyebrow">Your current pattern</p>
+                    <h1 id="sa-r" ref={headingRef} tabIndex={-1}>
+                      {result.archetype.name}
+                    </h1>
+                    <p className="sa-interpretation">{result.archetype.short}</p>
 
-              <div className="sa-result-block">
-                <h2>Strongest signals</h2>
-                <ul className="sa-signals">
-                  {result.topSignals.map((t) => (
-                    <li key={t.signal}>
-                      <span>{t.label}</span>
-                      <em className={`sa-level sa-level--${t.level.toLowerCase()}`}>{t.level}</em>
-                      <small>{LEVEL_NOTES[t.level]}</small>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                    {heard.length > 0 && (
+                      <div className="sa-heard">
+                        <h2>What we heard</h2>
+                        <ul>
+                          {heard.map((line) => (
+                            <li key={line}>{line}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
 
-              <div className="sa-result-block">
-                <h2>Best place to start</h2>
-                <p className="sa-pathway">{PATHWAY_COPY[result.archetype.primaryPathway].name}</p>
-                <p className="sa-pathway-short">{PATHWAY_COPY[result.archetype.primaryPathway].short}</p>
-              </div>
+                  <div className="sa-result-help">
+                    <h2>How we can help</h2>
+                    <p className="sa-help-door">
+                      {service ? service.door : PATHWAY_COPY[result.archetype.primaryPathway].name}
+                    </p>
+                    <p className="sa-help-outcome">
+                      {service ? service.outcome : PATHWAY_COPY[result.archetype.primaryPathway].short}
+                    </p>
 
-              <div className="sa-result-block">
-                <h2>Recommended first move</h2>
-                <p className="sa-rec-title">{result.recommendation.title}</p>
-                <p className="sa-rec-desc">{result.recommendation.description}</p>
-              </div>
+                    <div className="sa-first-move">
+                      <h3>Recommended first move</h3>
+                      <p className="sa-rec-title">{result.recommendation.title}</p>
+                      <p className="sa-rec-desc">{result.recommendation.description}</p>
+                    </div>
 
-              <div className="sa-result-cta">
-                <Link className="sa-primary" to="/connect">
-                  Talk through the result <span aria-hidden="true">→</span>
-                </Link>
-                <button className="sa-back" onClick={restart}>
-                  Start over
-                </button>
-              </div>
-              <p className="sa-fine">
-                This assessment looks for patterns in your answers and maps
-                them to common business opportunities. Your answers stay in
-                this session unless you choose to share them.
-              </p>
-            </section>
-          )}
+                    <ul className="sa-help-items">
+                      {(service ? service.homepageItems : PATHWAY_COPY[result.archetype.primaryPathway].capabilities).map(
+                        (item) => (
+                          <li key={item}>{item}</li>
+                        ),
+                      )}
+                    </ul>
+                    <Link className="sa-help-link" to="/consulting">
+                      See how we work on this <span aria-hidden="true">→</span>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="sa-result-band">
+                  <Link className="sa-primary" to="/connect">
+                    Talk through the result <span aria-hidden="true">→</span>
+                  </Link>
+                  <button className="sa-back" onClick={restart}>
+                    Start over
+                  </button>
+                  <p className="sa-fine">
+                    This assessment looks for patterns in your answers and maps
+                    them to common business opportunities. Your answers stay in
+                    this session unless you choose to share them.
+                  </p>
+                </div>
+              </section>
+            );
+          })()}
         </main>
 
         {/* ---- Signal Brain ---- */}
@@ -403,6 +456,17 @@ export default function SignalAssessment() {
               showEvidence
             />
           </div>
+          {showResult && result && (
+            <ul className="sa-signals">
+              {result.topSignals.map((t) => (
+                <li key={t.signal}>
+                  <span>{t.label}</span>
+                  <em className={`sa-level sa-level--${t.level.toLowerCase()}`}>{t.level}</em>
+                  <small>{LEVEL_NOTES[t.level]}</small>
+                </li>
+              ))}
+            </ul>
+          )}
           <footer className="sa-brain-foot" aria-live="polite">
             {stage.kind === "result" && result
               ? `${PATHWAY_COPY[result.archetype.primaryPathway].name} is the leading pathway.`
