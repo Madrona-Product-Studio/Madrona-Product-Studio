@@ -183,11 +183,19 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
     }
     for (const p of PATHWAYS) {
       const vis = model.pathways[p];
-      const base = vis.isPrimary ? 0.55 : vis.isSecondary ? 0.3 : 0.12;
-      setTarget(`pw:${p}:o`, base + vis.relative * 0.35, SPRING_FIRM, 0.1);
+      // Primary emphasis is earned with displayCertainty, not granted at Q1.
+      const emphasis = synth ? 1 : model.displayCertainty;
+      const base = vis.isPrimary
+        ? 0.25 + 0.4 * emphasis
+        : vis.isSecondary
+          ? 0.18 + 0.15 * emphasis
+          : 0.12;
+      setTarget(`pw:${p}:o`, base + vis.relative * 0.25, SPRING_FIRM, 0.1);
       setTarget(
         `pw:${p}:r`,
-        vis.isPrimary ? 7 + 9 * vis.relative * (synth ? 1.25 : 1) : 5 + 5 * vis.relative,
+        vis.isPrimary
+          ? 6 + (4 + 6 * emphasis) * vis.relative * (synth ? 1.25 : 1)
+          : 5 + 5 * vis.relative,
         SPRING_FIRM,
         5,
       );
@@ -213,7 +221,10 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
     });
     const fInternal = total > 0 ? cumulative[pts.length - 3] / total : 0;
     const fAnchor = total > 0 ? cumulative[pts.length - 2] / total : 0;
-    const progress = Math.max(model.answeredCount / 7, model.hasEvidence ? 0.45 : 0);
+    // Slider-driven lab states have no discrete answers; give them a working
+    // progress floor. Real runs earn progress one answer at a time.
+    const sliderDriven = model.hasEvidence && model.evidence.length === 0;
+    const progress = Math.max(model.answeredCount / 7, sliderDriven ? 0.45 : 0);
     const routeAlive = model.hasEvidence && model.primaryChain.length > 0;
     const anchorPull = Math.max(0, Math.min(1, (progress - 0.35) / 0.65));
     const reach = !routeAlive
@@ -639,8 +650,10 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
           const conf = Math.max(0.04, Math.min(1, spring(`sig:${id}:conf`, 0.15)));
           const vis = model.signals[id];
           const onRoute = vis.onPrimaryRoute;
-          // Confirmed route hubs earn the reference's checkmark treatment.
-          const checked = onRoute && model.hasEvidence && vis.strength > 0.2;
+          // Confirmed route hubs earn the reference's checkmark treatment —
+          // confidence-gated so checks accumulate across the run, not at Q1.
+          const checked =
+            onRoute && model.hasEvidence && vis.strength > 0.2 && vis.confidence > 0.32;
           const cls = [
             "sb-node",
             onRoute ? "sb-node--route" : "",
