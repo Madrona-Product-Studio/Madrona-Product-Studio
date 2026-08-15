@@ -22,7 +22,9 @@ export const QUESTIONS: AssessmentQuestion[] = [
     stage: "Friction",
     eyebrow: "Friction",
     question: "Where do you feel the most friction right now?",
-    supportingText: "Pick the thing you notice most often.",
+    supportingText: "Pick what you notice most often. Up to three.",
+    multi: true,
+    maxSelections: 3,
     answers: [
       { id: "understanding", label: "People don’t immediately understand why they should choose us", weights: { trust: 4, clarity: 2 } },
       { id: "more-customers", label: "We need more of the right customers", weights: { acquisition: 4, trust: 1 } },
@@ -36,7 +38,10 @@ export const QUESTIONS: AssessmentQuestion[] = [
     id: "q3-reality",
     stage: "Friction",
     eyebrow: "Friction",
-    question: "Which of these sounds most like the business today?",
+    question: "Which of these sounds like the business today?",
+    supportingText: "Choose any that ring true. Up to three.",
+    multi: true,
+    maxSelections: 3,
     answers: [
       { id: "better-than-presence", label: "The business is better than the way we present it", weights: { trust: 4, clarity: 1 } },
       { id: "attention-disappears", label: "We get attention, but too much interest disappears before becoming revenue", weights: { acquisition: 4, trust: 1 } },
@@ -51,6 +56,9 @@ export const QUESTIONS: AssessmentQuestion[] = [
     stage: "Friction",
     eyebrow: "Friction",
     question: "What consumes more time than it should?",
+    supportingText: "Pick up to three.",
+    multi: true,
+    maxSelections: 3,
     answers: [
       { id: "explain", label: "Explaining what we do over and over", weights: { trust: 3, clarity: 2 } },
       { id: "find-convert", label: "Finding and converting new customers", weights: { acquisition: 4 } },
@@ -80,6 +88,9 @@ export const QUESTIONS: AssessmentQuestion[] = [
     stage: "Direction",
     eyebrow: "Direction",
     question: "How are you making it work today?",
+    supportingText: "Choose any that apply. Up to three.",
+    multi: true,
+    maxSelections: 3,
     answers: [
       { id: "effort-memory", label: "Mostly through personal effort and memory", weights: { capacity: 4, operations: 3 } },
       { id: "patchwork", label: "A patchwork of tools and workarounds", weights: { systems: 4, operations: 2 } },

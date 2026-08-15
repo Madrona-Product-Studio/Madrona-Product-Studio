@@ -133,8 +133,13 @@
   stroke-width: 1.2;
   opacity: 0.62;
 }
-.sb-pw--secondary .sb-pw-dot {
+.sb-pw--secondary .sb-pw-dot,
+.sb-pw--warm .sb-pw-dot {
   stroke: var(--sb-green);
+}
+.sb-pw--warm .sb-pw-halo {
+  stroke: var(--sb-green);
+  opacity: 0.4;
 }
 .sb-pw-label {
   fill: var(--sb-text);

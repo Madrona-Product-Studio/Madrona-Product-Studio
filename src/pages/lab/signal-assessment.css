@@ -50,24 +50,13 @@
   border-right: 1px solid var(--a-border);
 }
 .sa-wordmark {
-  color: var(--a-text);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-}
-.sa-wordmark span {
-  color: var(--a-orange-bright);
-}
-.sa-wordmark em {
   display: block;
-  margin-top: 4px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 10px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--a-text-3);
+}
+.sa-wordmark img {
+  display: block;
+  width: min(170px, 100%);
+  height: auto;
+  object-fit: contain;
 }
 
 .sa-phases {
@@ -289,6 +278,16 @@
   background: linear-gradient(rgba(83, 210, 161, 0.05), rgba(83, 210, 161, 0.02));
   color: var(--a-text);
 }
+.sa-answer.is-capped {
+  opacity: 0.45;
+  cursor: default;
+}
+.sa-answer.is-capped:hover {
+  transform: none;
+  border-color: var(--a-border);
+  background: rgba(255, 255, 255, 0.018);
+  color: var(--a-text-2);
+}
 .sa-answer.is-selected .sa-answer-key {
   border-color: var(--a-green);
   color: var(--a-green-bright);
@@ -491,6 +490,28 @@
   border-top: 1px solid var(--a-border);
   padding-top: 14px;
   min-height: 40px;
+}
+
+/* ---- Result: the map earns more canvas and stays in view ---- */
+.sa--result .sa-shell {
+  grid-template-columns: minmax(200px, 0.5fr) minmax(400px, 1.05fr) minmax(560px, 2fr);
+}
+.sa--result .sa-brain {
+  display: block;
+}
+.sa--result .sa-brain-head {
+  margin-bottom: 16px;
+}
+.sa--result .sa-brain-canvas {
+  position: sticky;
+  top: 32px;
+  display: block;
+}
+.sa--result .sa-brain-canvas .sb {
+  width: 100%;
+}
+.sa--result .sa-brain-foot {
+  margin-top: 16px;
 }
 
 /* ---- Enter transitions ---- */

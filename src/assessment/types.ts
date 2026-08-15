@@ -58,6 +58,10 @@ export interface AssessmentQuestion {
   question: string;
   supportingText?: string;
   answers: AssessmentAnswer[];
+  /** Allows choosing several answers (owners often need help with more than one thing). */
+  multi?: boolean;
+  /** Selection cap for multi questions — keeps the signal readable. */
+  maxSelections?: number;
 }
 
 export type SignalState = {
@@ -105,7 +109,15 @@ export type TopSignal = {
   rankScore: number;
 };
 
-export type AnswerMap = Partial<Record<string, string>>;
+/** Question id → selected answer id(s). Single questions store a string; multi store arrays. */
+export type AnswerMap = Partial<Record<string, string | string[]>>;
+
+/** Normalized view of a question's selections. */
+export function answerIds(answers: AnswerMap, questionId: string): string[] {
+  const value = answers[questionId];
+  if (value == null) return [];
+  return Array.isArray(value) ? value : [value];
+}
 
 export type EngineState = {
   answers: AnswerMap;

@@ -2,7 +2,7 @@
 // No fake visualization state: everything here is a function of scoring (§1, spec 03).
 import { QUESTIONS } from "../data/questions.ts";
 import { PATHWAY_FORMULAS } from "../data/pathways.ts";
-import { PATHWAYS, SIGNALS } from "../types.ts";
+import { PATHWAYS, SIGNALS, answerIds } from "../types.ts";
 import type { EngineState, Pathway, Signal } from "../types.ts";
 import {
   PATHWAY_ANCHORS,
@@ -118,19 +118,19 @@ function chainFor(pathway: Pathway, state: EngineState, count: number): Signal[]
 export function evidenceFromAnswers(state: EngineState): EvidenceVis[] {
   const items: EvidenceVis[] = [];
   QUESTIONS.forEach((question, index) => {
-    const answerId = state.answers[question.id];
-    if (!answerId) return;
-    const answer = question.answers.find((a) => a.id === answerId);
-    if (!answer) return;
-    const affected = SIGNALS.filter((s) => (answer.weights[s] ?? 0) > 0);
-    const magnitude = affected.reduce((sum, s) => sum + (answer.weights[s] ?? 0), 0);
-    items.push({
-      id: `${question.id}:${answerId}`,
-      pos: evidencePosition(index, answerId, affected),
-      affected,
-      magnitude,
-      questionIndex: index,
-    });
+    for (const answerId of answerIds(state.answers, question.id)) {
+      const answer = question.answers.find((a) => a.id === answerId);
+      if (!answer) continue;
+      const affected = SIGNALS.filter((s) => (answer.weights[s] ?? 0) > 0);
+      const magnitude = affected.reduce((sum, s) => sum + (answer.weights[s] ?? 0), 0);
+      items.push({
+        id: `${question.id}:${answerId}`,
+        pos: evidencePosition(index, answerId, affected),
+        affected,
+        magnitude,
+        questionIndex: index,
+      });
+    }
   });
   return items;
 }
@@ -170,6 +170,9 @@ export function deriveBrainModel(state: EngineState): BrainModel {
     };
   }
 
+  const displayCertainty =
+    state.certainty * (0.2 + 0.8 * Math.min(1, state.answeredCount / 5));
+
   const edges: EdgeVis[] = [];
   for (const [a, b] of SIGNAL_EDGES) {
     const sa = state.signals[a];
@@ -188,10 +191,13 @@ export function deriveBrainModel(state: EngineState): BrainModel {
     for (const signal of PATHWAY_SIGNALS[pathway]) {
       const coef = formula[signal] ?? 0;
       const contribution = raw > 0 ? (state.signals[signal].raw * coef) / raw : 0;
+      // Damped early: long signal→pathway strings read as noise before the
+      // brain has earned a hypothesis (Charlie, 2026-08-14).
       const strength =
         contribution *
         state.pathways[pathway].relativeStrength *
-        (0.5 + 0.5 * state.signals[signal].confidence);
+        (0.5 + 0.5 * state.signals[signal].confidence) *
+        (0.25 + 0.75 * displayCertainty);
       edges.push({
         key: `${signal}-${pathway}`,
         from: signal,
@@ -225,8 +231,7 @@ export function deriveBrainModel(state: EngineState): BrainModel {
     primaryPathway: state.primaryPathway,
     secondaryPathway: state.secondaryPathway,
     certainty: state.certainty,
-    displayCertainty:
-      state.certainty * (0.2 + 0.8 * Math.min(1, state.answeredCount / 5)),
+    displayCertainty,
     routeConfidence,
     outcome,
     answeredCount: state.answeredCount,

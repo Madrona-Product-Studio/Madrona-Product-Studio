@@ -1,7 +1,7 @@
 // Engine assembly: progressive state for the Signal Brain, final result for the assessment.
 import { QUESTIONS } from "../data/questions.ts";
 import { SIGNAL_LABELS } from "../data/pathways.ts";
-import { SIGNALS } from "../types.ts";
+import { SIGNALS, answerIds } from "../types.ts";
 import type {
   AnswerMap,
   AssessmentResult,
@@ -21,8 +21,9 @@ export { resolveRecommendation } from "./resolveRecommendation.ts";
 
 function readinessFrom(answers: AnswerMap): Readiness | null {
   const q7 = QUESTIONS.find((q) => q.id === "q7-readiness");
-  const answerId = q7 ? answers[q7.id] : undefined;
-  if (!q7 || !answerId) return null;
+  if (!q7) return null;
+  const answerId = answerIds(answers, q7.id)[0];
+  if (!answerId) return null;
   return q7.answers.find((a) => a.id === answerId)?.readiness ?? null;
 }
 
@@ -33,7 +34,7 @@ export function computeEngineState(answers: AnswerMap): EngineState {
   const { primary, secondary, gap, certainty } = rankPathways(pathways);
   return {
     answers,
-    answeredCount: QUESTIONS.filter((q) => answers[q.id] != null).length,
+    answeredCount: QUESTIONS.filter((q) => answerIds(answers, q.id).length > 0).length,
     signals,
     pathways,
     primaryPathway: primary,

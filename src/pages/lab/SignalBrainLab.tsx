@@ -11,7 +11,7 @@ import { computeEngineState, computeResult } from "../../assessment/engine/index
 import { fullSetSignalCeilings } from "../../assessment/engine/scoreSignals.ts";
 import { maxPossiblePathwayScore } from "../../assessment/engine/scorePathways.ts";
 import { generateCurrentRead } from "../../assessment/brain/currentRead.ts";
-import { PATHWAYS, SIGNALS } from "../../assessment/types.ts";
+import { PATHWAYS, SIGNALS, answerIds } from "../../assessment/types.ts";
 import type { AnswerMap, EngineState, Signal } from "../../assessment/types.ts";
 import "./signal-brain-lab.css";
 
@@ -156,7 +156,7 @@ export default function SignalBrainLab() {
     (p: TestProfile, s: number): string | undefined => {
       if (s < 1) return undefined;
       const q = QUESTIONS[s - 1];
-      const a = FIXTURES[p].answers[q.id];
+      const a = answerIds(FIXTURES[p].answers, q.id)[0];
       return a ? `${q.id}:${a}` : undefined;
     },
     [],

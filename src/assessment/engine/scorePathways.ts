@@ -1,7 +1,7 @@
 // Pathway scoring + normalization (01-ENGINE-SPEC §3, §4).
 import { QUESTIONS } from "../data/questions.ts";
 import { PATHWAY_FORMULAS } from "../data/pathways.ts";
-import { PATHWAYS, SIGNALS } from "../types.ts";
+import { PATHWAYS, SIGNALS, answerIds } from "../types.ts";
 import type { AnswerMap, AssessmentQuestion, Pathway, PathwayState, Signal } from "../types.ts";
 import { clamp, rawSignals } from "./scoreSignals.ts";
 
@@ -37,7 +37,7 @@ export function maxPossiblePathwayScore(
 }
 
 export function scorePathways(answers: AnswerMap): Record<Pathway, PathwayState> {
-  const answered = QUESTIONS.filter((q) => answers[q.id] != null);
+  const answered = QUESTIONS.filter((q) => answerIds(answers, q.id).length > 0);
   const raw = rawSignals(answers);
   const scores = Object.fromEntries(
     PATHWAYS.map((p) => [p, pathwayScore(raw, p)]),

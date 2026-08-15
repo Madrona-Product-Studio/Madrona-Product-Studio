@@ -9,7 +9,9 @@ import { QUESTIONS } from "../../assessment/data/questions.ts";
 import { PATHWAY_COPY } from "../../assessment/data/pathways.ts";
 import { computeEngineState, computeResult } from "../../assessment/engine/index.ts";
 import { generateCurrentRead } from "../../assessment/brain/currentRead.ts";
+import { answerIds } from "../../assessment/types.ts";
 import type { AnswerMap, EngineState } from "../../assessment/types.ts";
+import MadronaLogo from "./MadronaLogo.tsx";
 import "./signal-assessment.css";
 
 export const ANALYSIS_MODE: "deterministic" | "llm-assisted" = "deterministic";
@@ -105,13 +107,28 @@ export default function SignalAssessment() {
   }, [stage]);
 
   const question = stage.kind === "question" ? QUESTIONS[stage.index] : null;
-  const selectedAnswer = question ? answers[question.id] : undefined;
+  const selectedIds = question ? answerIds(answers, question.id) : [];
 
   const choose = useCallback(
     (answerId: string) => {
       if (stage.kind !== "question") return;
       const q = QUESTIONS[stage.index];
-      const changed = answers[q.id] !== answerId;
+      const current = answerIds(answers, q.id);
+      if (q.multi) {
+        if (current.includes(answerId)) {
+          // Deselect: the map rebalances on its own; no ingest theater.
+          setAnswers((prev) => ({
+            ...prev,
+            [q.id]: current.filter((id) => id !== answerId),
+          }));
+          return;
+        }
+        if (current.length >= (q.maxSelections ?? 3)) return;
+        setAnswers((prev) => ({ ...prev, [q.id]: [...current, answerId] }));
+        brain.current?.runAnswerSequence(`${q.id}:${answerId}`);
+        return;
+      }
+      const changed = current[0] !== answerId;
       setAnswers((prev) => ({ ...prev, [q.id]: answerId }));
       if (changed) brain.current?.runAnswerSequence(`${q.id}:${answerId}`);
     },
@@ -121,7 +138,7 @@ export default function SignalAssessment() {
   const advance = useCallback(() => {
     if (stage.kind !== "question") return;
     const index = stage.index;
-    if (!answers[QUESTIONS[index].id]) return;
+    if (answerIds(answers, QUESTIONS[index].id).length === 0) return;
     if (index === QUESTIONS.length - 1) {
       setStage({ kind: "synthesis" });
       setSynthesisLine(0);
@@ -165,7 +182,7 @@ export default function SignalAssessment() {
           choose(q.answers[n - 1].id);
           return;
         }
-        if (e.key === "Enter" && answers[q.id]) {
+        if (e.key === "Enter" && answerIds(answers, q.id).length > 0) {
           e.preventDefault();
           advance();
         }
@@ -193,9 +210,8 @@ export default function SignalAssessment() {
       <div className="sa-shell">
         {/* ---- Progress rail ---- */}
         <aside className="sa-rail">
-          <Link to="/" className="sa-wordmark">
-            MAD<span>RONA</span>
-            <em>Product Studio</em>
+          <Link to="/" className="sa-wordmark" aria-label="Madrona Product Studio home">
+            <MadronaLogo variant="horizontal-reversed" decorative />
           </Link>
 
           {stage.kind !== "intro" && (
@@ -263,15 +279,23 @@ export default function SignalAssessment() {
               </h1>
               {question.supportingText && <p className="sa-support">{question.supportingText}</p>}
 
-              <div className="sa-answers" role="radiogroup" aria-labelledby="sa-q">
+              <div
+                className="sa-answers"
+                role={question.multi ? "group" : "radiogroup"}
+                aria-labelledby="sa-q"
+              >
                 {question.answers.map((answer, i) => {
-                  const selected = selectedAnswer === answer.id;
+                  const selected = selectedIds.includes(answer.id);
+                  const atCap =
+                    question.multi &&
+                    !selected &&
+                    selectedIds.length >= (question.maxSelections ?? 3);
                   return (
                     <button
                       key={answer.id}
-                      role="radio"
+                      role={question.multi ? "checkbox" : "radio"}
                       aria-checked={selected}
-                      className={`sa-answer${selected ? " is-selected" : ""}`}
+                      className={`sa-answer${selected ? " is-selected" : ""}${atCap ? " is-capped" : ""}`}
                       onClick={() => choose(answer.id)}
                     >
                       <span className="sa-answer-key" aria-hidden="true">
@@ -292,7 +316,7 @@ export default function SignalAssessment() {
                 <button className="sa-back" onClick={back}>
                   ← Back
                 </button>
-                <button className="sa-primary" disabled={!selectedAnswer} onClick={advance}>
+                <button className="sa-primary" disabled={selectedIds.length === 0} onClick={advance}>
                   Continue <span aria-hidden="true">→</span>
                 </button>
               </div>
@@ -382,7 +406,8 @@ export default function SignalAssessment() {
               ref={brain}
               state={engine}
               reducedMotion={reducedMotion}
-              showLabels={stage.kind === "result"}
+              showLabels
+              showPathwayAnchors
               showEvidence
             />
           </div>

@@ -225,7 +225,12 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
     // progress floor. Real runs earn progress one answer at a time.
     const sliderDriven = model.hasEvidence && model.evidence.length === 0;
     const progress = Math.max(model.answeredCount / 7, sliderDriven ? 0.45 : 0);
-    const routeAlive = model.hasEvidence && model.primaryChain.length > 0;
+    // Q1 is deliberately low-weight context: no route until a second answer
+    // gives the hypothesis something to stand on (Charlie, 2026-08-14).
+    const routeAlive =
+      model.hasEvidence &&
+      model.primaryChain.length > 0 &&
+      (sliderDriven || synth || model.answeredCount >= 2);
     const anchorPull = Math.max(0, Math.min(1, (progress - 0.35) / 0.65));
     const reach = !routeAlive
       ? 0
@@ -623,11 +628,16 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
           const vis = model.pathways[p];
           const o = spring(`pw:${p}:o`, 0.1);
           const r = spring(`pw:${p}:r`, 5);
-          const cls = vis.isPrimary
-            ? "sb-pw sb-pw--primary"
-            : vis.isSecondary
-              ? "sb-pw sb-pw--secondary"
-              : "sb-pw";
+          // Anchors take color as their pathway strengthens, so the map shows
+          // where the help is needed even when two pathways run close.
+          const cls = [
+            "sb-pw",
+            vis.isPrimary ? "sb-pw--primary" : "",
+            vis.isSecondary ? "sb-pw--secondary" : "",
+            !vis.isPrimary && vis.relative > 0.55 ? "sb-pw--warm" : "",
+          ]
+            .filter(Boolean)
+            .join(" ");
           return (
             <g key={p} className={cls} style={{ opacity: o }}>
               <circle cx={vis.pos.x} cy={vis.pos.y} r={r + 6} className="sb-pw-halo" />
