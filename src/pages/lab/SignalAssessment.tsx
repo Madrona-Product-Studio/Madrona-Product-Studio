@@ -19,7 +19,9 @@ import { generateCurrentRead } from "../../assessment/brain/currentRead.ts";
 import { CLOSE_PATHWAY_GAP } from "../../assessment/brain/model.ts";
 import { answerIds } from "../../assessment/types.ts";
 import type { AnswerMap, EngineState } from "../../assessment/types.ts";
+import { trackAssessment } from "../../assessment/analytics.ts";
 import MadronaLogo from "./MadronaLogo.tsx";
+import LabMeta from "./LabMeta.tsx";
 import "./signal-assessment.css";
 
 export const ANALYSIS_MODE: "deterministic" | "llm-assisted" = "deterministic";
@@ -144,10 +146,19 @@ export default function SignalAssessment() {
     [stage, answers],
   );
 
+  const begin = useCallback(() => {
+    trackAssessment("assessment_start");
+    setStage({ kind: "question", index: 0 });
+  }, []);
+
   const advance = useCallback(() => {
     if (stage.kind !== "question") return;
     const index = stage.index;
     if (answerIds(answers, QUESTIONS[index].id).length === 0) return;
+    trackAssessment("assessment_question", {
+      question: index + 1,
+      question_id: QUESTIONS[index].id,
+    });
     if (index === QUESTIONS.length - 1) {
       setStage({ kind: "synthesis" });
       setSynthesisLine(0);
@@ -174,6 +185,7 @@ export default function SignalAssessment() {
   }, [stage]);
 
   const restart = useCallback(() => {
+    trackAssessment("assessment_retake");
     setAnswers({});
     setCurrentRead(null);
     setFocusedSignal(null);
@@ -197,12 +209,24 @@ export default function SignalAssessment() {
           advance();
         }
       } else if (stage.kind === "intro" && e.key === "Enter") {
-        setStage({ kind: "question", index: 0 });
+        begin();
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [stage, answers, choose, advance]);
+  }, [stage, answers, choose, advance, begin]);
+
+  // Completion is the funnel's payoff event: which archetype, which pathway,
+  // and whether the call was close. Fires once per computed result.
+  useEffect(() => {
+    if (!result) return;
+    trackAssessment("assessment_complete", {
+      archetype: result.archetype.name,
+      pathway: PATHWAY_COPY[result.archetype.primaryPathway].name,
+      close_second: engine.pathwayGap < CLOSE_PATHWAY_GAP,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [result]);
 
   const activePhase =
     stage.kind === "synthesis" || stage.kind === "result"
@@ -217,6 +241,8 @@ export default function SignalAssessment() {
 
   return (
     <div className={`sa${showResult ? " sa--result" : ""}${stage.kind === "synthesis" ? " sa--synthesis" : ""}${stage.kind === "intro" ? " sa--intro" : ""}`}>
+      {/* noindex while we soft-launch; flip once the route is linked + final. */}
+      <LabMeta title="A quick signal check · Madrona Product Studio" noindex />
       <div className="sa-shell">
         {/* ---- Top bar: identity + progress, freeing the full width below ---- */}
         <header className="sa-top">
@@ -272,7 +298,7 @@ export default function SignalAssessment() {
                 strongest opportunity may be, and suggest a useful place to
                 start.
               </p>
-              <button className="sa-primary" onClick={() => setStage({ kind: "question", index: 0 })}>
+              <button className="sa-primary" onClick={begin}>
                 Start the assessment <span aria-hidden="true">→</span>
               </button>
               <p className="sa-meta">About 2 minutes. No email required.</p>
@@ -364,11 +390,23 @@ export default function SignalAssessment() {
                   {PATHWAY_COPY[result.archetype.primaryPathway].short}
                 </p>
                 {BOOK_EXTERNAL ? (
-                  <a className="sa-primary sa-primary--wide" href={BOOK_HREF}>
+                  <a
+                    className="sa-primary sa-primary--wide"
+                    href={BOOK_HREF}
+                    onClick={() =>
+                      trackAssessment("assessment_cta_click", { archetype: result.archetype.name })
+                    }
+                  >
                     Talk through this result <span aria-hidden="true">→</span>
                   </a>
                 ) : (
-                  <Link className="sa-primary sa-primary--wide" to={BOOK_HREF}>
+                  <Link
+                    className="sa-primary sa-primary--wide"
+                    to={BOOK_HREF}
+                    onClick={() =>
+                      trackAssessment("assessment_cta_click", { archetype: result.archetype.name })
+                    }
+                  >
                     Talk through this result <span aria-hidden="true">→</span>
                   </Link>
                 )}
