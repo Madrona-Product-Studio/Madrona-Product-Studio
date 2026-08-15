@@ -508,15 +508,17 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
   const reach = Math.max(0, Math.min(1, spring("route:reach", 0)));
   const routeOpacity = spring("route:o", 0);
 
-  // Animated viewport (resolved zoom). Strokes compensate by sqrt of the zoom
-  // so geometry grows faster than line weight; labels compensate fully.
+  // Animated viewport (resolved zoom). Strokes and labels both compensate by
+  // sqrt of the zoom: geometry grows fastest, but labels still gain real
+  // screen size from the zoom — full compensation left them unreadably small
+  // once the resolved map renders below natural scale (Charlie, 2026-08-15).
   const vbX = spring("vb:x", 0);
   const vbY = spring("vb:y", 0);
   const vbW = spring("vb:w", VIEWBOX.width);
   const vbH = spring("vb:h", VIEWBOX.height);
   const zoomNow = VIEWBOX.width / Math.max(1, vbW);
   const wComp = 1 / Math.sqrt(zoomNow);
-  const fComp = 1 / zoomNow;
+  const fComp = 1 / Math.sqrt(zoomNow);
 
   // Node-to-node segments (the reference look): each is a gentle authored
   // arc, drawn in as the overall reach passes through it.

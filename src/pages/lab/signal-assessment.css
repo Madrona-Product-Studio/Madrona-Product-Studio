@@ -502,6 +502,9 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  /* Without this the grid item grows past its row when the result readout is
+     tall, and the rail footer clips instead of the canvas shrinking. */
+  min-height: 0;
 }
 .sa-brain-head {
   margin-bottom: 8px;
@@ -549,13 +552,12 @@
 .sa--result .sa-brain-sub {
   margin-bottom: 4px;
 }
-.sa--result .sa-brain-canvas {
-  flex: none;
-  display: block;
-}
+/* The shell is min-height based (the page may scroll), so flex can't cap the
+   canvas. Budget it against the viewport instead: window height minus the
+   chrome + readout below, so the footer stays on screen at any window size. */
 .sa--result .sa-brain-canvas .sb {
   width: 100%;
-  max-height: min(34vh, 320px);
+  max-height: clamp(280px, calc(100dvh - 520px), 520px);
 }
 /* Quiet at result: orange belongs to the verdict and the CTA, not the rail. */
 .sa-live--resolved {
