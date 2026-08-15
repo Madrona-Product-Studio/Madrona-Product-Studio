@@ -169,8 +169,13 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--a-text-3);
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   font-variant-numeric: tabular-nums;
+}
+.sa-count em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--a-orange-bright);
 }
 
 .sa h1 {
@@ -351,11 +356,8 @@
   text-align: left;
 }
 .sa-interstitial h1 {
-  color: var(--a-text-2);
-  font-size: clamp(26px, 2.2vw, 36px);
-}
-.sa-synth h1 {
   color: var(--a-text);
+  font-size: clamp(26px, 2.2vw, 36px);
 }
 
 /* ---- Result: everything above the fold ---- */
@@ -421,9 +423,10 @@
   margin: 0 0 18px;
   max-width: 44ch;
 }
+/* Quiet card: the orange belongs to the CTA button below, not the chrome. */
 .sa-first-move {
-  border: 1px solid rgba(238, 147, 106, 0.3);
-  background: rgba(201, 102, 63, 0.06);
+  border: 1px solid var(--a-border-strong);
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 12px;
   padding: 13px 16px;
   margin-bottom: 16px;
@@ -576,7 +579,7 @@
   font-size: 16.5px;
   font-weight: 600;
   margin: 0 0 6px;
-  color: var(--a-orange-bright);
+  color: var(--a-text);
 }
 /* ---- Brain column ---- */
 .sa-brain {
@@ -686,25 +689,6 @@
   outline: 2px solid var(--a-green);
   outline-offset: 1px;
 }
-.sa-points {
-  margin-bottom: 4px;
-}
-.sa-points-name {
-  margin: 0;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--a-text);
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-.sa-points-name em {
-  font-style: normal;
-  font-size: 10.5px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--a-orange-bright);
-}
 
 /* ---- Enter transitions ---- */
 .sa-enter {
@@ -722,6 +706,11 @@
 }
 
 /* ---- Responsive ---- */
+/* The intro already says "No email required" in its own meta line. */
+.sa--intro .sa-top-note {
+  display: none;
+}
+
 @media (max-width: 1180px) {
   .sa-top-note {
     display: none;
@@ -771,6 +760,11 @@
   }
   .sa-result h1 {
     font-size: clamp(32px, 9vw, 42px);
+  }
+  /* The result grid's two-class selector outranks the plain .sa-body rule
+     above; restate it or the 620px column forces horizontal overflow. */
+  .sa--result .sa-body {
+    grid-template-columns: 1fr;
   }
   .sa-result-cols {
     grid-template-columns: 1fr;

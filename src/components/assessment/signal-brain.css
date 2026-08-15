@@ -23,7 +23,7 @@
 }
 .sb-orbit {
   fill: none;
-  stroke: rgba(220, 228, 222, 0.035);
+  stroke: rgba(220, 228, 222, 0.05);
   stroke-width: 1;
   stroke-dasharray: 2 7;
 }
@@ -143,7 +143,7 @@
 }
 .sb-pw-label {
   fill: var(--sb-text);
-  opacity: 0.55;
+  opacity: 0.7;
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -307,16 +307,16 @@
   filter: drop-shadow(0 0 6px var(--sb-orange-glow));
 }
 .sb-latent-dot {
-  fill: rgba(203, 218, 209, 0.065);
+  fill: rgba(203, 218, 209, 0.09);
 }
 .sb-latent-dot--hollow {
   fill: none;
-  stroke: rgba(203, 218, 209, 0.085);
+  stroke: rgba(203, 218, 209, 0.11);
   stroke-width: 0.8;
 }
 .sb-latent-link {
   fill: none;
-  stroke: rgba(203, 218, 209, 0.045);
+  stroke: rgba(203, 218, 209, 0.06);
   stroke-width: 0.8;
 }
 .sb--locked .sb-outcome-ring--0,

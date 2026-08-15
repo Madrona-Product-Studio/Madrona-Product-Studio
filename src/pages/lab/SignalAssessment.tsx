@@ -245,7 +245,7 @@ export default function SignalAssessment() {
   const showResult = stage.kind === "result" && result;
 
   return (
-    <div className={`sa${showResult ? " sa--result" : ""}${stage.kind === "synthesis" ? " sa--synthesis" : ""}`}>
+    <div className={`sa${showResult ? " sa--result" : ""}${stage.kind === "synthesis" ? " sa--synthesis" : ""}${stage.kind === "intro" ? " sa--intro" : ""}`}>
       <div className="sa-shell">
         {/* ---- Top bar: identity + progress, freeing the full width below ---- */}
         <header className="sa-top">
@@ -302,9 +302,10 @@ export default function SignalAssessment() {
           {question && (
             <section key={stage.kind === "question" ? stage.index : "q"} className="sa-question sa-enter" aria-labelledby="sa-q">
               <p className="sa-count">
+                <em>{question.eyebrow}</em>
+                <span aria-hidden="true"> · </span>
                 Question {String((stage as { index: number }).index + 1).padStart(2, "0")} / 07
               </p>
-              <p className="sa-eyebrow">{question.eyebrow}</p>
               <h1 id="sa-q" ref={headingRef} tabIndex={-1}>
                 {question.question}
               </h1>
@@ -464,7 +465,7 @@ export default function SignalAssessment() {
                     ? "Live synthesis"
                     : engine.answeredCount > 0
                       ? "Reading your signals"
-                      : "Waiting for signals"}
+                      : "Eight signals. Four pathways."}
                 </p>
               </>
             )}
@@ -511,13 +512,6 @@ export default function SignalAssessment() {
                   </li>
                 ))}
               </ul>
-              <div className="sa-points">
-                <p className="sa-key-label">Where it points</p>
-                <p className="sa-points-name">
-                  {PATHWAY_COPY[result.archetype.primaryPathway].name}
-                  <em>Leading pathway</em>
-                </p>
-              </div>
             </>
           )}
           {!showResult && (

@@ -216,11 +216,15 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
       const vis = model.pathways[p];
       // Primary emphasis is earned with displayCertainty, not granted at Q1.
       const emphasis = synth ? 1 : model.displayCertainty;
+      // Before any evidence the four destinations frame the map (quiet but
+      // legible); once evidence lands, non-contenders recede so primary reads.
       const base = vis.isPrimary
         ? 0.25 + 0.4 * emphasis
         : vis.isSecondary
           ? 0.18 + 0.15 * emphasis
-          : 0.12;
+          : model.hasEvidence
+            ? 0.14
+            : 0.3;
       setTarget(`pw:${p}:o`, base + vis.relative * 0.25, SPRING_FIRM, 0.1);
       setTarget(
         `pw:${p}:r`,
