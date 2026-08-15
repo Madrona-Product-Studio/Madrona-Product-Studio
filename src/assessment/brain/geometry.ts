@@ -2,27 +2,29 @@
 // No randomness at render time: every position derives from ids and engine state.
 import type { Pathway, Signal } from "../types.ts";
 
-export const VIEWBOX = { width: 900, height: 600 };
+// 5:4 canvas — taller than the original 3:2 so the brain fills the
+// assessment's tall side column instead of floating inside it.
+export const VIEWBOX = { width: 900, height: 720 };
 
 export type Point = { x: number; y: number };
 
 // Base topology — art-directed, intentionally asymmetric (§6).
 export const SIGNAL_BASE: Record<Signal, Point> = {
-  trust: { x: 326, y: 132 },
-  acquisition: { x: 430, y: 190 },
-  retention: { x: 336, y: 270 },
-  capacity: { x: 292, y: 402 },
-  operations: { x: 424, y: 360 },
-  systems: { x: 524, y: 436 },
-  clarity: { x: 500, y: 126 },
-  product: { x: 566, y: 274 },
+  trust: { x: 326, y: 158 },
+  acquisition: { x: 430, y: 228 },
+  retention: { x: 336, y: 324 },
+  capacity: { x: 292, y: 482 },
+  operations: { x: 424, y: 432 },
+  systems: { x: 524, y: 523 },
+  clarity: { x: 500, y: 151 },
+  product: { x: 566, y: 329 },
 };
 
 export const PATHWAY_ANCHORS: Record<Pathway, Point> = {
-  brandWeb: { x: 712, y: 142 },
-  customersGrowth: { x: 738, y: 258 },
-  operationsAI: { x: 720, y: 394 },
-  newProduct: { x: 738, y: 506 },
+  brandWeb: { x: 712, y: 170 },
+  customersGrowth: { x: 738, y: 310 },
+  operationsAI: { x: 720, y: 473 },
+  newProduct: { x: 738, y: 607 },
 };
 
 // Latent semantic relationships (§10).
@@ -114,7 +116,7 @@ export function evidencePosition(
   const jx = jitter(answerId, "x");
   const jy = jitter(answerId, "y");
   if (questionIndex <= 1 || affected.length === 0) {
-    return { x: 108 + questionIndex * 46 + jx * 26, y: 150 + ((hash(answerId) % 320)) + jy * 18 };
+    return { x: 108 + questionIndex * 46 + jx * 26, y: 170 + ((hash(answerId) % 400)) + jy * 18 };
   }
   const centroid = affected.reduce(
     (acc, s) => ({ x: acc.x + SIGNAL_BASE[s].x, y: acc.y + SIGNAL_BASE[s].y }),
@@ -125,7 +127,7 @@ export function evidencePosition(
   const towardLeft = questionIndex <= 3 ? 0.62 : 0.4;
   return {
     x: lerp(cx, 150, towardLeft) + jx * 34,
-    y: Math.min(552, Math.max(60, cy + jy * 56)),
+    y: Math.min(664, Math.max(64, cy + jy * 56)),
   };
 }
 
@@ -139,7 +141,7 @@ export const LATENT_FIELD: { pos: Point; r: number; hollow: boolean }[] = Array.
   (_, i) => {
     const h = hash(`latent-${i}`);
     const x = 80 + (h % 760);
-    const y = 60 + ((h >> 3) % 490);
+    const y = 60 + ((h >> 3) % 610);
     // Push away from any signal hub it lands on top of.
     let px = x;
     let py = y;
@@ -151,7 +153,7 @@ export const LATENT_FIELD: { pos: Point; r: number; hollow: boolean }[] = Array.
       }
     }
     return {
-      pos: { x: Math.min(858, Math.max(52, px)), y: Math.min(566, Math.max(40, py)) },
+      pos: { x: Math.min(858, Math.max(52, px)), y: Math.min(686, Math.max(40, py)) },
       r: 1.1 + ((h >> 7) % 10) / 7,
       hollow: (h >> 5) % 3 === 0,
     };

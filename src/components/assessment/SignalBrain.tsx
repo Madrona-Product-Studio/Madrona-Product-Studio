@@ -499,13 +499,13 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
       {/* Background field (§28) */}
       <g className="sb-guides" aria-hidden="true">
         {[0, 1, 2, 3].map((i) => (
-          <line key={`gv${i}`} x1={180 + i * 180} y1={30} x2={180 + i * 180} y2={570} className="sb-grid" />
+          <line key={`gv${i}`} x1={180 + i * 180} y1={34} x2={180 + i * 180} y2={688} className="sb-grid" />
         ))}
         {[0, 1, 2].map((i) => (
-          <line key={`gh${i}`} x1={60} y1={150 + i * 150} x2={840} y2={150 + i * 150} className="sb-grid" />
+          <line key={`gh${i}`} x1={60} y1={180 + i * 180} x2={840} y2={180 + i * 180} className="sb-grid" />
         ))}
-        <ellipse className="sb-orbit" cx={430} cy={295} rx={330} ry={212} />
-        <ellipse className="sb-orbit sb-orbit--2" cx={450} cy={300} rx={248} ry={150} />
+        <ellipse className="sb-orbit" cx={430} cy={356} rx={330} ry={256} />
+        <ellipse className="sb-orbit sb-orbit--2" cx={450} cy={362} rx={248} ry={182} />
         {LATENT_LINKS.map(([a, b], i) => (
           <path
             key={`ll${i}`}
@@ -547,7 +547,7 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
             { x: 790, w: 70, label: "outcome" },
           ].map((band) => (
             <g key={band.label}>
-              <rect x={band.x} y={20} width={band.w} height={560} />
+              <rect x={band.x} y={20} width={band.w} height={680} />
               <text x={band.x + 6} y={36}>{band.label}</text>
             </g>
           ))}

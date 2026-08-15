@@ -37,52 +37,43 @@
     radial-gradient(circle at 70% 42%, rgba(72, 128, 103, 0.08), transparent 34%),
     linear-gradient(rgba(255, 255, 255, 0.012), rgba(255, 255, 255, 0.012)),
     var(--a-bg);
-  display: grid;
-  grid-template-columns: minmax(220px, 0.62fr) minmax(420px, 1.25fr) minmax(500px, 1.65fr);
+  display: flex;
+  flex-direction: column;
   min-height: calc(100dvh - clamp(32px, 4vw, 64px));
 }
 
-/* ---- Rail ---- */
-.sa-rail {
+/* ---- Top bar: identity + progress in one quiet strip ---- */
+.sa-top {
   display: flex;
-  flex-direction: column;
-  padding: 30px 26px;
-  border-right: 1px solid var(--a-border);
+  align-items: center;
+  gap: 28px;
+  padding: 18px 30px;
+  border-bottom: 1px solid var(--a-border);
 }
 .sa-wordmark {
   display: block;
+  flex: none;
 }
 .sa-wordmark img {
   display: block;
-  width: min(170px, 100%);
+  width: 148px;
   height: auto;
   object-fit: contain;
 }
-
 .sa-phases {
-  margin-top: 52px;
   display: flex;
-  flex-direction: column;
-  gap: 0;
+  flex-wrap: wrap;
+  gap: 6px 26px;
+  margin-left: auto;
 }
 .sa-phase {
-  position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 13px 0;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--a-text-3);
-  font-size: 13px;
-  letter-spacing: 0.02em;
-}
-.sa-phase:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 6.5px;
-  top: 34px;
-  bottom: -8px;
-  width: 1px;
-  background: var(--a-border);
 }
 .sa-phase i {
   width: 14px;
@@ -118,24 +109,27 @@
   border-color: var(--a-green-bright);
   box-shadow: 0 0 8px rgba(83, 210, 161, 0.35);
 }
-
-.sa-rail-foot {
-  margin-top: auto;
+.sa-top-note {
+  margin: 0;
   font-size: 11.5px;
   color: var(--a-text-3);
-  line-height: 1.5;
+  flex: none;
 }
-.sa-live-tag {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--a-text-2);
-  margin: 0 0 10px;
+.sa-phases + .sa-top-note {
+  margin-left: 0;
 }
-.sa-live-tag i,
+.sa-top .sa-top-note:last-child {
+  margin-left: 28px;
+}
+
+/* ---- Body: the full width belongs to the work + the map ---- */
+.sa-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(420px, 1fr) minmax(520px, 1.35fr);
+  min-height: 0;
+}
+
 .sa-live i {
   width: 6px;
   height: 6px;
@@ -492,47 +486,9 @@
   min-height: 40px;
 }
 
-/* ---- Result: rail folds away; report + map take the full shell ---- */
-.sa--result .sa-shell {
-  grid-template-columns: minmax(430px, 1fr) minmax(560px, 1.25fr);
-}
-.sa-result-logo {
-  display: block;
-  margin-bottom: 38px;
-}
-.sa-result-logo img {
-  display: block;
-  width: 150px;
-  height: auto;
-  object-fit: contain;
-}
-.sa-mini-phases {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 18px;
-  margin-bottom: 18px;
-}
-.sa-mini-phases span {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--a-text-3);
-}
-.sa-mini-phases svg {
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: var(--a-green);
-  fill: none;
-  stroke: #0b120f;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  padding: 2.5px;
-  box-sizing: border-box;
+/* ---- Result: report + map split the full shell ---- */
+.sa--result .sa-body {
+  grid-template-columns: minmax(430px, 1fr) minmax(560px, 1.3fr);
 }
 .sa--result .sa-brain {
   display: block;
@@ -569,10 +525,7 @@
 
 /* ---- Responsive ---- */
 @media (max-width: 1180px) {
-  .sa-shell {
-    grid-template-columns: minmax(400px, 1.15fr) minmax(440px, 1.5fr);
-  }
-  .sa-rail {
+  .sa-top-note {
     display: none;
   }
 }
@@ -581,8 +534,25 @@
     padding: 10px;
   }
   .sa-shell {
-    grid-template-columns: 1fr;
     min-height: calc(100dvh - 20px);
+  }
+  .sa-top {
+    padding: 14px 20px;
+    gap: 16px;
+  }
+  .sa-wordmark img {
+    width: 120px;
+  }
+  .sa-phase {
+    font-size: 0;
+    gap: 0;
+  }
+  .sa-phase i {
+    width: 12px;
+    height: 12px;
+  }
+  .sa-body {
+    grid-template-columns: 1fr;
   }
   .sa-work {
     padding: 30px 22px;

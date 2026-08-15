@@ -208,22 +208,18 @@ export default function SignalAssessment() {
   return (
     <div className={`sa${showResult ? " sa--result" : ""}${stage.kind === "synthesis" ? " sa--synthesis" : ""}`}>
       <div className="sa-shell">
-        {/* ---- Progress rail (folds into the map panel at the result) ---- */}
-        {!showResult && (
-        <aside className="sa-rail">
+        {/* ---- Top bar: identity + progress, freeing the full width below ---- */}
+        <header className="sa-top">
           <Link to="/" className="sa-wordmark" aria-label="Madrona Product Studio home">
             <MadronaLogo variant="horizontal-reversed" decorative />
           </Link>
-
           {stage.kind !== "intro" && (
             <nav className="sa-phases" aria-label="Assessment progress">
               {RAIL_PHASES.map((phase, i) => {
-                const done =
-                  i < activePhase ||
-                  (i === 3 && stage.kind === "result");
+                const done = i < activePhase || (i === 3 && stage.kind === "result");
                 const active = i === activePhase && !(i === 3 && stage.kind === "result");
                 return (
-                  <div
+                  <span
                     key={phase.title}
                     className={`sa-phase${active ? " is-active" : ""}${done ? " is-done" : ""}`}
                   >
@@ -234,22 +230,16 @@ export default function SignalAssessment() {
                         </svg>
                       )}
                     </i>
-                    <span>{phase.title}</span>
-                  </div>
+                    {phase.title}
+                  </span>
                 );
               })}
             </nav>
           )}
+          <p className="sa-top-note">No email required to see your result.</p>
+        </header>
 
-          <div className="sa-rail-foot">
-            <p className="sa-live-tag">
-              <i aria-hidden="true" /> Live analysis
-            </p>
-            <p>No email required to see your result.</p>
-          </div>
-        </aside>
-        )}
-
+        <div className="sa-body">
         {/* ---- Workspace ---- */}
         <main className="sa-work">
           {stage.kind === "intro" && (
@@ -339,9 +329,6 @@ export default function SignalAssessment() {
 
           {showResult && result && (
             <section className="sa-result sa-enter" aria-labelledby="sa-r">
-              <Link to="/" className="sa-result-logo" aria-label="Madrona Product Studio home">
-                <MadronaLogo variant="horizontal-reversed" decorative />
-              </Link>
               <p className="sa-eyebrow">Your current pattern</p>
               <h1 id="sa-r" ref={headingRef} tabIndex={-1}>
                 {result.archetype.name}
@@ -393,18 +380,6 @@ export default function SignalAssessment() {
         {/* ---- Signal Brain ---- */}
         <aside className="sa-brain" aria-label="Live pathway visualization">
           <header className="sa-brain-head">
-            {showResult && (
-              <div className="sa-mini-phases" aria-label="Assessment complete">
-                {RAIL_PHASES.map((phase) => (
-                  <span key={phase.title}>
-                    <svg viewBox="0 0 10 10" aria-hidden="true">
-                      <path d="M2 5.2 4.2 7.4 8 3" />
-                    </svg>
-                    {phase.title}
-                  </span>
-                ))}
-              </div>
-            )}
             <p className="sa-live">
               <i aria-hidden="true" /> Live pathway
             </p>
@@ -434,6 +409,7 @@ export default function SignalAssessment() {
               : currentRead ?? "The map fills in as you answer."}
           </footer>
         </aside>
+        </div>
       </div>
     </div>
   );
