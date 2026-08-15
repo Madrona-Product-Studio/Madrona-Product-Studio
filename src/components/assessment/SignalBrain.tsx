@@ -21,6 +21,7 @@ import { PATHWAYS, SIGNALS } from "../../assessment/types.ts";
 import { PATHWAY_COPY, SIGNAL_LABELS } from "../../assessment/data/pathways.ts";
 import {
   LATENT_FIELD,
+  LATENT_LINKS,
   PATHWAY_ANCHORS,
   SIGNAL_BASE,
   VIEWBOX,
@@ -389,9 +390,26 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
     PATHWAY_ANCHORS[model.primaryPathway],
     model.outcome,
   ];
-  const routeD = curveThrough(routePoints);
   const reach = Math.max(0, Math.min(1, spring("route:reach", 0)));
   const routeOpacity = spring("route:o", 0);
+
+  // Node-to-node segments (the reference look): each is a gentle authored
+  // arc, drawn in as the overall reach passes through it.
+  const segLengths = routePoints.slice(1).map((p, i) => distance(routePoints[i], p));
+  const routeTotal = segLengths.reduce((a, b) => a + b, 0) || 1;
+  let routeAcc = 0;
+  const routeSegments = routePoints.slice(1).map((p, i) => {
+    const a = routePoints[i];
+    const start = routeAcc / routeTotal;
+    routeAcc += segLengths[i];
+    const end = routeAcc / routeTotal;
+    const local = Math.max(0, Math.min(1, (reach - start) / Math.max(1e-4, end - start)));
+    return {
+      key: `seg-${i}`,
+      d: curveBetween(a, p, 0.32, jitter(`seg-${i}`, model.primaryPathway) * 18),
+      local,
+    };
+  });
 
   const secondaryPoints: Point[] =
     model.secondaryChain.length > 0
@@ -472,6 +490,13 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
         ))}
         <ellipse className="sb-orbit" cx={430} cy={295} rx={330} ry={212} />
         <ellipse className="sb-orbit sb-orbit--2" cx={450} cy={300} rx={248} ry={150} />
+        {LATENT_LINKS.map(([a, b], i) => (
+          <path
+            key={`ll${i}`}
+            className="sb-latent-link"
+            d={curveBetween(a, b, 0.3, jitter(`ll${i}`, "bow") * 10)}
+          />
+        ))}
         {LATENT_FIELD.map((dot, i) => (
           <circle
             key={`lf${i}`}
@@ -539,20 +564,29 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
         </g>
       )}
 
-      {/* Active route: green evidence line arcing toward an orange outcome (§12) */}
+      {/* Active route: green evidence segments arcing toward an orange outcome (§12) */}
       <g className="sb-route" aria-hidden="true" style={{ opacity: routeOpacity }}>
-        <path
-          d={routeD}
-          className="sb-route-under"
-          pathLength={1}
-          style={{ stroke: `url(#${gradientId})`, strokeDasharray: `${reach} 1` }}
-        />
-        <path
-          d={routeD}
-          className="sb-route-line"
-          pathLength={1}
-          style={{ stroke: `url(#${gradientId})`, strokeDasharray: `${reach} 1` }}
-        />
+        {routeSegments.map((seg) =>
+          seg.local <= 0 ? null : (
+            <g key={seg.key}>
+              <path
+                d={seg.d}
+                className="sb-route-under"
+                pathLength={1}
+                style={{ stroke: `url(#${gradientId})`, strokeDasharray: `${seg.local} 1` }}
+              />
+              <path
+                d={seg.d}
+                className="sb-route-line"
+                pathLength={1}
+                style={{ stroke: `url(#${gradientId})`, strokeDasharray: `${seg.local} 1` }}
+              />
+            </g>
+          ),
+        )}
+        {reach > 0.02 && (
+          <circle cx={entry.x} cy={entry.y} r={4.2} className="sb-entry-ring" />
+        )}
       </g>
 
       {/* Evidence nodes (§9) */}
@@ -605,9 +639,12 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
           const conf = Math.max(0.04, Math.min(1, spring(`sig:${id}:conf`, 0.15)));
           const vis = model.signals[id];
           const onRoute = vis.onPrimaryRoute;
+          // Confirmed route hubs earn the reference's checkmark treatment.
+          const checked = onRoute && model.hasEvidence && vis.strength > 0.2;
           const cls = [
             "sb-node",
             onRoute ? "sb-node--route" : "",
+            checked ? "sb-node--checked" : "",
             vis.onSecondaryRoute ? "sb-node--route2" : "",
             glowSet.has(id) ? "sb-node--glow" : "",
             id === core && vis.relative > 0.3 ? "sb-node--core" : "",
@@ -617,7 +654,20 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
           return (
             <g key={id} className={cls}>
               {glowSet.has(id) && <circle cx={pos.x} cy={pos.y} r={r * 2.6} className="sb-node-glow" />}
-              <circle cx={pos.x} cy={pos.y} r={r} className="sb-node-dot" style={{ fillOpacity: 0.24 + vis.relative * 0.5 }} />
+              <circle
+                cx={pos.x}
+                cy={pos.y}
+                r={r}
+                className="sb-node-dot"
+                style={{ fillOpacity: checked ? 1 : 0.24 + vis.relative * 0.5 }}
+              />
+              {checked && (
+                <path
+                  className="sb-check"
+                  d={`M ${pos.x - r * 0.44} ${pos.y + r * 0.04} L ${pos.x - r * 0.08} ${pos.y + r * 0.38} L ${pos.x + r * 0.5} ${pos.y - r * 0.32}`}
+                  pathLength={1}
+                />
+              )}
               <circle
                 cx={pos.x}
                 cy={pos.y}

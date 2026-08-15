@@ -158,6 +158,32 @@ export const LATENT_FIELD: { pos: Point; r: number; hollow: boolean }[] = Array.
   },
 );
 
+/**
+ * Faint connections between latent dots so the background reads as a larger
+ * network (the reference threads its dim rings together). Each dot links to
+ * its nearest neighbor; long links are dropped.
+ */
+export const LATENT_LINKS: [Point, Point][] = (() => {
+  const links: [number, number][] = [];
+  LATENT_FIELD.forEach((dot, i) => {
+    let best = -1;
+    let bestD = Infinity;
+    LATENT_FIELD.forEach((other, j) => {
+      if (i === j) return;
+      const d = distance(dot.pos, other.pos);
+      if (d < bestD) {
+        bestD = d;
+        best = j;
+      }
+    });
+    if (best >= 0 && bestD < 130) {
+      const pair: [number, number] = i < best ? [i, best] : [best, i];
+      if (!links.some(([a, b]) => a === pair[0] && b === pair[1])) links.push(pair);
+    }
+  });
+  return links.map(([a, b]) => [LATENT_FIELD[a].pos, LATENT_FIELD[b].pos]);
+})();
+
 /** Greedy chain ordering: start farthest from the anchor, walk nearest-neighbor, end at the anchor. */
 export function orderChain(signals: Signal[], positions: Record<Signal, Point>, anchor: Point): Signal[] {
   if (signals.length <= 1) return [...signals];
