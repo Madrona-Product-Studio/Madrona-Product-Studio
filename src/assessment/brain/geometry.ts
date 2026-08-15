@@ -8,21 +8,21 @@ export type Point = { x: number; y: number };
 
 // Base topology — art-directed, intentionally asymmetric (§6).
 export const SIGNAL_BASE: Record<Signal, Point> = {
-  trust: { x: 330, y: 118 },
-  acquisition: { x: 432, y: 178 },
-  retention: { x: 338, y: 258 },
-  capacity: { x: 302, y: 408 },
-  operations: { x: 428, y: 362 },
-  systems: { x: 522, y: 442 },
-  clarity: { x: 502, y: 118 },
-  product: { x: 562, y: 262 },
+  trust: { x: 326, y: 132 },
+  acquisition: { x: 430, y: 190 },
+  retention: { x: 336, y: 270 },
+  capacity: { x: 292, y: 402 },
+  operations: { x: 424, y: 360 },
+  systems: { x: 524, y: 436 },
+  clarity: { x: 500, y: 126 },
+  product: { x: 566, y: 274 },
 };
 
 export const PATHWAY_ANCHORS: Record<Pathway, Point> = {
-  brandWeb: { x: 712, y: 120 },
-  customersGrowth: { x: 736, y: 246 },
-  operationsAI: { x: 720, y: 396 },
-  newProduct: { x: 736, y: 514 },
+  brandWeb: { x: 712, y: 142 },
+  customersGrowth: { x: 738, y: 258 },
+  operationsAI: { x: 720, y: 394 },
+  newProduct: { x: 738, y: 506 },
 };
 
 // Latent semantic relationships (§10).
@@ -135,7 +135,7 @@ export function evidencePosition(
  * Deterministic scatter, biased away from the exact hub positions.
  */
 export const LATENT_FIELD: { pos: Point; r: number; hollow: boolean }[] = Array.from(
-  { length: 26 },
+  { length: 38 },
   (_, i) => {
     const h = hash(`latent-${i}`);
     const x = 80 + (h % 760);
@@ -152,7 +152,7 @@ export const LATENT_FIELD: { pos: Point; r: number; hollow: boolean }[] = Array.
     }
     return {
       pos: { x: Math.min(858, Math.max(52, px)), y: Math.min(566, Math.max(40, py)) },
-      r: 1.4 + ((h >> 7) % 10) / 6,
+      r: 1.1 + ((h >> 7) % 10) / 7,
       hollow: (h >> 5) % 3 === 0,
     };
   },

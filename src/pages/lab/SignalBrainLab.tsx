@@ -203,6 +203,7 @@ export default function SignalBrainLab() {
 
   const selectProfile = (next: TestProfile | "empty") => {
     stopPlay();
+    brain.current?.trigger("idle");
     if (next === "empty") {
       setMode("sliders");
       setSliders({ ...EMPTY_SLIDERS });

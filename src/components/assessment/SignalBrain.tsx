@@ -1,3 +1,7 @@
+/* eslint-disable react-hooks/refs --
+   The spring store is a ref-backed external store read during render by
+   design: the rAF loop advances springs and bumps a frame counter, so every
+   mutation is immediately followed by a render that sees fresh values. */
 // The Signal Brain — the assessment's signature visualization (spec 03).
 // Deterministic layout from engine state; a small spring system animates
 // topology changes; theatrical phases (ingest/propagate/synthesize) are
@@ -6,6 +10,7 @@ import {
   forwardRef,
   useCallback,
   useEffect,
+  useId,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -423,7 +428,7 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
       .slice(0, 2);
   }, [model.edges]);
 
-  const gradientId = useMemo(() => `sb-route-${Math.floor(Math.random() * 1e9)}`, []);
+  const gradientId = useId().replace(/[^a-zA-Z0-9-]/g, "") + "-sb-route";
 
   const ariaLabel = (() => {
     const tops = strongest
