@@ -357,7 +357,6 @@
   opacity: 0.35 !important;
 }
 .sb--resolved .sb-route-line {
-  stroke-width: 2.4;
   opacity: 0.95;
 }
 .sb--resolved .sb-route-under {

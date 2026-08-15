@@ -294,6 +294,45 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
       SPRING_SOFT,
       0,
     );
+
+    // Resolved: zoom the viewport into the DECISION END of the throughline —
+    // strongest signals, the anchor, the outcome. The route's early tail runs
+    // off the left edge on purpose: you see part of it, implying the rest
+    // (Charlie, 2026-08-14).
+    if (resolved && routeAlive) {
+      const focusSignals = routeRank.slice(0, 2).map((s) => model.signals[s].target);
+      const focusPts = [
+        ...(focusSignals.length > 0 ? focusSignals : pts.slice(1, -2)),
+        PATHWAY_ANCHORS[model.primaryPathway],
+        model.outcome,
+      ];
+      const xs = focusPts.map((p) => p.x);
+      const ys = focusPts.map((p) => p.y);
+      const minX = Math.min(...xs) - 70;
+      const maxX = Math.max(...xs) + 55;
+      const minY = Math.min(...ys) - 90;
+      const maxY = Math.max(...ys) + 90;
+      // Zoom decisively (min 1.6x): the frame pins to the destination end and
+      // the route's tail enters from off-frame.
+      const zoom = Math.min(
+        2.1,
+        Math.max(1.6, Math.min(VIEWBOX.width / (maxX - minX), VIEWBOX.height / (maxY - minY))),
+      );
+      const vw = VIEWBOX.width / zoom;
+      const vh = VIEWBOX.height / zoom;
+      const cy = (minY + maxY) / 2;
+      const vx = Math.min(Math.max(maxX - vw, 0), VIEWBOX.width - vw);
+      const vy = Math.min(Math.max(cy - vh / 2, 0), VIEWBOX.height - vh);
+      setTarget("vb:x", vx, SPRING_SOFT, 0);
+      setTarget("vb:y", vy, SPRING_SOFT, 0);
+      setTarget("vb:w", vw, SPRING_SOFT, VIEWBOX.width);
+      setTarget("vb:h", vh, SPRING_SOFT, VIEWBOX.height);
+    } else {
+      setTarget("vb:x", 0, SPRING_SOFT, 0);
+      setTarget("vb:y", 0, SPRING_SOFT, 0);
+      setTarget("vb:w", VIEWBOX.width, SPRING_SOFT, VIEWBOX.width);
+      setTarget("vb:h", VIEWBOX.height, SPRING_SOFT, VIEWBOX.height);
+    }
     ensureLoop();
   }, [model, setTarget, ensureLoop, phase, resolved]);
 
@@ -457,6 +496,16 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
   const reach = Math.max(0, Math.min(1, spring("route:reach", 0)));
   const routeOpacity = spring("route:o", 0);
 
+  // Animated viewport (resolved zoom). Strokes compensate by sqrt of the zoom
+  // so geometry grows faster than line weight; labels compensate fully.
+  const vbX = spring("vb:x", 0);
+  const vbY = spring("vb:y", 0);
+  const vbW = spring("vb:w", VIEWBOX.width);
+  const vbH = spring("vb:h", VIEWBOX.height);
+  const zoomNow = VIEWBOX.width / Math.max(1, vbW);
+  const wComp = 1 / Math.sqrt(zoomNow);
+  const fComp = 1 / zoomNow;
+
   // Node-to-node segments (the reference look): each is a gentle authored
   // arc, drawn in as the overall reach passes through it.
   const segLengths = routePoints.slice(1).map((p, i) => distance(routePoints[i], p));
@@ -528,7 +577,7 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
   return (
     <svg
       className={`sb sb--${phase}${resolved ? " sb--resolved" : ""}${focusedSignal ? " sb--focus" : ""}${reducedMotion ? " sb--reduced" : ""}${className ? ` ${className}` : ""}`}
-      viewBox={`0 0 ${VIEWBOX.width} ${VIEWBOX.height}`}
+      viewBox={`${vbX} ${vbY} ${vbW} ${vbH}`}
       role="img"
       aria-label={ariaLabel}
     >
@@ -613,7 +662,7 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
           const b = edge.toKind === "signal" ? sigPos(edge.to as Signal) : PATHWAY_ANCHORS[edge.to as Pathway];
           const strength = Math.max(0, Math.min(1, spring(`edge:${edge.key}`, 0)));
           const opacity = showRawEdges ? 0.5 : 0.06 + 0.68 * strength;
-          const width = 0.8 + 2.4 * strength;
+          const width = (0.8 + 2.4 * strength) * wComp;
           return (
             <path
               key={edge.key}
@@ -628,7 +677,7 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
       {/* Secondary hypothesis route */}
       {secondaryD && (
         <g className="sb-route2" aria-hidden="true" style={{ opacity: secondaryOpacity }}>
-          <path d={secondaryD} className="sb-route2-line" />
+          <path d={secondaryD} className="sb-route2-line" style={{ strokeWidth: 1.1 * wComp }} />
         </g>
       )}
 
@@ -650,19 +699,27 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
                 d={seg.d}
                 className="sb-route-under"
                 pathLength={1}
-                style={{ stroke: `url(#${gradientId})`, strokeDasharray: `${seg.local} 1` }}
+                style={{
+                  stroke: `url(#${gradientId})`,
+                  strokeDasharray: `${seg.local} 1`,
+                  strokeWidth: 8 * wComp,
+                }}
               />
               <path
                 d={seg.d}
                 className="sb-route-line"
                 pathLength={1}
-                style={{ stroke: `url(#${gradientId})`, strokeDasharray: `${seg.local} 1` }}
+                style={{
+                  stroke: `url(#${gradientId})`,
+                  strokeDasharray: `${seg.local} 1`,
+                  strokeWidth: (resolved ? 2.4 : 1.9) * wComp,
+                }}
               />
             </g>
           ),
         )}
         {reach > 0.02 && (
-          <circle cx={entry.x} cy={entry.y} r={4.2} className="sb-entry-ring" />
+          <circle cx={entry.x} cy={entry.y} r={4.2} className="sb-entry-ring" style={{ strokeWidth: 1.3 * wComp }} />
         )}
       </g>
 
@@ -701,13 +758,23 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
             .join(" ");
           return (
             <g key={p} className={cls} style={{ opacity: o }}>
-              <circle cx={vis.pos.x} cy={vis.pos.y} r={r + 6} className="sb-pw-halo" />
-              <circle cx={vis.pos.x} cy={vis.pos.y} r={r} className="sb-pw-dot" />
+              <circle cx={vis.pos.x} cy={vis.pos.y} r={r + 6} className="sb-pw-halo" style={{ strokeWidth: 1 * wComp }} />
+              <circle cx={vis.pos.x} cy={vis.pos.y} r={r} className="sb-pw-dot" style={{ strokeWidth: (vis.isPrimary ? 1.7 : 1.4) * wComp }} />
               {(showPathwayAnchors || phase === "locked") && (
-                <text x={vis.pos.x} y={vis.pos.y - r - (resolved && vis.isPrimary ? 22 : 10)} className="sb-pw-label">
+                <text
+                  x={vis.pos.x}
+                  y={vis.pos.y - r - (resolved && vis.isPrimary ? 22 : 10) * fComp}
+                  className="sb-pw-label"
+                  style={{ fontSize: `${10 * fComp}px` }}
+                >
                   {PATHWAY_COPY[p].name}
                   {resolved && vis.isPrimary && (
-                    <tspan x={vis.pos.x} dy={13} className="sb-pw-sublabel">
+                    <tspan
+                      x={vis.pos.x}
+                      dy={13 * fComp}
+                      className="sb-pw-sublabel"
+                      style={{ fontSize: `${8.5 * fComp}px` }}
+                    >
                       Leading pathway
                     </tspan>
                   )}
@@ -753,13 +820,17 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
                 cy={pos.y}
                 r={r}
                 className="sb-node-dot"
-                style={{ fillOpacity: checked ? 1 : 0.24 + vis.relative * 0.5 }}
+                style={{
+                  fillOpacity: checked ? 1 : 0.24 + vis.relative * 0.5,
+                  strokeWidth: (checked ? 1.8 : 1.55) * wComp,
+                }}
               />
               {checked && (
                 <path
                   className="sb-check"
                   d={`M ${pos.x - r * 0.44} ${pos.y + r * 0.04} L ${pos.x - r * 0.08} ${pos.y + r * 0.38} L ${pos.x + r * 0.5} ${pos.y - r * 0.32}`}
                   pathLength={1}
+                  style={{ strokeWidth: 1.7 * wComp }}
                 />
               )}
               <circle
@@ -768,11 +839,16 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
                 r={r + 4.5}
                 pathLength={1}
                 className="sb-node-ring"
-                style={{ strokeDasharray: `${conf} 1` }}
+                style={{ strokeDasharray: `${conf} 1`, strokeWidth: 1.35 * wComp }}
                 transform={`rotate(-90 ${pos.x} ${pos.y})`}
               />
               {showLabels && (
-                <text x={pos.x} y={pos.y - r - 9} className="sb-node-label">
+                <text
+                  x={pos.x}
+                  y={pos.y - r - 9 * fComp}
+                  className="sb-node-label"
+                  style={{ fontSize: `${10.4 * fComp}px` }}
+                >
                   {SIGNAL_LABELS[id]}
                 </text>
               )}
@@ -823,9 +899,22 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
         style={{ opacity: outcomeOpacity }}
       >
         {[16, 30, 48].map((r, i) => (
-          <circle key={r} cx={model.outcome.x} cy={model.outcome.y} r={r} className={`sb-outcome-ring sb-outcome-ring--${i}`} />
+          <circle
+            key={r}
+            cx={model.outcome.x}
+            cy={model.outcome.y}
+            r={r}
+            className={`sb-outcome-ring sb-outcome-ring--${i}`}
+            style={{ strokeWidth: (i === 0 ? 1.7 : 1.2) * wComp }}
+          />
         ))}
-        <circle cx={model.outcome.x} cy={model.outcome.y} r={5.5} className="sb-outcome-core" />
+        <circle
+          cx={model.outcome.x}
+          cy={model.outcome.y}
+          r={5.5}
+          className="sb-outcome-core"
+          style={{ strokeWidth: 2.2 * wComp }}
+        />
       </g>
     </svg>
   );

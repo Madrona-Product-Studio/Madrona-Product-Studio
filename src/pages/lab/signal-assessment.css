@@ -635,7 +635,7 @@
 }
 .sa--result .sa-brain-canvas .sb {
   width: 100%;
-  max-height: min(44vh, 400px);
+  max-height: min(34vh, 320px);
 }
 .sa-live--resolved {
   color: var(--a-orange-bright);
@@ -646,9 +646,9 @@
   text-transform: uppercase;
   color: var(--a-text-3);
   font-weight: 600;
-  margin: 14px 0 8px;
+  margin: 10px 0 6px;
   border-top: 1px solid var(--a-border);
-  padding-top: 12px;
+  padding-top: 10px;
 }
 .sa-brain .sa-signals {
   margin: 0 0 4px;
@@ -657,16 +657,16 @@
 .sa-signal-key {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 1px 12px;
+  gap: 0 12px;
   width: 100%;
   text-align: left;
   background: none;
   border: 1px solid transparent;
   border-radius: 10px;
-  padding: 7px 10px;
+  padding: 5px 10px;
   cursor: pointer;
   color: var(--a-text);
-  font-size: 13.5px;
+  font-size: 13px;
   transition: background 160ms ease, border-color 160ms ease;
 }
 .sa-signal-key small {
