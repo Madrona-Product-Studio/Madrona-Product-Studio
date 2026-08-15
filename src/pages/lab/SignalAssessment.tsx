@@ -4,7 +4,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import SignalBrain from "../../components/assessment/SignalBrain.tsx";
-import type { SignalBrainHandle } from "../../components/assessment/SignalBrain.tsx";
+import type { BrainMode, SignalBrainHandle } from "../../components/assessment/SignalBrain.tsx";
+import type { Signal } from "../../assessment/types.ts";
 import { QUESTIONS } from "../../assessment/data/questions.ts";
 import { PATHWAY_COPY } from "../../assessment/data/pathways.ts";
 import { serviceAreas } from "../../data/services.ts";
@@ -102,6 +103,7 @@ export default function SignalAssessment() {
   const [answers, setAnswers] = useState<AnswerMap>({});
   const [synthesisLine, setSynthesisLine] = useState(0);
   const [currentRead, setCurrentRead] = useState<string | null>(null);
+  const [focusedSignal, setFocusedSignal] = useState<Signal | null>(null);
   const reducedMotion = usePrefersReducedMotion();
 
   const brain = useRef<SignalBrainHandle>(null);
@@ -203,6 +205,7 @@ export default function SignalAssessment() {
   const restart = useCallback(() => {
     setAnswers({});
     setCurrentRead(null);
+    setFocusedSignal(null);
     prevEngine.current = null;
     brain.current?.trigger("idle");
     setStage({ kind: "intro" });
@@ -380,7 +383,7 @@ export default function SignalAssessment() {
 
                     {heard.length > 0 && (
                       <div className="sa-heard">
-                        <h2>What we heard</h2>
+                        <h2>What you told us</h2>
                         <ul>
                           {heard.map((line) => (
                             <li key={line}>{line}</li>
@@ -393,10 +396,10 @@ export default function SignalAssessment() {
                   <div className="sa-result-help">
                     <h2>How we can help</h2>
                     <p className="sa-help-door">
-                      {service ? service.door : PATHWAY_COPY[result.archetype.primaryPathway].name}
+                      {PATHWAY_COPY[result.archetype.primaryPathway].name}
                     </p>
                     <p className="sa-help-outcome">
-                      {service ? service.outcome : PATHWAY_COPY[result.archetype.primaryPathway].short}
+                      {PATHWAY_COPY[result.archetype.primaryPathway].short}
                     </p>
 
                     <div className="sa-first-move">
@@ -407,20 +410,21 @@ export default function SignalAssessment() {
 
                     <div className="sa-cta-block">
                       <p className="sa-cta-note">
-                        Bring your result. We’ll talk through what it means and
-                        find a practical next step.
+                        Bring your result into a focused conversation with
+                        Madrona. We’ll pressure-test the read and talk about
+                        whether there’s a useful next step.
                       </p>
                       {BOOK_EXTERNAL ? (
                         <a className="sa-primary sa-primary--wide" href={BOOK_HREF}>
-                          Book a 30m free chat <span aria-hidden="true">→</span>
+                          Talk through this result <span aria-hidden="true">→</span>
                         </a>
                       ) : (
                         <Link className="sa-primary sa-primary--wide" to={BOOK_HREF}>
-                          Book a 30m free chat <span aria-hidden="true">→</span>
+                          Talk through this result <span aria-hidden="true">→</span>
                         </Link>
                       )}
                       <p className="sa-cta-fine">
-                        Free. No email required. Your answers stay in this session.
+                        A 30-minute conversation. No email required. Your answers stay in this session.
                       </p>
                     </div>
 
@@ -445,18 +449,25 @@ export default function SignalAssessment() {
         {/* ---- Signal Brain ---- */}
         <aside className="sa-brain" aria-label="Live pathway visualization">
           <header className="sa-brain-head">
-            <p className="sa-live">
-              <i aria-hidden="true" /> Live pathway
-            </p>
-            <p className="sa-brain-sub">
-              {stage.kind === "result"
-                ? "Your pattern, mapped"
-                : stage.kind === "synthesis"
-                  ? "Live synthesis"
-                  : engine.answeredCount > 0
-                    ? "Reading your signals"
-                    : "Waiting for signals"}
-            </p>
+            {showResult ? (
+              <>
+                <p className="sa-live sa-live--resolved">The throughline</p>
+                <p className="sa-brain-sub">Where your answers converged.</p>
+              </>
+            ) : (
+              <>
+                <p className="sa-live">
+                  <i aria-hidden="true" /> Live pathway
+                </p>
+                <p className="sa-brain-sub">
+                  {stage.kind === "synthesis"
+                    ? "Live synthesis"
+                    : engine.answeredCount > 0
+                      ? "Reading your signals"
+                      : "Waiting for signals"}
+                </p>
+              </>
+            )}
           </header>
           <div className="sa-brain-canvas">
             <SignalBrain
@@ -466,24 +477,54 @@ export default function SignalAssessment() {
               showLabels
               showPathwayAnchors
               showEvidence
+              mode={
+                (showResult
+                  ? "resolved"
+                  : stage.kind === "synthesis"
+                    ? "synthesizing"
+                    : "exploring") as BrainMode
+              }
+              focusedSignal={showResult ? focusedSignal : null}
             />
           </div>
           {showResult && result && (
-            <ul className="sa-signals">
-              {result.topSignals.map((t) => (
-                <li key={t.signal}>
-                  <span>{t.label}</span>
-                  <em className={`sa-level sa-level--${t.level.toLowerCase()}`}>{t.level}</em>
-                  <small>{LEVEL_NOTES[t.level]}</small>
-                </li>
-              ))}
-            </ul>
+            <>
+              <p className="sa-key-label">What that adds up to</p>
+              <ul className="sa-signals">
+                {result.topSignals.map((t) => (
+                  <li key={t.signal}>
+                    <button
+                      className={`sa-signal-key${focusedSignal === t.signal ? " is-focused" : ""}`}
+                      onMouseEnter={() => setFocusedSignal(t.signal)}
+                      onMouseLeave={() => setFocusedSignal(null)}
+                      onFocus={() => setFocusedSignal(t.signal)}
+                      onBlur={() => setFocusedSignal(null)}
+                      onClick={() =>
+                        setFocusedSignal((current) => (current === t.signal ? null : t.signal))
+                      }
+                      aria-pressed={focusedSignal === t.signal}
+                    >
+                      <span>{t.label}</span>
+                      <em className={`sa-level sa-level--${t.level.toLowerCase()}`}>{t.level}</em>
+                      <small>{LEVEL_NOTES[t.level]}</small>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              <div className="sa-points">
+                <p className="sa-key-label">Where it points</p>
+                <p className="sa-points-name">
+                  {PATHWAY_COPY[result.archetype.primaryPathway].name}
+                  <em>Leading pathway</em>
+                </p>
+              </div>
+            </>
           )}
-          <footer className="sa-brain-foot" aria-live="polite">
-            {stage.kind === "result" && result
-              ? `${PATHWAY_COPY[result.archetype.primaryPathway].name} is the leading pathway.`
-              : currentRead ?? "The map fills in as you answer."}
-          </footer>
+          {!showResult && (
+            <footer className="sa-brain-foot" aria-live="polite">
+              {currentRead ?? "The map fills in as you answer."}
+            </footer>
+          )}
           {showResult && (
             <div className="sa-retake">
               <button className="sa-back" onClick={restart}>

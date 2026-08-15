@@ -50,6 +50,13 @@ export type SignalBrainHandle = {
   trigger: (phase: BrainPhase, evidenceId?: string) => void;
 };
 
+/**
+ * exploring   — the assessment: alive, weighing possibilities.
+ * synthesizing — the handoff moment after the last answer.
+ * resolved    — the result: alternatives recede, the throughline stands.
+ */
+export type BrainMode = "exploring" | "synthesizing" | "resolved";
+
 type Props = {
   state: EngineState;
   reducedMotion?: boolean;
@@ -60,6 +67,9 @@ type Props = {
   showBounds?: boolean;
   onPhaseChange?: (phase: BrainPhase) => void;
   className?: string;
+  mode?: BrainMode;
+  /** Hover/focus key from the result's signal rows — isolates that node's route. */
+  focusedSignal?: Signal | null;
 };
 
 type Spring = { value: number; target: number; velocity: number; k: number; c: number };
@@ -98,6 +108,8 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
     showBounds = false,
     onPhaseChange,
     className,
+    mode = "exploring",
+    focusedSignal = null,
   },
   ref,
 ) {
@@ -105,7 +117,9 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
   const [phase, setPhaseState] = useState<BrainPhase>("idle");
   const [pulses, setPulses] = useState<Pulse[]>([]);
   const [ingestFocus, setIngestFocus] = useState<string | null>(null);
+  const [lockPulse, setLockPulse] = useState(false);
   const [, setFrame] = useState(0);
+  const resolved = mode === "resolved";
 
   const springs = useRef<Map<string, Spring>>(new Map());
   const rafRef = useRef<number | null>(null);
@@ -169,14 +183,31 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
 
   // ---- Target application: every model change is a rebalance (§21). ----
   useEffect(() => {
-    const synth = phaseRef.current === "synthesize" || phaseRef.current === "locked";
+    const synth =
+      resolved || phaseRef.current === "synthesize" || phaseRef.current === "locked";
+    const routeRank = [...model.primaryChain].sort(
+      (a, b) => model.signals[b].strength - model.signals[a].strength,
+    );
     for (const id of SIGNALS) {
       const vis = model.signals[id];
       setTarget(`sig:${id}:x`, vis.target.x, SPRING_SOFT, SIGNAL_BASE[id].x);
       setTarget(`sig:${id}:y`, vis.target.y, SPRING_SOFT, SIGNAL_BASE[id].y);
       const emphasized = synth && (vis.onPrimaryRoute || vis.onSecondaryRoute);
-      setTarget(`sig:${id}:r`, emphasized ? Math.max(vis.radius, 11) : vis.radius, SPRING_FIRM, 5);
-      setTarget(`sig:${id}:conf`, vis.confidence, SPRING_FIRM, 0.15);
+      // Resolved: tiered emphasis — the strongest route signal reads largest.
+      const resolvedBump =
+        resolved && vis.onPrimaryRoute ? (routeRank[0] === id ? 2.5 : 1) : 0;
+      setTarget(
+        `sig:${id}:r`,
+        (emphasized ? Math.max(vis.radius, 11) : vis.radius) + resolvedBump,
+        SPRING_FIRM,
+        5,
+      );
+      setTarget(
+        `sig:${id}:conf`,
+        resolved && vis.onPrimaryRoute ? 1 : vis.confidence,
+        SPRING_FIRM,
+        0.15,
+      );
     }
     for (const edge of model.edges) {
       setTarget(`edge:${edge.key}`, edge.strength, SPRING_FIRM, 0);
@@ -264,7 +295,24 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
       0,
     );
     ensureLoop();
-  }, [model, setTarget, ensureLoop, phase]);
+  }, [model, setTarget, ensureLoop, phase, resolved]);
+
+  // Entering resolved: settle into the locked state with one confirmation
+  // pulse at the destination. Restrained by design — no second cinematic.
+  useEffect(() => {
+    if (!resolved) {
+      setLockPulse(false);
+      return;
+    }
+    setPhase("locked");
+    if (reducedMotion) return;
+    const t = window.setTimeout(() => setLockPulse(true), 650);
+    const t2 = window.setTimeout(() => setLockPulse(false), 2400);
+    return () => {
+      window.clearTimeout(t);
+      window.clearTimeout(t2);
+    };
+  }, [resolved, reducedMotion, setPhase]);
 
   // ---- Phase orchestration. ----
   const clearTimers = useCallback(() => {
@@ -453,6 +501,10 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
     (a, b) => model.signals[b].relative - model.signals[a].relative,
   );
   const core = strongest[0];
+  const routeRankRender = [...model.primaryChain].sort(
+    (a, b) => model.signals[b].strength - model.signals[a].strength,
+  );
+  const focusedChainIndex = focusedSignal ? model.primaryChain.indexOf(focusedSignal) : -1;
   const glowSet = new Set(strongest.slice(0, 3).filter((s) => model.signals[s].relative > 0.25));
 
   const ambientEdges = useMemo(() => {
@@ -475,7 +527,7 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
 
   return (
     <svg
-      className={`sb sb--${phase}${reducedMotion ? " sb--reduced" : ""}${className ? ` ${className}` : ""}`}
+      className={`sb sb--${phase}${resolved ? " sb--resolved" : ""}${focusedSignal ? " sb--focus" : ""}${reducedMotion ? " sb--reduced" : ""}${className ? ` ${className}` : ""}`}
       viewBox={`0 0 ${VIEWBOX.width} ${VIEWBOX.height}`}
       role="img"
       aria-label={ariaLabel}
@@ -582,9 +634,18 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
 
       {/* Active route: green evidence segments arcing toward an orange outcome (§12) */}
       <g className="sb-route" aria-hidden="true" style={{ opacity: routeOpacity }}>
-        {routeSegments.map((seg) =>
+        {routeSegments.map((seg, i) =>
           seg.local <= 0 ? null : (
-            <g key={seg.key}>
+            <g
+              key={seg.key}
+              className={
+                focusedChainIndex >= 0
+                  ? i === focusedChainIndex || i === focusedChainIndex + 1
+                    ? "sb-seg sb-seg--hot"
+                    : "sb-seg sb-seg--cool"
+                  : "sb-seg"
+              }
+            >
               <path
                 d={seg.d}
                 className="sb-route-under"
@@ -643,8 +704,13 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
               <circle cx={vis.pos.x} cy={vis.pos.y} r={r + 6} className="sb-pw-halo" />
               <circle cx={vis.pos.x} cy={vis.pos.y} r={r} className="sb-pw-dot" />
               {(showPathwayAnchors || phase === "locked") && (
-                <text x={vis.pos.x} y={vis.pos.y - r - 10} className="sb-pw-label">
+                <text x={vis.pos.x} y={vis.pos.y - r - (resolved && vis.isPrimary ? 22 : 10)} className="sb-pw-label">
                   {PATHWAY_COPY[p].name}
+                  {resolved && vis.isPrimary && (
+                    <tspan x={vis.pos.x} dy={13} className="sb-pw-sublabel">
+                      Leading pathway
+                    </tspan>
+                  )}
                 </text>
               )}
             </g>
@@ -664,6 +730,7 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
           // confidence-gated so checks accumulate across the run, not at Q1.
           const checked =
             onRoute && model.hasEvidence && vis.strength > 0.2 && vis.confidence > 0.32;
+          const tier = resolved && onRoute ? routeRankRender.indexOf(id) : -1;
           const cls = [
             "sb-node",
             onRoute ? "sb-node--route" : "",
@@ -671,6 +738,10 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
             vis.onSecondaryRoute ? "sb-node--route2" : "",
             glowSet.has(id) ? "sb-node--glow" : "",
             id === core && vis.relative > 0.3 ? "sb-node--core" : "",
+            tier >= 0 ? `sb-node--tier${Math.min(tier, 2) + 1}` : "",
+            resolved && !onRoute ? "sb-node--faded" : "",
+            focusedSignal === id ? "sb-node--focused" : "",
+            focusedSignal && focusedSignal !== id && onRoute ? "sb-node--unfocused" : "",
           ]
             .filter(Boolean)
             .join(" ");
@@ -746,7 +817,11 @@ export const SignalBrain = forwardRef<SignalBrainHandle, Props>(function SignalB
       </g>
 
       {/* Outcome gravity well (§8) */}
-      <g className="sb-outcome" aria-hidden="true" style={{ opacity: outcomeOpacity }}>
+      <g
+        className={`sb-outcome${lockPulse ? " sb-outcome--lock" : ""}`}
+        aria-hidden="true"
+        style={{ opacity: outcomeOpacity }}
+      >
         {[16, 30, 48].map((r, i) => (
           <circle key={r} cx={model.outcome.x} cy={model.outcome.y} r={r} className={`sb-outcome-ring sb-outcome-ring--${i}`} />
         ))}

@@ -337,6 +337,112 @@
   }
 }
 
+/* ---- Resolved mode: alternatives recede, the throughline stands ---- */
+.sb--resolved .sb-guides,
+.sb--resolved .sb-latent-dot,
+.sb--resolved .sb-latent-link {
+  transition: opacity 600ms ease;
+}
+.sb--resolved .sb-latent-dot {
+  opacity: 0.55;
+}
+.sb--resolved .sb-latent-link {
+  opacity: 0.5;
+}
+.sb--resolved .sb-edges {
+  opacity: 0.4;
+  transition: opacity 600ms ease;
+}
+.sb--resolved .sb-route2 {
+  opacity: 0.35 !important;
+}
+.sb--resolved .sb-route-line {
+  stroke-width: 2.4;
+  opacity: 0.95;
+}
+.sb--resolved .sb-route-under {
+  opacity: 0.13;
+}
+.sb--resolved .sb-node--faded {
+  opacity: 0.16;
+  transition: opacity 600ms ease;
+}
+.sb--resolved .sb-node--faded .sb-node-label {
+  opacity: 0.3;
+}
+.sb--resolved .sb-node--tier1 .sb-node-glow {
+  opacity: 0.5;
+}
+.sb--resolved .sb-node--tier2,
+.sb--resolved .sb-node--tier3 {
+  opacity: 0.92;
+}
+.sb--resolved .sb-node--route .sb-node-label {
+  opacity: 0.95;
+  font-size: 10.5px;
+}
+.sb--resolved .sb-pw:not(.sb-pw--primary) {
+  opacity: 0.18 !important;
+  transition: opacity 600ms ease;
+}
+.sb-pw-sublabel {
+  fill: var(--sb-orange-bright);
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  opacity: 0.9;
+}
+.sb--resolved .sb-pw--primary .sb-pw-label {
+  opacity: 0.95;
+}
+
+/* Node focus keys (result signal rows) */
+.sb-node--focused {
+  opacity: 1 !important;
+}
+.sb-node--focused .sb-node-glow {
+  opacity: 0.7 !important;
+}
+.sb-node--focused .sb-node-label {
+  opacity: 1 !important;
+}
+.sb-node--unfocused {
+  opacity: 0.72;
+}
+.sb-seg {
+  transition: opacity 220ms ease;
+}
+.sb-seg--hot .sb-route-line {
+  stroke-width: 3;
+}
+.sb-seg--hot .sb-route-under {
+  opacity: 0.2;
+}
+.sb-seg--cool {
+  opacity: 0.45;
+}
+
+/* One confirmation pulse when the destination locks */
+.sb-outcome--lock .sb-outcome-ring--1 {
+  animation: sb-lock-ring 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@keyframes sb-lock-ring {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.1;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  45% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.18);
+    opacity: 0.52;
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+}
+
 /* ---- Phase-level treatments ---- */
 .sb--synthesize .sb-evidence,
 .sb--locked .sb-evidence {

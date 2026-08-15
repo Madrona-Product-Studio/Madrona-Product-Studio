@@ -637,16 +637,73 @@
   width: 100%;
   max-height: min(44vh, 400px);
 }
-.sa-brain .sa-signals {
+.sa-live--resolved {
+  color: var(--a-orange-bright);
+}
+.sa-key-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--a-text-3);
+  font-weight: 600;
+  margin: 14px 0 8px;
   border-top: 1px solid var(--a-border);
-  padding-top: 14px;
-  margin: 10px 0 12px;
+  padding-top: 12px;
 }
-.sa-brain .sa-signals li {
+.sa-brain .sa-signals {
+  margin: 0 0 4px;
+  gap: 4px;
+}
+.sa-signal-key {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1px 12px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 7px 10px;
+  cursor: pointer;
+  color: var(--a-text);
   font-size: 13.5px;
+  transition: background 160ms ease, border-color 160ms ease;
 }
-.sa-brain .sa-signals small {
+.sa-signal-key small {
+  grid-column: 1 / -1;
+  color: var(--a-text-3);
   font-size: 11px;
+}
+.sa-signal-key em {
+  align-self: center;
+}
+.sa-signal-key:hover,
+.sa-signal-key.is-focused {
+  background: rgba(130, 208, 170, 0.06);
+  border-color: rgba(130, 208, 170, 0.25);
+}
+.sa-signal-key:focus-visible {
+  outline: 2px solid var(--a-green);
+  outline-offset: 1px;
+}
+.sa-points {
+  margin-bottom: 4px;
+}
+.sa-points-name {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--a-text);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.sa-points-name em {
+  font-style: normal;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--a-orange-bright);
 }
 
 /* ---- Enter transitions ---- */
