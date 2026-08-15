@@ -17,6 +17,7 @@ import MadronaV2SystemNote from "./pages/lab/MadronaV2SystemNote";
 import MadronaV2Open from "./pages/lab/MadronaV2Open";
 import MadronaSystem from "./pages/lab/MadronaSystem";
 import MadronaV2Checkup from "./pages/lab/MadronaV2Checkup";
+import SignalBrainLab from "./pages/lab/SignalBrainLab";
 
 export default function App() {
   return (
@@ -58,6 +59,8 @@ export default function App() {
         <Route path="thesis" element={<MadronaV2Thesis />} />
         {/* PROTOTYPE — AI checkup; unlinked + noindexed until approved. */}
         <Route path="checkup" element={<MadronaV2Checkup />} />
+        {/* TEMP — Signal Brain art-direction lab (signal-assessment build; unlinked). */}
+        <Route path="signal-brain-lab" element={<SignalBrainLab />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />

@@ -1,0 +1,305 @@
+/* Signal Brain — visual language (spec 03 §12–§13, dark tokens from spec 02 §4).
+   The SVG is transparent; the surrounding shell owns the dark ground. */
+
+.sb {
+  --sb-latent: rgba(220, 228, 222, 0.1);
+  --sb-green: #62a184;
+  --sb-green-bright: #82d0aa;
+  --sb-green-glow: rgba(83, 210, 161, 0.22);
+  --sb-orange: #c9663f;
+  --sb-orange-bright: #ee936a;
+  --sb-orange-glow: rgba(238, 147, 106, 0.25);
+  --sb-text: #a6afa8;
+
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---- Background field ---- */
+.sb-grid {
+  stroke: rgba(220, 228, 222, 0.035);
+  stroke-width: 1;
+}
+.sb-orbit {
+  fill: none;
+  stroke: rgba(220, 228, 222, 0.05);
+  stroke-width: 1;
+  stroke-dasharray: 2 7;
+}
+.sb-orbit--2 {
+  stroke-dasharray: 1 9;
+}
+.sb-outcome-field {
+  fill: none;
+  stroke: var(--sb-orange);
+  stroke-width: 1;
+  stroke-dasharray: 2 6;
+}
+
+.sb-bounds rect {
+  fill: rgba(130, 208, 170, 0.03);
+  stroke: rgba(130, 208, 170, 0.18);
+  stroke-dasharray: 4 4;
+}
+.sb-bounds text {
+  fill: rgba(130, 208, 170, 0.5);
+  font-size: 11px;
+  font-family: inherit;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---- Edges ---- */
+.sb-edge {
+  fill: none;
+  stroke: var(--sb-green);
+  transition: opacity 240ms ease;
+}
+
+/* ---- Routes ---- */
+.sb-route-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.sb-route-under {
+  fill: none;
+  stroke-width: 7;
+  stroke-linecap: round;
+  opacity: 0.12;
+}
+.sb-route2-line {
+  fill: none;
+  stroke: var(--sb-green);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: 6 8;
+}
+
+/* ---- Evidence ---- */
+.sb-ev-dot {
+  fill: var(--sb-green);
+}
+.sb-ev-bloom {
+  fill: none;
+  stroke: var(--sb-green-bright);
+  stroke-width: 1.2;
+  animation: sb-bloom 620ms ease-out both;
+}
+@keyframes sb-bloom {
+  from {
+    opacity: 0.8;
+    transform: scale(0.4);
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.5);
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+}
+
+/* ---- Pathway attractors ---- */
+.sb-pw-dot {
+  fill: #101613;
+  stroke: var(--sb-latent);
+  stroke-width: 1.4;
+}
+.sb-pw-halo {
+  fill: none;
+  stroke: var(--sb-latent);
+  stroke-width: 1;
+  stroke-dasharray: 3 6;
+}
+.sb-pw--primary .sb-pw-dot {
+  stroke: var(--sb-orange-bright);
+  fill: rgba(201, 102, 63, 0.18);
+}
+.sb-pw--primary .sb-pw-halo {
+  stroke: var(--sb-orange);
+  stroke-dasharray: none;
+  opacity: 0.5;
+}
+.sb-pw--secondary .sb-pw-dot {
+  stroke: var(--sb-green);
+}
+.sb-pw-label {
+  fill: var(--sb-text);
+  opacity: 0.55;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-anchor: middle;
+}
+
+/* ---- Signal hubs ---- */
+.sb-node-dot {
+  fill: var(--sb-green);
+  stroke: var(--sb-green);
+  stroke-width: 1.2;
+  stroke-opacity: 0.75;
+  transition: stroke 300ms ease;
+}
+.sb-node-ring {
+  fill: none;
+  stroke: var(--sb-green-bright);
+  stroke-width: 1.1;
+  stroke-opacity: 0.55;
+}
+.sb-node--route .sb-node-dot {
+  stroke: var(--sb-green-bright);
+  stroke-opacity: 1;
+}
+.sb-node--route2 .sb-node-dot {
+  stroke-opacity: 0.9;
+}
+.sb-node-glow {
+  fill: var(--sb-green-glow);
+  opacity: 0.5;
+}
+.sb-node--core .sb-node-glow {
+  animation: sb-core-pulse 6s ease-in-out infinite;
+}
+@keyframes sb-core-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.12);
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+}
+.sb-node-label {
+  fill: var(--sb-text);
+  opacity: 0.62;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-anchor: middle;
+}
+
+/* ---- Pulses ---- */
+.sb-pulse {
+  fill: var(--sb-green-bright);
+  offset-rotate: 0deg;
+  animation-name: sb-travel;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  animation-fill-mode: both;
+}
+.sb-pulse--synthesis {
+  fill: var(--sb-orange-bright);
+}
+@keyframes sb-travel {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+.sb-ambient {
+  fill: var(--sb-green);
+  opacity: 0;
+  offset-rotate: 0deg;
+  animation-name: sb-ambient-travel;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes sb-ambient-travel {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.22;
+  }
+  82% {
+    opacity: 0.22;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+/* ---- Outcome gravity well ---- */
+.sb-outcome-ring {
+  fill: none;
+  stroke: var(--sb-orange);
+  stroke-width: 1.1;
+}
+.sb-outcome-ring--0 {
+  stroke-opacity: 0.75;
+}
+.sb-outcome-ring--1 {
+  stroke-opacity: 0.4;
+  stroke-dasharray: 3 5;
+}
+.sb-outcome-ring--2 {
+  stroke-opacity: 0.2;
+  stroke-dasharray: 2 7;
+}
+.sb-outcome-core {
+  fill: var(--sb-orange-bright);
+}
+.sb--synthesize .sb-outcome-core,
+.sb--locked .sb-outcome-core {
+  filter: drop-shadow(0 0 6px var(--sb-orange-glow));
+}
+.sb-latent-dot {
+  fill: rgba(220, 228, 222, 0.09);
+}
+.sb-latent-dot--hollow {
+  fill: none;
+  stroke: rgba(220, 228, 222, 0.12);
+  stroke-width: 0.9;
+}
+.sb--locked .sb-outcome-ring--0,
+.sb--synthesize .sb-outcome-ring--0 {
+  animation: sb-ring-breathe 7s ease-in-out infinite;
+}
+@keyframes sb-ring-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+  50% {
+    transform: scale(1.07);
+    transform-origin: center;
+    transform-box: fill-box;
+  }
+}
+
+/* ---- Phase-level treatments ---- */
+.sb--synthesize .sb-evidence,
+.sb--locked .sb-evidence {
+  transition: opacity 900ms ease;
+}
+.sb--reduced * {
+  animation: none !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sb * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
