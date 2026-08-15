@@ -148,7 +148,7 @@ export function deriveBrainModel(state: EngineState): BrainModel {
     signals[signal] = {
       id: signal,
       target: attractorTarget(signal, state),
-      radius: 5 + 8 * Math.sqrt(Math.max(0, s.relativeStrength)),
+      radius: 5.5 + 9 * Math.sqrt(Math.max(0, s.relativeStrength)),
       strength: s.absoluteStrength,
       relative: s.relativeStrength,
       confidence: s.confidence,
@@ -211,7 +211,7 @@ export function deriveBrainModel(state: EngineState): BrainModel {
   const primaryAnchor = PATHWAY_ANCHORS[state.primaryPathway];
   const secondaryAnchor = PATHWAY_ANCHORS[state.secondaryPathway];
   const outcome: Point = {
-    x: 830,
+    x: 845,
     y: lerp(primaryAnchor.y, secondaryAnchor.y, 0.12),
   };
 

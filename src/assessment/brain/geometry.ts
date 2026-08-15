@@ -9,22 +9,24 @@ export const VIEWBOX = { width: 900, height: 720 };
 export type Point = { x: number; y: number };
 
 // Base topology — art-directed, intentionally asymmetric (§6).
+// Spread to use the full canvas: the map was reading small because the
+// drawing sat inside generous internal margins (Charlie, 2026-08-14).
 export const SIGNAL_BASE: Record<Signal, Point> = {
-  trust: { x: 326, y: 158 },
-  acquisition: { x: 430, y: 228 },
-  retention: { x: 336, y: 324 },
-  capacity: { x: 292, y: 482 },
-  operations: { x: 424, y: 432 },
-  systems: { x: 524, y: 523 },
-  clarity: { x: 500, y: 151 },
-  product: { x: 566, y: 329 },
+  trust: { x: 262, y: 112 },
+  acquisition: { x: 403, y: 200 },
+  retention: { x: 276, y: 322 },
+  capacity: { x: 218, y: 524 },
+  operations: { x: 395, y: 460 },
+  systems: { x: 530, y: 577 },
+  clarity: { x: 498, y: 104 },
+  product: { x: 587, y: 328 },
 };
 
 export const PATHWAY_ANCHORS: Record<Pathway, Point> = {
-  brandWeb: { x: 712, y: 170 },
-  customersGrowth: { x: 738, y: 310 },
-  operationsAI: { x: 720, y: 473 },
-  newProduct: { x: 738, y: 607 },
+  brandWeb: { x: 784, y: 126 },
+  customersGrowth: { x: 800, y: 304 },
+  operationsAI: { x: 795, y: 513 },
+  newProduct: { x: 798, y: 650 },
 };
 
 // Latent semantic relationships (§10).

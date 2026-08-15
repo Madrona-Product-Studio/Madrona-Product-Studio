@@ -126,7 +126,7 @@
 .sa-body {
   flex: 1;
   display: grid;
-  grid-template-columns: minmax(420px, 1fr) minmax(520px, 1.35fr);
+  grid-template-columns: minmax(400px, 0.85fr) minmax(560px, 1.5fr);
   min-height: 0;
 }
 
@@ -145,11 +145,15 @@
 
 /* ---- Workspace ---- */
 .sa-work {
-  padding: 46px clamp(28px, 3.4vw, 56px);
+  padding: 36px clamp(28px, 3.4vw, 56px) 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* `safe` keeps the top reachable (and CTAs above the fold) when the
+     content is taller than the column — it scrolls instead of clipping. */
+  justify-content: safe center;
   min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .sa-eyebrow {
@@ -165,14 +169,14 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--a-text-3);
-  margin: 0 0 26px;
+  margin: 0 0 20px;
   font-variant-numeric: tabular-nums;
 }
 
 .sa h1 {
   font-family: "Fraunces", Georgia, serif;
   font-weight: 500;
-  font-size: clamp(30px, 2.7vw, 44px);
+  font-size: clamp(28px, 2.4vw, 40px);
   line-height: 1.04;
   letter-spacing: -0.02em;
   margin: 0 0 14px;
@@ -184,7 +188,7 @@
   font-size: 15px;
   line-height: 1.55;
   color: var(--a-text-2);
-  margin: 0 0 30px;
+  margin: 0 0 24px;
   max-width: 46ch;
 }
 .sa-deck {
@@ -195,17 +199,17 @@
 .sa-answers {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 30px;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 .sa-answer {
   position: relative;
   display: flex;
   align-items: center;
   gap: 14px;
-  min-height: 60px;
+  min-height: 52px;
   text-align: left;
-  padding: 13px 16px;
+  padding: 11px 16px;
   border: 1px solid var(--a-border);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.018);
@@ -448,7 +452,7 @@
 /* ---- Brain column ---- */
 .sa-brain {
   border-left: 1px solid var(--a-border);
-  padding: 30px clamp(20px, 2.4vw, 34px);
+  padding: 24px clamp(14px, 1.6vw, 24px);
   display: flex;
   flex-direction: column;
   min-width: 0;
