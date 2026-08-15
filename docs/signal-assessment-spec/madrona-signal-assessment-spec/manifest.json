@@ -1,0 +1,19 @@
+{
+  "package": "Madrona Signal Assessment Specification",
+  "created": "2026-08-14",
+  "files": [
+    "00-START-HERE.md",
+    "01-ENGINE-SPEC.md",
+    "02-INTERFACE-MOTION-SPEC.md",
+    "03-SIGNAL-BRAIN-SPEC.md",
+    "04-CONTENT-COPY.md",
+    "reference-signal-brain.png"
+  ],
+  "recommended_read_order": [
+    "00-START-HERE.md",
+    "01-ENGINE-SPEC.md",
+    "02-INTERFACE-MOTION-SPEC.md",
+    "03-SIGNAL-BRAIN-SPEC.md",
+    "04-CONTENT-COPY.md"
+  ]
+}
