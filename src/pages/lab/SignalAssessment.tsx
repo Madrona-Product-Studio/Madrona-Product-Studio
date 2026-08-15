@@ -8,9 +8,7 @@ import type { BrainMode, SignalBrainHandle } from "../../components/assessment/S
 import type { Signal } from "../../assessment/types.ts";
 import { QUESTIONS } from "../../assessment/data/questions.ts";
 import { PATHWAY_COPY } from "../../assessment/data/pathways.ts";
-import { serviceAreas } from "../../data/services.ts";
 import { BOOKING_URL, CAL_LINK } from "../../data/booking.ts";
-import type { Pathway } from "../../assessment/types.ts";
 
 // Same swap point the rest of the site uses: cal.com when configured,
 // otherwise the contact page.
@@ -57,34 +55,6 @@ const LEVEL_NOTES: Record<string, string> = {
   Emerging: "A pattern taking shape",
   Supporting: "Present in the background",
 };
-
-/** Assessment pathway → the site's service area (src/data/services.ts). */
-const PATHWAY_SERVICE: Record<Pathway, string> = {
-  brandWeb: "brand-and-web",
-  customersGrowth: "customers-and-growth",
-  operationsAI: "operations-and-ai",
-  newProduct: "new-products",
-};
-
-/** The user's own words: symptom answers ranked by evidence weight, top 4. */
-function whatWeHeard(answers: AnswerMap): string[] {
-  const symptomQuestions = ["q2-friction", "q3-reality", "q4-time", "q6-workaround"];
-  const heard: { label: string; weight: number }[] = [];
-  for (const qid of symptomQuestions) {
-    const q = QUESTIONS.find((x) => x.id === qid);
-    if (!q) continue;
-    for (const id of answerIds(answers, qid)) {
-      const a = q.answers.find((x) => x.id === id);
-      if (!a) continue;
-      const weight = Object.values(a.weights).reduce((s, w) => s + Math.max(0, w ?? 0), 0);
-      heard.push({ label: a.label, weight });
-    }
-  }
-  return heard
-    .sort((a, b) => b.weight - a.weight)
-    .slice(0, 4)
-    .map((h) => h.label);
-}
 
 function usePrefersReducedMotion(): boolean {
   const [reduced, setReduced] = useState(
@@ -253,11 +223,20 @@ export default function SignalAssessment() {
           <Link to="/" className="sa-wordmark" aria-label="Madrona Product Studio home">
             <MadronaLogo variant="horizontal-reversed" decorative />
           </Link>
-          {stage.kind !== "intro" && (
+          {showResult ? (
+            <p className="sa-complete">
+              <i aria-hidden="true">
+                <svg viewBox="0 0 10 10">
+                  <path d="M2 5.2 4.2 7.4 8 3" />
+                </svg>
+              </i>
+              Assessment complete
+            </p>
+          ) : stage.kind !== "intro" && (
             <nav className="sa-phases" aria-label="Assessment progress">
               {RAIL_PHASES.map((phase, i) => {
-                const done = i < activePhase || (i === 3 && stage.kind === "result");
-                const active = i === activePhase && !(i === 3 && stage.kind === "result");
+                const done = i < activePhase;
+                const active = i === activePhase;
                 return (
                   <span
                     key={phase.title}
@@ -368,84 +347,35 @@ export default function SignalAssessment() {
             </section>
           )}
 
-          {showResult && result && (() => {
-            const service = serviceAreas.find(
-              (s) => s.id === PATHWAY_SERVICE[result.archetype.primaryPathway],
-            );
-            const heard = whatWeHeard(answers);
-            return (
-              <section className="sa-result sa-enter" aria-labelledby="sa-r">
-                <div className="sa-result-cols">
-                  <div className="sa-result-main">
-                    <p className="sa-eyebrow">Your current pattern</p>
-                    <h1 id="sa-r" ref={headingRef} tabIndex={-1}>
-                      {result.archetype.name}
-                    </h1>
-                    <p className="sa-interpretation">{result.archetype.short}</p>
+          {showResult && result && (
+            <section className="sa-result sa-enter" aria-labelledby="sa-r">
+              <p className="sa-eyebrow">Your current pattern</p>
+              <h1 id="sa-r" ref={headingRef} tabIndex={-1}>
+                {result.archetype.name}
+              </h1>
+              <p className="sa-interpretation">{result.archetype.short}</p>
 
-                    {heard.length > 0 && (
-                      <div className="sa-heard">
-                        <h2>What you told us</h2>
-                        <ul>
-                          {heard.map((line) => (
-                            <li key={line}>{line}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="sa-result-help">
-                    <h2>How we can help</h2>
-                    <p className="sa-help-door">
-                      {PATHWAY_COPY[result.archetype.primaryPathway].name}
-                    </p>
-                    <p className="sa-help-outcome">
-                      {PATHWAY_COPY[result.archetype.primaryPathway].short}
-                    </p>
-
-                    <div className="sa-first-move">
-                      <h3>Recommended first move</h3>
-                      <p className="sa-rec-title">{result.recommendation.title}</p>
-                      <p className="sa-rec-desc">{result.recommendation.description}</p>
-                    </div>
-
-                    <div className="sa-cta-block">
-                      <p className="sa-cta-note">
-                        Bring your result into a focused conversation with
-                        Madrona. We’ll pressure-test the read and talk about
-                        whether there’s a useful next step.
-                      </p>
-                      {BOOK_EXTERNAL ? (
-                        <a className="sa-primary sa-primary--wide" href={BOOK_HREF}>
-                          Talk through this result <span aria-hidden="true">→</span>
-                        </a>
-                      ) : (
-                        <Link className="sa-primary sa-primary--wide" to={BOOK_HREF}>
-                          Talk through this result <span aria-hidden="true">→</span>
-                        </Link>
-                      )}
-                      <p className="sa-cta-fine">
-                        A 30-minute conversation. No email required. Your answers stay in this session.
-                      </p>
-                    </div>
-
-                    <p className="sa-help-includes">Work this often includes</p>
-                    <ul className="sa-help-items">
-                      {(service ? service.homepageItems : PATHWAY_COPY[result.archetype.primaryPathway].capabilities).map(
-                        (item) => (
-                          <li key={item}>{item}</li>
-                        ),
-                      )}
-                    </ul>
-                    <Link className="sa-quiet-link" to="/consulting">
-                      Learn how we work
-                    </Link>
-                  </div>
-                </div>
-              </section>
-            );
-          })()}
+              <div className="sa-first-move">
+                <h2>Recommended first move</h2>
+                <p className="sa-rec-title">{result.recommendation.title}</p>
+                <p className="sa-rec-desc">{result.recommendation.description}</p>
+                <p className="sa-rec-context">
+                  <strong>{PATHWAY_COPY[result.archetype.primaryPathway].name}.</strong>{" "}
+                  {PATHWAY_COPY[result.archetype.primaryPathway].short}
+                </p>
+                {BOOK_EXTERNAL ? (
+                  <a className="sa-primary sa-primary--wide" href={BOOK_HREF}>
+                    Talk through this result <span aria-hidden="true">→</span>
+                  </a>
+                ) : (
+                  <Link className="sa-primary sa-primary--wide" to={BOOK_HREF}>
+                    Talk through this result <span aria-hidden="true">→</span>
+                  </Link>
+                )}
+                <p className="sa-cta-fine">A 30-minute conversation. No email required.</p>
+              </div>
+            </section>
+          )}
         </main>
 
         {/* ---- Signal Brain ---- */}
@@ -453,7 +383,7 @@ export default function SignalAssessment() {
           <header className="sa-brain-head">
             {showResult ? (
               <>
-                <p className="sa-live sa-live--resolved">The throughline</p>
+                <p className="sa-live sa-live--resolved">Why this result</p>
                 <p className="sa-brain-sub">Where your answers converged.</p>
               </>
             ) : (
@@ -500,9 +430,8 @@ export default function SignalAssessment() {
                 : null;
             return (
             <>
-              <p className="sa-key-label">What that adds up to</p>
               <ul className="sa-signals">
-                {result.topSignals.map((t) => (
+                {result.topSignals.map((t, i) => (
                   <li key={t.signal}>
                     <button
                       className={`sa-signal-key${focusedSignal === t.signal ? " is-focused" : ""}`}
@@ -516,16 +445,14 @@ export default function SignalAssessment() {
                       aria-pressed={focusedSignal === t.signal}
                     >
                       <span>{t.label}</span>
-                      <em className={`sa-level sa-level--${t.level.toLowerCase()}`}>{t.level}</em>
-                      <small>{LEVEL_NOTES[t.level]}</small>
+                      <small>{i === 0 ? "Your clearest signal" : LEVEL_NOTES[t.level]}</small>
                     </button>
                   </li>
                 ))}
               </ul>
               {closeSecond && (
                 <div className="sa-also">
-                  <p className="sa-key-label">A close second</p>
-                  <p className="sa-also-name">{PATHWAY_COPY[closeSecond].name}</p>
+                  <p className="sa-also-name">Close second: {PATHWAY_COPY[closeSecond].name}</p>
                   <p className="sa-also-note">
                     Your answers kept this pathway close behind. Worth bringing
                     into the same conversation.
@@ -542,9 +469,14 @@ export default function SignalAssessment() {
           )}
           {showResult && (
             <div className="sa-retake">
-              <button className="sa-back" onClick={restart}>
-                Retake the assessment
-              </button>
+              <div className="sa-retake-links">
+                <button className="sa-back" onClick={restart}>
+                  Retake the assessment
+                </button>
+                <Link className="sa-quiet-link" to="/consulting">
+                  Learn how we work
+                </Link>
+              </div>
               <p>This assessment maps patterns in your answers to common business opportunities.</p>
             </div>
           )}

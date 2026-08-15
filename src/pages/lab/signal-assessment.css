@@ -115,6 +115,36 @@
   color: var(--a-text-3);
   flex: none;
 }
+/* Result header: the rail's four checks collapse into one quiet confirmation. */
+.sa-complete {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 0 auto;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--a-text-2);
+}
+.sa-complete i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--a-green);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+.sa-complete i svg {
+  width: 8px;
+  height: 8px;
+  fill: none;
+  stroke: #0b120f;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .sa-phases + .sa-top-note {
   margin-left: 0;
 }
@@ -360,9 +390,9 @@
   font-size: clamp(26px, 2.2vw, 36px);
 }
 
-/* ---- Result: everything above the fold ---- */
+/* ---- Result: one verdict, one card, one action ---- */
 .sa-result h1 {
-  font-size: clamp(30px, 2.6vw, 44px);
+  font-size: clamp(30px, 2.8vw, 46px);
   margin-bottom: 14px;
 }
 .sa-interpretation {
@@ -370,109 +400,34 @@
   line-height: 1.55;
   color: var(--a-text-2);
   max-width: 46ch;
-  margin: 0 0 26px;
+  margin: 0 0 28px;
 }
-.sa-result-cols {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: clamp(26px, 3vw, 52px);
-  align-items: start;
-}
-.sa-result h2 {
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--a-text-3);
-  font-weight: 600;
-  margin: 0 0 12px;
-}
-.sa-heard {
-  border-top: 1px solid var(--a-border);
-  padding-top: 16px;
-}
-.sa-heard ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-.sa-heard li {
-  border-left: 2px solid rgba(130, 208, 170, 0.4);
-  padding: 3px 0 3px 12px;
-  font-size: 13.5px;
-  line-height: 1.45;
-  color: var(--a-text-2);
-}
-.sa-result-help {
-  border-left: 1px solid var(--a-border);
-  padding-left: clamp(24px, 2.6vw, 44px);
-}
-.sa-help-door {
-  font-family: "Fraunces", Georgia, serif;
-  font-weight: 500;
-  font-size: 24px;
-  margin: 0 0 6px;
-  color: var(--a-text);
-}
-.sa-help-outcome {
-  font-size: 13.5px;
-  line-height: 1.5;
-  color: var(--a-text-2);
-  margin: 0 0 18px;
-  max-width: 44ch;
-}
-/* Quiet card: the orange belongs to the CTA button below, not the chrome. */
+/* The one card on the screen: recommendation and CTA as a single unit. */
 .sa-first-move {
   border: 1px solid var(--a-border-strong);
   background: rgba(255, 255, 255, 0.02);
-  border-radius: 12px;
-  padding: 13px 16px;
-  margin-bottom: 16px;
+  border-radius: 14px;
+  padding: 18px 20px 16px;
+  max-width: 52ch;
 }
-.sa-first-move h3 {
+.sa-first-move h2 {
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--a-orange-bright);
   font-weight: 600;
-  margin: 0 0 6px;
+  margin: 0 0 8px;
 }
-.sa-help-items {
-  list-style: none;
-  margin: 0 0 14px;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 7px 16px;
-}
-.sa-help-items li {
+.sa-rec-context {
   font-size: 12.5px;
-  color: var(--a-text-2);
-  padding-left: 14px;
-  position: relative;
-}
-.sa-help-items li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 7px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--a-green);
-}
-/* One conversion: the book-a-chat block sits where motivation peaks. */
-.sa-cta-block {
-  margin: 0 0 20px;
-}
-.sa-cta-note {
-  font-size: 13px;
   line-height: 1.5;
+  color: var(--a-text-3);
+  margin: 10px 0 16px;
+  max-width: 46ch;
+}
+.sa-rec-context strong {
   color: var(--a-text-2);
-  margin: 0 0 12px;
-  max-width: 42ch;
+  font-weight: 600;
 }
 .sa-primary--wide {
   width: 100%;
@@ -486,14 +441,6 @@
   margin: 10px 0 0;
   text-align: center;
 }
-.sa-help-includes {
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--a-text-3);
-  font-weight: 600;
-  margin: 0 0 10px;
-}
 .sa-quiet-link {
   font-size: 12.5px;
   color: var(--a-text-3);
@@ -505,8 +452,14 @@
   color: var(--a-text-2);
 }
 .sa-retake {
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--a-border);
+}
+.sa-retake-links {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
 }
 .sa-retake .sa-back {
   padding-left: 0;
@@ -529,45 +482,6 @@
   flex-direction: column;
   gap: 10px;
 }
-.sa-signals li {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2px 12px;
-  font-size: 14.5px;
-  color: var(--a-text);
-}
-.sa-signals small {
-  grid-column: 1 / -1;
-  color: var(--a-text-3);
-  font-size: 12px;
-}
-.sa-level {
-  font-style: normal;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 999px;
-  align-self: center;
-}
-.sa-level--strong {
-  color: var(--a-green-bright);
-  border: 1px solid rgba(130, 208, 170, 0.4);
-}
-.sa-level--emerging {
-  color: var(--a-orange-bright);
-  border: 1px solid rgba(238, 147, 106, 0.35);
-}
-.sa-level--supporting {
-  color: var(--a-text-3);
-  border: 1px solid var(--a-border-strong);
-}
-.sa-pathway {
-  font-size: 19px;
-  font-weight: 600;
-  margin: 0 0 6px;
-}
-.sa-pathway-short,
 .sa-rec-desc {
   font-size: 14px;
   line-height: 1.55;
@@ -622,9 +536,12 @@
   min-height: 40px;
 }
 
-/* ---- Result: report leads; the map becomes a snapshot column ---- */
+/* ---- Result: the verdict leads; the map is a supporting exhibit ---- */
 .sa--result .sa-body {
-  grid-template-columns: minmax(620px, 1.7fr) minmax(340px, 1fr);
+  grid-template-columns: minmax(460px, 1.2fr) minmax(400px, 1fr);
+}
+.sa--result .sa-top-note {
+  display: none;
 }
 .sa--result .sa-work {
   justify-content: safe center;
@@ -640,27 +557,18 @@
   width: 100%;
   max-height: min(34vh, 320px);
 }
+/* Quiet at result: orange belongs to the verdict and the CTA, not the rail. */
 .sa-live--resolved {
-  color: var(--a-orange-bright);
+  color: var(--a-text-2);
 }
-.sa-key-label {
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--a-text-3);
-  font-weight: 600;
-  margin: 10px 0 6px;
+.sa-brain .sa-signals {
+  margin: 10px 0 4px;
+  gap: 4px;
   border-top: 1px solid var(--a-border);
   padding-top: 10px;
 }
-.sa-brain .sa-signals {
-  margin: 0 0 4px;
-  gap: 4px;
-}
 .sa-signal-key {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0 12px;
+  display: block;
   width: 100%;
   text-align: left;
   background: none;
@@ -672,13 +580,17 @@
   font-size: 13px;
   transition: background 160ms ease, border-color 160ms ease;
 }
+.sa-signal-key span {
+  display: block;
+}
+/* Strength reads through order, not badges: the top signal leads. */
+.sa-signals li:first-child .sa-signal-key span {
+  font-weight: 600;
+}
 .sa-signal-key small {
-  grid-column: 1 / -1;
+  display: block;
   color: var(--a-text-3);
   font-size: 11px;
-}
-.sa-signal-key em {
-  align-self: center;
 }
 .sa-signal-key:hover,
 .sa-signal-key.is-focused {
@@ -689,9 +601,13 @@
   outline: 2px solid var(--a-green);
   outline-offset: 1px;
 }
+.sa-also {
+  margin-top: 10px;
+  padding: 0 10px;
+}
 .sa-also-name {
   margin: 0 0 2px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--a-text);
 }
@@ -774,18 +690,9 @@
     font-size: clamp(32px, 9vw, 42px);
   }
   /* The result grid's two-class selector outranks the plain .sa-body rule
-     above; restate it or the 620px column forces horizontal overflow. */
+     above; restate it or the fixed column minimums force horizontal overflow. */
   .sa--result .sa-body {
     grid-template-columns: 1fr;
-  }
-  .sa-result-cols {
-    grid-template-columns: 1fr;
-  }
-  .sa-result-help {
-    border-left: 0;
-    padding-left: 0;
-    border-top: 1px solid var(--a-border);
-    padding-top: 20px;
   }
 }
 
