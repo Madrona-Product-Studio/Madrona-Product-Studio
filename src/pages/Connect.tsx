@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 import PageMeta from "../components/PageMeta";
 import { BOOKING_URL, TEXT_NUMBER } from "../data/booking";
 
-declare global {
-  interface Window {
-    gtag?: (command: string, event: string, params?: Record<string, unknown>) => void;
-  }
-}
+// Window.gtag is declared once, globally, in src/assessment/analytics.ts.
 
 type Status = "idle" | "submitting" | "success" | "error";
 

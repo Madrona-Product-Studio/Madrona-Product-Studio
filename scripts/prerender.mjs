@@ -127,6 +127,12 @@ const pages = {
     ogImage: '/og-pov-under-the-hood.png',
     body: 'Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new.',
   },
+  '/open': {
+    title: 'Open — our tools, free to use · Madrona Product Studio',
+    description: 'Open-source Claude Code plugins from Madrona Product Studio: a forkable plain-text operating system kept current by agents, plus the craft catalog we ship polished product with — motion, social images, launch readiness, visual QA. MIT licensed.',
+    h1: 'Open.',
+    body: 'Tools we build and use every day, shared because that is what being part of the community is. The belief behind them: the machine is the artifact. The flagship is operating-system, the plain-text engine we run our own studio on — you own the mind; the app renders it. The craft catalog covers motion options, animation vocabulary and review, Open Graph images, a Playwright screenshotter for visual QA, investor-ready audits, go-to-market sweeps, and pre-share cleanup. Install once with the Claude Code plugin marketplace: /plugin marketplace add Madrona-Product-Studio/madrona-open.',
+  },
   '/connect': {
     title: 'Connect · Madrona Product Studio',
     description: 'Book a 30-minute call or send us a message about your project. Every path begins with a free 30-minute conversation with a published agenda.',
