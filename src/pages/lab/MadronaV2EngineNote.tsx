@@ -39,10 +39,10 @@ const STRATA = [
 // becoming its own field note. Keep p as the proof aphorism; swap it for a
 // link line as each write-up publishes.
 const PARTS = [
-  { n: "The bootstrap", path: "start dialed-in", d: "A template every new app copies on day one: strict TypeScript, tests, CI, accessibility, security headers, SEO, and a performance budget — pre-wired and verified green before the first feature exists.", p: "standards inherited, not rediscovered" },
-  { n: "One monitoring setup", path: "the smoke detector", d: "Sentry on client and server, a tiny health endpoint in every app, an external uptime check, one alert destination. Written down once, applied by stakes — the app that takes money gets covered first.", p: "first field note — landing soon" },
-  { n: "One design intelligence layer", path: "taste, installed", d: "Curated design skills — motion, premium visual direction, a design-audit orchestrator — installed as agent plugins, so every project starts with the same design judgment.", p: "installed once, every product benefits" },
-  { n: "The image system", path: "art director + engine", d: "Marketing imagery as a machine: layout and type built in code, atmosphere generated, quality gates in between. The system produces the images; we direct it.", p: "already written up — read it below" },
+  { n: "The bootstrap", path: "start dialed-in", d: "A template every new app copies on day one: strict TypeScript, tests, CI, accessibility, security headers, SEO, and a performance budget, pre-wired and verified green before the first feature exists.", p: "standards inherited, not rediscovered" },
+  { n: "One monitoring setup", path: "the smoke detector", d: "Sentry on client and server, a tiny health endpoint in every app, an external uptime check, one alert destination. Written down once, applied by stakes: the app that takes money gets covered first.", p: "first field note, landing soon" },
+  { n: "One design intelligence layer", path: "taste, installed", d: "Curated design skills (motion, premium visual direction, a design-audit orchestrator) installed as agent plugins, so every project starts with the same design judgment.", p: "installed once, every product benefits" },
+  { n: "The image system", path: "art director + engine", d: "Marketing imagery as a machine: layout and type built in code, atmosphere generated, quality gates in between. The system produces the images; we direct it.", p: "already written up, read it below" },
 ];
 
 const APPS = [
@@ -212,7 +212,7 @@ export default function MadronaV2EngineNote() {
           <p className="m2-ab4-statement">The parts, if you want to set this up yourself.</p>
           <div className="m2-ab4-body">
             <p>The engine sounds abstract until you name the parts. These four do most of the work, and none of them needs a team: a day of setup each, then they pay you back on every product after.</p>
-            <p>We are writing each one up as its own field note — the real setup, the real prices, the mistakes included. This page collects them as they land.</p>
+            <p>We are writing each one up as its own field note: the real setup, the real prices, the mistakes included. This page collects them as they land.</p>
           </div>
         </div>
         <div className="m2-pb-figure">
