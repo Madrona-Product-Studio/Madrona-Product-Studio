@@ -35,6 +35,16 @@ const STRATA = [
   { n: "Learned checks", path: "the compounding layer", d: "Twenty-plus dated findings banked from real launches, folded back into the playbooks. The engine gets smarter with every product.", p: "what AI alone can never fake" },
 ];
 
+// The hub layer: the four components someone would actually set up, each
+// becoming its own field note. Keep p as the proof aphorism; swap it for a
+// link line as each write-up publishes.
+const PARTS = [
+  { n: "The bootstrap", path: "start dialed-in", d: "A template every new app copies on day one: strict TypeScript, tests, CI, accessibility, security headers, SEO, and a performance budget, pre-wired and verified green before the first feature exists.", p: "standards inherited, not rediscovered" },
+  { n: "One monitoring setup", path: "the smoke detector", d: "Sentry on client and server, a tiny health endpoint in every app, an external uptime check, one alert destination. Written down once, applied by stakes: the app that takes money gets covered first.", p: "first field note, landing soon" },
+  { n: "One design intelligence layer", path: "taste, installed", d: "Curated design skills (motion, premium visual direction, a design-audit orchestrator) installed as agent plugins, so every project starts with the same design judgment.", p: "installed once, every product benefits" },
+  { n: "The image system", path: "art director + engine", d: "Marketing imagery as a machine: layout and type built in code, atmosphere generated, quality gates in between. The system produces the images; we direct it.", p: "already written up, read it below" },
+];
+
 const APPS = [
   { an: "Lila Trips", as: "AI travel planning · live" },
   { an: "San Juan Boating", as: "local guide · live" },
@@ -191,6 +201,35 @@ export default function MadronaV2EngineNote() {
             </div>
             <div className="m2-pb-bpreturn"><i>↩</i><span>04 → 05 → 01: what shipping teaches us becomes part of the platform</span></div>
             <div className="m2-pb-bpnote"><span>fig. 2 — the madrona engine: encoded judgment, executed with AI, held to gates</span><span>rev 2026-08</span></div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4 · The parts — the hub layer: each component links out to its field note as it lands */}
+      <section className="m2-ab4 m2-ab4-sec">
+        <div className="m2-ab4-rail">
+          <p className="m2-kicker m2-who-kicker">Build your own</p>
+          <p className="m2-ab4-statement">The parts, if you want to set this up yourself.</p>
+          <div className="m2-ab4-body">
+            <p>The engine sounds abstract until you name the parts. These four do most of the work, and none of them needs a team: a day of setup each, then they pay you back on every product after.</p>
+            <p>We are writing each one up as its own field note: the real setup, the real prices, the mistakes included. This page collects them as they land.</p>
+          </div>
+        </div>
+        <div className="m2-pb-figure">
+          <div className="m2-pb-board">
+            <div className="m2-pb-strata">
+              {PARTS.map((s) => (
+                <div key={s.n} className="m2-pb-stratum">
+                  <div className="sn">{s.n}<small>{s.path}</small></div>
+                  <div className="sd">{s.d}</div>
+                  <div className="sp">{s.p}</div>
+                </div>
+              ))}
+            </div>
+            <div className="m2-th-close-links">
+              <Link className="m2-text-link" to="/thinking/solve-the-system-not-the-symptom">Read: Solve the system, not the symptom <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/open">The tools, ready to install <span aria-hidden="true">→</span></Link>
+            </div>
           </div>
         </div>
       </section>
