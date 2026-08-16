@@ -15,7 +15,8 @@ const LINKS: { href: string; label: string; key: NavKey; primary?: boolean }[] =
   { href: "/consulting", label: "How we help", key: "consulting" },
   { href: "/apps", label: "Our products", key: "apps" },
   { href: "/thinking", label: "Thinking", key: "pov" },
-  { href: "/open", label: "Open", key: "open" },
+  // "Open" is out of the nav while the /open page gets redesigned (2026-08-15).
+  // The page stays live — /thinking essays and /consulting still deep-link it.
   { href: "/about", label: "About Us", key: "about" },
 ];
 
