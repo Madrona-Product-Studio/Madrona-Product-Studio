@@ -1,7 +1,23 @@
 # Madrona Product Studio — Site Backlog
 
+## Madrona Open × engine hub — state + queue (handoff 2026-08-15)
+
+**What's live (all shipped + verified 2026-08-15):**
+- `madrona-open` is **public**: github.com/Madrona-Product-Studio/madrona-open — installable plugin marketplace (9 plugins, per-plugin READMEs, real `claude plugin validate` in CI). Install: `/plugin marketplace add Madrona-Product-Studio/madrona-open`.
+- `/open` page is live, prerendered, in the sitemap — but **pulled from the primary nav** (PR #17; Charlie doesn't like the page yet — see queue item 1). Deep links remain: /consulting Operate ("The tools behind this are open source"), agentic-ops essay close, engine essay close.
+- **The engine essay (/thinking/under-the-hood) is the hub** for the "set up an AI-forward studio" series (Charlie's call — no separate pillar piece). It gained the "Build your own / The parts, if you want to set this up yourself" section (PR #15): bootstrap · monitoring · design intelligence layer · image system, each row's aphorism slot swaps to a link as its field note publishes.
+
+**The queue (in order):**
+- [ ] **1. Redesign /open** — Charlie: "I don't love it." Diagnosis to test: it's the only pure card-grid page on the site — no artifact imagery, no diagram, no madrona flash, none of the labeled two-column spreads (see CLAUDE.md anti-flatness rule). Run `/design:design-audit` on the page, or build 2–3 genuinely distinct directions and screenshot side-by-side for Charlie to pick (motion-gate style). **When it lands, restore the nav entry** — one-liner in `src/pages/lab/M2Nav.tsx` (commented where it was).
+- [ ] **2. Sentry field note** — draft v1 written, awaiting Charlie's voice pass: `~/Developer/hq/charlie-hq/thinking/madrona/writing/one-monitoring-setup-draft-v1.md` (grounded in `madrona-studio/capabilities/observability-sentry/`; honest framing = one standard applied by stakes, NOT full-fleet coverage — don't re-inflate). After the pass: build as a /thinking page (component + thinking-content.json + prerender entry + Article JSON-LD + OG card via /og-image), then swap the hub row's "first field note — landing soon" aphorism for the link.
+- [ ] **3. Bootstrap field note** — draft next (source: `madrona-studio/bootstrap/NEW-APP.md` + `bootstrap/template/`). Same publish pattern; swap its hub-row aphorism.
+- [ ] **4. Design-intelligence-layer field note** — source: `madrona-design` repo (CATALOG.md, design-audit orchestrator).
+- [ ] **5. Image-studio: genericize → publish to madrona-open → field note last** — the 8/13 open-source strategy named it the flagship; it's still absent from the public catalog. Its hub row currently points at Solve-the-system (fine until then).
+
+**Standing rule for this series:** exports in madrona-open are genericized, leak-scanned copies regenerated from studio canonicals — port lessons, never hand-edit only there. Every published field note follows the site pattern: prerender entry, OG card, Charlie voice pass before merge.
+
 ## In flight
-- [ ] **Our POV section (`feature/playbook` branch, unmerged)** — the studio feed at /pov with four articles on the Thesis content template: the Product Thesis, Madrona: under the hood, The era of agentic operations, A starter guide to building with AI. Charlie is iterating before merge; two more pieces (launch checklist, Madrona Principles) sit in the drawer as unrouted components.
+- [x] **Our POV section — shipped as `/thinking`** (four articles live: Thesis, Under the hood, Agentic operations, Starter guide; /pov and /current redirect). Leftover from the original plan: launch checklist + Madrona Principles still sit in the drawer as unrouted components.
 
 ## SEO & Discoverability
 - [ ] **NEXT: Google Search Console access** — verify the domain + service-account API access so we can see which queries the /pov articles (a deliberate traffic play) rank and get clicked for. Same setup pattern as the Vercel analytics tool in `~/.claude-tools/analytics/`.
