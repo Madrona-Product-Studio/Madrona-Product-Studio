@@ -210,7 +210,6 @@ export default function MadronaV2SystemNote() {
             </Prose>
             <div className="m2-th-close-links">
               <Link className="m2-text-link" to="/open">See the machines we've shared: Madrona Open <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/thinking/the-era-of-agentic-operations">Read next: The era of agentic operations <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
