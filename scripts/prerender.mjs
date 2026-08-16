@@ -121,11 +121,11 @@ const pages = {
   },
   '/thinking/under-the-hood': {
     title: 'The engine behind everything we ship — how we build software with AI · Madrona Product Studio',
-    description: 'Inside an AI-assisted software development process that ships real products: the platform every project inherits, the quality gates that hold the bar, and the learning loop that compounds with every launch.',
-    article: { datePublished: '2026-08-05', dateModified: '2026-08-07' },
+    description: 'Inside an AI-assisted software development process that ships real products: the bootstrap template, one monitoring setup across the whole portfolio, installed design skills, and the image system — the platform every project inherits, and how to set the same thing up yourself.',
+    article: { datePublished: '2026-08-05', dateModified: '2026-08-15' },
     h1: 'The engine behind everything we ship.',
     ogImage: '/og-pov-under-the-hood.png',
-    body: 'Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new.',
+    body: 'Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new. The parts, if you want to set this up yourself: a bootstrap template with standards pre-wired and verified green, one monitoring setup (Sentry, health endpoints, uptime checks, one alert destination) applied by stakes across the portfolio, a design intelligence layer installed as agent plugins, and an image system that builds type in code and generates atmosphere. Each part is becoming its own field note; this page collects them as they land.',
   },
   '/open': {
     title: 'Open — our tools, free to use · Madrona Product Studio',
