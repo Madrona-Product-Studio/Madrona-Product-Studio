@@ -3,14 +3,23 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
+import PovThumb from "./PovThumb";
+import {
+  ArticleHeader,
+  ArticleBody,
+  ArticleSection,
+  Prose,
+  Figure,
+  type TocItem,
+} from "./ArticleTemplate";
 import "./madrona-v2.css";
+import "./playbook.css";
 
-// The Product Builder Thesis — public articulation of the working theory.
-// Source of truth: charlie-hq thinking/madrona/foundation/product-builder-thesis.md.
-// Layout follows the About V4 language: labeled two-column spreads (rail with
-// kicker + serif statement left, structured content right), hairline rhythm.
-// Internal sections of the source doc (career positioning, guardrails,
-// evidence lists) intentionally stay out of the public rendering.
+// The Madrona Product Thesis — the belief layer, on the /thinking reading
+// template. Source of truth: charlie-hq thinking/madrona/foundation. Copy and
+// figures preserved verbatim; the two-column spreads are re-housed in the
+// single-column template (icon rows, constraint chips, the stage ladder).
+// Internal sections of the source doc stay out of the public rendering.
 
 const I = ({ d }: { d: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
@@ -60,114 +69,113 @@ const STAGES = [
   { num: "03", title: "Product building", body: "Small multidisciplinary teams own important problems end to end. AI is part of the operating model. Leadership focuses on clarity, learning, and outcomes." },
 ];
 
+const TOC: TocItem[] = [
+  { id: "core-thesis", label: "The core thesis" },
+  { id: "what-changed", label: "What changed" },
+  { id: "product-leadership", label: "Product leadership" },
+  { id: "evolution", label: "Evolution over revolution" },
+  { id: "where-we-point-it", label: "Where we point it" },
+];
+
 export default function MadronaV2Thesis() {
   useReveal();
 
   return (
-    <main className="m2 m2-ab-page">
+    <main className="m2 art">
       <LabMeta title="The Madrona Product Thesis · Madrona Product Studio" />
-      <M2Nav />
+      <M2Nav active="pov" />
 
-      {/* Hero */}
-      <section className="m2-ab4 m2-th-hero">
-        <p className="m2-kicker m2-who-kicker">A working theory</p>
-        <h1>The Madrona Product Thesis</h1>
-        <p className="m2-th-standfirst">A point of view on how great software gets built in the AI era, and what that changes about product leadership. It comes from building, and we revise it as the work teaches us.</p>
-        <p className="m2-th-byline"><Link to="/about">Charlie Koch</Link> · Founder, Madrona Product Studio · August 2026</p>
-      </section>
+      <div className="art-wrap">
+        <ArticleHeader
+          kicker="A working theory"
+          author="Charlie Koch"
+          meta={["5 min read", "August 2026"]}
+          title="The Madrona Product Thesis"
+          standfirst="A point of view on how great software gets built in the AI era, and what that changes about product leadership. It comes from building, and we revise it as the work teaches us."
+          toc={TOC}
+          visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="target" /></div></div>}
+        />
 
-      {/* 1 · The core thesis */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">The core thesis</p>
-          <p className="m2-ab4-statement">AI is not eliminating Product, Design, Engineering, or Research. It is expanding what each discipline can contribute as the cost of building software falls.</p>
-          <div className="m2-ab4-body">
-            <p>The strongest teams will not erase specialized craft. They will preserve the distinct perspectives of each discipline while making the boundaries between them more permeable.</p>
-            <p>Everyone builds, but they build different things.</p>
-          </div>
-        </div>
-        <ul className="m2-th4-rows">
-          {BUILDS.map((b) => (
-            <li key={b.who}>
-              <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={b.tone}><I d={b.icon} /></span>
-              <p><strong>{b.who}</strong> <span>{b.what}</span></p>
-            </li>
-          ))}
-        </ul>
-      </section>
+        <ArticleBody share={{ title: "The Madrona Product Thesis", href: "/thesis" }}>
+          <ArticleSection id="core-thesis" num="1" eyebrow="The core thesis" title="AI is not eliminating Product, Design, Engineering, or Research. It is expanding what each discipline can contribute as the cost of building software falls.">
+            <Prose>
+              <p>The strongest teams will not erase specialized craft. They will preserve the distinct perspectives of each discipline while making the boundaries between them more permeable.</p>
+              <p>Everyone builds, but they build different things.</p>
+            </Prose>
+            <Figure>
+              <ul className="m2-th4-rows">
+                {BUILDS.map((b) => (
+                  <li key={b.who}>
+                    <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={b.tone}><I d={b.icon} /></span>
+                    <p><strong>{b.who}</strong> <span>{b.what}</span></p>
+                  </li>
+                ))}
+              </ul>
+            </Figure>
+          </ArticleSection>
 
-      {/* 2 · What changed */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">What changed</p>
-          <p className="m2-ab4-statement">The advantage is no longer shipping more software. It is learning faster through software.</p>
-          <div className="m2-ab4-body">
-            <p>For decades, software organizations optimized for specialization, scale, and coordinated handoffs. That made sense when software was expensive to build.</p>
-            <p>AI is changing the equation. The cost of prototyping, implementation, iteration, research synthesis, and validation is falling, and a small team can move from an important problem to working software far faster than before.</p>
-          </div>
-        </div>
-        <div className="m2-th4-constraints">
-          <p className="m2-th4-label">As execution gets cheaper, the real constraints shift toward:</p>
-          <ul className="m2-ab4-chips">
-            {CONSTRAINTS.map((c, i) => <li key={c} data-tone={["sprout", "storefront", "layers"][i % 3]}>{c}</li>)}
-          </ul>
-        </div>
-      </section>
+          <ArticleSection id="what-changed" num="2" eyebrow="What changed" title="The advantage is no longer shipping more software. It is learning faster through software.">
+            <Prose>
+              <p>For decades, software organizations optimized for specialization, scale, and coordinated handoffs. That made sense when software was expensive to build.</p>
+              <p>AI is changing the equation. The cost of prototyping, implementation, iteration, research synthesis, and validation is falling, and a small team can move from an important problem to working software far faster than before.</p>
+            </Prose>
+            <Figure>
+              <div className="m2-th4-constraints">
+                <p className="m2-th4-label">As execution gets cheaper, the real constraints shift toward:</p>
+                <ul className="m2-ab4-chips">
+                  {CONSTRAINTS.map((c, i) => <li key={c} data-tone={["sprout", "storefront", "layers"][i % 3]}>{c}</li>)}
+                </ul>
+              </div>
+            </Figure>
+          </ArticleSection>
 
-      {/* 3 · Product leadership */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">Product leadership is evolving</p>
-          <p className="m2-ab4-statement">The role of product leadership is to create the conditions for a multidisciplinary team to solve important customer problems.</p>
-          <div className="m2-ab4-body">
-            <p>The modern product leader is not primarily a backlog owner, a requirements writer, or a coordinator of functional handoffs. The role is becoming broader and more integrated.</p>
-          </div>
-        </div>
-        <ul className="m2-th4-rows">
-          {ROLE.map((r) => (
-            <li key={r.text}>
-              <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={r.tone}><I d={r.icon} /></span>
-              <p>{r.text}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+          <ArticleSection id="product-leadership" num="3" eyebrow="Product leadership is evolving" title="The role of product leadership is to create the conditions for a multidisciplinary team to solve important customer problems.">
+            <Prose>
+              <p>The modern product leader is not primarily a backlog owner, a requirements writer, or a coordinator of functional handoffs. The role is becoming broader and more integrated.</p>
+            </Prose>
+            <Figure>
+              <ul className="m2-th4-rows">
+                {ROLE.map((r) => (
+                  <li key={r.text}>
+                    <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={r.tone}><I d={r.icon} /></span>
+                    <p>{r.text}</p>
+                  </li>
+                ))}
+              </ul>
+            </Figure>
+          </ArticleSection>
 
-      {/* 4 · Evolution over revolution */}
-      <section className="m2-ab4 m2-ab4-sec m2-ab4-sec--full">
-        <div className="m2-th4-fullhead">
-          <p className="m2-kicker m2-who-kicker">Evolution over revolution</p>
-          <p className="m2-ab4-statement">Every team starts somewhere different. The goal is one stage forward.</p>
-          <p className="m2-ab4-railbody m2-th4-fullbody">This is not an argument that traditional product organizations are obsolete. Many companies have real constraints: existing systems, customers, compliance needs, organizational scale. The market is in transition, and the opportunity is to help teams move one meaningful stage forward from wherever they are today.</p>
-        </div>
-        <ol className="m2-ab4-cols m2-th4-stages">
-          {STAGES.map((s) => (
-            <li key={s.num}>
-              <p className="m2-th-stage-num">{s.num}</p>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
+          <ArticleSection id="evolution" num="4" eyebrow="Evolution over revolution" title="Every team starts somewhere different. The goal is one stage forward.">
+            <Prose>
+              <p>This is not an argument that traditional product organizations are obsolete. Many companies have real constraints: existing systems, customers, compliance needs, organizational scale. The market is in transition, and the opportunity is to help teams move one meaningful stage forward from wherever they are today.</p>
+            </Prose>
+            <Figure>
+              <ol className="m2-ab4-cols m2-th4-stages">
+                {STAGES.map((s) => (
+                  <li key={s.num}>
+                    <p className="m2-th-stage-num">{s.num}</p>
+                    <h3>{s.title}</h3>
+                    <p>{s.body}</p>
+                  </li>
+                ))}
+              </ol>
+            </Figure>
+          </ArticleSection>
 
-      {/* 5 · Where we point it */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">Where we point it</p>
-          <p className="m2-ab4-statement">AI is leverage. What matters is where we choose to apply it.</p>
-        </div>
-        <div className="m2-ab4-body m2-th4-point">
-          <p>The thesis is not only about how software gets built. It is about what is worth building. Problems that once required large organizations, enormous capital, or hundreds of people may now be approachable by small, experienced teams with conviction and judgment.</p>
-          <p>The hopeful part of this moment is not that companies can build more cheaply. It is that important problems may be more solvable than they have ever been.</p>
-          <p>Madrona exists to put this thesis into practice. Our products and client work are the evidence, and we share what we learn as we go. This is a working document; the moment it stops changing, it has stopped doing its job.</p>
-          <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/thinking/under-the-hood">Read next: The engine behind everything we ship <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/about">Why Madrona exists <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/consulting">How we put it into practice <span aria-hidden="true">→</span></Link>
-          </div>
-        </div>
-      </section>
+          <ArticleSection id="where-we-point-it" num="5" eyebrow="Where we point it" title="AI is leverage. What matters is where we choose to apply it.">
+            <Prose>
+              <p>The thesis is not only about how software gets built. It is about what is worth building. Problems that once required large organizations, enormous capital, or hundreds of people may now be approachable by small, experienced teams with conviction and judgment.</p>
+              <p>The hopeful part of this moment is not that companies can build more cheaply. It is that important problems may be more solvable than they have ever been.</p>
+              <p>Madrona exists to put this thesis into practice. Our products and client work are the evidence, and we share what we learn as we go. This is a working document; the moment it stops changing, it has stopped doing its job.</p>
+            </Prose>
+            <div className="m2-th-close-links">
+              <Link className="m2-text-link" to="/thinking/under-the-hood">Read next: The engine behind everything we ship <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/about">Why Madrona exists <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/consulting">How we put it into practice <span aria-hidden="true">→</span></Link>
+            </div>
+          </ArticleSection>
+        </ArticleBody>
+      </div>
 
       <SiteFooter cta={false} />
     </main>
