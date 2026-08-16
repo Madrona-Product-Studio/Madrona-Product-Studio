@@ -120,18 +120,18 @@ const pages = {
     body: 'You do not need a computer science degree to build real software with AI. This guide covers the whole setup in an afternoon, with the actual keystrokes: install Claude Code (curl -fsSL https://claude.ai/install.sh | bash) and Codex as terminal AI coding agents, GitHub as your source of truth, Vercel deploying every change live, and connectors that give your agent reach. Then the six working prompts that do the heavy lifting: ask for a plan first, make the agent screenshot and check its own work, ask for options not answers, keep a ship gate, make it teach you, and write the rules down once in a CLAUDE.md file. Plus what to build first, the habits that separate shipping from stalling, and answers on cost, Windows vs Mac, safety, and what to do when the agent gets stuck.',
   },
   '/thinking/under-the-hood': {
-    title: 'The engine behind everything we ship — how we build software with AI · Madrona Product Studio',
-    description: 'Inside an AI-assisted software development process that ships real products: the bootstrap template, one monitoring setup across the whole portfolio, installed design skills, and the image system — the platform every project inherits, and how to set the same thing up yourself.',
+    title: 'The engine behind everything we ship: how we build software with AI · Madrona Product Studio',
+    description: 'Inside an AI-assisted software development process that ships real products: the bootstrap template, one monitoring setup across the whole portfolio, installed design skills, and the image system: the platform every project inherits, and how to set the same thing up yourself.',
     article: { datePublished: '2026-08-05', dateModified: '2026-08-15' },
     h1: 'The engine behind everything we ship.',
     ogImage: '/og-pov-under-the-hood.png',
     body: 'Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new. The parts, if you want to set this up yourself: a bootstrap template with standards pre-wired and verified green, one monitoring setup (Sentry, health endpoints, uptime checks, one alert destination) applied by stakes across the portfolio, a design intelligence layer installed as agent plugins, and an image system that builds type in code and generates atmosphere. Each part is becoming its own field note; this page collects them as they land.',
   },
   '/open': {
-    title: 'Open — our tools, free to use · Madrona Product Studio',
-    description: 'Open-source Claude Code plugins from Madrona Product Studio: a forkable plain-text operating system kept current by agents, plus the craft catalog we ship polished product with — motion, social images, launch readiness, visual QA. MIT licensed.',
+    title: 'Open: our tools, free to use · Madrona Product Studio',
+    description: 'Open-source Claude Code plugins from Madrona Product Studio: a forkable plain-text operating system kept current by agents, plus the craft catalog we ship polished product with: motion, social images, launch readiness, visual QA. MIT licensed.',
     h1: 'Open.',
-    body: 'Tools we build and use every day, shared because that is what being part of the community is. The belief behind them: the machine is the artifact. The flagship is operating-system, the plain-text engine we run our own studio on — you own the mind; the app renders it. The craft catalog covers motion options, animation vocabulary and review, Open Graph images, a Playwright screenshotter for visual QA, investor-ready audits, go-to-market sweeps, and pre-share cleanup. Install once with the Claude Code plugin marketplace: /plugin marketplace add Madrona-Product-Studio/madrona-open.',
+    body: 'Tools we build and use every day, shared because that is what being part of the community is. The belief behind them: the machine is the artifact. The flagship is operating-system, the plain-text engine we run our own studio on: you own the mind; the app renders it. The craft catalog covers motion options, animation vocabulary and review, Open Graph images, a Playwright screenshotter for visual QA, investor-ready audits, go-to-market sweeps, and pre-share cleanup. Install once with the Claude Code plugin marketplace: /plugin marketplace add Madrona-Product-Studio/madrona-open.',
   },
   '/connect': {
     title: 'Connect · Madrona Product Studio',
@@ -186,7 +186,7 @@ function generateHtml(route, meta) {
   // Per-article social image (falls back to the sitewide OG when unset).
   if (meta.ogImage) {
     const ogUrl = `https://www.madronaproduct.com${meta.ogImage}`;
-    const ogAlt = `${meta.h1.replace(/\.$/, '')} — Thinking, Madrona Product Studio`;
+    const ogAlt = `${meta.h1.replace(/\.$/, '')} · Thinking, Madrona Product Studio`;
     html = html.replace(
       /<meta property="og:image" content="[^"]*" \/>/,
       `<meta property="og:image" content="${ogUrl}" />`

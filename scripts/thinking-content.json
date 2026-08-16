@@ -53,16 +53,16 @@
     { "type": "p", "text": "Five stages, one loop. Every arrow is a commit." },
     { "type": "p", "text": "The boundary matters: the agents never act outward on their own. They read, sort, rank, and prepare. Sending, signing, and deciding stay human." },
     { "type": "p", "text": "The system works while you sleep and briefs you when you sit down." },
-    { "type": "p", "text": "This is what AI workflow automation looks like when it serves attention instead of replacing people: a representative day in an operation that prepares itself." },
-    { "type": "h3", "text": "Nightly sweep — 3:00 am, autonomous" },
+    { "type": "p", "text": "This is what AI workflow automation looks like when it serves attention instead of replacing people: a day in an operation that prepares itself." },
+    { "type": "h3", "text": "Nightly sweep · 3:00 am, autonomous" },
     { "type": "p", "text": "Scans the outside world for new opportunities, checks each one is still real, and files the worth-acting-on batch with a one-line reason each." },
-    { "type": "h3", "text": "Morning pulse — 5:00 am, autonomous" },
+    { "type": "h3", "text": "Morning pulse · 5:00 am, autonomous" },
     { "type": "p", "text": "Reads email and calendar: replies that arrived, meetings today, anything gone stale. Refreshes the ranked priorities before the day starts." },
-    { "type": "h3", "text": "Daily brief — 8:30 am, 10 minutes, together" },
+    { "type": "h3", "text": "Daily brief · 8:30 am, 10 minutes, together" },
     { "type": "p", "text": "One decision surface: what changed overnight, what to approve, today's top three. Decisions made here fan out into prepared work." },
-    { "type": "h3", "text": "Capture — all day, voice, phone, any session" },
+    { "type": "h3", "text": "Capture · all day, voice, phone, any session" },
     { "type": "p", "text": "Say it once and it is filed where it belongs: a task, a lead, a supply order. Nothing lives in your head or a sticky note." },
-    { "type": "h3", "text": "Weekly sync — Monday, 20 minutes, weekly" },
+    { "type": "h3", "text": "Weekly sync · Monday, 20 minutes, weekly" },
     { "type": "p", "text": "The conductor: what moved, what slipped, what is owed, one needle-mover per area. Keeps every part of the business visibly green, yellow, or red." },
     { "type": "p", "text": "The spine is one source of truth. A command surface renders it live. Agents propose; the owner decides and sends. Every action commits back, so the operation compounds." },
     { "type": "p", "text": "The point is not automation. It is attention." },
@@ -87,9 +87,9 @@
     { "type": "p", "text": "Five components, one bus." },
     { "type": "p", "text": "The source of truth is the bus: every component reads it and writes it through plain git commits. No proprietary database, no lock-in, no black box." },
     { "type": "p", "text": "We sell what we run." },
-    { "type": "p", "text": "The diagrams above are not a concept. They are how Madrona itself runs, every day: our studio operates on this exact pattern, with a surface called Helm as the command center. And it scales down honestly; this works for a small business the same way it works for a studio." },
-    { "type": "p", "text": "The first step is the one above: a single agent on a single workflow, with visible payback before anything grows. Like everything we publish, this is a working document; as the pattern teaches us more, the page changes." },
-    { "type": "p", "text": "The ground level is public, too. The plain-text operating system our studio runs on is open source — read it, fork it, make it yours." }
+    { "type": "p", "text": "The diagrams above are not a concept. They are how Madrona runs, every day: this exact pattern, with a surface called Helm as the command center. It scales down honestly: it works for a small business the same way it works for a studio." },
+    { "type": "p", "text": "The first step is the one above: a single agent on a single workflow, with visible payback before anything grows." },
+    { "type": "p", "text": "The ground level is public too. The plain-text operating system our studio runs on is open source: read it, fork it, make it yours." }
   ],
   "/thinking/starter-guide-to-building-with-ai": [
     { "type": "h1", "text": "A starter guide to building real software with AI." },
@@ -232,6 +232,6 @@
     { "type": "p", "text": "Marketing imagery as a machine: layout and type built in code, atmosphere generated, quality gates in between. Already written up in Solve the system, not the symptom." },
     { "type": "p", "text": "The engine is part of what we leave behind." },
     { "type": "p", "text": "We build it, set it up, and teach you to run it. A client engagement ends with your product standing on this engine and your team holding the keys. The deliverable is a business that does not need us." },
-    { "type": "p", "text": "Parts of the engine are already public — tools we build and use every day, free to take." }
+    { "type": "p", "text": "Parts of the engine are already public, tools we build and use every day, free to take." }
   ]
 }
