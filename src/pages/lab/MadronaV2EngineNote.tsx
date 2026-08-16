@@ -264,7 +264,6 @@ export default function MadronaV2EngineNote() {
 
             <div className="art-close-links">
               <Link className="m2-text-link" to="/open">The open part of the engine <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/thinking/the-era-of-agentic-operations">Read next: The era of agentic operations <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
