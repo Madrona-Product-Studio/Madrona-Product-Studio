@@ -109,26 +109,19 @@
 /* ---- Sections ----------------------------------------------------------- */
 .art-sec { padding: clamp(28px, 4vw, 44px) 0; }
 .art-sec + .art-sec { border-top: 1px solid var(--art-hair-soft); }
-.art-sec-eyebrow { color: var(--bark); font-size: .64rem; font-weight: 750; letter-spacing: .14em; margin: 0 0 14px; padding-left: 34px; text-transform: uppercase; }
-.art-sec-head { align-items: baseline; display: flex; gap: 16px; margin: 0 0 22px; }
-.art-sec-num {
-  color: var(--bark);
-  flex: none;
-  font-family: var(--art-mono);
-  font-size: .92rem;
-  font-weight: 600;
-  letter-spacing: .02em;
-  line-height: 1.6;
-  padding-top: 4px;
-}
-.art-sec-head h2 {
+/* Section marker line: number sits with the eyebrow, not beside the title. */
+.art-sec-meta { align-items: baseline; display: flex; flex-wrap: wrap; gap: 4px 11px; margin: 0 0 16px; }
+.art-sec-num { color: var(--bark); font-family: var(--art-mono); font-size: .74rem; font-weight: 600; letter-spacing: .02em; }
+.art-sec-eyebrow { color: var(--bark); font-size: .64rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+/* Scoped with .art so the serif title beats `.m2 h2` (Inter). */
+.art .art-sec-title {
   color: var(--ink);
   font-family: Fraunces, "Fraunces Fallback", Georgia, serif;
   font-size: clamp(1.5rem, 2.4vw, 1.95rem);
   font-weight: 540;
   letter-spacing: -.015em;
   line-height: 1.14;
-  margin: 0;
+  margin: 0 0 clamp(15px, 1.6vw, 20px);
   max-width: none;
 }
 
