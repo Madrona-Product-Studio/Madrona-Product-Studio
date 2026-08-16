@@ -132,7 +132,7 @@ export default function MadronaV2SystemNote() {
         <ArticleBody>
           <ArticleSection id="the-moment" num="1" eyebrow="The moment" title="One bad image, and two ways to respond.">
             <Prose>
-              <p>A tool of mine generated an image that was wrong: the framing off, the mood wrong. My first instinct was to fix that image, to nudge it until it looked the way I wanted.</p>
+              <p>A tool of mine generated an image that was wrong: the framing off, the mood wrong. My first instinct was to fix that image, nudging it until it looked right.</p>
               <p>I caught myself. The image was not the problem. The tool that made it was. Fixing the image buys one good image; fixing the tool improves every image it will ever make.</p>
             </Prose>
             <Figure><Rows items={TRADE} /></Figure>
@@ -161,7 +161,7 @@ export default function MadronaV2SystemNote() {
 
           <ArticleSection id="tool-to-engine" num="4" eyebrow="From tool to engine" title="The more you do it, the less it is about any single tool.">
             <Prose>
-              <p>Lately I spend most of my building energy not on the outputs at all, but on the engine that produces them, and the whole operation gets better for it.</p>
+              <p>Lately I spend most of my building energy not on the outputs but on the engine that produces them, and everything gets better for it.</p>
               <p>I built the place I think from as a system, not a pile of documents I keep by hand. Each of these was a choice to improve the engine instead of the output.</p>
             </Prose>
             <Figure><Rows items={INVEST} /></Figure>
@@ -206,7 +206,7 @@ export default function MadronaV2SystemNote() {
           <ArticleSection id="how-i-work-now" num="7" eyebrow="How I work now" title="Spend your attention where it compounds.">
             <Prose>
               <p>None of this is a trick, and it is not really about AI. It is about where you decide to spend your attention. You can spend it on the artifact and get a better artifact. Or you can spend it on the system and get a better everything.</p>
-              <p>I keep choosing the system, not because it is faster, but because it is the only version of the work that compounds. Like everything we publish, this is a working note; as the practice teaches me more, the page will change.</p>
+              <p>I keep choosing the system, not because it is faster, but because it is the only version of the work that compounds.</p>
             </Prose>
             <div className="m2-th-close-links">
               <Link className="m2-text-link" to="/open">See the machines we've shared: Madrona Open <span aria-hidden="true">→</span></Link>

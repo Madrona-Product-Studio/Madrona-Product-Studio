@@ -187,7 +187,7 @@ export default function MadronaV2AgenticNote() {
 
           <ArticleSection id="the-rhythm" num="3" eyebrow="The rhythm" title="The system works while you sleep and briefs you when you sit down.">
             <Prose>
-              <p>This is what AI workflow automation looks like when it serves attention instead of replacing people: a representative day in an operation that prepares itself.</p>
+              <p>This is what AI workflow automation looks like when it serves attention instead of replacing people: a day in an operation that prepares itself.</p>
             </Prose>
             <Figure>
               <div className="m2-pb-board">
@@ -303,16 +303,16 @@ export default function MadronaV2AgenticNote() {
                   </div>
                 </div>
                 <div className="m2-pb-bpreturn"><i>↩</i><span>05 → 01: every operator action commits back, so the operation compounds</span></div>
-                <div className="m2-pb-bpnote"><span>fig. 1 — the agentic operations pattern</span><span>rev 2026-08</span></div>
+                <div className="m2-pb-bpnote"><span>fig. 1 · the agentic operations pattern</span><span>rev 2026-08</span></div>
               </div>
             </Figure>
           </ArticleSection>
 
           <ArticleSection id="how-we-know" num="8" eyebrow="How we know" title="We sell what we run.">
             <Prose>
-              <p>The diagrams above are not a concept. They are how Madrona itself runs, every day: our studio operates on this exact pattern, with a surface called Helm as the command center. And it scales down honestly; this works for a small business the same way it works for a studio.</p>
-              <p>The first step is the one above: a single agent on a single workflow, with visible payback before anything grows. Like everything we publish, this is a working document; as the pattern teaches us more, the page changes.</p>
-              <p>The ground level is public, too. The plain-text operating system our studio runs on is open source — read it, fork it, make it yours.</p>
+              <p>The diagrams above are not a concept. They are how Madrona runs, every day: this exact pattern, with a surface called Helm as the command center. It scales down honestly: it works for a small business the same way it works for a studio.</p>
+              <p>The first step is the one above: a single agent on a single workflow, with visible payback before anything grows.</p>
+              <p>The ground level is public too. The plain-text operating system our studio runs on is open source: read it, fork it, make it yours.</p>
             </Prose>
             <div className="m2-th-close-links">
               <Link className="m2-text-link" to="/open">Fork the operating system we run on <span aria-hidden="true">→</span></Link>
