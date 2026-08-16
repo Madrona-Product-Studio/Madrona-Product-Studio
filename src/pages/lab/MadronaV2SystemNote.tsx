@@ -3,6 +3,8 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
+import PovThumb from "./PovThumb";
+import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, type TocItem } from "./ArticleTemplate";
 import "./madrona-v2.css";
 import "./playbook.css";
 
@@ -100,133 +102,120 @@ const PROMPTS = [
   },
 ];
 
+const TOC: TocItem[] = [
+  { id: "the-moment", label: "The moment" },
+  { id: "the-fix", label: "The fix, specifically" },
+  { id: "why-now", label: "Why now" },
+  { id: "tool-to-engine", label: "From tool to engine" },
+  { id: "getting-better", label: "Getting better at it" },
+  { id: "the-discipline", label: "The discipline" },
+  { id: "how-i-work-now", label: "How I work now" },
+];
+
 export default function MadronaV2SystemNote() {
   useReveal();
 
   return (
-    <main className="m2 m2-ab-page">
+    <main className="m2 art">
       <LabMeta title="Solve the system, not the symptom · Thinking" />
       <M2Nav active="pov" />
+      <div className="art-wrap">
+        <ArticleHeader
+          kicker="A point of view"
+          author="Charlie Koch"
+          meta={["5 min read", "August 2026"]}
+          title="Solve the system, not the symptom."
+          standfirst="When something is wrong, the instinct is to fix the thing in front of you. Recolor the button, redo the one bad output. The higher-leverage move is almost always one level down: fix the system that produced it, so everything it makes next is better. AI made that trade cheap enough to be the default."
+          toc={TOC}
+          visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="source" /></div></div>}
+        />
+        <ArticleBody>
+          <ArticleSection id="the-moment" num="1" eyebrow="The moment" title="One bad image, and two ways to respond.">
+            <Prose>
+              <p>A tool of mine generated an image that was wrong: the framing off, the mood wrong. My first instinct was to fix that image, to nudge it until it looked the way I wanted.</p>
+              <p>I caught myself. The image was not the problem. The tool that made it was. Fixing the image buys one good image; fixing the tool improves every image it will ever make.</p>
+            </Prose>
+            <Figure><Rows items={TRADE} /></Figure>
+          </ArticleSection>
 
-      {/* Hero */}
-      <section className="m2-ab4 m2-th-hero m2-pov-hero">
-        <p className="m2-kicker m2-who-kicker">A point of view</p>
-        <h1>Solve the system, not the symptom.</h1>
-        <p className="m2-th-standfirst">When something is wrong, the instinct is to fix the thing in front of you. Recolor the button, redo the one bad output. The higher-leverage move is almost always one level down: fix the system that produced it, so everything it makes next is better. AI made that trade cheap enough to be the default.</p>
-        <p className="m2-th-byline"><Link to="/about">Charlie Koch</Link> · Founder, Madrona Product Studio · August 2026</p>
-      </section>
+          <ArticleSection id="the-fix" num="2" eyebrow="The fix, specifically" title="What that tool was, and what I changed.">
+            <Prose>
+              <p>It was OpenAI's Codex, driving its image model. The early results were the symptom: real screenshots pasted into stock device frames, the same desk every time, the interface stretched to fit.</p>
+              <p>So I stopped fixing images and rewrote the instructions the tool runs on. Instead of pasting a screenshot into a pre-built scene, it now generates the whole scene with the real screenshot as the hero, guided by reusable criteria with the reject rules built in. I fixed the brief, not the image, and the whole set got better at once.</p>
+            </Prose>
+            <Figure>
+              <div className="m2-sg-prompt m2-sg-prompt--solo m2-sys-artifact">
+                <h3>The criteria, encoded once</h3>
+                <p className="p">&ldquo;Use the real screenshot as the hero UI; never re-typeset it. Generate the whole scene with the device included. Warm natural light; cream, wood, paper, muted green. One clear focal point, one or two devices, screens readable at card size, correct proportions, no distortion. No glossy stock look, no hard shadows, no identical desk repeated, no forced geometry across the set. Then apply each app's scene direction: story, devices, setting, props, screenshot focus, tone. Reject any image whose screen does not fill the glass at full zoom.&rdquo;</p>
+              </div>
+            </Figure>
+          </ArticleSection>
 
-      {/* 1 · The moment */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">The moment</p>
-          <p className="m2-ab4-statement">One bad image, and two ways to respond.</p>
-          <div className="m2-ab4-body">
-            <p>A tool of mine generated an image that was wrong: the framing off, the mood wrong. My first instinct was to fix that image, to nudge it until it looked the way I wanted.</p>
-            <p>I caught myself. The image was not the problem. The tool that made it was. Fixing the image buys one good image; fixing the tool improves every image it will ever make.</p>
-          </div>
-        </div>
-        <Rows items={TRADE} />
-      </section>
+          <ArticleSection id="why-now" num="3" eyebrow="Why now" title="This was not a reasonable way to work until recently.">
+            <Prose>
+              <p>For most of my career, changing a system was expensive. Reworking the thing that produces the work meant weeks, a team, and a good reason, so patching symptoms was the rational move.</p>
+              <p>That math changed. When fixing the machine gets cheap, going upstream stops being a luxury and becomes the obvious first move.</p>
+            </Prose>
+            <Figure><Rows items={NOWTHEN} /></Figure>
+          </ArticleSection>
 
-      {/* 2 · The fix, specifically */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">The fix, specifically</p>
-          <p className="m2-ab4-statement">What that tool was, and what I changed.</p>
-          <div className="m2-ab4-body">
-            <p>It was OpenAI's Codex, driving its image model. The early results were the symptom: real screenshots pasted into stock device frames, the same desk every time, the interface stretched to fit.</p>
-            <p>So I stopped fixing images and rewrote the instructions the tool runs on. Instead of pasting a screenshot into a pre-built scene, it now generates the whole scene with the real screenshot as the hero, guided by reusable criteria with the reject rules built in. I fixed the brief, not the image, and the whole set got better at once.</p>
-          </div>
-        </div>
-        <div className="m2-sg-prompt m2-sg-prompt--solo m2-sys-artifact">
-          <h3>The criteria, encoded once</h3>
-          <p className="p">&ldquo;Use the real screenshot as the hero UI; never re-typeset it. Generate the whole scene with the device included. Warm natural light; cream, wood, paper, muted green. One clear focal point, one or two devices, screens readable at card size, correct proportions, no distortion. No glossy stock look, no hard shadows, no identical desk repeated, no forced geometry across the set. Then apply each app's scene direction: story, devices, setting, props, screenshot focus, tone. Reject any image whose screen does not fill the glass at full zoom.&rdquo;</p>
-        </div>
-      </section>
+          <ArticleSection id="tool-to-engine" num="4" eyebrow="From tool to engine" title="The more you do it, the less it is about any single tool.">
+            <Prose>
+              <p>Lately I spend most of my building energy not on the outputs at all, but on the engine that produces them, and the whole operation gets better for it.</p>
+              <p>I built the place I think from as a system, not a pile of documents I keep by hand. Each of these was a choice to improve the engine instead of the output.</p>
+            </Prose>
+            <Figure><Rows items={INVEST} /></Figure>
+          </ArticleSection>
 
-      {/* 3 · Why now */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">Why now</p>
-          <p className="m2-ab4-statement">This was not a reasonable way to work until recently.</p>
-          <div className="m2-ab4-body">
-            <p>For most of my career, changing a system was expensive. Reworking the thing that produces the work meant weeks, a team, and a good reason, so patching symptoms was the rational move.</p>
-            <p>That math changed. When fixing the machine gets cheap, going upstream stops being a luxury and becomes the obvious first move.</p>
-          </div>
-        </div>
-        <Rows items={NOWTHEN} />
-      </section>
+          <ArticleSection id="getting-better" num="5" eyebrow="Getting better at it" title="Point the tool at the tool.">
+            <Prose>
+              <p>Working on the system is a habit you can practice, and the same AI that makes your outputs can help you improve the thing that makes them.</p>
+              <p>Stop asking for a better result. Start asking what produced the result. Here are prompts I actually use.</p>
+            </Prose>
+            <Figure><Rows items={HABITS} /></Figure>
+            <Figure>
+              <div className="m2-sg-prompts">
+                {PROMPTS.map((pr) => (
+                  <div key={pr.name} className="m2-sg-prompt">
+                    <h3>{pr.name}</h3>
+                    <p className="why">{pr.why}</p>
+                    <p className="p">&ldquo;{pr.p}&rdquo;</p>
+                  </div>
+                ))}
+              </div>
+            </Figure>
+          </ArticleSection>
 
-      {/* 4 · From tool to engine */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">From tool to engine</p>
-          <p className="m2-ab4-statement">The more you do it, the less it is about any single tool.</p>
-          <div className="m2-ab4-body">
-            <p>Lately I spend most of my building energy not on the outputs at all, but on the engine that produces them, and the whole operation gets better for it.</p>
-            <p>I built the place I think from as a system, not a pile of documents I keep by hand. Each of these was a choice to improve the engine instead of the output.</p>
-          </div>
-        </div>
-        <Rows items={INVEST} />
-      </section>
+          <ArticleSection id="the-discipline" num="6" title="The discipline">
+            <Prose>
+              <p>This is easy to take too far. Not every problem is a system problem. Sometimes the button really should just be blue. I have built tidy systems for work that only needed doing, and called the building progress when the real bottleneck was me not acting. The discipline is not systematizing everything. It is knowing which symptom is a signal.</p>
+            </Prose>
+            <Figure>
+              <ol className="m2-ab4-cols m2-th4-stages">
+                {TELL.map((s) => (
+                  <li key={s.num}>
+                    <p className="m2-th-stage-num">{s.num}</p>
+                    <h3>{s.title}</h3>
+                    <p>{s.body}</p>
+                  </li>
+                ))}
+              </ol>
+            </Figure>
+          </ArticleSection>
 
-      {/* 5 · Getting better at it */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">Getting better at it</p>
-          <p className="m2-ab4-statement">Point the tool at the tool.</p>
-          <div className="m2-ab4-body">
-            <p>Working on the system is a habit you can practice, and the same AI that makes your outputs can help you improve the thing that makes them.</p>
-            <p>Stop asking for a better result. Start asking what produced the result. Here are prompts I actually use.</p>
-          </div>
-        </div>
-        <Rows items={HABITS} />
-        <div className="m2-sg-prompts">
-          {PROMPTS.map((pr) => (
-            <div key={pr.name} className="m2-sg-prompt">
-              <h3>{pr.name}</h3>
-              <p className="why">{pr.why}</p>
-              <p className="p">&ldquo;{pr.p}&rdquo;</p>
+          <ArticleSection id="how-i-work-now" num="7" eyebrow="How I work now" title="Spend your attention where it compounds.">
+            <Prose>
+              <p>None of this is a trick, and it is not really about AI. It is about where you decide to spend your attention. You can spend it on the artifact and get a better artifact. Or you can spend it on the system and get a better everything.</p>
+              <p>I keep choosing the system, not because it is faster, but because it is the only version of the work that compounds. Like everything we publish, this is a working note; as the practice teaches me more, the page will change.</p>
+            </Prose>
+            <div className="m2-th-close-links">
+              <Link className="m2-text-link" to="/open">See the machines we've shared: Madrona Open <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/thinking/the-era-of-agentic-operations">Read next: The era of agentic operations <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 6 · The discipline */}
-      <section className="m2-ab4 m2-ab4-sec m2-ab4-sec--full">
-        <div className="m2-th4-fullhead">
-          <p className="m2-kicker m2-who-kicker">The discipline</p>
-          <p className="m2-ab4-railbody m2-th4-fullbody">This is easy to take too far. Not every problem is a system problem. Sometimes the button really should just be blue. I have built tidy systems for work that only needed doing, and called the building progress when the real bottleneck was me not acting. The discipline is not systematizing everything. It is knowing which symptom is a signal.</p>
-        </div>
-        <ol className="m2-ab4-cols m2-th4-stages">
-          {TELL.map((s) => (
-            <li key={s.num}>
-              <p className="m2-th-stage-num">{s.num}</p>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* 7 · Close */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">How I work now</p>
-          <p className="m2-ab4-statement">Spend your attention where it compounds.</p>
-        </div>
-        <div className="m2-ab4-body m2-th4-point">
-          <p>None of this is a trick, and it is not really about AI. It is about where you decide to spend your attention. You can spend it on the artifact and get a better artifact. Or you can spend it on the system and get a better everything.</p>
-          <p>I keep choosing the system, not because it is faster, but because it is the only version of the work that compounds. Like everything we publish, this is a working note; as the practice teaches me more, the page will change.</p>
-          <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/open">See the machines we've shared: Madrona Open <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/thinking/the-era-of-agentic-operations">Read next: The era of agentic operations <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
-          </div>
-        </div>
-      </section>
-
+          </ArticleSection>
+        </ArticleBody>
+      </div>
       <SiteFooter cta={false} />
     </main>
   );

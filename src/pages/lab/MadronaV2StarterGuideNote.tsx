@@ -3,6 +3,8 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
+import PovThumb from "./PovThumb";
+import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, type TocItem } from "./ArticleTemplate";
 import "./madrona-v2.css";
 import "./playbook.css";
 
@@ -173,204 +175,195 @@ const HABITS = [
   { icon: P.person, tone: "storefront", strong: "You do not need to become an engineer.", text: "The agents supply the syntax. You supply the judgment." },
 ];
 
+const TOC: TocItem[] = [
+  { id: "the-shape", label: "The shape of it" },
+  { id: "the-setup", label: "The setup" },
+  { id: "the-prompts", label: "The prompts" },
+  { id: "first-build", label: "Your first build" },
+  { id: "the-habits", label: "The habits" },
+  { id: "faq", label: "Fair questions" },
+  { id: "where-this-goes", label: "Where this goes" },
+];
+
 export default function MadronaV2StarterGuideNote() {
   useReveal();
 
   return (
-    <main className="m2 m2-ab-page">
+    <main className="m2 art">
       <LabMeta title="A starter guide to building real software with AI · Thinking" />
       <M2Nav active="pov" />
 
-      {/* Hero */}
-      <section className="m2-ab4 m2-th-hero m2-pov-hero">
-        <p className="m2-kicker m2-who-kicker">From the workshop</p>
-        <h1>A starter guide to building real software with AI.</h1>
-        <p className="m2-th-standfirst">This is the piece I wish someone had handed me when I started. You do not need a computer science degree to build real software with AI anymore. You need a handful of tools set up the right way, a few habits, and something worth building. Here is the whole setup, in an afternoon.</p>
-        <p className="m2-th-byline"><Link to="/about">Charlie Koch</Link> · Founder, Madrona Product Studio · August 2026</p>
-      </section>
+      <div className="art-wrap">
+        <ArticleHeader
+          kicker="From the workshop"
+          author="Charlie Koch"
+          meta={["8 min read", "August 2026"]}
+          title="A starter guide to building real software with AI."
+          standfirst="This is the piece I wish someone had handed me when I started. You do not need a computer science degree to build real software with AI anymore. You need a handful of tools set up the right way, a few habits, and something worth building. Here is the whole setup, in an afternoon."
+          toc={TOC}
+          visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="structure" /></div></div>}
+        />
 
-      {/* 1 · The shape */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">The shape of it</p>
-          <p className="m2-ab4-statement">Five pieces, one loop.</p>
-          <div className="m2-ab4-body">
-            <p>Every AI coding setup worth having reduces to the same loop: you describe what you want, agents in your terminal build it, GitHub keeps the source of truth, Vercel puts it on the internet, and what you learn from the live thing feeds the next round.</p>
-            <p>Everything below exists to stand this loop up.</p>
-          </div>
-        </div>
-        <div className="m2-pb-figure">
-          <div className="m2-pb-board">
-            <div className="m2-hq-loop m2-hq-loop--even">
-              <div className="m2-hq-stage">
-                <div className="num">1</div>
-                <div className="name">You</div>
-                <div className="m2-hq-card">
-                  <div className="t">The idea, in plain language</div>
-                  <div className="m">What it is, who it is for, what good looks like. This stays your job.</div>
-                </div>
-              </div>
-              <div className="m2-hq-conn"><Arrow /></div>
-              <div className="m2-hq-stage">
-                <div className="num">2</div>
-                <div className="name">Agents</div>
-                <div className="m2-hq-card mind">
-                  <div className="t">The terminal</div>
-                  <div className="m2-hq-file">claude <span>Claude Code</span></div>
-                  <div className="m2-hq-file">codex <span>a second opinion</span></div>
-                  <div className="m">They write, run, fix, and explain.</div>
-                </div>
-              </div>
-              <div className="m2-hq-conn"><Arrow /></div>
-              <div className="m2-hq-stage">
-                <div className="num">3</div>
-                <div className="name">GitHub</div>
-                <div className="m2-hq-card">
-                  <div className="t">Source of truth</div>
-                  <div className="m">Every change saved, described, reversible. Your work can never be lost.</div>
-                </div>
-              </div>
-              <div className="m2-hq-conn"><Arrow /></div>
-              <div className="m2-hq-stage">
-                <div className="num">4</div>
-                <div className="name">Vercel</div>
-                <div className="m2-hq-card">
-                  <div className="t">Live on the internet</div>
-                  <div className="m">Every push deploys automatically. A real URL from day one.</div>
-                </div>
-              </div>
-              <div className="m2-hq-conn"><Arrow /></div>
-              <div className="m2-hq-stage">
-                <div className="num">5</div>
-                <div className="name">The world</div>
-                <div className="m2-hq-act">
-                  <div className="t">Real people use it</div>
-                  <div className="m">What they do and say <b>feeds your next idea</b>, and the loop turns again.</div>
-                </div>
-              </div>
-            </div>
-            <div className="m2-hq-return"><span>The loop is the point: every turn makes the product and the builder better</span></div>
-          </div>
-          <p className="m2-pb-figcap">The builder's loop. This is the same setup we use at Madrona to ship every product we run, from travel planning to boating guides.</p>
-        </div>
-      </section>
-
-      {/* 2 · The setup */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">The setup</p>
-          <p className="m2-ab4-statement">Six steps, one afternoon.</p>
-        </div>
-        <div className="m2-ab4-body">
-          <p>In order, because each step makes the next one easier. GitHub and Vercel are free; the two agents come with subscriptions you may already have. Each step pairs the idea with the actual keystrokes, so you are never left wondering what to type.</p>
-        </div>
-        <div className="m2-pb-figure">
-          <div className="m2-pb-board">
-            <div className="m2-hq-rail m2-sg-rail">
-              {STEPS.map((s) => (
-                <div key={s.n} style={{ display: "contents" }}>
-                  <div className="left"><div className="time">{s.n}</div><div className="agent">{s.name}</div><div className="mode">{s.time}</div></div>
-                  <div className="right">
-                    <div className="doing">{s.what}</div>
-                    <div className="m2-sg-do"><span className="lbl">The keystrokes</span>{s.how}</div>
-                    <div className="m2-hq-lands"><span className="lbl">You leave with</span><div className="m2-hq-chips">{s.lands.map((l) => <i key={l}>{l}</i>)}</div></div>
+        <ArticleBody>
+          <ArticleSection id="the-shape" num="1" eyebrow="The shape of it" title="Five pieces, one loop.">
+            <Prose>
+              <p>Every AI coding setup worth having reduces to the same loop: you describe what you want, agents in your terminal build it, GitHub keeps the source of truth, Vercel puts it on the internet, and what you learn from the live thing feeds the next round.</p>
+              <p>Everything below exists to stand this loop up.</p>
+            </Prose>
+            <Figure>
+              <div className="m2-pb-board">
+                <div className="m2-hq-loop m2-hq-loop--even">
+                  <div className="m2-hq-stage">
+                    <div className="num">1</div>
+                    <div className="name">You</div>
+                    <div className="m2-hq-card">
+                      <div className="t">The idea, in plain language</div>
+                      <div className="m">What it is, who it is for, what good looks like. This stays your job.</div>
+                    </div>
+                  </div>
+                  <div className="m2-hq-conn"><Arrow /></div>
+                  <div className="m2-hq-stage">
+                    <div className="num">2</div>
+                    <div className="name">Agents</div>
+                    <div className="m2-hq-card mind">
+                      <div className="t">The terminal</div>
+                      <div className="m2-hq-file">claude <span>Claude Code</span></div>
+                      <div className="m2-hq-file">codex <span>a second opinion</span></div>
+                      <div className="m">They write, run, fix, and explain.</div>
+                    </div>
+                  </div>
+                  <div className="m2-hq-conn"><Arrow /></div>
+                  <div className="m2-hq-stage">
+                    <div className="num">3</div>
+                    <div className="name">GitHub</div>
+                    <div className="m2-hq-card">
+                      <div className="t">Source of truth</div>
+                      <div className="m">Every change saved, described, reversible. Your work can never be lost.</div>
+                    </div>
+                  </div>
+                  <div className="m2-hq-conn"><Arrow /></div>
+                  <div className="m2-hq-stage">
+                    <div className="num">4</div>
+                    <div className="name">Vercel</div>
+                    <div className="m2-hq-card">
+                      <div className="t">Live on the internet</div>
+                      <div className="m">Every push deploys automatically. A real URL from day one.</div>
+                    </div>
+                  </div>
+                  <div className="m2-hq-conn"><Arrow /></div>
+                  <div className="m2-hq-stage">
+                    <div className="num">5</div>
+                    <div className="name">The world</div>
+                    <div className="m2-hq-act">
+                      <div className="t">Real people use it</div>
+                      <div className="m">What they do and say <b>feeds your next idea</b>, and the loop turns again.</div>
+                    </div>
                   </div>
                 </div>
-              ))}
+                <div className="m2-hq-return"><span>The loop is the point: every turn makes the product and the builder better</span></div>
+              </div>
+              <p className="m2-pb-figcap">The builder's loop. This is the same setup we use at Madrona to ship every product we run, from travel planning to boating guides.</p>
+            </Figure>
+          </ArticleSection>
+
+          <ArticleSection id="the-setup" num="2" eyebrow="The setup" title="Six steps, one afternoon.">
+            <Prose>
+              <p>In order, because each step makes the next one easier. GitHub and Vercel are free; the two agents come with subscriptions you may already have. Each step pairs the idea with the actual keystrokes, so you are never left wondering what to type.</p>
+            </Prose>
+            <Figure>
+              <div className="m2-pb-board">
+                <div className="m2-hq-rail m2-sg-rail">
+                  {STEPS.map((s) => (
+                    <div key={s.n} style={{ display: "contents" }}>
+                      <div className="left"><div className="time">{s.n}</div><div className="agent">{s.name}</div><div className="mode">{s.time}</div></div>
+                      <div className="right">
+                        <div className="doing">{s.what}</div>
+                        <div className="m2-sg-do"><span className="lbl">The keystrokes</span>{s.how}</div>
+                        <div className="m2-hq-lands"><span className="lbl">You leave with</span><div className="m2-hq-chips">{s.lands.map((l) => <i key={l}>{l}</i>)}</div></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="m2-hq-railfoot">
+                  <span className="spine" />
+                  <p><b>That is the whole setup.</b> A terminal with two AI agents, GitHub holding the truth, Vercel putting it live, and connectors giving your agent reach. Everything else is habits.</p>
+                </div>
+              </div>
+            </Figure>
+          </ArticleSection>
+
+          <ArticleSection id="the-prompts" num="3" eyebrow="The prompts" title="Six prompts that do the heavy lifting.">
+            <Prose>
+              <p>The tools take an afternoon; prompting well is what compounds. These are not magic words, they are working agreements, and every one came from a mistake I stopped repeating. Copy them, then grow your own.</p>
+            </Prose>
+            <Figure>
+              <div className="m2-sg-prompts">
+                {PROMPTS.map((pr) => (
+                  <div key={pr.name} className="m2-sg-prompt">
+                    <h3>{pr.name}</h3>
+                    <p className="why">{pr.why}</p>
+                    <p className="p">&ldquo;{pr.p}&rdquo;</p>
+                  </div>
+                ))}
+              </div>
+            </Figure>
+          </ArticleSection>
+
+          <ArticleSection id="first-build" num="4" eyebrow="Your first build" title="Real, small, and yours.">
+            <Prose>
+              <p>Do not build a to-do app from a tutorial. Pick something you will actually use this month: a guide to a place you know, a tool for your own work, a site for someone you like. One of our first was a boating guide to the San Juan Islands. A real place, a real need, small enough to ship in a weekend, and it is still live.</p>
+              <p>Your day-one prompt can be this simple:</p>
+            </Prose>
+            <Figure>
+              <div className="m2-sg-prompt m2-sg-prompt--solo">
+                <p className="p">&ldquo;I want to build [the thing]: a website that [does what] for [who]. Set up a new project in this folder, keep it simple, and get a first version on screen that I can look at. Then tell me what you did.&rdquo;</p>
+              </div>
+            </Figure>
+            <Prose>
+              <p>Then look at what comes back, react honestly, and go again. That is the whole method.</p>
+            </Prose>
+          </ArticleSection>
+
+          <ArticleSection id="the-habits" num="5" eyebrow="The habits" title="The tools are the easy part.">
+            <Prose>
+              <p>Everything above takes an afternoon. What separates people who ship from people who stall is not the setup. It is these.</p>
+            </Prose>
+            <Figure>
+              <ul className="m2-th4-rows">
+                {HABITS.map((h) => (
+                  <li key={h.strong}>
+                    <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={h.tone}><I d={h.icon} /></span>
+                    <p><strong>{h.strong}</strong> <span>{h.text}</span></p>
+                  </li>
+                ))}
+              </ul>
+            </Figure>
+          </ArticleSection>
+
+          <ArticleSection id="faq" num="6" eyebrow="Fair questions" title="The questions I get.">
+            <Figure>
+              <div className="m2-sg-faq">
+                {FAQ.map((f) => (
+                  <div key={f.q}>
+                    <h3>{f.q}</h3>
+                    <p>{f.a}</p>
+                  </div>
+                ))}
+              </div>
+            </Figure>
+          </ArticleSection>
+
+          <ArticleSection id="where-this-goes" num="7" eyebrow="Where this goes" title="From setup to studio.">
+            <Prose>
+              <p>This setup is where we started too. Everything else we have written about, the build engine, the agentic operations pattern, grew out of this loop plus time and shipped products. Start the loop, keep it turning, and write down what it teaches you.</p>
+            </Prose>
+            <div className="m2-th-close-links">
+              <Link className="m2-text-link" to="/thinking">More from Thinking <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
             </div>
-            <div className="m2-hq-railfoot">
-              <span className="spine" />
-              <p><b>That is the whole setup.</b> A terminal with two AI agents, GitHub holding the truth, Vercel putting it live, and connectors giving your agent reach. Everything else is habits.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3 · The prompts */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">The prompts</p>
-          <p className="m2-ab4-statement">Six prompts that do the heavy lifting.</p>
-        </div>
-        <div className="m2-ab4-body">
-          <p>The tools take an afternoon; prompting well is what compounds. These are not magic words, they are working agreements, and every one came from a mistake I stopped repeating. Copy them, then grow your own.</p>
-        </div>
-        <div className="m2-sg-prompts">
-          {PROMPTS.map((pr) => (
-            <div key={pr.name} className="m2-sg-prompt">
-              <h3>{pr.name}</h3>
-              <p className="why">{pr.why}</p>
-              <p className="p">&ldquo;{pr.p}&rdquo;</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4 · Your first build */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">Your first build</p>
-          <p className="m2-ab4-statement">Real, small, and yours.</p>
-        </div>
-        <div className="m2-ab4-body">
-          <p>Do not build a to-do app from a tutorial. Pick something you will actually use this month: a guide to a place you know, a tool for your own work, a site for someone you like. One of our first was a boating guide to the San Juan Islands. A real place, a real need, small enough to ship in a weekend, and it is still live.</p>
-          <p>Your day-one prompt can be this simple:</p>
-          <div className="m2-sg-prompt m2-sg-prompt--solo">
-            <p className="p">&ldquo;I want to build [the thing]: a website that [does what] for [who]. Set up a new project in this folder, keep it simple, and get a first version on screen that I can look at. Then tell me what you did.&rdquo;</p>
-          </div>
-          <p>Then look at what comes back, react honestly, and go again. That is the whole method.</p>
-        </div>
-      </section>
-
-      {/* 5 · The habits */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">The habits</p>
-          <p className="m2-ab4-statement">The tools are the easy part.</p>
-          <div className="m2-ab4-body">
-            <p>Everything above takes an afternoon. What separates people who ship from people who stall is not the setup. It is these.</p>
-          </div>
-        </div>
-        <ul className="m2-th4-rows">
-          {HABITS.map((h) => (
-            <li key={h.strong}>
-              <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={h.tone}><I d={h.icon} /></span>
-              <p><strong>{h.strong}</strong> <span>{h.text}</span></p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* 6 · FAQ */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">Fair questions</p>
-          <p className="m2-ab4-statement">The questions I get.</p>
-        </div>
-        <div className="m2-sg-faq">
-          {FAQ.map((f) => (
-            <div key={f.q}>
-              <h3>{f.q}</h3>
-              <p>{f.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Close */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">Where this goes</p>
-          <p className="m2-ab4-statement">From setup to studio.</p>
-        </div>
-        <div className="m2-ab4-body">
-          <p>This setup is where we started too. Everything else we have written about, the build engine, the agentic operations pattern, grew out of this loop plus time and shipped products. Start the loop, keep it turning, and write down what it teaches you.</p>
-          <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/thinking">More from Thinking <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
-          </div>
-        </div>
-      </section>
+          </ArticleSection>
+        </ArticleBody>
+      </div>
 
       <SiteFooter cta={false} />
     </main>
