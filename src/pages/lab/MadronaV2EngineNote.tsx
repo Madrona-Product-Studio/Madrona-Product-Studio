@@ -137,7 +137,7 @@ function Blueprint() {
         </div>
       </div>
       <div className="m2-pb-bpreturn"><i>↩</i><span>04 → 05 → 01: what shipping teaches us becomes part of the platform</span></div>
-      <div className="m2-pb-bpnote"><span>fig. 1 — the madrona engine: encoded judgment, executed with AI, held to gates</span><span>rev 2026-08</span></div>
+      <div className="m2-pb-bpnote"><span>fig. 1 · the madrona engine: encoded judgment, executed with AI, held to gates</span><span>rev 2026-08</span></div>
     </div>
   );
 }
