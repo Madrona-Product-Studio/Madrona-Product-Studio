@@ -388,6 +388,19 @@ export default function SignalAssessment() {
                   <strong>{PATHWAY_COPY[result.archetype.primaryPathway].name}.</strong>{" "}
                   {PATHWAY_COPY[result.archetype.primaryPathway].short}
                 </p>
+                <div className="sa-rec-includes">
+                  <p className="sa-rec-includes-label">What this could include</p>
+                  <ul>
+                    {PATHWAY_COPY[result.archetype.primaryPathway].capabilities.map((c) => (
+                      <li key={c}>
+                        <svg viewBox="0 0 10 10" aria-hidden="true">
+                          <path d="M2 5.2 4.2 7.4 8 3" />
+                        </svg>
+                        {c}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
                 {BOOK_EXTERNAL ? (
                   <a
                     className="sa-primary sa-primary--wide"

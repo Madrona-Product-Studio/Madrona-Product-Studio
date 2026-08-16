@@ -16,8 +16,8 @@
   --a-orange-bright: #ee936a;
 
   min-height: 100dvh;
-  padding: clamp(16px, 2vw, 32px);
-  background: #0b0f0d;
+  padding: 0;
+  background: var(--a-bg);
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -25,21 +25,23 @@
   color: var(--a-text);
 }
 
+/* Full-bleed: the assessment is its own full-screen surface, not a floating
+   card. Fills the viewport edge to edge so it reads as a deliberate immersive
+   mode rather than a panel dropped on a dark page. A generous max-width only
+   engages past ~2000px; because the surround (.sa) is the same flat dark with
+   no border/radius/shadow, any ultrawide gutters are seamless, not a card. */
 .sa-shell {
-  width: min(1520px, 100%);
-  border-radius: 24px;
+  width: 100%;
+  max-width: 2000px;
+  margin-inline: auto;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
   background:
     radial-gradient(circle at 70% 42%, rgba(72, 128, 103, 0.08), transparent 34%),
     linear-gradient(rgba(255, 255, 255, 0.012), rgba(255, 255, 255, 0.012)),
     var(--a-bg);
   display: flex;
   flex-direction: column;
-  min-height: calc(100dvh - clamp(32px, 4vw, 64px));
+  min-height: 100dvh;
 }
 
 /* ---- Top bar: identity + progress in one quiet strip ---- */
@@ -428,6 +430,52 @@
 .sa-rec-context strong {
   color: var(--a-text-2);
   font-weight: 600;
+}
+/* What this could include — the pathway's concrete services, tailored to the
+   result. Echoes the map's converged-signal check so the recap feels of a
+   piece with the visualization, and ties back to the site's services list. */
+.sa-rec-includes {
+  margin: 0 0 16px;
+}
+.sa-rec-includes-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--a-text-3);
+  font-weight: 600;
+  margin: 0 0 9px;
+}
+.sa-rec-includes ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 18px;
+}
+.sa-rec-includes li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--a-text-2);
+}
+.sa-rec-includes li svg {
+  flex: none;
+  width: 11px;
+  height: 11px;
+  transform: translateY(1px);
+  fill: none;
+  stroke: var(--a-green-bright);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (max-width: 560px) {
+  .sa-rec-includes ul {
+    grid-template-columns: 1fr;
+  }
 }
 .sa-primary--wide {
   width: 100%;
