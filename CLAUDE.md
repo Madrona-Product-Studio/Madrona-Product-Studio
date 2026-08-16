@@ -76,16 +76,27 @@ aliases (they were removed; use the tokens below).
 - `line` `rgba(26,23,20,0.14)` — standard hairline rules and borders
 - `line-soft` `rgba(26,23,20,0.08)` — the quietest dividers
 
-**Madrona (the signature — used sparingly)**
-- `madrona` `#c4553a` — links, active nav, CTA buttons, accent rules
+**Madrona / bark (the signature — used sparingly)**
+- `madrona` `#c4553a` — links, active nav, accent rules, the `.m2-pop` flash
 - `madrona-dark` `#a3432d` — hover and pressed states
 - `madrona-light` `#e8a999` — selection highlights, subtle tinted washes
 
-**Discipline:** The bark orange is the signature color AND the primary CTA
-color. Do not introduce a separate "CTA green" or similar — the whole point
-is that one color does brand-ID and interaction-signal work simultaneously.
-This means madrona must be used sparingly everywhere else so it reads as
-signal, not decoration.
+**Forest (the CTA + deep ground — canonized 2026-08-15)**
+- `forest` `#1f3b33` — primary CTA buttons ("Get in touch" / "Send message")
+  and the deep CTA/footer band
+- `forest-soft` `#506b58` — secondary/outline CTA text, hover tints
+
+**Discipline (the two-accent system):** This is deliberately a *two*-accent
+palette, and the two roles never blur. **Bark does brand identity** —
+links, active nav, section kickers, the `.m2-pop` flash — the sudden
+red-orange that says "Madrona." **Forest does the call to action** — the
+primary buttons and the deep CTA/footer band — the calm, grounded "act
+here." Neither color is decorative: bark stays scarce so it reads as brand
+signal, forest stays reserved for the ask so a CTA is unmistakable. Don't
+introduce a *third* accent, and don't cross the roles (no bark buttons, no
+forest links). (Superseded the earlier one-accent rule after the forest
+CTA system proved itself across every V2 page; Charlie sign-off
+2026-08-15.)
 
 ### Typography
 

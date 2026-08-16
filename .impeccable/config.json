@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-08-15T22:27:00.831Z",
+        "reason": "brand system: CLAUDE.md typography canon mandates Inter as the sans for body/UI/h2-h4"
+      },
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "createdAt": "2026-08-15T22:27:00.879Z",
+        "reason": "brand system: CLAUDE.md typography canon mandates Fraunces as the serif display/h1 voice"
+      }
+    ]
+  }
+}
