@@ -95,7 +95,7 @@ export default function MadronaV2AgenticNote() {
           toc={TOC}
           visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="flow" /></div></div>}
         />
-        <ArticleBody>
+        <ArticleBody share={{ title: "The era of agentic operations", href: "/thinking/the-era-of-agentic-operations" }}>
           <ArticleSection id="the-shift" num="1" eyebrow="The shift" title="Most businesses run on tool sprawl. The agentic version inverts it.">
             <Prose>
               <p>A task app, a spreadsheet, an inbox, and the owner's head stitching them together. That is the operating system of most small companies, and it taxes the scarcest thing they have: attention.</p>

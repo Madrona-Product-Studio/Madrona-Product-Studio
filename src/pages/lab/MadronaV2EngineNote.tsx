@@ -26,10 +26,10 @@ import "./playbook.css";
    parts list. */
 
 const TOC: TocItem[] = [
-  { id: "engine", label: "Every product rides on the same engine" },
-  { id: "foundation", label: "What our products stand on" },
-  { id: "schematic", label: "The engine, as a schematic" },
-  { id: "parts", label: "The parts, if you want to set it up" },
+  { id: "engine", label: "The engine" },
+  { id: "foundation", label: "The foundation" },
+  { id: "schematic", label: "The schematic" },
+  { id: "parts", label: "The parts" },
   { id: "leave-behind", label: "What we leave behind" },
 ];
 
@@ -167,7 +167,7 @@ export default function MadronaV2EngineNote() {
           }
         />
 
-        <ArticleBody>
+        <ArticleBody share={{ title: "The engine behind everything we ship", href: "/thinking/under-the-hood" }}>
           {/* 1 */}
           <ArticleSection id="engine" num="1" title="Every product rides on the same engine.">
             <Prose>

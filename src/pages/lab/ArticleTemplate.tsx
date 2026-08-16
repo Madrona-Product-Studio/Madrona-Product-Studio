@@ -1,6 +1,10 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import PovThumb from "./PovThumb";
+import { thinkingEntries } from "../../data/thinking";
 import "./article-template.css";
+
+const SITE_ORIGIN = "https://www.madronaproduct.com";
 
 /* =========================================================================
    Article template — reusable /thinking reading system (Claude candidate)
@@ -106,11 +110,123 @@ export function ArticleHeader({
 }
 
 /* ---- Body: single full-width column ------------------------------------ */
-export function ArticleBody({ children }: { children: ReactNode }) {
+export function ArticleBody({
+  children,
+  share,
+}: {
+  children: ReactNode;
+  share?: { title: string; href: string };
+}) {
   return (
-    <div className="art-grid">
-      <div className="art-col">{children}</div>
+    <>
+      <ReadingProgress />
+      <div className="art-grid">
+        <div className="art-col">
+          {children}
+          {share && (
+            <div className="art-end">
+              <RelatedReading currentHref={share.href} />
+              <ArticleShare title={share.title} href={share.href} />
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* ---- Reading progress bar ---------------------------------------------- */
+export function ReadingProgress() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const el = document.documentElement;
+    const onScroll = () => {
+      const max = el.scrollHeight - el.clientHeight;
+      setP(max > 0 ? Math.min(1, Math.max(0, el.scrollTop / max)) : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+  return (
+    <div className="art-progress" aria-hidden="true">
+      <span style={{ transform: `scaleX(${p})` }} />
     </div>
+  );
+}
+
+/* ---- Share ------------------------------------------------------------- */
+const shareIcon = (d: string) => (
+  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {d.split("|").map((p, i) => <path key={i} d={p} />)}
+  </svg>
+);
+
+export function ArticleShare({ title, href }: { title: string; href: string }) {
+  const url = `${SITE_ORIGIN}${href}`;
+  const [copied, setCopied] = useState(false);
+  const [canNative, setCanNative] = useState(false);
+  useEffect(() => {
+    setCanNative(typeof navigator !== "undefined" && typeof navigator.share === "function");
+  }, []);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      /* clipboard blocked; no-op */
+    }
+  };
+  const xUrl = `https://x.com/intent/post?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
+  const liUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+  return (
+    <div className="art-share">
+      <span className="art-share-lbl">Share this</span>
+      <div className="art-share-row">
+        <button type="button" className={`art-share-btn art-share-copy${copied ? " is-copied" : ""}`} onClick={copy}>
+          {copied ? shareIcon("M20 6 9 17l-5-5") : shareIcon("M10 13a5 5 0 0 0 7 0l2-2a5 5 0 1 0-7-7l-1 1|M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 1 0 7 7l1-1")}
+          <span>{copied ? "Copied" : "Copy link"}</span>
+        </button>
+        <a className="art-share-btn art-share-ico" href={xUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.82-5.97 6.82H1.66l7.73-8.84L1.24 2.25h6.83l4.71 6.23 5.46-6.23Zm-1.16 17.52h1.83L7.01 4.13H5.05l12.03 15.64Z" /></svg>
+        </a>
+        <a className="art-share-btn art-share-ico" href={liUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+          {shareIcon("M4.98 3.5a2 2 0 1 1 0 4 2 2 0 0 1 0-4z|M3.5 9h3v11h-3z|M9 9h2.9v1.5A3.2 3.2 0 0 1 14.7 9c3 0 3.8 1.9 3.8 4.6V20h-3v-5.3c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.8 1.4a2.6 2.6 0 0 0-.1.9V20H9z")}
+        </a>
+        {canNative && (
+          <button type="button" className="art-share-btn art-share-ico" onClick={() => { void navigator.share?.({ title, url }); }} aria-label="Share">
+            {shareIcon("M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7|M12 15V3|M8 7l4-4 4 4")}
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ---- Related reading --------------------------------------------------- */
+export function RelatedReading({ currentHref, limit = 3 }: { currentHref: string; limit?: number }) {
+  const items = thinkingEntries.filter((e) => e.href !== currentHref).slice(0, limit);
+  if (!items.length) return null;
+  return (
+    <section className="art-related" data-reveal>
+      <p className="art-related-label">Keep reading</p>
+      <div className="art-related-grid">
+        {items.map((e) => (
+          <Link key={e.href} to={e.href} className="art-related-card">
+            <div className="m2-pov-plate"><PovThumb motif={e.motif} /></div>
+            <div className="art-related-body">
+              <span className="art-related-type">{e.type}</span>
+              <h3>{e.title}</h3>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 }
 

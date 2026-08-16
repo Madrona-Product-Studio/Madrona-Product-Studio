@@ -21,37 +21,40 @@
 .art-wrap { margin: 0 auto; max-width: 1120px; padding: 0 clamp(20px, 5vw, 40px); }
 
 /* ---- Header (split: title left, illustration right) -------------------- */
-.art-head { border-top: 1px solid var(--art-hair); padding: clamp(30px, 4vw, 46px) 0 0; }
+.art-head { border-top: 1px solid var(--art-hair); padding: clamp(44px, 5.5vw, 72px) 0 0; }
 .art-head-split {
   align-items: center;
   display: grid;
-  gap: clamp(30px, 5vw, 60px);
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(36px, 5vw, 68px);
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
 }
 .art-head-split.no-visual { display: block; }
 .art-head-lead { min-width: 0; }
 .art-head-lead .m2-kicker { margin: 0; }
 
-.art-metaline { color: var(--muted); font-size: .82rem; letter-spacing: -.01em; margin: 12px 0 0; }
+.art-metaline { color: var(--muted); font-size: .82rem; letter-spacing: -.01em; margin: 15px 0 0; }
 .art-metaline a, .art-metaline b { color: var(--ink-soft); font-weight: 600; }
 .art-metaline a:hover { color: var(--bark-dark); }
 .art-metaline .dot { color: var(--faint, #b8b0a2); margin: 0 8px; }
 
-.art-title {
+/* Title: scoped with .art so it beats `.m2 h1` (Inter) — the page-title
+   moment is the editorial Fraunces serif per brand. */
+.art .art-title {
   color: var(--ink);
   font-family: Fraunces, "Fraunces Fallback", Georgia, serif;
-  font-size: clamp(2.1rem, 3.5vw, 2.95rem);
+  font-size: clamp(2.05rem, 3.3vw, 2.85rem);
   font-weight: 540;
-  letter-spacing: -.02em;
-  line-height: 1.05;
-  margin: 16px 0 0;
-  max-width: 18ch;
+  letter-spacing: -.014em;
+  line-height: 1.1;
+  margin: clamp(20px, 2.2vw, 30px) 0 0;
+  max-width: 17ch;
 }
-.art-standfirst {
+/* Scoped with .art so the title→standfirst gap beats `.m2 p { margin-top: 0 }`. */
+.art .art-standfirst {
   color: var(--ink-soft);
-  font-size: clamp(1.06rem, 1.4vw, 1.22rem);
+  font-size: clamp(1.06rem, 1.4vw, 1.2rem);
   line-height: 1.55;
-  margin: 18px 0 0;
+  margin: clamp(34px, 4vw, 52px) 0 0;
   max-width: 44ch;
 }
 .art-head-split.no-visual .art-title { max-width: 24ch; }
@@ -69,44 +72,35 @@
 
 .art-head-rule { border: 0; border-top: 1px solid var(--art-hair); margin: 0; }
 
-/* ---- Contents strip (helper nav, lives in the title section) ----------- */
-.art-contents { border-top: 1px solid var(--art-hair-soft); margin: clamp(28px, 4vw, 40px) 0 0; padding: clamp(24px, 3vw, 32px) 0 clamp(26px, 3vw, 34px); }
+/* ---- Contents strip ("In this article" — quiet index, no underlines) --- */
+.art-contents { border-top: 1px solid var(--art-hair-soft); margin: clamp(32px, 4vw, 48px) 0 0; padding: clamp(26px, 3vw, 34px) 0 clamp(28px, 3vw, 36px); }
 .art-contents-label {
   color: var(--bark);
   font-size: .64rem;
   font-weight: 750;
   letter-spacing: .14em;
-  margin: 0 0 14px;
+  margin: 0 0 18px;
   text-transform: uppercase;
 }
 .art-contents-list {
   display: grid;
-  gap: 10px 32px;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 12px 40px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   list-style: none;
   margin: 0;
-  max-width: 940px;
+  max-width: 860px;
   padding: 0;
 }
 .art-contents-link {
   align-items: baseline;
-  color: var(--bark-dark);
+  color: var(--ink);
   display: flex;
-  font-size: .9rem;
-  gap: 10px;
-  line-height: 1.4;
+  gap: 12px;
   transition: color 150ms var(--ease-snap, cubic-bezier(.23,1,.32,1));
 }
-.art-contents-link .tx {
-  text-decoration: underline;
-  text-decoration-color: rgba(201, 106, 61, 0.32);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-  transition: text-decoration-color 150ms var(--ease-snap, cubic-bezier(.23,1,.32,1));
-}
 .art-contents-link:hover { color: var(--bark-dark); }
-.art-contents-link:hover .tx { text-decoration-color: var(--bark-dark); }
-.art-contents-link .n { color: var(--bark); flex: none; font-family: var(--art-mono); font-size: .78rem; font-weight: 600; }
+.art-contents-link .n { color: var(--bark); flex: none; font-family: var(--art-mono); font-size: .7rem; font-weight: 600; }
+.art-contents-link .tx { font-size: .9rem; font-weight: 550; letter-spacing: -.01em; line-height: 1.35; }
 
 /* ---- Body: single full-width column ------------------------------------ */
 .art-grid { padding: clamp(36px, 4vw, 56px) 0 clamp(64px, 8vw, 104px); }
@@ -333,6 +327,58 @@
 /* ---- Close links -------------------------------------------------------- */
 .art-close-links { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
 .art-close-links .m2-text-link { margin-top: 10px; }
+
+/* ---- Reading progress bar ---------------------------------------------- */
+.art-progress { inset: 0 0 auto 0; height: 3px; position: fixed; pointer-events: none; z-index: 120; }
+.art-progress span {
+  background: linear-gradient(90deg, var(--bark), var(--bark-dark));
+  display: block;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 90ms linear;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) { .art-progress span { transition: none; } }
+
+/* ---- Article end (related + share), set off from the last section ------ */
+.art-end { border-top: 1px solid var(--art-hair); margin-top: clamp(40px, 6vw, 72px); padding-top: clamp(36px, 5vw, 56px); }
+
+/* ---- Related reading --------------------------------------------------- */
+.art-related-label {
+  color: var(--muted); font-size: .64rem; font-weight: 750; letter-spacing: .14em;
+  margin: 0 0 20px; text-transform: uppercase;
+}
+.art-related-grid { display: grid; gap: clamp(18px, 2.5vw, 28px); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.art-related-card { display: flex; flex-direction: column; min-width: 0; }
+.art-related-card .m2-pov-plate {
+  border: 1px solid var(--art-hair); border-radius: 12px; overflow: hidden;
+  transition: border-color 180ms var(--ease-snap, cubic-bezier(.23,1,.32,1));
+}
+.art-related-card:hover .m2-pov-plate { border-color: rgba(201, 106, 61, 0.4); }
+.art-related-body { padding: 14px 2px 0; }
+.art-related-type { color: var(--bark); font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.art-related-card h3 {
+  color: var(--ink); font-family: Fraunces, "Fraunces Fallback", Georgia, serif;
+  font-size: 1.08rem; font-weight: 540; letter-spacing: -.01em; line-height: 1.22; margin: 8px 0 0;
+  transition: color 160ms var(--ease-snap, cubic-bezier(.23,1,.32,1));
+}
+.art-related-card:hover h3 { color: var(--bark-dark); }
+
+/* ---- Share ------------------------------------------------------------- */
+.art-share { align-items: center; display: flex; flex-wrap: wrap; gap: 14px 18px; margin-top: clamp(36px, 5vw, 52px); }
+.art-share-lbl { color: var(--muted); font-size: .64rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+.art-share-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.art-share-btn {
+  align-items: center; background: var(--color-card, #fff); border: 1px solid var(--art-hair);
+  border-radius: 999px; color: var(--ink-soft); cursor: pointer; display: inline-flex; gap: 8px;
+  height: 38px; justify-content: center; padding: 0 14px;
+  transition: border-color 160ms var(--ease-snap, cubic-bezier(.23,1,.32,1)), color 160ms var(--ease-snap, cubic-bezier(.23,1,.32,1)), background-color 160ms var(--ease-snap, cubic-bezier(.23,1,.32,1));
+}
+.art-share-btn span { font-size: .82rem; font-weight: 600; letter-spacing: -.01em; }
+.art-share-ico { width: 38px; padding: 0; }
+.art-share-btn:hover { border-color: rgba(201, 106, 61, 0.45); color: var(--bark-dark); }
+.art-share-copy.is-copied { border-color: var(--forest-soft); color: var(--forest); }
 
 /* ---- Header responsive: stack, illustration on top --------------------- */
 @media (max-width: 820px) {
