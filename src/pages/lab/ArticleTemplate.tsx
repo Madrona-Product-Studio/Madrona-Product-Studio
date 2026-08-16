@@ -246,11 +246,11 @@ export function ArticleSection({
 }) {
   return (
     <section id={id} className="art-sec">
-      {eyebrow && <p className="art-sec-eyebrow">{eyebrow}</p>}
-      <div className="art-sec-head">
+      <div className="art-sec-meta">
         <span className="art-sec-num">#&nbsp;{num}</span>
-        <h2>{title}</h2>
+        {eyebrow && <span className="art-sec-eyebrow">{eyebrow}</span>}
       </div>
+      <h2 className="art-sec-title">{title}</h2>
       {children}
     </section>
   );
