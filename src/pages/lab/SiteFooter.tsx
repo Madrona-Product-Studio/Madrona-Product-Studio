@@ -51,6 +51,7 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
           <nav className="m2-fc-nav" aria-label="Footer">
             <Link to="/apps">Products</Link>
             <Link to="/consulting">How we help</Link>
+            <Link to="/checkup">Signal check</Link>
             <Link to="/thinking">Thinking</Link>
             <Link to="/about">About</Link>
           </nav>
