@@ -14,9 +14,11 @@ import lilaWordmark from "../../../docs/madrona-v2-build-kit/product-proof/lila/
 import lilaTile from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp";
 import sjbgTile from "../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp";
 import sanImage from "../../../docs/madrona-v2-build-kit/placeholders/product-proof/san-juan-product-proof-wide.webp";
+import helmTile from "../../../docs/madrona-v2-build-kit/site-assets/helm-tile.webp";
 
 const ownApps = [
   { name: "Lila Trips", short: "Lila", domain: "lilatrips.com", wordmark: lilaWordmark, media: lilaTile, status: "Live", tagline: "Adventure travel, authored not generated.", blurb: "Handpicked travel experiences for curious travelers. Discover, plan, book.", image: lilaHero, href: "https://lilatrips.com" },
+  { name: "Helm", short: "Helm", domain: "helm.day", wordmark: null, media: helmTile, status: "Beta", tagline: "A command center in versioned markdown.", blurb: "One place for work, projects, and priorities that people and agents can both read.", image: helmTile, href: "https://helm.day" },
   { name: "San Juan Boating Guide", short: "San Juan Boating Guide", domain: "sjiboating.com", wordmark: null, media: sjbgTile, status: "Live", tagline: "Route context for the Salish Sea.", blurb: "Tide-aware routes, local knowledge, and real-time marine conditions.", image: sanImage, href: "https://www.sjiboating.com/" },
 ] as const;
 
