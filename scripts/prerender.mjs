@@ -57,10 +57,10 @@ const pages = {
     body: 'Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. Smoother operations, customers who come back, a web presence that earns trust. We run our own products and operations the same way, here in the PNW and beyond.',
   },
   '/checkup': {
-    title: 'Where could we help? A free five-minute read · Madrona Product Studio',
-    description: 'Four quick questions, an instant written read on where AI and better tools could genuinely help your business. Free, no email needed. From Madrona Product Studio in Bellingham, Washington.',
-    h1: 'Tell us where the week goes. We\'ll tell you what we see.',
-    body: 'Four quick questions. As you answer, your read assembles alongside, the same short written assessment we start every engagement with. It is yours to keep either way. Which of these sound like you? The website is just ok. Ordering still means somebody texts me. I lose hours every week to stuff a computer should be doing. People buy once, then I never hear from them again. Everyone says AI would help, I would not know where to start. Your read covers what we heard, the central problem, the strongest opportunity, what better looks like, and a first move. Drafted by our AI from your answers; the human read from Charlie is free too.',
+    title: 'A quick signal check · Madrona Product Studio',
+    description: 'Seven quick questions, an instant read on where AI and better tools could genuinely help your business. About two minutes, no email needed. From Madrona Product Studio in Bellingham, Washington.',
+    h1: 'Your business is telling you something.',
+    body: 'Seven quick questions. As you answer, we map the pattern in your business, show where the strongest opportunity may be, and suggest a useful place to start. About two minutes, no email required, and the read is yours to keep. We look at how the business shows up online, where the week goes, what keeps customers coming back, and where AI and better tools could genuinely help. It is the same short signal we start every engagement with, from Madrona Product Studio in Bellingham, Washington.',
   },
   '/consulting': {
     title: 'How we help · Madrona Product Studio',

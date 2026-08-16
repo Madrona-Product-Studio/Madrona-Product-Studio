@@ -16,7 +16,6 @@ import MadronaV2StarterGuideNote from "./pages/lab/MadronaV2StarterGuideNote";
 import MadronaV2SystemNote from "./pages/lab/MadronaV2SystemNote";
 import MadronaV2Open from "./pages/lab/MadronaV2Open";
 import MadronaSystem from "./pages/lab/MadronaSystem";
-import MadronaV2Checkup from "./pages/lab/MadronaV2Checkup";
 import SignalBrainLab from "./pages/lab/SignalBrainLab";
 import SignalAssessment from "./pages/lab/SignalAssessment";
 
@@ -58,12 +57,13 @@ export default function App() {
         <Route path="notes" element={<Navigate to="/thinking" replace />} />
         <Route path="playbook" element={<Navigate to="/thinking" replace />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
-        {/* PROTOTYPE — AI checkup; unlinked + noindexed until approved. */}
-        <Route path="checkup" element={<MadronaV2Checkup />} />
+        {/* The Signal Assessment — our free "signal check". Canonical at /checkup;
+            it took over this URL from the retired v1 AI checkup (launch 2026-08-15). */}
+        <Route path="checkup" element={<SignalAssessment />} />
         {/* TEMP — Signal Brain art-direction lab (signal-assessment build; unlinked). */}
         <Route path="signal-brain-lab" element={<SignalBrainLab />} />
-        {/* PROTOTYPE — Madrona Signal Assessment; unlinked until Charlie's go-live call. */}
-        <Route path="signal-check" element={<SignalAssessment />} />
+        {/* Old build slug → canonical /checkup. */}
+        <Route path="signal-check" element={<Navigate to="/checkup" replace />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />
