@@ -15,10 +15,10 @@ const REPO = "https://github.com/Madrona-Product-Studio/madrona-open";
 const CRAFT = [
   { name: "animation-vocabulary", desc: "Turns a vague description of a motion effect into its exact term, so you can prompt for it." },
   { name: "motion-options", desc: "Builds 3–4 genuinely distinct motion directions, reviews them live side by side, ships the winner." },
-  { name: "og-image", desc: "Designs and wires great social-share images — one idea, brand color, bold mark." },
+  { name: "og-image", desc: "Designs and wires great social-share images: one idea, brand color, bold mark." },
   { name: "screenshot", desc: "A tiny Playwright screenshotter for visual QA, capped to stay under AI image-size limits." },
   { name: "investor-ready", desc: "Makes an app judgeable by a stranger in 60 seconds: first-run, wow-path, credibility polish." },
-  { name: "gtm-sweep", desc: "Takes an app to market as a measured sweep — positioning, launch, and a read/iterate loop." },
+  { name: "gtm-sweep", desc: "Takes an app to market as a measured sweep: positioning, launch, and a read/iterate loop." },
   { name: "presentable-pass", desc: "Pre-share cleanup: footer, stale model names, disclaimers, mobile polish, then a PR." },
   { name: "review-animations", desc: "Reviews motion code against a high craft bar and returns a Block/Approve verdict." },
 ];
@@ -70,12 +70,12 @@ export default function MadronaV2Open() {
           <p className="m2-ab4-statement">An open operating system you own.</p>
           <div className="m2-ab4-body">
             <p>Most productivity tools want you to move your life inside them. This is the opposite. The source of truth is plain text you own; agents keep it current on a rhythm; any surface just renders it. You own the mind; the app renders it.</p>
-            <p>It's the engine we run our own studio on, extracted into a starter you can fork — the ground-level version of <Link className="m2-text-link" to="/thinking/the-era-of-agentic-operations">the era of agentic operations</Link>.</p>
+            <p>It's the engine we run our own studio on, extracted into a starter you can fork, the ground-level version of <Link className="m2-text-link" to="/thinking/the-era-of-agentic-operations">the era of agentic operations</Link>.</p>
           </div>
         </div>
         <a className="m2-open-card m2-open-card--feature" href={`${REPO}/tree/main/plugins/operating-system`} target="_blank" rel="noopener noreferrer">
           <h3>operating-system</h3>
-          <p className="why">A forkable substrate — a decision layer plus a live work file with machine-maintained blocks — and the routines that keep it current: capture, prioritize, daily-brief, weekly-sync.</p>
+          <p className="why">A forkable substrate, a decision layer plus a live work file with machine-maintained blocks, and the routines that keep it current: capture, prioritize, daily-brief, weekly-sync.</p>
           <p className="p">/plugin install operating-system@madrona-open</p>
           <span className="m2-open-gh">View on GitHub →</span>
         </a>

@@ -446,7 +446,7 @@ export default function SignalAssessment() {
                     ? "Live synthesis"
                     : engine.answeredCount > 0
                       ? "Reading your signals"
-                      : "Eight signals. Four pathways."}
+                      : "Signals to pathways."}
                 </p>
               </>
             )}

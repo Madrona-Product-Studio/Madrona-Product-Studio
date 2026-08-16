@@ -23,7 +23,7 @@ export default function BerryGoodTeaser() {
     <figure className="berry-teaser" aria-label="Example: Berry Good Berry Farm, one business improved end to end">
       <figcaption className="berry-teaser-head">
         <span className="m2-chip">Example experience</span>
-        <p>Berry Good Berry Farm — one business, improved end to end.</p>
+        <p>Berry Good Berry Farm: one business, improved end to end.</p>
       </figcaption>
       <div className="berry-teaser-tabs" role="tablist" aria-label="Berry Good business system">
         {berryViews.map((v) => (

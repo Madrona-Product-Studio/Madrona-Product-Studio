@@ -41,7 +41,7 @@
    moment is the editorial Fraunces serif per brand. */
 .art .art-title {
   color: var(--ink);
-  font-family: Fraunces, "Fraunces Fallback", Georgia, serif;
+  font-family: var(--font-serif);
   font-size: clamp(2.05rem, 3.3vw, 2.85rem);
   font-weight: 540;
   letter-spacing: -.014em;
@@ -116,7 +116,7 @@
 /* Scoped with .art so the serif title beats `.m2 h2` (Inter). */
 .art .art-sec-title {
   color: var(--ink);
-  font-family: Fraunces, "Fraunces Fallback", Georgia, serif;
+  font-family: var(--font-serif);
   font-size: clamp(1.5rem, 2.4vw, 1.95rem);
   font-weight: 540;
   letter-spacing: -.015em;
@@ -257,7 +257,7 @@
   padding: 18px 18px 20px;
 }
 .art-callout-ey { color: var(--muted); font-family: var(--art-mono); font-size: .72rem; margin: 0 0 8px; }
-.art-callout-title { color: var(--bark-dark); font-family: Fraunces, "Fraunces Fallback", Georgia, serif; font-size: 1.12rem; font-weight: 560; letter-spacing: -.01em; line-height: 1.2; margin: 0 0 10px; }
+.art-callout-title { color: var(--bark-dark); font-family: var(--font-serif); font-size: 1.12rem; font-weight: 560; letter-spacing: -.01em; line-height: 1.2; margin: 0 0 10px; }
 .art-callout p { color: var(--ink-soft); font-size: .88rem; line-height: 1.55; margin: 0 0 12px; }
 .art-callout .art-code { margin: 0 0 12px; }
 
@@ -352,7 +352,7 @@
 .art-related-body { padding: 14px 2px 0; }
 .art-related-type { color: var(--bark); font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .art-related-card h3 {
-  color: var(--ink); font-family: Fraunces, "Fraunces Fallback", Georgia, serif;
+  color: var(--ink); font-family: var(--font-serif);
   font-size: 1.08rem; font-weight: 540; letter-spacing: -.01em; line-height: 1.22; margin: 8px 0 0;
   transition: color 160ms var(--ease-snap, cubic-bezier(.23,1,.32,1));
 }
