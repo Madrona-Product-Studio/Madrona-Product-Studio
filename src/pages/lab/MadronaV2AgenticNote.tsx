@@ -3,6 +3,8 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
+import PovThumb from "./PovThumb";
+import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, type TocItem } from "./ArticleTemplate";
 import "./madrona-v2.css";
 import "./playbook.css";
 
@@ -64,276 +66,263 @@ const RAIL = [
   { time: "Monday", agent: "Weekly sync", mode: "20 minutes, weekly", doing: <>The conductor: <b>what moved, what slipped, what is owed</b>, one needle-mover per area. Keeps every part of the business visibly green, yellow, or red.</>, lands: ["track status", "scoreboard"] },
 ];
 
+const TOC: TocItem[] = [
+  { id: "the-shift", label: "The shift" },
+  { id: "the-pattern", label: "The pattern, drawn" },
+  { id: "the-rhythm", label: "The rhythm" },
+  { id: "what-changes", label: "What changes" },
+  { id: "where-businesses-are", label: "Evolution over revolution" },
+  { id: "how-to-start", label: "How to start" },
+  { id: "the-schematic", label: "For the technically curious" },
+  { id: "how-we-know", label: "How we know" },
+];
+
 export default function MadronaV2AgenticNote() {
   useReveal();
 
   return (
-    <main className="m2 m2-ab-page">
+    <main className="m2 art">
       <LabMeta title="The era of agentic operations · Thinking" />
       <M2Nav active="pov" />
 
-      {/* Hero */}
-      <section className="m2-ab4 m2-th-hero m2-pov-hero">
-        <p className="m2-kicker m2-who-kicker">A point of view</p>
-        <h1>The era of agentic operations.</h1>
-        <p className="m2-th-standfirst">A business used to run on scattered tools and someone's memory. It can now run on one source of truth and a handful of AI agents on a rhythm, with a person firmly in charge. The change is not AI doing your work. It is your operation briefing you, so your attention goes to deciding.</p>
-        <p className="m2-th-byline"><Link to="/about">Charlie Koch</Link> · Founder, Madrona Product Studio · August 2026</p>
-      </section>
+      <div className="art-wrap">
+        <ArticleHeader
+          kicker="A point of view"
+          author="Charlie Koch"
+          meta={["6 min read", "August 2026"]}
+          title="The era of agentic operations."
+          standfirst="A business used to run on scattered tools and someone's memory. It can now run on one source of truth and a handful of AI agents on a rhythm, with a person firmly in charge. The change is not AI doing your work. It is your operation briefing you, so your attention goes to deciding."
+          toc={TOC}
+          visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="flow" /></div></div>}
+        />
+        <ArticleBody>
+          <ArticleSection id="the-shift" num="1" eyebrow="The shift" title="Most businesses run on tool sprawl. The agentic version inverts it.">
+            <Prose>
+              <p>A task app, a spreadsheet, an inbox, and the owner's head stitching them together. That is the operating system of most small companies, and it taxes the scarcest thing they have: attention.</p>
+              <p>Agentic AI applied to operations replaces the stitching, not the people.</p>
+            </Prose>
+            <Figure>
+              <ul className="m2-th4-rows">
+                {SHIFT.map((s) => (
+                  <li key={s.strong}>
+                    <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={s.tone}><I d={s.icon} /></span>
+                    <p><strong>{s.strong}</strong> <span>{s.text}</span></p>
+                  </li>
+                ))}
+              </ul>
+            </Figure>
+          </ArticleSection>
 
-      {/* 1 · The shift */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">The shift</p>
-          <p className="m2-ab4-statement">Most businesses run on tool sprawl. The agentic version inverts it.</p>
-          <div className="m2-ab4-body">
-            <p>A task app, a spreadsheet, an inbox, and the owner's head stitching them together. That is the operating system of most small companies, and it taxes the scarcest thing they have: attention.</p>
-            <p>Agentic AI applied to operations replaces the stitching, not the people.</p>
-          </div>
-        </div>
-        <ul className="m2-th4-rows">
-          {SHIFT.map((s) => (
-            <li key={s.strong}>
-              <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={s.tone}><I d={s.icon} /></span>
-              <p><strong>{s.strong}</strong> <span>{s.text}</span></p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* 2 · The pattern, drawn */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">The pattern, drawn</p>
-          <p className="m2-ab4-statement">Five stages, one loop. Every arrow is a commit.</p>
-          <div className="m2-ab4-body">
-            <p>The boundary matters: the agents never act outward on their own. They read, sort, rank, and prepare. Sending, signing, and deciding stay human.</p>
-          </div>
-        </div>
-        <div className="m2-pb-figure">
-          <div className="m2-pb-board">
-            <div className="m2-hq-loop">
-              <div className="m2-hq-stage">
-                <div className="num">1</div>
-                <div className="name">Capture</div>
-                <div className="m2-hq-card">
-                  <div className="m2-hq-rows">
-                    <div className="row"><div className="m2-hq-what">Voice and phone<small>one sentence, filed for you</small></div></div>
-                    <div className="row"><div className="m2-hq-what">Any work session<small>notes land where they belong</small></div></div>
-                    <div className="row"><div className="m2-hq-what">Email and calendar<small>swept automatically</small></div></div>
+          <ArticleSection id="the-pattern" num="2" eyebrow="The pattern, drawn" title="Five stages, one loop. Every arrow is a commit.">
+            <Prose>
+              <p>The boundary matters: the agents never act outward on their own. They read, sort, rank, and prepare. Sending, signing, and deciding stay human.</p>
+            </Prose>
+            <Figure>
+              <div className="m2-pb-board">
+                <div className="m2-hq-loop">
+                  <div className="m2-hq-stage">
+                    <div className="num">1</div>
+                    <div className="name">Capture</div>
+                    <div className="m2-hq-card">
+                      <div className="m2-hq-rows">
+                        <div className="row"><div className="m2-hq-what">Voice and phone<small>one sentence, filed for you</small></div></div>
+                        <div className="row"><div className="m2-hq-what">Any work session<small>notes land where they belong</small></div></div>
+                        <div className="row"><div className="m2-hq-what">Email and calendar<small>swept automatically</small></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="m2-hq-conn"><Arrow /></div>
+                  <div className="m2-hq-stage">
+                    <div className="num">2</div>
+                    <div className="name">Source of truth</div>
+                    <div className="m2-hq-card mind">
+                      <div className="t">the operation <small>· git</small></div>
+                      <div className="m2-hq-file">strategy.md <span>how to decide</span></div>
+                      <div className="m2-hq-file">the-work.md <span>everything live</span></div>
+                      <div className="m">Machine-kept blocks inside:</div>
+                      <div className="m2-hq-chips"><i>Priorities, ranked</i><i>Track status</i><i>Owed by you</i><i>Scoreboard</i></div>
+                    </div>
+                  </div>
+                  <div className="m2-hq-conn"><Arrow /></div>
+                  <div className="m2-hq-stage">
+                    <div className="num">3</div>
+                    <div className="name">Routines</div>
+                    <div className="m2-hq-card">
+                      <div className="m2-hq-rows">
+                        <div className="row"><span className="m2-hq-when">3:00a</span><div className="m2-hq-what">Nightly sweep<small>finds new opportunities</small></div></div>
+                        <div className="row"><span className="m2-hq-when">5:00a</span><div className="m2-hq-what">Morning pulse<small>reads inbox and calendar</small></div></div>
+                        <div className="row"><span className="m2-hq-when">daily</span><div className="m2-hq-what">Daily brief<small>one decision surface</small></div></div>
+                        <div className="row"><span className="m2-hq-when">weekly</span><div className="m2-hq-what">Weekly sync<small>the conductor</small></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="m2-hq-conn"><Arrow /></div>
+                  <div className="m2-hq-stage">
+                    <div className="num">4</div>
+                    <div className="name">Surface</div>
+                    <div className="m2-hq-helm">
+                      <div className="bar">COMMAND CENTER</div>
+                      <div className="hero"><i>Today's three moves</i><em>ranked by strategy, with the why</em></div>
+                      <div className="r"><span className="dot" />Send the proposal</div>
+                      <div className="r"><span className="dot" />Reply to the customer</div>
+                      <div className="r"><span className="dot" />Decide on the batch</div>
+                    </div>
+                    <div className="desc">The source of truth, rendered live. No second backlog to maintain.</div>
+                  </div>
+                  <div className="m2-hq-conn"><Arrow /></div>
+                  <div className="m2-hq-stage">
+                    <div className="num">5</div>
+                    <div className="name">You act</div>
+                    <div className="m2-hq-act">
+                      <div className="t">The person stays the decider</div>
+                      <div className="m">Agents prepare and tee up. <b>A human sends, signs, and decides.</b> The system exists to make acting easy.</div>
+                    </div>
                   </div>
                 </div>
+                <div className="m2-hq-return"><span>Every action writes back to the source of truth, so tomorrow starts smarter</span></div>
               </div>
-              <div className="m2-hq-conn"><Arrow /></div>
-              <div className="m2-hq-stage">
-                <div className="num">2</div>
-                <div className="name">Source of truth</div>
-                <div className="m2-hq-card mind">
-                  <div className="t">the operation <small>· git</small></div>
-                  <div className="m2-hq-file">strategy.md <span>how to decide</span></div>
-                  <div className="m2-hq-file">the-work.md <span>everything live</span></div>
-                  <div className="m">Machine-kept blocks inside:</div>
-                  <div className="m2-hq-chips"><i>Priorities, ranked</i><i>Track status</i><i>Owed by you</i><i>Scoreboard</i></div>
+              <p className="m2-pb-figcap">One example of what the next iteration of an agentic business can look like. There will be many shapes; this is the one we run every day.</p>
+            </Figure>
+          </ArticleSection>
+
+          <ArticleSection id="the-rhythm" num="3" eyebrow="The rhythm" title="The system works while you sleep and briefs you when you sit down.">
+            <Prose>
+              <p>This is what AI workflow automation looks like when it serves attention instead of replacing people: a representative day in an operation that prepares itself.</p>
+            </Prose>
+            <Figure>
+              <div className="m2-pb-board">
+                <div className="m2-hq-rail">
+                  {RAIL.map((r) => (
+                    <div key={r.agent} style={{ display: "contents" }}>
+                      <div className="left"><div className="time">{r.time}</div><div className="agent">{r.agent}</div><div className="mode">{r.mode}</div></div>
+                      <div className="right">
+                        <div className="doing">{r.doing}</div>
+                        <div className="m2-hq-lands"><span className="lbl">Lands in</span><div className="m2-hq-chips">{r.lands.map((l) => <i key={l}>{l}</i>)}</div></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="m2-hq-railfoot">
+                  <span className="spine" />
+                  <p><b>The spine is one source of truth.</b> A command surface renders it live. Agents propose; the owner decides and sends. Every action commits back, so the operation compounds.</p>
                 </div>
               </div>
-              <div className="m2-hq-conn"><Arrow /></div>
-              <div className="m2-hq-stage">
-                <div className="num">3</div>
-                <div className="name">Routines</div>
-                <div className="m2-hq-card">
-                  <div className="m2-hq-rows">
-                    <div className="row"><span className="m2-hq-when">3:00a</span><div className="m2-hq-what">Nightly sweep<small>finds new opportunities</small></div></div>
-                    <div className="row"><span className="m2-hq-when">5:00a</span><div className="m2-hq-what">Morning pulse<small>reads inbox and calendar</small></div></div>
-                    <div className="row"><span className="m2-hq-when">daily</span><div className="m2-hq-what">Daily brief<small>one decision surface</small></div></div>
-                    <div className="row"><span className="m2-hq-when">weekly</span><div className="m2-hq-what">Weekly sync<small>the conductor</small></div></div>
+            </Figure>
+          </ArticleSection>
+
+          <ArticleSection id="what-changes" num="4" eyebrow="What changes" title="The point is not automation. It is attention.">
+            <Prose>
+              <p>Automation is the mechanism. The outcome is a different relationship between the owner and the operation.</p>
+            </Prose>
+            <Figure>
+              <ul className="m2-th4-rows">
+                {CHANGES.map((c) => (
+                  <li key={c.text}>
+                    <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={c.tone}><I d={c.icon} /></span>
+                    <p>{c.text}</p>
+                  </li>
+                ))}
+              </ul>
+            </Figure>
+          </ArticleSection>
+
+          <ArticleSection id="where-businesses-are" num="5" title="Evolution over revolution">
+            <Prose>
+              <p>No business needs to leap to the end state. The market is in transition, and the honest opportunity is to move one meaningful stage forward from wherever an operation is today.</p>
+            </Prose>
+            <Figure>
+              <ol className="m2-ab4-cols m2-th4-stages">
+                {STAGES.map((s) => (
+                  <li key={s.num}>
+                    <p className="m2-th-stage-num">{s.num}</p>
+                    <h3>{s.title}</h3>
+                    <p>{s.body}</p>
+                  </li>
+                ))}
+              </ol>
+            </Figure>
+          </ArticleSection>
+
+          <ArticleSection id="how-to-start" num="6" eyebrow="How to start" title="One workflow, one agent, one card, one number.">
+            <Prose>
+              <p>You do not migrate a business to this. You take a single painful, repeatable workflow, give it a rhythm, and prove the payback before adding the next one.</p>
+              <p>It is the smallest honest version of the pattern, and it is how every engagement we take begins.</p>
+            </Prose>
+            <Figure>
+              <ul className="m2-th4-rows">
+                {START.map((s) => (
+                  <li key={s.strong}>
+                    <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={s.tone}><I d={s.icon} /></span>
+                    <p><strong>{s.strong}</strong> <span>{s.text}</span></p>
+                  </li>
+                ))}
+              </ul>
+            </Figure>
+          </ArticleSection>
+
+          <ArticleSection id="the-schematic" num="7" eyebrow="For the technically curious" title="Five components, one bus.">
+            <Prose>
+              <p>The source of truth is the bus: every component reads it and writes it through plain git commits. No proprietary database, no lock-in, no black box.</p>
+            </Prose>
+            <Figure>
+              <div className="m2-pb-board m2-pb-bp">
+                <div className="m2-pb-bpgrid">
+                  <div className="m2-pb-plate" style={{ gridColumn: 1, gridRow: 1 }}>
+                    <span className="pnum">02 CAPTURE</span>
+                    <h4>Inputs</h4>
+                    <ul><li>voice / phone shortcut</li><li>any work session</li><li>email + calendar sweep</li></ul>
+                  </div>
+                  <div className="m2-pb-wire" style={{ gridColumn: 2, gridRow: 1 }}><span>capture()</span><i>→</i></div>
+                  <div className="m2-pb-plate core" style={{ gridColumn: 3, gridRow: "1 / span 3", alignSelf: "center" }}>
+                    <span className="pnum">01 SOURCE OF TRUTH</span>
+                    <h4>the operation · git repository</h4>
+                    <ul>
+                      <li>strategy.md&nbsp;&nbsp;// judgment: weights, heuristics</li>
+                      <li>the-work.md&nbsp;&nbsp;// everything live, one file</li>
+                      <li>generated blocks: priorities · tracks · owed · scoreboard</li>
+                      <li>plain markdown. diffable. yours.</li>
+                    </ul>
+                  </div>
+                  <div className="m2-pb-wire" style={{ gridColumn: 4, gridRow: 1 }}><span>renders</span><i>→</i></div>
+                  <div className="m2-pb-plate" style={{ gridColumn: 5, gridRow: 1 }}>
+                    <span className="pnum">04 SURFACE</span>
+                    <h4>Command center</h4>
+                    <ul><li>renders the source live</li><li>ranked hero + track lights</li><li>capture + approve from phone</li></ul>
+                  </div>
+                  <div className="m2-pb-plate" style={{ gridColumn: 1, gridRow: 3 }}>
+                    <span className="pnum">03 ROUTINES</span>
+                    <h4>Agents on a rhythm</h4>
+                    <ul><li>03:00 nightly sweep</li><li>05:00 morning pulse</li><li>daily brief · weekly sync</li></ul>
+                  </div>
+                  <div className="m2-pb-wire" style={{ gridColumn: 2, gridRow: 3 }}><span>read + write</span><i>→</i></div>
+                  <div className="m2-pb-wire" style={{ gridColumn: 4, gridRow: 3 }}><span>tees up</span><i>→</i></div>
+                  <div className="m2-pb-plate dark" style={{ gridColumn: 5, gridRow: 3 }}>
+                    <span className="pnum">05 OPERATOR</span>
+                    <h4>The human</h4>
+                    <ul><li>decides, signs, sends</li><li>agents never act outward alone</li></ul>
                   </div>
                 </div>
+                <div className="m2-pb-bpreturn"><i>↩</i><span>05 → 01: every operator action commits back, so the operation compounds</span></div>
+                <div className="m2-pb-bpnote"><span>fig. 1 — the agentic operations pattern</span><span>rev 2026-08</span></div>
               </div>
-              <div className="m2-hq-conn"><Arrow /></div>
-              <div className="m2-hq-stage">
-                <div className="num">4</div>
-                <div className="name">Surface</div>
-                <div className="m2-hq-helm">
-                  <div className="bar">COMMAND CENTER</div>
-                  <div className="hero"><i>Today's three moves</i><em>ranked by strategy, with the why</em></div>
-                  <div className="r"><span className="dot" />Send the proposal</div>
-                  <div className="r"><span className="dot" />Reply to the customer</div>
-                  <div className="r"><span className="dot" />Decide on the batch</div>
-                </div>
-                <div className="desc">The source of truth, rendered live. No second backlog to maintain.</div>
-              </div>
-              <div className="m2-hq-conn"><Arrow /></div>
-              <div className="m2-hq-stage">
-                <div className="num">5</div>
-                <div className="name">You act</div>
-                <div className="m2-hq-act">
-                  <div className="t">The person stays the decider</div>
-                  <div className="m">Agents prepare and tee up. <b>A human sends, signs, and decides.</b> The system exists to make acting easy.</div>
-                </div>
-              </div>
+            </Figure>
+          </ArticleSection>
+
+          <ArticleSection id="how-we-know" num="8" eyebrow="How we know" title="We sell what we run.">
+            <Prose>
+              <p>The diagrams above are not a concept. They are how Madrona itself runs, every day: our studio operates on this exact pattern, with a surface called Helm as the command center. And it scales down honestly; this works for a small business the same way it works for a studio.</p>
+              <p>The first step is the one above: a single agent on a single workflow, with visible payback before anything grows. Like everything we publish, this is a working document; as the pattern teaches us more, the page changes.</p>
+              <p>The ground level is public, too. The plain-text operating system our studio runs on is open source — read it, fork it, make it yours.</p>
+            </Prose>
+            <div className="m2-th-close-links">
+              <Link className="m2-text-link" to="/open">Fork the operating system we run on <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/thinking/starter-guide-to-building-with-ai">Read next: A starter guide to building with AI <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/consulting#operations-and-ai">Our Operations and AI services <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
             </div>
-            <div className="m2-hq-return"><span>Every action writes back to the source of truth, so tomorrow starts smarter</span></div>
-          </div>
-          <p className="m2-pb-figcap">One example of what the next iteration of an agentic business can look like. There will be many shapes; this is the one we run every day.</p>
-        </div>
-      </section>
-
-      {/* 3 · The rhythm */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">The rhythm</p>
-          <p className="m2-ab4-statement">The system works while you sleep and briefs you when you sit down.</p>
-          <div className="m2-ab4-body">
-            <p>This is what AI workflow automation looks like when it serves attention instead of replacing people: a representative day in an operation that prepares itself.</p>
-          </div>
-        </div>
-        <div className="m2-pb-figure">
-          <div className="m2-pb-board">
-            <div className="m2-hq-rail">
-              {RAIL.map((r) => (
-                <div key={r.agent} style={{ display: "contents" }}>
-                  <div className="left"><div className="time">{r.time}</div><div className="agent">{r.agent}</div><div className="mode">{r.mode}</div></div>
-                  <div className="right">
-                    <div className="doing">{r.doing}</div>
-                    <div className="m2-hq-lands"><span className="lbl">Lands in</span><div className="m2-hq-chips">{r.lands.map((l) => <i key={l}>{l}</i>)}</div></div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="m2-hq-railfoot">
-              <span className="spine" />
-              <p><b>The spine is one source of truth.</b> A command surface renders it live. Agents propose; the owner decides and sends. Every action commits back, so the operation compounds.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4 · What changes */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">What changes</p>
-          <p className="m2-ab4-statement">The point is not automation. It is attention.</p>
-          <div className="m2-ab4-body">
-            <p>Automation is the mechanism. The outcome is a different relationship between the owner and the operation.</p>
-          </div>
-        </div>
-        <ul className="m2-th4-rows">
-          {CHANGES.map((c) => (
-            <li key={c.text}>
-              <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={c.tone}><I d={c.icon} /></span>
-              <p>{c.text}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* 5 · Where businesses are */}
-      <section className="m2-ab4 m2-ab4-sec m2-ab4-sec--full">
-        <div className="m2-th4-fullhead">
-          <p className="m2-kicker m2-who-kicker">Evolution over revolution</p>
-          <p className="m2-ab4-railbody m2-th4-fullbody">No business needs to leap to the end state. The market is in transition, and the honest opportunity is to move one meaningful stage forward from wherever an operation is today.</p>
-        </div>
-        <ol className="m2-ab4-cols m2-th4-stages">
-          {STAGES.map((s) => (
-            <li key={s.num}>
-              <p className="m2-th-stage-num">{s.num}</p>
-              <h3>{s.title}</h3>
-              <p>{s.body}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* 6 · How to start */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">How to start</p>
-          <p className="m2-ab4-statement">One workflow, one agent, one card, one number.</p>
-          <div className="m2-ab4-body">
-            <p>You do not migrate a business to this. You take a single painful, repeatable workflow, give it a rhythm, and prove the payback before adding the next one.</p>
-            <p>It is the smallest honest version of the pattern, and it is how every engagement we take begins.</p>
-          </div>
-        </div>
-        <ul className="m2-th4-rows">
-          {START.map((s) => (
-            <li key={s.strong}>
-              <span className="m2-ab4-ico m2-ab4-ico--square" data-tone={s.tone}><I d={s.icon} /></span>
-              <p><strong>{s.strong}</strong> <span>{s.text}</span></p>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* 7 · The schematic */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">For the technically curious</p>
-          <p className="m2-ab4-statement">Five components, one bus.</p>
-          <div className="m2-ab4-body">
-            <p>The source of truth is the bus: every component reads it and writes it through plain git commits. No proprietary database, no lock-in, no black box.</p>
-          </div>
-        </div>
-        <div className="m2-pb-figure">
-          <div className="m2-pb-board m2-pb-bp">
-            <div className="m2-pb-bpgrid">
-              <div className="m2-pb-plate" style={{ gridColumn: 1, gridRow: 1 }}>
-                <span className="pnum">02 CAPTURE</span>
-                <h4>Inputs</h4>
-                <ul><li>voice / phone shortcut</li><li>any work session</li><li>email + calendar sweep</li></ul>
-              </div>
-              <div className="m2-pb-wire" style={{ gridColumn: 2, gridRow: 1 }}><span>capture()</span><i>→</i></div>
-              <div className="m2-pb-plate core" style={{ gridColumn: 3, gridRow: "1 / span 3", alignSelf: "center" }}>
-                <span className="pnum">01 SOURCE OF TRUTH</span>
-                <h4>the operation · git repository</h4>
-                <ul>
-                  <li>strategy.md&nbsp;&nbsp;// judgment: weights, heuristics</li>
-                  <li>the-work.md&nbsp;&nbsp;// everything live, one file</li>
-                  <li>generated blocks: priorities · tracks · owed · scoreboard</li>
-                  <li>plain markdown. diffable. yours.</li>
-                </ul>
-              </div>
-              <div className="m2-pb-wire" style={{ gridColumn: 4, gridRow: 1 }}><span>renders</span><i>→</i></div>
-              <div className="m2-pb-plate" style={{ gridColumn: 5, gridRow: 1 }}>
-                <span className="pnum">04 SURFACE</span>
-                <h4>Command center</h4>
-                <ul><li>renders the source live</li><li>ranked hero + track lights</li><li>capture + approve from phone</li></ul>
-              </div>
-              <div className="m2-pb-plate" style={{ gridColumn: 1, gridRow: 3 }}>
-                <span className="pnum">03 ROUTINES</span>
-                <h4>Agents on a rhythm</h4>
-                <ul><li>03:00 nightly sweep</li><li>05:00 morning pulse</li><li>daily brief · weekly sync</li></ul>
-              </div>
-              <div className="m2-pb-wire" style={{ gridColumn: 2, gridRow: 3 }}><span>read + write</span><i>→</i></div>
-              <div className="m2-pb-wire" style={{ gridColumn: 4, gridRow: 3 }}><span>tees up</span><i>→</i></div>
-              <div className="m2-pb-plate dark" style={{ gridColumn: 5, gridRow: 3 }}>
-                <span className="pnum">05 OPERATOR</span>
-                <h4>The human</h4>
-                <ul><li>decides, signs, sends</li><li>agents never act outward alone</li></ul>
-              </div>
-            </div>
-            <div className="m2-pb-bpreturn"><i>↩</i><span>05 → 01: every operator action commits back, so the operation compounds</span></div>
-            <div className="m2-pb-bpnote"><span>fig. 1 — the agentic operations pattern</span><span>rev 2026-08</span></div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8 · Close */}
-      <section className="m2-ab4 m2-ab4-sec">
-        <div className="m2-ab4-rail">
-          <p className="m2-kicker m2-who-kicker">How we know</p>
-          <p className="m2-ab4-statement">We sell what we run.</p>
-        </div>
-        <div className="m2-ab4-body m2-th4-point">
-          <p>The diagrams above are not a concept. They are how Madrona itself runs, every day: our studio operates on this exact pattern, with a surface called Helm as the command center. And it scales down honestly; this works for a small business the same way it works for a studio.</p>
-          <p>The first step is the one above: a single agent on a single workflow, with visible payback before anything grows. Like everything we publish, this is a working document; as the pattern teaches us more, the page changes.</p>
-          <p>The ground level is public, too. The plain-text operating system our studio runs on is open source — read it, fork it, make it yours.</p>
-          <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/open">Fork the operating system we run on <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/thinking/starter-guide-to-building-with-ai">Read next: A starter guide to building with AI <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/consulting#operations-and-ai">Our Operations and AI services <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
-          </div>
-        </div>
-      </section>
+          </ArticleSection>
+        </ArticleBody>
+      </div>
 
       <SiteFooter cta={false} />
     </main>
