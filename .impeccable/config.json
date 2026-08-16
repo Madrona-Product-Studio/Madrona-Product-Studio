@@ -23,6 +23,15 @@
         ],
         "createdAt": "2026-08-16T18:32:39.372Z",
         "reason": "pre-existing intentional code-snippet left accent rail: 2px madrona at 30% opacity on the square edge (border-radius 0 6px 6px 0); shipped across /thinking prompt cards + /open, not from this batch"
+      },
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "src/pages/lab/playbook.css"
+        ],
+        "createdAt": "2026-08-16T18:52:19.408Z",
+        "reason": "intentional HQ-diagram source-of-truth card accent (3px bark top border on .m2-hq-card.mind); part of the agentic-operations diagram Charlie picked in PR #18; pre-existing, not from this work"
       }
     ]
   }
