@@ -32,6 +32,15 @@
         ],
         "createdAt": "2026-08-16T18:52:19.408Z",
         "reason": "intentional HQ-diagram source-of-truth card accent (3px bark top border on .m2-hq-card.mind); part of the agentic-operations diagram Charlie picked in PR #18; pre-existing, not from this work"
+      },
+      {
+        "rule": "overused-font",
+        "value": "*",
+        "files": [
+          "src/pages/lab/FontLab.tsx"
+        ],
+        "createdAt": "2026-08-16T19:52:36.772Z",
+        "reason": "temp font-comparison specimen; deliberately lists font names (incl. Fraunces as the 'current' reference) so Charlie can pick a replacement; file is removed once a font is chosen"
       }
     ]
   }
