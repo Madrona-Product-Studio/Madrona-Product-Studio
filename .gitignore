@@ -29,3 +29,6 @@ public/**/*.webp
 .vercel
 .env*
 contact-sheets/
+
+# impeccable local hook cache (machine-specific)
+.impeccable/hook.cache.json
