@@ -65,7 +65,7 @@ export const studioProducts: StudioProduct[] = [
     rightNow: "Improving how destination knowledge and traveler preferences shape each day.",
     primaryAction: { label: "Visit Lila", href: "https://lilatrips.com", external: true },
     sortOrder: 1,
-    featured: 1,
+    featured: 2,
   },
   {
     id: "san-juan-boating-guide",
@@ -119,7 +119,7 @@ export const studioProducts: StudioProduct[] = [
     rightNow: "Building agent-native features and a clearer daily operating view.",
     primaryAction: { label: "See Helm", href: "https://helm.day", external: true },
     sortOrder: 1,
-    featured: 2,
+    featured: 1,
   },
   {
     id: "garden-hq",
@@ -158,7 +158,7 @@ export function stageCounts(products: StudioProduct[]): Record<ProductStage | "a
 export function sortProducts(products: StudioProduct[]): StudioProduct[] {
   return [...products].sort((a, b) => {
     // Featured products pin to the very top, in featured order, above the stage
-    // grouping (Lila Trips 1, Helm 2) so a flagship can lead whatever its stage.
+    // grouping (Helm 1, Lila Trips 2) so a flagship can lead whatever its stage.
     const af = a.featured ?? Infinity;
     const bf = b.featured ?? Infinity;
     if (af !== bf) return af - bf;

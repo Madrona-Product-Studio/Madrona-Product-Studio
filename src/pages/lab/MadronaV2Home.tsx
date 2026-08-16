@@ -27,8 +27,8 @@ import helmIcon from "../../../docs/madrona-v2-build-kit/site-assets/app-icons/h
 
 // ---- Products (homepage 4-up) --------------------------------------------
 const products = [
-  { name: "Lila Trips", icon: lilaTripsIcon, tile: lilaTile, status: "Live", blurb: "Thoughtful travel planning built around place, pace, and what matters to you.", href: "https://lilatrips.com" },
   { name: "Helm", icon: helmIcon, tile: helmTile, status: "Beta", blurb: "A personal command center for life and work, built on versioned markdown.", href: "https://helm.day" },
+  { name: "Lila Trips", icon: lilaTripsIcon, tile: lilaTile, status: "Live", blurb: "Thoughtful travel planning built around place, pace, and what matters to you.", href: "https://lilatrips.com" },
   { name: "San Juan Boating Guide", icon: sanJuanIcon, tile: sjbgTile, status: "Live", blurb: "Tide, weather, and anchorage info for safer days on the San Juan Islands.", href: "https://www.sjiboating.com/" },
   { name: "Lila Yoga", icon: lilaYogaIcon, tile: lilaYogaTile, status: "V1", blurb: "A guided introduction to yoga, with style breakdowns, tools, and gentle practice.", href: "https://lila.yoga" },
 ] as const;
