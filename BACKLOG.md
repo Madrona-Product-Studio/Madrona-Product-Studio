@@ -29,8 +29,12 @@
 - [ ] Wordmark decision — uppercase, lowercase, title case, or small-caps
 - [ ] Companion mark / favicon — replace the placeholder "M" circle
 - [ ] Studio signature component — `<StudioSignature />` for studio project footers (Lila, HikerLink, etc.)
+- [ ] **Bricolage capsize metric fallback** — the display font (Bricolage Grotesque, shipped PR #27) borrows Inter's Arial-based metric fallback for now. Generate a dedicated capsize fallback (`@capsizecss/core` from the woff2) for zero-CLS on first uncached load. Non-blocking (`font-display: optional`).
 
 ## Content
+- [ ] **Thinking piece — "Sites that are alive" (working title).** The shift from *static* sites (when writing code was expensive, you built once and left it) to sites that are *active*: continuously changing, improving, and adjusting to the needs, attitudes, and mood of the moment. Now that more people can change more things, more often (AI lowered the cost of change), how do we start to think of a site/product as **alive** — a living instrument that adjusts to what's needed right now? Cover both sides: the exciting upside (responsive, always-improving, closer to real needs, experimentation as the default, tighter loop between signal and change) AND the cautions/downsides (thrash and churn, loss of consistency/trust, no stable ground for users, quality + guardrails when everyone can change everything, change for its own sake vs. change that compounds). Ties straight to the studio POV — the engine, "solve the system, not the symptom," AI as leverage applied with judgment. Charlie's framing, 2026-08-16.
+- [ ] **About: local "from here" block.** CLAUDE.md's About spec calls for a Bellingham/Whatcom "from here" block + a "the name" section; shipped About V4 has neither (flagged in the 2026-08-16 pre-launch sweep). Decide whether the local identity belongs on About; if yes, build it and remove the now-dead `nameStoryImg` import in `MadronaV2About.tsx`.
+- [ ] **Premium /thinking — Tier 2** (brief: `~/Developer/hq/charlie-hq/briefs/2026-08-16-thinking-premium-articles.md`): newsletter subscribe (needs an ESP, e.g. Resend Broadcasts), RSS feed, author bio block, sticky mini-TOC on desktop. Tier 1 shipped (Bricolage header, "In this article", reading progress, related "Keep reading", share row); likes deferred.
 - [ ] Detail offering sections — how we communicate what an actual engagement looks like
 - [ ] About page copy polish
 - [ ] "We build systems, not just products" positioning. Show that the studio builds reusable infrastructure (component libraries, the capabilities + standards registry, shared packages like @madrona/api-utils) that makes building faster and easier to maintain. A real differentiator vs. studios that ship and leave. Worth surfacing on Approach or About at some point. Source: madrona-studio-capabilities repo.
@@ -47,6 +51,8 @@
   - Want what we build to make your next build faster, not just ship and leave? *(systems/loops angle)*
 
 ## Done
+- [x] Pre-launch design sweep (2026-08-16) — parallel design review across the site, then fixes: **Bricolage Grotesque display font** (retired Fraunces, unified H1s + statements), em-dash cleanup, /apps stage-badge colors (off blue/bark → calm ramp), forest→bark on active filter + /consulting mobile tab, checkup "seven/eight" copy fix (PR #27)
+- [x] Premium /thinking articles Tier 1 — new template header (Bricolage + spacing), "In this article" quiet index, reading-progress bar, related "Keep reading", share row; applied to all four articles + /thesis (PRs #18–#26)
 - [x] Removed pre-Madrona placeholder case studies (REI x3, Healthline); kept the logo-row tease
 - [x] Hero subhead rewrite + comma fix
 - [x] Site-wide em-dash sweep (page titles now use ·)
