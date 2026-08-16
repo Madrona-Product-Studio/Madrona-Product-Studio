@@ -35,6 +35,9 @@ export interface StudioProduct {
   rightNow: string;
   primaryAction?: { label: string; href: string; external?: boolean };
   sortOrder?: number;
+  // Pin this product to the very top of the list, in ascending order, above the
+  // stage grouping — so a flagship can lead regardless of its maturity stage.
+  featured?: number;
   // Force this product to the end of the list, regardless of stage order.
   pinLast?: boolean;
 }
@@ -62,6 +65,7 @@ export const studioProducts: StudioProduct[] = [
     rightNow: "Improving how destination knowledge and traveler preferences shape each day.",
     primaryAction: { label: "Visit Lila", href: "https://lilatrips.com", external: true },
     sortOrder: 1,
+    featured: 1,
   },
   {
     id: "san-juan-boating-guide",
@@ -115,6 +119,7 @@ export const studioProducts: StudioProduct[] = [
     rightNow: "Building agent-native features and a clearer daily operating view.",
     primaryAction: { label: "See Helm", href: "https://helm.day", external: true },
     sortOrder: 1,
+    featured: 2,
   },
   {
     id: "garden-hq",
@@ -152,6 +157,11 @@ export function stageCounts(products: StudioProduct[]): Record<ProductStage | "a
 
 export function sortProducts(products: StudioProduct[]): StudioProduct[] {
   return [...products].sort((a, b) => {
+    // Featured products pin to the very top, in featured order, above the stage
+    // grouping (Lila Trips 1, Helm 2) so a flagship can lead whatever its stage.
+    const af = a.featured ?? Infinity;
+    const bf = b.featured ?? Infinity;
+    if (af !== bf) return af - bf;
     // Pinned-last products sink below everything else, whatever their stage.
     if (!!a.pinLast !== !!b.pinLast) return a.pinLast ? 1 : -1;
     const stageDiff = STAGE_META[a.stage].order - STAGE_META[b.stage].order;
