@@ -5,7 +5,9 @@ import { BOOKING_URL, TEXT_NUMBER } from "../data/booking";
 
 declare global {
   interface Window {
-    gtag?: (command: string, event: string, params?: Record<string, unknown>) => void;
+    // Variadic to match GA4's real gtag and the canonical declaration in
+    // src/assessment/analytics.ts (mismatched signatures fail tsc — TS2717).
+    gtag?: (...args: unknown[]) => void;
   }
 }
 

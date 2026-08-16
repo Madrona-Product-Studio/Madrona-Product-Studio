@@ -65,7 +65,7 @@ export const serviceAreas: ServiceArea[] = [
     pathSteps: ["Request", "decision", "action"],
     artifact: { src: operationsArtifact, alt: "Berry Good operations dashboard with an order-intake agent and structured orders", caption: "Berry Good operations dashboard" },
     pov: { label: "Thinking: The era of agentic operations", to: "/thinking/the-era-of-agentic-operations" },
-    tryIt: { label: "Not sure where AI fits? Take the free five-minute checkup", to: "/checkup" },
+    tryIt: { label: "Not sure where AI fits? Take the free signal check", to: "/checkup" },
   },
   {
     id: "customers-and-growth",

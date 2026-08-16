@@ -241,8 +241,7 @@ export default function SignalAssessment() {
 
   return (
     <div className={`sa${showResult ? " sa--result" : ""}${stage.kind === "synthesis" ? " sa--synthesis" : ""}${stage.kind === "intro" ? " sa--intro" : ""}`}>
-      {/* noindex while we soft-launch; flip once the route is linked + final. */}
-      <LabMeta title="A quick signal check · Madrona Product Studio" noindex />
+      <LabMeta title="A quick signal check · Madrona Product Studio" />
       <div className="sa-shell">
         {/* ---- Top bar: identity + progress, freeing the full width below ---- */}
         <header className="sa-top">
