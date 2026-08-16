@@ -204,7 +204,7 @@ export default function MadronaV2StarterGuideNote() {
           visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="structure" /></div></div>}
         />
 
-        <ArticleBody>
+        <ArticleBody share={{ title: "A starter guide to building real software with AI", href: "/thinking/starter-guide-to-building-with-ai" }}>
           <ArticleSection id="the-shape" num="1" eyebrow="The shape of it" title="Five pieces, one loop.">
             <Prose>
               <p>Every AI coding setup worth having reduces to the same loop: you describe what you want, agents in your terminal build it, GitHub keeps the source of truth, Vercel puts it on the internet, and what you learn from the live thing feeds the next round.</p>

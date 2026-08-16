@@ -129,7 +129,7 @@ export default function MadronaV2SystemNote() {
           toc={TOC}
           visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="source" /></div></div>}
         />
-        <ArticleBody>
+        <ArticleBody share={{ title: "Solve the system, not the symptom", href: "/thinking/solve-the-system-not-the-symptom" }}>
           <ArticleSection id="the-moment" num="1" eyebrow="The moment" title="One bad image, and two ways to respond.">
             <Prose>
               <p>A tool of mine generated an image that was wrong: the framing off, the mood wrong. My first instinct was to fix that image, nudging it until it looked right.</p>
