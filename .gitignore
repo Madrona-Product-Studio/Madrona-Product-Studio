@@ -30,5 +30,5 @@ public/**/*.webp
 .env*
 contact-sheets/
 
-# impeccable local hook cache (machine-specific)
+# impeccable local hook cache (config.json is tracked)
 .impeccable/hook.cache.json

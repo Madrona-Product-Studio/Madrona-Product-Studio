@@ -88,7 +88,8 @@
     { "type": "p", "text": "The source of truth is the bus: every component reads it and writes it through plain git commits. No proprietary database, no lock-in, no black box." },
     { "type": "p", "text": "We sell what we run." },
     { "type": "p", "text": "The diagrams above are not a concept. They are how Madrona itself runs, every day: our studio operates on this exact pattern, with a surface called Helm as the command center. And it scales down honestly; this works for a small business the same way it works for a studio." },
-    { "type": "p", "text": "The first step is the one above: a single agent on a single workflow, with visible payback before anything grows. Like everything we publish, this is a working document; as the pattern teaches us more, the page changes." }
+    { "type": "p", "text": "The first step is the one above: a single agent on a single workflow, with visible payback before anything grows. Like everything we publish, this is a working document; as the pattern teaches us more, the page changes." },
+    { "type": "p", "text": "The ground level is public, too. The plain-text operating system our studio runs on is open source — read it, fork it, make it yours." }
   ],
   "/thinking/starter-guide-to-building-with-ai": [
     { "type": "h1", "text": "A starter guide to building real software with AI." },
@@ -220,6 +221,7 @@
     { "type": "quote", "text": "A demo that can write to real data is a P0. Nobody outside should ever be one tap from your production records." },
     { "type": "p", "text": "One of twenty-plus dated findings, each banked after a real launch and folded back into the checklist every new product inherits. This one cost us a late night; now it is a gate nothing gets past." },
     { "type": "p", "text": "The engine is part of what we leave behind." },
-    { "type": "p", "text": "We build it, set it up, and teach you to run it. A client engagement ends with your product standing on this engine and your team holding the keys. The deliverable is a business that does not need us." }
+    { "type": "p", "text": "We build it, set it up, and teach you to run it. A client engagement ends with your product standing on this engine and your team holding the keys. The deliverable is a business that does not need us." },
+    { "type": "p", "text": "Parts of the engine are already public — tools we build and use every day, free to take." }
   ]
 }

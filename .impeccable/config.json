@@ -6,14 +6,14 @@
       {
         "rule": "overused-font",
         "value": "inter",
-        "createdAt": "2026-08-16T01:02:14.775Z",
-        "reason": "Brand type system per CLAUDE.md: Inter is the sans for h2-h4/body/UI. Deliberate, not a default."
+        "createdAt": "2026-08-15T22:27:00.831Z",
+        "reason": "brand system: CLAUDE.md typography canon mandates Inter as the sans for body/UI/h2-h4"
       },
       {
         "rule": "overused-font",
         "value": "fraunces",
-        "createdAt": "2026-08-16T01:02:14.946Z",
-        "reason": "Brand type system per CLAUDE.md: Fraunces is the serif display face for h1. Deliberate, not a default."
+        "createdAt": "2026-08-15T22:27:00.879Z",
+        "reason": "brand system: CLAUDE.md typography canon mandates Fraunces as the serif display/h1 voice"
       }
     ]
   }

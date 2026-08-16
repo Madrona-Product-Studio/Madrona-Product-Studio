@@ -30,6 +30,8 @@ export interface ServiceArea {
   pov?: { label: string; to: string };
   // Optional interactive entry point (e.g. the AI checkup).
   tryIt?: { label: string; to: string };
+  // Optional pointer to the open-source tools behind this area (/open).
+  open?: { label: string; to: string };
 }
 
 export const serviceAreas: ServiceArea[] = [
@@ -66,6 +68,7 @@ export const serviceAreas: ServiceArea[] = [
     artifact: { src: operationsArtifact, alt: "Berry Good operations dashboard with an order-intake agent and structured orders", caption: "Berry Good operations dashboard" },
     pov: { label: "Thinking: The era of agentic operations", to: "/thinking/the-era-of-agentic-operations" },
     tryIt: { label: "Not sure where AI fits? Take the free signal check", to: "/checkup" },
+    open: { label: "The tools behind this are open source", to: "/open" },
   },
   {
     id: "customers-and-growth",

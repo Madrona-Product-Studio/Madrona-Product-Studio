@@ -203,7 +203,9 @@ export default function MadronaV2EngineNote() {
         </div>
         <div className="m2-ab4-body">
           <p>We build it, set it up, and teach you to run it. A client engagement ends with your product standing on this engine and your team holding the keys. The deliverable is a business that does not need us.</p>
+          <p>Parts of the engine are already public — tools we build and use every day, free to take.</p>
           <div className="m2-th-close-links">
+            <Link className="m2-text-link" to="/open">The open part of the engine <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/thinking/the-era-of-agentic-operations">Read next: The era of agentic operations <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/thinking">More from Thinking <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>

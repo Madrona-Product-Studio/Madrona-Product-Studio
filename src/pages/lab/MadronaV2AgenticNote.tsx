@@ -325,7 +325,9 @@ export default function MadronaV2AgenticNote() {
         <div className="m2-ab4-body m2-th4-point">
           <p>The diagrams above are not a concept. They are how Madrona itself runs, every day: our studio operates on this exact pattern, with a surface called Helm as the command center. And it scales down honestly; this works for a small business the same way it works for a studio.</p>
           <p>The first step is the one above: a single agent on a single workflow, with visible payback before anything grows. Like everything we publish, this is a working document; as the pattern teaches us more, the page changes.</p>
+          <p>The ground level is public, too. The plain-text operating system our studio runs on is open source — read it, fork it, make it yours.</p>
           <div className="m2-th-close-links">
+            <Link className="m2-text-link" to="/open">Fork the operating system we run on <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/thinking/starter-guide-to-building-with-ai">Read next: A starter guide to building with AI <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/consulting#operations-and-ai">Our Operations and AI services <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
