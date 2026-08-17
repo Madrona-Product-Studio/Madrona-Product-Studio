@@ -922,7 +922,7 @@
     },
     {
       "type": "p",
-      "text": "A surprising amount of the work that piles up after hours is already handled, out of the box, by tools you may already pay for. Nobody lays that shelf out plainly, so we did: twelve jobs, organized by the problem rather than the product, each with what it needs from you and where it ends. We update this page as the shelf changes."
+      "text": "A lot of the work that fills your week is already handled, out of the box, by tools you may be paying for today. Nobody lays that shelf out plainly, so we did: twelve jobs, organized by problem rather than product, each with what it needs from you and where it ends. We update this page as the shelf changes."
     },
     {
       "type": "h2",
@@ -930,15 +930,15 @@
     },
     {
       "type": "p",
-      "text": "You keep hearing that AI could help your business. Between the demos, the pricing pages, and the think pieces, it is genuinely hard to tell what any of it does. Meanwhile the real work piles up after hours: the month-end close, the overdue invoices, the same six customer emails."
+      "text": "You keep hearing that AI could help your business, and between the demos, the pricing pages, and the think pieces, it is hard to tell what any of it actually does. Meanwhile the close still takes a weekend, the invoices are still late, and you are still answering the same six emails."
     },
     {
       "type": "p",
-      "text": "Here is the part nobody tells you clearly: much of that work is already handled by tools sitting in your existing subscriptions. QuickBooks now ships agents that reconcile your books. Claude comes with workflows named for the jobs themselves. Gemini is already inside your Google Workspace plan. The problem is that vendors describe these things from their side of the glass. “15 pre-built workflows for running the whole business” tells you something exists. It does not tell you what it takes to put it to work on a Tuesday."
+      "text": "The part nobody says plainly: a lot of that work is already handled by tools sitting in subscriptions you have. QuickBooks now ships agents that reconcile your books. Claude comes with workflows named for the jobs themselves. Gemini is already inside your Google Workspace plan. But vendors describe these things from their side of the glass. “15 pre-built workflows for running the whole business” tells you something exists. It does not tell you what it takes to put it to work on a Tuesday."
     },
     {
       "type": "p",
-      "text": "We run our own studio operations on AI agents, so this inventory comes from practice. Every capability here was checked against the vendors’ current documentation, and we revise this page as the tools change."
+      "text": "We run our own studio on this stuff, agents included, so this list comes from use, not from press releases. Every capability here was checked against the vendors’ current documentation, and we revise the page as the tools change."
     },
     {
       "type": "h2",
@@ -1026,7 +1026,7 @@
     },
     {
       "type": "p",
-      "text": "Yes, and this might be the fastest payback on the list. QuickBooks’ Payments agent drafts personalized reminders for overdue invoices and learns which payers respond to what; Intuit claims invoices get paid noticeably sooner. Claude’s invoice chaser does the same job across QuickBooks and email, queueing reminders for your approval rather than sending on its own."
+      "text": "This might be the fastest payback on the list. QuickBooks’ Payments agent drafts personalized reminders for overdue invoices and learns which payers respond to what; Intuit claims invoices get paid noticeably sooner. Claude’s invoice chaser does the same job across QuickBooks and email, queueing reminders for your approval rather than sending on its own."
     },
     {
       "type": "p",
@@ -1038,11 +1038,11 @@
     },
     {
       "type": "p",
-      "text": "If you cannot answer that without opening three tabs, this is the “did you know” entry. Claude’s business pulse puts cash position, sales trends, pipeline, and the week’s commitments on one page, with a start-of-week brief and your top three to-dos. QuickBooks runs cash-flow shortage alerts with suggested actions."
+      "text": "If you cannot answer that without opening three tabs, you are who this entry is for. Claude’s business pulse puts cash position, sales trends, pipeline, and the week’s commitments on one page, with a start-of-week brief and your top three to-dos. QuickBooks runs cash-flow shortage alerts with suggested actions."
     },
     {
       "type": "p",
-      "text": "What it needs from you: connected accounts, all of them. Where it ends: the pulse is only as honest as its connections. If half your money moves through a system it cannot see, you have a confident-looking fiction. Connect everything or read it skeptically."
+      "text": "What it needs from you: connected accounts, all of them. Where it ends: the pulse is only as honest as its connections. If half your money moves through a system it cannot see, you get a tidy number that is wrong. Connect everything or read it skeptically."
     },
     {
       "type": "h3",
@@ -1050,7 +1050,7 @@
     },
     {
       "type": "p",
-      "text": "The narrow version, yes. Claude’s payroll planning workflow settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation."
+      "text": "The planning half, it can. Claude’s payroll workflow settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation."
     },
     {
       "type": "p",
@@ -1074,7 +1074,7 @@
     },
     {
       "type": "p",
-      "text": "A first pass, yes. Claude’s contract reviewer flags key terms and risks and answers questions about what you are agreeing to. DocuSign has serious contract AI under its Iris brand, but note the fine print: it lives on their contract-management plans, not the eSignature plan most small businesses actually have."
+      "text": "It makes a good first reader. Claude’s contract reviewer flags key terms and risks and answers questions about what you are agreeing to. DocuSign has serious contract AI under its Iris brand, but note the fine print: it lives on their contract-management plans, not the eSignature plan most small businesses actually have."
     },
     {
       "type": "p",
@@ -1094,7 +1094,7 @@
     },
     {
       "type": "p",
-      "text": "Yes, and this one has quietly become very good. Canva’s Magic Studio writes copy in your brand voice, generates and edits images, drafts whole design options from a prompt, and resizes one asset across every format you need. Shopify Magic writes product descriptions, strips and regenerates photo backgrounds, and drafts store content in place. Between the two, a small business can produce a month of decent assets in an afternoon that used to cost a freelancer retainer."
+      "text": "This one has come further than most owners realize. Canva’s Magic Studio writes copy in your brand voice, generates and edits images, drafts whole design options from a prompt, and resizes one asset across every format you need. Shopify Magic writes product descriptions, strips and regenerates photo backgrounds, and drafts store content in place. Between the two, a small business can produce a month of decent assets in an afternoon that used to cost a freelancer retainer."
     },
     {
       "type": "p",
@@ -1110,7 +1110,7 @@
     },
     {
       "type": "p",
-      "text": "End to end, with your approvals. Claude’s campaign workflow analyzes your revenue, drafts strategy, and produces the assets through the Canva connector. One command runs the whole arc, and you approve each step that touches customers."
+      "text": "End to end, if you want it to. Claude’s campaign workflow analyzes your revenue, drafts strategy, and produces the assets through the Canva connector. One command runs the whole arc, and you approve each step that touches customers."
     },
     {
       "type": "p",
@@ -1126,7 +1126,7 @@
     },
     {
       "type": "p",
-      "text": "What it needs from you, and this is the entry we see done wrong most often: conversion tracking wired up and verified before the first dollar. These systems optimize toward whatever signal they receive; no signal, and they optimize toward noise while spending confidently. Google’s own guidance says give Performance Max six weeks and stable budgets before judging it. Where it ends: automation optimizes toward the goal you set. Choosing the goal, and checking the tracking, is the work."
+      "text": "What it needs from you, and this is the entry we see done wrong most often: conversion tracking wired up and verified before the first dollar. These systems optimize toward whatever signal they receive; no signal, and they spend your budget optimizing toward noise. Google’s own guidance says give Performance Max six weeks and stable budgets before judging it. Where it ends: automation optimizes toward the goal you set. Choosing the goal, and checking the tracking, is the work."
     },
     {
       "type": "h2",
@@ -1154,7 +1154,7 @@
     },
     {
       "type": "p",
-      "text": "Yes, and you should let it, because the ask is what nobody gets around to. Square collects Google reviews automatically by email or text after a sale, triggered by things like a customer’s third purchase, once your Google Business Profile is synced. On the other side, connecting your Business Profile to the Gemini app lets it draft review replies in your voice and flag unanswered questions."
+      "text": "You should let it, because the ask is what nobody gets around to. Square collects Google reviews automatically by email or text after a sale, triggered by things like a customer’s third purchase, once your Google Business Profile is synced. On the other side, connecting your Business Profile to the Gemini app lets it draft review replies in your voice and flag unanswered questions."
     },
     {
       "type": "p",

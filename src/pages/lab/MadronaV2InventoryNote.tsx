@@ -8,7 +8,6 @@ import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, SpecTable, t
 import "./madrona-v2.css";
 import "./playbook.css";
 
-import photoOperations from "../../../docs/madrona-v2-build-kit/placeholders/photography/studio-collaboration-wide.webp";
 import photoShops from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-shops-services.webp";
 import photoFarms from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-farms-food.webp";
 
@@ -104,16 +103,16 @@ export default function MadronaV2InventoryNote() {
           author="Charlie Koch"
           meta={["9 min read", "Updated August 2026"]}
           title="The 12 jobs AI tools already do for small businesses."
-          standfirst="A surprising amount of the work that piles up after hours is already handled, out of the box, by tools you may already pay for. Nobody lays that shelf out plainly, so we did: twelve jobs, organized by the problem rather than the product, each with what it needs from you and where it ends. We update this page as the shelf changes."
+          standfirst="A lot of the work that fills your week is already handled, out of the box, by tools you may be paying for today. Nobody lays that shelf out plainly, so we did: twelve jobs, organized by problem rather than product, each with what it needs from you and where it ends. We update this page as the shelf changes."
           toc={TOC}
           visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="inventory" /></div></div>}
         />
         <ArticleBody share={{ title: "The 12 jobs AI tools already do for small businesses", href: HREF }}>
           <ArticleSection id="the-shelf" num="1" eyebrow="The gap" title="The shelf nobody shows you.">
             <Prose>
-              <p>You keep hearing that AI could help your business. Between the demos, the pricing pages, and the think pieces, it is genuinely hard to tell what any of it does. Meanwhile the real work piles up after hours: the month-end close, the overdue invoices, the same six customer emails.</p>
-              <p>Here is the part nobody tells you clearly: much of that work is already handled by tools sitting in your existing subscriptions. QuickBooks now ships agents that reconcile your books. Claude comes with workflows named for the jobs themselves. Gemini is already inside your Google Workspace plan. The problem is that vendors describe these things from their side of the glass. &ldquo;15 pre-built workflows for running the whole business&rdquo; tells you something exists. It does not tell you what it takes to put it to work on a Tuesday.</p>
-              <p>We run our own studio operations on AI agents, so this inventory comes from practice. Every capability here was checked against the vendors&rsquo; current documentation on the date above, and we revise this page as the tools change.</p>
+              <p>You keep hearing that AI could help your business, and between the demos, the pricing pages, and the think pieces, it is hard to tell what any of it actually does. Meanwhile the close still takes a weekend, the invoices are still late, and you are still answering the same six emails.</p>
+              <p>The part nobody says plainly: a lot of that work is already handled by tools sitting in subscriptions you have. QuickBooks now ships agents that reconcile your books. Claude comes with workflows named for the jobs themselves. Gemini is already inside your Google Workspace plan. But vendors describe these things from their side of the glass. &ldquo;15 pre-built workflows for running the whole business&rdquo; tells you something exists. It does not tell you what it takes to put it to work on a Tuesday.</p>
+              <p>We run our own studio on this stuff, agents included, so this list comes from use, not from press releases. Every capability here was checked against the vendors&rsquo; current documentation on the date above, and we revise the page as the tools change.</p>
             </Prose>
           </ArticleSection>
 
@@ -127,16 +126,12 @@ export default function MadronaV2InventoryNote() {
             <Prose>
               <p>The jobs that eat your evenings: bookkeeping, invoices, email, paperwork.</p>
             </Prose>
-            <Figure caption="The week's work, before software started doing its share.">
-              <div className="art-photo"><img src={photoOperations} alt="People working together over laptops and paper in a small studio" loading="lazy" /></div>
-            </Figure>
-
             <EntryTitle>Can AI do my month-end close?</EntryTitle>
             <Prose>
               <p>Mostly, yes. This is the flagship of the category, and the best worked example of what &ldquo;out of the box&rdquo; now means.</p>
               <p>Claude for Small Business ships a close workflow. It reconciles your books against payment settlements, flags mismatches for your review, writes a plain-English P&amp;L narrative, and packages an accountant-ready close packet through the QuickBooks connector. Inside QuickBooks itself, Intuit now ships its own Accounting agent that reconciles statements, matches bank transactions, and cleans up categorization. Here is what the first week actually looks like:</p>
             </Prose>
-            <Figure caption="The real commands, from the product. This is the deploy detail the marketing pages skip.">
+            <Figure caption="The actual commands. This is the part the marketing pages skip.">
               <div className="m2-sg-prompts">
                 {CLOSE_STEPS.map((s) => (
                   <div key={s.name} className="m2-sg-prompt">
@@ -154,7 +149,7 @@ export default function MadronaV2InventoryNote() {
 
             <EntryTitle>Can AI chase my overdue invoices?</EntryTitle>
             <Prose>
-              <p>Yes, and this might be the fastest payback on the list. QuickBooks&rsquo; Payments agent drafts personalized reminders for overdue invoices and learns which payers respond to what; Intuit claims invoices get paid noticeably sooner. Claude&rsquo;s invoice chaser does the same job across QuickBooks and email, queueing reminders for your approval rather than sending on its own.</p>
+              <p>This might be the fastest payback on the list. QuickBooks&rsquo; Payments agent drafts personalized reminders for overdue invoices and learns which payers respond to what; Intuit claims invoices get paid noticeably sooner. Claude&rsquo;s invoice chaser does the same job across QuickBooks and email, queueing reminders for your approval rather than sending on its own.</p>
             </Prose>
             <EntryFacts
               needs="Invoices actually issued from the system, so there is something to chase."
@@ -163,16 +158,16 @@ export default function MadronaV2InventoryNote() {
 
             <EntryTitle>What is my actual cash position right now?</EntryTitle>
             <Prose>
-              <p>If you cannot answer that without opening three tabs, this is the &ldquo;did you know&rdquo; entry. Claude&rsquo;s business pulse puts cash position, sales trends, pipeline, and the week&rsquo;s commitments on one page, with a start-of-week brief and your top three to-dos. QuickBooks runs cash-flow shortage alerts with suggested actions.</p>
+              <p>If you cannot answer that without opening three tabs, you are who this entry is for. Claude&rsquo;s business pulse puts cash position, sales trends, pipeline, and the week&rsquo;s commitments on one page, with a start-of-week brief and your top three to-dos. QuickBooks runs cash-flow shortage alerts with suggested actions.</p>
             </Prose>
             <EntryFacts
               needs="Connected accounts. All of them."
-              ends="The pulse is only as honest as its connections. If half your money moves through a system it cannot see, you have a confident-looking fiction. Connect everything or read it skeptically."
+              ends="The pulse is only as honest as its connections. If half your money moves through a system it cannot see, you get a tidy number that is wrong. Connect everything or read it skeptically."
             />
 
             <EntryTitle>Can AI help me plan payroll?</EntryTitle>
             <Prose>
-              <p>The narrow version, yes. Claude&rsquo;s payroll planning workflow settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation.</p>
+              <p>The planning half, it can. Claude&rsquo;s payroll workflow settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation.</p>
             </Prose>
             <EntryFacts
               needs="The same connected accounts as the cash pulse, and a payroll date to plan toward."
@@ -190,13 +185,13 @@ export default function MadronaV2InventoryNote() {
 
             <EntryTitle>Can AI review a contract before I sign it?</EntryTitle>
             <Prose>
-              <p>A first pass, yes. Claude&rsquo;s contract reviewer flags key terms and risks and answers questions about what you are agreeing to. DocuSign has serious contract AI under its Iris brand, but note the fine print: it lives on their contract-management plans, not the eSignature plan most small businesses actually have.</p>
+              <p>It makes a good first reader. Claude&rsquo;s contract reviewer flags key terms and risks and answers questions about what you are agreeing to. DocuSign has serious contract AI under its Iris brand, but note the fine print: it lives on their contract-management plans, not the eSignature plan most small businesses actually have.</p>
             </Prose>
             <EntryFacts
               needs="The contract as a document it can read, and your questions about it."
               ends="It flags, it does not decide, and it is not your lawyer. For the lease or the partnership agreement, the review buys you a sharper conversation with counsel, not a substitute for one."
             />
-            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">This is the work-smarter door on How we help <span aria-hidden="true">→</span></Link></p>
+            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses run smoother <span aria-hidden="true">→</span></Link></p>
           </ArticleSection>
 
           <ArticleSection id="getting-found" num="4" eyebrow="Growth" title="Getting found.">
@@ -209,7 +204,7 @@ export default function MadronaV2InventoryNote() {
 
             <EntryTitle>Can AI make my marketing assets?</EntryTitle>
             <Prose>
-              <p>Yes, and this one has quietly become very good. Canva&rsquo;s Magic Studio writes copy in your brand voice, generates and edits images, drafts whole design options from a prompt, and resizes one asset across every format you need. Shopify Magic writes product descriptions, strips and regenerates photo backgrounds, and drafts store content in place. Between the two, a small business can produce a month of decent assets in an afternoon that used to cost a freelancer retainer.</p>
+              <p>This one has come further than most owners realize. Canva&rsquo;s Magic Studio writes copy in your brand voice, generates and edits images, drafts whole design options from a prompt, and resizes one asset across every format you need. Shopify Magic writes product descriptions, strips and regenerates photo backgrounds, and drafts store content in place. Between the two, a small business can produce a month of decent assets in an afternoon that used to cost a freelancer retainer.</p>
             </Prose>
             <EntryFacts
               needs="A brand kit, set up once: logo, colors, fonts, and a few sentences about voice. Every generation pulls from it. Skip this and each asset drifts a little differently off-brand, and you spend the saved time fixing them. Real product photos help too: the tools are far better at polishing your actual photo than inventing your product."
@@ -218,7 +213,7 @@ export default function MadronaV2InventoryNote() {
 
             <EntryTitle>Can AI plan and run a marketing campaign?</EntryTitle>
             <Prose>
-              <p>End to end, with your approvals. Claude&rsquo;s campaign workflow analyzes your revenue, drafts strategy, and produces the assets through the Canva connector. One command runs the whole arc, and you approve each step that touches customers.</p>
+              <p>End to end, if you want it to. Claude&rsquo;s campaign workflow analyzes your revenue, drafts strategy, and produces the assets through the Canva connector. One command runs the whole arc, and you approve each step that touches customers.</p>
             </Prose>
             <EntryFacts
               needs="Revenue data it can read, and your yes at each step."
@@ -230,17 +225,17 @@ export default function MadronaV2InventoryNote() {
               <p>They already assume you will. Meta&rsquo;s Advantage+ sales campaigns and Google&rsquo;s Performance Max both take budget, creative, and a goal, then automate audience, placements, and bidding across everything they own. For a small advertiser this beats hand-tuned campaigns most of the time.</p>
             </Prose>
             <EntryFacts
-              needs="Conversion tracking wired up and verified before the first dollar. This is the entry we see done wrong most often. These systems optimize toward whatever signal they receive; no signal, and they optimize toward noise while spending confidently. Google's own guidance says give Performance Max six weeks and stable budgets before judging it."
+              needs="Conversion tracking wired up and verified before the first dollar. This is the entry we see done wrong most often. These systems optimize toward whatever signal they receive; no signal, and they spend your budget optimizing toward noise. Google's own guidance says give Performance Max six weeks and stable budgets before judging it."
               ends="Automation optimizes toward the goal you set. Choosing the goal, and checking the tracking, is the work."
             />
-            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">This is the build-trust door on How we help <span aria-hidden="true">→</span></Link></p>
+            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses get found <span aria-hidden="true">→</span></Link></p>
           </ArticleSection>
 
           <ArticleSection id="coming-back" num="5" eyebrow="Retention" title="Coming back.">
             <Prose>
               <p>The jobs that turn one sale into a relationship: follow-up, reviews, knowing your people.</p>
             </Prose>
-            <Figure caption="Regulars are made, not found. The machinery for staying in touch is built in now.">
+            <Figure caption="Regulars are made, not found.">
               <div className="art-photo"><img src={photoFarms} alt="Fresh local produce at a farmers market stand" loading="lazy" /></div>
             </Figure>
 
@@ -255,7 +250,7 @@ export default function MadronaV2InventoryNote() {
 
             <EntryTitle>Can AI ask customers for reviews?</EntryTitle>
             <Prose>
-              <p>Yes, and you should let it, because the ask is what nobody gets around to. Square collects Google reviews automatically by email or text after a sale, triggered by things like a customer&rsquo;s third purchase, once your Google Business Profile is synced. On the other side, connecting your Business Profile to the Gemini app lets it draft review replies in your voice and flag unanswered questions.</p>
+              <p>You should let it, because the ask is what nobody gets around to. Square collects Google reviews automatically by email or text after a sale, triggered by things like a customer&rsquo;s third purchase, once your Google Business Profile is synced. On the other side, connecting your Business Profile to the Gemini app lets it draft review replies in your voice and flag unanswered questions.</p>
             </Prose>
             <EntryFacts
               needs="Your Google Business Profile connected, and a sale worth asking about."
@@ -270,7 +265,7 @@ export default function MadronaV2InventoryNote() {
               needs="Sales history living in one system."
               ends="The answer usually hands you a harder question. Knowing your top customers is a query. Deciding what to build for them is strategy, and no workflow ships that."
             />
-            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">This is the grow-your-business door on How we help <span aria-hidden="true">→</span></Link></p>
+            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses keep customers coming back <span aria-hidden="true">→</span></Link></p>
           </ArticleSection>
 
           <ArticleSection id="how-to-start" num="6" eyebrow="The move" title="How to actually start.">
