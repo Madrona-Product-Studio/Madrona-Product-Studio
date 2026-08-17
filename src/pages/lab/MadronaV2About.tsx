@@ -95,7 +95,7 @@ function TeamNetworkDiagram() {
 
 export default function MadronaV2About() {
   useReveal();
-  const { experience, community } = studioProfile;
+  const { experience, community, nameStory } = studioProfile;
 
   return (
     <main className="m2 m2-ab-page">
@@ -197,6 +197,22 @@ export default function MadronaV2About() {
           <img src={community.images[0]} alt="Fresh local produce at a Pacific Northwest market" loading="lazy" />
           <img src={community.images[1]} alt="Conserved Pacific Northwest land above the water" loading="lazy" />
         </div>
+      </section>
+
+      {/* 7 · From here (local identity + the name, folded in) */}
+      <section className="m2-ab4 m2-ab4-sec">
+        <div className="m2-ab4-rail">
+          <p className="m2-kicker m2-who-kicker">From here</p>
+          <h2>Neighbors first.</h2>
+          <div className="m2-ab4-body">
+            <p>Whatcom County is not a market we researched. It is home. Bellingham is where we live, where we work, and where a lot of our own products start.</p>
+            <p>We serve the Pacific Northwest and beyond. Being from here just keeps us close to real people and real problems, which is where product judgment actually comes from.</p>
+          </div>
+        </div>
+        <figure className="m2-ab4-place-media">
+          <img src={nameStory.imageSrc} alt="A madrona tree with peeling orange bark on a bluff above the Salish Sea" loading="lazy" />
+          <figcaption>Named for the madrona, the tree on the bluff with the peeling orange bark, leaning out over the Salish Sea. It is where the brand's one color comes from.</figcaption>
+        </figure>
       </section>
 
       <SiteFooter cta={false} />
