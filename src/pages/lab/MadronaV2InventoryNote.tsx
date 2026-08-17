@@ -9,9 +9,6 @@ import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, SpecTable, t
 import "./madrona-v2.css";
 import "./playbook.css";
 
-import photoShops from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-shops-services.webp";
-import photoFarms from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-farms-food.webp";
-
 // Current entry: the out-of-the-box inventory (Artifact). Twelve jobs indexed
 // by the owner's pain, grouped by the three doors. Every entry: prose with the
 // tool names linked to the vendor's own page (the "how do I turn this on"
@@ -206,9 +203,6 @@ export default function MadronaV2InventoryNote() {
             <Prose>
               <p>The jobs that grow the business: assets, campaigns, ads.</p>
             </Prose>
-            <Figure caption="A web presence that earns trust starts with assets you can actually produce.">
-              <div className="art-photo"><img src={photoShops} alt="A small local storefront with a hand-lettered window" loading="lazy" /></div>
-            </Figure>
 
             <Entry
               q="Can AI make my marketing assets?"
@@ -246,9 +240,6 @@ export default function MadronaV2InventoryNote() {
             <Prose>
               <p>The jobs that turn one sale into a relationship: follow-up, reviews, knowing your people.</p>
             </Prose>
-            <Figure caption="Regulars are made, not found.">
-              <div className="art-photo"><img src={photoFarms} alt="Fresh local produce at a farmers market stand" loading="lazy" /></div>
-            </Figure>
 
             <Entry
               q="Can AI follow up with customers after the sale?"

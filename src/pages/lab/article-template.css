@@ -135,10 +135,6 @@
 .art-fig { margin: 30px 0 4px; }
 .art-fig-cap { color: var(--muted); font-size: .8rem; line-height: 1.5; margin: 12px 0 0; }
 
-/* Photography inside figures — environmental, quiet, rounded like the plates */
-.art-photo { border-radius: 16px; overflow: hidden; }
-.art-photo img { aspect-ratio: 21 / 9; display: block; height: auto; object-fit: cover; width: 100%; }
-
 /* Inventory entries — hairline-topped blocks: question, linked prose, then a
    labeled two-column facts pair (the site's kicker system, no icons). */
 .art-inv-entry { border-top: 1px solid var(--art-hair-soft); margin-top: 40px; padding-top: 34px; }
