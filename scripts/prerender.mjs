@@ -135,6 +135,14 @@ const pages = {
     ogImage: '/og-pov-solve-the-system.png',
     body: 'When something is wrong, the instinct is to fix the thing in front of you: recolor the button, redo the one bad output. The higher-leverage move is almost always one level down: fix the system that produced it, so everything it makes next is better. AI made that trade cheap enough to be the default. A worked example: instead of nudging one bad generated image, rewrite the criteria the tool runs on, and the whole set improves at once. Point the tool at the tool. The discipline is spending your attention where it compounds, on the machine, not the symptom, and knowing which symptoms are worth going upstream for.',
   },
+  '/thinking/ai-tools-for-small-business': {
+    title: 'AI Tools for Small Business: The 12 Jobs They Already Do (2026) · Madrona Product Studio',
+    description: 'A living inventory of what out-of-the-box AI handles for a small business today: month-end close, invoice chasing, customer email, marketing assets, ads, reviews. Claude for Small Business, QuickBooks agents, Gemini, Canva, Shopify Magic and more, each with what it needs from you and where it ends.',
+    article: { datePublished: '2026-08-17', dateModified: '2026-08-17' },
+    h1: 'The 12 jobs AI tools already do for small businesses.',
+    ogImage: '/og-pov-ai-tools-inventory.png',
+    body: 'A surprising amount of the work that piles up after hours is already handled, out of the box, by tools you may already pay for. Twelve jobs, organized by the problem rather than the product: month-end close, chasing overdue invoices, knowing your cash position, payroll planning, routine customer email, contract review, marketing assets, running a campaign, ad automation, post-sale follow-up, asking for reviews, and knowing your best customers. Named tools throughout: Claude for Small Business and Claude Cowork, QuickBooks Intuit agents, Gemini in Google Workspace, Microsoft Copilot, Canva Magic Studio, Shopify Magic and Sidekick, Meta Advantage+, Google Performance Max, Square, HubSpot, DocuSign. Each entry carries what it needs from you before it works and where the packaged version ends. Updated as the shelf changes.',
+  },
   '/open': {
     title: 'Open: our tools, free to use · Madrona Product Studio',
     description: 'Open-source Claude Code plugins from Madrona Product Studio: a forkable plain-text operating system kept current by agents, plus the craft catalog we ship polished product with: motion, social images, launch readiness, visual QA. MIT licensed.',

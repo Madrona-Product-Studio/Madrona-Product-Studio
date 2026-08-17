@@ -55,4 +55,12 @@ export const thinkingEntries: ThinkingEntry[] = [
     href: "/thinking/solve-the-system-not-the-symptom",
     motif: "source",
   },
+  {
+    date: "Aug 2026",
+    type: "Artifact",
+    title: "The 12 jobs AI tools already do for small businesses",
+    excerpt: "A living inventory of what out-of-the-box AI handles today, indexed by the problem rather than the product: the close, the invoices, the emails, the ads. Each entry with what it needs from you and where it ends.",
+    href: "/thinking/ai-tools-for-small-business",
+    motif: "inventory",
+  },
 ];

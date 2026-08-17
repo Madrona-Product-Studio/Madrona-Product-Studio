@@ -12,7 +12,7 @@
 // Design canvas is 1600×900 (16:9). Stroke widths are in viewBox units and
 // tuned to read at small card size (~1px–2px rendered).
 
-export type PovMotif = "target" | "modules" | "flow" | "structure" | "source";
+export type PovMotif = "target" | "modules" | "flow" | "structure" | "source" | "inventory";
 
 const FOREST = "var(--forest)";
 const BARK = "var(--bark)";
@@ -236,10 +236,78 @@ function Source() {
   );
 }
 
+// ── Inventory — a stocked shelf of ready capabilities; pick the one that
+// matters first. Twelve slots (the twelve jobs), one accent, the last slot
+// dashed: the shelf keeps growing. ────────────────────────────────────────────
+function Inventory() {
+  const cols = [0, 1, 2, 3];
+  const rows = [0, 1, 2];
+  const w = 200;
+  const h = 132;
+  const gap = 48;
+  const x0 = (1600 - (4 * w + 3 * gap)) / 2;
+  const y0 = (900 - (3 * h + 2 * gap)) / 2;
+  const cellX = (c: number) => x0 + c * (w + gap);
+  const cellY = (r: number) => y0 + r * (h + gap);
+  return (
+    <Frame>
+      {/* faint grid */}
+      <g stroke={FOREST} strokeOpacity={0.05} strokeWidth={2}>
+        <line x1={300} y1={70} x2={300} y2={830} />
+        <line x1={1300} y1={70} x2={1300} y2={830} />
+        <line x1={140} y1={y0 - 54} x2={1460} y2={y0 - 54} />
+        <line x1={140} y1={y0 + 3 * h + 2 * gap + 54} x2={1460} y2={y0 + 3 * h + 2 * gap + 54} />
+      </g>
+      {/* shelf rails behind each row */}
+      <g stroke={FOREST} strokeOpacity={0.3} strokeWidth={2.5} strokeDasharray="9 13">
+        {rows.map((r) => (
+          <line key={r} x1={200} y1={cellY(r) + h / 2} x2={1400} y2={cellY(r) + h / 2} />
+        ))}
+      </g>
+      {/* the twelve slots */}
+      {rows.map((r) =>
+        cols.map((c) => {
+          const active = r === 1 && c === 1;
+          const open = r === 2 && c === 3;
+          return (
+            <rect
+              key={`${r}-${c}`}
+              x={cellX(c)}
+              y={cellY(r)}
+              width={w}
+              height={h}
+              rx={18}
+              fill={active ? BARK : PLATE}
+              stroke={active ? "none" : FOREST}
+              strokeOpacity={open ? 0.45 : 1}
+              strokeWidth={3.5}
+              strokeDasharray={open ? "9 13" : undefined}
+            />
+          );
+        })
+      )}
+      {/* the pick: a quiet ring around the active slot */}
+      <rect
+        x={cellX(1) - 26}
+        y={cellY(1) - 26}
+        width={w + 52}
+        height={h + 52}
+        rx={30}
+        fill="none"
+        stroke={BARK}
+        strokeOpacity={0.55}
+        strokeWidth={3}
+        strokeDasharray="11 15"
+      />
+    </Frame>
+  );
+}
+
 export default function PovThumb({ motif }: { motif: PovMotif }) {
   if (motif === "target") return <Target />;
   if (motif === "modules") return <Modules />;
   if (motif === "flow") return <Flow />;
   if (motif === "source") return <Source />;
+  if (motif === "inventory") return <Inventory />;
   return <Structure />;
 }
