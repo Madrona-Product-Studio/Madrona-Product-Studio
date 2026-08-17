@@ -20,6 +20,17 @@ const Ext = ({ href, children }: { href: string; children: ReactNode }) => (
   <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
 );
 
+const I = ({ d }: { d: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
+);
+
+// One motif per judgment line, thesis-style: the key is what you bring to
+// unlock the job; the flag marks the boundary where the packaged tool stops.
+const P = {
+  key: "M15 9a4 4 0 1 0-5.6 3.7L4 18v2h3v-2h2v-2h2l1.3-1.3A4 4 0 0 0 15 9Z",
+  flag: "M5 21V4m0 1h12l-2.5 3.5L17 12H5",
+};
+
 const CLAUDE_SMB = "https://www.anthropic.com/news/claude-for-small-business";
 
 // One inventory entry: question, linked prose (+ optional figure), then the
@@ -32,10 +43,12 @@ function Entry({ q, needs, ends, children }: { q: string; needs: ReactNode; ends
       {children}
       <div className="art-inv-facts">
         <div>
+          <span className="m2-ab4-ico art-inv-ico" data-tone="sprout"><I d={P.key} /></span>
           <p className="art-inv-lbl">What it needs from you</p>
           <p>{needs}</p>
         </div>
         <div>
+          <span className="m2-ab4-ico art-inv-ico" data-tone="storefront"><I d={P.flag} /></span>
           <p className="art-inv-lbl">Where it ends</p>
           <p>{ends}</p>
         </div>
