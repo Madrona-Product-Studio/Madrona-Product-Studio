@@ -36,7 +36,7 @@ const P = {
 const STEPS = [
   {
     n: "01", name: "GitHub", time: "~15 min",
-    what: <>Make a free account at github.com. GitHub is where your code lives: every project is a <b>repository</b>, and every change is saved with a note about what changed. You do not need to learn git deeply; your AI tools will do most of the git work for you. You just need the account and the mental model: this is the source of truth.</>,
+    what: <>Make a free account at <a href="https://github.com" target="_blank" rel="noopener noreferrer">github.com</a>. GitHub is where your code lives: every project is a <b>repository</b>, and every change is saved with a note about what changed. You do not need to learn git deeply; your AI tools will do most of the git work for you. You just need the account and the mental model: this is the source of truth.</>,
     how: (
       <ol>
         <li>Go to github.com and create a free account.</li>
@@ -58,7 +58,7 @@ const STEPS = [
   },
   {
     n: "03", name: "Claude Code", time: "~20 min",
-    what: <>Claude Code is an AI agent that lives in your terminal: it writes the code, runs it, fixes what breaks, and explains what it did. Install it, sign in, open a session in a project folder, and describe what you want in plain language. This one tool is most of the setup. It comes with a Claude Pro subscription.</>,
+    what: <><a href="https://code.claude.com" target="_blank" rel="noopener noreferrer">Claude Code</a> is an AI agent that lives in your terminal: it writes the code, runs it, fixes what breaks, and explains what it did. Install it, sign in, open a session in a project folder, and describe what you want in plain language. This one tool is most of the setup. It comes with a Claude Pro subscription.</>,
     how: (
       <ol>
         <li>Paste this into the terminal: <code>curl -fsSL https://claude.ai/install.sh | bash</code></li>
@@ -71,7 +71,7 @@ const STEPS = [
   },
   {
     n: "04", name: "Codex", time: "~15 min",
-    what: <>We also run Codex, a second terminal agent, from OpenAI. Two agents matter more than it sounds: they have different strengths, you can run them side by side on different tasks, and comparing their answers teaches you judgment faster than either alone. It comes with a ChatGPT Plus subscription.</>,
+    what: <>We also run <a href="https://chatgpt.com/codex" target="_blank" rel="noopener noreferrer">Codex</a>, a second terminal agent, from OpenAI. Two agents matter more than it sounds: they have different strengths, you can run them side by side on different tasks, and comparing their answers teaches you judgment faster than either alone. It comes with a ChatGPT Plus subscription.</>,
     how: (
       <ol>
         <li>Paste this into the terminal: <code>curl -fsSL https://chatgpt.com/codex/install.sh | sh</code></li>
@@ -82,7 +82,7 @@ const STEPS = [
   },
   {
     n: "05", name: "Vercel", time: "~20 min",
-    what: <>Vercel puts your project on the internet. Sign up with your GitHub account, import your repository, and from then on <b>every change you push goes live automatically</b>. The distance from "it works on my machine" to "here is the link" becomes zero.</>,
+    what: <><a href="https://vercel.com" target="_blank" rel="noopener noreferrer">Vercel</a> puts your project on the internet. Sign up with your GitHub account, import your repository, and from then on <b>every change you push goes live automatically</b>. The distance from "it works on my machine" to "here is the link" becomes zero.</>,
     how: (
       <ol>
         <li>Go to vercel.com and sign up with your GitHub account.</li>
@@ -97,7 +97,7 @@ const STEPS = [
     what: <>Connect the services you use so your agent has reach: it can check a deployment, read the error logs, or draft the follow-up email, instead of you copying and pasting between tabs.</>,
     how: (
       <ol>
-        <li>On claude.ai, open <b>Settings → Connectors</b> and link Vercel, Gmail, and your calendar.</li>
+        <li>On <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">claude.ai</a>, open <b>Settings → Connectors</b> and link Vercel, Gmail, and your calendar.</li>
         <li>Inside a Claude Code session, type <code>/mcp</code> to see what your agent can reach.</li>
       </ol>
     ),

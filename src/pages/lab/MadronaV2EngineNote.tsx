@@ -259,11 +259,11 @@ export default function MadronaV2EngineNote() {
           <ArticleSection id="leave-behind" num="5" title="The engine is part of what we leave behind.">
             <Prose>
               <p>We build it, set it up, and teach you to run it. A client engagement ends with your product standing on this engine and your team holding the keys. The deliverable is a business that does not need us.</p>
-              <p>Parts of the engine are already public, tools we build and use every day, free to take.</p>
+              <p>Parts of the engine are already public, tools we build and use every day, <a href="https://github.com/Madrona-Product-Studio/madrona-open" target="_blank" rel="noopener noreferrer">free to take</a>.</p>
             </Prose>
 
             <div className="art-close-links">
-              <Link className="m2-text-link" to="/open">The open part of the engine <span aria-hidden="true">→</span></Link>
+              <a className="m2-text-link" href="https://github.com/Madrona-Product-Studio/madrona-open" target="_blank" rel="noopener noreferrer">The open part of the engine, on GitHub <span aria-hidden="true">→</span></a>
               <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>

@@ -94,10 +94,39 @@
   <div class="art zoom"><svg viewBox="0 0 1600 900" data-motif="target"></svg></div>
 </div>
 
+<!-- ══ ARTICLE — solve the system ══ -->
+<div class="label">og-pov-solve-the-system.png</div>
+<div class="og" id="c-solve">
+  <div class="copy">
+    <div class="kicker">Thinking · Essay</div>
+    <h1>Solve the system,<br>not the symptom</h1>
+    <div class="sub">The higher-leverage fix is rarely the output in front of you.</div>
+    <div class="foot"><img src="../../docs/madrona_static_logo_assets/madrona-approved-logo-transparent.png" alt=""><span class="url">madronaproduct.com/thinking</span></div>
+  </div>
+  <div class="art zoom"><svg viewBox="0 0 1600 900" data-motif="source"></svg></div>
+</div>
+
 <script>
 // PovThumb motifs, inlined (forest lines, one bark accent, plate = card bg).
 const FOREST = '#1f3b33', BARK = '#c86a3d', PLATE = '#f6f2ea';
 const motifs = {
+  source: () => {
+    const outputs = [400,600,800,1000,1200], surfaceY = 235, srcX = 800, srcY = 700;
+    let branches = '<g fill="none" stroke="'+FOREST+'" stroke-opacity="0.4" stroke-width="2.5" stroke-dasharray="7 10">';
+    for (const x of outputs) branches += `<path d="M ${srcX} ${srcY-28} C ${srcX} 470, ${x} 500, ${x} ${surfaceY+26}"/>`;
+    branches += '</g>';
+    let nodes = '';
+    for (const x of outputs) nodes += `<circle cx="${x}" cy="${surfaceY}" r="11" fill="${FOREST}"/>`;
+    return `
+    <g stroke="${FOREST}" stroke-opacity="0.05" stroke-width="2">
+      <line x1="300" y1="70" x2="300" y2="830"/><line x1="1300" y1="70" x2="1300" y2="830"/>
+      <line x1="140" y1="235" x2="1460" y2="235"/><line x1="140" y1="640" x2="1460" y2="640"/></g>
+    ${branches}
+    <line x1="330" y1="${surfaceY}" x2="1270" y2="${surfaceY}" stroke="${FOREST}" stroke-width="3"/>${nodes}
+    <circle cx="800" cy="${surfaceY}" r="30" fill="none" stroke="${BARK}" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="6 8"/>
+    <circle cx="${srcX}" cy="${srcY}" r="46" fill="none" stroke="${FOREST}" stroke-opacity="0.4" stroke-width="3"/>
+    <circle cx="${srcX}" cy="${srcY}" r="22" fill="${BARK}"/>`;
+  },
   target: () => `
     <g stroke="${FOREST}" stroke-opacity="0.05" stroke-width="2">
       <line x1="300" y1="60" x2="300" y2="840"/><line x1="1300" y1="60" x2="1300" y2="840"/>
