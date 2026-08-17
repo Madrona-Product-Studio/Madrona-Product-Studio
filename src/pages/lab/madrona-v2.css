@@ -141,6 +141,8 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-pop { color: var(--bark); }
 .m2-text-link { color: var(--bark-dark) !important; display: inline-flex; font-size: .86rem; font-weight: 700; gap: 9px; margin-top: 14px; }
 .m2-text-link span { transition: transform 140ms cubic-bezier(.23, 1, .32, 1); }
+.m2 a.m2-inline-link { color: var(--bark-dark); font-weight: 650; }
+.m2 a.m2-inline-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 .m2-hero {
   align-items: center;
