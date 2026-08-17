@@ -94,41 +94,12 @@ export default function MadronaV2Home() {
       {/* The kinds of businesses and products we care about */}
       <AudienceSection />
 
-      {/* We also help good businesses build what's next */}
-      <section className="m2-consult">
-        <div className="m2-consult-body">
-          <div className="m2-consult-intro">
-            <p className="m2-kicker">What we do</p>
-            <h2>Good businesses around here deserve software as good as they are.</h2>
-            <p>We help you figure out what to build, including where AI genuinely helps, then build it. We run our own operations on agents, so the guidance comes from daily practice. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
-            <div className="m2-consult-items">
-              {consulting.map((c) => (
-                <div className="m2-consult-item" key={c.title}>
-                  <ServiceIcon id={c.id} />
-                  <div>
-                    <h3>{c.title}</h3>
-                    <p>{c.body}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <p>Madrona is led by Charlie Koch, a product leader with fifteen years of experience building consumer products at scale and bringing new ideas to life with small teams.</p>
-            <div className="m2-consult-links">
-              <Link className="m2-text-link" to="/consulting">Explore how we help <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/checkup">Not sure where to start? Take the free signal check <span aria-hidden="true">→</span></Link>
-            </div>
-          </div>
-          <BerryGoodTeaser />
-        </div>
-      </section>
-
-
       {/* Products we're building and operating */}
       <section id="work" className="m2-home-products">
         <div className="m2-hp-head">
           <div>
             <p className="m2-kicker">Apps from Madrona</p>
-            <h2>We build and run our own apps, too.</h2>
+            <h2>We build and run our own apps.</h2>
             <p className="m2-hp-intro">We design, build, and operate our own products to solve real problems we care about, and to keep our judgment close to real customers.</p>
           </div>
           <Link className="m2-text-link m2-hp-viewall" to="/apps">See all our apps <span aria-hidden="true">→</span></Link>
@@ -148,6 +119,34 @@ export default function MadronaV2Home() {
               </div>
             </a>
           ))}
+        </div>
+      </section>
+
+      {/* We also help good businesses build what's next */}
+      <section className="m2-consult">
+        <div className="m2-consult-body">
+          <div className="m2-consult-intro">
+            <p className="m2-kicker">What we do</p>
+            <h2>Good businesses around here deserve software as good as they are.</h2>
+            <p>We help you figure out what to build, including where AI genuinely helps, then build it. We run our own operations on agents, so the guidance comes from daily practice. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
+            <div className="m2-consult-items">
+              {consulting.map((c) => (
+                <div className="m2-consult-item" key={c.title}>
+                  <ServiceIcon id={c.id} />
+                  <div>
+                    <h3>{c.title}</h3>
+                    <p>{c.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p>Madrona is led by <Link className="m2-inline-link" to="/about">Charlie Koch</Link>, a product leader with fifteen years of experience building consumer products at scale and bringing new ideas to life with small teams.</p>
+            <div className="m2-consult-links">
+              <Link className="m2-text-link" to="/consulting">Explore how we help <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/checkup">Not sure where to start? Take the free signal check <span aria-hidden="true">→</span></Link>
+            </div>
+          </div>
+          <BerryGoodTeaser />
         </div>
       </section>
 

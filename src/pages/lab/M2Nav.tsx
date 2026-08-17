@@ -9,11 +9,11 @@ type NavKey = "apps" | "consulting" | "pov" | "open" | "about";
 // the global nav bundle — booking.ts is just string constants).
 const SCHEDULE_HREF = CAL_LINK ? `https://cal.com/${CAL_LINK}` : (BOOKING_URL ?? "/connect");
 
-// "How we help" leads (the front door), then our own products, then about.
+// "Our products" leads (proof first), then how we help, then about.
 // Nav links stay ink; only the active page carries the bark accent.
 const LINKS: { href: string; label: string; key: NavKey; primary?: boolean }[] = [
-  { href: "/consulting", label: "How we help", key: "consulting" },
   { href: "/apps", label: "Our products", key: "apps" },
+  { href: "/consulting", label: "How we help", key: "consulting" },
   { href: "/thinking", label: "Thinking", key: "pov" },
   // "Open" is out of the nav while the /open page gets redesigned (2026-08-15).
   // The page stays live — /thinking essays and /consulting still deep-link it.
