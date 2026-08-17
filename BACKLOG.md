@@ -20,8 +20,9 @@
 - [x] **Our POV section — shipped as `/thinking`** (four articles live: Thesis, Under the hood, Agentic operations, Starter guide; /pov and /current redirect). Leftover from the original plan: launch checklist + Madrona Principles still sit in the drawer as unrouted components.
 
 ## SEO & Discoverability
-- [ ] **NEXT: Google Search Console access** — verify the domain + service-account API access so we can see which queries the /pov articles (a deliberate traffic play) rank and get clicked for. Same setup pattern as the Vercel analytics tool in `~/.claude-tools/analytics/`.
-- [ ] Branded OG cards for the four /pov articles (via the /og-image fleet skill) — shares should unfurl on-brand for a traffic-driving section
+- [x] **Google Search Console — property verified + sitemap submitted (2026-08-16).** `sitemap.xml` processed successfully, all 12 URLs discovered (incl. the three /thinking articles + /thesis); property covers the canonical `www` host. Crawlability verified clean: non-www→www 301, articles 200, no stray noindex, self-canonicals.
+- [ ] **Follow-up: `gsc.mjs` query-reader tool** — sibling to `~/.claude-tools/analytics/va.mjs` so we can see which queries the /thinking articles (a deliberate traffic play) rank + get clicked for. Needs a Google Cloud service account (create in GCP, enable Search Console API, add the service-account email as a user on the GSC property, drop the JSON key locally). Deferred until impressions accumulate — nothing to read for ~1-2 weeks post-submit.
+- [x] **Branded OG cards for the /thinking family — done + refreshed to Bricolage (2026-08-16).** All five (four articles + /thinking index + /thesis) were already built + wired per-route in `prerender.mjs` and serving 200; refreshed the headline face from Inter → Bricolage Grotesque (500 / -0.02em) to match the on-page H1s after the display-font switch. Template rebuilt + committed at `marketing/og/og-thinking-cards.html` (the original article template was never committed); renders one PNG per card id → `public/`. Build green.
 - [ ] Writing section content — superseded in part by /pov; remaining article targets: fractional product leadership, prototype before PRD
 - [ ] Dedicated offering pages — Strategy Sprints, Rapid Prototyping, Fractional Product Leadership as standalone pages with their own URLs
 
