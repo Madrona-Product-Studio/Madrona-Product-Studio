@@ -312,10 +312,10 @@ export default function MadronaV2AgenticNote() {
             <Prose>
               <p>The diagrams above are not a concept. They are how Madrona runs, every day: this exact pattern, with a surface called Helm as the command center. It scales down honestly: it works for a small business the same way it works for a studio.</p>
               <p>The first step is the one above: a single agent on a single workflow, with visible payback before anything grows.</p>
-              <p>The ground level is public too. The plain-text operating system our studio runs on is open source: read it, fork it, make it yours.</p>
+              <p>The ground level is public too. The plain-text operating system our studio runs on is <a href="https://github.com/Madrona-Product-Studio/madrona-open/tree/main/plugins/operating-system" target="_blank" rel="noopener noreferrer">open source</a>: read it, fork it, make it yours.</p>
             </Prose>
             <div className="m2-th-close-links">
-              <Link className="m2-text-link" to="/open">Fork the operating system we run on <span aria-hidden="true">→</span></Link>
+              <a className="m2-text-link" href="https://github.com/Madrona-Product-Studio/madrona-open/tree/main/plugins/operating-system" target="_blank" rel="noopener noreferrer">Fork the operating system we run on <span aria-hidden="true">→</span></a>
               <Link className="m2-text-link" to="/consulting#operations-and-ai">Our Operations and AI services <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
             </div>

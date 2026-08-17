@@ -127,6 +127,14 @@ const pages = {
     ogImage: '/og-pov-under-the-hood.png',
     body: 'Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new. The parts, if you want to set this up yourself: a bootstrap template with standards pre-wired and verified green, one monitoring setup (Sentry, health endpoints, uptime checks, one alert destination) applied by stakes across the portfolio, a design intelligence layer installed as agent plugins, and an image system that builds type in code and generates atmosphere. Each part is becoming its own field note; this page collects them as they land.',
   },
+  '/thinking/solve-the-system-not-the-symptom': {
+    title: 'Solve the system, not the symptom: fix the machine, not the output · Madrona Product Studio',
+    description: 'When something is wrong, the instinct is to fix the thing in front of you. The higher-leverage move is one level down: fix the system that produced it, so everything it makes next is better. Why AI made that trade the default, and how to tell which symptoms are worth it.',
+    article: { datePublished: '2026-08-05', dateModified: '2026-08-07' },
+    h1: 'Solve the system, not the symptom.',
+    ogImage: '/og-pov-solve-the-system.png',
+    body: 'When something is wrong, the instinct is to fix the thing in front of you: recolor the button, redo the one bad output. The higher-leverage move is almost always one level down: fix the system that produced it, so everything it makes next is better. AI made that trade cheap enough to be the default. A worked example: instead of nudging one bad generated image, rewrite the criteria the tool runs on, and the whole set improves at once. Point the tool at the tool. The discipline is spending your attention where it compounds, on the machine, not the symptom, and knowing which symptoms are worth going upstream for.',
+  },
   '/open': {
     title: 'Open: our tools, free to use · Madrona Product Studio',
     description: 'Open-source Claude Code plugins from Madrona Product Studio: a forkable plain-text operating system kept current by agents, plus the craft catalog we ship polished product with: motion, social images, launch readiness, visual QA. MIT licensed.',
