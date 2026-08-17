@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
@@ -12,38 +13,38 @@ import photoShops from "../../../docs/madrona-v2-build-kit/placeholders/photogra
 import photoFarms from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-farms-food.webp";
 
 // Current entry: the out-of-the-box inventory (Artifact). Twelve jobs indexed
-// by the owner's pain, grouped by the three doors, every entry carrying a
-// needs-from-you and where-it-ends judgment line. A living artifact: the
-// "Updated" stamp is real, and facts were verified against vendor docs on the
-// date in the byline. Draft source: charlie-hq/thinking/madrona/working/.
+// by the owner's pain, grouped by the three doors. Every entry: prose with the
+// tool names linked to the vendor's own page (the "how do I turn this on"
+// answer), then a labeled needs-from-you / where-it-ends facts grid. Facts
+// verified against vendor docs on the byline date; draft + verification notes
+// in charlie-hq/thinking/madrona/working/.
 
-const I = ({ d }: { d: string }) => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
+const Ext = ({ href, children }: { href: string; children: ReactNode }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
 );
 
-const P = {
-  key: "M15 9a4 4 0 1 0-5.6 3.7L4 18v2h3v-2h2v-2h2l1.3-1.3A4 4 0 0 0 15 9Z",
-  flag: "M5 21V4m0 1h12l-2.5 3.5L17 12H5",
-};
+const CLAUDE_SMB = "https://www.anthropic.com/news/claude-for-small-business";
 
-// Needs-from-you + where-it-ends, the two judgment lines every entry carries.
-function EntryFacts({ needs, ends }: { needs: string; ends: string }) {
+// One inventory entry: question, linked prose (+ optional figure), then the
+// two judgment lines as a labeled pair. Hairline-topped so the entries carry
+// the same structural rhythm as the rest of the site.
+function Entry({ q, needs, ends, children }: { q: string; needs: ReactNode; ends: ReactNode; children: ReactNode }) {
   return (
-    <ul className="m2-th4-rows art-inv-facts">
-      <li>
-        <span className="m2-ab4-ico m2-ab4-ico--square" data-tone="sprout"><I d={P.key} /></span>
-        <p><strong>What it needs from you.</strong> <span>{needs}</span></p>
-      </li>
-      <li>
-        <span className="m2-ab4-ico m2-ab4-ico--square" data-tone="storefront"><I d={P.flag} /></span>
-        <p><strong>Where it ends.</strong> <span>{ends}</span></p>
-      </li>
-    </ul>
+    <div className="art-inv-entry">
+      <h3 className="art-inv-title">{q}</h3>
+      {children}
+      <div className="art-inv-facts">
+        <div>
+          <p className="art-inv-lbl">What it needs from you</p>
+          <p>{needs}</p>
+        </div>
+        <div>
+          <p className="art-inv-lbl">Where it ends</p>
+          <p>{ends}</p>
+        </div>
+      </div>
+    </div>
   );
-}
-
-function EntryTitle({ children }: { children: React.ReactNode }) {
-  return <h3 className="art-inv-title">{children}</h3>;
 }
 
 const GLANCE = [
@@ -112,7 +113,7 @@ export default function MadronaV2InventoryNote() {
             <Prose>
               <p>You keep hearing that AI could help your business, and between the demos, the pricing pages, and the think pieces, it is hard to tell what any of it actually does. Meanwhile the close still takes a weekend, the invoices are still late, and you are still answering the same six emails.</p>
               <p>The part nobody says plainly: a lot of that work is already handled by tools sitting in subscriptions you have. QuickBooks now ships agents that reconcile your books. Claude comes with workflows named for the jobs themselves. Gemini is already inside your Google Workspace plan. But vendors describe these things from their side of the glass. &ldquo;15 pre-built workflows for running the whole business&rdquo; tells you something exists. It does not tell you what it takes to put it to work on a Tuesday.</p>
-              <p>We run our own studio on this stuff, agents included, so this list comes from use, not from press releases. Every capability here was checked against the vendors&rsquo; current documentation on the date above, and we revise the page as the tools change.</p>
+              <p>We run our own studio on this stuff, agents included, so this list comes from use, not from press releases. Every capability here was checked against the vendors&rsquo; current documentation on the date above, and we revise the page as the tools change. Each tool is linked to the vendor&rsquo;s own page, so when an entry fits, you can go turn it on.</p>
             </Prose>
           </ArticleSection>
 
@@ -126,71 +127,78 @@ export default function MadronaV2InventoryNote() {
             <Prose>
               <p>The jobs that eat your evenings: bookkeeping, invoices, email, paperwork.</p>
             </Prose>
-            <EntryTitle>Can AI do my month-end close?</EntryTitle>
-            <Prose>
-              <p>Mostly, yes. This is the flagship of the category, and the best worked example of what &ldquo;out of the box&rdquo; now means.</p>
-              <p>Claude for Small Business ships a close workflow. It reconciles your books against payment settlements, flags mismatches for your review, writes a plain-English P&amp;L narrative, and packages an accountant-ready close packet through the QuickBooks connector. Inside QuickBooks itself, Intuit now ships its own Accounting agent that reconciles statements, matches bank transactions, and cleans up categorization. Here is what the first week actually looks like:</p>
-            </Prose>
-            <Figure caption="The actual commands. This is the part the marketing pages skip.">
-              <div className="m2-sg-prompts">
-                {CLOSE_STEPS.map((s) => (
-                  <div key={s.name} className="m2-sg-prompt">
-                    <h3>{s.name}</h3>
-                    <p className="why">{s.why}</p>
-                    <p className="p">{s.p}</p>
-                  </div>
-                ))}
-              </div>
-            </Figure>
-            <EntryFacts
+
+            <Entry
+              q="Can AI do my month-end close?"
               needs="Books that are roughly current. These workflows reconcile what is there. If three months of transactions are uncategorized, the first run surfaces a cleanup project, not a close packet. Useful information, but not the demo."
               ends="The mismatches it flags still need your call, and a messy chart of accounts confuses every tool in this category. The close gets dramatically shorter. The judgment stays yours, and your accountant stays your accountant."
-            />
+            >
+              <Prose>
+                <p>Mostly, yes. This is the flagship of the category, and the best worked example of what &ldquo;out of the box&rdquo; now means.</p>
+                <p><Ext href={CLAUDE_SMB}>Claude for Small Business</Ext> ships a close workflow. It reconciles your books against payment settlements, flags mismatches for your review, writes a plain-English P&amp;L narrative, and packages an accountant-ready close packet through the QuickBooks connector. Inside QuickBooks itself, Intuit now ships its own <Ext href="https://quickbooks.intuit.com/ai-accounting/">Accounting agent</Ext> that reconciles statements, matches bank transactions, and cleans up categorization. Here is what the first week actually looks like:</p>
+              </Prose>
+              <Figure caption="The actual commands. This is the part the marketing pages skip.">
+                <div className="m2-sg-prompts">
+                  {CLOSE_STEPS.map((s) => (
+                    <div key={s.name} className="m2-sg-prompt">
+                      <h3>{s.name}</h3>
+                      <p className="why">{s.why}</p>
+                      <p className="p">{s.p}</p>
+                    </div>
+                  ))}
+                </div>
+              </Figure>
+            </Entry>
 
-            <EntryTitle>Can AI chase my overdue invoices?</EntryTitle>
-            <Prose>
-              <p>This might be the fastest payback on the list. QuickBooks&rsquo; Payments agent drafts personalized reminders for overdue invoices and learns which payers respond to what; Intuit claims invoices get paid noticeably sooner. Claude&rsquo;s invoice chaser does the same job across QuickBooks and email, queueing reminders for your approval rather than sending on its own.</p>
-            </Prose>
-            <EntryFacts
+            <Entry
+              q="Can AI chase my overdue invoices?"
               needs="Invoices actually issued from the system, so there is something to chase."
               ends="The good customer who is late is a relationship decision, not a workflow. The tool drafts, you decide who gets grace."
-            />
+            >
+              <Prose>
+                <p>This might be the fastest payback on the list. QuickBooks&rsquo; <Ext href="https://quickbooks.intuit.com/payments-agent/">Payments agent</Ext> drafts personalized reminders for overdue invoices and learns which payers respond to what; Intuit claims invoices get paid noticeably sooner. <Ext href={CLAUDE_SMB}>Claude&rsquo;s invoice chaser</Ext> does the same job across QuickBooks and email, queueing reminders for your approval rather than sending on its own.</p>
+              </Prose>
+            </Entry>
 
-            <EntryTitle>What is my actual cash position right now?</EntryTitle>
-            <Prose>
-              <p>If you cannot answer that without opening three tabs, you are who this entry is for. Claude&rsquo;s business pulse puts cash position, sales trends, pipeline, and the week&rsquo;s commitments on one page, with a start-of-week brief and your top three to-dos. QuickBooks runs cash-flow shortage alerts with suggested actions.</p>
-            </Prose>
-            <EntryFacts
+            <Entry
+              q="What is my actual cash position right now?"
               needs="Connected accounts. All of them."
               ends="The pulse is only as honest as its connections. If half your money moves through a system it cannot see, you get a tidy number that is wrong. Connect everything or read it skeptically."
-            />
+            >
+              <Prose>
+                <p>If you cannot answer that without opening three tabs, you are who this entry is for. <Ext href={CLAUDE_SMB}>Claude&rsquo;s business pulse</Ext> puts cash position, sales trends, pipeline, and the week&rsquo;s commitments on one page, with a start-of-week brief and your top three to-dos. QuickBooks runs cash-flow shortage alerts with suggested actions.</p>
+              </Prose>
+            </Entry>
 
-            <EntryTitle>Can AI help me plan payroll?</EntryTitle>
-            <Prose>
-              <p>The planning half, it can. Claude&rsquo;s payroll workflow settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation.</p>
-            </Prose>
-            <EntryFacts
+            <Entry
+              q="Can AI help me plan payroll?"
               needs="The same connected accounts as the cash pulse, and a payroll date to plan toward."
               ends="This is payroll planning. Running payroll, benefits, and compliance stay with your payroll provider."
-            />
+            >
+              <Prose>
+                <p>The planning half, it can. <Ext href={CLAUDE_SMB}>Claude&rsquo;s payroll workflow</Ext> settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation.</p>
+              </Prose>
+            </Entry>
 
-            <EntryTitle>Can AI answer routine customer emails?</EntryTitle>
-            <Prose>
-              <p>The drafting, yes. Gemini&rsquo;s &ldquo;Help me write&rdquo; is now included in base Google Workspace subscriptions and drafts replies from the thread. Microsoft&rsquo;s Copilot does the same in Outlook on its small business plans. If you sell on Shopify, Inbox suggests answers to customer chats from your store&rsquo;s own information.</p>
-            </Prose>
-            <EntryFacts
+            <Entry
+              q="Can AI answer routine customer emails?"
               needs="Written answers to draw from: your policies, your shipping times, your return rules. If it is not written down, the AI guesses, confidently. An afternoon spent writing your ten most common answers is the highest-leverage AI work most small businesses can do."
               ends="The upset customer. Draft with AI, but send that one yourself."
-            />
+            >
+              <Prose>
+                <p>The drafting, yes. <Ext href="https://workspace.google.com/solutions/ai/">Gemini&rsquo;s &ldquo;Help me write&rdquo;</Ext> is now included in base Google Workspace subscriptions and drafts replies from the thread. <Ext href="https://www.microsoft.com/en-us/microsoft-365/copilot/business">Microsoft&rsquo;s Copilot</Ext> does the same in Outlook on its small business plans. If you sell on Shopify, Inbox suggests answers to customer chats from your store&rsquo;s own information, part of <Ext href="https://www.shopify.com/magic">Shopify Magic</Ext>.</p>
+              </Prose>
+            </Entry>
 
-            <EntryTitle>Can AI review a contract before I sign it?</EntryTitle>
-            <Prose>
-              <p>It makes a good first reader. Claude&rsquo;s contract reviewer flags key terms and risks and answers questions about what you are agreeing to. DocuSign has serious contract AI under its Iris brand, but note the fine print: it lives on their contract-management plans, not the eSignature plan most small businesses actually have.</p>
-            </Prose>
-            <EntryFacts
+            <Entry
+              q="Can AI review a contract before I sign it?"
               needs="The contract as a document it can read, and your questions about it."
               ends="It flags, it does not decide, and it is not your lawyer. For the lease or the partnership agreement, the review buys you a sharper conversation with counsel, not a substitute for one."
-            />
+            >
+              <Prose>
+                <p>It makes a good first reader. <Ext href={CLAUDE_SMB}>Claude&rsquo;s contract reviewer</Ext> flags key terms and risks and answers questions about what you are agreeing to. DocuSign has serious contract AI under its <Ext href="https://www.docusign.com/products/platform/ai">Iris</Ext> brand, but note the fine print: it lives on their contract-management plans, not the eSignature plan most small businesses actually have.</p>
+              </Prose>
+            </Entry>
             <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses run smoother <span aria-hidden="true">→</span></Link></p>
           </ArticleSection>
 
@@ -202,32 +210,35 @@ export default function MadronaV2InventoryNote() {
               <div className="art-photo"><img src={photoShops} alt="A small local storefront with a hand-lettered window" loading="lazy" /></div>
             </Figure>
 
-            <EntryTitle>Can AI make my marketing assets?</EntryTitle>
-            <Prose>
-              <p>This one has come further than most owners realize. Canva&rsquo;s Magic Studio writes copy in your brand voice, generates and edits images, drafts whole design options from a prompt, and resizes one asset across every format you need. Shopify Magic writes product descriptions, strips and regenerates photo backgrounds, and drafts store content in place. Between the two, a small business can produce a month of decent assets in an afternoon that used to cost a freelancer retainer.</p>
-            </Prose>
-            <EntryFacts
+            <Entry
+              q="Can AI make my marketing assets?"
               needs="A brand kit, set up once: logo, colors, fonts, and a few sentences about voice. Every generation pulls from it. Skip this and each asset drifts a little differently off-brand, and you spend the saved time fixing them. Real product photos help too: the tools are far better at polishing your actual photo than inventing your product."
               ends="Voice and positioning are decisions, and they are still yours. AI multiplies whatever you hand it, including generic. If the words underneath are not sharp about who you serve and why you are different, you now produce forgettable assets faster. That is the edge where tooling stops and strategy starts."
-            />
+            >
+              <Prose>
+                <p>This one has come further than most owners realize. <Ext href="https://www.canva.com/magic-studio/">Canva&rsquo;s Magic Studio</Ext> writes copy in your brand voice, generates and edits images, drafts whole design options from a prompt, and resizes one asset across every format you need. <Ext href="https://www.shopify.com/magic">Shopify Magic</Ext> writes product descriptions, strips and regenerates photo backgrounds, and drafts store content in place. Between the two, a small business can produce a month of decent assets in an afternoon that used to cost a freelancer retainer.</p>
+              </Prose>
+            </Entry>
 
-            <EntryTitle>Can AI plan and run a marketing campaign?</EntryTitle>
-            <Prose>
-              <p>End to end, if you want it to. Claude&rsquo;s campaign workflow analyzes your revenue, drafts strategy, and produces the assets through the Canva connector. One command runs the whole arc, and you approve each step that touches customers.</p>
-            </Prose>
-            <EntryFacts
+            <Entry
+              q="Can AI plan and run a marketing campaign?"
               needs="Revenue data it can read, and your yes at each step."
               ends="It runs the campaign you approve. Whether it is the right campaign, for the right audience, at the right moment, is exactly the question the workflow cannot answer for you."
-            />
+            >
+              <Prose>
+                <p>End to end, if you want it to. <Ext href={CLAUDE_SMB}>Claude&rsquo;s campaign workflow</Ext> analyzes your revenue, drafts strategy, and produces the assets through the Canva connector. One command runs the whole arc, and you approve each step that touches customers.</p>
+              </Prose>
+            </Entry>
 
-            <EntryTitle>Should I let Meta and Google automate my ads?</EntryTitle>
-            <Prose>
-              <p>They already assume you will. Meta&rsquo;s Advantage+ sales campaigns and Google&rsquo;s Performance Max both take budget, creative, and a goal, then automate audience, placements, and bidding across everything they own. For a small advertiser this beats hand-tuned campaigns most of the time.</p>
-            </Prose>
-            <EntryFacts
+            <Entry
+              q="Should I let Meta and Google automate my ads?"
               needs="Conversion tracking wired up and verified before the first dollar. This is the entry we see done wrong most often. These systems optimize toward whatever signal they receive; no signal, and they spend your budget optimizing toward noise. Google's own guidance says give Performance Max six weeks and stable budgets before judging it."
               ends="Automation optimizes toward the goal you set. Choosing the goal, and checking the tracking, is the work."
-            />
+            >
+              <Prose>
+                <p>They already assume you will. <Ext href="https://www.facebook.com/business/ads/meta-advantage-plus">Meta&rsquo;s Advantage+ sales campaigns</Ext> and <Ext href="https://support.google.com/google-ads/answer/10724817">Google&rsquo;s Performance Max</Ext> both take budget, creative, and a goal, then automate audience, placements, and bidding across everything they own. For a small advertiser this beats hand-tuned campaigns most of the time.</p>
+              </Prose>
+            </Entry>
             <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses get found <span aria-hidden="true">→</span></Link></p>
           </ArticleSection>
 
@@ -239,32 +250,35 @@ export default function MadronaV2InventoryNote() {
               <div className="art-photo"><img src={photoFarms} alt="Fresh local produce at a farmers market stand" loading="lazy" /></div>
             </Figure>
 
-            <EntryTitle>Can AI follow up with customers after the sale?</EntryTitle>
-            <Prose>
-              <p>The machinery is built in. Square&rsquo;s Marketing automations run welcome, win-back, lapsed-customer, and abandoned-cart campaigns on its marketing plans, with AI-drafted copy. Shopify Email does the same for stores. HubSpot&rsquo;s free tier includes an AI assistant for drafting; its autonomous follow-up agents sit on paid tiers.</p>
-            </Prose>
-            <EntryFacts
+            <Entry
+              q="Can AI follow up with customers after the sale?"
               needs="A decision. A follow-up rhythm is a decision before it is an automation: who hears from you, how soon after a sale, saying what? An hour with those questions, then the automation runs it forever."
               ends="The tools execute cadence. They do not know your regulars."
-            />
+            >
+              <Prose>
+                <p>The machinery is built in. <Ext href="https://squareup.com/us/en/software/marketing">Square&rsquo;s Marketing automations</Ext> run welcome, win-back, lapsed-customer, and abandoned-cart campaigns on its marketing plans, with AI-drafted copy. Shopify Email does the same for stores. <Ext href="https://www.hubspot.com/products/artificial-intelligence">HubSpot&rsquo;s</Ext> free tier includes an AI assistant for drafting; its autonomous follow-up agents sit on paid tiers.</p>
+              </Prose>
+            </Entry>
 
-            <EntryTitle>Can AI ask customers for reviews?</EntryTitle>
-            <Prose>
-              <p>You should let it, because the ask is what nobody gets around to. Square collects Google reviews automatically by email or text after a sale, triggered by things like a customer&rsquo;s third purchase, once your Google Business Profile is synced. On the other side, connecting your Business Profile to the Gemini app lets it draft review replies in your voice and flag unanswered questions.</p>
-            </Prose>
-            <EntryFacts
+            <Entry
+              q="Can AI ask customers for reviews?"
               needs="Your Google Business Profile connected, and a sale worth asking about."
               ends="Automate the ask, never the review. Incentivized or faked reviews violate every platform's rules and, eventually, your customers' trust."
-            />
+            >
+              <Prose>
+                <p>You should let it, because the ask is what nobody gets around to. <Ext href="https://squareup.com/help/us/en/article/8418-collect-google-reviews">Square collects Google reviews</Ext> automatically by email or text after a sale, triggered by things like a customer&rsquo;s third purchase, once your Google Business Profile is synced. On the other side, <Ext href="https://blog.google/innovation-and-ai/products/gemini-app/gemini-features-for-businesses/">connecting your Business Profile to the Gemini app</Ext> lets it draft review replies in your voice and flag unanswered questions.</p>
+              </Prose>
+            </Entry>
 
-            <EntryTitle>Can AI tell me who my best customers are?</EntryTitle>
-            <Prose>
-              <p>The analysis, instantly. Claude&rsquo;s margin analyzer works the numbers through your QuickBooks data. Square AI answers plain questions over your own sales history: best sellers, margins by location, what changed this month. Shopify&rsquo;s Sidekick does the same for stores and takes admin actions you approve.</p>
-            </Prose>
-            <EntryFacts
+            <Entry
+              q="Can AI tell me who my best customers are?"
               needs="Sales history living in one system."
               ends="The answer usually hands you a harder question. Knowing your top customers is a query. Deciding what to build for them is strategy, and no workflow ships that."
-            />
+            >
+              <Prose>
+                <p>The analysis, instantly. <Ext href={CLAUDE_SMB}>Claude&rsquo;s margin analyzer</Ext> works the numbers through your QuickBooks data. <Ext href="https://squareup.com/us/en/ai">Square AI</Ext> answers plain questions over your own sales history: best sellers, margins by location, what changed this month. <Ext href="https://www.shopify.com/sidekick">Shopify&rsquo;s Sidekick</Ext> does the same for stores and takes admin actions you approve.</p>
+              </Prose>
+            </Entry>
             <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses keep customers coming back <span aria-hidden="true">→</span></Link></p>
           </ArticleSection>
 
