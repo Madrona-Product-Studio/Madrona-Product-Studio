@@ -383,6 +383,11 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-ab4-worth-media { align-self: center; display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
 .m2-ab4-worth-media img { aspect-ratio: 5 / 4.2; border-radius: 12px; object-fit: cover; width: 100%; }
 
+/* From here — single environmental photo + caption carrying the name story. */
+.m2-ab4-place-media { align-self: center; margin: 0; }
+.m2-ab4-place-media img { aspect-ratio: 4 / 3; border-radius: 12px; object-fit: cover; width: 100%; }
+.m2-ab4-place-media figcaption { color: var(--muted); font-size: .84rem; line-height: 1.55; margin-top: 12px; max-width: 46ch; }
+
 /* ---- About V3 — founder-led editorial essay ---- */
 .m2-ab3 { margin: 0 auto; max-width: 1300px; }
 .m2-ab3 h2 { font-family: var(--font-serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 540; letter-spacing: -.015em; line-height: 1.08; margin: 0 0 20px; }
