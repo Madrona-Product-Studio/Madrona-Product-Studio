@@ -9,11 +9,10 @@ import { thinkingEntries, type ThinkingType } from "../../data/thinking";
 import "./madrona-v2.css";
 import "./playbook.css";
 
-// Current — the studio's feed (named 2026-08-05). The latest from inside
-// Madrona: learnings, artifacts, essays, announcements, anything worth
-// sharing. Card-grid feed; every card carries an entry plate (a small
-// designed visual, never a naked text row). Published work only.
-// Entries live in src/data/thinking.ts (shared with related-reading).
+// Thinking — the studio's feed. Editorial feed rows (chosen 2026-08-17 from
+// four candidates): small motif thumbnail left, meta + title, Read link.
+// Entries render in the curated read-first order from src/data/thinking.ts
+// (thesis leads; order is Charlie's, not chronological).
 
 export default function MadronaV2Pov() {
   useReveal();
@@ -33,7 +32,7 @@ export default function MadronaV2Pov() {
         <p className="m2-th-standfirst">Learnings, artifacts, and guides from inside the studio. When the work teaches us something, we organize the thinking here so we can build on it, and so can you.</p>
       </section>
 
-      {/* Filters + grid */}
+      {/* Filters + feed */}
       <section className="m2-ab4">
         <div className="m2-cu-filters" role="tablist" aria-label="Filter entries">
           {(["All", ...types] as const).map((t) => (
@@ -42,15 +41,15 @@ export default function MadronaV2Pov() {
             </button>
           ))}
         </div>
-        <div className="m2-cu-grid">
+        <div className="m2-povl-d">
           {shown.map((e) => (
-            <Link key={e.title} to={e.href} className="m2-cu-card">
-              <div className="m2-pov-plate"><PovThumb motif={e.motif} /></div>
-              <div className="m2-cu-card-body">
+            <Link key={e.href} to={e.href} className="m2-povl-d-row">
+              <div className="m2-pov-plate m2-povl-d-plate"><PovThumb motif={e.motif} /></div>
+              <div className="m2-povl-d-body">
+                <p className="m2-povl-d-meta"><span className="m2-jr-type">{e.type}</span> · {e.date}</p>
                 <h2>{e.title}</h2>
-                <p>{e.excerpt}</p>
               </div>
-              <p className="m2-cu-card-meta"><span className="m2-jr-type">{e.type}</span> · {e.date}</p>
+              <span className="m2-text-link m2-povl-d-read">Read <span aria-hidden="true">→</span></span>
             </Link>
           ))}
         </div>

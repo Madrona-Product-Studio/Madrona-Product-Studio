@@ -1,6 +1,9 @@
 // The /thinking feed — single source of truth for the studio's published
 // entries. Consumed by the feed page (MadronaV2Pov) and the related-reading
-// module at the foot of each article. Published work only; order is Charlie's.
+// module at the foot of each article. Published work only.
+// ORDER IS CURATED, not chronological (Charlie, 2026-08-17): read-first
+// order — the thesis leads, then the era piece, then the starter guide.
+// New entries slot in wherever they belong, not at the end.
 import type { PovMotif } from "../pages/lab/PovThumb";
 
 export type ThinkingType = "Artifact" | "Essay" | "Learning" | "Guide" | "Announcement";
@@ -25,14 +28,6 @@ export const thinkingEntries: ThinkingEntry[] = [
   },
   {
     date: "Aug 2026",
-    type: "Artifact",
-    title: "The engine behind everything we ship",
-    excerpt: "Fifteen years of product judgment, encoded into a platform every project inherits, held to the same gates, and compounding with every launch.",
-    href: "/thinking/under-the-hood",
-    motif: "modules",
-  },
-  {
-    date: "Aug 2026",
     type: "Essay",
     title: "The era of agentic operations",
     excerpt: "A business can now run on one source of truth and agents on a rhythm, with a person firmly in charge. What changes, and how to start small.",
@@ -49,6 +44,14 @@ export const thinkingEntries: ThinkingEntry[] = [
   },
   {
     date: "Aug 2026",
+    type: "Artifact",
+    title: "The 12 jobs AI tools already do for small businesses",
+    excerpt: "A living inventory of what out-of-the-box AI handles today, indexed by the problem rather than the product: the close, the invoices, the emails, the ads. Each entry with what it needs from you and where it ends.",
+    href: "/thinking/ai-tools-for-small-business",
+    motif: "inventory",
+  },
+  {
+    date: "Aug 2026",
     type: "Essay",
     title: "Solve the system, not the symptom",
     excerpt: "The higher-leverage fix is rarely the output in front of you. It is the system that produced it. Why AI made fixing the machine the default, the prompts that help you do it, and how to tell which symptoms are worth it.",
@@ -58,9 +61,9 @@ export const thinkingEntries: ThinkingEntry[] = [
   {
     date: "Aug 2026",
     type: "Artifact",
-    title: "The 12 jobs AI tools already do for small businesses",
-    excerpt: "A living inventory of what out-of-the-box AI handles today, indexed by the problem rather than the product: the close, the invoices, the emails, the ads. Each entry with what it needs from you and where it ends.",
-    href: "/thinking/ai-tools-for-small-business",
-    motif: "inventory",
+    title: "The engine behind everything we ship",
+    excerpt: "Fifteen years of product judgment, encoded into a platform every project inherits, held to the same gates, and compounding with every launch.",
+    href: "/thinking/under-the-hood",
+    motif: "modules",
   },
 ];
