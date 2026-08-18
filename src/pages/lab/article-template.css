@@ -138,15 +138,24 @@
 /* Inventory entries — hairline-topped blocks: question, linked prose, then a
    labeled two-column facts pair (the site's kicker system, no icons). */
 .art-inv-entry { border-top: 1px solid var(--art-hair-soft); margin-top: 40px; padding-top: 34px; }
+.art-sec > .art-prose + .art-inv-entry { margin-top: 30px; }
 .art h3.art-inv-title { color: var(--ink); font: 600 1.24rem/1.3 var(--font-sans); letter-spacing: -.015em; margin: 0 0 14px; }
-.art-inv-facts { display: grid; gap: 20px 40px; grid-template-columns: 1fr 1fr; margin-top: 28px; }
+.art-inv-facts { display: grid; gap: 20px 0; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 30px; max-width: 860px; }
+.art-inv-facts > div { padding-right: clamp(28px, 4vw, 48px); }
+.art-inv-facts > div + div { border-left: 1px solid var(--art-hair-soft); padding-left: clamp(28px, 4vw, 48px); padding-right: 0; }
 /* Tinted circle icons, the Product Thesis idiom: fixed size, one clean motif,
    never stretched by the text beside them. */
 .art-inv-facts .art-inv-ico { flex: none; height: 44px; margin-bottom: 12px; width: 44px; }
 .art-inv-facts .art-inv-ico svg { height: 21px; width: 21px; }
 .art-inv-facts .art-inv-lbl { color: var(--bark-dark); font-size: .66rem; font-weight: 750; letter-spacing: .13em; margin: 0 0 8px; text-transform: uppercase; }
 .art-inv-facts p { color: var(--ink-soft); font-size: .92rem; line-height: 1.62; margin: 0; }
-@media (max-width: 720px) { .art-inv-facts { grid-template-columns: 1fr; } }
+@media (max-width: 720px) {
+  .art-sec > .art-prose + .art-inv-entry { margin-top: 26px; }
+  .art-inv-entry { margin-top: 34px; padding-top: 28px; }
+  .art-inv-facts { grid-template-columns: 1fr; margin-top: 26px; }
+  .art-inv-facts > div { padding-right: 0; }
+  .art-inv-facts > div + div { border-left: 0; border-top: 1px solid var(--art-hair-soft); padding: 22px 0 0; }
+}
 .art-inv-doorlink { margin: 44px 0 0; }
 
 /* ---- Code block --------------------------------------------------------- */

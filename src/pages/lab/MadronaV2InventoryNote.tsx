@@ -186,7 +186,7 @@ export default function MadronaV2InventoryNote() {
               ends="This is payroll planning. Running payroll, benefits, and compliance stay with your payroll provider."
             >
               <Prose>
-                <p>The planning half, it can. <Ext href={CLAUDE_SMB}>Claude&rsquo;s payroll workflow</Ext> settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation.</p>
+                <p>It can handle the planning half. <Ext href={CLAUDE_SMB}>Claude&rsquo;s payroll workflow</Ext> settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation.</p>
               </Prose>
             </Entry>
 
@@ -280,7 +280,7 @@ export default function MadronaV2InventoryNote() {
               ends="The answer usually hands you a harder question. Knowing your top customers is a query. Deciding what to build for them is strategy, and no workflow ships that."
             >
               <Prose>
-                <p>The analysis, instantly. <Ext href={CLAUDE_SMB}>Claude&rsquo;s margin analyzer</Ext> works the numbers through your QuickBooks data. <Ext href="https://squareup.com/us/en/ai">Square AI</Ext> answers plain questions over your own sales history: best sellers, margins by location, what changed this month. <Ext href="https://www.shopify.com/sidekick">Shopify&rsquo;s Sidekick</Ext> does the same for stores and takes admin actions you approve.</p>
+                <p>The analysis is the instant part. <Ext href={CLAUDE_SMB}>Claude&rsquo;s margin analyzer</Ext> works the numbers through your QuickBooks data. <Ext href="https://squareup.com/us/en/ai">Square AI</Ext> answers plain questions over your own sales history: best sellers, margins by location, what changed this month. <Ext href="https://www.shopify.com/sidekick">Shopify&rsquo;s Sidekick</Ext> does the same for stores and takes admin actions you approve.</p>
               </Prose>
             </Entry>
             <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses keep customers coming back <span aria-hidden="true">→</span></Link></p>
