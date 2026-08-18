@@ -46,8 +46,9 @@ export default function MadronaV2Pov() {
             <Link key={e.href} to={e.href} className="m2-povl-d-row">
               <div className="m2-pov-plate m2-povl-d-plate"><PovThumb motif={e.motif} /></div>
               <div className="m2-povl-d-body">
-                <p className="m2-povl-d-meta"><span className="m2-jr-type">{e.type}</span> · {e.date}</p>
+                <p className="m2-povl-d-meta"><span className="m2-jr-type">{e.type}</span></p>
                 <h2>{e.title}</h2>
+                <p className="m2-povl-d-excerpt">{e.excerpt}</p>
               </div>
               <span className="m2-text-link m2-povl-d-read">Read <span aria-hidden="true">→</span></span>
             </Link>
