@@ -16,8 +16,8 @@ import "./playbook.css";
 // verified against vendor docs on the byline date; draft + verification notes
 // in charlie-hq/thinking/madrona/working/.
 
-const Ext = ({ href, children }: { href: string; children: ReactNode }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
+const Ext = ({ href, className, children }: { href: string; className?: string; children: ReactNode }) => (
+  <a href={href} className={className} target="_blank" rel="noopener noreferrer">{children}</a>
 );
 
 const I = ({ d }: { d: string }) => (
@@ -31,7 +31,9 @@ const P = {
   flag: "M5 21V4m0 1h12l-2.5 3.5L17 12H5",
 };
 
-const CLAUDE_SMB = "https://www.anthropic.com/news/claude-for-small-business";
+// The product door, not the press release: owners land where they can act.
+const CLAUDE_SMB = "https://claude.com/solutions/small-business";
+const CLAUDE_SMB_INSTALL = "https://claude.com/resources/tutorials/how-to-install-the-claude-for-small-business-plugin";
 
 // One inventory entry: question, linked prose (+ optional figure), then the
 // two judgment lines as a labeled pair. Hairline-topped so the entries carry
@@ -72,9 +74,10 @@ const GLANCE = [
   { name: "Knowing your best customers", href: "#job-best-customers", what: "Claude margin analyzer, Square AI, Sidekick", why: "The answer hands you a harder question" },
 ];
 
-const CLOSE_STEPS = [
+const CLOSE_STEPS: { name: string; href?: string; why: string; p: string }[] = [
   {
     name: "/smb-onboard",
+    href: CLAUDE_SMB_INSTALL,
     why: "Day one. The setup is one command, not a project.",
     p: "Walks you through connecting QuickBooks and PayPal first, then the rest as you go. Most workflows degrade gracefully when a connector is not there yet.",
   },
@@ -152,7 +155,7 @@ export default function MadronaV2InventoryNote() {
                 <div className="m2-sg-prompts">
                   {CLOSE_STEPS.map((s) => (
                     <div key={s.name} className="m2-sg-prompt">
-                      <h3>{s.name}</h3>
+                      <h3>{s.href ? <Ext href={s.href} className="m2-inline-link">{s.name}</Ext> : s.name}</h3>
                       <p className="why">{s.why}</p>
                       <p className="p">{s.p}</p>
                     </div>
@@ -301,7 +304,7 @@ export default function MadronaV2InventoryNote() {
           <ArticleSection id="how-to-start" num="6" eyebrow="The move" title="How to actually start.">
             <Prose>
               <p>Pick one job. Not five. The one that ate last weekend.</p>
-              <p>Then take the free path first. Anthropic runs a <Ext href="https://newsroom.paypal-corp.com/2026-05-PayPal-partners-with-Anthropic-to-Close-the-AI-Gap-for-Small-Businesses">free AI fluency course</Ext> for small business owners, built with PayPal, and <Ext href={CLAUDE_SMB}>free half-day workshops</Ext> in cities around the country. Gemini is already in your Workspace subscription. Shopify Magic is on every Shopify plan. You may get this job handled without spending anything new, and you should be suspicious of anyone who suggests otherwise.</p>
+              <p>Then take the free path first. Anthropic runs a <Ext href="https://newsroom.paypal-corp.com/2026-05-PayPal-partners-with-Anthropic-to-Close-the-AI-Gap-for-Small-Businesses">free AI fluency course</Ext> for small business owners, built with PayPal, and <Ext href="https://www.anthropic.com/news/claude-for-small-business">free half-day workshops</Ext> in cities around the country. Gemini is already in your Workspace subscription. Shopify Magic is on every Shopify plan. You may get this job handled without spending anything new, and you should be suspicious of anyone who suggests otherwise.</p>
               <p>An honest note on where the shelf ends, because it does. Packaged workflows assume standard tools and standard process. The edges show up fast in a real business: the industry system with no connector, the two tools that will not talk to each other, the workflow that almost fits but not quite, the point where approving every step quietly becomes its own job. Those edges are not a reason to skip the shelf. They are a map of where your business is genuinely different, and that is worth knowing.</p>
               <p>When you hit one, that is the moment worth a conversation. Figuring out what to build when the packaged version runs out is our actual work. Either way, take the inventory: somewhere in these twelve jobs, there is a weekend you get back this month.</p>
             </Prose>
