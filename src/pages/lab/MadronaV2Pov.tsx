@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import TypeMark from "./TypeMark";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -16,6 +17,12 @@ import "./playbook.css";
 
 export default function MadronaV2Pov() {
   useReveal();
+  // TEMP (2026-08-18): type-mark presentation candidates behind ?icons=a|b|c.
+  // a: bare glyph beside the chip · b: tinted circle (thesis idiom) · c: pill.
+  // Winner locks in; param + losers get deleted.
+  const [params] = useSearchParams();
+  const icons = params.get("icons");
+  const TONE: Record<string, string> = { Essay: "sprout", Guide: "layers", Artifact: "storefront" };
   const [filter, setFilter] = useState<"All" | ThinkingType>("All");
   const types = Array.from(new Set(thinkingEntries.map((e) => e.type)));
   const shown = filter === "All" ? thinkingEntries : thinkingEntries.filter((e) => e.type === filter);
@@ -46,7 +53,16 @@ export default function MadronaV2Pov() {
             <Link key={e.href} to={e.href} className="m2-povl-d-row">
               <div className="m2-pov-plate m2-povl-d-plate"><PovThumb motif={e.motif} /></div>
               <div className="m2-povl-d-body">
-                <p className="m2-povl-d-meta"><span className="m2-jr-type">{e.type}</span></p>
+                {!icons && <p className="m2-povl-d-meta"><span className="m2-jr-type">{e.type}</span></p>}
+                {icons === "a" && (
+                  <p className="m2-povl-d-meta m2-tm-a"><TypeMark type={e.type} /><span className="m2-jr-type">{e.type}</span></p>
+                )}
+                {icons === "b" && (
+                  <p className="m2-povl-d-meta m2-tm-b"><span className="m2-ab4-ico m2-tm-circle" data-tone={TONE[e.type] ?? "sprout"}><TypeMark type={e.type} /></span><span className="m2-jr-type">{e.type}</span></p>
+                )}
+                {icons === "c" && (
+                  <p className="m2-povl-d-meta m2-tm-c"><span className="m2-tm-pill"><TypeMark type={e.type} />{e.type}</span></p>
+                )}
                 <h2>{e.title}</h2>
                 <p className="m2-povl-d-excerpt">{e.excerpt}</p>
               </div>
