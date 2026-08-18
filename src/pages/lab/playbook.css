@@ -165,73 +165,7 @@ a.m2-pb-app:hover { border-color: var(--color-madrona); }
 .m2-cu-filters button:hover { color: var(--color-ink); }
 .m2-cu-filters button.is-active { color: var(--color-ink); font-weight: 600; border-bottom-color: var(--color-madrona); }
 
-.m2-cu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 28px 0 6px; }
-.m2-cu-card {
-  background: var(--color-card); border: 1px solid var(--color-line); border-radius: 10px;
-  overflow: hidden; display: flex; flex-direction: column;
-  text-decoration: none; color: inherit;
-  transition: border-color .18s ease, transform .18s ease;
-}
-.m2-cu-card:hover { border-color: var(--color-madrona); transform: translateY(-2px); }
-.m2-cu-card-body { padding: 18px 20px 6px; flex: 1; }
-.m2-cu-card-body h2 { font: 500 19px/1.3 var(--font-serif); margin: 0 0 8px; }
-.m2-cu-card:hover h2 { color: var(--color-madrona-dark); }
-.m2-cu-card-body p { font: 400 12.5px/1.55 var(--font-sans); color: var(--color-clay); }
-.m2-cu-card-meta { font: 500 10.5px/1 ui-monospace, Menlo, monospace; color: var(--color-muted); padding: 14px 20px 18px; }
-
-/* ── Editorial list candidates (2026-08-17, TEMP behind ?v=) ─────────────
-   A: the index — hairline rows, meta rail left, plate right.
-   B: the ledger — numbered, dense, no plates.
-   C: feature lead + compact list. Winner keeps its block; others deleted. */
-
-/* shared bits */
-.m2-povl-date { color: var(--color-muted); display: block; font: 500 12px/1 var(--font-sans); margin-top: 8px; }
-.m2-povl-arrow { color: var(--color-madrona-dark); display: inline-block; margin-left: 10px; opacity: 0; transition: opacity .15s ease, transform .15s ease; transform: translateX(-4px); }
-
-/* A — the index */
-.m2-povl-a { padding: 4px 0 6px; }
-.m2-povl-a-row {
-  align-items: center; border-bottom: 1px solid var(--color-line-soft);
-  color: inherit; display: grid; gap: clamp(24px, 3vw, 44px);
-  grid-template-columns: 128px minmax(0, 1fr) 208px;
-  padding: clamp(24px, 2.6vw, 34px) 0; text-decoration: none;
-}
-.m2-povl-a-meta { align-self: start; padding-top: 6px; }
-.m2-povl-a-body h2 { font: 500 clamp(20px, 2vw, 25px)/1.25 var(--font-serif); letter-spacing: -.01em; margin: 0; transition: color .15s ease; }
-.m2-povl-a-row:hover h2 { color: var(--color-madrona-dark); }
-.m2-povl-a-body p { color: var(--color-clay); font: 400 13.5px/1.6 var(--font-sans); margin: 10px 0 0; max-width: 62ch; }
-.m2-povl-a-plate { border: 1px solid var(--color-line-soft); border-radius: 8px; overflow: hidden; }
-@media (max-width: 860px) {
-  .m2-povl-a-row { grid-template-columns: 1fr; gap: 12px; }
-  .m2-povl-a-meta { padding-top: 0; }
-  .m2-povl-date { display: inline; margin: 0 0 0 10px; }
-  .m2-povl-a-plate { display: none; }
-}
-
-/* B — the ledger */
-.m2-povl-b { padding: 4px 0 6px; }
-.m2-povl-b-row {
-  align-items: baseline; border-bottom: 1px solid var(--color-line-soft);
-  color: inherit; display: grid; gap: clamp(18px, 2.4vw, 34px);
-  grid-template-columns: 44px minmax(0, 1fr) auto;
-  padding: 22px 0 24px; text-decoration: none;
-}
-.m2-povl-b-num { color: var(--color-madrona-dark); font: 600 12px/1 ui-monospace, Menlo, monospace; }
-.m2-povl-b-body h2 { font: 600 17.5px/1.35 var(--font-sans); letter-spacing: -.015em; margin: 0; transition: color .15s ease; }
-.m2-povl-b-row:hover h2 { color: var(--color-madrona-dark); }
-.m2-povl-b-row:hover .m2-povl-arrow { opacity: 1; transform: none; }
-.m2-povl-b-body p {
-  -webkit-box-orient: vertical; -webkit-line-clamp: 1; color: var(--color-muted);
-  display: -webkit-box; font: 400 12.5px/1.5 var(--font-sans); margin: 7px 0 0;
-  max-width: 66ch; overflow: hidden;
-}
-.m2-povl-b-meta { color: var(--color-muted); font: 500 10.5px/1 ui-monospace, Menlo, monospace; white-space: nowrap; }
-@media (max-width: 720px) {
-  .m2-povl-b-row { grid-template-columns: 34px minmax(0, 1fr); }
-  .m2-povl-b-meta { display: none; }
-}
-
-/* D — the feed: small thumb left, title, read link right */
+/* The feed (chosen 2026-08-17): motif thumb left, meta + title, read link */
 .m2-povl-d { padding: 4px 0 6px; }
 .m2-povl-d-row {
   align-items: center; border-bottom: 1px solid var(--color-line-soft);
@@ -249,22 +183,6 @@ a.m2-pb-app:hover { border-color: var(--color-madrona); }
 @media (max-width: 720px) {
   .m2-povl-d-row { grid-template-columns: 128px minmax(0, 1fr); gap: 16px; }
   .m2-povl-d-read { display: none; }
-}
-
-/* C — feature lead + compact list */
-.m2-povl-c-lead {
-  align-items: center; border-bottom: 1px solid var(--color-line);
-  color: inherit; display: grid; gap: clamp(28px, 4vw, 56px);
-  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
-  padding: clamp(26px, 3vw, 38px) 0 clamp(28px, 3.2vw, 40px); text-decoration: none;
-}
-.m2-povl-c-plate { border: 1px solid var(--color-line-soft); border-radius: 10px; overflow: hidden; }
-.m2-povl-c-leadbody h2 { font: 500 clamp(24px, 2.6vw, 32px)/1.16 var(--font-serif); letter-spacing: -.014em; margin: 14px 0 0; transition: color .15s ease; }
-.m2-povl-c-lead:hover h2 { color: var(--color-madrona-dark); }
-.m2-povl-c-excerpt { color: var(--color-clay); font: 400 14px/1.62 var(--font-sans); margin: 14px 0 0; max-width: 52ch; }
-.m2-povl-c-row { grid-template-columns: minmax(0, 1fr) auto; }
-@media (max-width: 860px) {
-  .m2-povl-c-lead { grid-template-columns: 1fr; gap: 18px; }
 }
 
 /* POV thumbnail plate — holds an SVG illustration from the Madrona POV
