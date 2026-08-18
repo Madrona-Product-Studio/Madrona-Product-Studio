@@ -36,9 +36,9 @@ const CLAUDE_SMB = "https://www.anthropic.com/news/claude-for-small-business";
 // One inventory entry: question, linked prose (+ optional figure), then the
 // two judgment lines as a labeled pair. Hairline-topped so the entries carry
 // the same structural rhythm as the rest of the site.
-function Entry({ q, needs, ends, children }: { q: string; needs: ReactNode; ends: ReactNode; children: ReactNode }) {
+function Entry({ id, q, needs, ends, children }: { id: string; q: string; needs: ReactNode; ends: ReactNode; children: ReactNode }) {
   return (
-    <div className="art-inv-entry">
+    <div className="art-inv-entry" id={id}>
       <h3 className="art-inv-title">{q}</h3>
       {children}
       <div className="art-inv-facts">
@@ -58,18 +58,18 @@ function Entry({ q, needs, ends, children }: { q: string; needs: ReactNode; ends
 }
 
 const GLANCE = [
-  { name: "Month-end close", what: "Claude for Small Business, QuickBooks agents", why: "Assumes your books are current" },
-  { name: "Chasing overdue invoices", what: "QuickBooks Payments agent, Claude invoice chaser", why: "Who gets grace is still your call" },
-  { name: "Knowing your cash position", what: "Claude business pulse, QuickBooks alerts", why: "Only as honest as its connections" },
-  { name: "Payroll planning", what: "Claude payroll workflow", why: "Plans it; your provider still runs it" },
-  { name: "Routine customer email", what: "Gemini in Gmail, Shopify Inbox, Copilot", why: "Guesses when nothing is written down" },
-  { name: "Contract review", what: "Claude contract reviewer, DocuSign Iris", why: "Flags, does not decide; not a lawyer" },
-  { name: "Marketing assets", what: "Canva Magic Studio, Shopify Magic", why: "Multiplies your brand, or your lack of one" },
-  { name: "Running a campaign", what: "Claude campaign workflow with Canva", why: "Runs the campaign; picking it is strategy" },
-  { name: "Ad campaigns", what: "Meta Advantage+, Google Performance Max", why: "Worthless without conversion tracking" },
-  { name: "Post-sale follow-up", what: "Square Marketing, HubSpot, Shopify Email", why: "Cadence is a decision before an automation" },
-  { name: "Asking for reviews", what: "Square review collection, Gemini + Business Profile", why: "Automate the ask, never the review" },
-  { name: "Knowing your best customers", what: "Claude margin analyzer, Square AI, Sidekick", why: "The answer hands you a harder question" },
+  { name: "Month-end close", href: "#job-close", what: "Claude for Small Business, QuickBooks agents", why: "Assumes your books are current" },
+  { name: "Chasing overdue invoices", href: "#job-invoices", what: "QuickBooks Payments agent, Claude invoice chaser", why: "Who gets grace is still your call" },
+  { name: "Knowing your cash position", href: "#job-cash", what: "Claude business pulse, QuickBooks alerts", why: "Only as honest as its connections" },
+  { name: "Payroll planning", href: "#job-payroll", what: "Claude payroll workflow", why: "Plans it; your provider still runs it" },
+  { name: "Routine customer email", href: "#job-email", what: "Gemini in Gmail, Shopify Inbox, Copilot", why: "Guesses when nothing is written down" },
+  { name: "Contract review", href: "#job-contracts", what: "Claude contract reviewer, DocuSign Iris", why: "Flags, does not decide; not a lawyer" },
+  { name: "Marketing assets", href: "#job-assets", what: "Canva Magic Studio, Shopify Magic", why: "Multiplies your brand, or your lack of one" },
+  { name: "Running a campaign", href: "#job-campaign", what: "Claude campaign workflow with Canva", why: "Runs the campaign; picking it is strategy" },
+  { name: "Ad campaigns", href: "#job-ads", what: "Meta Advantage+, Google Performance Max", why: "Worthless without conversion tracking" },
+  { name: "Post-sale follow-up", href: "#job-follow-up", what: "Square Marketing, HubSpot, Shopify Email", why: "Cadence is a decision before an automation" },
+  { name: "Asking for reviews", href: "#job-reviews", what: "Square review collection, Gemini + Business Profile", why: "Automate the ask, never the review" },
+  { name: "Knowing your best customers", href: "#job-best-customers", what: "Claude margin analyzer, Square AI, Sidekick", why: "The answer hands you a harder question" },
 ];
 
 const CLOSE_STEPS = [
@@ -139,6 +139,7 @@ export default function MadronaV2InventoryNote() {
             </Prose>
 
             <Entry
+              id="job-close"
               q="Can AI do my month-end close?"
               needs="Books that are roughly current. These workflows reconcile what is there. If three months of transactions are uncategorized, the first run surfaces a cleanup project, not a close packet. Useful information, but not the demo."
               ends="The mismatches it flags still need your call, and a messy chart of accounts confuses every tool in this category. The close gets dramatically shorter. The judgment stays yours, and your accountant stays your accountant."
@@ -161,6 +162,7 @@ export default function MadronaV2InventoryNote() {
             </Entry>
 
             <Entry
+              id="job-invoices"
               q="Can AI chase my overdue invoices?"
               needs="Invoices actually issued from the system, so there is something to chase."
               ends="The good customer who is late is a relationship decision, not a workflow. The tool drafts, you decide who gets grace."
@@ -171,6 +173,7 @@ export default function MadronaV2InventoryNote() {
             </Entry>
 
             <Entry
+              id="job-cash"
               q="What is my actual cash position right now?"
               needs="Connected accounts. All of them."
               ends="The pulse is only as honest as its connections. If half your money moves through a system it cannot see, you get a tidy number that is wrong. Connect everything or read it skeptically."
@@ -181,6 +184,7 @@ export default function MadronaV2InventoryNote() {
             </Entry>
 
             <Entry
+              id="job-payroll"
               q="Can AI help me plan payroll?"
               needs="The same connected accounts as the cash pulse, and a payroll date to plan toward."
               ends="This is payroll planning. Running payroll, benefits, and compliance stay with your payroll provider."
@@ -191,6 +195,7 @@ export default function MadronaV2InventoryNote() {
             </Entry>
 
             <Entry
+              id="job-email"
               q="Can AI answer routine customer emails?"
               needs="Written answers to draw from: your policies, your shipping times, your return rules. If it is not written down, the AI guesses, confidently. An afternoon spent writing your ten most common answers is the highest-leverage AI work most small businesses can do."
               ends="The upset customer. Draft with AI, but send that one yourself."
@@ -201,6 +206,7 @@ export default function MadronaV2InventoryNote() {
             </Entry>
 
             <Entry
+              id="job-contracts"
               q="Can AI review a contract before I sign it?"
               needs="The contract as a document it can read, and your questions about it."
               ends="It flags, it does not decide, and it is not your lawyer. For the lease or the partnership agreement, the review buys you a sharper conversation with counsel, not a substitute for one."
@@ -218,6 +224,7 @@ export default function MadronaV2InventoryNote() {
             </Prose>
 
             <Entry
+              id="job-assets"
               q="Can AI make my marketing assets?"
               needs="A brand kit, set up once: logo, colors, fonts, and a few sentences about voice. Every generation pulls from it. Skip this and each asset drifts a little differently off-brand, and you spend the saved time fixing them. Real product photos help too: the tools are far better at polishing your actual photo than inventing your product."
               ends="Voice and positioning are decisions, and they are still yours. AI multiplies whatever you hand it, including generic. If the words underneath are not sharp about who you serve and why you are different, you now produce forgettable assets faster. That is the edge where tooling stops and strategy starts."
@@ -228,6 +235,7 @@ export default function MadronaV2InventoryNote() {
             </Entry>
 
             <Entry
+              id="job-campaign"
               q="Can AI plan and run a marketing campaign?"
               needs="Revenue data it can read, and your yes at each step."
               ends="It runs the campaign you approve. Whether it is the right campaign, for the right audience, at the right moment, is exactly the question the workflow cannot answer for you."
@@ -238,6 +246,7 @@ export default function MadronaV2InventoryNote() {
             </Entry>
 
             <Entry
+              id="job-ads"
               q="Should I let Meta and Google automate my ads?"
               needs="Conversion tracking wired up and verified before the first dollar. This is the entry we see done wrong most often. These systems optimize toward whatever signal they receive; no signal, and they spend your budget optimizing toward noise. Google's own guidance says give Performance Max six weeks and stable budgets before judging it."
               ends="Automation optimizes toward the goal you set. Choosing the goal, and checking the tracking, is the work."
@@ -255,6 +264,7 @@ export default function MadronaV2InventoryNote() {
             </Prose>
 
             <Entry
+              id="job-follow-up"
               q="Can AI follow up with customers after the sale?"
               needs="A decision. A follow-up rhythm is a decision before it is an automation: who hears from you, how soon after a sale, saying what? An hour with those questions, then the automation runs it forever."
               ends="The tools execute cadence. They do not know your regulars."
@@ -265,6 +275,7 @@ export default function MadronaV2InventoryNote() {
             </Entry>
 
             <Entry
+              id="job-reviews"
               q="Can AI ask customers for reviews?"
               needs="Your Google Business Profile connected, and a sale worth asking about."
               ends="Automate the ask, never the review. Incentivized or faked reviews violate every platform's rules and, eventually, your customers' trust."
@@ -275,6 +286,7 @@ export default function MadronaV2InventoryNote() {
             </Entry>
 
             <Entry
+              id="job-best-customers"
               q="Can AI tell me who my best customers are?"
               needs="Sales history living in one system."
               ends="The answer usually hands you a harder question. Knowing your top customers is a query. Deciding what to build for them is strategy, and no workflow ships that."
