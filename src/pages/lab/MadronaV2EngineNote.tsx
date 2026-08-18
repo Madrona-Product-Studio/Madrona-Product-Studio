@@ -4,6 +4,7 @@ import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import PovThumb from "./PovThumb";
+import { TypeCircle } from "./TypeMark";
 import {
   ArticleHeader,
   ArticleBody,
