@@ -95,6 +95,24 @@ function ListFeature({ entries, featured }: { entries: ThinkingEntry[]; featured
   );
 }
 
+/* ---- Variant D — the feed: small thumb left, title, read link ----------- */
+function ListFeed({ entries }: { entries: ThinkingEntry[] }) {
+  return (
+    <div className="m2-povl-d">
+      {entries.map((e) => (
+        <Link key={e.href} to={e.href} className="m2-povl-d-row">
+          <div className="m2-pov-plate m2-povl-d-plate"><PovThumb motif={e.motif} /></div>
+          <div className="m2-povl-d-body">
+            <p className="m2-povl-d-meta"><span className="m2-jr-type">{e.type}</span> · {e.date}</p>
+            <h2>{e.title}</h2>
+          </div>
+          <span className="m2-text-link m2-povl-d-read">Read <span aria-hidden="true">→</span></span>
+        </Link>
+      ))}
+    </div>
+  );
+}
+
 export default function MadronaV2Pov() {
   useReveal();
   const [params] = useSearchParams();
@@ -129,6 +147,7 @@ export default function MadronaV2Pov() {
         {variant === "a" && <ListIndex entries={listed} />}
         {variant === "b" && <ListLedger entries={listed} />}
         {variant === "c" && <ListFeature entries={listed} featured={filter === "All"} />}
+        {variant === "d" && <ListFeed entries={listed} />}
         {!variant && (
           <div className="m2-cu-grid">
             {shown.map((e) => (
