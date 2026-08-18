@@ -53,6 +53,7 @@ export type TocItem = { id: string; label: string };
 
 export function ArticleHeader({
   kicker,
+  typeMark,
   author,
   authorHref = "/about",
   meta,
@@ -62,6 +63,7 @@ export function ArticleHeader({
   visual,
 }: {
   kicker: string;
+  typeMark?: ReactNode; // tinted type circle (TypeCircle) beside the kicker
   author: string;
   authorHref?: string;
   meta: string[]; // e.g. ["10 min read", "August 2026"]
@@ -74,7 +76,11 @@ export function ArticleHeader({
     <header className="art-head">
       <div className={`art-head-split${visual ? "" : " no-visual"}`}>
         <div className="art-head-lead">
-          <p className="m2-kicker">{kicker}</p>
+          {typeMark ? (
+            <p className="m2-kicker art-kicker-row">{typeMark}<span>{kicker}</span></p>
+          ) : (
+            <p className="m2-kicker">{kicker}</p>
+          )}
           <p className="art-metaline">
             by <Link to={authorHref}>{author}</Link>
             {meta.map((m) => (

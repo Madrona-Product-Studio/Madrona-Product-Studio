@@ -4,6 +4,7 @@ import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import PovThumb from "./PovThumb";
+import { TypeCircle } from "./TypeMark";
 import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, type TocItem } from "./ArticleTemplate";
 import "./madrona-v2.css";
 import "./playbook.css";
@@ -122,6 +123,7 @@ export default function MadronaV2SystemNote() {
       <div className="art-wrap">
         <ArticleHeader
           kicker="A point of view"
+          typeMark={<TypeCircle type="Essay" />}
           author="Charlie Koch"
           meta={["5 min read", "August 2026"]}
           title="Solve the system, not the symptom."

@@ -5,6 +5,7 @@ import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import PovThumb from "./PovThumb";
+import { TypeCircle } from "./TypeMark";
 import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, SpecTable, type TocItem } from "./ArticleTemplate";
 import "./madrona-v2.css";
 import "./playbook.css";
@@ -117,6 +118,7 @@ export default function MadronaV2InventoryNote() {
       <div className="art-wrap">
         <ArticleHeader
           kicker="An inventory"
+          typeMark={<TypeCircle type="Artifact" />}
           author="Charlie Koch"
           meta={["9 min read", "Updated August 2026"]}
           title="The 12 jobs AI tools already do for small businesses."

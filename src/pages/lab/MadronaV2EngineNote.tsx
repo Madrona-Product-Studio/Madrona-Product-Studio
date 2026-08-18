@@ -4,6 +4,7 @@ import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import PovThumb from "./PovThumb";
+import { TypeCircle } from "./TypeMark";
 import {
   ArticleHeader,
   ArticleBody,
@@ -153,6 +154,7 @@ export default function MadronaV2EngineNote() {
       <div className="art-wrap">
         <ArticleHeader
           kicker="Inside the practice"
+          typeMark={<TypeCircle type="Artifact" />}
           author="Charlie Koch"
           meta={["10 min read", "August 2026"]}
           title={<>The engine behind everything we&nbsp;ship.</>}

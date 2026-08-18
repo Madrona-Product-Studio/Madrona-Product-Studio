@@ -31,6 +31,7 @@
 .art-head-split.no-visual { display: block; }
 .art-head-lead { min-width: 0; }
 .art-head-lead .m2-kicker { margin: 0; }
+.art-kicker-row { align-items: center; display: flex; gap: 10px; }
 
 .art-metaline { color: var(--muted); font-size: .82rem; letter-spacing: -.01em; margin: 15px 0 0; }
 .art-metaline a, .art-metaline b { color: var(--ink-soft); font-weight: 600; }
