@@ -4,6 +4,7 @@ import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import PovThumb from "./PovThumb";
+import { TypeCircle } from "./TypeMark";
 import {
   ArticleHeader,
   ArticleBody,
@@ -88,6 +89,7 @@ export default function MadronaV2Thesis() {
       <div className="art-wrap">
         <ArticleHeader
           kicker="A working theory"
+          typeMark={<TypeCircle type="Essay" />}
           author="Charlie Koch"
           meta={["5 min read", "August 2026"]}
           title="The Madrona Product Thesis"

@@ -4,6 +4,7 @@ import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import PovThumb from "./PovThumb";
+import { TypeCircle } from "./TypeMark";
 import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, type TocItem } from "./ArticleTemplate";
 import "./madrona-v2.css";
 import "./playbook.css";
@@ -196,6 +197,7 @@ export default function MadronaV2StarterGuideNote() {
       <div className="art-wrap">
         <ArticleHeader
           kicker="From the workshop"
+          typeMark={<TypeCircle type="Guide" />}
           author="Charlie Koch"
           meta={["8 min read", "August 2026"]}
           title="A starter guide to building real software with AI."

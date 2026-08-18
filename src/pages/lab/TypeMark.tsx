@@ -31,3 +31,20 @@ export default function TypeMark({ type }: { type: ThinkingType }) {
     </svg>
   );
 }
+
+// The chosen presentation (Charlie, 2026-08-18): the Product Thesis idiom —
+// a small tinted circle per type. Sage = essay, slate = guide, bark = artifact.
+const TYPE_TONE: Partial<Record<ThinkingType, string>> = {
+  Essay: "sprout",
+  Guide: "layers",
+  Artifact: "storefront",
+};
+
+export function TypeCircle({ type }: { type: ThinkingType }) {
+  if (!PATHS[type]) return null;
+  return (
+    <span className="m2-ab4-ico m2-tm-circle" data-tone={TYPE_TONE[type] ?? "sprout"}>
+      <TypeMark type={type} />
+    </span>
+  );
+}
