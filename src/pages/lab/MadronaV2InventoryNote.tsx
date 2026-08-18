@@ -31,8 +31,11 @@ const P = {
   flag: "M5 21V4m0 1h12l-2.5 3.5L17 12H5",
 };
 
-// The product door, not the press release: owners land where they can act.
-const CLAUDE_SMB = "https://claude.com/solutions/small-business";
+// Land owners on the doing-content, not the press release. The tutorial
+// demos close / pulse / payroll / campaign; the plugin page lists all 15
+// commands and skills (invoice chasing, contract review, margin analysis).
+const CLAUDE_TUTORIAL = "https://claude.com/resources/tutorials/using-claude-for-your-small-business";
+const CLAUDE_PLUGIN = "https://claude.com/plugins/small-business";
 const CLAUDE_SMB_INSTALL = "https://claude.com/resources/tutorials/how-to-install-the-claude-for-small-business-plugin";
 
 // One inventory entry: question, linked prose (+ optional figure), then the
@@ -149,7 +152,7 @@ export default function MadronaV2InventoryNote() {
             >
               <Prose>
                 <p>Mostly, yes. This is the flagship of the category, and the best worked example of what &ldquo;out of the box&rdquo; now means.</p>
-                <p><Ext href={CLAUDE_SMB}>Claude for Small Business</Ext> ships a close workflow. It reconciles your books against payment settlements, flags mismatches for your review, writes a plain-English P&amp;L narrative, and packages an accountant-ready close packet through the QuickBooks connector. Inside QuickBooks itself, Intuit now ships its own <Ext href="https://quickbooks.intuit.com/ai-accounting/">Accounting agent</Ext> that reconciles statements, matches bank transactions, and cleans up categorization. Here is what the first week actually looks like:</p>
+                <p><Ext href={CLAUDE_TUTORIAL}>Claude for Small Business</Ext> ships a close workflow. It reconciles your books against payment settlements, flags mismatches for your review, writes a plain-English P&amp;L narrative, and packages an accountant-ready close packet through the QuickBooks connector. Inside QuickBooks itself, Intuit now ships its own <Ext href="https://quickbooks.intuit.com/ai-accounting/">Accounting agent</Ext> that reconciles statements, matches bank transactions, and cleans up categorization. Here is what the first week actually looks like:</p>
               </Prose>
               <Figure caption="The actual commands. This is the part the marketing pages skip.">
                 <div className="m2-sg-prompts">
@@ -171,7 +174,7 @@ export default function MadronaV2InventoryNote() {
               ends="The good customer who is late is a relationship decision, not a workflow. The tool drafts, you decide who gets grace."
             >
               <Prose>
-                <p>This might be the fastest payback on the list. QuickBooks&rsquo; <Ext href="https://quickbooks.intuit.com/payments-agent/">Payments agent</Ext> drafts personalized reminders for overdue invoices and learns which payers respond to what; Intuit claims invoices get paid noticeably sooner. <Ext href={CLAUDE_SMB}>Claude&rsquo;s invoice chaser</Ext> does the same job across QuickBooks and email, queueing reminders for your approval rather than sending on its own.</p>
+                <p>This might be the fastest payback on the list. QuickBooks&rsquo; <Ext href="https://quickbooks.intuit.com/payments-agent/">Payments agent</Ext> drafts personalized reminders for overdue invoices and learns which payers respond to what; Intuit claims invoices get paid noticeably sooner. <Ext href={CLAUDE_PLUGIN}>Claude&rsquo;s invoice chaser</Ext> does the same job across QuickBooks and email, queueing reminders for your approval rather than sending on its own.</p>
               </Prose>
             </Entry>
 
@@ -182,7 +185,7 @@ export default function MadronaV2InventoryNote() {
               ends="The pulse is only as honest as its connections. If half your money moves through a system it cannot see, you get a tidy number that is wrong. Connect everything or read it skeptically."
             >
               <Prose>
-                <p>If you cannot answer that without opening three tabs, you are who this entry is for. <Ext href={CLAUDE_SMB}>Claude&rsquo;s business pulse</Ext> puts cash position, sales trends, pipeline, and the week&rsquo;s commitments on one page, with a start-of-week brief and your top three to-dos. QuickBooks runs cash-flow shortage alerts with suggested actions.</p>
+                <p>If you cannot answer that without opening three tabs, you are who this entry is for. <Ext href={CLAUDE_TUTORIAL}>Claude&rsquo;s business pulse</Ext> puts cash position, sales trends, pipeline, and the week&rsquo;s commitments on one page, with a start-of-week brief and your top three to-dos. QuickBooks runs cash-flow shortage alerts with suggested actions.</p>
               </Prose>
             </Entry>
 
@@ -193,7 +196,7 @@ export default function MadronaV2InventoryNote() {
               ends="This is payroll planning. Running payroll, benefits, and compliance stay with your payroll provider."
             >
               <Prose>
-                <p>It can handle the planning half. <Ext href={CLAUDE_SMB}>Claude&rsquo;s payroll workflow</Ext> settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation.</p>
+                <p>It can handle the planning half. <Ext href={CLAUDE_TUTORIAL}>Claude&rsquo;s payroll workflow</Ext> settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation.</p>
               </Prose>
             </Entry>
 
@@ -215,7 +218,7 @@ export default function MadronaV2InventoryNote() {
               ends="It flags, it does not decide, and it is not your lawyer. For the lease or the partnership agreement, the review buys you a sharper conversation with counsel, not a substitute for one."
             >
               <Prose>
-                <p>It makes a good first reader. <Ext href={CLAUDE_SMB}>Claude&rsquo;s contract reviewer</Ext> flags key terms and risks and answers questions about what you are agreeing to. DocuSign has serious contract AI under its <Ext href="https://www.docusign.com/products/platform/ai">Iris</Ext> brand, but note the fine print: it lives on their contract-management plans, not the eSignature plan most small businesses actually have.</p>
+                <p>It makes a good first reader. <Ext href={CLAUDE_PLUGIN}>Claude&rsquo;s contract reviewer</Ext> flags key terms and risks and answers questions about what you are agreeing to. DocuSign has serious contract AI under its <Ext href="https://www.docusign.com/products/platform/ai">Iris</Ext> brand, but note the fine print: it lives on their contract-management plans, not the eSignature plan most small businesses actually have.</p>
               </Prose>
             </Entry>
             <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses run smoother <span aria-hidden="true">→</span></Link></p>
@@ -244,7 +247,7 @@ export default function MadronaV2InventoryNote() {
               ends="It runs the campaign you approve. Whether it is the right campaign, for the right audience, at the right moment, is exactly the question the workflow cannot answer for you."
             >
               <Prose>
-                <p>End to end, if you want it to. <Ext href={CLAUDE_SMB}>Claude&rsquo;s campaign workflow</Ext> analyzes your revenue, drafts strategy, and produces the assets through the Canva connector. One command runs the whole arc, and you approve each step that touches customers.</p>
+                <p>End to end, if you want it to. <Ext href={CLAUDE_TUTORIAL}>Claude&rsquo;s campaign workflow</Ext> analyzes your revenue, drafts strategy, and produces the assets through the Canva connector. One command runs the whole arc, and you approve each step that touches customers.</p>
               </Prose>
             </Entry>
 
@@ -295,7 +298,7 @@ export default function MadronaV2InventoryNote() {
               ends="The answer usually hands you a harder question. Knowing your top customers is a query. Deciding what to build for them is strategy, and no workflow ships that."
             >
               <Prose>
-                <p>The analysis is the instant part. <Ext href={CLAUDE_SMB}>Claude&rsquo;s margin analyzer</Ext> works the numbers through your QuickBooks data. <Ext href="https://squareup.com/us/en/ai">Square AI</Ext> answers plain questions over your own sales history: best sellers, margins by location, what changed this month. <Ext href="https://www.shopify.com/sidekick">Shopify&rsquo;s Sidekick</Ext> does the same for stores and takes admin actions you approve.</p>
+                <p>The analysis is the instant part. <Ext href={CLAUDE_PLUGIN}>Claude&rsquo;s margin analyzer</Ext> works the numbers through your QuickBooks data. <Ext href="https://squareup.com/us/en/ai">Square AI</Ext> answers plain questions over your own sales history: best sellers, margins by location, what changed this month. <Ext href="https://www.shopify.com/sidekick">Shopify&rsquo;s Sidekick</Ext> does the same for stores and takes admin actions you approve.</p>
               </Prose>
             </Entry>
             <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses keep customers coming back <span aria-hidden="true">→</span></Link></p>
