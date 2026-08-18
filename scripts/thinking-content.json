@@ -1,237 +1,1196 @@
 {
   "/thesis": [
-    { "type": "h1", "text": "The Madrona Product Thesis" },
-    { "type": "p", "text": "A point of view on how great software gets built in the AI era, and what that changes about product leadership. It comes from building, and we revise it as the work teaches us." },
-    { "type": "p", "text": "AI is not eliminating Product, Design, Engineering, or Research. It is expanding what each discipline can contribute as the cost of building software falls." },
-    { "type": "p", "text": "The strongest teams will not erase specialized craft. They will preserve the distinct perspectives of each discipline while making the boundaries between them more permeable." },
-    { "type": "p", "text": "Everyone builds, but they build different things." },
-    { "type": "li", "text": "Product builds clarity." },
-    { "type": "li", "text": "Design builds understanding and experience." },
-    { "type": "li", "text": "Engineering builds capability and leverage." },
-    { "type": "li", "text": "Research and data build confidence." },
-    { "type": "li", "text": "AI expands the leverage available to everyone." },
-    { "type": "p", "text": "The advantage is no longer shipping more software. It is learning faster through software." },
-    { "type": "p", "text": "For decades, software organizations optimized for specialization, scale, and coordinated handoffs. That made sense when software was expensive to build." },
-    { "type": "p", "text": "AI is changing the equation. The cost of prototyping, implementation, iteration, research synthesis, and validation is falling, and a small team can move from an important problem to working software far faster than before." },
-    { "type": "p", "text": "As execution gets cheaper, the real constraints shift toward:" },
-    { "type": "li", "text": "Choosing the right problems" },
-    { "type": "li", "text": "Understanding customers deeply" },
-    { "type": "li", "text": "Creating clarity" },
-    { "type": "li", "text": "Making good decisions" },
-    { "type": "li", "text": "Maintaining taste and quality" },
-    { "type": "li", "text": "Learning quickly" },
-    { "type": "p", "text": "The role of product leadership is to create the conditions for a multidisciplinary team to solve important customer problems." },
-    { "type": "p", "text": "The modern product leader is not primarily a backlog owner, a requirements writer, or a coordinator of functional handoffs. The role is becoming broader and more integrated." },
-    { "type": "li", "text": "Identify meaningful customer and market problems" },
-    { "type": "li", "text": "Create clarity around what matters" },
-    { "type": "li", "text": "Organize the team around outcomes" },
-    { "type": "li", "text": "Use working software to test assumptions" },
-    { "type": "li", "text": "Protect attention from work that does not matter" },
-    { "type": "p", "text": "Every team starts somewhere different. The goal is one stage forward." },
-    { "type": "p", "text": "This is not an argument that traditional product organizations are obsolete. Many companies have real constraints: existing systems, customers, compliance needs, organizational scale. The market is in transition, and the opportunity is to help teams move one meaningful stage forward from wherever they are today." },
-    { "type": "h3", "text": "Traditional" },
-    { "type": "p", "text": "Functions are distinct. Product defines, Design designs, and Engineering implements. AI is mostly an individual productivity tool." },
-    { "type": "h3", "text": "Hybrid" },
-    { "type": "p", "text": "Teams prototype more, roles overlap selectively, and AI accelerates parts of the workflow. The broader organization stays largely unchanged." },
-    { "type": "h3", "text": "Product building" },
-    { "type": "p", "text": "Small multidisciplinary teams own important problems end to end. AI is part of the operating model. Leadership focuses on clarity, learning, and outcomes." },
-    { "type": "p", "text": "AI is leverage. What matters is where we choose to apply it." },
-    { "type": "p", "text": "The thesis is not only about how software gets built. It is about what is worth building. Problems that once required large organizations, enormous capital, or hundreds of people may now be approachable by small, experienced teams with conviction and judgment." },
-    { "type": "p", "text": "The hopeful part of this moment is not that companies can build more cheaply. It is that important problems may be more solvable than they have ever been." },
-    { "type": "p", "text": "Madrona exists to put this thesis into practice. Our products and client work are the evidence, and we share what we learn as we go. This is a working document; the moment it stops changing, it has stopped doing its job." }
+    {
+      "type": "h1",
+      "text": "The Madrona Product Thesis"
+    },
+    {
+      "type": "p",
+      "text": "A point of view on how great software gets built in the AI era, and what that changes about product leadership. It comes from building, and we revise it as the work teaches us."
+    },
+    {
+      "type": "p",
+      "text": "AI is not eliminating Product, Design, Engineering, or Research. It is expanding what each discipline can contribute as the cost of building software falls."
+    },
+    {
+      "type": "p",
+      "text": "The strongest teams will not erase specialized craft. They will preserve the distinct perspectives of each discipline while making the boundaries between them more permeable."
+    },
+    {
+      "type": "p",
+      "text": "Everyone builds, but they build different things."
+    },
+    {
+      "type": "li",
+      "text": "Product builds clarity."
+    },
+    {
+      "type": "li",
+      "text": "Design builds understanding and experience."
+    },
+    {
+      "type": "li",
+      "text": "Engineering builds capability and leverage."
+    },
+    {
+      "type": "li",
+      "text": "Research and data build confidence."
+    },
+    {
+      "type": "li",
+      "text": "AI expands the leverage available to everyone."
+    },
+    {
+      "type": "p",
+      "text": "The advantage is no longer shipping more software. It is learning faster through software."
+    },
+    {
+      "type": "p",
+      "text": "For decades, software organizations optimized for specialization, scale, and coordinated handoffs. That made sense when software was expensive to build."
+    },
+    {
+      "type": "p",
+      "text": "AI is changing the equation. The cost of prototyping, implementation, iteration, research synthesis, and validation is falling, and a small team can move from an important problem to working software far faster than before."
+    },
+    {
+      "type": "p",
+      "text": "As execution gets cheaper, the real constraints shift toward:"
+    },
+    {
+      "type": "li",
+      "text": "Choosing the right problems"
+    },
+    {
+      "type": "li",
+      "text": "Understanding customers deeply"
+    },
+    {
+      "type": "li",
+      "text": "Creating clarity"
+    },
+    {
+      "type": "li",
+      "text": "Making good decisions"
+    },
+    {
+      "type": "li",
+      "text": "Maintaining taste and quality"
+    },
+    {
+      "type": "li",
+      "text": "Learning quickly"
+    },
+    {
+      "type": "p",
+      "text": "The role of product leadership is to create the conditions for a multidisciplinary team to solve important customer problems."
+    },
+    {
+      "type": "p",
+      "text": "The modern product leader is not primarily a backlog owner, a requirements writer, or a coordinator of functional handoffs. The role is becoming broader and more integrated."
+    },
+    {
+      "type": "li",
+      "text": "Identify meaningful customer and market problems"
+    },
+    {
+      "type": "li",
+      "text": "Create clarity around what matters"
+    },
+    {
+      "type": "li",
+      "text": "Organize the team around outcomes"
+    },
+    {
+      "type": "li",
+      "text": "Use working software to test assumptions"
+    },
+    {
+      "type": "li",
+      "text": "Protect attention from work that does not matter"
+    },
+    {
+      "type": "p",
+      "text": "Every team starts somewhere different. The goal is one stage forward."
+    },
+    {
+      "type": "p",
+      "text": "This is not an argument that traditional product organizations are obsolete. Many companies have real constraints: existing systems, customers, compliance needs, organizational scale. The market is in transition, and the opportunity is to help teams move one meaningful stage forward from wherever they are today."
+    },
+    {
+      "type": "h3",
+      "text": "Traditional"
+    },
+    {
+      "type": "p",
+      "text": "Functions are distinct. Product defines, Design designs, and Engineering implements. AI is mostly an individual productivity tool."
+    },
+    {
+      "type": "h3",
+      "text": "Hybrid"
+    },
+    {
+      "type": "p",
+      "text": "Teams prototype more, roles overlap selectively, and AI accelerates parts of the workflow. The broader organization stays largely unchanged."
+    },
+    {
+      "type": "h3",
+      "text": "Product building"
+    },
+    {
+      "type": "p",
+      "text": "Small multidisciplinary teams own important problems end to end. AI is part of the operating model. Leadership focuses on clarity, learning, and outcomes."
+    },
+    {
+      "type": "p",
+      "text": "AI is leverage. What matters is where we choose to apply it."
+    },
+    {
+      "type": "p",
+      "text": "The thesis is not only about how software gets built. It is about what is worth building. Problems that once required large organizations, enormous capital, or hundreds of people may now be approachable by small, experienced teams with conviction and judgment."
+    },
+    {
+      "type": "p",
+      "text": "The hopeful part of this moment is not that companies can build more cheaply. It is that important problems may be more solvable than they have ever been."
+    },
+    {
+      "type": "p",
+      "text": "Madrona exists to put this thesis into practice. Our products and client work are the evidence, and we share what we learn as we go. This is a working document; the moment it stops changing, it has stopped doing its job."
+    }
   ],
   "/thinking/the-era-of-agentic-operations": [
-    { "type": "h1", "text": "The era of agentic operations." },
-    { "type": "p", "text": "A business used to run on scattered tools and someone's memory. It can now run on one source of truth and a handful of AI agents on a rhythm, with a person firmly in charge. The change is not AI doing your work. It is your operation briefing you, so your attention goes to deciding." },
-    { "type": "p", "text": "Most businesses run on tool sprawl. The agentic version inverts it." },
-    { "type": "p", "text": "A task app, a spreadsheet, an inbox, and the owner's head stitching them together. That is the operating system of most small companies, and it taxes the scarcest thing they have: attention." },
-    { "type": "p", "text": "Agentic AI applied to operations replaces the stitching, not the people." },
-    { "type": "li", "text": "One source of truth. Everything the business knows, in one place it owns." },
-    { "type": "li", "text": "AI agents on a rhythm. They read, sort, rank, and prepare while you sleep." },
-    { "type": "li", "text": "One surface. The operation, rendered live. No second backlog." },
-    { "type": "li", "text": "A human in charge. Sending, signing, and deciding stay yours." },
-    { "type": "p", "text": "Five stages, one loop. Every arrow is a commit." },
-    { "type": "p", "text": "The boundary matters: the agents never act outward on their own. They read, sort, rank, and prepare. Sending, signing, and deciding stay human." },
-    { "type": "p", "text": "The system works while you sleep and briefs you when you sit down." },
-    { "type": "p", "text": "This is what AI workflow automation looks like when it serves attention instead of replacing people: a day in an operation that prepares itself." },
-    { "type": "h3", "text": "Nightly sweep · 3:00 am, autonomous" },
-    { "type": "p", "text": "Scans the outside world for new opportunities, checks each one is still real, and files the worth-acting-on batch with a one-line reason each." },
-    { "type": "h3", "text": "Morning pulse · 5:00 am, autonomous" },
-    { "type": "p", "text": "Reads email and calendar: replies that arrived, meetings today, anything gone stale. Refreshes the ranked priorities before the day starts." },
-    { "type": "h3", "text": "Daily brief · 8:30 am, 10 minutes, together" },
-    { "type": "p", "text": "One decision surface: what changed overnight, what to approve, today's top three. Decisions made here fan out into prepared work." },
-    { "type": "h3", "text": "Capture · all day, voice, phone, any session" },
-    { "type": "p", "text": "Say it once and it is filed where it belongs: a task, a lead, a supply order. Nothing lives in your head or a sticky note." },
-    { "type": "h3", "text": "Weekly sync · Monday, 20 minutes, weekly" },
-    { "type": "p", "text": "The conductor: what moved, what slipped, what is owed, one needle-mover per area. Keeps every part of the business visibly green, yellow, or red." },
-    { "type": "p", "text": "The spine is one source of truth. A command surface renders it live. Agents propose; the owner decides and sends. Every action commits back, so the operation compounds." },
-    { "type": "p", "text": "The point is not automation. It is attention." },
-    { "type": "p", "text": "Automation is the mechanism. The outcome is a different relationship between the owner and the operation." },
-    { "type": "li", "text": "Attention moves up a level: the day starts briefed, not chased" },
-    { "type": "li", "text": "Nothing falls through: everything owed or waiting is visible" },
-    { "type": "li", "text": "The business compounds: every action writes back to the source of truth" },
-    { "type": "li", "text": "The owner keeps the keys: plain text, readable, portable, yours" },
-    { "type": "p", "text": "No business needs to leap to the end state. The market is in transition, and the honest opportunity is to move one meaningful stage forward from wherever an operation is today." },
-    { "type": "h3", "text": "Manual" },
-    { "type": "p", "text": "The business runs on scattered tools and someone's memory. Status lives in the owner's head, and the morning starts with figuring out where things stand." },
-    { "type": "h3", "text": "Assisted" },
-    { "type": "p", "text": "AI helps individuals go faster: drafting, summarizing, answering. Useful, but the operation itself is unchanged, and nothing compounds." },
-    { "type": "h3", "text": "Agentic" },
-    { "type": "p", "text": "AI agents maintain the operation on a rhythm and brief the owner. People spend their attention on judgment, relationships, and the work only they can do." },
-    { "type": "p", "text": "One workflow, one agent, one card, one number." },
-    { "type": "p", "text": "You do not migrate a business to this. You take a single painful, repeatable workflow, give it a rhythm, and prove the payback before adding the next one." },
-    { "type": "p", "text": "It is the smallest honest version of the pattern, and it is how every engagement we take begins." },
-    { "type": "li", "text": "Pick the workflow that steals the most attention. Not the biggest one, the most repeated: the thing you redo every morning or keep in your head. That is where one agent pays for itself first." },
-    { "type": "li", "text": "Put one agent on it, and one card on a surface. The agent reads, sorts, and prepares on a rhythm; you get one place to see it and approve. Nothing acts outward without you." },
-    { "type": "li", "text": "Name the payback before you build. Hours back, a faster reply, nothing dropped. If the first agent does not earn its keep in a few weeks, it does not get a second." },
-    { "type": "p", "text": "Five components, one bus." },
-    { "type": "p", "text": "The source of truth is the bus: every component reads it and writes it through plain git commits. No proprietary database, no lock-in, no black box." },
-    { "type": "p", "text": "We sell what we run." },
-    { "type": "p", "text": "The diagrams above are not a concept. They are how Madrona runs, every day: this exact pattern, with a surface called Helm as the command center. It scales down honestly: it works for a small business the same way it works for a studio." },
-    { "type": "p", "text": "The first step is the one above: a single agent on a single workflow, with visible payback before anything grows." },
-    { "type": "p", "text": "The ground level is public too. The plain-text operating system our studio runs on is open source: read it, fork it, make it yours." }
+    {
+      "type": "h1",
+      "text": "The era of agentic operations."
+    },
+    {
+      "type": "p",
+      "text": "A business used to run on scattered tools and someone's memory. It can now run on one source of truth and a handful of AI agents on a rhythm, with a person firmly in charge. The change is not AI doing your work. It is your operation briefing you, so your attention goes to deciding."
+    },
+    {
+      "type": "p",
+      "text": "Most businesses run on tool sprawl. The agentic version inverts it."
+    },
+    {
+      "type": "p",
+      "text": "A task app, a spreadsheet, an inbox, and the owner's head stitching them together. That is the operating system of most small companies, and it taxes the scarcest thing they have: attention."
+    },
+    {
+      "type": "p",
+      "text": "Agentic AI applied to operations replaces the stitching, not the people."
+    },
+    {
+      "type": "li",
+      "text": "One source of truth. Everything the business knows, in one place it owns."
+    },
+    {
+      "type": "li",
+      "text": "AI agents on a rhythm. They read, sort, rank, and prepare while you sleep."
+    },
+    {
+      "type": "li",
+      "text": "One surface. The operation, rendered live. No second backlog."
+    },
+    {
+      "type": "li",
+      "text": "A human in charge. Sending, signing, and deciding stay yours."
+    },
+    {
+      "type": "p",
+      "text": "Five stages, one loop. Every arrow is a commit."
+    },
+    {
+      "type": "p",
+      "text": "The boundary matters: the agents never act outward on their own. They read, sort, rank, and prepare. Sending, signing, and deciding stay human."
+    },
+    {
+      "type": "p",
+      "text": "The system works while you sleep and briefs you when you sit down."
+    },
+    {
+      "type": "p",
+      "text": "This is what AI workflow automation looks like when it serves attention instead of replacing people: a day in an operation that prepares itself."
+    },
+    {
+      "type": "h3",
+      "text": "Nightly sweep · 3:00 am, autonomous"
+    },
+    {
+      "type": "p",
+      "text": "Scans the outside world for new opportunities, checks each one is still real, and files the worth-acting-on batch with a one-line reason each."
+    },
+    {
+      "type": "h3",
+      "text": "Morning pulse · 5:00 am, autonomous"
+    },
+    {
+      "type": "p",
+      "text": "Reads email and calendar: replies that arrived, meetings today, anything gone stale. Refreshes the ranked priorities before the day starts."
+    },
+    {
+      "type": "h3",
+      "text": "Daily brief · 8:30 am, 10 minutes, together"
+    },
+    {
+      "type": "p",
+      "text": "One decision surface: what changed overnight, what to approve, today's top three. Decisions made here fan out into prepared work."
+    },
+    {
+      "type": "h3",
+      "text": "Capture · all day, voice, phone, any session"
+    },
+    {
+      "type": "p",
+      "text": "Say it once and it is filed where it belongs: a task, a lead, a supply order. Nothing lives in your head or a sticky note."
+    },
+    {
+      "type": "h3",
+      "text": "Weekly sync · Monday, 20 minutes, weekly"
+    },
+    {
+      "type": "p",
+      "text": "The conductor: what moved, what slipped, what is owed, one needle-mover per area. Keeps every part of the business visibly green, yellow, or red."
+    },
+    {
+      "type": "p",
+      "text": "The spine is one source of truth. A command surface renders it live. Agents propose; the owner decides and sends. Every action commits back, so the operation compounds."
+    },
+    {
+      "type": "p",
+      "text": "The point is not automation. It is attention."
+    },
+    {
+      "type": "p",
+      "text": "Automation is the mechanism. The outcome is a different relationship between the owner and the operation."
+    },
+    {
+      "type": "li",
+      "text": "Attention moves up a level: the day starts briefed, not chased"
+    },
+    {
+      "type": "li",
+      "text": "Nothing falls through: everything owed or waiting is visible"
+    },
+    {
+      "type": "li",
+      "text": "The business compounds: every action writes back to the source of truth"
+    },
+    {
+      "type": "li",
+      "text": "The owner keeps the keys: plain text, readable, portable, yours"
+    },
+    {
+      "type": "p",
+      "text": "No business needs to leap to the end state. The market is in transition, and the honest opportunity is to move one meaningful stage forward from wherever an operation is today."
+    },
+    {
+      "type": "h3",
+      "text": "Manual"
+    },
+    {
+      "type": "p",
+      "text": "The business runs on scattered tools and someone's memory. Status lives in the owner's head, and the morning starts with figuring out where things stand."
+    },
+    {
+      "type": "h3",
+      "text": "Assisted"
+    },
+    {
+      "type": "p",
+      "text": "AI helps individuals go faster: drafting, summarizing, answering. Useful, but the operation itself is unchanged, and nothing compounds."
+    },
+    {
+      "type": "h3",
+      "text": "Agentic"
+    },
+    {
+      "type": "p",
+      "text": "AI agents maintain the operation on a rhythm and brief the owner. People spend their attention on judgment, relationships, and the work only they can do."
+    },
+    {
+      "type": "p",
+      "text": "One workflow, one agent, one card, one number."
+    },
+    {
+      "type": "p",
+      "text": "You do not migrate a business to this. You take a single painful, repeatable workflow, give it a rhythm, and prove the payback before adding the next one."
+    },
+    {
+      "type": "p",
+      "text": "It is the smallest honest version of the pattern, and it is how every engagement we take begins."
+    },
+    {
+      "type": "li",
+      "text": "Pick the workflow that steals the most attention. Not the biggest one, the most repeated: the thing you redo every morning or keep in your head. That is where one agent pays for itself first."
+    },
+    {
+      "type": "li",
+      "text": "Put one agent on it, and one card on a surface. The agent reads, sorts, and prepares on a rhythm; you get one place to see it and approve. Nothing acts outward without you."
+    },
+    {
+      "type": "li",
+      "text": "Name the payback before you build. Hours back, a faster reply, nothing dropped. If the first agent does not earn its keep in a few weeks, it does not get a second."
+    },
+    {
+      "type": "p",
+      "text": "Five components, one bus."
+    },
+    {
+      "type": "p",
+      "text": "The source of truth is the bus: every component reads it and writes it through plain git commits. No proprietary database, no lock-in, no black box."
+    },
+    {
+      "type": "p",
+      "text": "We sell what we run."
+    },
+    {
+      "type": "p",
+      "text": "The diagrams above are not a concept. They are how Madrona runs, every day: this exact pattern, with a surface called Helm as the command center. It scales down honestly: it works for a small business the same way it works for a studio."
+    },
+    {
+      "type": "p",
+      "text": "The first step is the one above: a single agent on a single workflow, with visible payback before anything grows."
+    },
+    {
+      "type": "p",
+      "text": "The ground level is public too. The plain-text operating system our studio runs on is open source: read it, fork it, make it yours."
+    }
   ],
   "/thinking/starter-guide-to-building-with-ai": [
-    { "type": "h1", "text": "A starter guide to building real software with AI." },
-    { "type": "p", "text": "This is the piece I wish someone had handed me when I started. You do not need a computer science degree to build real software with AI anymore. You need a handful of tools set up the right way, a few habits, and something worth building. Here is the whole setup, in an afternoon." },
-    { "type": "p", "text": "Five pieces, one loop." },
-    { "type": "p", "text": "Every AI coding setup worth having reduces to the same loop: you describe what you want, agents in your terminal build it, GitHub keeps the source of truth, Vercel puts it on the internet, and what you learn from the live thing feeds the next round." },
-    { "type": "p", "text": "Everything below exists to stand this loop up." },
-    { "type": "p", "text": "The builder's loop. This is the same setup we use at Madrona to ship every product we run, from travel planning to boating guides." },
-    { "type": "p", "text": "Six steps, one afternoon." },
-    { "type": "p", "text": "In order, because each step makes the next one easier. GitHub and Vercel are free; the two agents come with subscriptions you may already have. Each step pairs the idea with the actual keystrokes, so you are never left wondering what to type." },
-    { "type": "h3", "text": "GitHub" },
-    { "type": "p", "text": "Make a free account at github.com. GitHub is where your code lives: every project is a repository, and every change is saved with a note about what changed. You do not need to learn git deeply; your AI tools will do most of the git work for you. You just need the account and the mental model: this is the source of truth." },
-    { "type": "li", "text": "Go to github.com and create a free account." },
-    { "type": "li", "text": "Click New repository, name it after your project (lowercase, dashes), and create it. Empty is fine." },
-    { "type": "h3", "text": "The terminal" },
-    { "type": "p", "text": "Open the Terminal app that ships with your Mac. This is where you will talk to your AI agents. You need comfort, not mastery: how to open it, paste a command, and read what comes back. Ask your first agent to explain anything confusing; teaching you is part of its job." },
-    { "type": "li", "text": "Press command space, type terminal, press return." },
-    { "type": "li", "text": "Type ls and press return. Those are your files. That is all the ceremony there is." },
-    { "type": "h3", "text": "Claude Code" },
-    { "type": "p", "text": "Claude Code is an AI agent that lives in your terminal: it writes the code, runs it, fixes what breaks, and explains what it did. Install it, sign in, open a session in a project folder, and describe what you want in plain language. This one tool is most of the setup. It comes with a Claude Pro subscription." },
-    { "type": "li", "text": "Paste this into the terminal: curl -fsSL https://claude.ai/install.sh | bash" },
-    { "type": "li", "text": "Open a new terminal window and type claude --version to confirm it installed." },
-    { "type": "li", "text": "Move into your project folder (cd your-project), type claude, and sign in with your Claude account when the browser opens." },
-    { "type": "li", "text": "Type your first request in plain language. Try: what can you do for me?" },
-    { "type": "h3", "text": "Codex" },
-    { "type": "p", "text": "We also run Codex, a second terminal agent, from OpenAI. Two agents matter more than it sounds: they have different strengths, you can run them side by side on different tasks, and comparing their answers teaches you judgment faster than either alone. It comes with a ChatGPT Plus subscription." },
-    { "type": "li", "text": "Paste this into the terminal: curl -fsSL https://chatgpt.com/codex/install.sh | sh" },
-    { "type": "li", "text": "In your project folder, type codex and sign in with your ChatGPT account." },
-    { "type": "h3", "text": "Vercel" },
-    { "type": "p", "text": "Vercel puts your project on the internet. Sign up with your GitHub account, import your repository, and from then on every change you push goes live automatically. The distance from \"it works on my machine\" to \"here is the link\" becomes zero." },
-    { "type": "li", "text": "Go to vercel.com and sign up with your GitHub account." },
-    { "type": "li", "text": "Click Add New Project, import your repository, press Deploy." },
-    { "type": "li", "text": "Or skip the clicking: ask Claude to set this project up to deploy on Vercel and it will walk you through it." },
-    { "type": "h3", "text": "Connectors" },
-    { "type": "p", "text": "Connect the services you use so your agent has reach: it can check a deployment, read the error logs, or draft the follow-up email, instead of you copying and pasting between tabs." },
-    { "type": "li", "text": "On claude.ai, open Settings, Connectors and link Vercel, Gmail, and your calendar." },
-    { "type": "li", "text": "Inside a Claude Code session, type /mcp to see what your agent can reach." },
-    { "type": "p", "text": "That is the whole setup. A terminal with two AI agents, GitHub holding the truth, Vercel putting it live, and connectors giving your agent reach. Everything else is habits." },
-    { "type": "p", "text": "Six prompts that do the heavy lifting." },
-    { "type": "p", "text": "The tools take an afternoon; prompting well is what compounds. These are not magic words, they are working agreements, and every one came from a mistake I stopped repeating. Copy them, then grow your own." },
-    { "type": "h3", "text": "Ask for a plan first" },
-    { "type": "p", "text": "Two minutes reading a plan beats twenty minutes untangling code that solved the wrong problem." },
-    { "type": "quote", "text": "Before you write any code, tell me your plan: what you'll build, which files you'll touch, and anything you're unsure about. Wait for my OK." },
-    { "type": "h3", "text": "Make it check its own work" },
-    { "type": "p", "text": "This changed my review process more than anything else. The agent catches its own visual bugs instead of me playing QA." },
-    { "type": "quote", "text": "Before you tell me something is done, screenshot the page at phone size and desktop size, look at both yourself, and fix anything that is visibly wrong. Then show me." },
-    { "type": "h3", "text": "Ask for options, not answers" },
-    { "type": "p", "text": "The first idea is rarely the best one. Comparing three real directions builds your taste faster than accepting one." },
-    { "type": "quote", "text": "Give me three genuinely different directions for this, not three versions of the same idea. Put them side by side so I can compare, and tell me which you'd pick and why." },
-    { "type": "h3", "text": "Keep a ship gate" },
-    { "type": "p", "text": "When every push goes live automatically, the approval moment is the whole safety system. Guard it." },
-    { "type": "quote", "text": "Never push to the live site without showing me first. Walk me through what changed and wait for my approval." },
-    { "type": "h3", "text": "Make it teach you" },
-    { "type": "p", "text": "You are building your own judgment, not just an app. Why beats what, every time." },
-    { "type": "quote", "text": "Explain what you just did and why, in plain language. What would break if we removed it?" },
-    { "type": "h3", "text": "Write the rules down once" },
-    { "type": "p", "text": "Anything you repeat twice belongs in the instructions file. The agent reads it every session, so the project gets easier as it grows." },
-    { "type": "quote", "text": "Create a CLAUDE.md file for this project. Write down the design rules, the things I care about, and the mistakes to avoid. Keep it updated as we learn." },
-    { "type": "p", "text": "Real, small, and yours." },
-    { "type": "p", "text": "Do not build a to-do app from a tutorial. Pick something you will actually use this month: a guide to a place you know, a tool for your own work, a site for someone you like. One of our first was a boating guide to the San Juan Islands. A real place, a real need, small enough to ship in a weekend, and it is still live." },
-    { "type": "p", "text": "Your day-one prompt can be this simple:" },
-    { "type": "quote", "text": "I want to build [the thing]: a website that [does what] for [who]. Set up a new project in this folder, keep it simple, and get a first version on screen that I can look at. Then tell me what you did." },
-    { "type": "p", "text": "Then look at what comes back, react honestly, and go again. That is the whole method." },
-    { "type": "p", "text": "The tools are the easy part." },
-    { "type": "p", "text": "Everything above takes an afternoon. What separates people who ship from people who stall is not the setup. It is these." },
-    { "type": "li", "text": "Build something real and small. Not a tutorial. Something you will actually use this month." },
-    { "type": "li", "text": "Ask why, not just what. You are building your own judgment, not just an app." },
-    { "type": "li", "text": "Look at everything it makes. On your phone too. Taste only works if you look." },
-    { "type": "li", "text": "Commit small and often. When something breaks, you walk back one step, not one afternoon." },
-    { "type": "li", "text": "You do not need to become an engineer. The agents supply the syntax. You supply the judgment." },
-    { "type": "p", "text": "The questions I get." },
-    { "type": "h3", "text": "What does this cost?" },
-    { "type": "p", "text": "GitHub and Vercel have free tiers that will carry you a long way. The agents are the real cost: Claude Code comes with Claude Pro and Codex comes with ChatGPT Plus, each about $20 a month as I write this. Starting with just Claude Code is fine." },
-    { "type": "h3", "text": "I'm not on a Mac. Does this still work?" },
-    { "type": "p", "text": "Yes. Everything here runs on Windows and Linux too, and both installers cover all three. The guide reads Mac because that is what I work on, but nothing about the loop is Mac-only." },
-    { "type": "h3", "text": "Do I need to know how to code?" },
-    { "type": "p", "text": "No. You need to describe what you want clearly and look carefully at what you get back. You will absorb more than you expect by asking why, but the agents supply the syntax. You supply the judgment." },
-    { "type": "h3", "text": "Can it break something?" },
-    { "type": "p", "text": "The agents ask before running commands or changing files, and git means every committed change is saved and reversible. The honest risk is not a broken computer. It is shipping something you didn't look at, which is what the habits are for." },
-    { "type": "h3", "text": "What if the agent gets stuck?" },
-    { "type": "p", "text": "Commit what works, clear the conversation, and restate the goal in one sentence. If it is still circling, ask the other agent. A second opinion usually breaks the loop, which is half the reason we run two." },
-    { "type": "h3", "text": "How long until I have something real?" },
-    { "type": "p", "text": "An afternoon for the setup, a weekend for a first version you can put in front of someone. The loop is fast. The judgment takes longer, and that part is the fun." },
-    { "type": "p", "text": "From setup to studio." },
-    { "type": "p", "text": "This setup is where we started too. Everything else we have written about, the build engine, the agentic operations pattern, grew out of this loop plus time and shipped products. Start the loop, keep it turning, and write down what it teaches you." }
+    {
+      "type": "h1",
+      "text": "A starter guide to building real software with AI."
+    },
+    {
+      "type": "p",
+      "text": "This is the piece I wish someone had handed me when I started. You do not need a computer science degree to build real software with AI anymore. You need a handful of tools set up the right way, a few habits, and something worth building. Here is the whole setup, in an afternoon."
+    },
+    {
+      "type": "p",
+      "text": "Five pieces, one loop."
+    },
+    {
+      "type": "p",
+      "text": "Every AI coding setup worth having reduces to the same loop: you describe what you want, agents in your terminal build it, GitHub keeps the source of truth, Vercel puts it on the internet, and what you learn from the live thing feeds the next round."
+    },
+    {
+      "type": "p",
+      "text": "Everything below exists to stand this loop up."
+    },
+    {
+      "type": "p",
+      "text": "The builder's loop. This is the same setup we use at Madrona to ship every product we run, from travel planning to boating guides."
+    },
+    {
+      "type": "p",
+      "text": "Six steps, one afternoon."
+    },
+    {
+      "type": "p",
+      "text": "In order, because each step makes the next one easier. GitHub and Vercel are free; the two agents come with subscriptions you may already have. Each step pairs the idea with the actual keystrokes, so you are never left wondering what to type."
+    },
+    {
+      "type": "h3",
+      "text": "GitHub"
+    },
+    {
+      "type": "p",
+      "text": "Make a free account at github.com. GitHub is where your code lives: every project is a repository, and every change is saved with a note about what changed. You do not need to learn git deeply; your AI tools will do most of the git work for you. You just need the account and the mental model: this is the source of truth."
+    },
+    {
+      "type": "li",
+      "text": "Go to github.com and create a free account."
+    },
+    {
+      "type": "li",
+      "text": "Click New repository, name it after your project (lowercase, dashes), and create it. Empty is fine."
+    },
+    {
+      "type": "h3",
+      "text": "The terminal"
+    },
+    {
+      "type": "p",
+      "text": "Open the Terminal app that ships with your Mac. This is where you will talk to your AI agents. You need comfort, not mastery: how to open it, paste a command, and read what comes back. Ask your first agent to explain anything confusing; teaching you is part of its job."
+    },
+    {
+      "type": "li",
+      "text": "Press command space, type terminal, press return."
+    },
+    {
+      "type": "li",
+      "text": "Type ls and press return. Those are your files. That is all the ceremony there is."
+    },
+    {
+      "type": "h3",
+      "text": "Claude Code"
+    },
+    {
+      "type": "p",
+      "text": "Claude Code is an AI agent that lives in your terminal: it writes the code, runs it, fixes what breaks, and explains what it did. Install it, sign in, open a session in a project folder, and describe what you want in plain language. This one tool is most of the setup. It comes with a Claude Pro subscription."
+    },
+    {
+      "type": "li",
+      "text": "Paste this into the terminal: curl -fsSL https://claude.ai/install.sh | bash"
+    },
+    {
+      "type": "li",
+      "text": "Open a new terminal window and type claude --version to confirm it installed."
+    },
+    {
+      "type": "li",
+      "text": "Move into your project folder (cd your-project), type claude, and sign in with your Claude account when the browser opens."
+    },
+    {
+      "type": "li",
+      "text": "Type your first request in plain language. Try: what can you do for me?"
+    },
+    {
+      "type": "h3",
+      "text": "Codex"
+    },
+    {
+      "type": "p",
+      "text": "We also run Codex, a second terminal agent, from OpenAI. Two agents matter more than it sounds: they have different strengths, you can run them side by side on different tasks, and comparing their answers teaches you judgment faster than either alone. It comes with a ChatGPT Plus subscription."
+    },
+    {
+      "type": "li",
+      "text": "Paste this into the terminal: curl -fsSL https://chatgpt.com/codex/install.sh | sh"
+    },
+    {
+      "type": "li",
+      "text": "In your project folder, type codex and sign in with your ChatGPT account."
+    },
+    {
+      "type": "h3",
+      "text": "Vercel"
+    },
+    {
+      "type": "p",
+      "text": "Vercel puts your project on the internet. Sign up with your GitHub account, import your repository, and from then on every change you push goes live automatically. The distance from \"it works on my machine\" to \"here is the link\" becomes zero."
+    },
+    {
+      "type": "li",
+      "text": "Go to vercel.com and sign up with your GitHub account."
+    },
+    {
+      "type": "li",
+      "text": "Click Add New Project, import your repository, press Deploy."
+    },
+    {
+      "type": "li",
+      "text": "Or skip the clicking: ask Claude to set this project up to deploy on Vercel and it will walk you through it."
+    },
+    {
+      "type": "h3",
+      "text": "Connectors"
+    },
+    {
+      "type": "p",
+      "text": "Connect the services you use so your agent has reach: it can check a deployment, read the error logs, or draft the follow-up email, instead of you copying and pasting between tabs."
+    },
+    {
+      "type": "li",
+      "text": "On claude.ai, open Settings, Connectors and link Vercel, Gmail, and your calendar."
+    },
+    {
+      "type": "li",
+      "text": "Inside a Claude Code session, type /mcp to see what your agent can reach."
+    },
+    {
+      "type": "p",
+      "text": "That is the whole setup. A terminal with two AI agents, GitHub holding the truth, Vercel putting it live, and connectors giving your agent reach. Everything else is habits."
+    },
+    {
+      "type": "p",
+      "text": "Six prompts that do the heavy lifting."
+    },
+    {
+      "type": "p",
+      "text": "The tools take an afternoon; prompting well is what compounds. These are not magic words, they are working agreements, and every one came from a mistake I stopped repeating. Copy them, then grow your own."
+    },
+    {
+      "type": "h3",
+      "text": "Ask for a plan first"
+    },
+    {
+      "type": "p",
+      "text": "Two minutes reading a plan beats twenty minutes untangling code that solved the wrong problem."
+    },
+    {
+      "type": "quote",
+      "text": "Before you write any code, tell me your plan: what you'll build, which files you'll touch, and anything you're unsure about. Wait for my OK."
+    },
+    {
+      "type": "h3",
+      "text": "Make it check its own work"
+    },
+    {
+      "type": "p",
+      "text": "This changed my review process more than anything else. The agent catches its own visual bugs instead of me playing QA."
+    },
+    {
+      "type": "quote",
+      "text": "Before you tell me something is done, screenshot the page at phone size and desktop size, look at both yourself, and fix anything that is visibly wrong. Then show me."
+    },
+    {
+      "type": "h3",
+      "text": "Ask for options, not answers"
+    },
+    {
+      "type": "p",
+      "text": "The first idea is rarely the best one. Comparing three real directions builds your taste faster than accepting one."
+    },
+    {
+      "type": "quote",
+      "text": "Give me three genuinely different directions for this, not three versions of the same idea. Put them side by side so I can compare, and tell me which you'd pick and why."
+    },
+    {
+      "type": "h3",
+      "text": "Keep a ship gate"
+    },
+    {
+      "type": "p",
+      "text": "When every push goes live automatically, the approval moment is the whole safety system. Guard it."
+    },
+    {
+      "type": "quote",
+      "text": "Never push to the live site without showing me first. Walk me through what changed and wait for my approval."
+    },
+    {
+      "type": "h3",
+      "text": "Make it teach you"
+    },
+    {
+      "type": "p",
+      "text": "You are building your own judgment, not just an app. Why beats what, every time."
+    },
+    {
+      "type": "quote",
+      "text": "Explain what you just did and why, in plain language. What would break if we removed it?"
+    },
+    {
+      "type": "h3",
+      "text": "Write the rules down once"
+    },
+    {
+      "type": "p",
+      "text": "Anything you repeat twice belongs in the instructions file. The agent reads it every session, so the project gets easier as it grows."
+    },
+    {
+      "type": "quote",
+      "text": "Create a CLAUDE.md file for this project. Write down the design rules, the things I care about, and the mistakes to avoid. Keep it updated as we learn."
+    },
+    {
+      "type": "p",
+      "text": "Real, small, and yours."
+    },
+    {
+      "type": "p",
+      "text": "Do not build a to-do app from a tutorial. Pick something you will actually use this month: a guide to a place you know, a tool for your own work, a site for someone you like. One of our first was a boating guide to the San Juan Islands. A real place, a real need, small enough to ship in a weekend, and it is still live."
+    },
+    {
+      "type": "p",
+      "text": "Your day-one prompt can be this simple:"
+    },
+    {
+      "type": "quote",
+      "text": "I want to build [the thing]: a website that [does what] for [who]. Set up a new project in this folder, keep it simple, and get a first version on screen that I can look at. Then tell me what you did."
+    },
+    {
+      "type": "p",
+      "text": "Then look at what comes back, react honestly, and go again. That is the whole method."
+    },
+    {
+      "type": "p",
+      "text": "The tools are the easy part."
+    },
+    {
+      "type": "p",
+      "text": "Everything above takes an afternoon. What separates people who ship from people who stall is not the setup. It is these."
+    },
+    {
+      "type": "li",
+      "text": "Build something real and small. Not a tutorial. Something you will actually use this month."
+    },
+    {
+      "type": "li",
+      "text": "Ask why, not just what. You are building your own judgment, not just an app."
+    },
+    {
+      "type": "li",
+      "text": "Look at everything it makes. On your phone too. Taste only works if you look."
+    },
+    {
+      "type": "li",
+      "text": "Commit small and often. When something breaks, you walk back one step, not one afternoon."
+    },
+    {
+      "type": "li",
+      "text": "You do not need to become an engineer. The agents supply the syntax. You supply the judgment."
+    },
+    {
+      "type": "p",
+      "text": "The questions I get."
+    },
+    {
+      "type": "h3",
+      "text": "What does this cost?"
+    },
+    {
+      "type": "p",
+      "text": "GitHub and Vercel have free tiers that will carry you a long way. The agents are the real cost: Claude Code comes with Claude Pro and Codex comes with ChatGPT Plus, each about $20 a month as I write this. Starting with just Claude Code is fine."
+    },
+    {
+      "type": "h3",
+      "text": "I'm not on a Mac. Does this still work?"
+    },
+    {
+      "type": "p",
+      "text": "Yes. Everything here runs on Windows and Linux too, and both installers cover all three. The guide reads Mac because that is what I work on, but nothing about the loop is Mac-only."
+    },
+    {
+      "type": "h3",
+      "text": "Do I need to know how to code?"
+    },
+    {
+      "type": "p",
+      "text": "No. You need to describe what you want clearly and look carefully at what you get back. You will absorb more than you expect by asking why, but the agents supply the syntax. You supply the judgment."
+    },
+    {
+      "type": "h3",
+      "text": "Can it break something?"
+    },
+    {
+      "type": "p",
+      "text": "The agents ask before running commands or changing files, and git means every committed change is saved and reversible. The honest risk is not a broken computer. It is shipping something you didn't look at, which is what the habits are for."
+    },
+    {
+      "type": "h3",
+      "text": "What if the agent gets stuck?"
+    },
+    {
+      "type": "p",
+      "text": "Commit what works, clear the conversation, and restate the goal in one sentence. If it is still circling, ask the other agent. A second opinion usually breaks the loop, which is half the reason we run two."
+    },
+    {
+      "type": "h3",
+      "text": "How long until I have something real?"
+    },
+    {
+      "type": "p",
+      "text": "An afternoon for the setup, a weekend for a first version you can put in front of someone. The loop is fast. The judgment takes longer, and that part is the fun."
+    },
+    {
+      "type": "p",
+      "text": "From setup to studio."
+    },
+    {
+      "type": "p",
+      "text": "This setup is where we started too. Everything else we have written about, the build engine, the agentic operations pattern, grew out of this loop plus time and shipped products. Start the loop, keep it turning, and write down what it teaches you."
+    }
   ],
   "/thinking/under-the-hood": [
-    { "type": "h1", "text": "The engine behind everything we ship." },
-    { "type": "p", "text": "Fifteen years of product judgment, encoded into a platform every project inherits. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new." },
-    { "type": "p", "text": "Every product rides on the same engine." },
-    { "type": "p", "text": "A new product starts dialed-in on day one, passes the same gates as every app before it, and what it teaches us hardens the engine for the next one." },
-    { "type": "p", "text": "This is why a small studio ships in weeks what used to take quarters, without lowering the bar." },
-    { "type": "h3", "text": "Bootstrap" },
-    { "type": "p", "text": "A new app composes the platform: design system, integrations, standards pre-wired." },
-    { "type": "h3", "text": "Build" },
-    { "type": "p", "text": "Product work on proven parts: auth, data, AI, payments, email come from the shelf, not from scratch." },
-    { "type": "h3", "text": "Review" },
-    { "type": "p", "text": "Nothing ships unseen: visual QA at two widths, motion review, security sweep." },
-    { "type": "h3", "text": "Present" },
-    { "type": "p", "text": "The pre-share bar: polish pass and the investor-ready audit, phase by phase." },
-    { "type": "h3", "text": "Grow" },
-    { "type": "p", "text": "Positioning, measurement, SEO, launch: a repeatable go-to-market sweep, read weekly." },
-    { "type": "p", "text": "The platform, underneath everything. madrona-studio, one repository." },
-    { "type": "li", "text": "Design systems: brand, tokens, motion vocabulary, image direction." },
-    { "type": "li", "text": "Capabilities: 11 integration playbooks proven in shipped apps." },
-    { "type": "li", "text": "Packages: hardened server code: rate limiting, AI, auth, payments." },
-    { "type": "li", "text": "Standards: SEO, security, accessibility, testing, performance." },
-    { "type": "li", "text": "Skills: encoded playbooks an agent can run: polish, motion, GTM, audits." },
-    { "type": "p", "text": "The learning loop: every launch banks what it taught us, and the engine gets harder to beat." },
-    { "type": "p", "text": "What our products stand on." },
-    { "type": "p", "text": "Every product we ship sits on the same five layers. That is why a new one starts at the studio's craft bar instead of from zero, and why each launch makes the ground more solid." },
-    { "type": "p", "text": "When we build for a client, their product stands on the same ground. The engine is part of what we leave behind." },
-    { "type": "h3", "text": "Design systems" },
-    { "type": "p", "text": "Brand, tokens, motion vocabulary, and image direction, so everything we make looks and moves like it was made by the same hands. Restraint is the point." },
-    { "type": "h3", "text": "Capabilities" },
-    { "type": "p", "text": "Eleven integration playbooks, each documented from a shipped app: auth, database, AI, email, maps, payments, analytics, observability. Proven in production, not in theory." },
-    { "type": "h3", "text": "Packages" },
-    { "type": "p", "text": "Hardened server code harvested from real products: rate limiting that fails safe, streaming AI with caching, auth that fails closed. Tested, versioned, vendored into every app." },
-    { "type": "h3", "text": "Standards" },
-    { "type": "p", "text": "How we build, written down: SEO, security, accessibility, testing, performance, CI. New apps inherit them instead of rediscovering them. The craft bar, enforced." },
-    { "type": "h3", "text": "Learned" },
-    { "type": "p", "text": "Twenty-plus dated findings banked from real launches, folded back into the playbooks. The engine gets smarter with every product. What AI alone can never fake." },
-    { "type": "h3", "text": "Visual QA gate" },
-    { "type": "p", "text": "Every interface change is screenshotted and inspected at phone and desktop widths before it ships." },
-    { "type": "h3", "text": "Motion review" },
-    { "type": "p", "text": "Animation is a design decision: distinct options built, compared live, and held to a ten-point bar." },
-    { "type": "h3", "text": "Investor-ready audit" },
-    { "type": "p", "text": "Before anyone outside sees an app: clarity, wow path, security sweep, credibility pass, honest narrative." },
-    { "type": "quote", "text": "A demo that can write to real data is a P0. Nobody outside should ever be one tap from your production records." },
-    { "type": "p", "text": "One of twenty-plus dated findings, each banked after a real launch and folded back into the checklist every new product inherits. This one cost us a late night; now it is a gate nothing gets past." },
-    { "type": "h2", "text": "The parts, if you want to set this up yourself." },
-    { "type": "p", "text": "The engine sounds abstract until you name the parts. These four do most of the work, and none of them needs a team: a day of setup each, then they pay you back on every product after. We are writing each one up as its own field note: the real setup, the real prices, the mistakes included. This page collects them as they land." },
-    { "type": "h3", "text": "The bootstrap: start dialed-in" },
-    { "type": "p", "text": "A template every new app copies on day one: strict TypeScript, tests, CI, accessibility, security headers, SEO, and a performance budget, pre-wired and verified green before the first feature exists. Standards inherited, not rediscovered." },
-    { "type": "h3", "text": "One monitoring setup: the smoke detector" },
-    { "type": "p", "text": "Sentry on client and server, a tiny health endpoint in every app, an external uptime check, one alert destination. Written down once, applied by stakes: the app that takes money gets covered first. First field note, landing soon." },
-    { "type": "h3", "text": "One design intelligence layer: taste, installed" },
-    { "type": "p", "text": "Curated design skills (motion, premium visual direction, a design-audit orchestrator) installed as agent plugins, so every project starts with the same design judgment." },
-    { "type": "h3", "text": "The image system: art director + engine" },
-    { "type": "p", "text": "Marketing imagery as a machine: layout and type built in code, atmosphere generated, quality gates in between. Already written up in Solve the system, not the symptom." },
-    { "type": "p", "text": "The engine is part of what we leave behind." },
-    { "type": "p", "text": "We build it, set it up, and teach you to run it. A client engagement ends with your product standing on this engine and your team holding the keys. The deliverable is a business that does not need us." },
-    { "type": "p", "text": "Parts of the engine are already public, tools we build and use every day, free to take." }
+    {
+      "type": "h1",
+      "text": "The engine behind everything we ship."
+    },
+    {
+      "type": "p",
+      "text": "Fifteen years of product judgment, encoded into a platform every project inherits. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new."
+    },
+    {
+      "type": "p",
+      "text": "Every product rides on the same engine."
+    },
+    {
+      "type": "p",
+      "text": "A new product starts dialed-in on day one, passes the same gates as every app before it, and what it teaches us hardens the engine for the next one."
+    },
+    {
+      "type": "p",
+      "text": "This is why a small studio ships in weeks what used to take quarters, without lowering the bar."
+    },
+    {
+      "type": "h3",
+      "text": "Bootstrap"
+    },
+    {
+      "type": "p",
+      "text": "A new app composes the platform: design system, integrations, standards pre-wired."
+    },
+    {
+      "type": "h3",
+      "text": "Build"
+    },
+    {
+      "type": "p",
+      "text": "Product work on proven parts: auth, data, AI, payments, email come from the shelf, not from scratch."
+    },
+    {
+      "type": "h3",
+      "text": "Review"
+    },
+    {
+      "type": "p",
+      "text": "Nothing ships unseen: visual QA at two widths, motion review, security sweep."
+    },
+    {
+      "type": "h3",
+      "text": "Present"
+    },
+    {
+      "type": "p",
+      "text": "The pre-share bar: polish pass and the investor-ready audit, phase by phase."
+    },
+    {
+      "type": "h3",
+      "text": "Grow"
+    },
+    {
+      "type": "p",
+      "text": "Positioning, measurement, SEO, launch: a repeatable go-to-market sweep, read weekly."
+    },
+    {
+      "type": "p",
+      "text": "The platform, underneath everything. madrona-studio, one repository."
+    },
+    {
+      "type": "li",
+      "text": "Design systems: brand, tokens, motion vocabulary, image direction."
+    },
+    {
+      "type": "li",
+      "text": "Capabilities: 11 integration playbooks proven in shipped apps."
+    },
+    {
+      "type": "li",
+      "text": "Packages: hardened server code: rate limiting, AI, auth, payments."
+    },
+    {
+      "type": "li",
+      "text": "Standards: SEO, security, accessibility, testing, performance."
+    },
+    {
+      "type": "li",
+      "text": "Skills: encoded playbooks an agent can run: polish, motion, GTM, audits."
+    },
+    {
+      "type": "p",
+      "text": "The learning loop: every launch banks what it taught us, and the engine gets harder to beat."
+    },
+    {
+      "type": "p",
+      "text": "What our products stand on."
+    },
+    {
+      "type": "p",
+      "text": "Every product we ship sits on the same five layers. That is why a new one starts at the studio's craft bar instead of from zero, and why each launch makes the ground more solid."
+    },
+    {
+      "type": "p",
+      "text": "When we build for a client, their product stands on the same ground. The engine is part of what we leave behind."
+    },
+    {
+      "type": "h3",
+      "text": "Design systems"
+    },
+    {
+      "type": "p",
+      "text": "Brand, tokens, motion vocabulary, and image direction, so everything we make looks and moves like it was made by the same hands. Restraint is the point."
+    },
+    {
+      "type": "h3",
+      "text": "Capabilities"
+    },
+    {
+      "type": "p",
+      "text": "Eleven integration playbooks, each documented from a shipped app: auth, database, AI, email, maps, payments, analytics, observability. Proven in production, not in theory."
+    },
+    {
+      "type": "h3",
+      "text": "Packages"
+    },
+    {
+      "type": "p",
+      "text": "Hardened server code harvested from real products: rate limiting that fails safe, streaming AI with caching, auth that fails closed. Tested, versioned, vendored into every app."
+    },
+    {
+      "type": "h3",
+      "text": "Standards"
+    },
+    {
+      "type": "p",
+      "text": "How we build, written down: SEO, security, accessibility, testing, performance, CI. New apps inherit them instead of rediscovering them. The craft bar, enforced."
+    },
+    {
+      "type": "h3",
+      "text": "Learned"
+    },
+    {
+      "type": "p",
+      "text": "Twenty-plus dated findings banked from real launches, folded back into the playbooks. The engine gets smarter with every product. What AI alone can never fake."
+    },
+    {
+      "type": "h3",
+      "text": "Visual QA gate"
+    },
+    {
+      "type": "p",
+      "text": "Every interface change is screenshotted and inspected at phone and desktop widths before it ships."
+    },
+    {
+      "type": "h3",
+      "text": "Motion review"
+    },
+    {
+      "type": "p",
+      "text": "Animation is a design decision: distinct options built, compared live, and held to a ten-point bar."
+    },
+    {
+      "type": "h3",
+      "text": "Investor-ready audit"
+    },
+    {
+      "type": "p",
+      "text": "Before anyone outside sees an app: clarity, wow path, security sweep, credibility pass, honest narrative."
+    },
+    {
+      "type": "quote",
+      "text": "A demo that can write to real data is a P0. Nobody outside should ever be one tap from your production records."
+    },
+    {
+      "type": "p",
+      "text": "One of twenty-plus dated findings, each banked after a real launch and folded back into the checklist every new product inherits. This one cost us a late night; now it is a gate nothing gets past."
+    },
+    {
+      "type": "h2",
+      "text": "The parts, if you want to set this up yourself."
+    },
+    {
+      "type": "p",
+      "text": "The engine sounds abstract until you name the parts. These four do most of the work, and none of them needs a team: a day of setup each, then they pay you back on every product after. We are writing each one up as its own field note: the real setup, the real prices, the mistakes included. This page collects them as they land."
+    },
+    {
+      "type": "h3",
+      "text": "The bootstrap: start dialed-in"
+    },
+    {
+      "type": "p",
+      "text": "A template every new app copies on day one: strict TypeScript, tests, CI, accessibility, security headers, SEO, and a performance budget, pre-wired and verified green before the first feature exists. Standards inherited, not rediscovered."
+    },
+    {
+      "type": "h3",
+      "text": "One monitoring setup: the smoke detector"
+    },
+    {
+      "type": "p",
+      "text": "Sentry on client and server, a tiny health endpoint in every app, an external uptime check, one alert destination. Written down once, applied by stakes: the app that takes money gets covered first. First field note, landing soon."
+    },
+    {
+      "type": "h3",
+      "text": "One design intelligence layer: taste, installed"
+    },
+    {
+      "type": "p",
+      "text": "Curated design skills (motion, premium visual direction, a design-audit orchestrator) installed as agent plugins, so every project starts with the same design judgment."
+    },
+    {
+      "type": "h3",
+      "text": "The image system: art director + engine"
+    },
+    {
+      "type": "p",
+      "text": "Marketing imagery as a machine: layout and type built in code, atmosphere generated, quality gates in between. Already written up in Solve the system, not the symptom."
+    },
+    {
+      "type": "p",
+      "text": "The engine is part of what we leave behind."
+    },
+    {
+      "type": "p",
+      "text": "We build it, set it up, and teach you to run it. A client engagement ends with your product standing on this engine and your team holding the keys. The deliverable is a business that does not need us."
+    },
+    {
+      "type": "p",
+      "text": "Parts of the engine are already public, tools we build and use every day, free to take."
+    }
+  ],
+  "/thinking/ai-tools-for-small-business": [
+    {
+      "type": "h1",
+      "text": "The 12 jobs AI tools already do for small businesses"
+    },
+    {
+      "type": "p",
+      "text": "A lot of the work that fills your week is already handled, out of the box, by tools you may be paying for today. Nobody lays that shelf out plainly, so we did: twelve jobs, organized by problem rather than product, each with what it needs from you and where it ends. We update this page as the shelf changes."
+    },
+    {
+      "type": "h2",
+      "text": "The shelf nobody shows you"
+    },
+    {
+      "type": "p",
+      "text": "You keep hearing that AI could help your business, and between the demos, the pricing pages, and the think pieces, it is hard to tell what any of it actually does. Meanwhile the close still takes a weekend, the invoices are still late, and you are still answering the same six emails."
+    },
+    {
+      "type": "p",
+      "text": "The part nobody says plainly: a lot of that work is already handled by tools sitting in subscriptions you have. QuickBooks now ships agents that reconcile your books. Claude comes with workflows named for the jobs themselves. Gemini is already inside your Google Workspace plan. But vendors describe these things from their side of the glass. “15 pre-built workflows for running the whole business” tells you something exists. It does not tell you what it takes to put it to work on a Tuesday."
+    },
+    {
+      "type": "p",
+      "text": "We run our own studio on this stuff, agents included, so this list comes from use, not from press releases. Every capability here was checked against the vendors’ current documentation, and we revise the page as the tools change. Each tool is linked to the vendor’s own page, so when an entry fits, you can go turn it on."
+    },
+    {
+      "type": "h2",
+      "text": "The inventory at a glance"
+    },
+    {
+      "type": "li",
+      "text": "Month-end close: Claude for Small Business, QuickBooks agents. The catch: assumes your books are current."
+    },
+    {
+      "type": "li",
+      "text": "Chasing overdue invoices: QuickBooks Payments agent, Claude invoice chaser. The catch: who gets grace is still your call."
+    },
+    {
+      "type": "li",
+      "text": "Knowing your cash position: Claude business pulse, QuickBooks alerts. The catch: only as honest as its connections."
+    },
+    {
+      "type": "li",
+      "text": "Payroll planning: Claude payroll workflow. The catch: plans it; your provider still runs it."
+    },
+    {
+      "type": "li",
+      "text": "Routine customer email: Gemini in Gmail, Shopify Inbox, Microsoft Copilot. The catch: guesses when nothing is written down."
+    },
+    {
+      "type": "li",
+      "text": "Contract review: Claude contract reviewer, DocuSign Iris. The catch: flags, does not decide; not a lawyer."
+    },
+    {
+      "type": "li",
+      "text": "Marketing assets: Canva Magic Studio, Shopify Magic. The catch: multiplies your brand, or your lack of one."
+    },
+    {
+      "type": "li",
+      "text": "Running a campaign: Claude campaign workflow with Canva. The catch: runs the campaign; picking it is strategy."
+    },
+    {
+      "type": "li",
+      "text": "Ad campaigns: Meta Advantage+, Google Performance Max. The catch: worthless without conversion tracking."
+    },
+    {
+      "type": "li",
+      "text": "Post-sale follow-up: Square Marketing, HubSpot, Shopify Email. The catch: cadence is a decision before an automation."
+    },
+    {
+      "type": "li",
+      "text": "Asking for reviews: Square review collection, Gemini with Google Business Profile. The catch: automate the ask, never the review."
+    },
+    {
+      "type": "li",
+      "text": "Knowing your best customers: Claude margin analyzer, Square AI, Shopify Sidekick. The catch: the answer hands you a harder question."
+    },
+    {
+      "type": "h2",
+      "text": "Running smoother"
+    },
+    {
+      "type": "p",
+      "text": "The jobs that eat your evenings: bookkeeping, invoices, email, paperwork."
+    },
+    {
+      "type": "h3",
+      "text": "Can AI do my month-end close?"
+    },
+    {
+      "type": "p",
+      "text": "Mostly, yes. This is the flagship of the category, and the best worked example of what “out of the box” now means."
+    },
+    {
+      "type": "p",
+      "text": "Claude for Small Business ships a close workflow. It reconciles your books against payment settlements, flags mismatches for your review, writes a plain-English P&L narrative, and packages an accountant-ready close packet through the QuickBooks connector. Getting started is one command, which walks you through connecting QuickBooks and PayPal first, then the rest as you go. Inside QuickBooks itself, Intuit now ships its own Accounting agent that reconciles statements, matches bank transactions, and cleans up categorization."
+    },
+    {
+      "type": "p",
+      "text": "What it needs from you: books that are roughly current. These workflows reconcile what is there. If three months of transactions are uncategorized, the first run surfaces a cleanup project, not a close packet. Useful information, but not the demo."
+    },
+    {
+      "type": "p",
+      "text": "Where it ends: the mismatches it flags still need your call, and a messy chart of accounts confuses every tool in this category. The close gets dramatically shorter. The judgment stays yours, and your accountant stays your accountant."
+    },
+    {
+      "type": "h3",
+      "text": "Can AI chase my overdue invoices?"
+    },
+    {
+      "type": "p",
+      "text": "This might be the fastest payback on the list. QuickBooks’ Payments agent drafts personalized reminders for overdue invoices and learns which payers respond to what; Intuit claims invoices get paid noticeably sooner. Claude’s invoice chaser does the same job across QuickBooks and email, queueing reminders for your approval rather than sending on its own."
+    },
+    {
+      "type": "p",
+      "text": "What it needs from you: invoices actually issued from the system, so there is something to chase. Where it ends: the good customer who is late is a relationship decision, not a workflow. The tool drafts, you decide who gets grace."
+    },
+    {
+      "type": "h3",
+      "text": "What is my actual cash position right now?"
+    },
+    {
+      "type": "p",
+      "text": "If you cannot answer that without opening three tabs, you are who this entry is for. Claude’s business pulse puts cash position, sales trends, pipeline, and the week’s commitments on one page, with a start-of-week brief and your top three to-dos. QuickBooks runs cash-flow shortage alerts with suggested actions."
+    },
+    {
+      "type": "p",
+      "text": "What it needs from you: connected accounts, all of them. Where it ends: the pulse is only as honest as its connections. If half your money moves through a system it cannot see, you get a tidy number that is wrong. Connect everything or read it skeptically."
+    },
+    {
+      "type": "h3",
+      "text": "Can AI help me plan payroll?"
+    },
+    {
+      "type": "p",
+      "text": "It can handle the planning half. Claude’s payroll workflow settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation."
+    },
+    {
+      "type": "p",
+      "text": "Where it ends: this is payroll planning. Running payroll, benefits, and compliance stay with your payroll provider."
+    },
+    {
+      "type": "h3",
+      "text": "Can AI answer routine customer emails?"
+    },
+    {
+      "type": "p",
+      "text": "The drafting, yes. Gemini’s “Help me write” is now included in base Google Workspace subscriptions and drafts replies from the thread. Microsoft’s Copilot does the same in Outlook on its small business plans. If you sell on Shopify, Inbox suggests answers to customer chats from your store’s own information."
+    },
+    {
+      "type": "p",
+      "text": "What it needs from you: written answers to draw from. Your policies, your shipping times, your return rules. If it is not written down, the AI guesses, confidently. An afternoon spent writing your ten most common answers is the highest-leverage AI work most small businesses can do. Where it ends: the upset customer. Draft with AI, but send that one yourself."
+    },
+    {
+      "type": "h3",
+      "text": "Can AI review a contract before I sign it?"
+    },
+    {
+      "type": "p",
+      "text": "It makes a good first reader. Claude’s contract reviewer flags key terms and risks and answers questions about what you are agreeing to. DocuSign has serious contract AI under its Iris brand, but note the fine print: it lives on their contract-management plans, not the eSignature plan most small businesses actually have."
+    },
+    {
+      "type": "p",
+      "text": "Where it ends: it flags, it does not decide, and it is not your lawyer. For the lease or the partnership agreement, the review buys you a sharper conversation with counsel, not a substitute for one."
+    },
+    {
+      "type": "h2",
+      "text": "Getting found"
+    },
+    {
+      "type": "p",
+      "text": "The jobs that grow the business: assets, campaigns, ads."
+    },
+    {
+      "type": "h3",
+      "text": "Can AI make my marketing assets?"
+    },
+    {
+      "type": "p",
+      "text": "This one has come further than most owners realize. Canva’s Magic Studio writes copy in your brand voice, generates and edits images, drafts whole design options from a prompt, and resizes one asset across every format you need. Shopify Magic writes product descriptions, strips and regenerates photo backgrounds, and drafts store content in place. Between the two, a small business can produce a month of decent assets in an afternoon that used to cost a freelancer retainer."
+    },
+    {
+      "type": "p",
+      "text": "What it needs from you: a brand kit, set up once. Logo, colors, fonts, and a few sentences about voice. Every generation pulls from it. Skip this and each asset drifts a little differently off-brand, and you spend the saved time fixing them. Real product photos help too: the tools are far better at polishing your actual photo than inventing your product."
+    },
+    {
+      "type": "p",
+      "text": "Where it ends: voice and positioning are decisions, and they are still yours. AI multiplies whatever you hand it, including generic. If the words underneath are not sharp about who you serve and why you are different, you now produce forgettable assets faster. That is the edge where tooling stops and strategy starts."
+    },
+    {
+      "type": "h3",
+      "text": "Can AI plan and run a marketing campaign?"
+    },
+    {
+      "type": "p",
+      "text": "End to end, if you want it to. Claude’s campaign workflow analyzes your revenue, drafts strategy, and produces the assets through the Canva connector. One command runs the whole arc, and you approve each step that touches customers."
+    },
+    {
+      "type": "p",
+      "text": "Where it ends: it runs the campaign you approve. Whether it is the right campaign, for the right audience, at the right moment, is exactly the question the workflow cannot answer for you."
+    },
+    {
+      "type": "h3",
+      "text": "Should I let Meta and Google automate my ads?"
+    },
+    {
+      "type": "p",
+      "text": "They already assume you will. Meta’s Advantage+ sales campaigns and Google’s Performance Max both take budget, creative, and a goal, then automate audience, placements, and bidding across everything they own. For a small advertiser this beats hand-tuned campaigns most of the time."
+    },
+    {
+      "type": "p",
+      "text": "What it needs from you, and this is the entry we see done wrong most often: conversion tracking wired up and verified before the first dollar. These systems optimize toward whatever signal they receive; no signal, and they spend your budget optimizing toward noise. Google’s own guidance says give Performance Max six weeks and stable budgets before judging it. Where it ends: automation optimizes toward the goal you set. Choosing the goal, and checking the tracking, is the work."
+    },
+    {
+      "type": "h2",
+      "text": "Coming back"
+    },
+    {
+      "type": "p",
+      "text": "The jobs that turn one sale into a relationship: follow-up, reviews, knowing your people."
+    },
+    {
+      "type": "h3",
+      "text": "Can AI follow up with customers after the sale?"
+    },
+    {
+      "type": "p",
+      "text": "The machinery is built in. Square’s Marketing automations run welcome, win-back, lapsed-customer, and abandoned-cart campaigns on its marketing plans, with AI-drafted copy. Shopify Email does the same for stores. HubSpot’s free tier includes an AI assistant for drafting; its autonomous follow-up agents sit on paid tiers."
+    },
+    {
+      "type": "p",
+      "text": "What it needs from you: a decision. A follow-up rhythm is a decision before it is an automation: who hears from you, how soon after a sale, saying what? An hour with those questions, then the automation runs it forever. Where it ends: the tools execute cadence. They do not know your regulars."
+    },
+    {
+      "type": "h3",
+      "text": "Can AI ask customers for reviews?"
+    },
+    {
+      "type": "p",
+      "text": "You should let it, because the ask is what nobody gets around to. Square collects Google reviews automatically by email or text after a sale, triggered by things like a customer’s third purchase, once your Google Business Profile is synced. On the other side, connecting your Business Profile to the Gemini app lets it draft review replies in your voice and flag unanswered questions."
+    },
+    {
+      "type": "p",
+      "text": "Where it ends: automate the ask, never the review. Incentivized or faked reviews violate every platform’s rules and, eventually, your customers’ trust."
+    },
+    {
+      "type": "h3",
+      "text": "Can AI tell me who my best customers are?"
+    },
+    {
+      "type": "p",
+      "text": "The analysis is the instant part. Claude’s margin analyzer works the numbers through your QuickBooks data. Square AI answers plain questions over your own sales history: best sellers, margins by location, what changed this month. Shopify’s Sidekick does the same for stores and takes admin actions you approve."
+    },
+    {
+      "type": "p",
+      "text": "What it needs from you: sales history living in one system. Where it ends: the answer usually hands you a harder question. Knowing your top customers is a query. Deciding what to build for them is strategy, and no workflow ships that."
+    },
+    {
+      "type": "h2",
+      "text": "How to actually start"
+    },
+    {
+      "type": "p",
+      "text": "Pick one job. Not five. The one that ate last weekend."
+    },
+    {
+      "type": "p",
+      "text": "Then take the free path first. Anthropic runs a free AI fluency course for small business owners, built with PayPal, and free half-day workshops in cities around the country. Gemini is already in your Workspace subscription. Shopify Magic is on every Shopify plan. You may get this job handled without spending anything new, and you should be suspicious of anyone who suggests otherwise."
+    },
+    {
+      "type": "p",
+      "text": "An honest note on where the shelf ends, because it does. Packaged workflows assume standard tools and standard process. The edges show up fast in a real business: the industry system with no connector, the two tools that will not talk to each other, the workflow that almost fits but not quite, the point where approving every step quietly becomes its own job. Those edges are not a reason to skip the shelf. They are a map of where your business is genuinely different, and that is worth knowing."
+    },
+    {
+      "type": "p",
+      "text": "When you hit one, that is the moment worth a conversation. Figuring out what to build when the packaged version runs out is our actual work. Either way, take the inventory: somewhere in these twelve jobs, there is a weekend you get back this month."
+    }
   ]
 }

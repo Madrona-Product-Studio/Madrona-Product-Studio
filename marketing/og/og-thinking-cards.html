@@ -106,6 +106,18 @@
   <div class="art zoom"><svg viewBox="0 0 1600 900" data-motif="source"></svg></div>
 </div>
 
+<!-- ══ ARTICLE — out-of-the-box inventory ══ -->
+<div class="label">og-pov-ai-tools-inventory.png</div>
+<div class="og" id="c-inventory">
+  <div class="copy">
+    <div class="kicker">Thinking · Artifact</div>
+    <h1 class="small">The 12 jobs AI tools<br>already do for<br>small businesses</h1>
+    <div class="sub">The out-of-the-box inventory: what each job needs, and where it ends.</div>
+    <div class="foot"><img src="../../docs/madrona_static_logo_assets/madrona-approved-logo-transparent.png" alt=""><span class="url">madronaproduct.com/thinking</span></div>
+  </div>
+  <div class="art zoom"><svg viewBox="0 0 1600 900" data-motif="inventory"></svg></div>
+</div>
+
 <script>
 // PovThumb motifs, inlined (forest lines, one bark accent, plate = card bg).
 const FOREST = '#1f3b33', BARK = '#c86a3d', PLATE = '#f6f2ea';
@@ -163,6 +175,23 @@ const motifs = {
     return `<line x1="150" y1="${cy}" x2="1450" y2="${cy}" stroke="${FOREST}" stroke-width="2.5"/>${sig}${nodes}
     <circle cx="150" cy="${cy}" r="22" fill="${FOREST}"/><circle cx="1450" cy="${cy}" r="22" fill="${BARK}"/>
     <circle cx="800" cy="${cy}" r="48" fill="none" stroke="${BARK}" stroke-width="3"/><circle cx="800" cy="${cy}" r="15" fill="${BARK}"/>`;
+  },
+  inventory: () => {
+    const w=200, h=132, gap=48, x0=(1600-(4*w+3*gap))/2, y0=(900-(3*h+2*gap))/2;
+    const cx=(c)=>x0+c*(w+gap), cyy=(r)=>y0+r*(h+gap);
+    let rails = '<g stroke="'+FOREST+'" stroke-opacity="0.3" stroke-width="2.5" stroke-dasharray="9 13">';
+    for (let r=0;r<3;r++) rails += `<line x1="200" y1="${cyy(r)+h/2}" x2="1400" y2="${cyy(r)+h/2}"/>`;
+    rails += '</g>';
+    let cells = '';
+    for (let r=0;r<3;r++) for (let c=0;c<4;c++) {
+      const active = r===1 && c===1, open = r===2 && c===3;
+      cells += `<rect x="${cx(c)}" y="${cyy(r)}" width="${w}" height="${h}" rx="18" fill="${active?BARK:PLATE}" stroke="${active?'none':FOREST}" stroke-opacity="${open?0.45:1}" stroke-width="3.5"${open?' stroke-dasharray="9 13"':''}/>`;
+    }
+    return `
+    <g stroke="${FOREST}" stroke-opacity="0.05" stroke-width="2">
+      <line x1="300" y1="70" x2="300" y2="830"/><line x1="1300" y1="70" x2="1300" y2="830"/></g>
+    ${rails}${cells}
+    <rect x="${cx(1)-26}" y="${cyy(1)-26}" width="${w+52}" height="${h+52}" rx="30" fill="none" stroke="${BARK}" stroke-opacity="0.55" stroke-width="3" stroke-dasharray="11 15"/>`;
   },
   structure: () => {
     const fTL=[520,340],fTR=[880,340],fBR=[880,700],fBL=[520,700], vp=[1255,235], t=0.42;
