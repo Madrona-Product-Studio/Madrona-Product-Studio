@@ -351,7 +351,7 @@ export function SpecPanel({ title, file, cols }: { title: string; file: string; 
 }
 
 /* ---- Spec table --------------------------------------------------------- */
-export type TableRow = { name: string; path?: string; what: string; why: string };
+export type TableRow = { name: string; href?: string; path?: string; what: string; why: string };
 
 export function SpecTable({ head, rows }: { head: [string, string, string]; rows: TableRow[] }) {
   return (
@@ -367,7 +367,11 @@ export function SpecTable({ head, rows }: { head: [string, string, string]; rows
         {rows.map((r) => (
           <tr key={r.name}>
             <td className="col-name">
-              {r.name}
+              {r.href ? (
+                <a className="art-table-jump" href={r.href}>{r.name}<span aria-hidden="true">↓</span></a>
+              ) : (
+                r.name
+              )}
               {r.path && <small>{r.path}</small>}
             </td>
             <td>{r.what}</td>
