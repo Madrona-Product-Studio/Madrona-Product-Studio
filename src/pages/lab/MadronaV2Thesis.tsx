@@ -103,6 +103,7 @@ export default function MadronaV2Thesis() {
             <Prose>
               <p>The strongest teams will not erase specialized craft. They will preserve the distinct perspectives of each discipline while making the boundaries between them more permeable.</p>
               <p>Everyone builds, but they build different things.</p>
+              <p>The pattern is starting to show up in the data. In <a href="https://linear.app/data" target="_blank" rel="noopener noreferrer">Linear's 2026 report</a> on how teams work, product managers and designers ship code at several times the rate they did two years ago — the boundaries becoming permeable in practice, not just in principle.</p>
             </Prose>
             <Figure>
               <ul className="m2-th4-rows">
