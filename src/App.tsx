@@ -9,7 +9,6 @@ import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
 import MadronaV2About from "./pages/lab/MadronaV2About";
 import MadronaV2Thesis from "./pages/lab/MadronaV2Thesis";
-import ThesisHeroLab from "./pages/lab/ThesisHeroLab";
 import MadronaV2Pov from "./pages/lab/MadronaV2Pov";
 import MadronaV2EngineNote from "./pages/lab/MadronaV2EngineNote";
 import MadronaV2AgenticNote from "./pages/lab/MadronaV2AgenticNote";
@@ -84,8 +83,6 @@ export default function App() {
         <Route path="notes" element={<Navigate to="/thinking" replace />} />
         <Route path="playbook" element={<Navigate to="/thinking" replace />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
-        {/* TEMP — thesis hero exploration harness; remove with ThesisHeroLab. */}
-        <Route path="thesis-hero-lab" element={<ThesisHeroLab />} />
         {/* The Signal Assessment — our free "signal check". Canonical at /checkup;
             it took over this URL from the retired v1 AI checkup (launch 2026-08-15). */}
         <Route path="checkup" element={<SignalAssessment />} />

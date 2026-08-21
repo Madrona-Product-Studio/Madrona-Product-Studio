@@ -21,35 +21,35 @@
 .agx-gallery-principles span { align-items: center; color: var(--ink-soft); display: inline-flex; font-size: .9rem; font-weight: 550; gap: 9px; }
 .agx-gallery-principles i { background: var(--bark); border-radius: 50%; flex: none; height: 7px; width: 7px; }
 
-/* Cards */
-.agx-gallery-grid {
-  display: grid;
-  gap: clamp(16px, 2vw, 22px);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  padding-top: clamp(20px, 3vw, 32px) !important;
-  padding-bottom: clamp(28px, 4vw, 44px) !important;
-}
-.agx-card {
+/* Grouped panel rows — category header, then compact surfaced rows. */
+.agx-groups { padding-top: clamp(18px, 3vw, 30px) !important; padding-bottom: clamp(28px, 4vw, 44px) !important; }
+.agx-group { margin-bottom: clamp(26px, 3.5vw, 38px); }
+.agx-group:last-child { margin-bottom: 0; }
+.agx-group-head { align-items: baseline; border-bottom: 2px solid var(--ink); display: flex; gap: 12px; justify-content: space-between; margin-bottom: 12px; padding-bottom: 10px; }
+.agx-group-head span:first-child { color: var(--ink); font-size: .7rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.agx-group-head span:last-child { color: var(--muted); font-size: .72rem; }
+.agx-group-rows { display: flex; flex-direction: column; gap: 8px; }
+.agx-row {
+  align-items: center;
   background: var(--surface);
   border: 1px solid var(--art-hair, rgba(26,23,20,.14));
-  border-radius: 16px;
-  display: flex; flex-direction: column;
-  padding: clamp(22px, 2.4vw, 30px);
-  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  border-radius: 12px;
+  display: grid;
+  gap: clamp(16px, 2vw, 26px);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  padding: 14px 18px;
+  transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
 }
-.agx-card:hover { border-color: var(--forest); transform: translateY(-2px); box-shadow: 0 18px 40px -26px rgba(31,52,45,.4); }
-.agx-card-top { align-items: center; display: flex; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
-.agx-card-cat { color: var(--bark); font-size: .64rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
-.agx-card-cadence { color: var(--muted); font-size: .72rem; font-weight: 600; }
-.agx-card-name { font-family: var(--font-serif); font-size: clamp(1.5rem, 2.2vw, 1.85rem); letter-spacing: -.015em; line-height: 1.08; margin: 0 0 12px; }
-.agx-card-blurb { color: var(--ink-soft); font-size: .98rem; line-height: 1.58; margin: 0 0 22px; }
-.agx-card-connects { border-top: 1px solid var(--art-hair-soft, rgba(26,23,20,.08)); margin-top: auto; padding-top: 16px; }
-.agx-card-connects-lbl { color: var(--muted); display: block; font-size: .64rem; font-weight: 700; letter-spacing: .1em; margin-bottom: 9px; text-transform: uppercase; }
-.agx-chips { display: flex; flex-wrap: wrap; gap: 7px; }
-.agx-chip { background: var(--shell); border-radius: 6px; color: var(--ink-soft); font-size: .76rem; font-weight: 550; padding: 4px 10px; }
-.agx-card-cta { color: var(--bark-dark); display: inline-flex; font-size: .88rem; font-weight: 700; gap: 8px; margin-top: 20px; }
-.agx-card-cta span { transition: transform 140ms cubic-bezier(.23, 1, .32, 1); }
-.agx-card:hover .agx-card-cta span { transform: translateX(4px); }
+.agx-row:hover { border-color: var(--forest); transform: translateY(-1px); box-shadow: 0 12px 26px -20px rgba(31,52,45,.4); }
+.agx-row-main { min-width: 0; }
+.agx-row-main h2 { font-family: var(--font-serif); font-size: 1.22rem; letter-spacing: -.01em; line-height: 1.15; margin: 0 0 3px; transition: color .15s ease; }
+.agx-row:hover .agx-row-main h2 { color: var(--bark-dark); }
+.agx-row-main p { color: var(--muted); font-size: .88rem; line-height: 1.45; margin: 0; max-width: 68ch; }
+.agx-row-right { align-items: center; display: flex; gap: 18px; white-space: nowrap; }
+.agx-row-cadence { background: var(--shell); border-radius: 5px; color: var(--muted); font-size: .72rem; font-weight: 600; padding: 4px 10px; }
+.agx-row-cta { margin-top: 0; }
+.agx-groups .agx-connlogo { height: 32px; width: 32px; }
+.agx-groups .agx-connlogo .agx-conn-svg { height: 16px; width: 16px; }
 
 /* Closing block */
 .agx-gallery-foot { padding-top: clamp(24px, 3vw, 40px) !important; padding-bottom: clamp(44px, 6vw, 72px) !important; }
@@ -58,8 +58,22 @@
 .agx-gallery-foot p { color: var(--ink-soft); font-size: 1.06rem; line-height: 1.62; margin: 0; max-width: 58ch; }
 
 @media (max-width: 720px) {
-  .agx-gallery-grid { grid-template-columns: 1fr; }
+  .agx-row { grid-template-columns: auto 1fr; gap: 10px 14px; }
+  .agx-row-right { flex-direction: row; gap: 14px; grid-column: 1 / -1; justify-content: flex-start; }
 }
+
+/* Connector logos (spec card + gallery) */
+.agx-conns { display: flex; flex-wrap: wrap; gap: 7px; }
+.agx-conn { align-items: center; background: var(--shell); border-radius: 6px; color: var(--ink-soft); display: inline-flex; font-size: .78rem; font-weight: 600; gap: 6px; padding: 4px 10px 4px 8px; }
+.agx-conn-svg { color: #3a3c39; flex: none; height: 14px; width: 14px; }
+.agx-conn-lbl { white-space: nowrap; }
+/* In the spec card the connectors sit under a small dt; give them room */
+.agx-spec dd .agx-conns { margin-top: 2px; }
+
+.agx-connlogos { display: inline-flex; gap: 7px; }
+.agx-connlogo { align-items: center; background: var(--surface); border: 1px solid var(--art-hair, rgba(26,23,20,.14)); border-radius: 9px; display: inline-flex; height: 38px; justify-content: center; width: 38px; }
+.agx-connlogo .agx-conn-svg { color: #3a3c39; height: 19px; width: 19px; }
+
 
 /* =========================================================================
    Agent-deployment demo template — functional header + spec card.

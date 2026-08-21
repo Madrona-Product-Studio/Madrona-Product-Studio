@@ -4,15 +4,17 @@ import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import { agents } from "../../data/agents";
+import { ConnectorLogos } from "./connectors";
 import "./madrona-v2.css";
 import "./agent-demo.css";
 
-// The agent gallery — the top-level "what can I deploy" surface. Every card is
-// a live demo you can run before you ever talk to us. Data lives in
-// data/agents.ts; this page just renders it.
+// The agent gallery — the top-level "what can I deploy" surface. Grouped by
+// category (agent counts in the header), then compact panel rows: connector
+// logos, name + blurb, cadence, run link. Data lives in data/agents.ts.
 
 export default function AgentsGallery() {
   useReveal();
+  const cats = Array.from(new Set(agents.map((a) => a.category)));
 
   return (
     <main className="m2 agx-gallery-page">
@@ -36,24 +38,33 @@ export default function AgentsGallery() {
         </div>
       </section>
 
-      <section className="agx-gallery-grid" aria-label="Available agents">
-        {agents.map((a) => (
-          <Link key={a.id} className="agx-card" to={a.href} data-reveal>
-            <div className="agx-card-top">
-              <span className="agx-card-cat">{a.category}</span>
-              <span className="agx-card-cadence">{a.cadence}</span>
-            </div>
-            <h2 className="agx-card-name">{a.name}</h2>
-            <p className="agx-card-blurb">{a.blurb}</p>
-            <div className="agx-card-connects">
-              <span className="agx-card-connects-lbl">Connects to</span>
-              <div className="agx-chips">
-                {a.connects.map((c) => <span key={c} className="agx-chip">{c}</span>)}
+      <section className="agx-groups" aria-label="Available agents">
+        {cats.map((cat) => {
+          const items = agents.filter((a) => a.category === cat);
+          return (
+            <div className="agx-group" key={cat}>
+              <div className="agx-group-head">
+                <span>{cat}</span>
+                <span>{items.length} {items.length === 1 ? "agent" : "agents"}</span>
+              </div>
+              <div className="agx-group-rows">
+                {items.map((a) => (
+                  <Link key={a.id} to={a.href} className="agx-row" data-reveal>
+                    <div className="agx-row-logos"><ConnectorLogos items={a.connects} /></div>
+                    <div className="agx-row-main">
+                      <h2>{a.name}</h2>
+                      <p>{a.blurb}</p>
+                    </div>
+                    <div className="agx-row-right">
+                      <span className="agx-row-cadence">{a.cadence}</span>
+                      <span className="m2-text-link agx-row-cta">Run the demo <span aria-hidden="true">→</span></span>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
-            <span className="agx-card-cta">Run the live demo <span aria-hidden="true">→</span></span>
-          </Link>
-        ))}
+          );
+        })}
       </section>
 
       <section className="agx-gallery-foot">

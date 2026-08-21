@@ -20,7 +20,7 @@ import "./agent-demo.css";
 const HREF = "/agents/industry-brief";
 
 const SPEC: AgentSpec[] = [
-  { label: "Connects to", value: "Trade sources · your base file" },
+  { label: "Connects to", value: "Trade sources · Your base file" },
   { label: "Runs", value: "Nightly" },
   { label: "You approve", value: "What becomes an action" },
   { label: "Setup", value: "About a week" },

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { ConnectorRow } from "./connectors";
 
 /* =========================================================================
    Agent-deployment demo template
@@ -73,7 +74,11 @@ export function AgentDemoHero({
           {spec.map((s) => (
             <div className="agx-spec-row" key={s.label}>
               <dt>{s.label}</dt>
-              <dd>{s.value}</dd>
+              <dd>
+                {s.label === "Connects to" && typeof s.value === "string"
+                  ? <ConnectorRow items={s.value.split(" · ")} />
+                  : s.value}
+              </dd>
             </div>
           ))}
         </dl>
