@@ -167,7 +167,7 @@ export default function MadronaV2InventoryNote() {
                   ))}
                 </div>
               </Figure>
-              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/agents/month-end-close">Try the month-end close agent, live <span aria-hidden="true">→</span></Link></p>
+              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/tools/month-end-close">Try the month-end close agent, live <span aria-hidden="true">→</span></Link></p>
             </Entry>
 
             <Entry
@@ -179,7 +179,7 @@ export default function MadronaV2InventoryNote() {
               <Prose>
                 <p>This might be the fastest payback on the list. QuickBooks&rsquo; <Ext href="https://quickbooks.intuit.com/payments-agent/">Payments agent</Ext> drafts personalized reminders for overdue invoices and learns which payers respond to what; Intuit claims invoices get paid noticeably sooner. <Ext href={CLAUDE_PLUGIN}>Claude&rsquo;s invoice chaser</Ext> does the same job across QuickBooks and email, queueing reminders for your approval rather than sending on its own.</p>
               </Prose>
-              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/agents/invoice-chasing">Try the invoice-chasing agent, live <span aria-hidden="true">→</span></Link></p>
+              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/tools/invoice-chasing">Try the invoice-chasing agent, live <span aria-hidden="true">→</span></Link></p>
             </Entry>
 
             <Entry
@@ -213,7 +213,7 @@ export default function MadronaV2InventoryNote() {
               <Prose>
                 <p>The drafting, yes. <Ext href="https://workspace.google.com/solutions/ai/">Gemini&rsquo;s &ldquo;Help me write&rdquo;</Ext> is now included in base Google Workspace subscriptions and drafts replies from the thread. <Ext href="https://www.microsoft.com/en-us/microsoft-365/copilot/business">Microsoft&rsquo;s Copilot</Ext> does the same in Outlook on its small business plans. If you sell on Shopify, Inbox suggests answers to customer chats from your store&rsquo;s own information, part of <Ext href="https://www.shopify.com/magic">Shopify Magic</Ext>.</p>
               </Prose>
-              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/agents/customer-inbox">Try the customer-email agent, live <span aria-hidden="true">→</span></Link></p>
+              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/tools/customer-inbox">Try the customer-email agent, live <span aria-hidden="true">→</span></Link></p>
             </Entry>
 
             <Entry

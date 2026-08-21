@@ -16,7 +16,7 @@ import "./agent-demo.css";
 // reminders in the owner's voice, and queues them for approval — never sends on
 // its own. The "who gets grace" beat is the human-in-the-loop point.
 
-const HREF = "/agents/invoice-chasing";
+const HREF = "/tools/invoice-chasing";
 
 const SPEC: AgentSpec[] = [
   { label: "Connects to", value: "QuickBooks · Email · Stripe" },
@@ -96,7 +96,7 @@ export default function AgentInvoiceChasing() {
   return (
     <main className="m2 art agentx-page">
       <LabMeta title="Invoice-chasing agent — a working demo · Madrona Product Studio" />
-      <M2Nav active="agents" />
+      <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Bookkeeping & finance"
@@ -141,7 +141,7 @@ export default function AgentInvoiceChasing() {
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/agents">See the other agents <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>

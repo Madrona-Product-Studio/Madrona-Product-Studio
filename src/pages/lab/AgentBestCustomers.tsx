@@ -17,7 +17,7 @@ import "./agent-demo.css";
 // hands the owner the harder question of what to do about it. The analysis is
 // instant; the decision isn't.
 
-const HREF = "/agents/best-customers";
+const HREF = "/tools/best-customers";
 
 const SPEC: AgentSpec[] = [
   { label: "Connects to", value: "Square · QuickBooks · Shopify" },
@@ -98,7 +98,7 @@ export default function AgentBestCustomers() {
   return (
     <main className="m2 art agentx-page">
       <LabMeta title="Best-customers agent — a working demo · Madrona Product Studio" />
-      <M2Nav active="agents" />
+      <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Sales & intelligence"
@@ -143,7 +143,7 @@ export default function AgentBestCustomers() {
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/agents">See the other agents <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>

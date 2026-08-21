@@ -16,7 +16,7 @@ import "./agent-demo.css";
 // questions in the owner's voice, and refuses to touch anything sensitive.
 // The upset customer always routes to the human — that boundary is the point.
 
-const HREF = "/agents/customer-inbox";
+const HREF = "/tools/customer-inbox";
 
 const SPEC: AgentSpec[] = [
   { label: "Connects to", value: "Gmail / Inbox · your FAQ" },
@@ -94,7 +94,7 @@ export default function AgentCustomerInbox() {
   return (
     <main className="m2 art agentx-page">
       <LabMeta title="Customer-email agent — a working demo · Madrona Product Studio" />
-      <M2Nav active="agents" />
+      <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Customer service"
@@ -139,7 +139,7 @@ export default function AgentCustomerInbox() {
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/agents">See the other agents <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>

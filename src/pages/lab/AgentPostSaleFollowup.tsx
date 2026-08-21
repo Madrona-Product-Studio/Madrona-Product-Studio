@@ -17,7 +17,7 @@ import "./agent-demo.css";
 // own. The service issue wearing a review's clothes is handed back to the human;
 // that boundary is the point.
 
-const HREF = "/agents/post-sale-followup";
+const HREF = "/tools/post-sale-followup";
 
 const SPEC: AgentSpec[] = [
   { label: "Connects to", value: "Square · Shopify · Email" },
@@ -97,7 +97,7 @@ export default function AgentPostSaleFollowup() {
   return (
     <main className="m2 art agentx-page">
       <LabMeta title="Post-sale follow-up agent — a working demo · Madrona Product Studio" />
-      <M2Nav active="agents" />
+      <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Customer & retention"
@@ -142,7 +142,7 @@ export default function AgentPostSaleFollowup() {
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/agents">See the other agents <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>

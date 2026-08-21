@@ -18,15 +18,15 @@ export default function AgentsGallery() {
 
   return (
     <main className="m2 agx-gallery-page">
-      <LabMeta title="Agents you can deploy · Madrona Product Studio" />
-      <M2Nav active="agents" />
+      <LabMeta title="Tools we deploy for your business · Madrona Product Studio" />
+      <M2Nav active="tools" />
 
       <section className="agx-gallery-hero">
-        <p className="m2-kicker">Agents</p>
-        <h1>Agents you can actually deploy.</h1>
+        <p className="m2-kicker">Tools</p>
+        <h1>Tools we build and deploy for your business.</h1>
         <p className="agx-gallery-lede">
-          Not a demo reel of what AI might do someday. These are agents we build
-          and run ourselves — each on a real workflow, each stopping for a human
+          Not a demo reel of what AI might do someday. Each of these is an agent
+          we build and run ourselves — on a real workflow, stopping for a human
           wherever it touches money, customers, or judgment. Run any of them
           right here on Berry Good, our demonstration farm. When one fits, we
           deploy it on your operation and leave you able to run it yourself.

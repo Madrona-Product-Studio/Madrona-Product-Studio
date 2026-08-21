@@ -1,4 +1,8 @@
 {
+  "redirects": [
+    { "source": "/agents", "destination": "/tools", "permanent": true },
+    { "source": "/agents/:slug", "destination": "/tools/:slug", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]

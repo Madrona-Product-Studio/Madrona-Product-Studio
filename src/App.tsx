@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { ScrollToTop, PageFade } from "./components/RouteMotion";
 import Layout from "./components/Layout";
 import CaseStudyPage from "./pages/CaseStudyPage";
@@ -31,6 +31,12 @@ import AgentReviewRequests from "./pages/lab/AgentReviewRequests";
 import AgentBestCustomers from "./pages/lab/AgentBestCustomers";
 import AgentContractReview from "./pages/lab/AgentContractReview";
 
+// Old /agents/:slug demo URLs → /tools/:slug (client-side; vercel.json 301s too).
+function AgentsToTools() {
+  const { slug } = useParams();
+  return <Navigate to={`/tools/${slug}`} replace />;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -55,19 +61,23 @@ export default function App() {
         <Route path="thinking/solve-the-system-not-the-symptom" element={<MadronaV2SystemNote />} />
         <Route path="thinking/ai-tools-for-small-business" element={<MadronaV2InventoryNote />} />
         <Route path="open" element={<MadronaV2Open />} />
-        {/* Agents — the deployable-agent gallery + one live demo per agent,
-            all built on the AgentConsole engine + agent-deployment template. */}
-        <Route path="agents" element={<AgentsGallery />} />
-        <Route path="agents/month-end-close" element={<AgentMonthEndClose />} />
-        <Route path="agents/invoice-chasing" element={<AgentInvoiceChasing />} />
-        <Route path="agents/industry-brief" element={<AgentIndustryBrief />} />
-        <Route path="agents/customer-inbox" element={<AgentCustomerInbox />} />
-        <Route path="agents/cash-position" element={<AgentCashPosition />} />
-        <Route path="agents/payroll-planning" element={<AgentPayrollPlanning />} />
-        <Route path="agents/post-sale-followup" element={<AgentPostSaleFollowup />} />
-        <Route path="agents/review-requests" element={<AgentReviewRequests />} />
-        <Route path="agents/best-customers" element={<AgentBestCustomers />} />
-        <Route path="agents/contract-review" element={<AgentContractReview />} />
+        {/* Tools — the deployable-agent gallery + one live demo per agent,
+            all built on the AgentConsole engine + agent-deployment template.
+            Moved from /agents → /tools (2026-08-21); old URLs redirect below. */}
+        <Route path="tools" element={<AgentsGallery />} />
+        <Route path="tools/month-end-close" element={<AgentMonthEndClose />} />
+        <Route path="tools/invoice-chasing" element={<AgentInvoiceChasing />} />
+        <Route path="tools/industry-brief" element={<AgentIndustryBrief />} />
+        <Route path="tools/customer-inbox" element={<AgentCustomerInbox />} />
+        <Route path="tools/cash-position" element={<AgentCashPosition />} />
+        <Route path="tools/payroll-planning" element={<AgentPayrollPlanning />} />
+        <Route path="tools/post-sale-followup" element={<AgentPostSaleFollowup />} />
+        <Route path="tools/review-requests" element={<AgentReviewRequests />} />
+        <Route path="tools/best-customers" element={<AgentBestCustomers />} />
+        <Route path="tools/contract-review" element={<AgentContractReview />} />
+        {/* Old /agents URLs → /tools (belt-and-suspenders with vercel.json 301s). */}
+        <Route path="agents" element={<Navigate to="/tools" replace />} />
+        <Route path="agents/:slug" element={<AgentsToTools />} />
         {/* Old /pov URLs redirect into /thinking. */}
         <Route path="pov" element={<Navigate to="/thinking" replace />} />
         <Route path="pov/under-the-hood" element={<Navigate to="/thinking/under-the-hood" replace />} />

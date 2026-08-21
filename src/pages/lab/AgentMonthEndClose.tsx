@@ -19,7 +19,7 @@ import "./agent-demo.css";
 // runs. Built on the AgentConsole engine + the agent-deployment template so
 // every gallery entry stays consistent.
 
-const HREF = "/agents/month-end-close";
+const HREF = "/tools/month-end-close";
 
 const ICON = {
   key: "M15 9a4 4 0 1 0-5.6 3.7L4 18v2h3v-2h2v-2h2l1.3-1.3A4 4 0 0 0 15 9Z",
@@ -168,7 +168,7 @@ export default function AgentMonthEndClose() {
   return (
     <main className="m2 art agentx-page">
       <LabMeta title="Month-end close agent — a working demo · Madrona Product Studio" />
-      <M2Nav active="agents" />
+      <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Bookkeeping & finance"
@@ -214,7 +214,7 @@ export default function AgentMonthEndClose() {
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/agents">See the other agents <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>

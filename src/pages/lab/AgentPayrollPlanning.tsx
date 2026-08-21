@@ -21,7 +21,7 @@ import "./agent-demo.css";
 // Built on the AgentConsole engine + the agent-deployment template so every
 // gallery entry stays consistent.
 
-const HREF = "/agents/payroll-planning";
+const HREF = "/tools/payroll-planning";
 
 const Glyph = ({ d }: { d: string }) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
@@ -118,7 +118,7 @@ export default function AgentPayrollPlanning() {
   return (
     <main className="m2 art agentx-page">
       <LabMeta title="Payroll-planning agent — a working demo · Madrona Product Studio" />
-      <M2Nav active="agents" />
+      <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Bookkeeping & finance"
@@ -165,7 +165,7 @@ export default function AgentPayrollPlanning() {
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/agents">See the other agents <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>

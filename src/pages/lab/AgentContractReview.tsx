@@ -17,7 +17,7 @@ import "./agent-demo.css";
 // and — crucially — points to the one clause worth a lawyer. A sharp first
 // read, not a substitute for counsel.
 
-const HREF = "/agents/contract-review";
+const HREF = "/tools/contract-review";
 
 const SPEC: AgentSpec[] = [
   { label: "Connects to", value: "PDF upload · Email" },
@@ -95,7 +95,7 @@ export default function AgentContractReview() {
   return (
     <main className="m2 art agentx-page">
       <LabMeta title="Contract-review agent — a working demo · Madrona Product Studio" />
-      <M2Nav active="agents" />
+      <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Admin & legal"
@@ -140,7 +140,7 @@ export default function AgentContractReview() {
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/agents">See the other agents <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>

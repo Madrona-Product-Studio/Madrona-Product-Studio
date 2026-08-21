@@ -17,7 +17,7 @@ import "./agent-demo.css";
 // ones that come in. It asks; it never fakes — the critical review always goes
 // to the human, and no ask ever carries an incentive.
 
-const HREF = "/agents/review-requests";
+const HREF = "/tools/review-requests";
 
 const SPEC: AgentSpec[] = [
   { label: "Connects to", value: "Square · Google Business · Email" },
@@ -96,7 +96,7 @@ export default function AgentReviewRequests() {
   return (
     <main className="m2 art agentx-page">
       <LabMeta title="Review-requests agent — a working demo · Madrona Product Studio" />
-      <M2Nav active="agents" />
+      <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Customer & retention"
@@ -141,7 +141,7 @@ export default function AgentReviewRequests() {
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/agents">See the other agents <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>
