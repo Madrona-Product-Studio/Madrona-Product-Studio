@@ -191,6 +191,7 @@ export default function MadronaV2InventoryNote() {
               <Prose>
                 <p>If you cannot answer that without opening three tabs, you are who this entry is for. <Ext href={CLAUDE_TUTORIAL}>Claude&rsquo;s business pulse</Ext> puts cash position, sales trends, pipeline, and the week&rsquo;s commitments on one page, with a start-of-week brief and your top three to-dos. QuickBooks runs cash-flow shortage alerts with suggested actions.</p>
               </Prose>
+              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/tools/cash-position">Try the cash-position agent, live <span aria-hidden="true">→</span></Link></p>
             </Entry>
 
             <Entry
@@ -202,6 +203,7 @@ export default function MadronaV2InventoryNote() {
               <Prose>
                 <p>It can handle the planning half. <Ext href={CLAUDE_TUTORIAL}>Claude&rsquo;s payroll workflow</Ext> settles your QuickBooks cash position against PayPal settlements, forecasts 30 days ahead, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing sends or moves money without your approval, which is the feature, not a limitation.</p>
               </Prose>
+              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/tools/payroll-planning">Try the payroll-planning agent, live <span aria-hidden="true">→</span></Link></p>
             </Entry>
 
             <Entry
@@ -225,6 +227,7 @@ export default function MadronaV2InventoryNote() {
               <Prose>
                 <p>It makes a good first reader. <Ext href={CLAUDE_PLUGIN}>Claude&rsquo;s contract reviewer</Ext> flags key terms and risks and answers questions about what you are agreeing to. DocuSign has serious contract AI under its <Ext href="https://www.docusign.com/products/platform/ai">Iris</Ext> brand, but note the fine print: it lives on their contract-management plans, not the eSignature plan most small businesses actually have.</p>
               </Prose>
+              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/tools/contract-review">Try the contract-review agent, live <span aria-hidden="true">→</span></Link></p>
             </Entry>
             <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses run smoother <span aria-hidden="true">→</span></Link></p>
           </ArticleSection>
@@ -283,6 +286,7 @@ export default function MadronaV2InventoryNote() {
               <Prose>
                 <p>The machinery is built in. <Ext href="https://squareup.com/us/en/software/marketing">Square&rsquo;s Marketing automations</Ext> run welcome, win-back, lapsed-customer, and abandoned-cart campaigns on its marketing plans, with AI-drafted copy. Shopify Email does the same for stores. <Ext href="https://www.hubspot.com/products/artificial-intelligence">HubSpot&rsquo;s</Ext> free tier includes an AI assistant for drafting; its autonomous follow-up agents sit on paid tiers.</p>
               </Prose>
+              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/tools/post-sale-followup">Try the follow-up agent, live <span aria-hidden="true">→</span></Link></p>
             </Entry>
 
             <Entry
@@ -294,6 +298,7 @@ export default function MadronaV2InventoryNote() {
               <Prose>
                 <p>You should let it, because the ask is what nobody gets around to. <Ext href="https://squareup.com/help/us/en/article/8418-collect-google-reviews">Square collects Google reviews</Ext> automatically by email or text after a sale, triggered by things like a customer&rsquo;s third purchase, once your Google Business Profile is synced. On the other side, <Ext href="https://blog.google/innovation-and-ai/products/gemini-app/gemini-features-for-businesses/">connecting your Business Profile to the Gemini app</Ext> lets it draft review replies in your voice and flag unanswered questions.</p>
               </Prose>
+              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/tools/review-requests">Try the review-requests agent, live <span aria-hidden="true">→</span></Link></p>
             </Entry>
 
             <Entry
@@ -305,6 +310,7 @@ export default function MadronaV2InventoryNote() {
               <Prose>
                 <p>The analysis is the instant part. <Ext href={CLAUDE_PLUGIN}>Claude&rsquo;s margin analyzer</Ext> works the numbers through your QuickBooks data. <Ext href="https://squareup.com/us/en/ai">Square AI</Ext> answers plain questions over your own sales history: best sellers, margins by location, what changed this month. <Ext href="https://www.shopify.com/sidekick">Shopify&rsquo;s Sidekick</Ext> does the same for stores and takes admin actions you approve.</p>
               </Prose>
+              <p className="art-inv-doorlink"><Link className="m2-text-link" to="/tools/best-customers">Try the best-customers agent, live <span aria-hidden="true">→</span></Link></p>
             </Entry>
             <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses keep customers coming back <span aria-hidden="true">→</span></Link></p>
           </ArticleSection>

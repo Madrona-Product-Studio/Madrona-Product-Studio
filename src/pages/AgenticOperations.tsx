@@ -9,18 +9,21 @@ const HELM_DEMO_URL = "https://helm.day";
 // The Berry Good cast: each agent is one beat for the farm, one beat for
 // the reader's business. Berry Good is openly ours — a demonstration
 // business, never implied to be a client.
-const berryGoodCast = [
+const berryGoodCast: { lead: string; body: string; to?: string }[] = [
   {
     lead: "The industry agent.",
     body: "Gathers the latest agriculture reports, prices, and news overnight, and hands the farm a short what-changed brief. Pointed at your trade instead, it's the cheapest strategy work you'll ever buy.",
+    to: "/tools/industry-brief",
   },
   {
     lead: "The invoicing agent.",
     body: "Drafts the invoices, sends them, and chases the late ones politely. The same agent runs on any business that bills.",
+    to: "/tools/invoice-chasing",
   },
   {
     lead: "The customer service agent.",
     body: "First answers on hours, availability, and orders, in the farm's own voice, with a human one message away. The same agent sits on any inbox.",
+    to: "/tools/customer-inbox",
   },
   {
     lead: "The ordering surface.",
@@ -138,6 +141,13 @@ export default function AgenticOperations() {
             <li key={item.lead} className="leading-relaxed">
               <span className="font-medium text-ink">{item.lead}</span>{" "}
               <span className="text-ink70">{item.body}</span>
+              {item.to && (
+                <>{" "}
+                  <Link to={item.to} className="font-medium text-madrona hover:text-madrona-dark whitespace-nowrap transition-colors">
+                    Run the demo &rarr;
+                  </Link>
+                </>
+              )}
             </li>
           ))}
         </ul>
