@@ -100,15 +100,16 @@ CTA system proved itself across every V2 page; Charlie sign-off
 
 ### Typography
 
-- **Display:** Bricolage Grotesque — used for the `h1` / page-title moment,
+- **Display:** Hanken Grotesk — used for the `h1` / page-title moment,
   section statements, and occasional editorial emphasis. Weight 500.
-  (Replaced Fraunces 2026-08-16; Charlie's pick. The CSS token is still
-  *named* `--font-serif` to avoid churn, but it now points at Bricolage —
-  the name is a misnomer, not a serif.)
+  (Replaced Bricolage Grotesque 2026-08-20; Charlie's pick. Bricolage had
+  replaced Fraunces 2026-08-16. The CSS token is still *named* `--font-serif`
+  to avoid churn, but it points at the display grotesque — the name is a
+  misnomer, not a serif.)
 - **Sans (everything else):** Inter — `h2`–`h4` (weight 600, tight tracking),
   body copy, buttons, UI labels, meta text. **Nav:** Figtree.
 
-This is a hybrid: the `h1` carries the Bricolage display voice while `h2`–`h4`
+This is a hybrid: the `h1` carries the Hanken display voice while `h2`–`h4`
 stay tight, near-solid-leading Inter (the swiss move). Don't swap in
 alternative fonts for variety — stick to these families, vary weight and size.
 
