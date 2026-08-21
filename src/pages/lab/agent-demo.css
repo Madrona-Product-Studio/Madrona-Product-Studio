@@ -5,24 +5,12 @@
    (--art-ink-panel warm near-black, bark accent), so it reads as native. */
 
 /* =========================================================================
-   Agent gallery — the /agents index.
+   Tools gallery — the /tools index. Lives inside the shared m2-ab4 sections
+   (masthead + closing rail come from madrona-v2.css); this styles the grouped
+   panel rows only.
    ========================================================================= */
-.agx-gallery-page > section { margin: 0 auto; max-width: 1120px; padding: 0 clamp(20px, 5vw, 40px); }
-
-.agx-gallery-hero { padding: clamp(40px, 5vw, 68px) 0 clamp(30px, 3.5vw, 44px); }
-.agx-gallery-hero h1 {
-  font-family: var(--font-serif);
-  font-size: clamp(2.3rem, 5vw, 3.4rem);
-  letter-spacing: -.02em; line-height: 1.04;
-  margin: 8px 0 22px; max-width: 18ch;
-}
-.agx-gallery-lede { color: var(--ink-soft); font-size: clamp(1.06rem, 1.5vw, 1.24rem); line-height: 1.62; margin: 0; max-width: 60ch; }
-.agx-gallery-principles { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 28px; }
-.agx-gallery-principles span { align-items: center; color: var(--ink-soft); display: inline-flex; font-size: .9rem; font-weight: 550; gap: 9px; }
-.agx-gallery-principles i { background: var(--bark); border-radius: 50%; flex: none; height: 7px; width: 7px; }
-
 /* Grouped panel rows — category header, then compact surfaced rows. */
-.agx-groups { padding-top: clamp(18px, 3vw, 30px) !important; padding-bottom: clamp(28px, 4vw, 44px) !important; }
+.agx-groups { padding: 8px 0 clamp(20px, 3vw, 36px); }
 .agx-group { margin-bottom: clamp(26px, 3.5vw, 38px); }
 .agx-group:last-child { margin-bottom: 0; }
 .agx-group-head { align-items: baseline; border-bottom: 2px solid var(--ink); display: flex; gap: 12px; justify-content: space-between; margin-bottom: 12px; padding-bottom: 10px; }
@@ -50,12 +38,6 @@
 .agx-row-cta { margin-top: 0; }
 .agx-groups .agx-connlogo { height: 32px; width: 32px; }
 .agx-groups .agx-connlogo .agx-conn-svg { height: 16px; width: 16px; }
-
-/* Closing block */
-.agx-gallery-foot { padding-top: clamp(24px, 3vw, 40px) !important; padding-bottom: clamp(44px, 6vw, 72px) !important; }
-.agx-gallery-foot-inner { border-top: 1px solid var(--art-hair, rgba(26,23,20,.14)); padding-top: clamp(32px, 4vw, 48px); }
-.agx-gallery-foot h2 { font-family: var(--font-serif); font-size: clamp(1.7rem, 3vw, 2.3rem); letter-spacing: -.01em; margin: 0 0 16px; max-width: 20ch; }
-.agx-gallery-foot p { color: var(--ink-soft); font-size: 1.06rem; line-height: 1.62; margin: 0; max-width: 58ch; }
 
 @media (max-width: 720px) {
   .agx-row { grid-template-columns: auto 1fr; gap: 10px 14px; }
