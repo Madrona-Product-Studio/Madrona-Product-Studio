@@ -21,11 +21,11 @@
 .art-wrap { margin: 0 auto; max-width: 1120px; padding: 0 clamp(20px, 5vw, 40px); }
 
 /* ---- Header (split: title left, illustration right) -------------------- */
-.art-head { border-top: 1px solid var(--art-hair); padding: clamp(44px, 5.5vw, 72px) 0 0; }
+.art-head { border-top: 1px solid var(--art-hair); padding: clamp(36px, 4.5vw, 56px) 0 0; }
 .art-head-split {
   align-items: center;
   display: grid;
-  gap: clamp(36px, 5vw, 68px);
+  gap: clamp(30px, 4vw, 58px);
   grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
 }
 .art-head-split.no-visual { display: block; }
@@ -33,7 +33,7 @@
 .art-head-lead .m2-kicker { margin: 0; }
 .art-kicker-row { align-items: center; display: flex; gap: 10px; }
 
-.art-metaline { color: var(--muted); font-size: .82rem; letter-spacing: -.01em; margin: 15px 0 0; }
+.art-metaline { color: var(--muted); font-size: .82rem; letter-spacing: -.01em; margin: 11px 0 0; }
 .art-metaline a, .art-metaline b { color: var(--ink-soft); font-weight: 600; }
 .art-metaline a:hover { color: var(--bark-dark); }
 .art-metaline .dot { color: var(--faint, #b8b0a2); margin: 0 8px; }
@@ -47,7 +47,7 @@
   font-weight: 540;
   letter-spacing: -.014em;
   line-height: 1.1;
-  margin: clamp(20px, 2.2vw, 30px) 0 0;
+  margin: clamp(16px, 1.8vw, 22px) 0 0;
   max-width: 17ch;
 }
 /* Scoped with .art so the title→standfirst gap beats `.m2 p { margin-top: 0 }`. */
@@ -55,8 +55,8 @@
   color: var(--ink-soft);
   font-size: clamp(1.06rem, 1.4vw, 1.2rem);
   line-height: 1.55;
-  margin: clamp(34px, 4vw, 52px) 0 0;
-  max-width: 44ch;
+  margin: clamp(16px, 1.6vw, 20px) 0 0;
+  max-width: 42ch;
 }
 .art-head-split.no-visual .art-title { max-width: 24ch; }
 .art-head-split.no-visual .art-standfirst { max-width: 60ch; }
