@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
 import { CAL_LINK, BOOKING_URL } from "../../data/booking";
 
-type NavKey = "apps" | "consulting" | "pov" | "open" | "about";
+type NavKey = "apps" | "agents" | "consulting" | "pov" | "open" | "about";
 
 // Direct booking link (matches bookHref() without pulling the Cal embed into
 // the global nav bundle — booking.ts is just string constants).
@@ -13,6 +13,7 @@ const SCHEDULE_HREF = CAL_LINK ? `https://cal.com/${CAL_LINK}` : (BOOKING_URL ??
 // Nav links stay ink; only the active page carries the bark accent.
 const LINKS: { href: string; label: string; key: NavKey; primary?: boolean }[] = [
   { href: "/apps", label: "Our products", key: "apps" },
+  { href: "/agents", label: "Agents", key: "agents" },
   { href: "/consulting", label: "How we help", key: "consulting" },
   { href: "/thinking", label: "Thinking", key: "pov" },
   // "Open" is out of the nav while the /open page gets redesigned (2026-08-15).

@@ -19,6 +19,17 @@ import MadronaV2Open from "./pages/lab/MadronaV2Open";
 import MadronaSystem from "./pages/lab/MadronaSystem";
 import SignalBrainLab from "./pages/lab/SignalBrainLab";
 import SignalAssessment from "./pages/lab/SignalAssessment";
+import AgentsGallery from "./pages/lab/AgentsGallery";
+import AgentMonthEndClose from "./pages/lab/AgentMonthEndClose";
+import AgentInvoiceChasing from "./pages/lab/AgentInvoiceChasing";
+import AgentIndustryBrief from "./pages/lab/AgentIndustryBrief";
+import AgentCustomerInbox from "./pages/lab/AgentCustomerInbox";
+import AgentCashPosition from "./pages/lab/AgentCashPosition";
+import AgentPayrollPlanning from "./pages/lab/AgentPayrollPlanning";
+import AgentPostSaleFollowup from "./pages/lab/AgentPostSaleFollowup";
+import AgentReviewRequests from "./pages/lab/AgentReviewRequests";
+import AgentBestCustomers from "./pages/lab/AgentBestCustomers";
+import AgentContractReview from "./pages/lab/AgentContractReview";
 
 export default function App() {
   return (
@@ -44,6 +55,19 @@ export default function App() {
         <Route path="thinking/solve-the-system-not-the-symptom" element={<MadronaV2SystemNote />} />
         <Route path="thinking/ai-tools-for-small-business" element={<MadronaV2InventoryNote />} />
         <Route path="open" element={<MadronaV2Open />} />
+        {/* Agents — the deployable-agent gallery + one live demo per agent,
+            all built on the AgentConsole engine + agent-deployment template. */}
+        <Route path="agents" element={<AgentsGallery />} />
+        <Route path="agents/month-end-close" element={<AgentMonthEndClose />} />
+        <Route path="agents/invoice-chasing" element={<AgentInvoiceChasing />} />
+        <Route path="agents/industry-brief" element={<AgentIndustryBrief />} />
+        <Route path="agents/customer-inbox" element={<AgentCustomerInbox />} />
+        <Route path="agents/cash-position" element={<AgentCashPosition />} />
+        <Route path="agents/payroll-planning" element={<AgentPayrollPlanning />} />
+        <Route path="agents/post-sale-followup" element={<AgentPostSaleFollowup />} />
+        <Route path="agents/review-requests" element={<AgentReviewRequests />} />
+        <Route path="agents/best-customers" element={<AgentBestCustomers />} />
+        <Route path="agents/contract-review" element={<AgentContractReview />} />
         {/* Old /pov URLs redirect into /thinking. */}
         <Route path="pov" element={<Navigate to="/thinking" replace />} />
         <Route path="pov/under-the-hood" element={<Navigate to="/thinking/under-the-hood" replace />} />

@@ -150,6 +150,14 @@ export default function AgenticOperations() {
             capable.
           </p>
         </div>
+        <div className="mt-8">
+          <Link
+            to="/agents"
+            className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors"
+          >
+            See these agents run &rarr;
+          </Link>
+        </div>
       </section>
 
       {/* Anatomy of one agent */}
