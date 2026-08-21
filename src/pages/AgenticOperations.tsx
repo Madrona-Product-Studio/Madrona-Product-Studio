@@ -152,7 +152,7 @@ export default function AgenticOperations() {
         </div>
         <div className="mt-8">
           <Link
-            to="/agents"
+            to="/tools"
             className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors"
           >
             See these agents run &rarr;

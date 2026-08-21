@@ -18,7 +18,7 @@ import "./agent-demo.css";
 // It reads; it never moves money. Built on the AgentConsole engine + the
 // agent-deployment template so every gallery entry stays consistent.
 
-const HREF = "/agents/cash-position";
+const HREF = "/tools/cash-position";
 
 const SPEC: AgentSpec[] = [
   { label: "Connects to", value: "QuickBooks · Bank feeds · Stripe" },
@@ -102,7 +102,7 @@ export default function AgentCashPosition() {
   return (
     <main className="m2 art agentx-page">
       <LabMeta title="Cash-position agent — a working demo · Madrona Product Studio" />
-      <M2Nav active="agents" />
+      <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Bookkeeping & finance"
@@ -147,7 +147,7 @@ export default function AgentCashPosition() {
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/agents">See the other agents <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>

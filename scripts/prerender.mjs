@@ -158,67 +158,67 @@ const pages = {
 
   // Agents — the deployable-agent gallery + one live demo per agent. Each demo
   // page is its own high-intent landing page ("AI month-end close QuickBooks").
-  '/agents': {
-    title: 'Agents you can deploy · Madrona Product Studio',
-    description: 'Interactive demos of AI agents you can deploy on a real business: month-end close, invoice chasing, industry intelligence, customer email. Each stops for a human wherever it touches money or customers. Run them on Berry Good, our demonstration farm.',
-    h1: 'Agents you can actually deploy.',
-    body: 'A gallery of AI agents Madrona builds and runs on real business workflows, each one stopping for a human wherever it touches money, customers, or judgment. Month-end close, invoice chasing, industry intelligence, and customer email: run any of them live on Berry Good, our demonstration farm, then we deploy it on your operation and leave you able to run it yourself. Start with one workflow, a human stays in charge, and it is yours to keep with no lock-in.',
+  '/tools': {
+    title: 'Tools we deploy for your business · Madrona Product Studio',
+    description: 'AI agents Madrona builds and deploys on real business workflows: month-end close, invoice chasing, cash position, payroll, customer email, follow-up, reviews, industry intelligence, best customers, contract review. Each stops for a human wherever it touches money or customers. Run them live on Berry Good, our demonstration farm.',
+    h1: 'Tools we build and deploy for your business.',
+    body: 'A gallery of AI agent tools Madrona builds and runs on real business workflows, each one stopping for a human wherever it touches money, customers, or judgment. Month-end close, invoice chasing, cash position, payroll planning, customer email, post-sale follow-up, review requests, industry intelligence, best customers, and contract review: run any of them live on Berry Good, our demonstration farm, then we deploy it on your operation and leave you able to run it yourself. Start with one workflow, a human stays in charge, and it is yours to keep with no lock-in.',
   },
-  '/agents/month-end-close': {
+  '/tools/month-end-close': {
     title: 'Month-end close agent (QuickBooks) — a working demo · Madrona Product Studio',
     description: 'Watch an AI month-end close run: it reconciles QuickBooks against Square and PayPal, flags mismatches for your approval, writes a plain-English P&L, and packages an accountant-ready close. Every step that touches money stops for you.',
     h1: 'Month-end close.',
     body: 'An AI agent that runs your month-end close: it connects to QuickBooks, Square, and PayPal, reconciles every transaction against the settlements, flags anything unmatched for your review, then writes a plain-English profit-and-loss narrative and packages an accountant-ready close packet. Every step that touches money waits for your approval. Run the interactive demo on Berry Good Berry Farm, our demonstration business. What it needs: books that are roughly current and QuickBooks connected once. Where it ends: the mismatches it flags still need your call, and it does not replace the person who owns the numbers. Setup takes about a week, then it is yours to keep.',
   },
-  '/agents/invoice-chasing': {
+  '/tools/invoice-chasing': {
     title: 'Invoice-chasing agent (QuickBooks) — a working demo · Madrona Product Studio',
     description: 'An AI agent that watches for overdue invoices and drafts a polite reminder for each in your voice, queued for your approval. You decide who gets grace; it never sends on its own. Try the live demo.',
     h1: 'Invoice chasing.',
     body: 'An AI agent that chases overdue invoices: it watches your receivables in QuickBooks, drafts a polite reminder for each overdue account in your own voice, and queues them for your approval — it never sends on its own. You decide who gets a nudge and who gets grace. Run the interactive demo on Berry Good Berry Farm, our demonstration business. What it needs: invoices actually issued from the system, and a few lines about your voice. Where it ends: the good customer who is late is a relationship decision, not a workflow. Connects to QuickBooks, email, and Stripe; runs daily; setup takes a few days.',
   },
-  '/agents/industry-brief': {
+  '/tools/industry-brief': {
     title: 'Industry-intelligence agent — a working demo · Madrona Product Studio',
     description: 'An AI agent that reads your industry’s reports, prices, and news overnight, compares them to a base file, and briefs you on what actually changed — each signal with a suggested next move. Try the live demo.',
     h1: 'Industry intelligence.',
     body: 'An AI agent that runs industry and competitive intelligence: overnight it reads your trade’s reports, prices, competitors, and news, compares everything against a base file of what you already know, and hands you a short brief of what actually changed — a brief, not a feed — with each signal attached to a suggested next move. Run the interactive demo on Berry Good Berry Farm, our demonstration business. What it needs: a base file worth comparing against, which we write with you. Where it ends: it surfaces what moved and suggests a move, but the call stays yours. One pattern, any industry; runs nightly; setup takes about a week.',
   },
-  '/agents/customer-inbox': {
+  '/tools/customer-inbox': {
     title: 'Customer-email agent — a working demo · Madrona Product Studio',
     description: 'An AI agent that drafts first answers to routine customer questions in your voice — hours, availability, orders — and holds anything sensitive for you. The upset customer always comes to you. Try the live demo.',
     h1: 'Customer email.',
     body: 'An AI agent that handles routine customer email: it reads new messages, drafts first answers to the routine ones — hours, availability, orders — in your own voice from your FAQ, and holds anything sensitive for you. Every reply waits for your approval before it sends, and the upset customer always routes to you. Run the interactive demo on Berry Good Berry Farm, our demonstration business. What it needs: written answers to draw from, your policies and hours and return rules. Where it ends: the message that needs a human, you send yourself. Connects to Gmail or your inbox and your FAQ; runs continuously; setup takes a few days.',
   },
-  '/agents/cash-position': {
+  '/tools/cash-position': {
     title: 'Cash-position agent (QuickBooks) — a working demo · Madrona Product Studio',
     description: 'An AI agent that pulls every account into one honest cash number, forecasts the next 30 days, and flags shortfalls before they bite. It reads and forecasts; it never moves money. Try the live demo.',
     h1: 'Cash position.',
     body: 'An AI agent that answers what is my cash position right now: it pulls balances from every connected account — bank, cards, Stripe — forecasts the next 30 days of inflows and outflows, and flags a tight week before it becomes a problem, with suggested moves you approve. It reads and forecasts; it never moves money. Run the interactive demo on Berry Good Berry Farm, our demonstration business. What it needs: every account connected, because the pulse is only as honest as what it can see. Where it ends: which invoice to chase and whether to dip into savings stays your call. Connects to QuickBooks, bank feeds, and Stripe; runs every morning; setup takes a few days.',
   },
-  '/agents/payroll-planning': {
+  '/tools/payroll-planning': {
     title: 'Payroll-planning agent — a working demo · Madrona Product Studio',
     description: 'An AI agent that settles your cash against what is landing, forecasts whether payroll clears, and ranks which invoices to chase so it does. It plans; your provider still runs payroll. Try the live demo.',
     h1: 'Payroll planning.',
     body: 'An AI agent that plans payroll: before each run it settles your QuickBooks cash against PayPal settlements, forecasts thirty days to the run, and ranks which overdue invoices to chase so payroll clears comfortably. Nothing moves money without your approval. Run the interactive demo on Berry Good Berry Farm, our demonstration business. What it needs: your accounts connected and a payroll date to plan toward. Where it ends: this is payroll planning — running payroll, taxes, benefits, and compliance stay with your provider. Connects to QuickBooks, PayPal, and Gusto; runs before each payroll; setup takes a few days.',
   },
-  '/agents/post-sale-followup': {
+  '/tools/post-sale-followup': {
     title: 'Post-sale follow-up agent — a working demo · Madrona Product Studio',
     description: 'An AI agent that runs the post-sale follow-up you never get to — thank-yous, check-ins, win-backs for lapsing customers — drafted in your voice and queued for your approval. Try the live demo.',
     h1: 'Post-sale follow-up.',
     body: 'An AI agent that runs customer follow-up: it watches for new sales and for regulars going quiet, drafts the right note for each moment — a thank-you, a check-in, a win-back — in your own voice, and queues them for your approval. It sends nothing on its own, and hands back anything that is really a service issue. Run the interactive demo on Berry Good Berry Farm, our demonstration business. What it needs: a follow-up rhythm you decide once. Where it ends: the tools execute cadence but do not know your regulars. Connects to Square, Shopify, and email; runs daily; setup takes a few days.',
   },
-  '/agents/review-requests': {
+  '/tools/review-requests': {
     title: 'Review-requests agent (Google) — a working demo · Madrona Product Studio',
     description: 'An AI agent that asks the right customers for a review at the right moment in your voice, and drafts your replies. It asks; it never fakes or incentivizes. Try the live demo.',
     h1: 'Review requests.',
     body: 'An AI agent that collects reviews: it finds happy repeat customers worth asking, drafts a review request in your voice — never with an incentive — and drafts replies to the reviews you get, holding the critical one for you to answer yourself. Every ask and reply waits for your approval. Run the interactive demo on Berry Good Berry Farm, our demonstration business. What it needs: your Google Business Profile connected and sales history so it asks the right people. Where it ends: automate the ask, never the review itself, and the unhappy customer is always yours. Connects to Square, Google Business Profile, and email; runs after each sale; setup takes a few days.',
   },
-  '/agents/best-customers': {
+  '/tools/best-customers': {
     title: 'Best-customers agent — a working demo · Madrona Product Studio',
     description: 'An AI agent that works your sales history into a straight answer: who your best customers are, by margin not just spend — then hands you what to do about it. Try the live demo.',
     h1: 'Best customers.',
     body: 'An AI agent that tells you who your best customers are: it pulls your full sales history, ranks customers by margin rather than just spend, and surfaces the findings that matter — the channel that out-earns, the nearly-regulars worth winning back, the highest-margin item — each with a suggested move you approve. Run the interactive demo on Berry Good Berry Farm, our demonstration business. What it needs: your sales history living somewhere it can read. Where it ends: the analysis is instant, but deciding what to build for your best customers is strategy, and that stays yours. Connects to Square, QuickBooks, and Shopify; runs on demand; setup takes a few days.',
   },
-  '/agents/contract-review': {
+  '/tools/contract-review': {
     title: 'Contract-review agent — a working demo · Madrona Product Studio',
     description: 'An AI agent that reads a contract before you sign, flags the terms and risks that matter in plain English, and points you to the one clause worth a lawyer. A sharp first read, not legal advice. Try the live demo.',
     h1: 'Contract review.',
@@ -352,9 +352,9 @@ function generateHtml(route, meta) {
 let count = 0;
 for (const [route, meta] of Object.entries(pages)) {
   // Agent pages get their generated per-agent OG card by slug (see
-  // scripts/make-agent-og.mjs); covers current and future /agents routes.
-  if (route.startsWith('/agents') && !meta.ogImage) {
-    const slug = route === '/agents' ? 'index' : route.slice('/agents/'.length);
+  // scripts/make-agent-og.mjs); covers current and future /tools routes.
+  if (route.startsWith('/tools') && !meta.ogImage) {
+    const slug = route === '/tools' ? 'index' : route.slice('/tools/'.length);
     meta.ogImage = `/og-agents/${slug}.png`;
   }
   const html = generateHtml(route, meta);

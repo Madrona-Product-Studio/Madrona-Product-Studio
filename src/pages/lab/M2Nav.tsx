@@ -3,22 +3,23 @@ import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
 import { CAL_LINK, BOOKING_URL } from "../../data/booking";
 
-type NavKey = "apps" | "agents" | "consulting" | "pov" | "open" | "about";
+type NavKey = "apps" | "tools" | "consulting" | "pov" | "open" | "about";
 
 // Direct booking link (matches bookHref() without pulling the Cal embed into
 // the global nav bundle — booking.ts is just string constants).
 const SCHEDULE_HREF = CAL_LINK ? `https://cal.com/${CAL_LINK}` : (BOOKING_URL ?? "/connect");
 
-// "Our products" leads (proof first), then how we help, then about.
-// Nav links stay ink; only the active page carries the bark accent.
+// Functional labels (2026-08-21): Products · Consulting · Tools · Articles.
+// "Tools" is the deployable-agent gallery (moved from /agents). Nav links stay
+// ink; only the active page carries the bark accent.
 const LINKS: { href: string; label: string; key: NavKey; primary?: boolean }[] = [
-  { href: "/apps", label: "Our products", key: "apps" },
-  { href: "/agents", label: "Agents", key: "agents" },
-  { href: "/consulting", label: "How we help", key: "consulting" },
-  { href: "/thinking", label: "Thinking", key: "pov" },
+  { href: "/apps", label: "Products", key: "apps" },
+  { href: "/consulting", label: "Consulting", key: "consulting" },
+  { href: "/tools", label: "Tools", key: "tools" },
+  { href: "/thinking", label: "Articles", key: "pov" },
   // "Open" is out of the nav while the /open page gets redesigned (2026-08-15).
   // The page stays live — /thinking essays and /consulting still deep-link it.
-  { href: "/about", label: "About Us", key: "about" },
+  { href: "/about", label: "About", key: "about" },
 ];
 
 const ArrowUpRight = () => (
@@ -49,7 +50,7 @@ export default function M2Nav({ active }: { active?: NavKey }) {
             <Link key={l.key} to={l.href} className={l.primary ? "is-primary" : undefined} aria-current={active === l.key ? "page" : undefined}>{l.label}</Link>
           ))}
         </nav>
-        <Link className="m2-button m2-nav-cta" to="/connect">Get in touch</Link>
+        <Link className="m2-button m2-nav-cta" to="/connect">Contact</Link>
         <button className="m2-nav-burger" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
           <span className="m2-burger" aria-hidden="true"><span /><span /><span /></span>
         </button>

@@ -17,7 +17,7 @@ import "./agent-demo.css";
 // actually changed — each signal routed to a next move. The genericizable
 // flagship: one pattern, any industry.
 
-const HREF = "/agents/industry-brief";
+const HREF = "/tools/industry-brief";
 
 const SPEC: AgentSpec[] = [
   { label: "Connects to", value: "Trade sources · Your base file" },
@@ -98,7 +98,7 @@ export default function AgentIndustryBrief() {
   return (
     <main className="m2 art agentx-page">
       <LabMeta title="Industry-intelligence agent — a working demo · Madrona Product Studio" />
-      <M2Nav active="agents" />
+      <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Market intelligence"
@@ -143,7 +143,7 @@ export default function AgentIndustryBrief() {
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/agents">See the other agents <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>
