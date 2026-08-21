@@ -41,16 +41,16 @@
   src: url("/fonts/figtree-latin-wght-normal.woff2") format("woff2");
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
-/* Bricolage Grotesque — the display voice (chosen 2026-08-16, replaced
-   Fraunces). Headings and page-title moments; body/UI stay Inter, nav Figtree.
+/* Hanken Grotesk — the display voice (chosen 2026-08-20, replaced Bricolage
+   Grotesque). Headings and page-title moments; body/UI stay Inter, nav Figtree.
    Falls back through Inter's Arial metrics (both grotesques) until a dedicated
    capsize fallback is generated. */
 @font-face {
-  font-family: "Bricolage Grotesque";
+  font-family: "Hanken Grotesk";
   font-style: normal;
   font-display: optional;
   font-weight: 100 900;
-  src: url("/fonts/bricolage-grotesque-latin-wght-normal.woff2") format("woff2");
+  src: url("/fonts/hanken-grotesk-latin-wght-normal.woff2") format("woff2");
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 /* Metric-matched fallbacks — see note above. Local system fonts, no download. */
@@ -108,12 +108,12 @@
   --color-line:      rgba(26, 23, 20, 0.14);
   --color-line-soft: rgba(26, 23, 20, 0.08);
 
-  /* Type — Inter for body/UI; Bricolage Grotesque is the display voice for the
-     H1/page-title moment and section statements (replaced Fraunces 2026-08-16).
-     Token name kept as --font-serif to avoid churn; it now points at the
-     display grotesque. */
+  /* Type — Inter for body/UI; Hanken Grotesk is the display voice for the
+     H1/page-title moment and section statements (replaced Bricolage Grotesque
+     2026-08-20; Bricolage replaced Fraunces 2026-08-16). Token name kept as
+     --font-serif to avoid churn; it now points at the display grotesque. */
   --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-serif: "Bricolage Grotesque", "Inter Fallback", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Hanken Grotesk", "Inter Fallback", ui-sans-serif, system-ui, -apple-system, sans-serif;
   /* Nav voice — Figtree (top nav only); Inter fallback keeps metrics close */
   --font-nav: "Figtree", "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
 
