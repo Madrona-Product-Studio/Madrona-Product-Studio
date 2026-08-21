@@ -100,14 +100,25 @@ CTA system proved itself across every V2 page; Charlie sign-off
 
 ### Typography
 
-- **Serif (display):** Fraunces — used for the `h1` / page-title moment and
-  occasional editorial emphasis. Weight 500.
+- **Display:** Bricolage Grotesque — used for the `h1` / page-title moment,
+  section statements, and occasional editorial emphasis. Weight 500.
+  (Replaced Fraunces 2026-08-16; Charlie's pick. The CSS token is still
+  *named* `--font-serif` to avoid churn, but it now points at Bricolage —
+  the name is a misnomer, not a serif.)
 - **Sans (everything else):** Inter — `h2`–`h4` (weight 600, tight tracking),
-  body copy, nav, buttons, UI labels, meta text.
+  body copy, buttons, UI labels, meta text. **Nav:** Figtree.
 
-This is a hybrid: the `h1` keeps the editorial Fraunces voice while `h2`–`h4`
+This is a hybrid: the `h1` carries the Bricolage display voice while `h2`–`h4`
 stay tight, near-solid-leading Inter (the swiss move). Don't swap in
-alternative fonts for variety — stick to these two, vary weight and size.
+alternative fonts for variety — stick to these families, vary weight and size.
+
+**Font loading:** the display + body woff2s are self-hosted in
+`public/fonts/` and **preloaded in `index.html`** so the real font wins first
+paint (`@font-face` uses `font-display: optional`, which will *not* swap a
+late-arriving font — so a missing preload silently ships the Arial-metric
+fallback to first-time visitors). If you change the display font, update the
+`@font-face` in `src/index.css`, the `--font-serif` token, **and** the
+matching `<link rel="preload">` in `index.html` together.
 
 ### Structural moves (the brand on the page)
 
