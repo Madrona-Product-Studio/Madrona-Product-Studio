@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { ScrollToTop, PageFade } from "./components/RouteMotion";
 import Layout from "./components/Layout";
-import CaseStudyPage from "./pages/CaseStudyPage";
 import AgenticOperations from "./pages/AgenticOperations";
 import MadronaV2 from "./pages/lab/MadronaV2";
 import MadronaV2Home from "./pages/lab/MadronaV2Home";
@@ -108,14 +107,15 @@ export default function App() {
 
         {/* Legacy pages not yet rebuilt in V2 (still old chrome). */}
         <Route element={<Layout />}>
-          <Route path="work/:slug" element={<CaseStudyPage />} />
-          {/* Engagement-model content now lives on the practice page (V2). */}
-          <Route path="how-it-works" element={<Navigate to="/consulting" replace />} />
           <Route path="services/agentic-operations" element={<AgenticOperations />} />
-          <Route path="approach" element={<Navigate to="/consulting" replace />} />
-          <Route path="writing" element={<Navigate to="/thinking" replace />} />
-          <Route path="contact" element={<Navigate to="/connect" replace />} />
         </Route>
+        {/* Case studies retired 2026-08-23 → the products page (vercel.json 301s too). */}
+        <Route path="work/:slug" element={<Navigate to="/apps" replace />} />
+        {/* Engagement-model content now lives on the practice page (V2). */}
+        <Route path="how-it-works" element={<Navigate to="/consulting" replace />} />
+        <Route path="approach" element={<Navigate to="/consulting" replace />} />
+        <Route path="writing" element={<Navigate to="/thinking" replace />} />
+        <Route path="contact" element={<Navigate to="/connect" replace />} />
 
         {/* Unknown URLs land home rather than on a blank screen. */}
         <Route path="*" element={<Navigate to="/" replace />} />

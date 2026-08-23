@@ -1,7 +1,27 @@
 {
   "redirects": [
     { "source": "/agents", "destination": "/tools", "permanent": true },
-    { "source": "/agents/:slug", "destination": "/tools/:slug", "permanent": true }
+    { "source": "/agents/:slug", "destination": "/tools/:slug", "permanent": true },
+    { "source": "/pov", "destination": "/thinking", "permanent": true },
+    { "source": "/pov/:slug", "destination": "/thinking/:slug", "permanent": true },
+    { "source": "/current/the-studio-that-runs-itself", "destination": "/thinking/the-era-of-agentic-operations", "permanent": true },
+    { "source": "/current", "destination": "/thinking", "permanent": true },
+    { "source": "/current/:slug", "destination": "/thinking/:slug", "permanent": true },
+    { "source": "/journal/the-madrona-engine", "destination": "/thinking/under-the-hood", "permanent": true },
+    { "source": "/journal", "destination": "/thinking", "permanent": true },
+    { "source": "/notes", "destination": "/thinking", "permanent": true },
+    { "source": "/playbook", "destination": "/thinking", "permanent": true },
+    { "source": "/writing", "destination": "/thinking", "permanent": true },
+    { "source": "/work", "destination": "/apps", "permanent": true },
+    { "source": "/work/:slug", "destination": "/apps", "permanent": true },
+    { "source": "/services", "destination": "/consulting", "permanent": true },
+    { "source": "/how-it-works", "destination": "/consulting", "permanent": true },
+    { "source": "/approach", "destination": "/consulting", "permanent": true },
+    { "source": "/contact", "destination": "/connect", "permanent": true },
+    { "source": "/signal-check", "destination": "/checkup", "permanent": true },
+    { "source": "/lab/madrona-v2/services", "destination": "/consulting", "permanent": true },
+    { "source": "/lab/madrona-v2/apps", "destination": "/apps", "permanent": true },
+    { "source": "/lab/madrona-v2", "destination": "/", "permanent": true }
   ],
   "rewrites": [
     { "source": "/((?!api/).*)", "destination": "/index.html" }

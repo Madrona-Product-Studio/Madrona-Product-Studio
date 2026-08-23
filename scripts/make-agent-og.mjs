@@ -32,7 +32,7 @@ const cards = [
 const html = (c) => `<!doctype html><html><head><meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Inter:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&family=Inter:wght@600;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html,body { width:1200px; height:630px; }
@@ -48,7 +48,7 @@ const html = (c) => `<!doctype html><html><head><meta charset="utf-8">
   .head span { font-size:15px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:#6d706a; }
   .body { margin-top:auto; }
   .tag { display:inline-block; font-size:19px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:#c86a3d; margin-bottom:22px; }
-  h1 { font-family:"Bricolage Grotesque", Inter, sans-serif; font-weight:700; font-size:${c.name.length > 16 ? 86 : 104}px; line-height:1.02; letter-spacing:-.02em; color:#222; max-width:19ch; }
+  h1 { font-family:"Hanken Grotesk", Inter, sans-serif; font-weight:600; font-size:${c.name.length > 16 ? 86 : 104}px; line-height:1.02; letter-spacing:-.02em; color:#222; max-width:19ch; }
   .sub { font-size:26px; color:#3a3c39; margin-top:24px; }
   .foot { display:flex; align-items:center; justify-content:space-between; }
   .foot span { font-size:20px; font-weight:600; color:#6d706a; }
