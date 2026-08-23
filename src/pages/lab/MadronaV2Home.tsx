@@ -51,6 +51,14 @@ const HERO_INTERVAL = 9000;
 export default function MadronaV2Home() {
   useReveal();
   const [heroIndex, setHeroIndex] = useState(0);
+  // Mount hero images progressively: the active one plus the next in line,
+  // growing as the rotation advances. All six are absolutely positioned
+  // in-viewport, so mounting them all up front forces ~900kB of downloads
+  // before the page is even read.
+  const [heroMounted, setHeroMounted] = useState(2);
+  useEffect(() => {
+    setHeroMounted((n) => Math.min(HERO_IMAGES.length, Math.max(n, heroIndex + 2)));
+  }, [heroIndex]);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (HERO_IMAGES.length < 2) return;
@@ -82,7 +90,7 @@ export default function MadronaV2Home() {
           </div>
         </div>
         <div className="m2-hero-visual m2-hero-island m2-hero-rotate">
-          {HERO_IMAGES.map((img, i) => (
+          {HERO_IMAGES.slice(0, heroMounted).map((img, i) => (
             <img key={img.src} src={img.src} alt={i === 0 ? "Pacific Northwest landscapes across the Salish Sea" : ""} aria-hidden={i === 0 ? undefined : true} className={i === heroIndex ? "is-active" : ""} loading={i === 0 ? "eager" : "lazy"} />
           ))}
           <button type="button" className="m2-hero-cycle" aria-label={`Hero image ${heroIndex + 1} of ${HERO_IMAGES.length}. Show next image.`} onClick={() => setHeroIndex((i) => (i + 1) % HERO_IMAGES.length)}>

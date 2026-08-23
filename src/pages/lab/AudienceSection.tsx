@@ -20,7 +20,7 @@ export default function AudienceSection() {
           { image: outdoorsImage, type: "outdoors" as const, title: "Travel & hospitality", copy: "Journeys with substance" },
           { image: shopsImage, type: "shops" as const, title: "Retail & local commerce", copy: "Local businesses, stronger" },
           { image: farmsImage, type: "farms" as const, title: "Food & agriculture", copy: "From soil to shelf" },
-        ].map(({ image, type, title, copy }) => <article className="m2-audience" key={title} data-reveal><div className="m2-audience-image"><img src={image} alt="" /></div><div className="m2-audience-caption"><span className="m2-audience-icon"><AudienceIcon type={type} /></span><div><h3>{title}</h3><p>{copy}</p></div></div></article>)}
+        ].map(({ image, type, title, copy }) => <article className="m2-audience" key={title} data-reveal><div className="m2-audience-image"><img src={image} alt="" loading="lazy" decoding="async" /></div><div className="m2-audience-caption"><span className="m2-audience-icon"><AudienceIcon type={type} /></span><div><h3>{title}</h3><p>{copy}</p></div></div></article>)}
       </div>
     </section>
   );
