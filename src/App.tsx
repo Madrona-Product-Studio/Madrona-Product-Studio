@@ -17,7 +17,6 @@ import MadronaV2SystemNote from "./pages/lab/MadronaV2SystemNote";
 import MadronaV2InventoryNote from "./pages/lab/MadronaV2InventoryNote";
 import MadronaV2Open from "./pages/lab/MadronaV2Open";
 import MadronaSystem from "./pages/lab/MadronaSystem";
-import SignalBrainLab from "./pages/lab/SignalBrainLab";
 import SignalAssessment from "./pages/lab/SignalAssessment";
 import AgentsGallery from "./pages/lab/AgentsGallery";
 import AgentMonthEndClose from "./pages/lab/AgentMonthEndClose";
@@ -96,8 +95,6 @@ export default function App() {
         {/* The Signal Assessment — our free "signal check". Canonical at /checkup;
             it took over this URL from the retired v1 AI checkup (launch 2026-08-15). */}
         <Route path="checkup" element={<SignalAssessment />} />
-        {/* TEMP — Signal Brain art-direction lab (signal-assessment build; unlinked). */}
-        <Route path="signal-brain-lab" element={<SignalBrainLab />} />
         {/* Old build slug → canonical /checkup. */}
         <Route path="signal-check" element={<Navigate to="/checkup" replace />} />
 

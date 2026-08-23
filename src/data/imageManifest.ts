@@ -118,53 +118,5 @@ export const imageManifest: Record<string, { width: number; height: number }> = 
   "/case-studies/utah-trip-guide/weather-flash-flood.png": {
     "width": 1600,
     "height": 1000
-  },
-  "/images/88FAFD8F-960F-494F-AC01-A78D20EE36EC_1_102_o.jpeg": {
-    "width": 1600,
-    "height": 1200
-  },
-  "/images/895141C7-A18D-4E88-9E03-F6697F22C5D5_1_105_c.jpeg": {
-    "width": 1024,
-    "height": 768
-  },
-  "/images/IMG_0492.jpeg": {
-    "width": 1600,
-    "height": 1200
-  },
-  "/images/IMG_0739.jpeg": {
-    "width": 1600,
-    "height": 1200
-  },
-  "/images/IMG_1929.PNG": {
-    "width": 1600,
-    "height": 738
-  },
-  "/images/IMG_1988.jpeg": {
-    "width": 1600,
-    "height": 1200
-  },
-  "/images/IMG_1989.jpeg": {
-    "width": 1600,
-    "height": 1200
-  },
-  "/images/IMG_2301.jpeg": {
-    "width": 1600,
-    "height": 1200
-  },
-  "/images/IMG_2872.jpeg": {
-    "width": 1600,
-    "height": 1200
-  },
-  "/images/IMG_3163.jpeg": {
-    "width": 1600,
-    "height": 1200
-  },
-  "/images/examples/berry-good-site.png": {
-    "width": 1600,
-    "height": 7561
-  },
-  "/images/hero-harbor-dusk.jpg": {
-    "width": 1600,
-    "height": 1200
   }
 };
