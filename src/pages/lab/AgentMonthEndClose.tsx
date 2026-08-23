@@ -63,7 +63,7 @@ const PNL_ARTIFACT = (
         <DocTitle business="Berry Good Berry Farm" title="Profit &amp; Loss" sub="For the month ended August 31, 2026" />
         <DocSection head="Revenue">
           <DocRow label="U-pick sales" value="$11,240" indent />
-          <DocRow label="Wholesale — co-ops" value="$5,180" indent />
+          <DocRow label="Wholesale (co-ops)" value="$5,180" indent />
           <DocRow label="Farm stand" value="$2,000" indent />
           <DocRow label="Total revenue" value="$18,420" rule />
         </DocSection>
@@ -137,7 +137,7 @@ const SCRIPT: ConsoleScript = {
       approveAllLabel: "Approve all three and continue",
       continueLabel: "Continue the close",
       items: [
-        { primary: "$1,240.00", meta: "Deposit · Aug 14", issue: "No matching invoice", suggest: "Agent suggests: Match to Invoice #2041 — Bellingham Food Co-op", approveLabel: "Approve this fix" },
+        { primary: "$1,240.00", meta: "Deposit · Aug 14", issue: "No matching invoice", suggest: "Agent suggests: Match to Invoice #2041 (Bellingham Food Co-op)", approveLabel: "Approve this fix" },
         { primary: "$420.00", meta: "Square payout · Aug 22", issue: "Booked as Uncategorized Income", suggest: "Agent suggests: Recategorize as U-pick sales", approveLabel: "Approve this fix" },
         { primary: "$88.50", meta: "PayPal fee · Aug 9", issue: "Uncategorized", suggest: "Agent suggests: Recategorize as Payment processing fees", approveLabel: "Approve this fix" },
       ],
@@ -167,7 +167,7 @@ export default function AgentMonthEndClose() {
 
   return (
     <main className="m2 art agentx-page">
-      <LabMeta title="Month-end close agent — a working demo · Madrona Product Studio" />
+      <LabMeta title="Month-end close agent: a working demo · Madrona Product Studio" />
       <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
@@ -180,10 +180,10 @@ export default function AgentMonthEndClose() {
 
         <div className="agx-demo" id="run">
           <AgentConsole script={SCRIPT} />
-          <p className="agx-demo-cap">A scripted run on Berry Good Berry Farm, our demonstration business. Nothing connects to a real ledger — it’s the shape of the real thing, on made-up numbers.</p>
+          <p className="agx-demo-cap">A scripted run on Berry Good Berry Farm, our demonstration business. Nothing connects to a real ledger. It’s the shape of the real thing, on made-up numbers.</p>
         </div>
 
-        <ArticleBody share={{ title: "Month-end close agent — a working demo", href: HREF }}>
+        <ArticleBody share={{ title: "Month-end close agent: a working demo", href: HREF }}>
           <ArticleSection id="how" num="1" eyebrow="How it works" title="Four beats, one of them yours.">
             <Prose>
               <p>No black box. The agent runs the same four steps every close, and it hands control back at the one that matters.</p>
@@ -199,7 +199,7 @@ export default function AgentMonthEndClose() {
             </Prose>
             <div className="art-inv-facts">
               <Fact tone="sprout" icon={ICON.key} label="What it needs from you">
-                Books that are roughly current, and QuickBooks connected once. The agent reconciles what&rsquo;s there. If three months are uncategorized, the first run hands you a cleanup list, not a close &mdash; which is genuinely useful to know.
+                Books that are roughly current, and QuickBooks connected once. The agent reconciles what&rsquo;s there. If three months are uncategorized, the first run hands you a cleanup list, not a close, which is genuinely useful to know.
               </Fact>
               <Fact tone="storefront" icon={ICON.flag} label="Where it ends">
                 The mismatches it flags still need your call, and a messy chart of accounts confuses every tool in this category. This shortens the close. It doesn&rsquo;t replace the person who owns the numbers.
@@ -210,7 +210,7 @@ export default function AgentMonthEndClose() {
           <ArticleSection id="deploy" num="3" eyebrow="Start small" title="Deploy it on your books.">
             <Prose>
               <p>It starts with a 30-minute conversation, and it&rsquo;s free. We&rsquo;ll tell you in writing where an agent like this would actually help on your operation, and where it wouldn&rsquo;t.</p>
-              <p>When it&rsquo;s a fit, we install it on your real systems, encode your accounts and thresholds, set the approval gates, and teach you to run it. It&rsquo;s yours to keep &mdash; no lock-in. We build it and leave you capable.</p>
+              <p>When it&rsquo;s a fit, we install it on your real systems, encode your accounts and thresholds, set the approval gates, and teach you to run it. It&rsquo;s yours to keep, no lock-in. We build it and leave you capable.</p>
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>

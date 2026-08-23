@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { track } from "../../lib/analytics";
 
 /* =========================================================================
    Agent console engine
@@ -96,12 +97,14 @@ export function AgentConsole({ script }: { script: ConsoleScript }) {
 
   function run() {
     if (started) return;
+    track("tool_demo_run", { tool: script.command });
     setGate(false);
     setApproved(gatePhase ? gatePhase.items.map(() => false) : []);
     advance(1);
   }
 
   function reset() {
+    track("tool_demo_replay", { tool: script.command });
     timers.current.forEach(clearTimeout);
     timers.current = [];
     setStep(0);

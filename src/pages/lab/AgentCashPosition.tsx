@@ -77,9 +77,9 @@ const SCRIPT: ConsoleScript = {
     { kind: "auto", running: "Projecting the next 30 days…", done: "Inflows $9,200 · outflows $14,600 · one tight week ahead", ms: 1400 },
     {
       kind: "gate",
-      running: "One shortfall — pick what to do",
+      running: "One shortfall: pick what to do",
       done: "2 actions routed",
-      head: "Sept 2 looks tight — payroll lands before two big receivables. Here’s how to cover it. Your call.",
+      head: "Sept 2 looks tight: payroll lands before two big receivables. Here’s how to cover it. Your call.",
       approveAllLabel: "Do all and continue",
       continueLabel: "Route selected",
       items: [
@@ -92,7 +92,7 @@ const SCRIPT: ConsoleScript = {
   ],
   doneNote: (
     <>
-      <strong>It reads; it never moves money.</strong> One honest number, the tight week flagged early, and a plan you approved — before it became a problem.
+      <strong>It reads; it never moves money.</strong> One honest number, the tight week flagged early, and a plan you approved, before it became a problem.
     </>
   ),
 };
@@ -101,13 +101,13 @@ export default function AgentCashPosition() {
   useReveal();
   return (
     <main className="m2 art agentx-page">
-      <LabMeta title="Cash-position agent — a working demo · Madrona Product Studio" />
+      <LabMeta title="Cash-position agent: a working demo · Madrona Product Studio" />
       <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Bookkeeping & finance"
           name="Cash position"
-          tagline="One command pulls every account into a single honest number — what’s in the bank, what’s coming, what’s committed this week — with the shortfalls flagged before they bite. It reads; it never moves money."
+          tagline="One command pulls every account into a single honest number: what’s in the bank, what’s coming, what’s committed this week, with the shortfalls flagged before they bite. It reads; it never moves money."
           spec={SPEC}
           runLabel="Run the pulse"
         />
@@ -118,7 +118,7 @@ export default function AgentCashPosition() {
           <p className="agx-demo-cap">A scripted run on Berry Good Berry Farm, our demonstration business. The accounts and numbers are made up; the workflow is the real one.</p>
         </div>
 
-        <ArticleBody share={{ title: "Cash-position agent — a working demo", href: HREF }}>
+        <ArticleBody share={{ title: "Cash-position agent: a working demo", href: HREF }}>
           <ArticleSection id="how" num="1" eyebrow="How it works" title="Reads everything. Moves nothing.">
             <Prose>
               <p>No black box. The agent runs the same four beats every morning, and it hands control back at the one that&rsquo;s yours to make.</p>
@@ -132,7 +132,7 @@ export default function AgentCashPosition() {
             </Prose>
             <div className="art-inv-facts">
               <AgentFact tone="sprout" icon={IC.key} label="What it needs from you">
-                Every account connected &mdash; bank, cards, processors. The pulse is only as honest as what it can see; if half your money moves through a system it can&rsquo;t reach, you get a confident number that&rsquo;s wrong.
+                Every account connected: bank, cards, processors. The pulse is only as honest as what it can see; if half your money moves through a system it can&rsquo;t reach, you get a confident number that&rsquo;s wrong.
               </AgentFact>
               <AgentFact tone="storefront" icon={IC.flag} label="Where it ends">
                 It reads and forecasts; it never moves money. Which invoice to chase, and whether to dip into savings, stays your call.
@@ -143,7 +143,7 @@ export default function AgentCashPosition() {
           <ArticleSection id="deploy" num="3" eyebrow="Start small" title="Put it on your accounts.">
             <Prose>
               <p>It starts with a free 30-minute conversation. We&rsquo;ll tell you in writing where an agent like this would actually help on your books, and where it wouldn&rsquo;t.</p>
-              <p>When it&rsquo;s a fit, we connect your accounts, set the morning rhythm, and teach you to run it. Yours to keep &mdash; no lock-in.</p>
+              <p>When it&rsquo;s a fit, we connect your accounts, set the morning rhythm, and teach you to run it. Yours to keep, no lock-in.</p>
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>

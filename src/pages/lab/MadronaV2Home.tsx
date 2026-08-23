@@ -16,6 +16,7 @@ import hero4 from "../../../docs/madrona-v2-build-kit/site-assets/hero-4.webp";
 import hero5 from "../../../docs/madrona-v2-build-kit/site-assets/hero-5.webp";
 import hero6 from "../../../docs/madrona-v2-build-kit/site-assets/hero-6.webp";
 import BerryGoodTeaser from "./BerryGoodTeaser";
+import { agents } from "../../data/agents";
 import lilaTile from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp";
 import sjbgTile from "../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp";
 import lilaYogaTile from "../../../docs/madrona-v2-build-kit/site-assets/lila-yoga-tile.webp";
@@ -38,6 +39,12 @@ const products = [
 // identically here and in the "Four ways in. One practice." What We Do section.
 const consulting = serviceAreas.map((s) => ({ id: s.id, title: s.door, body: s.outcome }));
 
+// Four representative tools for the homepage teaser; the full set lives at /tools.
+const TEASER_TOOL_IDS = ["invoice-chasing", "customer-inbox", "month-end-close", "review-requests"];
+const teaserTools = TEASER_TOOL_IDS
+  .map((id) => agents.find((a) => a.id === id))
+  .filter((a): a is NonNullable<typeof a> => Boolean(a));
+
 const HERO_IMAGES = [
   { src: hero2, alt: "Sunrise light over a forested island in the Salish Sea" },
   { src: hero1, alt: "" },
@@ -51,6 +58,14 @@ const HERO_INTERVAL = 9000;
 export default function MadronaV2Home() {
   useReveal();
   const [heroIndex, setHeroIndex] = useState(0);
+  // Mount hero images progressively: the active one plus the next in line,
+  // growing as the rotation advances. All six are absolutely positioned
+  // in-viewport, so mounting them all up front forces ~900kB of downloads
+  // before the page is even read.
+  const [heroMounted, setHeroMounted] = useState(2);
+  useEffect(() => {
+    setHeroMounted((n) => Math.min(HERO_IMAGES.length, Math.max(n, heroIndex + 2)));
+  }, [heroIndex]);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (HERO_IMAGES.length < 2) return;
@@ -82,7 +97,7 @@ export default function MadronaV2Home() {
           </div>
         </div>
         <div className="m2-hero-visual m2-hero-island m2-hero-rotate">
-          {HERO_IMAGES.map((img, i) => (
+          {HERO_IMAGES.slice(0, heroMounted).map((img, i) => (
             <img key={img.src} src={img.src} alt={i === 0 ? "Pacific Northwest landscapes across the Salish Sea" : ""} aria-hidden={i === 0 ? undefined : true} className={i === heroIndex ? "is-active" : ""} loading={i === 0 ? "eager" : "lazy"} />
           ))}
           <button type="button" className="m2-hero-cycle" aria-label={`Hero image ${heroIndex + 1} of ${HERO_IMAGES.length}. Show next image.`} onClick={() => setHeroIndex((i) => (i + 1) % HERO_IMAGES.length)}>
@@ -147,6 +162,29 @@ export default function MadronaV2Home() {
             </div>
           </div>
           <BerryGoodTeaser />
+        </div>
+      </section>
+
+      {/* Deployable tools — the concrete offer behind the Berry Good demo */}
+      <section className="m2-ht" aria-labelledby="ht-title">
+        <div className="m2-ht-body">
+          <div className="m2-ht-rail">
+            <p className="m2-kicker">Deployable AI</p>
+            <h2 id="ht-title">Tools ready to work in your business.</h2>
+            <p>Each one is an AI agent on a real workflow, and each stops for a human wherever it touches money, customers, or judgment. Run any of them live on Berry Good, our demonstration farm, then we set one up on your operation.</p>
+            <Link className="m2-text-link" to="/tools">See all the tools <span aria-hidden="true">→</span></Link>
+          </div>
+          <div className="m2-ht-list">
+            {teaserTools.map((t) => (
+              <Link className="m2-ht-row" to={t.href} key={t.id} data-reveal>
+                <div>
+                  <h3>{t.name}</h3>
+                  <p>{t.blurb}</p>
+                </div>
+                <span className="m2-ht-cadence">{t.cadence}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

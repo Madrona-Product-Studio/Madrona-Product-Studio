@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { getCalApi } from "@calcom/embed-react";
 import { CAL_LINK, BOOKING_URL } from "../../data/booking";
+import { track } from "../../lib/analytics";
 
 // Cal.com popup embed for the "Book a time" CTAs. Call useCalEmbed() once per
 // page that has a booking button; add {...bookProps()} to the button and use
@@ -39,6 +40,9 @@ export function bookHref(): string {
 // When the embed is active, the modal handles the click — suppress the
 // anchor's own navigation so a new tab doesn't open alongside the modal.
 // With JS disabled the handler never runs and the href still works.
+// Also the one funnel event GA4/Vercel can't see on their own: the Cal.com
+// popup lives outside the page, so the primary conversion is recorded here.
 export function bookClick(e: { preventDefault: () => void }): void {
+  track("book_click", { source: window.location.pathname });
   if (CAL_LINK) e.preventDefault();
 }

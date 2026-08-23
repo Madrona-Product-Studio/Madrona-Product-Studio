@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
 import { CAL_LINK, BOOKING_URL } from "../../data/booking";
+import { track } from "../../lib/analytics";
 
 type NavKey = "apps" | "tools" | "consulting" | "pov" | "open" | "about";
 
@@ -72,7 +73,7 @@ export default function M2Nav({ active }: { active?: NavKey }) {
           <h2 className="m2-navmenu-title">Let’s connect.</h2>
           <p className="m2-navmenu-invite">Tell us what you’re working on, or book a free 30-minute chat. We usually reply within a day.</p>
           <Link className="m2-button m2-navmenu-primary" to="/connect#send" onClick={() => setOpen(false)}>Send a message</Link>
-          <a className="m2-button m2-button-secondary m2-navmenu-secondary" href={SCHEDULE_HREF} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>Schedule a 30-min call <ArrowUpRight /></a>
+          <a className="m2-button m2-button-secondary m2-navmenu-secondary" href={SCHEDULE_HREF} target="_blank" rel="noopener noreferrer" onClick={() => { track("book_click", { source: "nav-menu" }); setOpen(false); }}>Schedule a 30-min call <ArrowUpRight /></a>
         </div>
       </div>
     </>

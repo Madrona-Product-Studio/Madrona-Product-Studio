@@ -39,17 +39,17 @@ const RECEIVABLES = (
       { label: "Chasing now", value: "$3,550" },
       { label: "Held for you", value: "$690" },
     ]} />
-    <p className="agentx-pnl-note">The two approved reminders are queued; the agent follows up in five days if they go unanswered. You held the Bread Lab — the account you know.</p>
+    <p className="agentx-pnl-note">The two approved reminders are queued; the agent follows up in five days if they go unanswered. You held the Bread Lab, the account you know.</p>
     <div className="agentx-artifact-actions">
       <DocButton label="View the drafted reminders" filename="Berry-Good_Reminders_Aug-20.eml" kind="email">
-        <DocEmail to="accounts@whatcomcoop.org" subject="Friendly follow-up — invoice #2038">
+        <DocEmail to="accounts@whatcomcoop.org" subject="Friendly follow-up: invoice #2038">
           <DocProse>Hi team,</DocProse>
-          <DocProse>Just a friendly follow-up on invoice #2038 for $2,400, now a couple of weeks out. No worries at all if it’s already in motion — just making sure it didn’t slip through.</DocProse>
+          <DocProse>Just a friendly follow-up on invoice #2038 for $2,400, now a couple of weeks out. No worries at all if it’s already in motion, just making sure it didn’t slip through.</DocProse>
           <DocProse>Thanks so much, and happy to resend anything you need.</DocProse>
           <DocProse>— The Berry Good team</DocProse>
         </DocEmail>
         <DocDivider />
-        <DocEmail to="hello@ferndalemarket.com" subject="Quick nudge — invoice #2044">
+        <DocEmail to="hello@ferndalemarket.com" subject="Quick nudge: invoice #2044">
           <DocProse>Hope the season’s treating you well!</DocProse>
           <DocProse>A quick nudge on invoice #2044 for $1,150, now about nine days out. Whenever you get a chance is perfect.</DocProse>
           <DocProse>Thanks as always,</DocProse>
@@ -77,9 +77,9 @@ const SCRIPT: ConsoleScript = {
       approveAllLabel: "Approve all and queue",
       continueLabel: "Queue the approved",
       items: [
-        { primary: "$2,400.00", meta: "Whatcom Co-op · 18 days over", issue: "Second reminder — the first went unanswered", suggest: "Draft: “Hi team — a friendly follow-up on invoice #2038, now a couple weeks out…”", approveLabel: "Approve & queue" },
-        { primary: "$1,150.00", meta: "Ferndale Market · 9 days over", issue: "First reminder", suggest: "Draft: “Hope the season’s treating you well — a quick nudge on invoice #2044…”", approveLabel: "Approve & queue" },
-        { primary: "$690.00", meta: "The Bread Lab · 4 days over", issue: "Long-standing weekly account, always pays", suggest: "A gentle note, or let it ride this week?", manual: true, manualNote: "Held back — you know this one. Send a nudge, or let it ride." },
+        { primary: "$2,400.00", meta: "Whatcom Co-op · 18 days over", issue: "Second reminder: the first went unanswered", suggest: "Draft: “Hi team, a friendly follow-up on invoice #2038, now a couple weeks out…”", approveLabel: "Approve & queue" },
+        { primary: "$1,150.00", meta: "Ferndale Market · 9 days over", issue: "First reminder", suggest: "Draft: “Hope the season’s treating you well! A quick nudge on invoice #2044…”", approveLabel: "Approve & queue" },
+        { primary: "$690.00", meta: "The Bread Lab · 4 days over", issue: "Long-standing weekly account, always pays", suggest: "A gentle note, or let it ride this week?", manual: true, manualNote: "Held back. You know this one. Send a nudge, or let it ride." },
       ],
     },
     { kind: "auto", running: "Queuing approved reminders…", done: "Reminders queued · follow-ups scheduled", ms: 1100, artifact: RECEIVABLES },
@@ -95,13 +95,13 @@ export default function AgentInvoiceChasing() {
   useReveal();
   return (
     <main className="m2 art agentx-page">
-      <LabMeta title="Invoice-chasing agent — a working demo · Madrona Product Studio" />
+      <LabMeta title="Invoice-chasing agent: a working demo · Madrona Product Studio" />
       <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Bookkeeping & finance"
           name="Invoice chasing"
-          tagline="The agent watches for overdue invoices, drafts a polite reminder for each in your voice, and queues them for your okay. You decide who gets grace — it never sends on its own."
+          tagline="The agent watches for overdue invoices, drafts a polite reminder for each in your voice, and queues them for your okay. You decide who gets grace. It never sends on its own."
           spec={SPEC}
           runLabel="Run the chase"
         />
@@ -112,10 +112,10 @@ export default function AgentInvoiceChasing() {
           <p className="agx-demo-cap">A scripted run on Berry Good Berry Farm, our demonstration business. The invoices and customers are made up; the workflow is the real one.</p>
         </div>
 
-        <ArticleBody share={{ title: "Invoice-chasing agent — a working demo", href: HREF }}>
+        <ArticleBody share={{ title: "Invoice-chasing agent: a working demo", href: HREF }}>
           <ArticleSection id="how" num="1" eyebrow="How it works" title="It drafts. You decide.">
             <Prose>
-              <p>The agent does the watching and the writing — the parts that never get done because they&rsquo;re nobody&rsquo;s job. The one thing it won&rsquo;t do is hit send.</p>
+              <p>The agent does the watching and the writing, the parts that never get done because they&rsquo;re nobody&rsquo;s job. The one thing it won&rsquo;t do is hit send.</p>
             </Prose>
             <Figure><PillarRow items={PIPELINE} /></Figure>
           </ArticleSection>
@@ -137,7 +137,7 @@ export default function AgentInvoiceChasing() {
           <ArticleSection id="deploy" num="3" eyebrow="Start small" title="Deploy it on your receivables.">
             <Prose>
               <p>It starts with a free 30-minute conversation. We&rsquo;ll tell you in writing where this would actually help on your books, and where it wouldn&rsquo;t.</p>
-              <p>When it&rsquo;s a fit, we wire it to your invoicing, teach it your voice and your grace rules, set the approval gate, and hand it to you. Yours to keep &mdash; no lock-in.</p>
+              <p>When it&rsquo;s a fit, we wire it to your invoicing, teach it your voice and your grace rules, set the approval gate, and hand it to you. Yours to keep, no lock-in.</p>
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>

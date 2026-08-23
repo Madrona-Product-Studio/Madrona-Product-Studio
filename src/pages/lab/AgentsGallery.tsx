@@ -27,7 +27,7 @@ export default function AgentsGallery() {
         <p className="m2-kicker m2-who-kicker">Deployable AI</p>
         <h1>Tools.</h1>
         <p className="m2-th-standfirst">
-          The tools we build and deploy for a business — each an AI agent on a
+          The tools we build and deploy for a business: each an AI agent on a
           real workflow, each stopping for a human wherever it touches money,
           customers, or judgment. Run any of them live on Berry Good, our
           demonstration farm, then we set it up on your operation and leave you

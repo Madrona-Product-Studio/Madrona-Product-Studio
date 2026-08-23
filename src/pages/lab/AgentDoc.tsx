@@ -71,7 +71,7 @@ export function DocButton({
             <div className="agentx-docscroll">
               <article className={`agentx-doc agentx-doc--${kind}`}>{children}</article>
             </div>
-            <p className="agentx-docfoot">Demo — a rendered preview on made-up data, not a live document. A deployed agent produces the real file.</p>
+            <p className="agentx-docfoot">Demo: a rendered preview on made-up data, not a live document. A deployed agent produces the real file.</p>
           </div>
         </div>,
         document.body

@@ -1,7 +1,10 @@
-import horizontal from "../../../docs/madrona_static_logo_assets/madrona-approved-logo-transparent.png";
-import horizontalReversed from "../../../docs/madrona_static_logo_assets/madrona-approved-logo-reversed-transparent.png";
-import standalone from "../../../docs/madrona_static_logo_assets/madrona-approved-emblem-transparent.png";
-import standaloneReversed from "../../../docs/madrona_static_logo_assets/madrona-approved-emblem-reversed-transparent.png";
+// 2x-density webp derivatives of the approved raster lockups (same artwork,
+// downscaled to ~2x the largest display size so we don't ship the 394kB
+// source PNG on every page).
+import horizontal from "../../../docs/madrona_static_logo_assets/madrona-approved-logo-transparent-2x.webp";
+import horizontalReversed from "../../../docs/madrona_static_logo_assets/madrona-approved-logo-reversed-transparent-2x.webp";
+import standalone from "../../../docs/madrona_static_logo_assets/madrona-approved-emblem-transparent-2x.webp";
+import standaloneReversed from "../../../docs/madrona_static_logo_assets/madrona-approved-emblem-reversed-transparent-2x.webp";
 
 type MadronaLogoVariant =
   | "horizontal"

@@ -32,3 +32,4 @@ contact-sheets/
 
 # impeccable local hook cache (config.json is tracked)
 .impeccable/hook.cache.json
+.DS_Store

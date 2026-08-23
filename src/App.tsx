@@ -1,35 +1,37 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { ScrollToTop, PageFade } from "./components/RouteMotion";
 import Layout from "./components/Layout";
-import CaseStudyPage from "./pages/CaseStudyPage";
-import AgenticOperations from "./pages/AgenticOperations";
+// Primary-nav destinations stay eager so top-level navigation is instant.
 import MadronaV2 from "./pages/lab/MadronaV2";
 import MadronaV2Home from "./pages/lab/MadronaV2Home";
 import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
 import MadronaV2About from "./pages/lab/MadronaV2About";
-import MadronaV2Thesis from "./pages/lab/MadronaV2Thesis";
 import MadronaV2Pov from "./pages/lab/MadronaV2Pov";
-import MadronaV2EngineNote from "./pages/lab/MadronaV2EngineNote";
-import MadronaV2AgenticNote from "./pages/lab/MadronaV2AgenticNote";
-import MadronaV2StarterGuideNote from "./pages/lab/MadronaV2StarterGuideNote";
-import MadronaV2SystemNote from "./pages/lab/MadronaV2SystemNote";
-import MadronaV2InventoryNote from "./pages/lab/MadronaV2InventoryNote";
-import MadronaV2Open from "./pages/lab/MadronaV2Open";
-import MadronaSystem from "./pages/lab/MadronaSystem";
-import SignalBrainLab from "./pages/lab/SignalBrainLab";
-import SignalAssessment from "./pages/lab/SignalAssessment";
 import AgentsGallery from "./pages/lab/AgentsGallery";
-import AgentMonthEndClose from "./pages/lab/AgentMonthEndClose";
-import AgentInvoiceChasing from "./pages/lab/AgentInvoiceChasing";
-import AgentIndustryBrief from "./pages/lab/AgentIndustryBrief";
-import AgentCustomerInbox from "./pages/lab/AgentCustomerInbox";
-import AgentCashPosition from "./pages/lab/AgentCashPosition";
-import AgentPayrollPlanning from "./pages/lab/AgentPayrollPlanning";
-import AgentPostSaleFollowup from "./pages/lab/AgentPostSaleFollowup";
-import AgentReviewRequests from "./pages/lab/AgentReviewRequests";
-import AgentBestCustomers from "./pages/lab/AgentBestCustomers";
-import AgentContractReview from "./pages/lab/AgentContractReview";
+// Everything deeper is route-split: articles, tool demos, the assessment, and
+// legacy/lab pages don't belong in the first-load bundle.
+const AgenticOperations = lazy(() => import("./pages/AgenticOperations"));
+const MadronaV2Thesis = lazy(() => import("./pages/lab/MadronaV2Thesis"));
+const MadronaV2EngineNote = lazy(() => import("./pages/lab/MadronaV2EngineNote"));
+const MadronaV2AgenticNote = lazy(() => import("./pages/lab/MadronaV2AgenticNote"));
+const MadronaV2StarterGuideNote = lazy(() => import("./pages/lab/MadronaV2StarterGuideNote"));
+const MadronaV2SystemNote = lazy(() => import("./pages/lab/MadronaV2SystemNote"));
+const MadronaV2InventoryNote = lazy(() => import("./pages/lab/MadronaV2InventoryNote"));
+const MadronaV2Open = lazy(() => import("./pages/lab/MadronaV2Open"));
+const MadronaSystem = lazy(() => import("./pages/lab/MadronaSystem"));
+const SignalAssessment = lazy(() => import("./pages/lab/SignalAssessment"));
+const AgentMonthEndClose = lazy(() => import("./pages/lab/AgentMonthEndClose"));
+const AgentInvoiceChasing = lazy(() => import("./pages/lab/AgentInvoiceChasing"));
+const AgentIndustryBrief = lazy(() => import("./pages/lab/AgentIndustryBrief"));
+const AgentCustomerInbox = lazy(() => import("./pages/lab/AgentCustomerInbox"));
+const AgentCashPosition = lazy(() => import("./pages/lab/AgentCashPosition"));
+const AgentPayrollPlanning = lazy(() => import("./pages/lab/AgentPayrollPlanning"));
+const AgentPostSaleFollowup = lazy(() => import("./pages/lab/AgentPostSaleFollowup"));
+const AgentReviewRequests = lazy(() => import("./pages/lab/AgentReviewRequests"));
+const AgentBestCustomers = lazy(() => import("./pages/lab/AgentBestCustomers"));
+const AgentContractReview = lazy(() => import("./pages/lab/AgentContractReview"));
 
 // Old /agents/:slug demo URLs → /tools/:slug (client-side; vercel.json 301s too).
 function AgentsToTools() {
@@ -42,6 +44,7 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <PageFade>
+      <Suspense fallback={null}>
       <Routes>
         {/* Story rethink: new studio front-door home; current homepage preserved as /consulting. */}
         <Route path="/" element={<MadronaV2Home />} />
@@ -96,8 +99,6 @@ export default function App() {
         {/* The Signal Assessment — our free "signal check". Canonical at /checkup;
             it took over this URL from the retired v1 AI checkup (launch 2026-08-15). */}
         <Route path="checkup" element={<SignalAssessment />} />
-        {/* TEMP — Signal Brain art-direction lab (signal-assessment build; unlinked). */}
-        <Route path="signal-brain-lab" element={<SignalBrainLab />} />
         {/* Old build slug → canonical /checkup. */}
         <Route path="signal-check" element={<Navigate to="/checkup" replace />} />
 
@@ -111,18 +112,20 @@ export default function App() {
 
         {/* Legacy pages not yet rebuilt in V2 (still old chrome). */}
         <Route element={<Layout />}>
-          <Route path="work/:slug" element={<CaseStudyPage />} />
-          {/* Engagement-model content now lives on the practice page (V2). */}
-          <Route path="how-it-works" element={<Navigate to="/consulting" replace />} />
           <Route path="services/agentic-operations" element={<AgenticOperations />} />
-          <Route path="approach" element={<Navigate to="/consulting" replace />} />
-          <Route path="writing" element={<Navigate to="/thinking" replace />} />
-          <Route path="contact" element={<Navigate to="/connect" replace />} />
         </Route>
+        {/* Case studies retired 2026-08-23 → the products page (vercel.json 301s too). */}
+        <Route path="work/:slug" element={<Navigate to="/apps" replace />} />
+        {/* Engagement-model content now lives on the practice page (V2). */}
+        <Route path="how-it-works" element={<Navigate to="/consulting" replace />} />
+        <Route path="approach" element={<Navigate to="/consulting" replace />} />
+        <Route path="writing" element={<Navigate to="/thinking" replace />} />
+        <Route path="contact" element={<Navigate to="/connect" replace />} />
 
         {/* Unknown URLs land home rather than on a blank screen. */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      </Suspense>
       </PageFade>
     </BrowserRouter>
   );

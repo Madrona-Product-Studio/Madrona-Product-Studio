@@ -1,7 +1,7 @@
 /**
  * Lightweight SEO prerender — no browser needed.
  *
- * Reads the case study data and page metadata, then generates
+ * Reads the page metadata below, then generates
  * a static HTML file for each route with real content in a
  * <noscript> block so Google can index it. The React app hydrates
  * on top for interactive users.
@@ -67,6 +67,12 @@ const pages = {
     description: 'We help you figure out what to build, then build it. Four ways in, one practice: operations and AI, customers and growth, brand and web, and new products, from a small senior team in the Pacific Northwest.',
     h1: 'How we help',
     body: 'Madrona works with founders, local businesses, and product teams. Four ways in, one practice. Work smarter: practical AI and agents on real workflows, workflow fixes, and small internal tools. Grow your business: customer journeys, commerce, loyalty, and retention. Build trust: brand, websites, and digital experience. Build something worth using: prototypes, MVPs, and new products taken from idea to real. Every engagement names its win before the work starts. We begin with a 30-minute conversation, follow with a short written assessment, and recommend the smallest engagement worth doing.',
+  },
+  '/services/agentic-operations': {
+    title: 'Workflow automation and practical AI · Madrona Product Studio',
+    description: 'Less repetitive work, fewer handoffs, and a clearer view of the operation. Practical automation and AI built around real business workflows.',
+    h1: 'Run smoother with practical automation and AI',
+    body: 'Less repetitive work, fewer handoffs, and a clearer view of the operation. We build practical automation and AI around real business workflows: agents that handle the repetitive load, one command surface to see and steer the work, and engagements that start small and prove value before they grow. From Madrona Product Studio in Bellingham, Washington.',
   },
   '/thesis': {
     title: 'The Madrona Product Thesis · Madrona Product Studio',

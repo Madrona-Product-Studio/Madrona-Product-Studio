@@ -51,7 +51,7 @@ const PLAN_ARTIFACT = (
       ]}
       foot={{ label: "Buffer after queued chases", value: "$4,790" }}
     />
-    <p className="agentx-pnl-note">Nothing here moves money or runs payroll — that stays with Gusto. The agent just makes sure the account is ready.</p>
+    <p className="agentx-pnl-note">Nothing here moves money or runs payroll. That stays with Gusto. The agent just makes sure the account is ready.</p>
     <div className="agentx-artifact-actions">
       <DocButton label="View the payroll plan" filename="Berry-Good_Payroll-Plan_Sept-6.pdf" kind="statement">
         <DocTitle business="Berry Good Berry Farm" title="Payroll Plan" sub="For the run dated September 6, 2026" />
@@ -65,7 +65,7 @@ const PLAN_ARTIFACT = (
           <DocRow label="Ferndale Market (#2044)" value="$1,150" indent />
           <DocRow label="Buffer after chases" value="$4,790" rule />
         </DocSection>
-        <DocStamp>Payroll planning only — running payroll, taxes, benefits, and compliance stay with your provider. Prepared by the payroll agent · Sept 6 run.</DocStamp>
+        <DocStamp>Payroll planning only: running payroll, taxes, benefits, and compliance stay with your provider. Prepared by the payroll agent · Sept 6 run.</DocStamp>
       </DocButton>
     </div>
   </ArtifactCard>
@@ -79,10 +79,10 @@ const SCRIPT: ConsoleScript = {
   runHint: "One command. The agent checks the run clears and how to make sure of it.",
   phases: [
     { kind: "auto", running: "Settling QuickBooks cash against PayPal…", done: "Available now $18,140 · next payroll $16,900 (Sept 6)", ms: 1200 },
-    { kind: "auto", running: "Forecasting 30 days to the run…", done: "Clears — but the buffer is thin ($1,240)", ms: 1400 },
+    { kind: "auto", running: "Forecasting 30 days to the run…", done: "Clears, but the buffer is thin ($1,240)", ms: 1400 },
     {
       kind: "gate",
-      running: "Thin buffer — chase to be safe?",
+      running: "Thin buffer: chase to be safe?",
       done: "2 invoices queued to chase",
       head: "Payroll clears, but only just. Chasing these lands cash before the run and makes it comfortable. Your call.",
       approveAllLabel: "Chase both and continue",
@@ -97,7 +97,7 @@ const SCRIPT: ConsoleScript = {
   ],
   doneNote: (
     <>
-      <strong>It plans; it never runs payroll.</strong> The agent makes sure the cash is ready and the buffer’s real — the run itself stays with your provider.
+      <strong>It plans; it never runs payroll.</strong> The agent makes sure the cash is ready and the buffer’s real. The run itself stays with your provider.
     </>
   ),
 };
@@ -117,7 +117,7 @@ export default function AgentPayrollPlanning() {
 
   return (
     <main className="m2 art agentx-page">
-      <LabMeta title="Payroll-planning agent — a working demo · Madrona Product Studio" />
+      <LabMeta title="Payroll-planning agent: a working demo · Madrona Product Studio" />
       <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
@@ -131,10 +131,10 @@ export default function AgentPayrollPlanning() {
 
         <div className="agx-demo" id="run">
           <AgentConsole script={SCRIPT} />
-          <p className="agx-demo-cap">A scripted run on Berry Good Berry Farm, our demonstration business. Nothing connects to a real ledger — it’s the shape of the real thing, on made-up numbers.</p>
+          <p className="agx-demo-cap">A scripted run on Berry Good Berry Farm, our demonstration business. Nothing connects to a real ledger. It’s the shape of the real thing, on made-up numbers.</p>
         </div>
 
-        <ArticleBody share={{ title: "Payroll-planning agent — a working demo", href: HREF }}>
+        <ArticleBody share={{ title: "Payroll-planning agent: a working demo", href: HREF }}>
           <ArticleSection id="how" num="1" eyebrow="How it works" title="Settles the cash, forecasts the run.">
             <Prose>
               <p>No black box. The agent runs the same four steps before every payroll, and it hands control back at the one that matters.</p>
@@ -153,7 +153,7 @@ export default function AgentPayrollPlanning() {
                 Your QuickBooks and processor accounts connected, and a payroll date to plan toward.
               </Fact>
               <Fact tone="storefront" icon={IC.flag} label="Where it ends">
-                This is payroll planning. Running payroll, taxes, benefits, and compliance stay with your payroll provider &mdash; the agent just makes sure the cash is ready.
+                This is payroll planning. Running payroll, taxes, benefits, and compliance stay with your payroll provider. The agent just makes sure the cash is ready.
               </Fact>
             </div>
           </ArticleSection>
@@ -161,7 +161,7 @@ export default function AgentPayrollPlanning() {
           <ArticleSection id="deploy" num="3" eyebrow="Start small" title="Plan your next run.">
             <Prose>
               <p>It starts with a 30-minute conversation, and it&rsquo;s free. We&rsquo;ll tell you in writing where an agent like this would actually help on your operation, and where it wouldn&rsquo;t.</p>
-              <p>When it&rsquo;s a fit, we connect the accounts, set it to run before each payroll, and teach you to run it. It&rsquo;s yours to keep &mdash; no lock-in.</p>
+              <p>When it&rsquo;s a fit, we connect the accounts, set it to run before each payroll, and teach you to run it. It&rsquo;s yours to keep, no lock-in.</p>
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
