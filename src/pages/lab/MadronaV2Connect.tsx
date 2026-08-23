@@ -4,6 +4,7 @@ import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import { useCalEmbed, bookProps, bookHref, bookClick } from "./useCalEmbed";
+import { track } from "../../lib/analytics";
 import "./madrona-v2.css";
 
 const CX_ICONS: Record<string, ReactNode> = {
@@ -61,10 +62,14 @@ export default function MadronaV2Connect() {
     try {
       const res = await fetch("/api/contact", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload) });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) { setError(data.error || "Something went wrong. Please email hello@madronaproduct.com."); setStatus("error"); return; }
-      (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.("event", "contact_submit", { event_category: "engagement" });
+      if (!res.ok) {
+        track("contact_error", { reason: `api_${res.status}` });
+        setError(data.error || "Something went wrong. Please email hello@madronaproduct.com."); setStatus("error"); return;
+      }
+      track("contact_submit");
       setStatus("success");
     } catch {
+      track("contact_error", { reason: "network" });
       setError("Couldn’t reach the server. Please email hello@madronaproduct.com."); setStatus("error");
     }
   }

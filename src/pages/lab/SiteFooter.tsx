@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
+import { track } from "../../lib/analytics";
 
 const EMAIL = "hello@madronaproduct.com";
 const CONTACT = "/connect";
@@ -57,7 +58,7 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
           </nav>
           <div className="m2-fc-contact">
             <p>Bellingham, WA</p>
-            <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+            <a href={`mailto:${EMAIL}`} onClick={() => track("email_click", { source: "footer" })}>{EMAIL}</a>
           </div>
         </div>
         <div className="m2-fc-foot-legal">

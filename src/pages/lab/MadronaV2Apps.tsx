@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { track } from "../../lib/analytics";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -42,7 +43,7 @@ function ProductRow({ product }: { product: StudioProduct }) {
         <StageBadge stage={product.stage} />
         <p>{product.shortDescription}</p>
         {product.primaryAction && (
-          <a className="m2-text-link m2-ap-action" href={product.primaryAction.href} {...(product.primaryAction.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+          <a className="m2-text-link m2-ap-action" href={product.primaryAction.href} onClick={() => track("app_outbound_click", { app: product.name })} {...(product.primaryAction.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
             {product.primaryAction.label}<span aria-hidden="true"> →</span>
             {product.primaryAction.external && <span className="m2-ap-sr"> (opens in a new tab)</span>}
           </a>
