@@ -34,13 +34,13 @@ const PIPELINE: Pillar[] = [
 ];
 
 const REVIEW = (
-  <ArtifactCard kicker="Contract review · Cooler-lease.pdf" title="Signable — after two edits and one call.">
+  <ArtifactCard kicker="Contract review · Cooler-lease.pdf" title="Signable, after two edits and one call.">
     <ArtifactList items={[
-      "Auto-renewal (§7.2) — reminder added",
-      "Repairs clause (§4.1) — flagged to negotiate",
-      "Personal guarantee (§11) — take to counsel",
+      "Auto-renewal (§7.2): reminder added",
+      "Repairs clause (§4.1): flagged to negotiate",
+      "Personal guarantee (§11): take to counsel",
     ]} />
-    <p className="agentx-pnl-note">It flags, it doesn’t decide, and it isn’t your lawyer. For the lease or the partnership, the review buys you a sharper conversation with counsel — not a substitute for one.</p>
+    <p className="agentx-pnl-note">It flags, it doesn’t decide, and it isn’t your lawyer. For the lease or the partnership, the review buys you a sharper conversation with counsel, not a substitute for one.</p>
     <div className="agentx-artifact-actions">
       <DocButton label="View the review" filename="Berry-Good_Contract-Review_Cooler-lease.pdf" kind="memo">
         <DocTitle business="Berry Good Berry Farm" title="Contract Review" sub="Cooler-lease.pdf · commercial equipment lease · 11 pages" />
@@ -48,12 +48,12 @@ const REVIEW = (
           <DocProse>Renews for 36 months unless you cancel 90 days before term end. <strong>Do:</strong> add the cancel date to your calendar now.</DocProse>
         </DocSection>
         <DocSection head="§4.1 · Repairs">
-          <DocProse>You cover all repairs, including normal wear — unusual for a lease. <strong>Do:</strong> ask them to strike or cap it.</DocProse>
+          <DocProse>You cover all repairs, including normal wear, which is unusual for a lease. <strong>Do:</strong> ask them to strike or cap it.</DocProse>
         </DocSection>
         <DocSection head="§11 · Personal guarantee">
           <DocProse>You’d be personally liable, not just the farm. <strong>Do:</strong> take this one to a lawyer before signing.</DocProse>
         </DocSection>
-        <DocStamp>Not legal advice — a first read to make your conversation with counsel sharper. Reviewed by the contract agent.</DocStamp>
+        <DocStamp>Not legal advice: a first read to make your conversation with counsel sharper. Reviewed by the contract agent.</DocStamp>
       </DocButton>
     </div>
   </ArtifactCard>
@@ -70,9 +70,9 @@ const SCRIPT: ConsoleScript = {
     { kind: "auto", running: "Checking terms against your risk flags…", done: "3 things worth a closer look", ms: 1300 },
     {
       kind: "gate",
-      running: "3 flags — how to handle each",
+      running: "3 flags: how to handle each",
       done: "2 noted · 1 to counsel",
-      head: "Not legal advice — a sharp first read. Here’s what stood out before you sign. The heavy one it’s telling you to take to a lawyer.",
+      head: "Not legal advice: a sharp first read. Here’s what stood out before you sign. The heavy one it’s telling you to take to a lawyer.",
       approveAllLabel: "Note all",
       continueLabel: "Route selected",
       items: [
@@ -85,7 +85,7 @@ const SCRIPT: ConsoleScript = {
   ],
   doneNote: (
     <>
-      <strong>It flags; it doesn’t decide.</strong> A sharp first read that makes the terms plain and points you to the one clause worth a lawyer — so your conversation with counsel is a good one.
+      <strong>It flags; it doesn’t decide.</strong> A sharp first read that makes the terms plain and points you to the one clause worth a lawyer, so your conversation with counsel is a good one.
     </>
   ),
 };
@@ -94,13 +94,13 @@ export default function AgentContractReview() {
   useReveal();
   return (
     <main className="m2 art agentx-page">
-      <LabMeta title="Contract-review agent — a working demo · Madrona Product Studio" />
+      <LabMeta title="Contract-review agent: a working demo · Madrona Product Studio" />
       <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Admin & legal"
           name="Contract review"
-          tagline="Before you sign, the agent reads the contract, flags the terms and risks that matter, and answers your questions in plain English. It’s a sharp first read — not your lawyer."
+          tagline="Before you sign, the agent reads the contract, flags the terms and risks that matter, and answers your questions in plain English. It’s a sharp first read, not your lawyer."
           spec={SPEC}
           runLabel="Run the review"
         />
@@ -111,10 +111,10 @@ export default function AgentContractReview() {
           <p className="agx-demo-cap">A scripted run on Berry Good Berry Farm, our demonstration business. The contract and flags are made up; the read-and-flag pattern is the real one.</p>
         </div>
 
-        <ArticleBody share={{ title: "Contract-review agent — a working demo", href: HREF }}>
+        <ArticleBody share={{ title: "Contract-review agent: a working demo", href: HREF }}>
           <ArticleSection id="how" num="1" eyebrow="How it works" title="Reads it all. Flags what matters.">
             <Prose>
-              <p>The value isn&rsquo;t a legal opinion &mdash; it&rsquo;s a clear-eyed first read. The agent works through the whole document and hands back the handful of terms that deserve your attention, in plain English.</p>
+              <p>The value isn&rsquo;t a legal opinion: it&rsquo;s a clear-eyed first read. The agent works through the whole document and hands back the handful of terms that deserve your attention, in plain English.</p>
             </Prose>
             <Figure><PillarRow items={PIPELINE} /></Figure>
           </ArticleSection>
@@ -128,7 +128,7 @@ export default function AgentContractReview() {
                 The contract as a file it can read, and your questions about it.
               </AgentFact>
               <AgentFact tone="storefront" icon={IC.flag} label="Where it ends">
-                It flags, it doesn&rsquo;t decide, and it is not your lawyer. The lease, the partnership, the personal guarantee &mdash; the review sharpens your conversation with counsel; it doesn&rsquo;t replace it.
+                It flags, it doesn&rsquo;t decide, and it is not your lawyer. The lease, the partnership, the personal guarantee: the review sharpens your conversation with counsel; it doesn&rsquo;t replace it.
               </AgentFact>
             </div>
           </ArticleSection>
@@ -136,7 +136,7 @@ export default function AgentContractReview() {
           <ArticleSection id="deploy" num="3" eyebrow="Start small" title="Put it on your next contract.">
             <Prose>
               <p>It starts with a free 30-minute conversation. We&rsquo;ll tell you in writing whether a contract agent would earn its keep in your operation, and what it should watch for.</p>
-              <p>When it fits, we set it up on your documents, tune it to the terms you care about, and teach you to run it. Yours to keep &mdash; no lock-in.</p>
+              <p>When it fits, we set it up on your documents, tune it to the terms you care about, and teach you to run it. Yours to keep, no lock-in.</p>
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>

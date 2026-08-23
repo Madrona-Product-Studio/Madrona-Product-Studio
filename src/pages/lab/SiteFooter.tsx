@@ -49,12 +49,15 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
       <div className="m2-fc-foot">
         <div className="m2-fc-foot-main">
           <Link className="m2-fc-logo" to="/" aria-label="Madrona Product Studio home"><MadronaLogo variant="horizontal" decorative /></Link>
+          {/* Same vocabulary as the header nav, plus the two footer-only doors. */}
           <nav className="m2-fc-nav" aria-label="Footer">
             <Link to="/apps">Products</Link>
-            <Link to="/consulting">How we help</Link>
-            <Link to="/checkup">Signal check</Link>
-            <Link to="/thinking">Thinking</Link>
+            <Link to="/consulting">Consulting</Link>
+            <Link to="/tools">Tools</Link>
+            <Link to="/thinking">Articles</Link>
             <Link to="/about">About</Link>
+            <Link to="/checkup">Free signal check</Link>
+            <Link to="/connect">Contact</Link>
           </nav>
           <div className="m2-fc-contact">
             <p>Bellingham, WA</p>

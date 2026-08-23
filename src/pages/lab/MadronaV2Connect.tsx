@@ -100,7 +100,7 @@ export default function MadronaV2Connect() {
           {status === "success" ? (
             <div className="m2-cx-success">
               <span className="m2-cx-action-icon m2-cx-action-icon--forest"><CxIcon name="check" /></span>
-              <h3>Thanks — your message is on its way.</h3>
+              <h3>Thanks. Your message is on its way.</h3>
               <p>We’ll get back to you within two business days.</p>
             </div>
           ) : (

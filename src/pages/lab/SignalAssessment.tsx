@@ -532,6 +532,17 @@ export default function SignalAssessment() {
           )}
         </aside>
         </div>
+        {/* Quiet site-context strip — /checkup strips the normal chrome, so a
+            visitor arriving from a shared link still learns whose check this
+            is and has a way into the site. */}
+        <footer className="sa-site-foot">
+          <p>A free signal check from Madrona Product Studio, Bellingham WA</p>
+          <nav aria-label="Madrona site">
+            <Link to="/">madronaproduct.com</Link>
+            <Link to="/consulting">How we help</Link>
+            <Link to="/connect">Contact</Link>
+          </nav>
+        </footer>
       </div>
     </div>
   );

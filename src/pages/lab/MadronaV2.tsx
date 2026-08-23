@@ -138,7 +138,17 @@ function HowWeWork() {
         <p className="m2-kicker">How we work</p>
         <h2>A straightforward way to begin.</h2>
         <p>We start by understanding what is not working, define what better looks like, and recommend the smallest useful next step.</p>
+        <p>First engagements are deliberately small, with visible payback before anything grows.</p>
         <span className="m2-hww-rule" aria-hidden="true" />
+        {/* Credibility, surfaced where the decision happens (same strip as /about). */}
+        <div className="m2-ab4-exp m2-hww-exp">
+          <ul className="m2-ab4-logos" aria-label="Where we've built before">
+            <li><img src="/images/logos/rei-logo.svg" alt="REI" /></li>
+            <li><img src="/images/logos/healthline-logo.svg" alt="Healthline" /></li>
+            <li><img src="/images/logos/microsoft-logo.svg" alt="Microsoft" /></li>
+          </ul>
+          <p><strong>15+ years</strong> building consumer products at scale</p>
+        </div>
       </div>
       <div className="m2-hww-steps">
         {hwwSteps.map((s, i) => (

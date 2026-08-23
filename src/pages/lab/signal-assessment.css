@@ -718,6 +718,10 @@
   }
   .sa-body {
     grid-template-columns: 1fr;
+    /* Size the copy row to its content and give the leftover viewport to the
+       map row — otherwise the stretch alignment parks ~two screens of blank
+       dark space between the intro copy and the pathway header. */
+    grid-template-rows: auto 1fr;
   }
   .sa-work {
     padding: 30px 22px;
@@ -758,5 +762,37 @@
   .sa-answer-mark,
   .sa-primary {
     transition: none;
+  }
+}
+
+/* ---- Site-context strip (below the immersive shell) ---- */
+.sa-site-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  padding: 14px 30px;
+  border-top: 1px solid var(--a-border);
+  font-size: 12.5px;
+  color: var(--a-text-3);
+}
+.sa-site-foot p {
+  margin: 0;
+}
+.sa-site-foot nav {
+  display: flex;
+  gap: 20px;
+}
+.sa-site-foot a {
+  color: var(--a-text-2);
+  text-decoration: none;
+}
+.sa-site-foot a:hover {
+  color: var(--a-text);
+}
+@media (max-width: 880px) {
+  .sa-site-foot {
+    padding: 14px 22px;
   }
 }

@@ -36,9 +36,9 @@ const PIPELINE: Pillar[] = [
 const BRIEF = (
   <ArtifactCard kicker="Morning brief · Aug 20" title="What changed overnight.">
     <ArtifactList items={[
-      "Raspberry prices up 8% — pricing revisit added to today",
-      "New u-pick competitor 12 miles south — watching",
-      "Heat wave Thu–Sat — noted, no action yet",
+      "Raspberry prices up 8%: pricing revisit added to today",
+      "New u-pick competitor 12 miles south: watching",
+      "Heat wave Thu–Sat: noted, no action yet",
     ]} />
     <p className="agentx-pnl-note">Three lines, not fourteen sources. The agent read the night so you didn’t have to.</p>
     <div className="agentx-artifact-actions">
@@ -54,7 +54,7 @@ const BRIEF = (
           <DocProse>Bellingham Berries opened weekend u-pick with similar hours. <strong>Suggested move:</strong> note it in the competitive file and watch their pricing.</DocProse>
         </DocSection>
         <DocSection head="3 · Heat wave Thursday–Saturday">
-          <DocProse>NOAA has the weekend peaking near 94°F; ripening will accelerate. Filed for you — no action needed unless it changes your picking plan.</DocProse>
+          <DocProse>NOAA has the weekend peaking near 94°F; ripening will accelerate. Filed for you. No action needed unless it changes your picking plan.</DocProse>
         </DocSection>
         <DocStamp>Sources read: USDA weekly, regional trade press, three competitors, NOAA. Compiled overnight by the industry agent · August 20, 2026.</DocStamp>
       </DocButton>
@@ -73,7 +73,7 @@ const SCRIPT: ConsoleScript = {
     { kind: "auto", running: "Comparing against your base file…", done: "3 changes worth your attention · 11 filed as noise", ms: 1400 },
     {
       kind: "gate",
-      running: "3 signals — pick what becomes an action",
+      running: "3 signals: pick what becomes an action",
       done: "2 signals routed to today",
       head: "A brief, not a feed. Here’s what moved since yesterday. Send what matters to your day; skip the rest.",
       approveAllLabel: "Route all to today",
@@ -81,7 +81,7 @@ const SCRIPT: ConsoleScript = {
       items: [
         { primary: "Raspberry prices +8%", meta: "USDA weekly · regional", issue: "Third straight week up. Your U-pick sits below market.", suggest: "Suggested move: Revisit U-pick pricing for the holiday weekend.", approveLabel: "Add to today" },
         { primary: "New u-pick 12 mi south", meta: "Competitor · social", issue: "Bellingham Berries opened weekend u-pick, similar hours.", suggest: "Suggested move: Note in the competitive file; watch their pricing.", approveLabel: "Add to today" },
-        { primary: "Heat wave Thu–Sat", meta: "NOAA · 94°F peak", issue: "Hot weekend ahead — ripening will accelerate.", suggest: "A weather note. Already on your radar?", manual: true, manualNote: "Filed for you — no action needed unless it changes your picking plan." },
+        { primary: "Heat wave Thu–Sat", meta: "NOAA · 94°F peak", issue: "Hot weekend ahead: ripening will accelerate.", suggest: "A weather note. Already on your radar?", manual: true, manualNote: "Filed for you. No action needed unless it changes your picking plan." },
       ],
     },
     { kind: "auto", running: "Writing the morning brief…", done: "Brief ready", ms: 1000, artifact: BRIEF },
@@ -97,13 +97,13 @@ export default function AgentIndustryBrief() {
   useReveal();
   return (
     <main className="m2 art agentx-page">
-      <LabMeta title="Industry-intelligence agent — a working demo · Madrona Product Studio" />
+      <LabMeta title="Industry-intelligence agent: a working demo · Madrona Product Studio" />
       <M2Nav active="tools" />
       <div className="art-wrap">
         <AgentDemoHero
           category="Market intelligence"
           name="Industry intelligence"
-          tagline="Overnight, the agent reads your industry’s reports, prices, and news, compares them to what it already knows, and hands you a short brief of what actually changed — each signal with a suggested next move."
+          tagline="Overnight, the agent reads your industry’s reports, prices, and news, compares them to what it already knows, and hands you a short brief of what actually changed, each signal with a suggested next move."
           spec={SPEC}
           runLabel="Run the sweep"
         />
@@ -114,10 +114,10 @@ export default function AgentIndustryBrief() {
           <p className="agx-demo-cap">A scripted run on Berry Good Berry Farm, our demonstration business. The sources and signals are made up; the sweep-and-brief pattern is the real one.</p>
         </div>
 
-        <ArticleBody share={{ title: "Industry-intelligence agent — a working demo", href: HREF }}>
+        <ArticleBody share={{ title: "Industry-intelligence agent: a working demo", href: HREF }}>
           <ArticleSection id="how" num="1" eyebrow="How it works" title="Reads the night, briefs the morning.">
             <Prose>
-              <p>The value isn&rsquo;t more information — it&rsquo;s less. The agent reads far more than you could and hands back only what changed against what you already know.</p>
+              <p>The value isn&rsquo;t more information: it&rsquo;s less. The agent reads far more than you could and hands back only what changed against what you already know.</p>
             </Prose>
             <Figure><PillarRow items={PIPELINE} /></Figure>
           </ArticleSection>
@@ -139,7 +139,7 @@ export default function AgentIndustryBrief() {
           <ArticleSection id="deploy" num="3" eyebrow="Start small" title="Point it at your industry.">
             <Prose>
               <p>It starts with a free 30-minute conversation. We&rsquo;ll tell you in writing whether an industry agent would earn its keep in your trade, and what its base file should watch.</p>
-              <p>When it&rsquo;s a fit, we write the base file with you, wire the sources, set the nightly rhythm, and teach you to run it. Yours to keep &mdash; no lock-in.</p>
+              <p>When it&rsquo;s a fit, we write the base file with you, wire the sources, set the nightly rhythm, and teach you to run it. Yours to keep, no lock-in.</p>
             </Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>

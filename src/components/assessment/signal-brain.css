@@ -9,7 +9,7 @@
   --sb-orange: #d46f43;
   --sb-orange-bright: #ff9a66;
   --sb-orange-glow: rgba(255, 125, 69, 0.34);
-  --sb-text: #a6afa8;
+  --sb-text: #c2ccc5;
 
   display: block;
   width: 100%;
@@ -155,7 +155,7 @@
 }
 .sb-pw-label {
   fill: var(--sb-text);
-  opacity: 0.7;
+  opacity: 0.9;
   font-size: 10px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -230,7 +230,7 @@
 }
 .sb-node-label {
   fill: var(--sb-text);
-  opacity: 0.62;
+  opacity: 0.8;
   font-size: 10px;
   letter-spacing: 0.05em;
   text-anchor: middle;

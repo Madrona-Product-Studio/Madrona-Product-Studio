@@ -181,12 +181,14 @@ Every page should be able to route here. Three steps, published on
    deliberately small, with visible payback. No prices published yet
    (Charlie's call, pending).
 
-Booking currently routes through the site funnel (/how-it-works →
-/contact). The swap point is `BOOKING_URL` in `src/data/booking.ts`:
-set it to the Google Calendar appointment-schedule share link (the
-settled recommendation, not Cal.com) and every "Book a 30m free chat"
-CTA sitewide switches to direct booking via the shared `<BookCta>`
-component.
+Booking runs on the **Cal.com popup embed** (settled 2026-08-23; this
+supersedes the earlier Google Calendar recommendation). `CAL_LINK` in
+`src/data/booking.ts` is live; `useCalEmbed()` + `bookProps()`/
+`bookClick()` (src/pages/lab/useCalEmbed.ts) power every "Schedule a
+30-min call" CTA, with `BOOKING_URL` as the no-JS fallback href. Booking
+clicks fire the `book_click` event through the shared dual-sink tracker
+(`src/lib/analytics.ts` — GA4 + Vercel; its header documents the full
+event vocabulary).
 
 ## Service architecture (Grow / Retain / Operate — site IA follows it)
 
@@ -258,10 +260,10 @@ The three engagement shapes live on `/how-it-works` as the shapes a
 - **Agentic operations** — flagship page: the idea, the Berry Good
   worked example (the agent cast), the anatomy, the dogfood proof
   (Helm demo), start-tiny framing.
-- **Work** — 9 studio case studies grouped by maturity stage
-  (Live → Beta → Prototype → Concept).
-- **Case study pages** — template: Opportunity → Thesis → What We Did →
-  What We Learned → Status.
+- **Apps (/apps)** — the studio product portfolio, filterable by stage.
+  (The old /work case-study pages were retired 2026-08-23: orphaned,
+  unindexed, old chrome. /work and /work/:slug 301 to /apps; the content
+  lives in git history if it's ever rebuilt as V2 pages.)
 - **Approach** — philosophy only: manifesto, the rhythm.
 - **Writing** — placeholder; hidden from nav and noindexed until real
   articles ship.
