@@ -54,10 +54,11 @@ html:has(.m2) { scroll-behavior: smooth; }
   grid-template-columns: auto 1fr auto;
   margin: 0 auto;
   max-width: 1360px;
-  padding: 26px 32px;
+  /* Compact bar (Charlie, 2026-08-26): roughly half the old height. */
+  padding: 10px 32px;
 }
 .m2-logo-link { display: inline-block; justify-self: start; padding: 4px 0; }
-.m2-nav img { height: auto; width: clamp(250px, 22vw, 280px); }
+.m2-nav img { height: auto; width: clamp(175px, 15vw, 200px); }
 .m2 .madrona-static-logo { object-fit: contain; }
 .m2-nav nav { display: flex; align-items: center; gap: 30px; font-family: var(--font-nav); font-size: .88rem; letter-spacing: .005em; justify-self: end; }
 .m2-nav nav a { padding: 10px 4px; font-weight: 600; }
