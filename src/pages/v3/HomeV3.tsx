@@ -1,10 +1,10 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { serviceAreas } from "../../data/services";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
-import { CurrentHero, HeroVariantView, type HeroVariant } from "./HeroVariants";
+import { Hero } from "./Hero";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 import helmImage from "../../../docs/madrona-v2-build-kit/site-assets/helm-tile.webp";
@@ -16,15 +16,12 @@ const doorRoutes: Record<string, string> = { "operations-and-ai": "/v3/consultin
 const stack = ["Claude", "OpenAI", "Shopify", "Vercel", "Resend", "GA4", "Cal.com", "GitHub"];
 
 export default function HomeV3() {
-  const [searchParams] = useSearchParams();
-  const selected = searchParams.get("hero");
-  const heroVariant = selected === "a" || selected === "b" || selected === "c" ? selected as HeroVariant : null;
   useCalEmbed();
   return <main className="m2 v3">
     <LabMeta title="Madrona Product Studio · V3 preview" noindex />
     <M2Nav />
     <aside className="v3-now"><span>Now at Madrona</span><p>We are opening a small number of fall projects.</p><Link to="/connect">Tell us what you are working on →</Link></aside>
-    {heroVariant ? <HeroVariantView variant={heroVariant} /> : <CurrentHero />}
+    <Hero />
 
     <section className="v3-section v3-shell"><div className="v3-spread-intro"><div><p className="v3-kicker">Four ways in</p><h2>Bring us the problem as you see it.</h2></div><p>The doors are different. The practice behind them is the same: find the most valuable move, make it tangible, and learn from the real thing.</p></div><div className="v3-door-grid">{serviceAreas.map((service, index) => <Link className="v3-door" to={doorRoutes[service.id]} key={service.id}><div><span>0{index + 1} · {service.name}</span><h3>{service.door}</h3><p>{service.outcome}</p></div><figure><img src={service.artifact.src} alt={service.artifact.alt} /><figcaption>{service.artifact.caption}</figcaption></figure><ul>{service.homepageItems.map(item => <li key={item}>{item}</li>)}</ul><b>Explore this work →</b></Link>)}</div></section>
 
