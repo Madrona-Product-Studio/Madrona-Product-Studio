@@ -13,6 +13,8 @@ import AgentsGallery from "./pages/lab/AgentsGallery";
 // Everything deeper is route-split: articles, tool demos, the assessment, and
 // legacy/lab pages don't belong in the first-load bundle.
 const AgenticOperations = lazy(() => import("./pages/AgenticOperations"));
+const HomeV3 = lazy(() => import("./pages/v3/HomeV3"));
+const ServicePageV3 = lazy(() => import("./pages/v3/ServicePageV3"));
 const MadronaV2Thesis = lazy(() => import("./pages/lab/MadronaV2Thesis"));
 const MadronaV2EngineNote = lazy(() => import("./pages/lab/MadronaV2EngineNote"));
 const MadronaV2AgenticNote = lazy(() => import("./pages/lab/MadronaV2AgenticNote"));
@@ -46,6 +48,9 @@ export default function App() {
       <PageFade>
       <Suspense fallback={null}>
       <Routes>
+        {/* Redesign exploration. Preview-only routes keep the live site intact. */}
+        <Route path="v3" element={<HomeV3 />} />
+        <Route path="v3/consulting/work-smarter" element={<ServicePageV3 serviceId="operations-and-ai" />} />
         {/* Story rethink: new studio front-door home; current homepage preserved as /consulting. */}
         <Route path="/" element={<MadronaV2Home />} />
         <Route path="consulting" element={<MadronaV2 />} />
