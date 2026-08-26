@@ -8,26 +8,50 @@ const HELM_DEMO_URL = "https://helm.day";
 
 // The Berry Good cast: each agent is one beat for the farm, one beat for
 // the reader's business. Berry Good is openly ours — a demonstration
-// business, never implied to be a client.
-const berryGoodCast: { lead: string; body: string; to?: string }[] = [
+// business, never implied to be a client. Rendered as a roster of cards:
+// name + rhythm up top, the work in the body, the demo one click away.
+const berryGoodCast: { name: string; rhythm: string; body: string; to?: string }[] = [
   {
-    lead: "The industry agent.",
+    name: "The industry agent",
+    rhythm: "Runs nightly",
     body: "Gathers the latest agriculture reports, prices, and news overnight, and hands the farm a short what-changed brief. Pointed at your trade instead, it's the cheapest strategy work you'll ever buy.",
     to: "/tools/industry-brief",
   },
   {
-    lead: "The invoicing agent.",
+    name: "The invoicing agent",
+    rhythm: "Runs weekly",
     body: "Drafts the invoices, sends them, and chases the late ones politely. The same agent runs on any business that bills.",
     to: "/tools/invoice-chasing",
   },
   {
-    lead: "The customer service agent.",
+    name: "The customer service agent",
+    rhythm: "Always on",
     body: "First answers on hours, availability, and orders, in the farm's own voice, with a human one message away. The same agent sits on any inbox.",
     to: "/tools/customer-inbox",
   },
   {
-    lead: "The ordering surface.",
+    name: "The ordering surface",
+    rhythm: "In season",
     body: "U-pick bookings and standing orders. The first order is a growth move, the reorder a retention move, the packing list behind it an operations move. One surface, all three.",
+  },
+];
+
+// One rendered artifact beats a paragraph of description: an excerpt of the
+// industry agent's what-changed brief, exactly as it lands each morning.
+// One routed action only — the flash stays scarce.
+const briefRows: { tag: string; text: string; action?: string }[] = [
+  {
+    tag: "Prices",
+    text: "Raspberry flats are up 9% at the wholesale market this week.",
+    action: "Routed to action: revisit u-pick pricing before the weekend.",
+  },
+  {
+    tag: "Weather",
+    text: "Heat advisory Saturday afternoon; mornings stay clear.",
+  },
+  {
+    tag: "Demand",
+    text: "Two cafés asked about standing berry orders in the last five days.",
   },
 ];
 
@@ -122,11 +146,11 @@ export default function AgenticOperations() {
       </section>
 
       {/* The worked example — Berry Good */}
-      <section className="max-w-2xl">
+      <section className="max-w-5xl">
         <div className="mb-6"><Marker index="02" /></div>
         <Label className="block mb-4">The worked example</Label>
         <h2 className="mb-6">Berry Good Berry Farm.</h2>
-        <div className="space-y-6 text-ink70 leading-relaxed">
+        <div className="max-w-2xl space-y-6 text-ink70 leading-relaxed">
           <p>
             Berry Good is our demonstration business: a small berry farm
             we're building out the way we'd build for a client, so we can
@@ -136,22 +160,25 @@ export default function AgenticOperations() {
             orders to fill. Here's the cast we're standing up around it:
           </p>
         </div>
-        <ul className="my-8 space-y-5 border-l-2 border-madrona/30 pl-6 list-none">
+        <ul className="my-10 grid gap-4 sm:grid-cols-2 list-none m-0 p-0">
           {berryGoodCast.map((item) => (
-            <li key={item.lead} className="leading-relaxed">
-              <span className="font-medium text-ink">{item.lead}</span>{" "}
-              <span className="text-ink70">{item.body}</span>
-              {item.to && (
-                <>{" "}
-                  <Link to={item.to} className="font-medium text-madrona hover:text-madrona-dark whitespace-nowrap transition-colors">
+            <li key={item.name} className="flex">
+              <article className="flex w-full flex-col gap-3 rounded-card border border-line bg-card p-6">
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="text-base font-semibold text-ink">{item.name}</h3>
+                  <span className="whitespace-nowrap text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-muted">{item.rhythm}</span>
+                </div>
+                <p className="text-sm leading-relaxed text-ink70">{item.body}</p>
+                {item.to && (
+                  <Link to={item.to} className="mt-auto text-sm font-medium text-madrona hover:text-madrona-dark transition-colors">
                     Run the demo &rarr;
                   </Link>
-                </>
-              )}
+                )}
+              </article>
             </li>
           ))}
         </ul>
-        <div className="space-y-6 text-ink70 leading-relaxed">
+        <div className="max-w-2xl space-y-6 text-ink70 leading-relaxed">
           <p>
             None of this is berry-specific. Swap the agriculture reports for
             your trade's, point the inbox agent at your inbox, and the same
@@ -170,25 +197,54 @@ export default function AgenticOperations() {
         </div>
       </section>
 
-      {/* Anatomy of one agent */}
-      <section className="max-w-2xl">
+      {/* Anatomy of one agent, beside the artifact it produces */}
+      <section className="max-w-5xl">
         <div className="mb-6"><Marker index="03" /></div>
         <Label className="block mb-4">The anatomy</Label>
         <h2 className="mb-6">What's inside an agent.</h2>
-        <div className="space-y-6 text-ink70 leading-relaxed">
-          <p>
-            Take the industry agent apart and there's no magic, just four
-            pieces done carefully:
-          </p>
+        <div className="grid gap-10 md:grid-cols-2 md:gap-14">
+          <div>
+            <div className="space-y-6 text-ink70 leading-relaxed">
+              <p>
+                Take the industry agent apart and there's no magic, just four
+                pieces done carefully:
+              </p>
+            </div>
+            <ol className="mt-6 list-none m-0 p-0">
+              {agentArc.map((item, i) => (
+                <li key={item.lead} className="flex gap-4 border-t border-line-soft py-4 first:border-t-0 leading-relaxed">
+                  <span className="pt-0.5 text-xs font-semibold text-madrona">0{i + 1}</span>
+                  <div>
+                    <span className="font-medium text-ink">{item.lead}</span>{" "}
+                    <span className="text-ink70">{item.body}</span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <figure className="m-0 self-start overflow-hidden rounded-card border border-line bg-card">
+            <figcaption className="flex items-baseline justify-between gap-3 border-b border-line px-5 py-3">
+              <span className="text-xs font-semibold uppercase tracking-wide text-muted">The what-changed brief</span>
+              <span className="text-xs text-faint">Tuesday · 6:04 am</span>
+            </figcaption>
+            <ul className="list-none m-0 divide-y divide-line-soft p-0">
+              {briefRows.map((row) => (
+                <li key={row.tag} className="px-5 py-4">
+                  <div className="flex items-baseline gap-4">
+                    <span className="w-16 shrink-0 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-muted">{row.tag}</span>
+                    <div>
+                      <p className="m-0 text-sm leading-relaxed text-ink">{row.text}</p>
+                      {row.action && <p className="m-0 mt-1.5 text-xs font-medium text-madrona">&rarr; {row.action}</p>}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <p className="m-0 border-t border-line-soft px-5 py-3 text-xs text-faint">
+              An excerpt of the brief the industry agent drops each morning.
+            </p>
+          </figure>
         </div>
-        <ul className="my-8 space-y-5 border-l-2 border-madrona/30 pl-6 list-none">
-          {agentArc.map((item) => (
-            <li key={item.lead} className="leading-relaxed">
-              <span className="font-medium text-ink">{item.lead}</span>{" "}
-              <span className="text-ink70">{item.body}</span>
-            </li>
-          ))}
-        </ul>
       </section>
 
       {/* Dogfood proof */}
@@ -219,10 +275,10 @@ export default function AgenticOperations() {
             See Helm &rarr;
           </a>
           <Link
-            to="/work/helm"
+            to="/apps"
             className="text-sm font-medium text-madrona hover:text-madrona-dark transition-colors"
           >
-            Read the Helm case study &rarr;
+            See everything we build and run &rarr;
           </Link>
         </div>
       </section>

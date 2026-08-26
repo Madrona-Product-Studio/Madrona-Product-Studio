@@ -1,15 +1,45 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Wordmark from "./Wordmark";
+import { nowItem } from "../data/now";
+import { track } from "../lib/analytics";
 
+// Mirrors the V2 nav vocabulary (M2Nav) so the one legacy-chrome page
+// doesn't advertise retired routes.
 const navLinks = [
-  { to: "/consulting", label: "What we do" },
-  { to: "/how-it-works", label: "How it works" },
-  { to: "/work", label: "Studio work" },
-  // Approach folded out of the nav in the local-first structure (route
-  // still resolves); Writing stays hidden until content is ready.
+  { to: "/apps", label: "Products" },
+  { to: "/consulting", label: "Consulting" },
+  { to: "/tools", label: "Tools" },
+  { to: "/thinking", label: "Articles" },
   { to: "/about", label: "About" },
 ];
+
+// Tailwind twin of the V2 NowStrip (src/pages/lab/NowStrip.tsx) — same data
+// file, same layout, rendered with the legacy chrome's tokens.
+function NowBar() {
+  if (!nowItem) return null;
+  const item = nowItem;
+  const onClick = () => track("now_click", { href: item.href });
+  const body = (
+    <>
+      <span className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-madrona whitespace-nowrap">{item.tag}</span>
+      <span className="truncate">{item.text}</span>
+      <span className="text-madrona" aria-hidden="true">→</span>
+    </>
+  );
+  return (
+    <div className="bg-card border-b border-line-soft">
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 min-h-[38px] py-1.5 flex items-center justify-center md:justify-between gap-4">
+        <p className="hidden md:block text-xs text-muted m-0">Bellingham, Washington · Pacific Northwest and beyond</p>
+        {item.external ? (
+          <a href={item.href} target="_blank" rel="noopener noreferrer" onClick={onClick} className="inline-flex items-baseline gap-2.5 text-xs font-semibold text-ink no-underline min-w-0">{body}</a>
+        ) : (
+          <Link to={item.href} onClick={onClick} className="inline-flex items-baseline gap-2.5 text-xs font-semibold text-ink no-underline min-w-0">{body}</Link>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -144,6 +174,7 @@ export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
+      <NowBar />
       <Nav />
       <main className="flex-1">
         <div className="max-w-6xl mx-auto px-6 lg:px-12 py-16 md:py-24">

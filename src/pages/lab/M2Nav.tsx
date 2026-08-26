@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
+import NowStrip from "./NowStrip";
 import { CAL_LINK, BOOKING_URL } from "../../data/booking";
 import { track } from "../../lib/analytics";
 
@@ -44,6 +45,7 @@ export default function M2Nav({ active }: { active?: NavKey }) {
 
   return (
     <>
+      <NowStrip />
       <header className="m2-nav">
         <Link className="m2-logo-link" to="/" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></Link>
         <nav aria-label="Primary">

@@ -177,10 +177,6 @@ const CTA_LABEL: Record<ServiceId, string> = {
   "new-products": "your product idea",
 };
 
-function Check() {
-  return <svg className="m2-sp-check" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" strokeWidth="1.4" /><path d="M6 10.2l2.5 2.5L14 7.5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>;
-}
-
 function useActiveSection(ids: ServiceId[]) {
   const [active, setActive] = useState<ServiceId>(ids[0]);
   useEffect(() => {
@@ -248,32 +244,43 @@ function ServiceDoors() {
                 </figure>
               </div>
 
+              {/* Detail reads as three shallow bands (services chips, then
+                  problems ↔ outputs, then the start bar) instead of four
+                  dense checklist columns — scannable, nothing dropped. */}
               <div className="m2-sp-detail">
-                <div className="m2-sp-col m2-sp-included">
+                <div className="m2-sp-services">
                   <h4>Included services</h4>
-                  {s.capabilityGroups.map((g) => (
-                    <div className="m2-sp-capgroup" key={g.title}>
-                      <p className="m2-sp-capgroup-title">{g.title}</p>
-                      <ul>{g.items.map((i) => <li key={i}><Check />{i}</li>)}</ul>
-                    </div>
-                  ))}
+                  <div className="m2-sp-svcgroups">
+                    {s.capabilityGroups.map((g) => (
+                      <div key={g.title}>
+                        <p className="m2-sp-capgroup-title">{g.title}</p>
+                        <ul className="m2-sp-chips">{g.items.map((i) => <li key={i}>{i}</li>)}</ul>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="m2-sp-col">
-                  <h4>Typical problems</h4>
-                  <ul className="m2-sp-problems">{s.problems.slice(0, 5).map((p) => <li key={p}>{p}</li>)}</ul>
+                <div className="m2-sp-pair">
+                  <div>
+                    <h4>Typical problems</h4>
+                    <ul className="m2-sp-problems">{s.problems.slice(0, 5).map((p) => <li key={p}>{p}</li>)}</ul>
+                  </div>
+                  <div>
+                    <h4>What we might make</h4>
+                    <ul className="m2-sp-chips">{s.outputs.map((o) => <li key={o}>{o}</li>)}</ul>
+                  </div>
                 </div>
-                <div className="m2-sp-col">
-                  <h4>What we might make</h4>
-                  <ul className="m2-sp-outputs">{s.outputs.map((o) => <li key={o}>{o}</li>)}</ul>
-                </div>
-                <div className="m2-sp-col">
-                  <h4>How we start</h4>
-                  <p className="m2-sp-start">{s.startingPoint}</p>
-                  <Link className="m2-text-link m2-sp-cta" to="/connect">Talk with us about {CTA_LABEL[s.id]} <span>→</span></Link>
-                  {s.demos && <Link className="m2-text-link m2-sp-cta" to={s.demos.to}>{s.demos.label} <span>→</span></Link>}
-                  {s.tryIt && <Link className="m2-text-link m2-sp-cta" to={s.tryIt.to}>{s.tryIt.label} <span>→</span></Link>}
-                  {s.pov && <Link className="m2-text-link m2-sp-cta" to={s.pov.to}>{s.pov.label} <span>→</span></Link>}
-                  {s.open && <Link className="m2-text-link m2-sp-cta" to={s.open.to}>{s.open.label} <span>→</span></Link>}
+                <div className="m2-sp-startbar">
+                  <div>
+                    <h4>How we start</h4>
+                    <p className="m2-sp-start">{s.startingPoint}</p>
+                  </div>
+                  <div className="m2-sp-ctas">
+                    <Link className="m2-text-link m2-sp-cta" to="/connect">Talk with us about {CTA_LABEL[s.id]} <span>→</span></Link>
+                    {s.demos && <Link className="m2-text-link m2-sp-cta" to={s.demos.to}>{s.demos.label} <span>→</span></Link>}
+                    {s.tryIt && <Link className="m2-text-link m2-sp-cta" to={s.tryIt.to}>{s.tryIt.label} <span>→</span></Link>}
+                    {s.pov && <Link className="m2-text-link m2-sp-cta" to={s.pov.to}>{s.pov.label} <span>→</span></Link>}
+                    {s.open && <Link className="m2-text-link m2-sp-cta" to={s.open.to}>{s.open.label} <span>→</span></Link>}
+                  </div>
                 </div>
               </div>
             </section>
