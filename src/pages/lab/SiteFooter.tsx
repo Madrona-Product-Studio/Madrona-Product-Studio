@@ -52,7 +52,7 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
           {/* Same vocabulary as the header nav, plus the two footer-only doors. */}
           <nav className="m2-fc-nav" aria-label="Footer">
             <Link to="/apps">Products</Link>
-            <Link to="/consulting">Consulting</Link>
+            <Link to="/services">Services</Link>
             <Link to="/tools">Tools</Link>
             <Link to="/thinking">Articles</Link>
             <Link to="/about">About</Link>

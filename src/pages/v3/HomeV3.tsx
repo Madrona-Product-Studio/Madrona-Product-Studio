@@ -12,7 +12,7 @@ import lilaImage from "../../../docs/madrona-v2-build-kit/product-proof/lila/lil
 import sanJuanImage from "../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp";
 import berryImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp";
 
-const doorRoutes: Record<string, string> = { "operations-and-ai": "/v3/consulting/work-smarter", "customers-and-growth": "/consulting#customers-and-growth", "brand-and-web": "/consulting#brand-and-web", "new-products": "/consulting#new-products" };
+const doorRoutes: Record<string, string> = { "operations-and-ai": "/v3/services/work-smarter", "customers-and-growth": "/v3/services/grow-your-business", "brand-and-web": "/v3/services/build-trust", "new-products": "/v3/services/new-products" };
 const stack = ["Claude", "OpenAI", "Shopify", "Vercel", "Resend", "GA4", "Cal.com", "GitHub"];
 
 export default function HomeV3() {

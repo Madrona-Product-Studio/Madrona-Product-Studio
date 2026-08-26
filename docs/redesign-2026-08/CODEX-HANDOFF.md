@@ -47,3 +47,20 @@ The first viewport is organized into three jobs:
 - A solid Next steps band publishes the three engagement steps and links to How we work.
 
 At 390px, the scrim and two cards stack over the rotating image field, followed by a vertical three-step list. The earlier A, B, and C experiments remain available by query and in `/v3/hero-lab`; the lab now leads with this direction under “Current direction.” Round-three screenshots are in `/private/tmp/v3-round3-{desktop,mobile}.png` for this local session.
+
+## Round four: Services architecture
+
+Services is now the customer-facing name and canonical route throughout the application. `/services` serves the existing overview, `/consulting` redirects client-side and through a permanent Vercel redirect, and prerender plus sitemap generation now publish `/services`. Internal links, article links, assessment links, the hero’s How we work action, footer, legacy redirects, and nav active states all point to Services.
+
+The shared V3 service template now serves four routes:
+
+- `/v3/services/work-smarter`
+- `/v3/services/grow-your-business`
+- `/v3/services/build-trust`
+- `/v3/services/new-products`
+
+Work smarter retains its live workflow artifacts. The other three pages are generated from their own canonical `services.ts` data, including capability groups, value points, problems, outputs, starting point, and supplied artifact image. Their module cards are explicitly labeled as example scope and do not claim outcomes or metrics. The old `/v3/consulting/work-smarter` path redirects to the new route in both React and Vercel. Additional proof needs are documented in `IMAGERY-GAPS.md`.
+
+The compact desktop nav now has a Services dropdown with hover and click opening, outside-click and Escape closing, keyboard-focusable menu items, four service doors, and an All services row. The mobile overlay uses divided top-level rows and quieter indented service children while retaining the existing Let’s connect block and booking actions.
+
+Round-four QA includes all four service pages at 1440px and 390px, plus the open desktop dropdown and mobile menu. Captures are in `/private/tmp/v3-svc-*.png`, `/private/tmp/v3-nav-dropdown-open.png`, and `/private/tmp/v3-nav-mobile-open.png` for this local session.

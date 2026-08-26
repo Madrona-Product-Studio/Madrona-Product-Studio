@@ -16,7 +16,7 @@ import hero6 from "../../../docs/madrona-v2-build-kit/site-assets/hero-6.webp";
 // codex-redesign branch (hero-lab, removed here per the lock-in rule).
 const heroImages = [hero2, hero1, hero3, hero4, hero5, hero6];
 const heroInterval = 9000;
-const doorRoutes: Record<string, string> = { "operations-and-ai": "/v3/consulting/work-smarter", "customers-and-growth": "/consulting#customers-and-growth", "brand-and-web": "/consulting#brand-and-web", "new-products": "/consulting#new-products" };
+const doorRoutes: Record<string, string> = { "operations-and-ai": "/v3/services/work-smarter", "customers-and-growth": "/v3/services/grow-your-business", "brand-and-web": "/v3/services/build-trust", "new-products": "/v3/services/new-products" };
 
 function HeroCopy({ descriptor }: { descriptor: string }) {
   return <div className="v3-home-copy v3-experiment-copy">
@@ -47,7 +47,7 @@ const nextSteps = [
 ];
 
 function NextStepsBand() {
-  return <div className="v3-current-next"><div className="v3-current-next-label"><span>Next steps</span><Link to="/consulting#process">How we work →</Link></div><ol>{nextSteps.map(([number, title, note], index) => <li key={number}><span>{number}</span><div><strong>{title}</strong><small>{note}</small></div>{index < nextSteps.length - 1 && <i aria-hidden="true">→</i>}</li>)}</ol></div>;
+  return <div className="v3-current-next"><div className="v3-current-next-label"><span>Next steps</span><Link to="/services#process">How we work →</Link></div><ol>{nextSteps.map(([number, title, note], index) => <li key={number}><span>{number}</span><div><strong>{title}</strong><small>{note}</small></div>{index < nextSteps.length - 1 && <i aria-hidden="true">→</i>}</li>)}</ol></div>;
 }
 
 export function Hero() {

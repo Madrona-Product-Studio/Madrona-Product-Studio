@@ -290,7 +290,7 @@ export default function MadronaV2() {
   return (
     <main className="m2 m2-consult-page">
       <LabMeta title="How we help · Madrona Product Studio" />
-      <M2Nav active="consulting" />
+      <M2Nav active="services" />
 
       <section className="m2-phead">
         <div className="m2-ab-intro-copy">

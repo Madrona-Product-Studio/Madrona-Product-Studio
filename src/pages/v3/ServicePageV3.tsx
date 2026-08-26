@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { serviceAreas, type ServiceId } from "../../data/services";
+import { serviceAreas, type ServiceArea, type ServiceId } from "../../data/services";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
@@ -8,29 +8,47 @@ import { BriefArtifact, ReviewArtifact, WorkflowArtifact } from "./V3Artifacts";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 
-type Module = { kicker: string; title: string; body: string; to: string; artifact: "brief" | "flow" | "review" | "image" };
+type Module = { kicker: string; title: string; body: string; to: string; artifact: "brief" | "flow" | "review" | "capabilities" | "problems" | "outputs" | "image"; items?: string[] };
 
-const modules: Module[] = [
+const operationsModules: Module[] = [
   { kicker: "Know what changed", title: "Turn scattered signals into a short brief.", body: "An agent watches the sources that matter, explains what moved, and routes the useful signal to a next step.", to: "/tools/industry-brief", artifact: "brief" },
   { kicker: "Move work forward", title: "Connect the request, decision, and action.", body: "We remove repeated entry and brittle handoffs while keeping people in control of the judgment calls.", to: "/tools/customer-inbox", artifact: "flow" },
   { kicker: "Keep review visible", title: "Give people one clear place to approve.", body: "Drafts, exceptions, and open questions arrive ready for review instead of getting buried across tools.", to: "/tools", artifact: "review" },
   { kicker: "See the operation", title: "Make the work legible at a glance.", body: "A focused command surface shows what ran, what changed, and what needs attention next.", to: "https://helm.day", artifact: "image" },
 ];
 
-function ModuleArtifact({ kind, image, alt }: { kind: Module["artifact"]; image: string; alt: string }) {
+function serviceModules(service: ServiceArea): Module[] {
+  if (service.id === "operations-and-ai") return operationsModules;
+  const [firstGroup, secondGroup] = service.capabilityGroups;
+  return [
+    { kicker: firstGroup.title, title: service.valuePoints[0].title, body: service.valuePoints[0].description, to: `/services#${service.id}`, artifact: "capabilities", items: firstGroup.items },
+    { kicker: secondGroup.title, title: service.valuePoints[1].title, body: service.valuePoints[1].description, to: `/services#${service.id}`, artifact: "capabilities", items: secondGroup.items },
+    { kicker: "Where we begin", title: "Make the problem concrete before making the solution bigger.", body: service.bestFor, to: `/services#${service.id}`, artifact: "problems", items: service.problems.slice(0, 4) },
+    { kicker: "What the work can become", title: service.valuePoints[2].title, body: service.valuePoints[2].description, to: `/services#${service.id}`, artifact: "image" },
+  ];
+}
+
+function ListArtifact({ label, items }: { label: string; items: string[] }) {
+  return <article className="v3-artifact v3-data-artifact"><header><span>{label} · example scope</span><small>Shaped to the engagement</small></header><ul>{items.map((item, index) => <li key={item}><span>0{index + 1}</span><strong>{item}</strong><em>{index === 0 ? "Good place to start" : "As needed"}</em></li>)}</ul><footer>Illustrative structure using this service area’s canonical scope.</footer></article>;
+}
+
+function ModuleArtifact({ module, service }: { module: Module; service: ServiceArea }) {
+  const { artifact: kind } = module;
   if (kind === "brief") return <BriefArtifact />;
   if (kind === "flow") return <WorkflowArtifact />;
   if (kind === "review") return <ReviewArtifact />;
-  return <figure className="v3-module-image"><img src={image} alt={alt} /><figcaption>Helm · Demo command surface</figcaption></figure>;
+  if (kind !== "image") return <ListArtifact label={kind === "problems" ? "Typical problems" : kind === "outputs" ? "Possible outputs" : "Capability set"} items={module.items ?? []} />;
+  return <figure className="v3-module-image"><img src={service.artifact.src} alt={service.artifact.alt} /><figcaption>{service.artifact.caption}</figcaption></figure>;
 }
 
 export default function ServicePageV3({ serviceId }: { serviceId: ServiceId }) {
   const service = serviceAreas.find((item) => item.id === serviceId) ?? serviceAreas[0];
+  const modules = serviceModules(service);
   useCalEmbed();
   return (
     <main className="m2 v3">
       <LabMeta title={`${service.door} · Madrona preview`} noindex />
-      <M2Nav active="consulting" />
+      <M2Nav active="services" />
       <section className="v3-service-hero v3-shell">
         <div className="v3-service-copy">
           <p className="v3-kicker">{service.door} · {service.name}</p>
@@ -38,12 +56,12 @@ export default function ServicePageV3({ serviceId }: { serviceId: ServiceId }) {
           <p className="v3-lede">{service.summary}</p>
           <a className="v3-btn v3-btn-primary" href={bookHref()} {...bookProps()} onClick={bookClick}>Book a 30m free chat</a>
         </div>
-        <div className="v3-service-art"><BriefArtifact /></div>
+        <div className="v3-service-art">{service.id === "operations-and-ai" ? <BriefArtifact /> : <figure className="v3-service-proof"><img src={service.artifact.src} alt={service.artifact.alt} /><figcaption><span>Existing product proof</span>{service.artifact.caption}</figcaption></figure>}</div>
       </section>
 
       <section className="v3-section v3-shell">
         <div className="v3-spread-intro"><div><p className="v3-kicker">What we put to work</p><h2>Every useful system produces something you can see.</h2></div><p>We start with the work, then choose the smallest practical combination of workflow design, software, and AI.</p></div>
-        <div className="v3-module-grid">{modules.map((mod) => <article className="v3-module" key={mod.title}><div className="v3-module-copy"><p className="v3-kicker">{mod.kicker}</p><h3>{mod.title}</h3><p>{mod.body}</p><Link to={mod.to}>See how it works <span aria-hidden="true">→</span></Link></div><ModuleArtifact kind={mod.artifact} image={service.artifact.src} alt={service.artifact.alt} /></article>)}</div>
+        <div className="v3-module-grid">{modules.map((mod) => <article className="v3-module" key={mod.title}><div className="v3-module-copy"><p className="v3-kicker">{mod.kicker}</p><h3>{mod.title}</h3><p>{mod.body}</p><Link to={mod.to}>See this service in context <span aria-hidden="true">→</span></Link></div><ModuleArtifact module={mod} service={service} /></article>)}</div>
       </section>
 
       <section className="v3-section v3-shell v3-detail-band">

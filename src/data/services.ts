@@ -1,6 +1,6 @@
 // Single source of truth for the four Madrona expression doors (the practice
 // frame, adopted 2026-08-01 — canon: charlie-hq briefs/2026-08-01-offering-
-// evolution-integration.md). The consulting page module and the Services page
+// evolution-integration.md). The services overview and detail pages
 // render from this. Canonical labels live here — do not restate in components.
 // Order is meaningful: "Work smarter" leads sitewide (agentic-forward
 // re-weight, 2026-08-13 — canon header note + §4).

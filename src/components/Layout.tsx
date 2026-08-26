@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Wordmark from "./Wordmark";
 
 const navLinks = [
-  { to: "/consulting", label: "What we do" },
+  { to: "/services", label: "What we do" },
   { to: "/how-it-works", label: "How it works" },
   { to: "/work", label: "Studio work" },
   // Approach folded out of the nav in the local-first structure (route

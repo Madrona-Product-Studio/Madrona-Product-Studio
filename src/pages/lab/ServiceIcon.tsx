@@ -1,7 +1,7 @@
 import type { ServiceId } from "../../data/services";
 
 // One icon family for the four expression doors, shared by the homepage
-// consult list, the consulting door cards, and the Services page.
+// service lists, door cards, and detail pages.
 // Design language matches the who-we-help audience icons: a single clean
 // motif per door, 1.7 stroke, on a soft bark-tinted circle. No composites.
 // Build trust = browser window · Grow = rising line · Work smarter = gear ·

@@ -50,13 +50,15 @@ export default function App() {
       <Routes>
         {/* Redesign exploration. Preview-only routes keep the live site intact. */}
         <Route path="v3" element={<HomeV3 />} />
-        <Route path="v3/consulting/work-smarter" element={<ServicePageV3 serviceId="operations-and-ai" />} />
-        {/* Story rethink: new studio front-door home; current homepage preserved as /consulting. */}
+        <Route path="v3/services/work-smarter" element={<ServicePageV3 serviceId="operations-and-ai" />} />
+        <Route path="v3/services/grow-your-business" element={<ServicePageV3 serviceId="customers-and-growth" />} />
+        <Route path="v3/services/build-trust" element={<ServicePageV3 serviceId="brand-and-web" />} />
+        <Route path="v3/services/new-products" element={<ServicePageV3 serviceId="new-products" />} />
+        <Route path="v3/consulting/work-smarter" element={<Navigate to="/v3/services/work-smarter" replace />} />
+        {/* Story rethink: new studio front-door home; services overview is canonical at /services. */}
         <Route path="/" element={<MadronaV2Home />} />
-        <Route path="consulting" element={<MadronaV2 />} />
-        {/* Services folded into the one "How we help" page (2026-08-10) —
-            the four doors now live in depth on /consulting. */}
-        <Route path="services" element={<Navigate to="/consulting#services" replace />} />
+        <Route path="services" element={<MadronaV2 />} />
+        <Route path="consulting" element={<Navigate to="/services" replace />} />
         <Route path="apps" element={<MadronaV2Apps />} />
         <Route path="work" element={<Navigate to="/apps" replace />} />
         <Route path="connect" element={<MadronaV2Connect />} />
@@ -109,7 +111,7 @@ export default function App() {
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />
-        <Route path="lab/madrona-v2/services" element={<Navigate to="/consulting#services" replace />} />
+        <Route path="lab/madrona-v2/services" element={<Navigate to="/services#services" replace />} />
         <Route path="lab/madrona-v2/apps" element={<Navigate to="/apps" replace />} />
         {/* Internal design-system study — kept routable for working sessions,
             but never linked from the public site. */}
@@ -122,8 +124,8 @@ export default function App() {
         {/* Case studies retired 2026-08-23 → the products page (vercel.json 301s too). */}
         <Route path="work/:slug" element={<Navigate to="/apps" replace />} />
         {/* Engagement-model content now lives on the practice page (V2). */}
-        <Route path="how-it-works" element={<Navigate to="/consulting" replace />} />
-        <Route path="approach" element={<Navigate to="/consulting" replace />} />
+        <Route path="how-it-works" element={<Navigate to="/services" replace />} />
+        <Route path="approach" element={<Navigate to="/services" replace />} />
         <Route path="writing" element={<Navigate to="/thinking" replace />} />
         <Route path="contact" element={<Navigate to="/connect" replace />} />
 

@@ -523,7 +523,7 @@ export default function SignalAssessment() {
                 <button className="sa-back" onClick={restart}>
                   Retake the assessment
                 </button>
-                <Link className="sa-quiet-link" to="/consulting">
+                <Link className="sa-quiet-link" to="/services">
                   Learn how we work
                 </Link>
               </div>
@@ -539,7 +539,7 @@ export default function SignalAssessment() {
           <p>A free signal check from Madrona Product Studio, Bellingham WA</p>
           <nav aria-label="Madrona site">
             <Link to="/">madronaproduct.com</Link>
-            <Link to="/consulting">How we help</Link>
+            <Link to="/services">How we help</Link>
             <Link to="/connect">Contact</Link>
           </nav>
         </footer>

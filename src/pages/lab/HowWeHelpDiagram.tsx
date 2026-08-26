@@ -1,7 +1,7 @@
 // "How we help" header diagram: WHO we help (the three audiences) anchors the
 // center, HOW we help (the engagement) orbits it clockwise as a directed
 // journey. Same family DNA as the products cycle + About network. Square, sits
-// in the right column of the /consulting two-column header.
+// in the right column of the /services two-column header.
 
 const I = ({ d, s = 24 }: { d: string; s?: number }) => (
   <svg viewBox="0 0 24 24" width={s} height={s} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>

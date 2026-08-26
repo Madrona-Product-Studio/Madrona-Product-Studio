@@ -229,7 +229,7 @@ export default function MadronaV2InventoryNote() {
               </Prose>
               <p className="art-inv-doorlink"><Link className="m2-text-link" to="/tools/contract-review">Try the contract-review agent, live <span aria-hidden="true">→</span></Link></p>
             </Entry>
-            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses run smoother <span aria-hidden="true">→</span></Link></p>
+            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/services">See how we help businesses run smoother <span aria-hidden="true">→</span></Link></p>
           </ArticleSection>
 
           <ArticleSection id="getting-found" num="4" eyebrow="Growth" title="Getting found.">
@@ -269,7 +269,7 @@ export default function MadronaV2InventoryNote() {
                 <p>They already assume you will. <Ext href="https://www.facebook.com/business/ads/meta-advantage-plus">Meta&rsquo;s Advantage+ sales campaigns</Ext> and <Ext href="https://support.google.com/google-ads/answer/10724817">Google&rsquo;s Performance Max</Ext> both take budget, creative, and a goal, then automate audience, placements, and bidding across everything they own. For a small advertiser this beats hand-tuned campaigns most of the time.</p>
               </Prose>
             </Entry>
-            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses get found <span aria-hidden="true">→</span></Link></p>
+            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/services">See how we help businesses get found <span aria-hidden="true">→</span></Link></p>
           </ArticleSection>
 
           <ArticleSection id="coming-back" num="5" eyebrow="Retention" title="Coming back.">
@@ -312,7 +312,7 @@ export default function MadronaV2InventoryNote() {
               </Prose>
               <p className="art-inv-doorlink"><Link className="m2-text-link" to="/tools/best-customers">Try the best-customers agent, live <span aria-hidden="true">→</span></Link></p>
             </Entry>
-            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/consulting">See how we help businesses keep customers coming back <span aria-hidden="true">→</span></Link></p>
+            <p className="art-inv-doorlink"><Link className="m2-text-link" to="/services">See how we help businesses keep customers coming back <span aria-hidden="true">→</span></Link></p>
           </ArticleSection>
 
           <ArticleSection id="how-to-start" num="6" eyebrow="The move" title="How to actually start.">

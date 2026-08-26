@@ -62,7 +62,7 @@ const pages = {
     h1: 'Your business is telling you something.',
     body: 'Seven quick questions. As you answer, we map the pattern in your business, show where the strongest opportunity may be, and suggest a useful place to start. About two minutes, no email required, and the read is yours to keep. We look at how the business shows up online, where the week goes, what keeps customers coming back, and where AI and better tools could genuinely help. It is the same short signal we start every engagement with, from Madrona Product Studio in Bellingham, Washington.',
   },
-  '/consulting': {
+  '/services': {
     title: 'How we help · Madrona Product Studio',
     description: 'We help you figure out what to build, then build it. Four ways in, one practice: operations and AI, customers and growth, brand and web, and new products, from a small senior team in the Pacific Northwest.',
     h1: 'How we help',
