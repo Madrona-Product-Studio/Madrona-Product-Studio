@@ -144,8 +144,11 @@ system's language. No stock, no generic AI-consultancy graphics.
 
 ## Backlog: to discuss before building (NOT in scope for the first swipe)
 
-- **A sense of time and light (Charlie, 2026-08-25).** The site should feel
-  light-aware: possibly an automatic dark mode. Discuss before building.
+- **A sense of time and light — the wow factor (Charlie, 2026-08-25).**
+  The site should feel light-aware: possibly an automatic dark mode. The
+  underlying ask is bigger than a theme toggle: the site is missing a wow
+  moment, and time/light is the candidate mechanism. Discuss before
+  building.
   Directions to weigh when we do: (1) respect `prefers-color-scheme` with a
   manual toggle (the baseline expectation; CXO.dev has exactly this in its
   utility bar); (2) go further and make it *place-aware* — a warm "dusk
