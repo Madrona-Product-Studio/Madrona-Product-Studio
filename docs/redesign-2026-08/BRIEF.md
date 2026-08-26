@@ -141,3 +141,17 @@ system's language. No stock, no generic AI-consultancy graphics.
   (use `shot-wait.mjs` next to it for pages with scroll-reveal).
 - Charlie reviews on preview routes/deploys and picks; losing variants get
   deleted before merge (lock-in rule).
+
+## Backlog: to discuss before building (NOT in scope for the first swipe)
+
+- **A sense of time and light (Charlie, 2026-08-25).** The site should feel
+  light-aware: possibly an automatic dark mode. Discuss before building.
+  Directions to weigh when we do: (1) respect `prefers-color-scheme` with a
+  manual toggle (the baseline expectation; CXO.dev has exactly this in its
+  utility bar); (2) go further and make it *place-aware* — a warm "dusk
+  mode" keyed to actual Bellingham sunset rather than a generic gray-dark
+  theme, which would turn a commodity feature into brand (the PNW light is
+  the brand); (3) subtler than a full theme: time-aware imagery/hero
+  tinting only. Real cost either way: a second palette for the whole token
+  system and a canon decision on how bark/forest behave on a dark ground —
+  so this needs its own design pass with variants, not a bolt-on.
