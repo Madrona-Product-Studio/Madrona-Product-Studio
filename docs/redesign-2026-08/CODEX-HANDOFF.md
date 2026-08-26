@@ -23,3 +23,15 @@
 - Full-repository `npm run lint` still fails on five pre-existing errors in untouched files: `RouteMotion.tsx`, `ArticleTemplate.tsx`, `BerryGoodCaseStudy.tsx`, and `MadronaV2Home.tsx`. The new V3 files pass targeted ESLint.
 - Image needs and omitted unsupported proof are listed in `IMAGERY-GAPS.md`.
 - The shared template is ready for the other service doors, but only Work smarter is routed in this first swipe as requested.
+
+## Round two: hero lab
+
+Three new hero directions are available together at `/v3/hero-lab`, and individually on the homepage through `/v3?hero=a`, `/v3?hero=b`, and `/v3?hero=c`. The original first-swipe hero remains the default when no query is present.
+
+- **A, Layered cluster:** headline and CTAs on the left; a right-bleed Salish Sea image supports an overlapping example diagnostic plus Built at and Stack panel. This is the closest translation of the CXO reference.
+- **B, Full-bleed environment:** the environmental image becomes the full hero field, with a paper headline scrim, floating diagnostic and maturity cards, and an evidence band along the bottom edge.
+- **C, Working surface:** the right side becomes a composed Berry Good operating surface, layering the what-changed brief, signal check, workflow, and review artifacts over the demonstration dashboard.
+
+My ranking is **A, then C, then B**. A has the clearest one-viewport story and strongest balance of place, proof, and legibility. C is the most ownable Madrona direction because the work itself becomes the signature art, but its density will require disciplined artifact editing. B has the greatest environmental presence, though the full-bleed photograph competes with the diagnostic information and feels less product-specific.
+
+All variants were screenshot-tested at 1440px and 390px. On narrow screens, overlaps resolve into a deliberate card sequence and environmental imagery crops without horizontal overflow. The round-two captures are in `/private/tmp/v3-hero-{a,b,c}-{desktop,mobile}.png` for this local session.
