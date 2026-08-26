@@ -4,11 +4,9 @@ import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
-import { SignalReport } from "./V3Artifacts";
-import { HeroVariantView, type HeroVariant } from "./HeroVariants";
+import { CurrentHero, HeroVariantView, type HeroVariant } from "./HeroVariants";
 import "../lab/madrona-v2.css";
 import "./v3.css";
-import heroImage from "../../../docs/madrona-v2-build-kit/hero-options/hero-island-editorial.webp";
 import helmImage from "../../../docs/madrona-v2-build-kit/site-assets/helm-tile.webp";
 import lilaImage from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp";
 import sanJuanImage from "../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp";
@@ -26,10 +24,7 @@ export default function HomeV3() {
     <LabMeta title="Madrona Product Studio · V3 preview" noindex />
     <M2Nav />
     <aside className="v3-now"><span>Now at Madrona</span><p>We are opening a small number of fall projects.</p><Link to="/connect">Tell us what you are working on →</Link></aside>
-    {heroVariant ? <HeroVariantView variant={heroVariant} /> : <section className="v3-home-hero v3-shell">
-      <div className="v3-home-copy"><p className="v3-kicker">Product strategy · design · engineering</p><h1>Figure out what to build, <span>then build it.</span></h1><p className="v3-lede">A senior product studio for teams with an important opportunity, a stubborn operating problem, or a new product worth making real.</p><div className="v3-actions"><a className="v3-btn v3-btn-primary" href={bookHref()} {...bookProps()} onClick={bookClick}>Book a 30m free chat</a><Link className="v3-btn v3-btn-secondary" to="/checkup">Take the free signal check</Link></div></div>
-      <div className="v3-hero-stage"><img src={heroImage} alt="A warm view across the Salish Sea and island shoreline" /><div className="v3-report-float"><SignalReport /></div></div>
-    </section>}
+    {heroVariant ? <HeroVariantView variant={heroVariant} /> : <CurrentHero />}
 
     <section className="v3-section v3-shell"><div className="v3-spread-intro"><div><p className="v3-kicker">Four ways in</p><h2>Bring us the problem as you see it.</h2></div><p>The doors are different. The practice behind them is the same: find the most valuable move, make it tangible, and learn from the real thing.</p></div><div className="v3-door-grid">{serviceAreas.map((service, index) => <Link className="v3-door" to={doorRoutes[service.id]} key={service.id}><div><span>0{index + 1} · {service.name}</span><h3>{service.door}</h3><p>{service.outcome}</p></div><figure><img src={service.artifact.src} alt={service.artifact.alt} /><figcaption>{service.artifact.caption}</figcaption></figure><ul>{service.homepageItems.map(item => <li key={item}>{item}</li>)}</ul><b>Explore this work →</b></Link>)}</div></section>
 

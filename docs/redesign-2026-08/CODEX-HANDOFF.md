@@ -35,3 +35,15 @@ Three new hero directions are available together at `/v3/hero-lab`, and individu
 My ranking is **A, then C, then B**. A has the clearest one-viewport story and strongest balance of place, proof, and legibility. C is the most ownable Madrona direction because the work itself becomes the signature art, but its density will require disciplined artifact editing. B has the greatest environmental presence, though the full-bleed photograph competes with the diagnostic information and feels less product-specific.
 
 All variants were screenshot-tested at 1440px and 390px. On narrow screens, overlaps resolve into a deliberate card sequence and environmental imagery crops without horizontal overflow. The round-two captures are in `/private/tmp/v3-hero-{a,b,c}-{desktop,mobile}.png` for this local session.
+
+## Round three: current direction
+
+The no-query `/v3` hero now uses the selected full-bleed direction. It reuses the live homepage's exact six-image set and sequence (`hero-2`, `hero-1`, then `hero-3` through `hero-6`), with its 9-second dwell, 2.6-second crossfade, progressive lazy loading after the first two frames, and manual cycle control. Reduced-motion freezes the automatic rotation on the first frame and removes the crossfade and progress animation.
+
+The first viewport is organized into three jobs:
+
+- A paper scrim carries the headline, descriptor, and dual CTA.
+- A two-card cluster shows the four canonical service doors from `services.ts` and one clearly labeled signal-check example.
+- A solid Next steps band publishes the three engagement steps and links to How we work.
+
+At 390px, the scrim and two cards stack over the rotating image field, followed by a vertical three-step list. The earlier A, B, and C experiments remain available by query and in `/v3/hero-lab`; the lab now leads with this direction under “Current direction.” Round-three screenshots are in `/private/tmp/v3-round3-{desktop,mobile}.png` for this local session.
