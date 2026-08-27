@@ -64,3 +64,11 @@ Work smarter retains its live workflow artifacts. The other three pages are gene
 The compact desktop nav now has a Services dropdown with hover and click opening, outside-click and Escape closing, keyboard-focusable menu items, four service doors, and an All services row. The mobile overlay uses divided top-level rows and quieter indented service children while retaining the existing Let’s connect block and booking actions.
 
 Round-four QA includes all four service pages at 1440px and 390px, plus the open desktop dropdown and mobile menu. Captures are in `/private/tmp/v3-svc-*.png`, `/private/tmp/v3-nav-dropdown-open.png`, and `/private/tmp/v3-nav-mobile-open.png` for this local session.
+
+## Round five: right-edge art and diagnostic cluster
+
+The default `/v3` hero now sits directly on the warm-paper page ground. The existing six-image rotation and its timing, crossfade, manual cycle control, progressive loading, and reduced-motion behavior are unchanged, but the photography is confined to a right-edge field that dissolves toward the message and the bottom of the hero with layered CSS masks.
+
+The headline and actions now carry the left side without a scrim. The primary booking action remains solid forest, while the signal check is an arrow text link. Below them, a wide example diagnostic bridges into the faded image zone with three clearly labeled panes: current signals, an illustrative better-state read, and a first recommendation. A smaller Built at and Stack panel overlaps the diagnostic. The duplicated service-doors card has been removed because the four-door grid immediately follows the hero.
+
+At 390px, the layout resolves to headline and actions, a fading image band, vertically stacked diagnostic panes, the proof panel, and the vertical Next steps list. Round-five captures are in `/private/tmp/v3-round5-{desktop,mobile}.png` for this local session. The desktop capture is clean; the full-page mobile helper produced a repeated-page stitch after the captured content, but the hero itself rendered in the specified order without horizontal overflow.
