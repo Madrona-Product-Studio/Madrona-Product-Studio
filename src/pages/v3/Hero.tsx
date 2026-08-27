@@ -17,7 +17,6 @@ const stack = ["Claude", "OpenAI", "Shopify", "Vercel", "Resend", "GA4", "Cal.co
 
 function HeroCopy({ descriptor }: { descriptor: string }) {
   return <div className="v3-home-copy v3-experiment-copy">
-    <p className="v3-kicker">Product strategy · design · engineering</p>
     <h1>Figure out what to build, <span>then build it.</span></h1>
     <p className="v3-lede">{descriptor}</p>
     <div className="v3-actions"><a className="v3-btn v3-btn-primary" href={bookHref()} {...bookProps()} onClick={bookClick}>Book a 30m free chat</a><Link className="v3-hero-text-link" to="/checkup">Take the free signal check <span aria-hidden="true">→</span></Link></div>
