@@ -48,3 +48,16 @@
 @media(max-width:900px){.v3-current-main>.v3-experiment-copy{width:70%}}
 @media(max-width:600px){.v3-current-main>.v3-experiment-copy{width:100%}.v3-current-main>.v3-experiment-copy h1{font-size:3.1rem;margin-bottom:24px}.v3-current-main>.v3-experiment-copy .v3-lede{margin-bottom:34px}.v3-current-main>.v3-experiment-copy .v3-actions{gap:16px;align-items:stretch}}
 @media(min-width:901px){.v3-current-hero{padding-top:96px}}
+/* Hero services panel: replaces the built-at/stack box; door rows in the
+   v3-hero-doors idiom at panel scale. */
+.v3-hero-services header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-bottom:1px solid var(--v3-soft);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.v3-hero-services header small{color:var(--v3-faint);font-size:10px;font-weight:500;letter-spacing:0;text-transform:none}
+.v3-hero-services ul{margin:0;padding:0;list-style:none}
+.v3-hero-services li{border-bottom:1px solid var(--v3-soft)}
+.v3-hero-services li:last-child{border-bottom:0}
+.v3-hero-services li a{display:grid;grid-template-columns:150px 1fr auto;gap:14px;align-items:baseline;padding:11px 16px;color:var(--v3-ink);transition:background-color 160ms ease}
+.v3-hero-services li a:hover{background:var(--v3-paper)}
+.v3-hero-services li strong{font-size:12px}
+.v3-hero-services li span{color:var(--v3-clay);font-size:10.5px;line-height:1.45}
+.v3-hero-services li i{color:var(--v3-bark-dark);font-size:12px;font-style:normal}
+@media(max-width:600px){.v3-hero-services li a{grid-template-columns:1fr auto}.v3-hero-services li span{display:none}}
