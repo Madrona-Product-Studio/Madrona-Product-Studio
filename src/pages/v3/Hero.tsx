@@ -15,7 +15,7 @@ import hero6 from "../../../docs/madrona-v2-build-kit/site-assets/hero-6.webp";
 // and a plain-words what-we-do window. The next-steps band was cut.
 const heroImages = [hero2, hero1, hero3, hero4, hero5, hero6];
 const heroInterval = 9000;
-const doorRoutes: Record<string, string> = { "operations-and-ai": "/services/work-smarter", "customers-and-growth": "/services/grow-your-business", "brand-and-web": "/services/build-trust", "new-products": "/services/new-products" };
+const doorRoutes: Record<string, string> = { "operations-and-ai": "/services/ai-operations", "customers-and-growth": "/services/growth-retention", "brand-and-web": "/services/brand-website", "new-products": "/services/new-products" };
 
 // Condensed from each door's homepageItems: the hero window leads with the
 // concrete nouns so a first-time visitor can tell what we do at a glance.

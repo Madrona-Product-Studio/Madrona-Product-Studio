@@ -223,7 +223,7 @@ function ServiceDoors() {
                 onClick={(e) => { e.preventDefault(); document.getElementById(s.id)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}>
                 <span className="m2-sp-rail-dot" aria-hidden="true" />
                 <span className="m2-sp-rail-num">{`0${i + 1}`}</span>
-                <span className="m2-sp-rail-label">{s.door}</span>
+                <span className="m2-sp-rail-label">{s.name}</span>
               </a>
             );
           })}
@@ -234,8 +234,8 @@ function ServiceDoors() {
             <section className="m2-sp-section" id={s.id} key={s.id} data-reveal>
               <div className="m2-sp-head">
                 <div className="m2-sp-head-copy">
-                  <p className="m2-kicker">{s.name}</p>
-                  <div className="m2-sp-title"><ServiceIcon id={s.id} /><h3>{s.door}</h3></div>
+                  <p className="m2-kicker">{s.door}</p>
+                  <div className="m2-sp-title"><ServiceIcon id={s.id} /><h3>{s.name}</h3></div>
                   <p className="m2-sp-outcome">{s.outcome}</p>
                   <p className="m2-sp-summary">{s.summary}</p>
                   <ul className="m2-sp-values">

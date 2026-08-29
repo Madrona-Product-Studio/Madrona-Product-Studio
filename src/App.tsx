@@ -55,14 +55,18 @@ export default function App() {
       <Routes>
         {/* V3 promoted 2026-08-29: the redesign is the live site. */}
         <Route path="/" element={<HomeV3 />} />
-        <Route path="services/work-smarter" element={<ServicePageV3 serviceId="operations-and-ai" />} />
-        <Route path="services/grow-your-business" element={<ServicePageV3 serviceId="customers-and-growth" />} />
-        <Route path="services/build-trust" element={<ServicePageV3 serviceId="brand-and-web" />} />
+        <Route path="services/ai-operations" element={<ServicePageV3 serviceId="operations-and-ai" />} />
+        <Route path="services/brand-website" element={<ServicePageV3 serviceId="brand-and-web" />} />
+        <Route path="services/growth-retention" element={<ServicePageV3 serviceId="customers-and-growth" />} />
         <Route path="services/new-products" element={<ServicePageV3 serviceId="new-products" />} />
+        {/* Day-old door slugs (2026-08-29 launch prep) → the label slugs. */}
+        <Route path="services/work-smarter" element={<Navigate to="/services/ai-operations" replace />} />
+        <Route path="services/build-trust" element={<Navigate to="/services/brand-website" replace />} />
+        <Route path="services/grow-your-business" element={<Navigate to="/services/growth-retention" replace />} />
         {/* Old /v3 preview URLs → the real routes (vercel.json 301s too). */}
         <Route path="v3" element={<Navigate to="/" replace />} />
         <Route path="v3/services/:slug" element={<V3ToServices />} />
-        <Route path="v3/consulting/work-smarter" element={<Navigate to="/services/work-smarter" replace />} />
+        <Route path="v3/consulting/work-smarter" element={<Navigate to="/services/ai-operations" replace />} />
         <Route path="services" element={<MadronaV2 />} />
         <Route path="consulting" element={<Navigate to="/services" replace />} />
         <Route path="apps" element={<MadronaV2Apps />} />

@@ -47,11 +47,11 @@ export default function ServicePageV3({ serviceId }: { serviceId: ServiceId }) {
   useCalEmbed();
   return (
     <main className="m2 v3">
-      <LabMeta title={`${service.door} · Madrona Product Studio`} />
+      <LabMeta title={`${service.name} · Madrona Product Studio`} />
       <M2Nav active="services" />
       <section className="v3-service-hero v3-shell">
         <div className="v3-service-copy">
-          <p className="v3-kicker">{service.door} · {service.name}</p>
+          <p className="v3-kicker">{service.name}</p>
           <h1>{service.outcome}</h1>
           <p className="v3-lede">{service.summary}</p>
           <a className="v3-btn v3-btn-primary" href={bookHref()} {...bookProps()} onClick={bookClick}>Book a 30m free chat</a>

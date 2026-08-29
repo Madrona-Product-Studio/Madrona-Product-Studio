@@ -2,8 +2,8 @@
 // frame, adopted 2026-08-01 — canon: charlie-hq briefs/2026-08-01-offering-
 // evolution-integration.md). The services overview and detail pages
 // render from this. Canonical labels live here — do not restate in components.
-// Order is meaningful: "Work smarter" leads sitewide (agentic-forward
-// re-weight, 2026-08-13 — canon header note + §4).
+// Order is meaningful (Charlie, 2026-08-29): AI & Operations leads
+// (agentic-forward), then Brand & Website, Growth & Retention, New Products.
 import brandArtifact from "../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp";
 import customersArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp";
 import operationsArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp";
@@ -40,7 +40,7 @@ export const serviceAreas: ServiceArea[] = [
   {
     id: "operations-and-ai",
     door: "Work smarter",
-    name: "Operations and AI",
+    name: "AI & Operations",
     outcome: "Put AI to work on your real workflows, and get hours back every week.",
     summary:
       "We map how work actually happens, identify the highest-friction handoffs, and build practical tools, automations, and AI agents around the real workflow. We run our own studio this way.",
@@ -74,9 +74,39 @@ export const serviceAreas: ServiceArea[] = [
     open: { label: "The tools behind this are open source", to: "/open" },
   },
   {
+    id: "brand-and-web",
+    door: "Build trust",
+    name: "Brand & Website",
+    outcome: "Give people a clear reason to understand, trust, and choose you.",
+    summary:
+      "We clarify what makes the business valuable, turn that into a coherent identity and message, and build digital experiences that help people take action.",
+    homepageItems: ["Positioning and strategy", "Messaging and voice", "Visual identity", "Websites and stores"],
+    capabilityGroups: [
+      { title: "Strategy and identity", items: ["Positioning and strategy", "Messaging and voice", "Visual identity", "Brand systems"] },
+      { title: "Digital experience", items: ["Websites", "Online stores", "Content systems", "UX and conversion improvement"] },
+    ],
+    problems: [
+      "The website undersells the business.",
+      "Customers need a personal explanation before they understand the offer.",
+      "The brand feels inconsistent or dated.",
+      "The site is difficult to update or use.",
+      "The online store creates unnecessary friction.",
+    ],
+    outputs: ["Positioning brief", "Messaging system", "Brand guide", "Website", "Commerce experience", "Content system"],
+    valuePoints: [
+      { title: "Earn confidence", description: "Show up clearly and consistently across every customer touchpoint." },
+      { title: "Drive action", description: "Make it easier for people to understand, decide, and take the next step." },
+      { title: "Scale with confidence", description: "Build a system that can grow with the business." },
+    ],
+    bestFor: "Businesses whose quality has outgrown how they currently present themselves.",
+    startingPoint: "A focused positioning and digital-direction sprint. From there, we design and build what creates the biggest impact.",
+    pathSteps: ["Understand", "trust", "choose"],
+    artifact: { src: brandArtifact, alt: "Berry Good brand system shown across a palette, packaging, and a storefront", caption: "Berry Good brand system" },
+  },
+  {
     id: "customers-and-growth",
     door: "Grow your business",
-    name: "Customers and growth",
+    name: "Growth & Retention",
     outcome: "Make it easier for customers to buy, return, and stay connected.",
     summary:
       "We improve the full customer relationship, from first interest through purchase, follow-up, loyalty, and repeat engagement.",
@@ -105,39 +135,9 @@ export const serviceAreas: ServiceArea[] = [
     artifact: { src: customersArtifact, alt: "Berry Good customer order journey from browse to checkout", caption: "Berry Good customer order journey" },
   },
   {
-    id: "brand-and-web",
-    door: "Build trust",
-    name: "Brand and web",
-    outcome: "Give people a clear reason to understand, trust, and choose you.",
-    summary:
-      "We clarify what makes the business valuable, turn that into a coherent identity and message, and build digital experiences that help people take action.",
-    homepageItems: ["Positioning and strategy", "Messaging and voice", "Visual identity", "Websites and stores"],
-    capabilityGroups: [
-      { title: "Strategy and identity", items: ["Positioning and strategy", "Messaging and voice", "Visual identity", "Brand systems"] },
-      { title: "Digital experience", items: ["Websites", "Online stores", "Content systems", "UX and conversion improvement"] },
-    ],
-    problems: [
-      "The website undersells the business.",
-      "Customers need a personal explanation before they understand the offer.",
-      "The brand feels inconsistent or dated.",
-      "The site is difficult to update or use.",
-      "The online store creates unnecessary friction.",
-    ],
-    outputs: ["Positioning brief", "Messaging system", "Brand guide", "Website", "Commerce experience", "Content system"],
-    valuePoints: [
-      { title: "Earn confidence", description: "Show up clearly and consistently across every customer touchpoint." },
-      { title: "Drive action", description: "Make it easier for people to understand, decide, and take the next step." },
-      { title: "Scale with confidence", description: "Build a system that can grow with the business." },
-    ],
-    bestFor: "Businesses whose quality has outgrown how they currently present themselves.",
-    startingPoint: "A focused positioning and digital-direction sprint. From there, we design and build what creates the biggest impact.",
-    pathSteps: ["Understand", "trust", "choose"],
-    artifact: { src: brandArtifact, alt: "Berry Good brand system shown across a palette, packaging, and a storefront", caption: "Berry Good brand system" },
-  },
-  {
     id: "new-products",
     door: "Build something worth using",
-    name: "New products",
+    name: "New Products",
     outcome: "Take a new product from idea to something real people use.",
     summary:
       "We help you decide what deserves to exist, prove it cheaply, and build the first real version. Strategy, design, and engineering from one senior team.",

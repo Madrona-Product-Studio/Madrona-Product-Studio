@@ -68,28 +68,28 @@ const pages = {
     h1: 'How we help',
     body: 'Madrona works with founders, local businesses, and product teams. Four ways in, one practice. Work smarter: practical AI and agents on real workflows, workflow fixes, and small internal tools. Grow your business: customer journeys, commerce, loyalty, and retention. Build trust: brand, websites, and digital experience. Build something worth using: prototypes, MVPs, and new products taken from idea to real. Every engagement names its win before the work starts. We begin with a 30-minute conversation, follow with a short written assessment, and recommend the smallest engagement worth doing.',
   },
-  '/services/work-smarter': {
-    title: 'Work smarter · Madrona Product Studio',
+  '/services/ai-operations': {
+    title: 'AI & Operations · Madrona Product Studio',
     description: 'Practical AI on your real workflows, from the first map to working agents. Automation, AI assistants and agents, and internal tools that give you hours back every week.',
-    h1: 'Work smarter',
+    h1: 'AI & Operations',
     body: 'Feels like AI should help, but not sure where to start? We map how work actually happens, identify the highest-friction handoffs, and build practical tools, automations, and AI agents around the real workflow. Workflow and process design, automation, AI assistants and agents, internal tools and dashboards. We run our own studio this way. From Madrona Product Studio in Bellingham, Washington.',
   },
-  '/services/grow-your-business': {
-    title: 'Grow your business · Madrona Product Studio',
+  '/services/growth-retention': {
+    title: 'Growth & Retention · Madrona Product Studio',
     description: 'Make it easier for customers to buy, return, and stay connected. Online stores, loyalty, and lifecycle email from a small senior product studio.',
-    h1: 'Grow your business',
+    h1: 'Growth & Retention',
     body: 'People buy once, then you never hear from them again? We design the customer journey end to end: customer research, journey and experience design, commerce and loyalty, retention and lifecycle communication. Make it easier for customers to buy, come back, and stay connected. From Madrona Product Studio in Bellingham, Washington.',
   },
-  '/services/build-trust': {
-    title: 'Build trust · Madrona Product Studio',
+  '/services/brand-website': {
+    title: 'Brand & Website · Madrona Product Studio',
     description: 'Website redesign, brand, and messaging that give people a clear reason to understand, trust, and choose you.',
-    h1: 'Build trust',
+    h1: 'Brand & Website',
     body: 'Website just OK, and not doing the business justice? Positioning and strategy, messaging and voice, visual identity, and websites and stores built to earn trust and convert. Give people a clear reason to understand, trust, and choose you. From Madrona Product Studio in Bellingham, Washington.',
   },
   '/services/new-products': {
-    title: 'Build something worth using · Madrona Product Studio',
+    title: 'New Products · Madrona Product Studio',
     description: 'Take a new product from idea to something real people use. Product strategy and validation, prototypes and MVPs, AI-enabled features, launch and iteration.',
-    h1: 'Build something worth using',
+    h1: 'New Products',
     body: 'Have an idea that deserves to become real? Product strategy and validation, prototypes and MVPs, AI-enabled features, and launch and iteration. We take new products from concept to something real people use, and we build and run our own. From Madrona Product Studio in Bellingham, Washington.',
   },
   '/services/agentic-operations': {
