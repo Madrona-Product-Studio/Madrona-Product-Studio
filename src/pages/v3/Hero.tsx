@@ -34,7 +34,7 @@ function HeroCopy() {
   </div>;
 }
 
-function WindowBar({ path, note }: { path: string; note?: string }) {
+export function WindowBar({ path, note }: { path: string; note?: string }) {
   return <header className="v3-window-bar"><span className="v3-window-dots" aria-hidden="true"><i /><i /><i /></span><code>{path}</code>{note && <small>{note}</small>}</header>;
 }
 

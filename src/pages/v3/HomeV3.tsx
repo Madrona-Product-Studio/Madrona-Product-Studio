@@ -6,6 +6,8 @@ import SiteFooter from "../lab/SiteFooter";
 import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import { Hero } from "./Hero";
 import { HelpSection } from "./HelpSection";
+import { PracticeSection } from "./PracticeSection";
+import { BerryGoodSection } from "./BerryGoodSection";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 import helmImage from "../../../docs/madrona-v2-build-kit/site-assets/helm-tile.webp";
@@ -23,6 +25,8 @@ export default function HomeV3() {
     <Hero />
 
     <HelpSection />
+    <PracticeSection />
+    <BerryGoodSection />
 
     <section className="v3-section v3-shell v3-capabilities"><div><p className="v3-kicker">Skills and stack</p><h2>A whole product practice, made legible.</h2><p>Senior judgment across the work, with tools chosen for the business rather than the pitch.</p></div><div className="v3-cap-panel"><div className="v3-cap-row"><h3>Skills</h3><div>{serviceAreas.map(s => <section key={s.id}><strong>{s.door}</strong>{s.homepageItems.slice(0,3).map(i => <span key={i}>{i}</span>)}</section>)}</div></div><div className="v3-cap-row v3-stack"><h3>Stack</h3><ul>{stack.map(tool => <li key={tool}>{tool}</li>)}</ul></div></div></section>
 
