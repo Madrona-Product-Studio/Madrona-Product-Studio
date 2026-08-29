@@ -1,20 +1,12 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { serviceAreas, type ServiceId } from "../../data/services";
 import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
-import hero1 from "../../../docs/madrona-v2-build-kit/site-assets/hero-1.webp";
-import hero2 from "../../../docs/madrona-v2-build-kit/site-assets/hero-2.webp";
-import hero3 from "../../../docs/madrona-v2-build-kit/site-assets/hero-3.webp";
-import hero4 from "../../../docs/madrona-v2-build-kit/site-assets/hero-4.webp";
-import hero5 from "../../../docs/madrona-v2-build-kit/site-assets/hero-5.webp";
-import hero6 from "../../../docs/madrona-v2-build-kit/site-assets/hero-6.webp";
+import { HeroChart } from "./HeroChart";
 
-// The locked hero direction (Charlie, 2026-08-26): the live site's six-image
-// rotation bleeding off the right edge, message left on warm paper, and two
-// browser-window artifacts (Charlie, 2026-08-28): the signal-check example
-// and a plain-words what-we-do window. The next-steps band was cut.
-const heroImages = [hero2, hero1, hero3, hero4, hero5, hero6];
-const heroInterval = 9000;
+// The hero direction (Charlie, 2026-08-29): the chart-of-the-bay contour
+// animation bleeding off the right edge (replaced the six-photo rotation),
+// message left on warm paper, and two browser-window artifacts (2026-08-28):
+// the signal-check example and a plain-words what-we-do window.
 const doorRoutes: Record<string, string> = { "operations-and-ai": "/services/ai-operations", "customers-and-growth": "/services/growth-retention", "brand-and-web": "/services/brand-website", "new-products": "/services/new-products" };
 
 // Condensed from each door's homepageItems: the hero window leads with the
@@ -62,16 +54,10 @@ function ServicesPanel() {
 }
 
 export function Hero() {
-  const [heroIndex, setHeroIndex] = useState(0);
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = window.setTimeout(() => setHeroIndex(index => (index + 1) % heroImages.length), heroInterval);
-    return () => window.clearTimeout(id);
-  }, [heroIndex]);
   return <section className="v3-current-hero">
     <div className="v3-shell v3-current-main">
       <HeroCopy />
-      <div className="v3-current-images">{heroImages.map((src, index) => <img key={src} src={src} alt={index === 0 ? "Pacific Northwest landscapes across the Salish Sea" : ""} aria-hidden={index === 0 ? undefined : true} className={index === heroIndex ? "is-active" : ""} loading={index < 2 ? "eager" : "lazy"} />)}<button type="button" className="v3-current-cycle" aria-label={`Hero image ${heroIndex + 1} of ${heroImages.length}. Show next image.`} onClick={() => setHeroIndex(index => (index + 1) % heroImages.length)}><svg key={heroIndex} viewBox="0 0 36 36" aria-hidden="true"><circle className="v3-current-cycle-track" cx="18" cy="18" r="15" /><circle className="v3-current-cycle-arc" cx="18" cy="18" r="15" /></svg></button></div>
+      <div className="v3-current-images" aria-hidden="true"><HeroChart /></div>
       <div className="v3-current-cluster"><DiagnosticCard /><div className="v3-current-proof-wrap"><ServicesPanel /></div></div>
     </div>
   </section>;
