@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { serviceAreas, type ServiceId } from "../../data/services";
 import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import { HeroChart } from "./HeroChart";
+import { ReadCard, heroReadFixture } from "./ReadCard";
 
 // The hero direction (Charlie, 2026-08-29): the chart-of-the-bay contour
 // animation bleeding off the right edge (replaced the six-photo rotation),
@@ -20,27 +21,15 @@ const serviceLines: Record<ServiceId, string> = {
 
 function HeroCopy() {
   return <div className="v3-home-copy v3-experiment-copy">
-    <h1>A senior product studio <span>for the AI era.</span></h1>
-    <p className="v3-lede">We help businesses figure out what AI and modern tools can actually do for them, then build it.</p>
-    <div className="v3-actions"><a className="v3-btn v3-btn-primary" href={bookHref()} {...bookProps()} onClick={bookClick}>Book a free 30-minute call</a><Link className="v3-hero-text-link" to="/checkup">Take the free signal check <span aria-hidden="true">→</span></Link></div>
+    <h1>A senior digital product studio <span>built for the AI era.</span></h1>
+    <p className="v3-lede">We help founders, local businesses, and product teams leverage AI and modern tools to build what actually moves the business.</p>
+    <div className="v3-actions"><a className="v3-btn v3-btn-primary" href={bookHref()} {...bookProps()} onClick={bookClick}>Book a free 30-minute call</a>{/* Points at /checkup until the Where to Start tool ships and takes over the route (assessment-respec.md §3). */}
+    <Link className="v3-hero-text-link" to="/checkup">Find where to start <span aria-hidden="true">→</span></Link></div>
   </div>;
 }
 
 export function WindowBar({ path, note }: { path: string; note?: string }) {
   return <header className="v3-window-bar"><span className="v3-window-dots" aria-hidden="true"><i /><i /><i /></span><code>{path}</code>{note && <small>{note}</small>}</header>;
-}
-
-function DiagnosticCard() {
-  const rows = [["Web presence", "Underselling"], ["Repeat customers", "Leaking away"], ["Hours lost to admin", "12+ a week"], ["AI leverage", "Untapped"]];
-  const better = [["Clearer offer", "76%"], ["Repeat path", "54%"], ["Admin relief", "68%"]];
-  return <article className="v3-artifact v3-wide-diagnostic" aria-label="Signal check example diagnostic">
-    <WindowBar path="madronaproduct.com/signal-check" note="example read" />
-    <div className="v3-diagnostic-panes">
-      <section><h2>Current signals</h2><ul className="v3-diagnostic-status">{rows.map(([label, status], index) => <li key={label}><span>{label}</span><strong className={index === 3 ? "is-bark" : ""}>{status}</strong></li>)}</ul></section>
-      <section><h2>What better looks like</h2><ul className="v3-better-bars">{better.map(([label, width], index) => <li key={label}><span>{label}</span><i><b className={index === 2 ? "is-bark" : ""} style={{ width }} /></i><small>{index === 0 ? "Clear" : index === 1 ? "Connected" : "Useful"}</small></li>)}</ul></section>
-      <section className="v3-recommendation-pane"><h2>First recommendation</h2><p>Fix the highest-friction handoff before adding another tool.</p><span>Start with the workflow people already repeat.</span></section>
-    </div>
-  </article>;
 }
 
 // The second hero artifact (rethought 2026-08-28): what we do, in concrete
@@ -58,7 +47,7 @@ export function Hero() {
     <div className="v3-shell v3-current-main">
       <HeroCopy />
       <div className="v3-current-images" aria-hidden="true"><HeroChart /></div>
-      <div className="v3-current-cluster"><DiagnosticCard /><div className="v3-current-proof-wrap"><ServicesPanel /></div></div>
+      <div className="v3-current-cluster"><ReadCard profile={heroReadFixture} /><div className="v3-current-proof-wrap"><ServicesPanel /></div></div>
     </div>
   </section>;
 }

@@ -67,7 +67,7 @@ function HelpIcon({ id }: { id: string }) {
 export function HelpSection() {
   return <section className="v3-section v3-shell v3-help">
     <div className="v3-help-head">
-      <div><p className="v3-kicker">What we can help with</p><h2>Four problems we hear <span>every week.</span></h2></div>
+      <p className="v3-kicker">What we can help with</p><h2>Four problems we hear <span>every week.</span></h2>
       <p className="v3-help-lede">Owners, founders, and teams bring us these. Each one has a clear first move, and we have built it before.</p>
     </div>
     <div className="v3-help-ledger">

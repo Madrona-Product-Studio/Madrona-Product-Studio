@@ -66,10 +66,16 @@ card is a brochure, not a read.
 | Hours lost to admin (AI & Operations) | Under 2 a week · 2–5 a week · 5–12 a week · 12+ a week |
 | AI leverage (AI & Operations) | Working already · Getting started · Untapped |
 
-New Products has no fixed row (matches the hero mock). The new-product
-answer (Q7 below) feeds the first recommendation, and *optionally* a fifth
-row appears only when the answer is hot ("stalled" / "need help building").
-Decision open.
+New Products has no row — **settled (Charlie, 2026-08-29):
+recommendation-only.** "Current signals" rows are health states of the
+business they already run; an unbuilt idea is an ambition, not a status.
+When the new-product answer is the story, it takes the First
+Recommendation headline instead of a fifth line. The card keeps a fixed
+four-row shape, so the hero fixture and live result stay layout-identical.
+
+Rows for areas the user never flagged (see the adaptive flow below) read
+**"Not flagged today"** — honest, because not checking it is itself an
+answer, and it keeps the card from being a brochure that flags everything.
 
 ### Pane 2 — What better looks like
 
@@ -107,42 +113,74 @@ assessment). The deterministic path remains as fallback always.
 - CTA: "Talk through this read" → book the free 30 minutes. Secondary:
   keep it (copy link), retake.
 
-## 2. The question set (draft, fills the slots)
+## 2. The adaptive flow (Charlie, 2026-08-29)
 
-Eight questions, all anchored single-selects except Q6. Target under 90
-seconds. Copy below is draft-quality; no em-dashes in shipped copy.
+Not a fixed list. **A broad opener triages; follow-up questions activate
+only for the threads the user flagged**, so the assessment visibly
+responds to inputs and asks the minimum needed to write a thoughtful
+report. This demos the studio's actual method: hear the symptom, ask the
+sharp follow-up.
 
-1. **Context (keep from current Q1).** "What kind of business are we
-   looking at?" Same six options.
-2. **Web presence row.** "If a stranger only saw your website, how well
-   would they get why to choose you?" — They'd get it right away / Most
-   of it / Some of it / Honestly, the business is better than the site /
-   We barely have a web presence.
-3. **Repeat row.** "Out of ten customers who buy once, how many do you
-   hear from again?" — Eight or more / Five to seven / Two to four / One,
-   maybe / We don't really know. ("Don't know" maps to status *Unknown* —
-   itself a systems signal.)
-4. **Hours row.** "In a typical week, how many hours go to work a
-   computer should be doing? Scheduling, retyping, chasing, copying
-   between tools." — Under 2 / 2 to 5 / 5 to 12 / 12 or more / I've
-   stopped counting.
-5. **AI leverage row.** "Is AI doing any real work in the business
-   today?" — Not at all / We've poked at ChatGPT / It helps with a task
-   or two / It's part of daily work / Automation runs on its own.
-6. **The workflow finder (the centerpiece).** "What's the task you dread?
-   The one that follows the same shape every time and eats hours anyway."
-   Optional chips for no-typing completion: Writing up reports or quotes ·
-   Invoicing and paperwork · Answering the same questions again ·
-   Moving info between tools · Scheduling and coordinating · Something
-   else — plus an optional free-text line ("say it in your words and the
-   read gets sharper"). The questions should teach the way cxo.dev's do:
-   reading the chips tells an owner what's newly possible.
-7. **New-product itch.** "Is there something new you keep meaning to make
-   real?" — No, we're focused on the business we have / An idea keeps
-   coming back / We started, but it stalled / Yes, and we want help
-   building it.
-8. **Readiness (keep from current Q7, reworded to V3 voice).** "What are
-   you ready to do about it?" — same five options.
+### Screen 1 — the opener (always)
+
+"Which of these sound like you? Check all that apply." First-person
+symptom statements in the settled problem voice (canon §7.4; this
+resurrects the v1 checkup's best beat). Draft set, one or two per thread:
+
+- "The website's just OK. The business is better than the site." → web
+- "People buy once, then we never hear from them again." → repeat
+- "I lose hours every week to stuff a computer should be doing." → hours
+- "Everyone says AI would help. I wouldn't know where to start." → AI
+- "There's something new I keep meaning to make real." → new product
+- "Honestly, things mostly work. I want an outside read." → none (routes
+  to a lighter, perspective-first report)
+
+Unchecked = an answer: that report row reads "Not flagged today."
+
+### Spine (always asked)
+
+- **Context.** "What kind of business are we looking at?" (keep current
+  Q1's six options).
+- **Readiness (last).** "What are you ready to do about it?" (keep
+  current Q7's five options, reworded to V3 voice).
+
+### Follow-ups (activated per flagged thread, 1–2 each, anchored)
+
+- **Web thread.** "If a stranger only saw your website, how well would
+  they get why to choose you?" — They'd get it right away / Most of it /
+  Some of it / Honestly, the business is better than the site / We barely
+  have a web presence.
+- **Repeat thread.** "Out of ten customers who buy once, how many do you
+  hear from again?" — Eight or more / Five to seven / Two to four / One,
+  maybe / We don't really know. ("Don't know" maps to status *Unknown* —
+  itself a systems signal.)
+- **Hours thread.** "In a typical week, how many hours go to work a
+  computer should be doing? Scheduling, retyping, chasing, copying
+  between tools." — Under 2 / 2 to 5 / 5 to 12 / 12 or more / I've
+  stopped counting.
+- **AI thread.** "Is AI doing any real work in the business today?" —
+  Not at all / We've poked at ChatGPT / It helps with a task or two /
+  It's part of daily work / Automation runs on its own.
+- **Hours or AI flagged → the workflow finder (the centerpiece).**
+  "What's the task you dread? The one that follows the same shape every
+  time and eats hours anyway." Chips for no-typing completion: Writing up
+  reports or quotes · Invoicing and paperwork · Answering the same
+  questions again · Moving info between tools · Scheduling and
+  coordinating · Something else — plus an optional free-text line ("say
+  it in your words and the read gets sharper"). The chips should teach
+  the way cxo.dev's questions do: reading them tells an owner what's
+  newly possible.
+- **New-product thread.** "Where is it right now?" — An idea that keeps
+  coming back / Sketches and notes / We started, but it stalled / It's
+  real, and needs to grow.
+
+### Length math
+
+Opener + context + readiness = 3 always. Typical run (2 threads flagged)
+= ~6 questions; worst case (everything flagged) = ~9. All anchored
+five-second answers except the optional free text. Progress UI must show
+the dynamic count honestly after the opener ("3 quick follow-ups") so
+adaptive never reads as endless.
 
 Cut entirely: the three redundant friction multi-selects, the
 interstitial lines ("That's a meaningful signal"), the synthesis theater,
@@ -173,9 +211,17 @@ goes live; nothing deploys without Charlie's preview sign-off.
 5. Phase 2 (separate decision): live LLM read from Q6 free text, with
    deterministic fallback.
 
+## Settled decisions (Charlie, 2026-08-29)
+
+- Name: **"Where to Start"** at `/where-to-start`.
+- New Products: recommendation-only, no signals row; card keeps a fixed
+  four-row shape.
+- Flow: **adaptive** — symptom opener triages, follow-ups activate per
+  flagged thread.
+
 ## Open decisions (Charlie)
 
-- The name (recommendation: First Move).
-- New Products: recommendation-only, or conditional fifth row.
 - LLM read in v1 or fast-follow (adds an API surface + prompt QA).
 - Signal Brain: park vs. delete.
+- Exact opener statements and the "nothing's on fire" routing (lighter
+  report variant) — draft above is first-pass copy.

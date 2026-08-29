@@ -10,9 +10,9 @@ const steps = [
 ];
 
 export function PracticeSection() {
-  return <section className="v3-section v3-shell v3-practice">
+  return <section className="v3-section v3-band-light v3-practice"><div className="v3-shell">
     <div className="v3-help-head">
-      <div><p className="v3-kicker">How we work</p><h2>We figure out what to build. <span>Then we build it.</span></h2></div>
+      <p className="v3-kicker">How we work</p><h2>We figure out what to build. <span>Then we build it.</span></h2>
       <p className="v3-help-lede">The doors are different. The practice behind them is the same: find the highest-leverage move, start small, and let the work compound.</p>
     </div>
     <ol className="v3-practice-steps">
@@ -24,5 +24,5 @@ export function PracticeSection() {
       </li>)}
     </ol>
     <Link className="v3-practice-link" to="/how-it-works">See how an engagement runs <span aria-hidden="true">→</span></Link>
-  </section>;
+  </div></section>;
 }
