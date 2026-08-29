@@ -14,6 +14,7 @@ import AgentsGallery from "./pages/lab/AgentsGallery";
 // legacy/lab pages don't belong in the first-load bundle.
 const AgenticOperations = lazy(() => import("./pages/AgenticOperations"));
 const ServicePageV3 = lazy(() => import("./pages/v3/ServicePageV3"));
+const CharliePage = lazy(() => import("./pages/v3/CharliePage"));
 const MadronaV2Thesis = lazy(() => import("./pages/lab/MadronaV2Thesis"));
 const MadronaV2EngineNote = lazy(() => import("./pages/lab/MadronaV2EngineNote"));
 const MadronaV2AgenticNote = lazy(() => import("./pages/lab/MadronaV2AgenticNote"));
@@ -59,6 +60,9 @@ export default function App() {
         <Route path="services/brand-website" element={<ServicePageV3 serviceId="brand-and-web" />} />
         <Route path="services/growth-retention" element={<ServicePageV3 serviceId="customers-and-growth" />} />
         <Route path="services/new-products" element={<ServicePageV3 serviceId="new-products" />} />
+        {/* Charlie's public positioning page — sendable, out of the nav.
+            Sibling of the internal /pitch-kit rehearsal surface. */}
+        <Route path="charlie" element={<CharliePage />} />
         {/* Day-old door slugs (2026-08-29 launch prep) → the label slugs. */}
         <Route path="services/work-smarter" element={<Navigate to="/services/ai-operations" replace />} />
         <Route path="services/build-trust" element={<Navigate to="/services/brand-website" replace />} />
