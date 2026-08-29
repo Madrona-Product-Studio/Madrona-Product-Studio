@@ -10,8 +10,8 @@ import operationsImage from "../../../docs/madrona-v2-build-kit/product-proof/be
 // the section-2 service labels back together. Berry Good is openly framed
 // as our demonstration business (canon).
 const tabs = [
-  { id: "website", label: "Website", image: storefrontImage, alt: "Berry Good storefront website on desktop", caption: "The storefront itself: ordering, pickup times, and the farm stand, live on the web." },
   { id: "brand", label: "Brand", image: brandImage, alt: "Berry Good brand system: logo, palette, typography, and packaging", caption: "A cohesive identity on every touchpoint, from the berry box to the roadside sign." },
+  { id: "website", label: "Website", image: storefrontImage, alt: "Berry Good storefront website on desktop", caption: "The storefront itself: ordering, pickup times, and the farm stand, live on the web." },
   { id: "journey", label: "Customer journey", image: journeyImage, alt: "Berry Good customer ordering journey across four phone screens", caption: "An ordering experience that makes it easy to buy, and easy to come back." },
   { id: "operations", label: "Operations", image: operationsImage, alt: "Berry Good operations dashboard", caption: "The dashboard and agents that run the day, from orders to inventory." },
 ];

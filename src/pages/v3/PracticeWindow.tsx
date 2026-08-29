@@ -21,6 +21,10 @@ const stackItems: { name: string; mark?: string }[] = [
   { name: "GA4", mark: "/images/stack/googleanalytics.svg" },
 ];
 
+// Coming-soon entries cover the rest of the skills journey (unlinked until
+// their live demos exist on the agent engine).
+const upcomingTools = ["SEO health check", "Content drafts", "Win-back emails", "Landing page test"];
+
 const tools = [
   ["Month-end close", "/tools/month-end-close"],
   ["Invoice chasing", "/tools/invoice-chasing"],
@@ -53,7 +57,7 @@ export function PracticeWindowSection() {
       </div>
       <div className="v3-pw-row">
         <h3>Tools</h3>
-        <div><ul className="v3-pw-toolchips">{tools.map(([name, to]) => <li key={to}><Link to={to}>{name}</Link></li>)}</ul><Link className="v3-pw-all" to="/tools">Try the live demos <span aria-hidden="true">→</span></Link></div>
+        <div><ul className="v3-pw-toolchips">{tools.map(([name, to]) => <li key={to}><Link to={to}>{name}</Link></li>)}{upcomingTools.map(name => <li key={name} className="v3-pw-soon">{name}</li>)}</ul><Link className="v3-pw-all" to="/tools">Try the live demos <span aria-hidden="true">→</span></Link></div>
       </div>
     </article>
   </div></section>;
