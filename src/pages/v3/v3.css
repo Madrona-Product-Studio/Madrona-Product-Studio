@@ -138,3 +138,20 @@
 .v3-berry-window footer p{margin:0;color:var(--v3-clay);font-size:12px;line-height:1.5}
 @media(max-width:900px){.v3-practice-steps{grid-template-columns:1fr}.v3-practice-steps li{padding:26px 0}.v3-practice-steps li+li{padding-left:0;border-left:0;border-top:1px solid var(--v3-line)}.v3-berry{grid-template-columns:1fr;gap:44px}}
 @media(max-width:600px){.v3-berry-window>img{height:230px}.v3-berry-tabs{margin-left:0;flex-wrap:wrap}.v3 .v3-berry-bar{flex-wrap:wrap}.v3 .v3-berry-tabs button.is-active{margin-bottom:0;padding-bottom:7px;border-bottom-color:var(--v3-line)}}
+/* Round 10 (Charlie, 2026-08-29): page-rhythm pass. The 150px section
+   padding stacked to ~300px of dead paper at every boundary; pull the whole
+   page tighter and give the statement headlines deliberate breaks at the
+   flash span instead of mid-sentence wraps. */
+.v3 .v3-section{padding-block:96px}
+.v3 .v3-current-hero{padding-bottom:60px}
+.v3 .v3-current-cluster{margin-top:52px}
+.v3 .v3-help-head h2{max-width:28ch;text-wrap:wrap}
+.v3 .v3-help-head h2 span{display:block}
+.v3 .v3-berry-rail h2{max-width:24ch;font-size:clamp(2rem,2.6vw,2.7rem);text-wrap:wrap}
+.v3 .v3-berry-rail h2 span{display:block}
+.v3 .v3-spread-intro{margin-bottom:48px}
+.v3 .v3-practice-steps li{padding-top:28px;padding-bottom:24px}
+.v3 .v3-practice-link{margin-top:32px}
+.v3 .v3-thinking{grid-template-columns:.8fr 1.2fr;gap:80px}
+@media(max-width:900px){.v3 .v3-current-hero{padding-bottom:48px}.v3 .v3-section{padding-block:80px}}
+@media(max-width:600px){.v3 .v3-section{padding-block:64px}.v3 .v3-current-hero{padding-bottom:40px}.v3 .v3-current-cluster{margin-top:-18px}}
