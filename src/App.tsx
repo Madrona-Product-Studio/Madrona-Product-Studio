@@ -4,7 +4,7 @@ import { ScrollToTop, PageFade } from "./components/RouteMotion";
 import Layout from "./components/Layout";
 // Primary-nav destinations stay eager so top-level navigation is instant.
 import MadronaV2 from "./pages/lab/MadronaV2";
-import MadronaV2Home from "./pages/lab/MadronaV2Home";
+import HomeV3 from "./pages/v3/HomeV3";
 import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
 import MadronaV2About from "./pages/lab/MadronaV2About";
@@ -13,7 +13,6 @@ import AgentsGallery from "./pages/lab/AgentsGallery";
 // Everything deeper is route-split: articles, tool demos, the assessment, and
 // legacy/lab pages don't belong in the first-load bundle.
 const AgenticOperations = lazy(() => import("./pages/AgenticOperations"));
-const HomeV3 = lazy(() => import("./pages/v3/HomeV3"));
 const ServicePageV3 = lazy(() => import("./pages/v3/ServicePageV3"));
 const MadronaV2Thesis = lazy(() => import("./pages/lab/MadronaV2Thesis"));
 const MadronaV2EngineNote = lazy(() => import("./pages/lab/MadronaV2EngineNote"));
@@ -41,6 +40,12 @@ function AgentsToTools() {
   return <Navigate to={`/tools/${slug}`} replace />;
 }
 
+// Old /v3/services preview URLs → the promoted real routes.
+function V3ToServices() {
+  const { slug } = useParams();
+  return <Navigate to={`/services/${slug}`} replace />;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -48,15 +53,16 @@ export default function App() {
       <PageFade>
       <Suspense fallback={null}>
       <Routes>
-        {/* Redesign exploration. Preview-only routes keep the live site intact. */}
-        <Route path="v3" element={<HomeV3 />} />
-        <Route path="v3/services/work-smarter" element={<ServicePageV3 serviceId="operations-and-ai" />} />
-        <Route path="v3/services/grow-your-business" element={<ServicePageV3 serviceId="customers-and-growth" />} />
-        <Route path="v3/services/build-trust" element={<ServicePageV3 serviceId="brand-and-web" />} />
-        <Route path="v3/services/new-products" element={<ServicePageV3 serviceId="new-products" />} />
-        <Route path="v3/consulting/work-smarter" element={<Navigate to="/v3/services/work-smarter" replace />} />
-        {/* Story rethink: new studio front-door home; services overview is canonical at /services. */}
-        <Route path="/" element={<MadronaV2Home />} />
+        {/* V3 promoted 2026-08-29: the redesign is the live site. */}
+        <Route path="/" element={<HomeV3 />} />
+        <Route path="services/work-smarter" element={<ServicePageV3 serviceId="operations-and-ai" />} />
+        <Route path="services/grow-your-business" element={<ServicePageV3 serviceId="customers-and-growth" />} />
+        <Route path="services/build-trust" element={<ServicePageV3 serviceId="brand-and-web" />} />
+        <Route path="services/new-products" element={<ServicePageV3 serviceId="new-products" />} />
+        {/* Old /v3 preview URLs → the real routes (vercel.json 301s too). */}
+        <Route path="v3" element={<Navigate to="/" replace />} />
+        <Route path="v3/services/:slug" element={<V3ToServices />} />
+        <Route path="v3/consulting/work-smarter" element={<Navigate to="/services/work-smarter" replace />} />
         <Route path="services" element={<MadronaV2 />} />
         <Route path="consulting" element={<Navigate to="/services" replace />} />
         <Route path="apps" element={<MadronaV2Apps />} />

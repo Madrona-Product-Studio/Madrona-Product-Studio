@@ -24,10 +24,10 @@ const LINKS: { href: string; label: string; key: NavKey; primary?: boolean }[] =
 ];
 
 const SERVICE_LINKS = [
-  { href: "/v3/services/work-smarter", label: "Work smarter" },
-  { href: "/v3/services/grow-your-business", label: "Grow your business" },
-  { href: "/v3/services/build-trust", label: "Build trust" },
-  { href: "/v3/services/new-products", label: "Build something worth using" },
+  { href: "/services/work-smarter", label: "Work smarter" },
+  { href: "/services/grow-your-business", label: "Grow your business" },
+  { href: "/services/build-trust", label: "Build trust" },
+  { href: "/services/new-products", label: "Build something worth using" },
 ];
 
 const ArrowUpRight = () => (

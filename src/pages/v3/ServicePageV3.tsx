@@ -47,7 +47,7 @@ export default function ServicePageV3({ serviceId }: { serviceId: ServiceId }) {
   useCalEmbed();
   return (
     <main className="m2 v3">
-      <LabMeta title={`${service.door} · Madrona preview`} noindex />
+      <LabMeta title={`${service.door} · Madrona Product Studio`} />
       <M2Nav active="services" />
       <section className="v3-service-hero v3-shell">
         <div className="v3-service-copy">

@@ -21,7 +21,7 @@ const helpItems: HelpItem[] = [
     label: "AI consulting",
     detail: "Practical AI on your real workflows, from the first map to working agents.",
     nouns: "Agents, assistants, automation, internal tools",
-    route: "/v3/services/work-smarter",
+    route: "/services/work-smarter",
   },
   {
     id: "growth",
@@ -29,7 +29,7 @@ const helpItems: HelpItem[] = [
     label: "Growth and retention",
     detail: "Make it easier for customers to buy, come back, and stay connected.",
     nouns: "Online stores, loyalty, lifecycle email",
-    route: "/v3/services/grow-your-business",
+    route: "/services/grow-your-business",
   },
   {
     id: "web",
@@ -37,7 +37,7 @@ const helpItems: HelpItem[] = [
     label: "Website redesign",
     detail: "Brand, messaging, and a site built to earn trust.",
     nouns: "Positioning, identity, websites and stores",
-    route: "/v3/services/build-trust",
+    route: "/services/build-trust",
   },
   {
     id: "product",
@@ -45,7 +45,7 @@ const helpItems: HelpItem[] = [
     label: "New product building",
     detail: "From concept to something real people use.",
     nouns: "Strategy, prototypes, MVPs, launch",
-    route: "/v3/services/new-products",
+    route: "/services/new-products",
   },
 ];
 

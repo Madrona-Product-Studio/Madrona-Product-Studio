@@ -20,7 +20,7 @@ const stack = ["Claude", "OpenAI", "Shopify", "Vercel", "Resend", "GA4", "Cal.co
 export default function HomeV3() {
   useCalEmbed();
   return <main className="m2 v3">
-    <LabMeta title="Madrona Product Studio · V3 preview" noindex />
+    <LabMeta title="Madrona Product Studio · Bellingham, Washington" />
     <M2Nav />
     <Hero />
 
