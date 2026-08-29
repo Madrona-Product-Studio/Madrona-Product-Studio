@@ -1,0 +1,83 @@
+/* Pitch Kit — internal positioning page. Rides the m2 tokens (paper/ink/forest),
+   labeled-spread idiom: left rail + ruled content, hairlines, no centered stacks. */
+
+.pk-shell { margin: 0 auto; max-width: 1060px; padding: 0 24px; }
+
+.pk-hero { border-bottom: 1px solid rgba(26, 23, 20, 0.14); padding: 72px 0 44px; }
+.pk-kicker,
+.pk-groupkicker {
+  color: var(--forest-soft);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+}
+.pk-hero h1 { font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 520; margin: 0 0 18px; }
+.pk-identity { color: var(--ink); font-family: var(--font-serif); font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.4; margin: 0; }
+.pk-thesis { color: var(--forest); font-family: var(--font-serif); font-size: clamp(1.25rem, 2vw, 1.5rem); font-style: italic; line-height: 1.4; margin: 4px 0 0; }
+
+.pk-section { border-bottom: 1px solid rgba(26, 23, 20, 0.14); padding: 44px 0; }
+
+.pk-spread { display: grid; gap: 36px; grid-template-columns: 240px 1fr; }
+.pk-rail h2, .pk-rail h3 { font-size: 1.05rem; font-weight: 620; letter-spacing: -0.02em; margin: 0 0 8px; }
+.pk-rail p { color: var(--ink-soft); font-size: 0.85rem; line-height: 1.5; margin: 0; max-width: 24ch; }
+
+.pk-ledger { list-style: none; margin: 0; padding: 0; }
+.pk-ledger li {
+  border-top: 1px solid rgba(26, 23, 20, 0.1);
+  display: grid;
+  gap: 4px 18px;
+  grid-template-columns: 34px 1fr;
+  padding: 16px 0;
+}
+.pk-ledger li:first-child { border-top: 0; padding-top: 0; }
+.pk-num { color: var(--forest-soft); font-size: 0.75rem; font-variant-numeric: tabular-nums; font-weight: 600; padding-top: 5px; }
+.pk-ledger blockquote { font-family: var(--font-serif); font-size: 1.18rem; line-height: 1.42; margin: 0; }
+.pk-ledger p { color: var(--ink-soft); font-size: 0.82rem; grid-column: 2; line-height: 1.45; margin: 0; }
+
+.pk-rooms { border-collapse: collapse; width: 100%; }
+.pk-rooms td { border-top: 1px solid rgba(26, 23, 20, 0.1); font-size: 0.92rem; line-height: 1.4; padding: 12px 18px 12px 0; vertical-align: top; }
+.pk-rooms tr:first-child td { border-top: 0; padding-top: 0; }
+.pk-rooms td:last-child { color: var(--forest); white-space: nowrap; }
+.pk-rooms b { font-weight: 680; }
+
+.pk-pitch { border-top: 1px solid rgba(26, 23, 20, 0.1); margin-top: 28px; padding-top: 28px; }
+.pk-pitch:first-of-type { border-top: 0; margin-top: 0; padding-top: 0; }
+.pk-vid {
+  border: 1px solid var(--forest-soft);
+  border-radius: 999px;
+  color: var(--forest);
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  padding: 3px 10px;
+}
+.pk-body { font-family: var(--font-serif); font-size: 1.13rem; line-height: 1.58; margin: 0; max-width: 62ch; }
+
+.pk-coffees { display: grid; gap: 28px; grid-template-columns: 1fr 1fr; }
+.pk-coffee { border-top: 2px solid var(--forest); padding-top: 16px; }
+.pk-coffee h3 { display: inline-block; font-size: 1rem; font-weight: 620; margin: 0 0 4px 10px; }
+.pk-coffeeroom { color: var(--ink-soft); font-size: 0.82rem; margin: 0 0 12px; }
+.pk-coffee blockquote { font-family: var(--font-serif); font-size: 1.08rem; line-height: 1.55; margin: 0; }
+
+.pk-close { background: var(--forest); }
+.pk-close .pk-groupkicker { color: rgba(247, 244, 239, 0.72); }
+.pk-closeline { color: #f7f4ef; font-family: var(--font-serif); font-size: clamp(1.3rem, 2.4vw, 1.7rem); line-height: 1.45; margin: 0; max-width: 34ch; }
+
+.pk-rules { list-style: none; margin: 0; padding: 0; }
+.pk-rules li { border-top: 1px solid rgba(26, 23, 20, 0.1); font-size: 0.95rem; line-height: 1.5; padding: 12px 0; }
+.pk-rules li:first-child { border-top: 0; padding-top: 0; }
+
+.pk-sourcenote { color: var(--ink-soft); font-size: 0.8rem; padding-bottom: 56px; padding-top: 28px; }
+.pk-sourcenote code { font-size: 0.78rem; }
+
+@media (max-width: 720px) {
+  .pk-hero { padding: 48px 0 32px; }
+  .pk-spread { gap: 18px; grid-template-columns: 1fr; }
+  .pk-rail p { max-width: none; }
+  .pk-coffees { grid-template-columns: 1fr; }
+  .pk-rooms td:last-child { white-space: normal; }
+}
