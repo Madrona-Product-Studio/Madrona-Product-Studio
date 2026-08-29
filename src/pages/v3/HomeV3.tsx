@@ -5,6 +5,7 @@ import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import { Hero } from "./Hero";
+import { HelpSection } from "./HelpSection";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 import helmImage from "../../../docs/madrona-v2-build-kit/site-assets/helm-tile.webp";
@@ -12,7 +13,6 @@ import lilaImage from "../../../docs/madrona-v2-build-kit/product-proof/lila/lil
 import sanJuanImage from "../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp";
 import berryImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp";
 
-const doorRoutes: Record<string, string> = { "operations-and-ai": "/v3/services/work-smarter", "customers-and-growth": "/v3/services/grow-your-business", "brand-and-web": "/v3/services/build-trust", "new-products": "/v3/services/new-products" };
 const stack = ["Claude", "OpenAI", "Shopify", "Vercel", "Resend", "GA4", "Cal.com", "GitHub"];
 
 export default function HomeV3() {
@@ -22,7 +22,7 @@ export default function HomeV3() {
     <M2Nav />
     <Hero />
 
-    <section className="v3-section v3-shell"><div className="v3-spread-intro"><div><p className="v3-kicker">Four ways in</p><h2>Bring us the problem as you see it.</h2></div><p>The doors are different. The practice behind them is the same: find the most valuable move, make it tangible, and learn from the real thing.</p></div><div className="v3-door-grid">{serviceAreas.map((service, index) => <Link className="v3-door" to={doorRoutes[service.id]} key={service.id}><div><span>0{index + 1} · {service.name}</span><h3>{service.door}</h3><p>{service.outcome}</p></div><figure><img src={service.artifact.src} alt={service.artifact.alt} /><figcaption>{service.artifact.caption}</figcaption></figure><ul>{service.homepageItems.map(item => <li key={item}>{item}</li>)}</ul><b>Explore this work →</b></Link>)}</div></section>
+    <HelpSection />
 
     <section className="v3-section v3-shell v3-capabilities"><div><p className="v3-kicker">Skills and stack</p><h2>A whole product practice, made legible.</h2><p>Senior judgment across the work, with tools chosen for the business rather than the pitch.</p></div><div className="v3-cap-panel"><div className="v3-cap-row"><h3>Skills</h3><div>{serviceAreas.map(s => <section key={s.id}><strong>{s.door}</strong>{s.homepageItems.slice(0,3).map(i => <span key={i}>{i}</span>)}</section>)}</div></div><div className="v3-cap-row v3-stack"><h3>Stack</h3><ul>{stack.map(tool => <li key={tool}>{tool}</li>)}</ul></div></div></section>
 
