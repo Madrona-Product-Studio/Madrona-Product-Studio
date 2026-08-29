@@ -8,7 +8,7 @@ import { HelpSection } from "./HelpSection";
 import { PracticeSection } from "./PracticeSection";
 import { BerryGoodSection } from "./BerryGoodSection";
 import { DrawnToSection } from "./DrawnToSection";
-import { PracticeWindowSection } from "./PracticeWindowLab";
+import { PracticeWindowSection } from "./PracticeWindow";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 import helmImage from "../../../docs/madrona-v2-build-kit/site-assets/helm-tile.webp";

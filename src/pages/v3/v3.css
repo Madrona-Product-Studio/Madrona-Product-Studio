@@ -133,11 +133,11 @@
 .v3 .v3-berry-tabs button{padding:7px 12px;border:1px solid transparent;border-radius:5px 5px 0 0;background:none;color:var(--v3-muted);font:600 10.5px/1 Inter,sans-serif;letter-spacing:.02em;cursor:pointer;transition:color 160ms ease,background-color 160ms ease}
 .v3 .v3-berry-tabs button:hover{color:var(--v3-ink)}
 .v3 .v3-berry-tabs button.is-active{border-color:var(--v3-line);border-bottom-color:var(--v3-card);background:var(--v3-card);color:var(--v3-ink);margin-bottom:-11px;padding-bottom:18px}
-.v3-berry-window>img{display:block;width:100%;height:400px;object-fit:cover;border-top:1px solid var(--v3-soft)}
+.v3-berry-window>img{display:block;width:100%;height:460px;object-fit:contain;background:var(--v3-paper);border-top:1px solid var(--v3-soft)}
 .v3-berry-window footer{padding:14px 16px;border-top:1px solid var(--v3-soft)}
 .v3-berry-window footer p{margin:0;color:var(--v3-clay);font-size:12px;line-height:1.5}
 @media(max-width:900px){.v3-practice-steps{grid-template-columns:1fr}.v3-practice-steps li{padding:26px 0}.v3-practice-steps li+li{padding-left:0;border-left:0;border-top:1px solid var(--v3-line)}.v3-berry{grid-template-columns:1fr;gap:44px}}
-@media(max-width:600px){.v3-berry-window>img{height:230px}.v3-berry-tabs{margin-left:0;flex-wrap:wrap}.v3 .v3-berry-bar{flex-wrap:wrap}.v3 .v3-berry-tabs button.is-active{margin-bottom:0;padding-bottom:7px;border-bottom-color:var(--v3-line)}}
+@media(max-width:600px){.v3-berry-window>img{height:250px}.v3-berry-tabs{margin-left:0;flex-wrap:wrap}.v3 .v3-berry-bar{flex-wrap:wrap}.v3 .v3-berry-tabs button.is-active{margin-bottom:0;padding-bottom:7px;border-bottom-color:var(--v3-line)}}
 /* Round 10 (Charlie, 2026-08-29): page-rhythm pass. The 150px section
    padding stacked to ~300px of dead paper at every boundary; pull the whole
    page tighter and give the statement headlines deliberate breaks at the
@@ -190,3 +190,26 @@
 @media(max-width:900px){.v3 .v3-section{padding-block:60px}}
 @media(max-width:600px){.v3 .v3-section{padding-block:52px}}
 @media(max-width:600px){.v3 .v3-thinking{grid-template-columns:1fr;gap:28px}}
+/* Round 14 (2026-08-29): practice window locked — logos-only stack (engine
+   layer cut as too much). Folded from the practice-window lab. */
+.v3-pw{max-width:1080px;box-shadow:0 22px 58px rgba(26,23,20,.14)}
+.v3-pw-skills{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.v3-pw-skills section{display:flex;flex-direction:column;gap:7px}
+.v3-pw-skills strong{margin-bottom:5px;font-size:12.5px}
+.v3-pw-skills span{color:var(--v3-clay);font-size:11.5px}
+.v3-pw-row{display:grid;grid-template-columns:84px 1fr;gap:20px;padding:20px 24px;border-bottom:1px solid var(--v3-soft)}
+.v3-pw-row:last-child{border-bottom:0}
+.v3 .v3-pw-row h3{margin:2px 0;color:var(--v3-muted);font:700 9.5px/1.2 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase}
+.v3-pw-marks{display:flex;flex-wrap:wrap;gap:10px 28px;margin:0;padding:0;list-style:none}
+.v3-pw-mark{display:flex;align-items:center;gap:9px}
+.v3-pw-mark img{width:17px;height:17px;object-fit:contain;opacity:.82}
+.v3-pw-mark i{display:inline-flex;width:17px;height:17px;align-items:center;justify-content:center;border-radius:4px;background:var(--v3-soft);color:var(--v3-ink70);font-style:normal;font:700 9px/1 Inter,sans-serif}
+.v3-pw-mark span{font-size:12.5px;font-weight:600;letter-spacing:-.005em}
+.v3-pw-toolchips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;padding:0;list-style:none}
+.v3 .v3-pw-toolchips a{display:inline-block;padding:7px 11px;border:1px solid var(--v3-soft);border-radius:999px;background:var(--v3-paper);color:var(--v3-ink70);font-size:11.5px;transition:border-color 160ms ease,color 160ms ease}
+.v3 .v3-pw-toolchips a:hover{border-color:var(--v3-bark);color:var(--v3-bark-dark)}
+.v3 .v3-pw-all{font:700 11px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--v3-ink)}
+.v3 .v3-pw-all span{color:var(--v3-bark-dark)}
+.v3 .v3-pw-all:hover{color:var(--v3-bark-dark)}
+@media(max-width:900px){.v3-pw-skills{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.v3-pw-skills{grid-template-columns:1fr}.v3-pw-row{grid-template-columns:1fr;gap:10px}.v3-pw-marks{gap:10px 18px}}
