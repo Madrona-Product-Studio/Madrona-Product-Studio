@@ -49,6 +49,21 @@ const helpItems: HelpItem[] = [
   },
 ];
 
+// One tinted square stamp per area (the sanctioned sage/bark/slate trio),
+// with a single clean motif each — the answer side's visual anchor
+// (replaced the mono Q/A markers, Charlie 2026-08-29).
+const iconTints: Record<string, string> = { ai: "#edefdf", web: "#f8e6d8", growth: "#e4ebf2", product: "#edefdf" };
+
+function HelpIcon({ id }: { id: string }) {
+  const paths: Record<string, React.ReactNode> = {
+    ai: <><path d="M8 1.5v3M8 11.5v3M1.5 8h3M11.5 8h3M3.4 3.4l2.1 2.1M10.5 10.5l2.1 2.1M12.6 3.4l-2.1 2.1M5.5 10.5l-2.1 2.1" /></>,
+    web: <><rect x="2" y="2.5" width="12" height="11" rx="1.5" /><path d="M2 6h12M6 6v7.5" /></>,
+    growth: <><path d="M2 12.5l4-4 2.5 2.5L13.5 5" /><path d="M9.5 4.5h4v4" /></>,
+    product: <><path d="M8 1.8l5.5 3.1v6.2L8 14.2l-5.5-3.1V4.9L8 1.8z" /><path d="M2.7 5L8 8l5.3-3M8 8v6" /></>,
+  };
+  return <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[id]}</svg>;
+}
+
 export function HelpSection() {
   return <section className="v3-section v3-shell v3-help">
     <div className="v3-help-head">
@@ -58,13 +73,10 @@ export function HelpSection() {
     <div className="v3-help-ledger">
       {helpItems.map((item, index) => <Link to={item.route} key={item.id} className="v3-help-ledger-row">
         <span className="v3-help-ledger-num">0{index + 1}</span>
-        <div className="v3-help-ledger-question">
-          <span>Q</span>
-          <h3>{item.question}</h3>
-        </div>
+        <h3>{item.question}</h3>
         <span className="v3-help-ledger-line" aria-hidden="true" />
         <div className="v3-help-ledger-answer">
-          <span>A</span>
+          <span className="v3-help-ledger-icon" style={{ background: iconTints[item.id] }}><HelpIcon id={item.id} /></span>
           <div>
             <strong>{item.label} <i aria-hidden="true">→</i></strong>
             <p>{item.detail}</p>
