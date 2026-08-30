@@ -60,7 +60,7 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
             <Link to="/connect">Contact</Link>
           </nav>
           <div className="m2-fc-contact">
-            <p>Bellingham, WA</p>
+            <p>PNW, USA</p>
             <a href={`mailto:${EMAIL}`} onClick={() => track("email_click", { source: "footer" })}>{EMAIL}</a>
           </div>
         </div>

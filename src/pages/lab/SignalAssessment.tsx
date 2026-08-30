@@ -536,7 +536,7 @@ export default function SignalAssessment() {
             visitor arriving from a shared link still learns whose check this
             is and has a way into the site. */}
         <footer className="sa-site-foot">
-          <p>A free signal check from Madrona Product Studio, Bellingham WA</p>
+          <p>A free signal check from Madrona Product Studio, PNW, USA</p>
           <nav aria-label="Madrona site">
             <Link to="/">madronaproduct.com</Link>
             <Link to="/services">How we help</Link>

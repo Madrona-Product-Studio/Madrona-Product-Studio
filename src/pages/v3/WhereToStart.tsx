@@ -205,7 +205,7 @@ export default function WhereToStart() {
       </div>
 
       <footer className="sa-site-foot">
-        <p>A free read from Madrona Product Studio, Bellingham WA</p>
+        <p>A free read from Madrona Product Studio, PNW, USA</p>
         <nav aria-label="Madrona site">
           <Link to="/">madronaproduct.com</Link>
           <Link to="/services">How we help</Link>

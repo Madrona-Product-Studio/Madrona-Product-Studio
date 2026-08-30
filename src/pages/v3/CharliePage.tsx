@@ -53,7 +53,7 @@ export default function CharliePage() {
     <M2Nav />
 
     <header className="v3-section v3-shell ck-hero">
-      <p className="v3-kicker">Charlie Koch · Madrona Product Studio · Bellingham, WA</p>
+      <p className="v3-kicker">Charlie Koch · Madrona Product Studio · PNW, USA</p>
       <h1>Builder of modern <span>digital tools.</span></h1>
       <p className="v3-lede ck-lede">
         Newest tools, oldest problems. Depending on why you're here, there are
