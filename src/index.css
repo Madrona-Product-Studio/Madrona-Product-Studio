@@ -90,8 +90,8 @@
      (madrona-v2.css --bark/--bark-dark) so the accent is one color
      site-wide. These only render on the older non-lab pages; unified here
      to prevent drift if any get relinked. */
-  --color-madrona: #c86a3d;
-  --color-madrona-dark: #a94728;
+  --color-madrona: #E55728;
+  --color-madrona-dark: #BC431D;
   --color-madrona-light: #e8a999;
 
   /* Forest — the CTA + deep-ground color (canonized 2026-08-15).
@@ -254,5 +254,5 @@
 
 /* Day/dusk/night (2026-08-30): html ground + token ramps so utility-driven
    surfaces follow the sky too. Engine: src/lib/theme.ts. */
-html[data-theme="night"]{background:#2F3135;--color-bg:#2F3135;--color-card:#383B40;--color-paper:#35383D;--color-ink:#F7EDE4;--color-ink70:#D9D2C7;--color-clay:#AFA89D;--color-muted:#8F8A80;--color-faint:#6B6660;--color-line:rgba(247,237,228,.14);--color-line-soft:rgba(247,237,228,.09);--color-madrona:#E86A44;--color-madrona-dark:#F09A7A}
-html[data-theme="dusk"]{background:#4C3843;--color-bg:#4C3843;--color-card:#5A4450;--color-paper:#55404C;--color-ink:#F7EDE4;--color-ink70:#E4D3CB;--color-clay:#C9B3B8;--color-muted:#B39DA6;--color-faint:#8A7480;--color-line:rgba(247,237,228,.15);--color-line-soft:rgba(247,237,228,.10);--color-madrona:#F09A7A;--color-madrona-dark:#F7B49A}
+html[data-theme="night"]{background:#2F3135;--color-bg:#2F3135;--color-card:#383B40;--color-paper:#35383D;--color-ink:#F7EDE4;--color-ink70:#D9D2C7;--color-clay:#AFA89D;--color-muted:#8F8A80;--color-faint:#6B6660;--color-line:rgba(247,237,228,.14);--color-line-soft:rgba(247,237,228,.09);--color-madrona:#E55728;--color-madrona-dark:#F0703F}
+html[data-theme="dusk"]{background:#4C3843;--color-bg:#4C3843;--color-card:#5A4450;--color-paper:#55404C;--color-ink:#F7EDE4;--color-ink70:#E4D3CB;--color-clay:#C9B3B8;--color-muted:#B39DA6;--color-faint:#8A7480;--color-line:rgba(247,237,228,.15);--color-line-soft:rgba(247,237,228,.10);--color-madrona:#E55728;--color-madrona-dark:#F0703F}
