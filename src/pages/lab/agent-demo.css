@@ -47,14 +47,14 @@
 /* Connector logos (spec card + gallery) */
 .agx-conns { display: flex; flex-wrap: wrap; gap: 7px; }
 .agx-conn { align-items: center; background: var(--shell); border-radius: 6px; color: var(--ink-soft); display: inline-flex; font-size: .78rem; font-weight: 600; gap: 6px; padding: 4px 10px 4px 8px; }
-.agx-conn-svg { color: #3a3c39; flex: none; height: 14px; width: 14px; }
+.agx-conn-svg { color: var(--ink-soft, #3a3c39); flex: none; height: 14px; width: 14px; }
 .agx-conn-lbl { white-space: nowrap; }
 /* In the spec card the connectors sit under a small dt; give them room */
 .agx-spec dd .agx-conns { margin-top: 2px; }
 
 .agx-connlogos { display: inline-flex; gap: 7px; }
 .agx-connlogo { align-items: center; background: var(--surface); border: 1px solid var(--art-hair, rgba(26,23,20,.14)); border-radius: 9px; display: inline-flex; height: 38px; justify-content: center; width: 38px; }
-.agx-connlogo .agx-conn-svg { color: #3a3c39; height: 19px; width: 19px; }
+.agx-connlogo .agx-conn-svg { color: var(--ink-soft, #3a3c39); height: 19px; width: 19px; }
 
 
 /* =========================================================================

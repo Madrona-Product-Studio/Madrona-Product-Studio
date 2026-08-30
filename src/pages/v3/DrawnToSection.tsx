@@ -33,7 +33,7 @@ export function DrawnToSection() {
     <div className="v3-drawn-grid">
       {audiences.map(({ image, id, title, copy }) => <figure key={id}>
         <img src={image} alt="" loading="lazy" decoding="async" />
-        <figcaption><span className="v3-drawn-icon"><AudienceIcon id={id} /></span><div><strong>{title}</strong><small>{copy}</small></div></figcaption>
+        <figcaption><span className={`v3-drawn-icon is-${id}`}><AudienceIcon id={id} /></span><div><strong>{title}</strong><small>{copy}</small></div></figcaption>
       </figure>)}
     </div>
   </div></section>;
