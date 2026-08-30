@@ -8,19 +8,13 @@ import { BriefArtifact, ReviewArtifact, WorkflowArtifact } from "./V3Artifacts";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 
-// The V4 service template (Charlie's review batch, 2026-08-30): blends the
-// old prod page's compact moves (sticky door rail, dense four-column strip)
-// with CXO-style variety (each worked example pairs copy with a different
-// structured artifact) under a full hero. Refining on AI & Operations first;
-// the other three doors stay on ServicePageV3 until the template is signed
-// off, then rollout is a route flip.
-const SERVICE_ROUTES: Record<ServiceId, string> = {
-  "operations-and-ai": "/services/ai-operations",
-  "brand-and-web": "/services/brand-website",
-  "customers-and-growth": "/services/growth-retention",
-  "new-products": "/services/new-products",
-};
-
+// The V4 service template (Charlie's review batch, 2026-08-30): a full hero,
+// then the old prod page's condensed actionable core right below it (value
+// points + the dense four-column strip), then CXO-style worked examples that
+// each pair copy with a different structured artifact. The four-ways-in rail
+// was tried and cut (Charlie: the strip is the payload, not cross-nav).
+// Refining on AI & Operations first; the other three doors stay on
+// ServicePageV3 until sign-off, then rollout is a route flip.
 type Module = { kicker: string; title: string; body: string; to: string; linkLabel: string; artifact: "brief" | "flow" | "review" | "image" };
 
 const operationsModules: Module[] = [
@@ -68,35 +62,6 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
         ))}
       </section>
 
-      <section className="v4-body v3-shell">
-        <aside className="v4-rail">
-          <p>Four ways in</p>
-          <ol>
-            {serviceAreas.map((area, index) => (
-              <li key={area.id} className={area.id === service.id ? "is-active" : undefined}>
-                <Link to={SERVICE_ROUTES[area.id]}><span>0{index + 1}</span>{area.door}</Link>
-              </li>
-            ))}
-          </ol>
-        </aside>
-        <div className="v4-modules">
-          <div className="v4-modules-intro"><p className="v3-kicker">What we put to work</p><h2>Every useful system produces something you can see.</h2></div>
-          {modules.map((mod) => (
-            <article className="v4-module" key={mod.title}>
-              <div className="v4-module-copy">
-                <p className="v3-kicker">{mod.kicker}</p>
-                <h3>{mod.title}</h3>
-                <p>{mod.body}</p>
-                {mod.to.startsWith("http")
-                  ? <a href={mod.to} target="_blank" rel="noopener noreferrer">{mod.linkLabel} <span aria-hidden="true">→</span></a>
-                  : <Link to={mod.to}>{mod.linkLabel} <span aria-hidden="true">→</span></Link>}
-              </div>
-              <div className="v4-module-art"><ModuleArtifact kind={mod.artifact} service={service} /></div>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="v4-strip v3-shell">
         <div>
           <h2>Included services</h2>
@@ -122,6 +87,23 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
             {service.pov && <Link to={service.pov.to}>{service.pov.label} <span aria-hidden="true">→</span></Link>}
           </div>
         </div>
+      </section>
+
+      <section className="v4-modules v3-shell">
+        <div className="v4-modules-intro"><p className="v3-kicker">What we put to work</p><h2>Every useful system produces something you can see.</h2></div>
+        {modules.map((mod) => (
+          <article className="v4-module" key={mod.title}>
+            <div className="v4-module-copy">
+              <p className="v3-kicker">{mod.kicker}</p>
+              <h3>{mod.title}</h3>
+              <p>{mod.body}</p>
+              {mod.to.startsWith("http")
+                ? <a href={mod.to} target="_blank" rel="noopener noreferrer">{mod.linkLabel} <span aria-hidden="true">→</span></a>
+                : <Link to={mod.to}>{mod.linkLabel} <span aria-hidden="true">→</span></Link>}
+            </div>
+            <div className="v4-module-art"><ModuleArtifact kind={mod.artifact} service={service} /></div>
+          </article>
+        ))}
       </section>
 
       <SiteFooter />
