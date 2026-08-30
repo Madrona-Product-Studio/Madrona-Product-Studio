@@ -273,3 +273,10 @@
   .v3-svc-area-inner,.v3-svc-area:nth-of-type(even) .v3-svc-area-inner{grid-template-columns:1fr;gap:28px}
   .v3-svc-art{order:-1}
 }
+/* Round 19 (2026-08-30): shrink the Berry Good area — the 4:3 window filled
+   the wide column (~520px tall) and dominated. Cap it to a moderate size
+   aligned right; give the rail more room. */
+.v3-berry{grid-template-columns:minmax(300px,.92fr) minmax(0,1.08fr);gap:60px}
+.v3-berry-window{max-width:560px;justify-self:end}
+.v3-berry-window>img{aspect-ratio:4/3;max-height:none}
+@media(max-width:900px){.v3-berry-window{max-width:none;justify-self:stretch}}
