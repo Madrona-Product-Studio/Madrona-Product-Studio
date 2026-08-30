@@ -13,9 +13,10 @@ import "./v3.css";
 // points + the dense four-column strip), then CXO-style worked examples that
 // each pair copy with a different structured artifact. The four-ways-in rail
 // was tried and cut (Charlie: the strip is the payload, not cross-nav).
-// Refining on AI & Operations first; the other three doors stay on
-// ServicePageV3 until sign-off, then rollout is a route flip.
-type Module = { kicker: string; title: string; body: string; to: string; linkLabel: string; artifact: "brief" | "flow" | "review" | "image" };
+// Rolled out to all four doors 08-30 (Charlie sign-off on the refined
+// template); operations keeps bespoke artifacts, the other three build
+// worked examples from the service data until each earns its own.
+type Module = { kicker: string; title: string; body: string; to: string; linkLabel: string; artifact: "brief" | "flow" | "review" | "image" | "list"; items?: string[]; listLabel?: string };
 
 const operationsModules: Module[] = [
   { kicker: "Know what changed", title: "Turn scattered signals into a short brief.", body: "An agent watches the sources that matter, explains what moved, and routes the useful signal to a next step.", to: "/tools/industry-brief", linkLabel: "See the industry brief agent", artifact: "brief" },
@@ -24,16 +25,36 @@ const operationsModules: Module[] = [
   { kicker: "See the operation", title: "Make the work legible at a glance.", body: "A focused command surface shows what ran, what changed, and what needs attention next.", to: "https://helm.day", linkLabel: "Open the Helm demo", artifact: "image" },
 ];
 
-function ModuleArtifact({ kind, service }: { kind: Module["artifact"]; service: ServiceArea }) {
-  if (kind === "brief") return <BriefArtifact />;
-  if (kind === "flow") return <WorkflowArtifact />;
-  if (kind === "review") return <ReviewArtifact />;
+// The other three doors build their worked examples from the service data
+// until each earns bespoke artifacts like operations has.
+function serviceModules(service: ServiceArea): Module[] {
+  if (service.id === "operations-and-ai") return operationsModules;
+  const [firstGroup, secondGroup] = service.capabilityGroups;
+  const proofTo = service.demos?.to ?? service.tryIt?.to ?? "/apps";
+  const proofLabel = service.demos?.label ?? service.tryIt?.label ?? "See the work in context";
+  return [
+    { kicker: firstGroup.title, title: service.valuePoints[0].title, body: service.valuePoints[0].description, to: proofTo, linkLabel: proofLabel, artifact: "list", items: firstGroup.items, listLabel: firstGroup.title },
+    { kicker: secondGroup.title, title: service.valuePoints[1].title, body: service.valuePoints[1].description, to: proofTo, linkLabel: proofLabel, artifact: "list", items: secondGroup.items, listLabel: secondGroup.title },
+    { kicker: "Where we begin", title: "Make the problem concrete before making the solution bigger.", body: service.bestFor, to: "/where-to-start", linkLabel: "Find where to start", artifact: "list", items: service.problems.slice(0, 4), listLabel: "Typical problems" },
+    { kicker: "What the work can become", title: service.valuePoints[2].title, body: service.valuePoints[2].description, to: proofTo, linkLabel: proofLabel, artifact: "image" },
+  ];
+}
+
+function ListArtifact({ label, items }: { label: string; items: string[] }) {
+  return <article className="v3-artifact v3-data-artifact"><header><span>{label}</span><small>Shaped to the engagement</small></header><ul>{items.map((item, index) => <li key={item}><span>0{index + 1}</span><strong>{item}</strong><em>{index === 0 ? "Good place to start" : "As needed"}</em></li>)}</ul></article>;
+}
+
+function ModuleArtifact({ mod, service }: { mod: Module; service: ServiceArea }) {
+  if (mod.artifact === "brief") return <BriefArtifact />;
+  if (mod.artifact === "flow") return <WorkflowArtifact />;
+  if (mod.artifact === "review") return <ReviewArtifact />;
+  if (mod.artifact === "list") return <ListArtifact label={mod.listLabel ?? "Scope"} items={mod.items ?? []} />;
   return <figure className="v3-module-image v4-module-image"><img src={service.artifact.src} alt={service.artifact.alt} /><figcaption>{service.artifact.caption}</figcaption></figure>;
 }
 
 export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
   const service = serviceAreas.find((item) => item.id === serviceId) ?? serviceAreas[0];
-  const modules = operationsModules;
+  const modules = serviceModules(service);
   useCalEmbed();
   return (
     <main className="m2 v3">
@@ -101,7 +122,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
                 ? <a href={mod.to} target="_blank" rel="noopener noreferrer">{mod.linkLabel} <span aria-hidden="true">→</span></a>
                 : <Link to={mod.to}>{mod.linkLabel} <span aria-hidden="true">→</span></Link>}
             </div>
-            <div className="v4-module-art"><ModuleArtifact kind={mod.artifact} service={service} /></div>
+            <div className="v4-module-art"><ModuleArtifact mod={mod} service={service} /></div>
           </article>
         ))}
       </section>

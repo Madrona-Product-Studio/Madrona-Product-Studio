@@ -1477,12 +1477,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-fc-contact a { color: var(--muted); font-size: .84rem; }
 .m2-fc-social { align-items: center; color: var(--forest); display: inline-flex; }
 .m2-fc-social svg { height: 26px; width: 26px; }
-.m2-fc-foot-legal { align-items: center; border-top: 1px solid var(--line-soft, rgba(26, 23, 20, .08)); color: var(--muted); display: flex; flex-wrap: wrap; font-size: .8rem; gap: 14px 22px; justify-content: space-between; margin-top: 26px; padding-top: 22px; }
-.m2-fc-sky { align-items: center; display: inline-flex; gap: 2px; }
-.m2-fc-sky-label { color: var(--muted); font-size: .68rem; font-weight: 650; letter-spacing: .09em; margin-right: 8px; text-transform: uppercase; }
-.m2-fc-sky button { background: none; border: 0; border-radius: 999px; color: var(--muted); cursor: pointer; font: 600 .74rem var(--font-nav, inherit); padding: 6px 10px; transition: color 160ms ease, background-color 160ms ease; }
-.m2-fc-sky button:hover { color: var(--ink); }
-.m2-fc-sky button.is-active { background: var(--sand); color: var(--ink); }
+.m2-fc-foot-legal { align-items: center; border-top: 1px solid var(--line-soft, rgba(26, 23, 20, .08)); color: var(--muted); display: flex; font-size: .8rem; gap: 14px; justify-content: center; margin-top: 26px; padding-top: 22px; }
 .m2-fc-foot-legal a { color: var(--muted); }
 .m2-fc-legal-sep { opacity: .45; }
 .m2-light-link { color: white !important; }
@@ -2498,3 +2493,13 @@ html[data-theme="night"] .m2-fc-talk .m2-fc-trust, html[data-theme="dusk"] .m2-f
 html[data-theme="night"] .m2-fc-talk .m2-fc-trust li > span, html[data-theme="dusk"] .m2-fc-talk .m2-fc-trust li > span { border-color: rgba(26,23,20,.32); color: rgba(26,23,20,.75); }
 html[data-theme="night"] .m2-fc-talk .m2-fc-trust li p, html[data-theme="dusk"] .m2-fc-talk .m2-fc-trust li p { color: rgba(26,23,20,.75); }
 html[data-theme="night"] .m2-fc-talk .m2-fc-icon, html[data-theme="dusk"] .m2-fc-talk .m2-fc-icon { border-color: rgba(26,23,20,.3); color: rgba(26,23,20,.7); }
+
+/* Stage chips get a lifted register on dark grounds (Charlie 08-30: "Live"
+   unreadable at dusk). Same hues, more light; the dot carries the color. */
+html[data-theme="night"] .m2-stage--live, html[data-theme="dusk"] .m2-stage--live { --sc: #A6CDB2; }
+html[data-theme="night"] .m2-stage--beta, html[data-theme="dusk"] .m2-stage--beta { --sc: #AFC3D2; }
+html[data-theme="night"] .m2-stage--dev, html[data-theme="dusk"] .m2-stage--dev { --sc: #C2B7A3; }
+html[data-theme="night"] .m2-stage--prototype, html[data-theme="dusk"] .m2-stage--prototype { --sc: #BBB2A5; }
+html[data-theme="night"] .m2-stage--concept, html[data-theme="dusk"] .m2-stage--concept { --sc: #CDC5B6; }
+html[data-theme="night"] .m2-stage--outline, html[data-theme="dusk"] .m2-stage--outline { border-color: color-mix(in srgb, var(--sc) 55%, transparent); }
+html[data-theme="night"] .m2-stage:not(.m2-stage--outline), html[data-theme="dusk"] .m2-stage:not(.m2-stage--outline) { background: color-mix(in srgb, var(--sc) 20%, transparent); }

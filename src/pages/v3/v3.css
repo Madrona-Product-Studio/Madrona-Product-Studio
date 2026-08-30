@@ -366,8 +366,7 @@
 [data-theme="night"] .v3 .v3-drawn-icon.is-shops,[data-theme="dusk"] .v3 .v3-drawn-icon.is-shops{background:color-mix(in srgb,var(--hue-copper-deep) 62%,var(--v3-bg));color:color-mix(in srgb,var(--hue-copper) 72%,#fff)}
 [data-theme="night"] .v3 .v3-drawn-icon.is-farms,[data-theme="dusk"] .v3 .v3-drawn-icon.is-farms{background:color-mix(in srgb,var(--hue-moss-deep) 74%,var(--v3-bg));color:color-mix(in srgb,var(--hue-moss) 72%,#fff)}
 [data-theme="night"] .v3 .v3-practice-terms,[data-theme="dusk"] .v3 .v3-practice-terms{background:rgba(247,237,228,.12);color:#EDE6D9}
-[data-theme="night"] .v3 .v3-pw-mark img,[data-theme="dusk"] .v3 .v3-pw-mark img{filter:grayscale(1) invert(1) brightness(2.2) contrast(1.05);opacity:.85}
-[data-theme="night"] .v3 .v3-built-logos img,[data-theme="night"] .v3 .v3-experience img,[data-theme="dusk"] .v3 .v3-built-logos img,[data-theme="dusk"] .v3 .v3-experience img{filter:grayscale(1) invert(1) brightness(1.65)}
+[data-theme="night"] .v3 .v3-experience img,[data-theme="dusk"] .v3 .v3-experience img{filter:grayscale(1) invert(1) brightness(1.65)}
 [data-theme="night"] .v3 .v3-pw-soon,[data-theme="dusk"] .v3 .v3-pw-soon{border-color:rgba(247,237,228,.30);color:#BDB6AA}
 [data-theme="night"] .v3 .v3-artifact,[data-theme="night"] .v3 .v3-pw,[data-theme="night"] .v3 .v3-service-proof{border-color:rgba(247,237,228,.22);box-shadow:0 20px 55px rgba(0,0,0,.5)}
 [data-theme="dusk"] .v3 .v3-artifact,[data-theme="dusk"] .v3 .v3-pw,[data-theme="dusk"] .v3 .v3-service-proof{border-color:rgba(247,237,228,.24);box-shadow:0 20px 55px rgba(26,15,22,.5)}

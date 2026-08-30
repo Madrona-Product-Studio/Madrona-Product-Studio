@@ -1,44 +1,9 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
 import { track } from "../../lib/analytics";
-import { getPref, setPref, type ThemePref } from "../../lib/theme";
 
 const EMAIL = "hello@madronaproduct.com";
 const CONTACT = "/connect";
-
-// The sky switcher: the site follows the Bellingham sun by default (Auto);
-// visitors can pin a state. Lives in the footer on every page.
-const SKY_OPTIONS: { value: ThemePref; label: string }[] = [
-  { value: "auto", label: "Auto" },
-  { value: "day", label: "Day" },
-  { value: "dusk", label: "Dusk" },
-  { value: "night", label: "Night" },
-];
-
-function SkySwitcher() {
-  const [pref, setLocal] = useState<ThemePref>(() => getPref());
-  const choose = (value: ThemePref) => {
-    setLocal(value);
-    setPref(value);
-    track("theme_switch", { theme: value });
-  };
-  return (
-    <div className="m2-fc-sky" role="group" aria-label="Color theme">
-      <span className="m2-fc-sky-label">Bellingham sky</span>
-      {SKY_OPTIONS.map((opt) => (
-        <button
-          key={opt.value}
-          type="button"
-          className={pref === opt.value ? "is-active" : undefined}
-          onClick={() => choose(opt.value)}
-        >
-          {opt.label}
-        </button>
-      ))}
-    </div>
-  );
-}
 
 function I({ d }: { d: string }) {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={d} /></svg>;
@@ -101,7 +66,6 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
         </div>
         <div className="m2-fc-foot-legal">
           <span>© 2026 Madrona Product Studio</span>
-          <SkySwitcher />
         </div>
       </div>
     </section>
