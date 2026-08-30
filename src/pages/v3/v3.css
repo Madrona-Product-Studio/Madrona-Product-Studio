@@ -241,3 +241,15 @@
 /* Round 16 (2026-08-29): Berry links row (visit-live-demo + operations). */
 .v3-berry-links{display:flex;align-items:center;gap:22px;margin-top:20px;flex-wrap:wrap}
 .v3 .v3-berry-links .v3-practice-link{margin-top:0}
+/* Round 17 (2026-08-29): practice section swipe — kill the dead space inside
+   the step cards (pills now sit under the body, not floated to the bottom of
+   equal-height columns), tighten the head→cards and cards→CTA gaps, snug the
+   card padding. Reads compact and connected instead of tall and sparse. */
+.v3-practice .v3-help-head{margin-bottom:28px}
+.v3 .v3-practice-steps li{padding:26px 34px 26px 0}
+.v3 .v3-practice-steps li+li{padding-left:34px}
+.v3-practice-label{margin-bottom:12px}
+.v3 .v3-practice-steps h3{margin:0 0 9px;font-size:1.32rem;max-width:16ch}
+.v3 .v3-practice-steps p{margin:0 0 16px;max-width:36ch;font-size:12.5px;line-height:1.5}
+.v3 .v3-practice-terms{margin-top:0}
+.v3-practice-ctas{margin-top:24px}

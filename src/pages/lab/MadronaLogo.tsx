@@ -1,11 +1,8 @@
-// 2x-density webp derivatives of the approved raster lockups (same artwork,
-// downscaled to ~2x the largest display size so we don't ship the 394kB
-// source PNG on every page).
-import horizontal from "../../../docs/madrona_static_logo_assets/madrona-approved-logo-transparent-2x.webp";
-import horizontalReversed from "../../../docs/madrona_static_logo_assets/madrona-approved-logo-reversed-transparent-2x.webp";
-import standalone from "../../../docs/madrona_static_logo_assets/madrona-approved-emblem-transparent-2x.webp";
-import standaloneReversed from "../../../docs/madrona_static_logo_assets/madrona-approved-emblem-reversed-transparent-2x.webp";
-
+// The approved Madrona identity (2026-08-29): a madrona tree on a coastal
+// bluff in an open circular frame, warm pixel-block canopy. Production SVGs
+// live in public/brand/ (source of truth: the logo package's implementation
+// brief). The wordmark in the horizontal/stacked lockups is already outlined
+// — never rebuilt with a web font, never recolored via CSS filters.
 type MadronaLogoVariant =
   | "horizontal"
   | "horizontal-reversed"
@@ -19,10 +16,10 @@ type MadronaLogoProps = {
 };
 
 const logoSources: Record<MadronaLogoVariant, string> = {
-  horizontal,
-  "horizontal-reversed": horizontalReversed,
-  standalone,
-  "standalone-reversed": standaloneReversed,
+  horizontal: "/brand/madrona-horizontal-color.svg",
+  "horizontal-reversed": "/brand/madrona-horizontal-reverse.svg",
+  standalone: "/brand/madrona-mark-color.svg",
+  "standalone-reversed": "/brand/madrona-mark-reverse.svg",
 };
 
 export default function MadronaLogo({

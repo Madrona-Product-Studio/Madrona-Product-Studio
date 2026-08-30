@@ -5,9 +5,9 @@ import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 // leads with the thing you walk away with; the process name becomes the
 // label, and price/terms read as first-class pills instead of faint mono.
 const steps = [
-  ["01", "Talk it through", "A clear read on where to start", "A free 30-minute conversation with a published agenda: where you're at, where the opportunities are, and what better would look like.", "Free · 30 minutes"],
-  ["02", "Get it in writing", "A written point of view, yours to keep", "A short, honest read on where we can help and where we can't. You keep it either way.", "Free · yours either way"],
-  ["03", "Start small", "The smallest useful build, live", "A scoped first project with its win named up front, in your terms, with visible payback.", "Paid · only if it makes sense"],
+  ["01", "Talk it through", "A clear read on where to start", "A free 30-minute conversation with a published agenda, and a clear first move by the end.", "Free · 30 minutes"],
+  ["02", "Get it in writing", "A written point of view, yours to keep", "A short, honest read on where we can help, and where we can't.", "Free · yours either way"],
+  ["03", "Start small", "The smallest useful build, live", "A scoped first project with its win named up front, and visible payback.", "Paid · only if it makes sense"],
 ];
 
 export function PracticeSection() {
