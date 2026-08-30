@@ -140,7 +140,7 @@ export default function AgentReviewRequests() {
               <p>When it fits, we connect your Business Profile and point of sale, set the ask rules, teach it your voice, and hand it over. Yours to keep, no lock-in.</p>
             </Prose>
             <div className="art-close-links">
-              <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>

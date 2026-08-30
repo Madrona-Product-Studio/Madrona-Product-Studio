@@ -209,7 +209,7 @@ export default function WhereToStart() {
         <nav aria-label="Madrona site">
           <Link to="/">madronaproduct.com</Link>
           <Link to="/services">How we help</Link>
-          <Link to="/connect">Contact</Link>
+          <Link to="/connect">Get in touch</Link>
         </nav>
       </footer>
     </div>

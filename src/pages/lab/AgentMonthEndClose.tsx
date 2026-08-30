@@ -213,7 +213,7 @@ export default function AgentMonthEndClose() {
               <p>When it&rsquo;s a fit, we install it on your real systems, encode your accounts and thresholds, set the approval gates, and teach you to run it. It&rsquo;s yours to keep, no lock-in. We build it and leave you capable.</p>
             </Prose>
             <div className="art-close-links">
-              <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>

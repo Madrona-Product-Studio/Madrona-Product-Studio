@@ -141,7 +141,7 @@ export default function AgentPostSaleFollowup() {
               <p>When it fits, we wire your store and inbox, set the rhythm you decide, teach you how it runs, and hand it over. Yours to keep, no lock-in.</p>
             </Prose>
             <div className="art-close-links">
-              <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>

@@ -25,7 +25,7 @@ export function PracticeSection() {
       </li>)}
     </ol>
     <div className="v3-practice-ctas">
-      <a className="v3-btn v3-btn-primary v3-btn-compact" href={bookHref()} {...bookProps()} onClick={bookClick}>Book a free 30-minute call</a>
+      <a className="v3-btn v3-btn-primary v3-btn-compact" href={bookHref()} {...bookProps()} onClick={bookClick}>Get in touch</a>
       <Link className="v3-practice-link" to="/how-it-works">See how an engagement runs <span aria-hidden="true">→</span></Link>
     </div>
   </div></section>;

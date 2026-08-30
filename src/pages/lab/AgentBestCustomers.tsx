@@ -142,7 +142,7 @@ export default function AgentBestCustomers() {
               <p>When it fits, we connect your sales history, set it to run on demand, teach you to run it, and it&rsquo;s yours to keep, no lock-in.</p>
             </Prose>
             <div className="art-close-links">
-              <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
