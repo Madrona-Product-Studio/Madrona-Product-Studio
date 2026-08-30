@@ -14,6 +14,7 @@ import AgentsGallery from "./pages/lab/AgentsGallery";
 // legacy/lab pages don't belong in the first-load bundle.
 const AgenticOperations = lazy(() => import("./pages/AgenticOperations"));
 const ServicePageV3 = lazy(() => import("./pages/v3/ServicePageV3"));
+const ServicePageV4 = lazy(() => import("./pages/v3/ServicePageV4"));
 const CharliePage = lazy(() => import("./pages/v3/CharliePage"));
 const MadronaV2Thesis = lazy(() => import("./pages/lab/MadronaV2Thesis"));
 const MadronaV2EngineNote = lazy(() => import("./pages/lab/MadronaV2EngineNote"));
@@ -56,7 +57,8 @@ export default function App() {
       <Routes>
         {/* V3 promoted 2026-08-29: the redesign is the live site. */}
         <Route path="/" element={<HomeV3 />} />
-        <Route path="services/ai-operations" element={<ServicePageV3 serviceId="operations-and-ai" />} />
+        {/* V4 template refining on this door only; the other three follow after sign-off */}
+        <Route path="services/ai-operations" element={<ServicePageV4 serviceId="operations-and-ai" />} />
         <Route path="services/brand-website" element={<ServicePageV3 serviceId="brand-and-web" />} />
         <Route path="services/growth-retention" element={<ServicePageV3 serviceId="customers-and-growth" />} />
         <Route path="services/new-products" element={<ServicePageV3 serviceId="new-products" />} />
