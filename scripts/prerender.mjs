@@ -56,11 +56,11 @@ const pages = {
     h1: 'A senior product studio for the AI era.',
     body: 'Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. What we can help with: AI consulting on real workflows, growth and retention, website redesign, and new product building. We figure out what to build, then we build it, and we run our own products and operations the same way, here in the PNW and beyond.',
   },
-  '/checkup': {
-    title: 'A quick signal check · Madrona Product Studio',
-    description: 'Seven quick questions, an instant read on where AI and better tools could genuinely help your business. About two minutes, no email needed. From Madrona Product Studio in Bellingham, Washington.',
-    h1: 'Your business is telling you something.',
-    body: 'Seven quick questions. As you answer, we map the pattern in your business, show where the strongest opportunity may be, and suggest a useful place to start. About two minutes, no email required, and the read is yours to keep. We look at how the business shows up online, where the week goes, what keeps customers coming back, and where AI and better tools could genuinely help. It is the same short signal we start every engagement with, from Madrona Product Studio in Bellingham, Washington.',
+  '/where-to-start': {
+    title: 'Where to start · a free 2-minute read · Madrona Product Studio',
+    description: 'Flag what sounds like your business and we hand you a short, honest read on where to start. About two minutes, no email needed. From Madrona Product Studio in Bellingham, Washington.',
+    h1: 'Which of these sound like you?',
+    body: 'Flag what sounds like your business, and a live read fills in as you answer. We map the pattern, show where the strongest opportunity may be, and name a useful first move, from how the business shows up online to where the week goes, what keeps customers coming back, and where AI and better tools could genuinely help. About two minutes, no email required, and the read is yours to keep. It is the same short signal we start every engagement with, from Madrona Product Studio in Bellingham, Washington.',
   },
   '/services': {
     title: 'How we help · Madrona Product Studio',

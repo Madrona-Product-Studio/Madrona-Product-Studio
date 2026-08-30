@@ -23,7 +23,6 @@ const MadronaV2SystemNote = lazy(() => import("./pages/lab/MadronaV2SystemNote")
 const MadronaV2InventoryNote = lazy(() => import("./pages/lab/MadronaV2InventoryNote"));
 const MadronaV2Open = lazy(() => import("./pages/lab/MadronaV2Open"));
 const MadronaSystem = lazy(() => import("./pages/lab/MadronaSystem"));
-const SignalAssessment = lazy(() => import("./pages/lab/SignalAssessment"));
 const WhereToStart = lazy(() => import("./pages/v3/WhereToStart"));
 const AgentMonthEndClose = lazy(() => import("./pages/lab/AgentMonthEndClose"));
 const AgentInvoiceChasing = lazy(() => import("./pages/lab/AgentInvoiceChasing"));
@@ -118,15 +117,13 @@ export default function App() {
         <Route path="notes" element={<Navigate to="/thinking" replace />} />
         <Route path="playbook" element={<Navigate to="/thinking" replace />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
-        {/* The Signal Assessment — our free "signal check". Canonical at /checkup;
-            it took over this URL from the retired v1 AI checkup (launch 2026-08-15). */}
-        <Route path="checkup" element={<SignalAssessment />} />
-        {/* Old build slug → canonical /checkup. */}
-        <Route path="signal-check" element={<Navigate to="/checkup" replace />} />
-        {/* Where to Start — the report-first respec of the assessment
-            (docs/redesign-2026-08/assessment-respec.md). Review build; takes
-            over from /checkup (with a 301) once Charlie signs off. */}
+        {/* Where to Start — the free assessment (report-first respec,
+            docs/redesign-2026-08/assessment-respec.md). Canonical; it took
+            over from /checkup (Charlie sign-off 2026-08-30). */}
         <Route path="where-to-start" element={<WhereToStart />} />
+        {/* Old assessment URLs → the new canonical tool (vercel.json 301s too). */}
+        <Route path="checkup" element={<Navigate to="/where-to-start" replace />} />
+        <Route path="signal-check" element={<Navigate to="/where-to-start" replace />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />

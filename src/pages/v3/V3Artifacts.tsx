@@ -11,7 +11,7 @@ export function SignalReport() {
         <li><span>02</span><b>Draft the first response</b><em>Good fit</em></li>
         <li><span>03</span><b>Show what needs review</b><em>Human led</em></li>
       </ul>
-      <Link to="/checkup">Take the free signal check <span aria-hidden="true">→</span></Link>
+      <Link to="/where-to-start">Take the free signal check <span aria-hidden="true">→</span></Link>
     </article>
   );
 }

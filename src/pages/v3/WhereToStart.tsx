@@ -106,8 +106,7 @@ export default function WhereToStart() {
   const activePhase = stage.kind === "opener" ? 0 : stage.kind === "question" ? 1 : 2;
 
   return <div className={`sa wts-sa${showResult ? " sa--result" : ""}${stage.kind === "opener" ? " sa--intro" : ""}`}>
-    {/* noindex until this takes over from /checkup at launch. */}
-    <LabMeta title="Where to start · Madrona Product Studio" noindex />
+    <LabMeta title="Where to start · a free 2-minute read · Madrona Product Studio" />
     <div className="sa-shell">
       <header className="sa-top">
         <Link to="/" className="sa-wordmark" aria-label="Madrona Product Studio home">
