@@ -1,8 +1,11 @@
-// The approved Madrona identity (2026-08-29): a madrona tree on a coastal
-// bluff in an open circular frame, warm pixel-block canopy. Production SVGs
-// live in public/brand/ (source of truth: the logo package's implementation
-// brief). The wordmark in the horizontal/stacked lockups is already outlined
-// — never rebuilt with a web font, never recolored via CSS filters.
+// The approved Madrona identity (frond, 2026-08-30): a sparse red frond
+// (#E55728) on an Evergreen Charcoal disc (#2F3135), Jost 500 spaced-caps
+// wordmark with PRODUCT STUDIO in the red. Production SVGs live in
+// public/brand/ (generator: madrona-studio design library, frond-build/
+// gen-lockups.py). The wordmark is outlined to paths — never rebuilt with
+// a web font, never recolored via CSS filters. The other palette grounds
+// (frond-{forest,moss,plum,bark}-*.svg) are system assets for OG cards,
+// studio signatures, and app icons.
 type MadronaLogoVariant =
   | "horizontal"
   | "horizontal-reversed"
@@ -19,10 +22,10 @@ type MadronaLogoProps = {
 // bake in ~30% whitespace on the right, which made the header logo render
 // small and left-floated). The mark is untouched — only dead space removed.
 const logoSources: Record<MadronaLogoVariant, string> = {
-  horizontal: "/brand/madrona-horizontal-color-tight.svg",
-  "horizontal-reversed": "/brand/madrona-horizontal-reverse-tight.svg",
-  standalone: "/brand/madrona-mark-color.svg",
-  "standalone-reversed": "/brand/madrona-mark-reverse.svg",
+  horizontal: "/brand/madrona-frond-horizontal.svg",
+  "horizontal-reversed": "/brand/madrona-frond-horizontal-reverse.svg",
+  standalone: "/brand/madrona-frond-mark.svg",
+  "standalone-reversed": "/brand/madrona-frond-mark.svg",
 };
 
 export default function MadronaLogo({
