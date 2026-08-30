@@ -283,23 +283,23 @@
 
 /* V4 service template (2026-08-30): CXO hero + old-prod compact rail/strip
    + varied worked-example modules. Refining on AI & Operations first. */
-.v4-hero{display:grid;grid-template-columns:minmax(400px,.92fr) minmax(0,1.08fr);gap:64px;align-items:center;padding-top:92px;padding-bottom:76px}
-.v4-hero-copy h1{margin:0 0 26px;font-size:clamp(2.9rem,3.9vw,4rem);line-height:1.03;letter-spacing:-.04em}
-.v4-hero-copy .v3-lede{max-width:520px;margin:0 0 40px;font-size:clamp(1.02rem,1.2vw,1.15rem)}
-.v4-hero-copy .v3-actions{margin-top:0;gap:28px;align-items:center}
+.v4-hero{display:grid;grid-template-columns:minmax(400px,.95fr) minmax(0,1.05fr);gap:72px;align-items:center;padding-top:72px;padding-bottom:64px}
+.v4-hero-copy h1{margin:0 0 22px;font-size:clamp(2.5rem,3.3vw,3.5rem);line-height:1.05;letter-spacing:-.035em}
+.v4-hero-copy .v3-lede{max-width:500px;margin:0 0 34px;font-size:clamp(1rem,1.15vw,1.1rem)}
+.v4-hero-copy .v3-actions{margin-top:0;gap:26px;align-items:center}.v4-hero-copy .v3-btn{white-space:nowrap}.v4-hero-copy .v3-hero-text-link{text-transform:none;letter-spacing:0;font-size:13.5px;font-weight:650}
 .v4-hero-art{position:relative;min-height:440px}
 .v4-hero-image{position:absolute;top:0;right:0;width:min(520px,92%)}
 .v4-hero-image img{min-height:0;aspect-ratio:16/10;object-fit:cover}
 .v4-hero-window{position:absolute;left:0;bottom:0;width:min(420px,78%);box-shadow:0 24px 65px rgba(26,23,20,.18)}
-.v4-points{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;padding-top:34px;padding-bottom:34px;border-top:1px solid var(--v3-line);border-bottom:1px solid var(--v3-line)}
+.v4-points{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;padding-top:30px;padding-bottom:30px;border-top:1px solid var(--v3-line);border-bottom:1px solid var(--v3-line)}
 .v4-points>div{display:grid;grid-template-columns:34px 1fr;gap:4px 14px}
 .v4-points span{grid-row:1/3;color:var(--v3-bark-dark);font-size:11px;font-weight:700;letter-spacing:.08em;padding-top:3px}
 .v4-points strong{font-size:14px}
 .v4-points p{margin:0;color:var(--v3-clay);font-size:12.5px;line-height:1.5}
-.v4-modules{padding-top:96px;padding-bottom:110px}
+.v4-modules{padding-top:80px;padding-bottom:90px}
 .v4-modules-intro{margin-bottom:56px}
 .v4-modules-intro h2{max-width:620px;font-size:clamp(1.9rem,2.6vw,2.6rem)}
-.v4-module{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr);gap:72px;align-items:center;padding:56px 0;border-top:1px solid var(--v3-soft)}
+.v4-module{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr);gap:72px;align-items:center;padding:48px 0;border-top:1px solid var(--v3-soft)}
 .v4-module:nth-of-type(even) .v4-module-copy{order:2}
 .v4-module:nth-of-type(even) .v4-module-art{order:1}
 .v4-module-copy h3{margin:14px 0 12px;font-size:1.45rem;letter-spacing:-.02em}
@@ -311,7 +311,7 @@
 .v4-module-image{margin:0;overflow:hidden;border:1px solid var(--v3-line);border-radius:8px;background:var(--v3-card);box-shadow:0 18px 55px rgba(26,23,20,.12)}
 .v4-module-image img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
 .v4-module-image figcaption{padding:11px 14px;color:var(--v3-muted);font-size:10px}
-.v4-strip{display:grid;grid-template-columns:1.05fr .95fr .8fr 1fr;gap:52px;padding-top:56px;padding-bottom:72px;border-bottom:1px solid var(--v3-line)}
+.v4-strip{display:grid;grid-template-columns:1.05fr .95fr .8fr 1fr;gap:52px;padding-top:48px;padding-bottom:60px;border-bottom:1px solid var(--v3-line)}
 .v4-strip h2{margin:0 0 20px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
 .v4-strip h3{margin:26px 0 10px;font-size:13px}
 .v4-strip>div:first-child h3:first-of-type{margin-top:0}
