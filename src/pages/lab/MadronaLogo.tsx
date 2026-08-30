@@ -15,9 +15,12 @@ type MadronaLogoProps = {
   decorative?: boolean;
 };
 
+// Horizontal lockups use UI-tightened viewBox variants (the brief's originals
+// bake in ~30% whitespace on the right, which made the header logo render
+// small and left-floated). The mark is untouched — only dead space removed.
 const logoSources: Record<MadronaLogoVariant, string> = {
-  horizontal: "/brand/madrona-horizontal-color.svg",
-  "horizontal-reversed": "/brand/madrona-horizontal-reverse.svg",
+  horizontal: "/brand/madrona-horizontal-color-tight.svg",
+  "horizontal-reversed": "/brand/madrona-horizontal-reverse-tight.svg",
   standalone: "/brand/madrona-mark-color.svg",
   "standalone-reversed": "/brand/madrona-mark-reverse.svg",
 };
