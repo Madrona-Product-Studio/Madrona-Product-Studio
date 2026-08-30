@@ -264,3 +264,9 @@ html[data-theme="dusk"]{background:#4C3843;--color-bg:#4C3843;--color-card:#5A44
     transition: background-color 700ms ease, color 700ms ease, border-color 700ms ease, fill 700ms ease, stroke 700ms ease, box-shadow 700ms ease !important;
   }
 }
+
+/* The sanctioned sage/bark/slate tint trio as theme tokens (2026-08-30 sweep):
+   every icon disc, chip, and ring that used the raw hexes now follows the sky. */
+:root{--tint-sage:#edefdf;--tint-sage-ink:#6F7A4E;--tint-bark:#f8e6d8;--tint-bark-ink:#A0603A;--tint-slate:#e4ebf2;--tint-slate-ink:#5C7189}
+html[data-theme="night"]{--tint-sage:#42482F;--tint-sage-ink:#CCD4A9;--tint-bark:#523E2D;--tint-bark-ink:#F0C4A2;--tint-slate:#39434D;--tint-slate-ink:#BCCFDF}
+html[data-theme="dusk"]{--tint-sage:#4A4E36;--tint-sage-ink:#D3D7B0;--tint-bark:#5A4433;--tint-bark-ink:#F2C8A6;--tint-slate:#434A59;--tint-slate-ink:#C6D3E3}
