@@ -7,9 +7,15 @@ import { WindowBar } from "./Hero";
 // lifecycle (Charlie's roster; Codex uses the OpenAI mark. Klaviyo isn't in
 // simple-icons so it stays a clean letter chip rather than a scraped mark).
 // The engine layer was considered and cut as too much for this artifact.
+// Column-ordered for the CSS grid (5 across, CXO-style): build tools lead,
+// then the run-the-business roster.
 const stackItems: { name: string; mark?: string }[] = [
   { name: "Claude Code", mark: "/images/stack/anthropic.svg" },
   { name: "Codex", mark: "/images/stack/codex.svg" },
+  { name: "Cursor", mark: "/images/stack/cursor.svg" },
+  { name: "v0", mark: "/images/stack/v0.svg" },
+  { name: "Lovable", mark: "/images/stack/lovable.svg" },
+  { name: "Perplexity", mark: "/images/stack/perplexity.svg" },
   { name: "GitHub", mark: "/images/stack/github.svg" },
   { name: "Vercel", mark: "/images/stack/vercel.svg" },
   { name: "Shopify", mark: "/images/stack/shopify.svg" },
