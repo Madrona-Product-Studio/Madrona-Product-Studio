@@ -6,7 +6,7 @@
   --ink: #222;
   --ink-soft: #3a3c39;
   --muted: #6d706a;
-  --forest: #1f3b33;
+  --forest: #2F3135; /* CTA = opposite ground since 08-30; green retired */
   --forest-soft: #506b58;
   --bark: #c86a3d;
   --bark-dark: #a94728;
@@ -141,7 +141,7 @@ html:has(.m2) { scroll-behavior: smooth; }
   padding: 0 22px;
   transition: transform 140ms cubic-bezier(.23, 1, .32, 1), background 180ms ease;
 }
-.m2-button:hover { background: #29453a; }
+.m2-button:hover { background: #3C3F44; }
 .m2-button:active { transform: translateY(0) scale(.98); }
 .m2-button-secondary { background: transparent; color: var(--forest) !important; }
 .m2-button-secondary:hover { background: rgba(31,52,45,.06); }
@@ -1458,7 +1458,12 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-fc-contact a { color: var(--muted); font-size: .84rem; }
 .m2-fc-social { align-items: center; color: var(--forest); display: inline-flex; }
 .m2-fc-social svg { height: 26px; width: 26px; }
-.m2-fc-foot-legal { align-items: center; border-top: 1px solid var(--line-soft, rgba(26, 23, 20, .08)); color: var(--muted); display: flex; font-size: .8rem; gap: 14px; justify-content: center; margin-top: 26px; padding-top: 22px; }
+.m2-fc-foot-legal { align-items: center; border-top: 1px solid var(--line-soft, rgba(26, 23, 20, .08)); color: var(--muted); display: flex; flex-wrap: wrap; font-size: .8rem; gap: 14px 22px; justify-content: space-between; margin-top: 26px; padding-top: 22px; }
+.m2-fc-sky { align-items: center; display: inline-flex; gap: 2px; }
+.m2-fc-sky-label { color: var(--muted); font-size: .68rem; font-weight: 650; letter-spacing: .09em; margin-right: 8px; text-transform: uppercase; }
+.m2-fc-sky button { background: none; border: 0; border-radius: 999px; color: var(--muted); cursor: pointer; font: 600 .74rem var(--font-nav, inherit); padding: 6px 10px; transition: color 160ms ease, background-color 160ms ease; }
+.m2-fc-sky button:hover { color: var(--ink); }
+.m2-fc-sky button.is-active { background: var(--sand); color: var(--ink); }
 .m2-fc-foot-legal a { color: var(--muted); }
 .m2-fc-legal-sep { opacity: .45; }
 .m2-light-link { color: white !important; }
@@ -2432,3 +2437,11 @@ html:has(.m2) { scroll-behavior: smooth; }
 @media (max-width: 900px) {
   .m2-ht-body { grid-template-columns: 1fr; padding: 56px 20px; }
 }
+
+/* Day/dusk/night chrome ramps (2026-08-30) — engine src/lib/theme.ts */
+html[data-theme="night"] .m2{--paper:#2F3135;--surface:#383B40;--shell:#282A2D;--sand:rgba(247,237,228,.16);--ink:#F7EDE4;--ink-soft:#D9D2C7;--muted:#8F8A80;--forest:#F7EDE4;--forest-soft:#CFC8BD;--bark:#E86A44;--bark-dark:#F09A7A}
+html[data-theme="night"] .m2-button{color:#2F3135 !important}
+html[data-theme="night"] .m2-button:hover{background:#fff}
+html[data-theme="dusk"] .m2{--paper:#4C3843;--surface:#5A4450;--shell:#41303A;--sand:rgba(247,237,228,.16);--ink:#F7EDE4;--ink-soft:#E4D3CB;--muted:#B39DA6;--forest:#F7EDE4;--forest-soft:#DCC9BC;--bark:#F09A7A;--bark-dark:#F7B49A}
+html[data-theme="dusk"] .m2-button{color:#4C3843 !important}
+html[data-theme="dusk"] .m2-button:hover{background:#fff}

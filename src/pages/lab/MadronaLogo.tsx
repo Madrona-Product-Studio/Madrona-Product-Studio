@@ -1,11 +1,15 @@
+import { useEffect, useState } from "react";
+import { THEME_EVENT, currentState, type ThemeState } from "../../lib/theme";
+
 // The approved Madrona identity (frond, 2026-08-30): a sparse red frond
-// (#E55728) on an Evergreen Charcoal disc (#2F3135), Jost 500 spaced-caps
-// wordmark with PRODUCT STUDIO in the red. Production SVGs live in
-// public/brand/ (generator: madrona-studio design library, frond-build/
-// gen-lockups.py). The wordmark is outlined to paths — never rebuilt with
-// a web font, never recolored via CSS filters. The other palette grounds
-// (frond-{forest,moss,plum,bark}-*.svg) are system assets for OG cards,
-// studio signatures, and app icons.
+// (#E55728) on an Evergreen Charcoal disc (#2F3135), side-stack Figtree 600
+// wordmark (MADRONA | PRODUCT / STUDIO, the frog structure; Charlie's pick).
+// Production SVGs live in public/brand/ (generator: madrona-studio design
+// library, frond-build/gen-lockups-figtree.py). The wordmark is outlined to
+// paths — never rebuilt with a web font, never recolored via CSS filters.
+// The lockup is theme-aware: dark sky states (dusk/night) swap to the
+// reverse (cream-text) variants. Palette grounds for other surfaces live at
+// public/brand/frond-{forest,moss,plum,bark}-*.svg.
 type MadronaLogoVariant =
   | "horizontal"
   | "horizontal-reversed"
@@ -18,9 +22,6 @@ type MadronaLogoProps = {
   decorative?: boolean;
 };
 
-// Horizontal lockups use UI-tightened viewBox variants (the brief's originals
-// bake in ~30% whitespace on the right, which made the header logo render
-// small and left-floated). The mark is untouched — only dead space removed.
 const logoSources: Record<MadronaLogoVariant, string> = {
   horizontal: "/brand/madrona-frond-horizontal.svg",
   "horizontal-reversed": "/brand/madrona-frond-horizontal-reverse.svg",
@@ -28,16 +29,31 @@ const logoSources: Record<MadronaLogoVariant, string> = {
   "standalone-reversed": "/brand/madrona-frond-mark.svg",
 };
 
+function useThemeState(): ThemeState {
+  const [state, setState] = useState<ThemeState>(() =>
+    typeof document === "undefined" ? "day" : currentState());
+  useEffect(() => {
+    const onTheme = (e: Event) =>
+      setState((e as CustomEvent<{ state: ThemeState }>).detail.state);
+    window.addEventListener(THEME_EVENT, onTheme);
+    return () => window.removeEventListener(THEME_EVENT, onTheme);
+  }, []);
+  return state;
+}
+
 export default function MadronaLogo({
   variant = "horizontal",
   className,
   decorative = false,
 }: MadronaLogoProps) {
+  const theme = useThemeState();
+  const effective: MadronaLogoVariant =
+    theme !== "day" && variant === "horizontal" ? "horizontal-reversed" : variant;
   return (
     <img
       className={["madrona-static-logo", className].filter(Boolean).join(" ")}
-      data-logo-variant={variant}
-      src={logoSources[variant]}
+      data-logo-variant={effective}
+      src={logoSources[effective]}
       alt={decorative ? "" : "Madrona Product Studio"}
     />
   );

@@ -1,14 +1,23 @@
 import { useEffect, useRef } from "react";
+import { THEME_EVENT } from "../../lib/theme";
 
 // The hero's "chart of the bay" — variant B1 from the hero-art lab
 // (Charlie's pick, 2026-08-29; ported from madrona-hero-art
 // HeroArtLab.tsx). Drifting nautical-chart contours over the warm paper:
 // ink survey lines with bark index contours every fifth level, and the
-// Bellingham Bay coordinates stamped in the corner. Replaces the
-// six-photo rotation.
-const INK = "#1a1714";
-const BARK = "#c4553a";
-const MUTED = "#8c8378";
+// Bellingham Bay coordinates stamped in the corner. Colors come from the
+// live theme tokens so the chart follows the day/dusk/night sky states.
+const FALLBACK = { ink: "#1a1714", bark: "#c4553a", muted: "#8c8378" };
+
+function chartColors(el: HTMLElement) {
+  const cs = getComputedStyle(el);
+  const read = (name: string, fb: string) => cs.getPropertyValue(name).trim() || fb;
+  return {
+    ink: read("--v3-ink", FALLBACK.ink),
+    bark: read("--v3-bark", FALLBACK.bark),
+    muted: read("--v3-muted", FALLBACK.muted),
+  };
+}
 
 function makeNoise(seed: number) {
   let s = seed % 2147483647;
@@ -51,7 +60,7 @@ function makeNoise(seed: number) {
 const LEVELS = 14;
 const chartIso = (l: number) => -1.0 + (2.0 * l) / (LEVELS - 1);
 
-function createChart(canvas: HTMLCanvasElement, w: number, h: number, dpr: number) {
+function createChart(canvas: HTMLCanvasElement, w: number, h: number, dpr: number, colors: { ink: string; bark: string; muted: string }) {
   const ctx = canvas.getContext("2d");
   if (!ctx) return { draw: (_t: number) => {} };
   const noise = makeNoise(23);
@@ -103,13 +112,13 @@ function createChart(canvas: HTMLCanvasElement, w: number, h: number, dpr: numbe
     ctx.clearRect(0, 0, w, h);
     for (let l = 0; l < LEVELS; l++) {
       const isIndex = l % 5 === 2;
-      ctx.strokeStyle = isIndex ? BARK : INK;
+      ctx.strokeStyle = isIndex ? colors.bark : colors.ink;
       ctx.globalAlpha = isIndex ? 0.5 : 0.26;
       ctx.lineWidth = (isIndex ? 1.4 : 0.7) * dpr;
       march(chartIso(l));
     }
     ctx.globalAlpha = 0.85;
-    ctx.fillStyle = MUTED;
+    ctx.fillStyle = colors.muted;
     ctx.font = `500 ${Math.round(9 * dpr)}px ui-monospace, "SF Mono", Menlo, monospace`;
     ctx.textAlign = "right";
     ctx.fillText("48.7461° N", w - 26 * dpr, h - 40 * dpr);
@@ -133,7 +142,7 @@ export function HeroChart() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.max(2, Math.round(rect.width * dpr));
       canvas.height = Math.max(2, Math.round(rect.height * dpr));
-      const art = createChart(canvas, canvas.width, canvas.height, dpr);
+      const art = createChart(canvas, canvas.width, canvas.height, dpr, chartColors(parent));
       if (reduced) { art.draw(8000); return; }
       const start = performance.now();
       const loop = (now: number) => { art.draw(now - start); raf = requestAnimationFrame(loop); };
@@ -156,7 +165,9 @@ export function HeroChart() {
       }, 150);
     });
     if (canvas.parentElement) ro.observe(canvas.parentElement);
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); window.clearTimeout(tid); };
+    const onTheme = () => { cancelAnimationFrame(raf); boot(); };
+    window.addEventListener(THEME_EVENT, onTheme);
+    return () => { cancelAnimationFrame(raf); ro.disconnect(); window.clearTimeout(tid); window.removeEventListener(THEME_EVENT, onTheme); };
   }, []);
   return <canvas ref={ref} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", display: "block" }} />;
 }
