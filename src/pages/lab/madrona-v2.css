@@ -2467,3 +2467,34 @@ html[data-theme="dusk"] .m2{--art-hair:rgba(247,237,228,.16);--paper:#4C3843;--s
 html[data-theme="dusk"] .m2{--cta-band:#41303A}
 html[data-theme="dusk"] .m2-button{color:#4C3843 !important}
 html[data-theme="dusk"] .m2-button:hover{background:#fff}
+
+/* Light islands, chrome side (Charlie 08-30): tool rows and the footer CTA
+   card go cream with day ink re-pinned when the sky is dark. */
+html[data-theme="night"] .agx-row, html[data-theme="dusk"] .agx-row,
+html[data-theme="night"] .m2-cx-formwrap, html[data-theme="dusk"] .m2-cx-formwrap,
+html[data-theme="night"] .m2-cx-card, html[data-theme="dusk"] .m2-cx-card,
+html[data-theme="night"] .m2-pov-plate, html[data-theme="dusk"] .m2-pov-plate,
+html[data-theme="night"] .m2-fc-talk, html[data-theme="dusk"] .m2-fc-talk {
+  --surface:#fffdf8; --shell:#efe8dc; --sand:#e3dac5; --ink:#222; --ink-soft:#3a3c39;
+  --muted:#6d706a; --art-hair:rgba(26,23,20,.14); --bark:#E55728; --bark-dark:#BC431D;
+}
+html[data-theme="night"] .agx-row, html[data-theme="dusk"] .agx-row { background:#fffdf8; border-color:rgba(26,23,20,.16); color:#222; }
+html[data-theme="night"] .m2-fc-talk, html[data-theme="dusk"] .m2-fc-talk { background:#F7EDE4; }
+html[data-theme="night"] .m2-fc-talk.m2-fc-half, html[data-theme="dusk"] .m2-fc-talk.m2-fc-half { color:#2F3135; }
+html[data-theme="night"] .m2-fc-talk .m2-fc-icon, html[data-theme="dusk"] .m2-fc-talk .m2-fc-icon { border-color:rgba(26,23,20,.28); }
+html[data-theme="night"] .m2-fc-talk .m2-fc-btn, html[data-theme="dusk"] .m2-fc-talk .m2-fc-btn { background:#2F3135; color:#F7EDE4; }
+html[data-theme="night"] .m2-fc-talk .m2-fc-trees g, html[data-theme="dusk"] .m2-fc-talk .m2-fc-trees g { fill:rgba(26,23,20,.08); }
+html[data-theme="night"] .m2-cx-formwrap, html[data-theme="dusk"] .m2-cx-formwrap,
+html[data-theme="night"] .m2-cx-card, html[data-theme="dusk"] .m2-cx-card {
+  --forest: #2F3135; --forest-soft: #506b58; background: #fffdf8; border-color: rgba(26,23,20,.16); color: #222;
+}
+html[data-theme="night"] .m2-cx-formwrap .m2-button, html[data-theme="dusk"] .m2-cx-formwrap .m2-button,
+html[data-theme="night"] .m2-cx-card .m2-button, html[data-theme="dusk"] .m2-cx-card .m2-button { color: #F7EDE4 !important; }
+html[data-theme="night"] .m2-cx-card .m2-button-secondary, html[data-theme="dusk"] .m2-cx-card .m2-button-secondary { color: #2F3135 !important; }
+html[data-theme="night"] .m2-pov-plate, html[data-theme="dusk"] .m2-pov-plate {
+  --color-card: #fdfcfa; --forest: #2F3135; --bark: #E55728; background: #fdfcfa; border-color: rgba(26,23,20,.16);
+}
+html[data-theme="night"] .m2-fc-talk .m2-fc-trust, html[data-theme="dusk"] .m2-fc-talk .m2-fc-trust { border-top-color: rgba(26,23,20,.16); }
+html[data-theme="night"] .m2-fc-talk .m2-fc-trust li > span, html[data-theme="dusk"] .m2-fc-talk .m2-fc-trust li > span { border-color: rgba(26,23,20,.32); color: rgba(26,23,20,.75); }
+html[data-theme="night"] .m2-fc-talk .m2-fc-trust li p, html[data-theme="dusk"] .m2-fc-talk .m2-fc-trust li p { color: rgba(26,23,20,.75); }
+html[data-theme="night"] .m2-fc-talk .m2-fc-icon, html[data-theme="dusk"] .m2-fc-talk .m2-fc-icon { border-color: rgba(26,23,20,.3); color: rgba(26,23,20,.7); }

@@ -256,3 +256,11 @@
    surfaces follow the sky too. Engine: src/lib/theme.ts. */
 html[data-theme="night"]{background:#2F3135;--color-bg:#2F3135;--color-card:#383B40;--color-paper:#35383D;--color-ink:#F7EDE4;--color-ink70:#D9D2C7;--color-clay:#AFA89D;--color-muted:#8F8A80;--color-faint:#6B6660;--color-line:rgba(247,237,228,.14);--color-line-soft:rgba(247,237,228,.09);--color-madrona:#E55728;--color-madrona-dark:#F0703F}
 html[data-theme="dusk"]{background:#4C3843;--color-bg:#4C3843;--color-card:#5A4450;--color-paper:#55404C;--color-ink:#F7EDE4;--color-ink70:#E4D3CB;--color-clay:#C9B3B8;--color-muted:#B39DA6;--color-faint:#8A7480;--color-line:rgba(247,237,228,.15);--color-line-soft:rgba(247,237,228,.10);--color-madrona:#E55728;--color-madrona-dark:#F0703F}
+
+/* Sky fade: state changes wash in over ~700ms (theme.ts toggles the class;
+   skipped for prefers-reduced-motion). */
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-fading, html.theme-fading *, html.theme-fading *::before, html.theme-fading *::after {
+    transition: background-color 700ms ease, color 700ms ease, border-color 700ms ease, fill 700ms ease, stroke 700ms ease, box-shadow 700ms ease !important;
+  }
+}

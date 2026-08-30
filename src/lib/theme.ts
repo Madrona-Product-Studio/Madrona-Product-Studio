@@ -65,9 +65,17 @@ function resolve(pref: ThemePref): ThemeState {
   return pref === "auto" ? skyState() : pref;
 }
 
+let fadeTimer = 0;
 function apply(pref: ThemePref) {
+  const root = document.documentElement;
   const state = resolve(pref);
-  document.documentElement.dataset.theme = state;
+  // Any change after boot washes in slowly — the sky doesn't snap.
+  if (root.dataset.theme && root.dataset.theme !== state) {
+    root.classList.add("theme-fading");
+    window.clearTimeout(fadeTimer);
+    fadeTimer = window.setTimeout(() => root.classList.remove("theme-fading"), 780);
+  }
+  root.dataset.theme = state;
   window.dispatchEvent(new CustomEvent(THEME_EVENT, { detail: { state, pref } }));
 }
 

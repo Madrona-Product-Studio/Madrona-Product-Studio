@@ -372,3 +372,19 @@
 [data-theme="night"] .v3 .v3-artifact,[data-theme="night"] .v3 .v3-pw,[data-theme="night"] .v3 .v3-service-proof{border-color:rgba(247,237,228,.22);box-shadow:0 20px 55px rgba(0,0,0,.5)}
 [data-theme="dusk"] .v3 .v3-artifact,[data-theme="dusk"] .v3 .v3-pw,[data-theme="dusk"] .v3 .v3-service-proof{border-color:rgba(247,237,228,.24);box-shadow:0 20px 55px rgba(26,15,22,.5)}
 [data-theme="night"] .v3 .v3-proof-grid figure,[data-theme="dusk"] .v3 .v3-proof-grid figure{border:1px solid rgba(247,237,228,.16)}
+
+/* Light islands (Charlie 08-30): dark skies keep their ground, but frames —
+   browser windows, proof figures, panels — become cream surfaces with the
+   day ramp re-pinned inside. Kills the tone-on-tone wash; echoes the
+   assessment's light-report-in-dark-shell moment. */
+[data-theme="night"] .v3 .v3-artifact,[data-theme="dusk"] .v3 .v3-artifact,
+[data-theme="night"] .v3 .v3-service-proof,[data-theme="dusk"] .v3 .v3-service-proof,
+[data-theme="night"] .v3 .v3-module-image,[data-theme="dusk"] .v3 .v3-module-image,
+[data-theme="night"] .v3 .v3-proof-grid figure,[data-theme="dusk"] .v3 .v3-proof-grid figure,
+[data-theme="night"] .v3 .v3-cap-panel,[data-theme="dusk"] .v3 .v3-cap-panel{
+  --v3-card:#fff;--v3-paper:#fdfcfa;--v3-bg:#f5f1ea;
+  --v3-ink:#1a1714;--v3-ink70:#403a33;--v3-clay:#6f6657;--v3-muted:#8c8378;--v3-faint:#b8b0a2;
+  --v3-line:rgba(26,23,20,.14);--v3-soft:rgba(26,23,20,.08);
+  --v3-bark:#E55728;--v3-bark-dark:#BC431D;--v3-forest:#2F3135;
+  background:var(--v3-card);border-color:rgba(26,23,20,.2);color:var(--v3-ink)
+}
