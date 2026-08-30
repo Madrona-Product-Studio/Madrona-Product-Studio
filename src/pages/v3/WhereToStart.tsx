@@ -109,9 +109,12 @@ export default function WhereToStart() {
     <LabMeta title="Where to start · a free 2-minute read · Madrona Product Studio" />
     <div className="sa-shell">
       <header className="sa-top">
-        <Link to="/" className="sa-wordmark" aria-label="Madrona Product Studio home">
-          <MadronaLogo variant="horizontal-reversed" decorative />
-        </Link>
+        <span className="sa-top-title-wrap">
+          <Link to="/" className="sa-wordmark" aria-label="Madrona Product Studio home">
+            <MadronaLogo variant="horizontal-reversed" decorative />
+          </Link>
+          <span className="sa-top-title">Where to start</span>
+        </span>
         {showResult ? (
           <p className="sa-complete">
             <i aria-hidden="true"><svg viewBox="0 0 10 10"><path d="M2 5.2 4.2 7.4 8 3" /></svg></i>
@@ -218,6 +221,7 @@ export default function WhereToStart() {
 
 function ResultStage({ answers, onRetake }: { answers: WhereToStartAnswers; onRetake: () => void }) {
   const recap = useMemo(() => buildRecap(answers), [answers]);
+  const readTitle = useMemo(() => computeReadProfile(answers).title, [answers]);
   const headingRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: true });
@@ -226,7 +230,7 @@ function ResultStage({ answers, onRetake }: { answers: WhereToStartAnswers; onRe
   // the assembling card); this column carries the read and the ask.
   return <section className="sa-result sa-enter" aria-labelledby="wts-r">
     <p className="sa-eyebrow">Your read</p>
-    <h1 id="wts-r" ref={headingRef} tabIndex={-1}>Where to start.</h1>
+    <h1 id="wts-r" ref={headingRef} tabIndex={-1}>{readTitle ?? "Where to start."}</h1>
     <p className="sa-interpretation">Assembled from your answers. Keep it either way.</p>
     <div className="wts-recap">
       <p className="wts-recap-label">What we heard</p>

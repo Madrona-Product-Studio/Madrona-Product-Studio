@@ -31,6 +31,8 @@ export interface ReadTarget {
 export interface ReadProfile {
   path: string;
   note: string;
+  // The named read — result-stage headline (absent on the hero fixture).
+  title?: string;
   rows: ReadRow[];
   targets: ReadTarget[];
   // null while the report is still assembling — the card shows placeholders.

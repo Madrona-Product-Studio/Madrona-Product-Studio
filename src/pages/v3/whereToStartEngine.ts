@@ -159,6 +159,18 @@ function resolveMove(a: WhereToStartAnswers): Move {
   return outsideMove;
 }
 
+// The named read — the persona moment at the result (Charlie 08-30: the old
+// checkup's personas made the ending feel earned; this brings that reward
+// into the report-first format). Named for what we heard, not a horoscope.
+const READ_TITLES: Record<Move["drives"], string> = {
+  web: "The business that's better than its website.",
+  repeat: "The one-visit favorite.",
+  hours: "The owner-powered operation.",
+  ai: "The leverage hiding in plain sight.",
+  product: "The idea that deserves to be real.",
+  none: "The steady ship, worth a second look.",
+};
+
 export function computeReadProfile(a: WhereToStartAnswers): ReadProfile {
   const move = resolveMove(a);
   const row = (key: "web" | "repeat" | "hours" | "ai", label: string): ReadRow => {
@@ -183,6 +195,7 @@ export function computeReadProfile(a: WhereToStartAnswers): ReadProfile {
   return {
     path: "madronaproduct.com/where-to-start",
     note: "your read",
+    title: READ_TITLES[move.drives],
     rows,
     targets,
     move: { headline: move.headline, support: move.support, whyNow: move.whyNow },

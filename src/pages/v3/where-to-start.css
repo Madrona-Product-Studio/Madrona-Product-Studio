@@ -81,3 +81,12 @@
 .wts-card .v3-diagnostic-status li:nth-child(4) span::before{background:var(--hue-moss)}
 .wts-card .v3-better-bars i b{background:var(--hue-fir)}
 .wts-card .v3-better-bars i b.is-bark{background:#E55728}
+
+/* Top-bar document title (Charlie 08-30): the tool names itself in the
+   chrome, beside the wordmark. */
+.wts-sa .sa-top-title-wrap{display:flex;align-items:center;gap:16px;flex:none}
+.wts-sa .sa-top-title{padding-left:16px;border-left:1px solid var(--a-border-strong);color:var(--a-text-2);font:600 13px Figtree,Inter,sans-serif;letter-spacing:.04em;white-space:nowrap}
+@media(max-width:640px){.wts-sa .sa-top-title{display:none}}
+
+/* The named read: give the persona headline display presence. */
+.wts-sa .sa-result h1{font-family:"Hanken Grotesk",Inter,sans-serif;font-weight:500;letter-spacing:-.025em}
