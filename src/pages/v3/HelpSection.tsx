@@ -52,7 +52,8 @@ const helpItems: HelpItem[] = [
 // One tinted square stamp per area (the sanctioned sage/bark/slate trio),
 // with a single clean motif each — the answer side's visual anchor
 // (replaced the mono Q/A markers, Charlie 2026-08-29).
-const iconTints: Record<string, string> = { ai: "#edefdf", web: "#f8e6d8", growth: "#e4ebf2", product: "#edefdf" };
+// Tile tints live in CSS (v3-tile-*) so the day/dusk/night themes can
+// re-ground them - inline hex here would stay pastel on the dark states.
 
 function HelpIcon({ id }: { id: string }) {
   const paths: Record<string, React.ReactNode> = {
@@ -76,7 +77,7 @@ export function HelpSection() {
         <h3>{item.question}</h3>
         <span className="v3-help-ledger-line" aria-hidden="true" />
         <div className="v3-help-ledger-answer">
-          <span className="v3-help-ledger-icon" style={{ background: iconTints[item.id] }}><HelpIcon id={item.id} /></span>
+          <span className={`v3-help-ledger-icon v3-tile-${item.id}`}><HelpIcon id={item.id} /></span>
           <div>
             <strong>{item.label} <i aria-hidden="true">→</i></strong>
             <p>{item.detail}</p>

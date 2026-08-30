@@ -336,3 +336,23 @@
    identity, the opposite ground is action (green retired, Charlie 08-30). */
 [data-theme="night"] .v3{--v3-bg:#2F3135;--v3-card:#383B40;--v3-paper:#35383D;--v3-ink:#F7EDE4;--v3-ink70:#D9D2C7;--v3-clay:#AFA89D;--v3-muted:#8F8A80;--v3-faint:#6B6660;--v3-line:rgba(247,237,228,.14);--v3-soft:rgba(247,237,228,.09);--v3-bark:#E86A44;--v3-bark-dark:#F09A7A;--v3-forest:#F7EDE4;--v3-cta-band:#26282B;--v3-cta-text:#2F3135;--v3-cta-hover:#fff}
 [data-theme="dusk"] .v3{--v3-bg:#4C3843;--v3-card:#5A4450;--v3-paper:#55404C;--v3-ink:#F7EDE4;--v3-ink70:#E4D3CB;--v3-clay:#C9B3B8;--v3-muted:#B39DA6;--v3-faint:#8A7480;--v3-line:rgba(247,237,228,.15);--v3-soft:rgba(247,237,228,.10);--v3-bark:#F09A7A;--v3-bark-dark:#F7B49A;--v3-forest:#F7EDE4;--v3-cta-band:#41303A;--v3-cta-text:#4C3843;--v3-cta-hover:#fff}
+
+/* Dark-state QA pass (Charlie's walk, 2026-08-30): tinted icon tiles get
+   deep grounds, pills/marks/chips become legible, cards pop off the dark
+   page. Day values match the old inline tints exactly. */
+.v3-tile-ai,.v3-tile-product{background:#edefdf}
+.v3-tile-web{background:#f8e6d8}
+.v3-tile-growth{background:#e4ebf2}
+[data-theme="night"] .v3 .v3-tile-ai,[data-theme="night"] .v3 .v3-tile-product{background:#41482F;color:#CDD5B8}
+[data-theme="night"] .v3 .v3-tile-web{background:#4E3A2D;color:#F0C9AF}
+[data-theme="night"] .v3 .v3-tile-growth{background:#37434E;color:#BCD0E2}
+[data-theme="dusk"] .v3 .v3-tile-ai,[data-theme="dusk"] .v3 .v3-tile-product{background:#4F5138;color:#D5DABB}
+[data-theme="dusk"] .v3 .v3-tile-web{background:#5F4433;color:#F3CDB2}
+[data-theme="dusk"] .v3 .v3-tile-growth{background:#40485C;color:#C4D5E6}
+[data-theme="night"] .v3 .v3-practice-terms,[data-theme="dusk"] .v3 .v3-practice-terms{background:rgba(247,237,228,.12);color:#EDE6D9}
+[data-theme="night"] .v3 .v3-pw-mark img,[data-theme="dusk"] .v3 .v3-pw-mark img{filter:grayscale(1) invert(1) brightness(2.2) contrast(1.05);opacity:.85}
+[data-theme="night"] .v3 .v3-built-logos img,[data-theme="night"] .v3 .v3-experience img,[data-theme="dusk"] .v3 .v3-built-logos img,[data-theme="dusk"] .v3 .v3-experience img{filter:grayscale(1) invert(1) brightness(1.65)}
+[data-theme="night"] .v3 .v3-pw-soon,[data-theme="dusk"] .v3 .v3-pw-soon{border-color:rgba(247,237,228,.30);color:#BDB6AA}
+[data-theme="night"] .v3 .v3-artifact,[data-theme="night"] .v3 .v3-pw,[data-theme="night"] .v3 .v3-service-proof{border-color:rgba(247,237,228,.22);box-shadow:0 20px 55px rgba(0,0,0,.5)}
+[data-theme="dusk"] .v3 .v3-artifact,[data-theme="dusk"] .v3 .v3-pw,[data-theme="dusk"] .v3 .v3-service-proof{border-color:rgba(247,237,228,.24);box-shadow:0 20px 55px rgba(26,15,22,.5)}
+[data-theme="night"] .v3 .v3-proof-grid figure,[data-theme="dusk"] .v3 .v3-proof-grid figure{border:1px solid rgba(247,237,228,.16)}
