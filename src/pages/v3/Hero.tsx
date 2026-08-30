@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { serviceAreas, type ServiceId } from "../../data/services";
 import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import { HeroChart } from "./HeroChart";
-import { ReadCard, heroReadFixture } from "./ReadCard";
+import { ReadCard, WindowBar, heroReadFixture } from "./ReadCard";
 
 // The hero direction (Charlie, 2026-08-29): the chart-of-the-bay contour
 // animation bleeding off the right edge (replaced the six-photo rotation),
@@ -28,9 +28,7 @@ function HeroCopy() {
   </div>;
 }
 
-export function WindowBar({ path, note }: { path: string; note?: string }) {
-  return <header className="v3-window-bar"><span className="v3-window-dots" aria-hidden="true"><i /><i /><i /></span><code>{path}</code>{note && <small>{note}</small>}</header>;
-}
+export { WindowBar };
 
 // The second hero artifact (rethought 2026-08-28): what we do, in concrete
 // nouns, so the practice is legible on landing. Door phrases stay on the

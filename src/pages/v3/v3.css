@@ -238,3 +238,6 @@
 .v3 .v3-proof-all{display:inline-flex;margin-top:26px}
 .v3-pw-soon{padding:7px 11px;border:1px dashed var(--v3-line);border-radius:999px;color:var(--v3-muted);font-size:11.5px}
 @media(max-width:600px){.v3 .v3-practice-steps li{padding:20px 0}.v3-practice-ctas{flex-direction:column;align-items:stretch;gap:12px}.v3 .v3-practice-ctas .v3-practice-link{align-self:flex-start}.v3 .v3-proof-card img{height:200px}}
+/* Round 16 (2026-08-29): Berry links row (visit-live-demo + operations). */
+.v3-berry-links{display:flex;align-items:center;gap:22px;margin-top:20px;flex-wrap:wrap}
+.v3 .v3-berry-links .v3-practice-link{margin-top:0}

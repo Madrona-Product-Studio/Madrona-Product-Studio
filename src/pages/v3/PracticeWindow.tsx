@@ -4,12 +4,12 @@ import { WindowBar } from "./Hero";
 
 // The practice window (locked 2026-08-29): skills, stack, and tools as one
 // browser-window ledger. Stack shows best-in-class marks across the business
-// lifecycle (Charlie's roster; Codex + Klaviyo marks pending — they render
-// as letter chips until sourced). The engine layer was considered and cut
-// as too much for this artifact.
+// lifecycle (Charlie's roster; Codex uses the OpenAI mark. Klaviyo isn't in
+// simple-icons so it stays a clean letter chip rather than a scraped mark).
+// The engine layer was considered and cut as too much for this artifact.
 const stackItems: { name: string; mark?: string }[] = [
   { name: "Claude Code", mark: "/images/stack/anthropic.svg" },
-  { name: "Codex" },
+  { name: "Codex", mark: "/images/stack/codex.svg" },
   { name: "GitHub", mark: "/images/stack/github.svg" },
   { name: "Vercel", mark: "/images/stack/vercel.svg" },
   { name: "Shopify", mark: "/images/stack/shopify.svg" },

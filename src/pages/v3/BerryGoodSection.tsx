@@ -8,7 +8,11 @@ import operationsImage from "../../../docs/madrona-v2-build-kit/product-proof/be
 // Section 4 of the v3 architecture: the Berry Good worked example — one
 // business improved end to end, shown as a tabbed browser window that ties
 // the section-2 service labels back together. Berry Good is openly framed
-// as our demonstration business (canon).
+// as our demonstration business (canon). Live demo deploys at BERRY_URL
+// (the berrygoodberryfarm.com chrome label stays illustrative; the explicit
+// "Visit the live demo" link is the real, verified destination).
+const BERRY_URL = "https://berry-good-sigma.vercel.app";
+
 const tabs = [
   { id: "brand", label: "Brand", image: brandImage, alt: "Berry Good brand system: logo, palette, typography, and packaging", caption: "A cohesive identity on every touchpoint, from the berry box to the roadside sign." },
   { id: "website", label: "Website", image: storefrontImage, alt: "Berry Good storefront website on desktop", caption: "The storefront itself: ordering, pickup times, and the farm stand, live on the web." },
@@ -24,7 +28,10 @@ export function BerryGoodSection() {
       <p className="v3-kicker">The worked example</p>
       <h2>One business, improved <span>end to end.</span></h2>
       <p className="v3-help-lede">Berry Good Berry Farm is our demonstration business: a real operation where we build and run everything we sell, from the brand to the storefront to the agents behind the counter.</p>
-      <Link className="v3-practice-link" to="/services/ai-operations">See the operations work <span aria-hidden="true">→</span></Link>
+      <div className="v3-berry-links">
+        <a className="v3-btn v3-btn-primary v3-btn-compact" href={BERRY_URL} target="_blank" rel="noreferrer">Visit the live demo <span aria-hidden="true">↗</span></a>
+        <Link className="v3-practice-link" to="/services/ai-operations">See the operations work <span aria-hidden="true">→</span></Link>
+      </div>
     </div>
     <article className="v3-artifact v3-berry-window">
       <header className="v3-window-bar v3-berry-bar">

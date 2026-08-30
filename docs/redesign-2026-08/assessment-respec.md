@@ -199,6 +199,41 @@ stale defaults). Hero `DiagnosticCard` window-bar path and the `/checkup`
 link in `Hero.tsx` update to match. Prod's live `/checkup` stays until V3
 goes live; nothing deploys without Charlie's preview sign-off.
 
+## 3b. Frame (settled, Charlie 2026-08-29)
+
+The tool lives in the **same dark app shell as the live /checkup**
+(`signal-assessment.css`): minimal top bar (wordmark, phase rail
+"Sounds like you / Follow-ups / Your read", no-email note), split
+two-pane body, quiet site-context strip at the bottom. The light
+ReadCard sits inside the dark shell like a browser-window artifact.
+
+**The right pane is the report, assembling** (Charlie, 2026-08-29 —
+the v1 Signal Brain's job, done by the report itself). Built as the
+same ReadCard component in a live building state, stacked
+single-column for the narrow pane:
+
+- Window-bar note reads "assembling" until the end, then "your read."
+- Opener checks wake the matching rows to **"Listening"** (pulsing,
+  muted); unflagged rows sit dormant (dimmed, a middot placeholder).
+- **The verdict is held back (Charlie, 2026-08-29 round 2):** an
+  answered row shows a **redacted shimmer chip**, not its status — the
+  picture visibly gets clearer without giving anything away. Targets
+  appear as **unlabeled shimmer bars**, one per answered area
+  regardless of verdict (so presence reveals nothing). The
+  recommendation slot moves from "Resolves at the end." to "Taking
+  shape. Revealed at the end." once the workflow/product question is
+  answered.
+- Pane footer counts progress: "1 of 3 flagged areas read."
+- **The result is the reveal:** the same card, now populated —
+  statuses cascade in row by row (~90ms stagger), target bars draw to
+  their real positions, the first move lands last (~0.8s). Reduced
+  motion gets everything instantly. The left column carries the
+  recap + CTA instead of a duplicate card.
+
+Motion polish note: current transitions are deliberately restrained
+(fill fade, bar draw, listen pulse). If this pane should become a
+signature moment, run the madrona-motion options pass before shipping.
+
 ## 4. Build order
 
 1. `ReadCard` component (three panes, fixture-driven) + swap into V3 hero

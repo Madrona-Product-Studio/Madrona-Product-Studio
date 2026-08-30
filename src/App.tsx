@@ -24,6 +24,7 @@ const MadronaV2InventoryNote = lazy(() => import("./pages/lab/MadronaV2Inventory
 const MadronaV2Open = lazy(() => import("./pages/lab/MadronaV2Open"));
 const MadronaSystem = lazy(() => import("./pages/lab/MadronaSystem"));
 const SignalAssessment = lazy(() => import("./pages/lab/SignalAssessment"));
+const WhereToStart = lazy(() => import("./pages/v3/WhereToStart"));
 const AgentMonthEndClose = lazy(() => import("./pages/lab/AgentMonthEndClose"));
 const AgentInvoiceChasing = lazy(() => import("./pages/lab/AgentInvoiceChasing"));
 const AgentIndustryBrief = lazy(() => import("./pages/lab/AgentIndustryBrief"));
@@ -122,6 +123,10 @@ export default function App() {
         <Route path="checkup" element={<SignalAssessment />} />
         {/* Old build slug → canonical /checkup. */}
         <Route path="signal-check" element={<Navigate to="/checkup" replace />} />
+        {/* Where to Start — the report-first respec of the assessment
+            (docs/redesign-2026-08/assessment-respec.md). Review build; takes
+            over from /checkup (with a 301) once Charlie signs off. */}
+        <Route path="where-to-start" element={<WhereToStart />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />
