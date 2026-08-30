@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-
 import { ScrollToTop, PageFade } from "./components/RouteMotion";
 import Layout from "./components/Layout";
 // Primary-nav destinations stay eager so top-level navigation is instant.
-import MadronaV2 from "./pages/lab/MadronaV2";
+import ServicesV3 from "./pages/v3/ServicesV3";
 import HomeV3 from "./pages/v3/HomeV3";
 import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
@@ -71,7 +71,7 @@ export default function App() {
         <Route path="v3" element={<Navigate to="/" replace />} />
         <Route path="v3/services/:slug" element={<V3ToServices />} />
         <Route path="v3/consulting/work-smarter" element={<Navigate to="/services/ai-operations" replace />} />
-        <Route path="services" element={<MadronaV2 />} />
+        <Route path="services" element={<ServicesV3 />} />
         <Route path="consulting" element={<Navigate to="/services" replace />} />
         <Route path="apps" element={<MadronaV2Apps />} />
         <Route path="work" element={<Navigate to="/apps" replace />} />
