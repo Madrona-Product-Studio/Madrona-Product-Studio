@@ -3,7 +3,7 @@ import { serviceAreas, type ServiceArea, type ServiceId } from "../../data/servi
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
-import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
+import { useCalEmbed } from "../lab/useCalEmbed";
 import { BriefArtifact, ReviewArtifact, WorkflowArtifact } from "./V3Artifacts";
 import "../lab/madrona-v2.css";
 import "./v3.css";
@@ -54,7 +54,7 @@ export default function ServicePageV3({ serviceId }: { serviceId: ServiceId }) {
           <p className="v3-kicker">{service.name}</p>
           <h1>{service.outcome}</h1>
           <p className="v3-lede">{service.summary}</p>
-          <a className="v3-btn v3-btn-primary" href={bookHref()} {...bookProps()} onClick={bookClick}>Get in touch</a>
+          <Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link>
         </div>
         <div className="v3-service-art">{service.id === "operations-and-ai" ? <BriefArtifact /> : <figure className="v3-service-proof"><img src={service.artifact.src} alt={service.artifact.alt} /><figcaption><span>Existing product proof</span>{service.artifact.caption}</figcaption></figure>}</div>
       </section>
@@ -72,7 +72,7 @@ export default function ServicePageV3({ serviceId }: { serviceId: ServiceId }) {
         </div>
       </section>
 
-      <section className="v3-start v3-shell"><div><p className="v3-kicker">How we start</p><h2>A small first move with visible payback.</h2></div><div><p>{service.startingPoint}</p><div className="v3-start-links"><a className="v3-btn v3-btn-primary" href={bookHref()} {...bookProps()} onClick={bookClick}>Get in touch</a>{service.tryIt && <Link to={service.tryIt.to}>{service.tryIt.label} →</Link>}{service.demos && <Link to={service.demos.to}>{service.demos.label} →</Link>}{service.pov && <Link to={service.pov.to}>{service.pov.label} →</Link>}</div></div></section>
+      <section className="v3-start v3-shell"><div><p className="v3-kicker">How we start</p><h2>A small first move with visible payback.</h2></div><div><p>{service.startingPoint}</p><div className="v3-start-links"><Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link>{service.tryIt && <Link to={service.tryIt.to}>{service.tryIt.label} →</Link>}{service.demos && <Link to={service.demos.to}>{service.demos.label} →</Link>}{service.pov && <Link to={service.pov.to}>{service.pov.label} →</Link>}</div></div></section>
       <SiteFooter cta={false} />
     </main>
   );

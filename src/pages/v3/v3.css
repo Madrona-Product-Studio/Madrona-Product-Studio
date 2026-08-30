@@ -345,23 +345,26 @@
    deep register as ink; dusk/night wear the deep register as ground with the
    pastel as ink. Services: ai=moss, web=coral, growth=sky, product=gold.
    Drawn-to: health=mint, outdoors=sky, shops=coral, farms=moss. */
-.v3{--hue-coral:#e8846b;--hue-coral-deep:#b45c46;--hue-gold:#e0a83c;--hue-gold-deep:#a67f30;--hue-moss:#a1c464;--hue-moss-deep:#6e893e;--hue-mint:#5bb59a;--hue-mint-deep:#39846d;--hue-sky:#5aa6c9;--hue-sky-deep:#3b7997;--hue-lavender:#8f86d6;--hue-lavender-deep:#6259a6;--hue-plum:#c080d0;--hue-plum-deep:#915b9f;--hue-rose:#d779a2;--hue-rose-deep:#a65477}
-.v3-tile-ai{background:color-mix(in srgb,var(--hue-moss) 24%,#fff);color:var(--hue-moss-deep)}
-.v3-tile-web{background:color-mix(in srgb,var(--hue-coral) 22%,#fff);color:var(--hue-coral-deep)}
-.v3-tile-growth{background:color-mix(in srgb,var(--hue-sky) 22%,#fff);color:var(--hue-sky-deep)}
-.v3-tile-product{background:color-mix(in srgb,var(--hue-gold) 24%,#fff);color:var(--hue-gold-deep)}
-.v3-drawn-icon.is-health{background:color-mix(in srgb,var(--hue-mint) 22%,#fff);color:var(--hue-mint-deep)}
-.v3-drawn-icon.is-outdoors{background:color-mix(in srgb,var(--hue-sky) 22%,#fff);color:var(--hue-sky-deep)}
-.v3-drawn-icon.is-shops{background:color-mix(in srgb,var(--hue-coral) 22%,#fff);color:var(--hue-coral-deep)}
-.v3-drawn-icon.is-farms{background:color-mix(in srgb,var(--hue-moss) 24%,#fff);color:var(--hue-moss-deep)}
-[data-theme="night"] .v3 .v3-tile-ai,[data-theme="dusk"] .v3 .v3-tile-ai{background:color-mix(in srgb,var(--hue-moss-deep) 58%,var(--v3-bg));color:color-mix(in srgb,var(--hue-moss) 80%,#fff)}
-[data-theme="night"] .v3 .v3-tile-web,[data-theme="dusk"] .v3 .v3-tile-web{background:color-mix(in srgb,var(--hue-coral-deep) 58%,var(--v3-bg));color:color-mix(in srgb,var(--hue-coral) 80%,#fff)}
-[data-theme="night"] .v3 .v3-tile-growth,[data-theme="dusk"] .v3 .v3-tile-growth{background:color-mix(in srgb,var(--hue-sky-deep) 58%,var(--v3-bg));color:color-mix(in srgb,var(--hue-sky) 80%,#fff)}
-[data-theme="night"] .v3 .v3-tile-product,[data-theme="dusk"] .v3 .v3-tile-product{background:color-mix(in srgb,var(--hue-gold-deep) 58%,var(--v3-bg));color:color-mix(in srgb,var(--hue-gold) 80%,#fff)}
-[data-theme="night"] .v3 .v3-drawn-icon.is-health,[data-theme="dusk"] .v3 .v3-drawn-icon.is-health{background:color-mix(in srgb,var(--hue-mint-deep) 58%,var(--v3-bg));color:color-mix(in srgb,var(--hue-mint) 80%,#fff)}
-[data-theme="night"] .v3 .v3-drawn-icon.is-outdoors,[data-theme="dusk"] .v3 .v3-drawn-icon.is-outdoors{background:color-mix(in srgb,var(--hue-sky-deep) 58%,var(--v3-bg));color:color-mix(in srgb,var(--hue-sky) 80%,#fff)}
-[data-theme="night"] .v3 .v3-drawn-icon.is-shops,[data-theme="dusk"] .v3 .v3-drawn-icon.is-shops{background:color-mix(in srgb,var(--hue-coral-deep) 58%,var(--v3-bg));color:color-mix(in srgb,var(--hue-coral) 80%,#fff)}
-[data-theme="night"] .v3 .v3-drawn-icon.is-farms,[data-theme="dusk"] .v3 .v3-drawn-icon.is-farms{background:color-mix(in srgb,var(--hue-moss-deep) 58%,var(--v3-bg));color:color-mix(in srgb,var(--hue-moss) 80%,#fff)}
+/* Hues from the frond color board (Charlie's pick over the Helm brights):
+   fir, moss, plum, copper, sage, stone — the PNW register. "-deep" is the
+   board tone itself; the base is a lifted version for dark-ground ink. */
+.v3{--hue-fir:#7C9271;--hue-fir-deep:#394933;--hue-moss:#9A9A62;--hue-moss-deep:#666642;--hue-plum:#8F6B7E;--hue-plum-deep:#513B46;--hue-copper:#C98A5E;--hue-copper-deep:#A0603A;--hue-sage:#A3AC8B;--hue-sage-deep:#6F7A55;--hue-stone:#C4B5A5;--hue-stone-deep:#8F8272}
+.v3-tile-ai{background:color-mix(in srgb,var(--hue-fir-deep) 14%,#fff);color:var(--hue-fir-deep)}
+.v3-tile-web{background:color-mix(in srgb,var(--hue-copper-deep) 14%,#fff);color:var(--hue-copper-deep)}
+.v3-tile-growth{background:color-mix(in srgb,var(--hue-plum-deep) 14%,#fff);color:var(--hue-plum-deep)}
+.v3-tile-product{background:color-mix(in srgb,var(--hue-moss-deep) 15%,#fff);color:var(--hue-moss-deep)}
+.v3-drawn-icon.is-health{background:color-mix(in srgb,var(--hue-sage-deep) 14%,#fff);color:var(--hue-sage-deep)}
+.v3-drawn-icon.is-outdoors{background:color-mix(in srgb,var(--hue-fir-deep) 14%,#fff);color:var(--hue-fir-deep)}
+.v3-drawn-icon.is-shops{background:color-mix(in srgb,var(--hue-copper-deep) 14%,#fff);color:var(--hue-copper-deep)}
+.v3-drawn-icon.is-farms{background:color-mix(in srgb,var(--hue-moss-deep) 15%,#fff);color:var(--hue-moss-deep)}
+[data-theme="night"] .v3 .v3-tile-ai,[data-theme="dusk"] .v3 .v3-tile-ai{background:color-mix(in srgb,var(--hue-fir-deep) 78%,var(--v3-bg));color:color-mix(in srgb,var(--hue-fir) 70%,#fff)}
+[data-theme="night"] .v3 .v3-tile-web,[data-theme="dusk"] .v3 .v3-tile-web{background:color-mix(in srgb,var(--hue-copper-deep) 62%,var(--v3-bg));color:color-mix(in srgb,var(--hue-copper) 72%,#fff)}
+[data-theme="night"] .v3 .v3-tile-growth,[data-theme="dusk"] .v3 .v3-tile-growth{background:color-mix(in srgb,var(--hue-plum-deep) 82%,var(--v3-bg));color:color-mix(in srgb,var(--hue-plum) 68%,#fff)}
+[data-theme="night"] .v3 .v3-tile-product,[data-theme="dusk"] .v3 .v3-tile-product{background:color-mix(in srgb,var(--hue-moss-deep) 74%,var(--v3-bg));color:color-mix(in srgb,var(--hue-moss) 72%,#fff)}
+[data-theme="night"] .v3 .v3-drawn-icon.is-health,[data-theme="dusk"] .v3 .v3-drawn-icon.is-health{background:color-mix(in srgb,var(--hue-sage-deep) 66%,var(--v3-bg));color:color-mix(in srgb,var(--hue-sage) 74%,#fff)}
+[data-theme="night"] .v3 .v3-drawn-icon.is-outdoors,[data-theme="dusk"] .v3 .v3-drawn-icon.is-outdoors{background:color-mix(in srgb,var(--hue-fir-deep) 78%,var(--v3-bg));color:color-mix(in srgb,var(--hue-fir) 70%,#fff)}
+[data-theme="night"] .v3 .v3-drawn-icon.is-shops,[data-theme="dusk"] .v3 .v3-drawn-icon.is-shops{background:color-mix(in srgb,var(--hue-copper-deep) 62%,var(--v3-bg));color:color-mix(in srgb,var(--hue-copper) 72%,#fff)}
+[data-theme="night"] .v3 .v3-drawn-icon.is-farms,[data-theme="dusk"] .v3 .v3-drawn-icon.is-farms{background:color-mix(in srgb,var(--hue-moss-deep) 74%,var(--v3-bg));color:color-mix(in srgb,var(--hue-moss) 72%,#fff)}
 [data-theme="night"] .v3 .v3-practice-terms,[data-theme="dusk"] .v3 .v3-practice-terms{background:rgba(247,237,228,.12);color:#EDE6D9}
 [data-theme="night"] .v3 .v3-pw-mark img,[data-theme="dusk"] .v3 .v3-pw-mark img{filter:grayscale(1) invert(1) brightness(2.2) contrast(1.05);opacity:.85}
 [data-theme="night"] .v3 .v3-built-logos img,[data-theme="night"] .v3 .v3-experience img,[data-theme="dusk"] .v3 .v3-built-logos img,[data-theme="dusk"] .v3 .v3-experience img{filter:grayscale(1) invert(1) brightness(1.65)}

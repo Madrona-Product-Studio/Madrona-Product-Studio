@@ -75,9 +75,9 @@
    needs-attention bar. Hue vars come from the card's .v3 scope. */
 .wts-card .v3-diagnostic-status li span{position:relative;padding-left:15px}
 .wts-card .v3-diagnostic-status li span::before{content:"";position:absolute;left:0;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:999px}
-.wts-card .v3-diagnostic-status li:nth-child(1) span::before{background:var(--hue-coral)}
-.wts-card .v3-diagnostic-status li:nth-child(2) span::before{background:var(--hue-sky)}
-.wts-card .v3-diagnostic-status li:nth-child(3) span::before{background:var(--hue-moss)}
-.wts-card .v3-diagnostic-status li:nth-child(4) span::before{background:var(--hue-gold)}
-.wts-card .v3-better-bars i b{background:var(--hue-mint)}
+.wts-card .v3-diagnostic-status li:nth-child(1) span::before{background:var(--hue-copper)}
+.wts-card .v3-diagnostic-status li:nth-child(2) span::before{background:var(--hue-plum)}
+.wts-card .v3-diagnostic-status li:nth-child(3) span::before{background:var(--hue-fir)}
+.wts-card .v3-diagnostic-status li:nth-child(4) span::before{background:var(--hue-moss)}
+.wts-card .v3-better-bars i b{background:var(--hue-fir)}
 .wts-card .v3-better-bars i b.is-bark{background:#E55728}

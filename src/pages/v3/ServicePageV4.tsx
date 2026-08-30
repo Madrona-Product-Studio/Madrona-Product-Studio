@@ -3,7 +3,7 @@ import { serviceAreas, type ServiceArea, type ServiceId } from "../../data/servi
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
-import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
+import { useCalEmbed } from "../lab/useCalEmbed";
 import { BriefArtifact, ReviewArtifact, WorkflowArtifact } from "./V3Artifacts";
 import "../lab/madrona-v2.css";
 import "./v3.css";
@@ -46,7 +46,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
           <h1>{service.outcome}</h1>
           <p className="v3-lede">{service.summary}</p>
           <div className="v3-actions">
-            <a className="v3-btn v3-btn-primary" href={bookHref()} {...bookProps()} onClick={bookClick}>Get in touch</a>
+            <Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link>
             {service.tryIt && <Link className="v3-hero-text-link" to={service.tryIt.to}>{service.tryIt.label} <span aria-hidden="true">→</span></Link>}
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
           <h2>How we start</h2>
           <p>{service.startingPoint}</p>
           <div className="v4-start-links">
-            <a href={bookHref()} {...bookProps()} onClick={bookClick}>Get in touch <span aria-hidden="true">→</span></a>
+            <Link to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
             {service.demos && <Link to={service.demos.to}>{service.demos.label} <span aria-hidden="true">→</span></Link>}
             {service.tryIt && <Link to={service.tryIt.to}>{service.tryIt.label} <span aria-hidden="true">→</span></Link>}
             {service.pov && <Link to={service.pov.to}>{service.pov.label} <span aria-hidden="true">→</span></Link>}

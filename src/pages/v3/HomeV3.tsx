@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
-import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
+import { useCalEmbed } from "../lab/useCalEmbed";
 import { Hero } from "./Hero";
 import { HelpSection } from "./HelpSection";
 import { PracticeSection } from "./PracticeSection";
@@ -35,7 +35,7 @@ export default function HomeV3() {
     <DrawnToSection />
 
     <section className="v3-section v3-shell v3-thinking"><div><p className="v3-kicker">Thinking</p><h2>Notes from building the studio we want to work with.</h2></div><div><Link to="/thinking/the-era-of-agentic-operations"><span>Operations and AI</span><strong>The era of agentic operations</strong><em>Read the note →</em></Link><Link to="/thinking/solve-the-system-not-the-symptom"><span>Product systems</span><strong>Solve the system, not the symptom</strong><em>Read the note →</em></Link><Link to="/thinking/starter-guide-to-building-with-ai"><span>Getting started</span><strong>A starter guide to building with AI</strong><em>Read the note →</em></Link><Link to="/thinking/under-the-hood"><span>The studio engine</span><strong>Under the hood: how we build</strong><em>Read the note →</em></Link></div></section>
-    <section className="v3-final-cta"><div className="v3-shell"><p className="v3-kicker">Start with a conversation</p><h2>Have something worth building?</h2><p>Tell us where the friction is, or what you think might exist next.</p><a className="v3-btn v3-btn-light" href={bookHref()} {...bookProps()} onClick={bookClick}>Get in touch</a></div></section>
+    <section className="v3-final-cta"><div className="v3-shell"><p className="v3-kicker">Start with a conversation</p><h2>Have something worth building?</h2><p>Tell us where the friction is, or what you think might exist next.</p><Link className="v3-btn v3-btn-light" to="/connect">Get in touch</Link></div></section>
     <SiteFooter cta={false} />
   </main>;
 }

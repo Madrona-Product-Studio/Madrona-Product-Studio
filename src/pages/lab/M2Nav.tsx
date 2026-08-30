@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
+import SkySwitcher from "./SkySwitcher";
 import { CAL_LINK, BOOKING_URL } from "../../data/booking";
 import { track } from "../../lib/analytics";
 
@@ -78,6 +79,7 @@ export default function M2Nav({ active }: { active?: NavKey }) {
             </div>
           ) : <Link key={l.key} to={l.href} className={l.primary ? "is-primary" : undefined} aria-current={active === l.key ? "page" : undefined}>{l.label}</Link>)}
         </nav>
+        <SkySwitcher />
         <Link className="m2-button m2-nav-cta" to="/connect">Get in touch</Link>
         <button className="m2-nav-burger" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
           <span className="m2-burger" aria-hidden="true"><span /><span /><span /></span>

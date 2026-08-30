@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 
 // Section 3: how we work — output-first (Charlie, 2026-08-29): each step
 // leads with the thing you walk away with; the process name becomes the
@@ -25,7 +24,7 @@ export function PracticeSection() {
       </li>)}
     </ol>
     <div className="v3-practice-ctas">
-      <a className="v3-btn v3-btn-primary v3-btn-compact" href={bookHref()} {...bookProps()} onClick={bookClick}>Get in touch</a>
+      <Link className="v3-btn v3-btn-primary v3-btn-compact" to="/connect">Get in touch</Link>
       <Link className="v3-practice-link" to="/how-it-works">See how an engagement runs <span aria-hidden="true">→</span></Link>
     </div>
   </div></section>;
