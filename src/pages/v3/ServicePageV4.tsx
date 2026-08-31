@@ -40,9 +40,6 @@ function serviceModules(service: ServiceArea): Module[] {
     { kicker: "What the work can become", title: service.valuePoints[2].title, body: service.valuePoints[2].description, to: proofTo, linkLabel: proofLabel, artifact: "image" },
   ];
   // Door-specific deliverable windows (artifact library, 2026-08-30).
-  if (service.id === "brand-and-web") {
-    mods[0] = { ...mods[0], artifact: "beforeafter", title: "The same business, said well.", body: "Positioning work has a before and an after. The after is specific, provable, and easier to buy from." };
-  }
   if (service.id === "customers-and-growth") {
     mods[0] = { ...mods[0], artifact: "journey", title: "Find the leak, wire the return.", body: "The come-back path usually breaks in one quiet spot. We make it visible, then install the fix." };
     mods[3] = { ...mods[3], artifact: "variants", title: "Learn what actually works.", body: "Every send teaches the next one. Honest tests beat taste debates." };
@@ -52,6 +49,14 @@ function serviceModules(service: ServiceArea): Module[] {
 
 function ListArtifact({ label, items }: { label: string; items: string[] }) {
   return <article className="v3-artifact v3-data-artifact"><header><span>{label}</span><small>Shaped to the engagement</small></header><ul>{items.map((item, index) => <li key={item}><span>0{index + 1}</span><strong>{item}</strong><em>{index === 0 ? "Good place to start" : "As needed"}</em></li>)}</ul></article>;
+}
+
+function HeroWindow({ serviceId }: { serviceId: ServiceId }) {
+  if (serviceId === "operations-and-ai") return <WeekArtifact />;
+  if (serviceId === "brand-and-web") return <BeforeAfterArtifact />;
+  if (serviceId === "customers-and-growth") return <ThreadArtifact />;
+  if (serviceId === "new-products") return <VariantsArtifact />;
+  return <BriefArtifact />;
 }
 
 function ModuleArtifact({ mod, service }: { mod: Module; service: ServiceArea }) {
@@ -86,7 +91,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
         </div>
         <div className="v4-hero-art" aria-hidden="true">
           <figure className="v3-service-proof v4-hero-image"><img src={service.artifact.src} alt="" /><figcaption><span>Working proof</span>{service.artifact.caption}</figcaption></figure>
-          <div className="v4-hero-window">{service.id === "operations-and-ai" ? <WeekArtifact /> : <BriefArtifact />}</div>
+          <div className="v4-hero-window"><HeroWindow serviceId={service.id} /></div>
         </div>
       </section>
 
