@@ -5,7 +5,7 @@ import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { useCalEmbed } from "../lab/useCalEmbed";
 import { BriefArtifact } from "./V3Artifacts";
-import { BeforeAfterArtifact, JourneyArtifact, RoutingArtifact, ThreadArtifact, VariantsArtifact } from "./ServiceArtifacts";
+import { BeforeAfterArtifact, JourneyArtifact, RoutingArtifact, ThreadArtifact, VariantsArtifact, WeekArtifact } from "./ServiceArtifacts";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 
@@ -86,7 +86,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
         </div>
         <div className="v4-hero-art" aria-hidden="true">
           <figure className="v3-service-proof v4-hero-image"><img src={service.artifact.src} alt="" /><figcaption><span>Working proof</span>{service.artifact.caption}</figcaption></figure>
-          <div className="v4-hero-window"><BriefArtifact /></div>
+          <div className="v4-hero-window">{service.id === "operations-and-ai" ? <WeekArtifact /> : <BriefArtifact />}</div>
         </div>
       </section>
 

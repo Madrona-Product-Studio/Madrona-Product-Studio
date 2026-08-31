@@ -86,17 +86,32 @@ aliases (they were removed; use the tokens below).
   and the deep CTA/footer band
 - `forest-soft` `#506b58` — secondary/outline CTA text, hover tints
 
-**Discipline (the two-accent system):** This is deliberately a *two*-accent
-palette, and the two roles never blur. **Bark does brand identity** —
-links, active nav, section kickers, the `.m2-pop` flash — the sudden
-red-orange that says "Madrona." **Forest does the call to action** — the
-primary buttons and the deep CTA/footer band — the calm, grounded "act
-here." Neither color is decorative: bark stays scarce so it reads as brand
-signal, forest stays reserved for the ask so a CTA is unmistakable. Don't
-introduce a *third* accent, and don't cross the roles (no bark buttons, no
-forest links). (Superseded the earlier one-accent rule after the forest
-CTA system proved itself across every V2 page; Charlie sign-off
-2026-08-15.)
+**Discipline (one orange + opposite ground · canonized 2026-08-30, wrapped
+into canon with Charlie's launch-day decisions):** The color logic is one
+sentence: **one orange for identity, the opposite ground for action, and
+the sky picks the ground.**
+
+- **The orange** — madrona red-orange `#E55728` is THE accent in every sky
+  state: links, kickers, the headline flash, active states, the frond.
+  Its companion shade shifts *value only, never hue*: `#BC431D` on light
+  grounds, `#F0703F` on dark. The old bark (`#c4553a`/`#c86a3d`) and the
+  forest-green CTA system are retired.
+- **Action = the opposite ground** — primary CTAs are charcoal `#2F3135`
+  on light grounds and cream `#F7EDE4` on dark ones; the deep CTA band
+  rides `--cta-band`. Orange is never a button.
+- **The sky picks the ground (day / dusk / night)** — the site follows
+  the real Bellingham sun (engine `src/lib/theme.ts`; header switcher; no
+  "Auto" option in the UI — following the sun is just what it does).
+  Day = the warm-paper ramp below · night = Evergreen Charcoal `#2F3135`
+  · dusk = Smoky Plum `#4C3843` for ~40min around sunrise and sunset.
+  In dark skies, **frames are light islands**: browser-window artifacts,
+  panels, and cards go cream with the day ramp re-pinned inside.
+- **Sub-item hues come from the frond board** — fir `#394933` · moss
+  `#666642` · plum `#513B46` · copper `#A0603A` · sage · stone, worn in
+  two registers (pastel wash in day, deep ground in dark skies; see the
+  `--hue-*` tokens in v3.css). Mint `#39846d` is the progress/positive
+  status color. These are data-viz and category colors, never competing
+  accents.
 
 ### Typography
 
@@ -173,8 +188,10 @@ Every page should be able to route here. Three steps, published on
 1. **Free 30-minute conversation** — published agenda: where you're at,
    where you've been, the biggest opportunities to grow or get more
    efficient, and what's already on your mind. (Shortened from 45 in
-   canon 2026-07-21.) The main CTA sitewide is **"Book a 30m free chat"**
-   (Charlie, 2026-07-22).
+   canon 2026-07-21.) The primary ask sitewide is **"Get in touch"**,
+   routed to `/connect` (Charlie, 2026-08-30; supersedes the earlier
+   "Book a 30m free chat" button). Explicitly booking-shaped CTAs (the
+   assessment result, /charlie) may open the Cal.com popup directly.
 2. **Written assessment** — a short written read on where the studio can
    help (and where it can't). The client keeps it either way.
 3. **Scoped proposal** — scope, cost, and approach. First engagements are
@@ -289,15 +306,21 @@ project's own footer:
 
 The wordmark-only approach is intentional — confident, quiet, senior-studio.
 
-## Open brand decisions
+## The identity (settled 2026-08-30 — the frond system)
 
-These haven't been settled and are good candidates for Claude Design
-exploration:
+The logo is the **frond**: a sparse red-orange frond (`#E55728`) on an
+Evergreen Charcoal disc (`#2F3135`). The production lockup is the
+**side-stack**: MADRONA in outlined Figtree 600 spaced caps, a quiet
+hairline, then PRODUCT / STUDIO stacked in the orange (the frog
+structure). Wordmark is always outlined paths in shipped assets — never a
+live webfont, never recolored via CSS filters. Assets live in
+`public/brand/` (frond-* files; five palette grounds ship as system
+assets for OG cards, studio signatures, and app icons). Favicon is the
+bold-stroke frond on the charcoal disc (regular weight washes out below
+24px). Generators live in the madrona-studio design library
+(`frond-build/gen-lockups-figtree.py`) and `scripts/make-og.mjs` /
+`make-agent-og.mjs` for the OG families.
 
-- **Wordmark case** — uppercase, lowercase, title case, small-caps. Currently
-  using title case as a placeholder in nav and footer.
-- **Companion mark** — deferred until a concrete use case emerges (favicon,
-  LinkedIn avatar, etc.). Current favicon is a simple "M" circle placeholder.
-- **Whether to use a madrona-inspired visual element anywhere** — e.g., a
-  bark-texture hero treatment, a trunk-curve section mark. Leaning toward
-  sensibility-over-depiction, but worth exploring.
+The topo/contour motif (the hero's "chart of the bay" and the static
+field on OG cards) is the sanctioned madrona-adjacent visual element —
+sensibility over depiction, as always.
