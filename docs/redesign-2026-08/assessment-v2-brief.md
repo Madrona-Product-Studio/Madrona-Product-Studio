@@ -87,3 +87,22 @@ These compose with the artifact library being built on
 `post-launch-polish` (thread, counters, routing, journey, variants) —
 the assessment report and the service artifacts should feel like the
 same family of deliverables.
+
+## Report design status (08-30, late)
+
+The V2 report STRUCTURE shipped to the branch (named read masthead,
+overall word grade, hued meters with word grades, ranked Now/Next/Later
+moves, print-as-download) — Charlie's verdict: better but "kinda lame."
+Four visual directions were then explored and ALL REJECTED (08-30
+report-lab): A verdict-hero, B CXO scorecard w/ readiness %, C branded
+field report w/ charcoal masthead + timeline, D bento one-pager.
+
+Read on the rejections for the next attempt: the problem is probably
+not card layout. Candidate root causes: (1) the CONTENT is still thin —
+four meters and three moves can't feel premium regardless of dressing;
+the questions rebuild (more modules, more material) may need to come
+FIRST; (2) the window-card form factor itself may be the ceiling — a
+full-page report view (own route, generous scale, real typography) may
+be what "a report worth keeping" wants; (3) it may want something none
+of the references have — a bespoke Madrona form. Circle back with
+Charlie; don't iterate the card again without new thinking.
