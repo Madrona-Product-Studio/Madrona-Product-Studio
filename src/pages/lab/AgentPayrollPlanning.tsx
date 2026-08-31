@@ -164,7 +164,7 @@ export default function AgentPayrollPlanning() {
               <p>When it&rsquo;s a fit, we connect the accounts, set it to run before each payroll, and teach you to run it. It&rsquo;s yours to keep, no lock-in.</p>
             </Prose>
             <div className="art-close-links">
-              <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>

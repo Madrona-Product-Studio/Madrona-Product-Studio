@@ -52,15 +52,15 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
           {/* Same vocabulary as the header nav, plus the two footer-only doors. */}
           <nav className="m2-fc-nav" aria-label="Footer">
             <Link to="/apps">Products</Link>
-            <Link to="/consulting">Consulting</Link>
+            <Link to="/services">Services</Link>
             <Link to="/tools">Tools</Link>
             <Link to="/thinking">Articles</Link>
             <Link to="/about">About</Link>
-            <Link to="/checkup">Free signal check</Link>
+            <Link to="/where-to-start">Where to start</Link>
             <Link to="/connect">Contact</Link>
           </nav>
           <div className="m2-fc-contact">
-            <p>Bellingham, WA</p>
+            <p>PNW, USA</p>
             <a href={`mailto:${EMAIL}`} onClick={() => track("email_click", { source: "footer" })}>{EMAIL}</a>
           </div>
         </div>

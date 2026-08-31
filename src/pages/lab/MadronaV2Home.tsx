@@ -37,7 +37,7 @@ const products = [
 // ---- How we help (the four expression doors of one practice) -------------
 // Sourced from the single source of truth (services.ts) so the four doors read
 // identically here and in the "Four ways in. One practice." What We Do section.
-const consulting = serviceAreas.map((s) => ({ id: s.id, title: s.door, body: s.outcome }));
+const serviceDoors = serviceAreas.map((s) => ({ id: s.id, title: s.door, body: s.outcome }));
 
 // Four representative tools for the homepage teaser; the full set lives at /tools.
 const TEASER_TOOL_IDS = ["invoice-chasing", "customer-inbox", "month-end-close", "review-requests"];
@@ -93,7 +93,7 @@ export default function MadronaV2Home() {
           </p>
           <div className="m2-actions">
             <Link className="m2-button" to="/connect">Get in touch</Link>
-            <Link className="m2-button m2-button-secondary" to="/consulting">Explore how we help</Link>
+            <Link className="m2-button m2-button-secondary" to="/services">Explore how we help</Link>
           </div>
         </div>
         <div className="m2-hero-visual m2-hero-island m2-hero-rotate">
@@ -145,7 +145,7 @@ export default function MadronaV2Home() {
             <h2>Good businesses around here deserve software as good as they are.</h2>
             <p>We help you figure out what to build, including where AI genuinely helps, then build it. We run our own operations on agents, so the guidance comes from daily practice. Every engagement starts small, focused where it will make the biggest difference, and grows from there.</p>
             <div className="m2-consult-items">
-              {consulting.map((c) => (
+              {serviceDoors.map((c) => (
                 <div className="m2-consult-item" key={c.title}>
                   <ServiceIcon id={c.id} />
                   <div>
@@ -157,8 +157,8 @@ export default function MadronaV2Home() {
             </div>
             <p>Madrona is led by <Link className="m2-inline-link" to="/about">Charlie Koch</Link>, a product leader with fifteen years of experience building consumer products at scale and bringing new ideas to life with small teams.</p>
             <div className="m2-consult-links">
-              <Link className="m2-text-link" to="/consulting">Explore how we help <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/checkup">Not sure where to start? Take the free signal check <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/services">Explore how we help <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/where-to-start">Not sure where to start? Take the free signal check <span aria-hidden="true">→</span></Link>
             </div>
           </div>
           <BerryGoodTeaser />

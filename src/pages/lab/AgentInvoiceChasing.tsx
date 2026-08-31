@@ -140,7 +140,7 @@ export default function AgentInvoiceChasing() {
               <p>When it&rsquo;s a fit, we wire it to your invoicing, teach it your voice and your grace rules, set the approval gate, and hand it to you. Yours to keep, no lock-in.</p>
             </Prose>
             <div className="art-close-links">
-              <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>

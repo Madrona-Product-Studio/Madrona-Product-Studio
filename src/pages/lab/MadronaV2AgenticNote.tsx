@@ -318,7 +318,7 @@ export default function MadronaV2AgenticNote() {
             </Prose>
             <div className="m2-th-close-links">
               <a className="m2-text-link" href="https://github.com/Madrona-Product-Studio/madrona-open/tree/main/plugins/operating-system" target="_blank" rel="noopener noreferrer">Fork the operating system we run on <span aria-hidden="true">→</span></a>
-              <Link className="m2-text-link" to="/consulting#operations-and-ai">Our Operations and AI services <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/services#operations-and-ai">Our Operations and AI services <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>

@@ -11,6 +11,7 @@
 //   tool_demo_replay  { tool }          — a /tools demo re-run
 //   app_outbound_click{ app }           — outbound link to a live app on /apps
 //   email_click       { source }        — mailto link
+//   theme_switch      { theme }         — footer sky switcher (auto/day/dusk/night)
 //   assessment_*                        — the /checkup funnel (see assessment/analytics.ts)
 import { track as vercelTrack } from "@vercel/analytics";
 

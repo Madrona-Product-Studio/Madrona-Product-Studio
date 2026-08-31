@@ -138,7 +138,7 @@ export default function AgentCustomerInbox() {
               <p>When it&rsquo;s a fit, we write your FAQ into it, teach it your voice and what to never touch, set the approval gate, and hand it over. Yours to keep, no lock-in.</p>
             </Prose>
             <div className="art-close-links">
-              <Link className="m2-text-link" to="/connect">Book a free 30-minute call <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>

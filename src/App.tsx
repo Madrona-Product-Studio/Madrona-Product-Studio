@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate, useParams } from "react-router-
 import { ScrollToTop, PageFade } from "./components/RouteMotion";
 import Layout from "./components/Layout";
 // Primary-nav destinations stay eager so top-level navigation is instant.
-import MadronaV2 from "./pages/lab/MadronaV2";
-import MadronaV2Home from "./pages/lab/MadronaV2Home";
+import ServicesV3 from "./pages/v3/ServicesV3";
+import HomeV3 from "./pages/v3/HomeV3";
 import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
 import MadronaV2About from "./pages/lab/MadronaV2About";
@@ -12,7 +12,8 @@ import MadronaV2Pov from "./pages/lab/MadronaV2Pov";
 import AgentsGallery from "./pages/lab/AgentsGallery";
 // Everything deeper is route-split: articles, tool demos, the assessment, and
 // legacy/lab pages don't belong in the first-load bundle.
-const AgenticOperations = lazy(() => import("./pages/AgenticOperations"));
+const ServicePageV4 = lazy(() => import("./pages/v3/ServicePageV4"));
+const CharliePage = lazy(() => import("./pages/v3/CharliePage"));
 const MadronaV2Thesis = lazy(() => import("./pages/lab/MadronaV2Thesis"));
 const MadronaV2EngineNote = lazy(() => import("./pages/lab/MadronaV2EngineNote"));
 const MadronaV2AgenticNote = lazy(() => import("./pages/lab/MadronaV2AgenticNote"));
@@ -21,8 +22,8 @@ const MadronaV2SystemNote = lazy(() => import("./pages/lab/MadronaV2SystemNote")
 const MadronaV2InventoryNote = lazy(() => import("./pages/lab/MadronaV2InventoryNote"));
 const MadronaV2Open = lazy(() => import("./pages/lab/MadronaV2Open"));
 const MadronaSystem = lazy(() => import("./pages/lab/MadronaSystem"));
+const WhereToStart = lazy(() => import("./pages/v3/WhereToStart"));
 const PitchKit = lazy(() => import("./pages/lab/PitchKit"));
-const SignalAssessment = lazy(() => import("./pages/lab/SignalAssessment"));
 const AgentMonthEndClose = lazy(() => import("./pages/lab/AgentMonthEndClose"));
 const AgentInvoiceChasing = lazy(() => import("./pages/lab/AgentInvoiceChasing"));
 const AgentIndustryBrief = lazy(() => import("./pages/lab/AgentIndustryBrief"));
@@ -40,6 +41,12 @@ function AgentsToTools() {
   return <Navigate to={`/tools/${slug}`} replace />;
 }
 
+// Old /v3/services preview URLs → the promoted real routes.
+function V3ToServices() {
+  const { slug } = useParams();
+  return <Navigate to={`/services/${slug}`} replace />;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -47,12 +54,25 @@ export default function App() {
       <PageFade>
       <Suspense fallback={null}>
       <Routes>
-        {/* Story rethink: new studio front-door home; current homepage preserved as /consulting. */}
-        <Route path="/" element={<MadronaV2Home />} />
-        <Route path="consulting" element={<MadronaV2 />} />
-        {/* Services folded into the one "How we help" page (2026-08-10) —
-            the four doors now live in depth on /consulting. */}
-        <Route path="services" element={<Navigate to="/consulting#services" replace />} />
+        {/* V3 promoted 2026-08-29: the redesign is the live site. */}
+        <Route path="/" element={<HomeV3 />} />
+        <Route path="services/ai-operations" element={<ServicePageV4 serviceId="operations-and-ai" />} />
+        <Route path="services/brand-website" element={<ServicePageV4 serviceId="brand-and-web" />} />
+        <Route path="services/growth-retention" element={<ServicePageV4 serviceId="customers-and-growth" />} />
+        <Route path="services/new-products" element={<ServicePageV4 serviceId="new-products" />} />
+        {/* Charlie's public positioning page — sendable, out of the nav.
+            Sibling of the internal /pitch-kit rehearsal surface. */}
+        <Route path="charlie" element={<CharliePage />} />
+        {/* Day-old door slugs (2026-08-29 launch prep) → the label slugs. */}
+        <Route path="services/work-smarter" element={<Navigate to="/services/ai-operations" replace />} />
+        <Route path="services/build-trust" element={<Navigate to="/services/brand-website" replace />} />
+        <Route path="services/grow-your-business" element={<Navigate to="/services/growth-retention" replace />} />
+        {/* Old /v3 preview URLs → the real routes (vercel.json 301s too). */}
+        <Route path="v3" element={<Navigate to="/" replace />} />
+        <Route path="v3/services/:slug" element={<V3ToServices />} />
+        <Route path="v3/consulting/work-smarter" element={<Navigate to="/services/ai-operations" replace />} />
+        <Route path="services" element={<ServicesV3 />} />
+        <Route path="consulting" element={<Navigate to="/services" replace />} />
         <Route path="apps" element={<MadronaV2Apps />} />
         <Route path="work" element={<Navigate to="/apps" replace />} />
         <Route path="connect" element={<MadronaV2Connect />} />
@@ -97,15 +117,17 @@ export default function App() {
         <Route path="notes" element={<Navigate to="/thinking" replace />} />
         <Route path="playbook" element={<Navigate to="/thinking" replace />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
-        {/* The Signal Assessment — our free "signal check". Canonical at /checkup;
-            it took over this URL from the retired v1 AI checkup (launch 2026-08-15). */}
-        <Route path="checkup" element={<SignalAssessment />} />
-        {/* Old build slug → canonical /checkup. */}
-        <Route path="signal-check" element={<Navigate to="/checkup" replace />} />
+        {/* Where to Start — the free assessment (report-first respec,
+            docs/redesign-2026-08/assessment-respec.md). Canonical; it took
+            over from /checkup (Charlie sign-off 2026-08-30). */}
+        <Route path="where-to-start" element={<WhereToStart />} />
+        {/* Old assessment URLs → the new canonical tool (vercel.json 301s too). */}
+        <Route path="checkup" element={<Navigate to="/where-to-start" replace />} />
+        <Route path="signal-check" element={<Navigate to="/where-to-start" replace />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />
-        <Route path="lab/madrona-v2/services" element={<Navigate to="/consulting#services" replace />} />
+        <Route path="lab/madrona-v2/services" element={<Navigate to="/services#services" replace />} />
         <Route path="lab/madrona-v2/apps" element={<Navigate to="/apps" replace />} />
         {/* Internal design-system study — kept routable for working sessions,
             but never linked from the public site. */}
@@ -116,13 +138,13 @@ export default function App() {
 
         {/* Legacy pages not yet rebuilt in V2 (still old chrome). */}
         <Route element={<Layout />}>
-          <Route path="services/agentic-operations" element={<AgenticOperations />} />
+          <Route path="services/agentic-operations" element={<Navigate to="/services/ai-operations" replace />} />
         </Route>
         {/* Case studies retired 2026-08-23 → the products page (vercel.json 301s too). */}
         <Route path="work/:slug" element={<Navigate to="/apps" replace />} />
         {/* Engagement-model content now lives on the practice page (V2). */}
-        <Route path="how-it-works" element={<Navigate to="/consulting" replace />} />
-        <Route path="approach" element={<Navigate to="/consulting" replace />} />
+        <Route path="how-it-works" element={<Navigate to="/services" replace />} />
+        <Route path="approach" element={<Navigate to="/services" replace />} />
         <Route path="writing" element={<Navigate to="/thinking" replace />} />
         <Route path="contact" element={<Navigate to="/connect" replace />} />
 

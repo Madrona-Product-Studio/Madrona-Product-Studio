@@ -2,18 +2,22 @@
    Own token scope; deliberately more advanced than the rest of the site. */
 
 .sa {
-  --a-bg: #101613;
-  --a-surface: #151b18;
-  --a-surface-2: #19201c;
-  --a-text: #f0ece5;
-  --a-text-2: #a6afa8;
-  --a-text-3: #69736d;
-  --a-border: rgba(226, 232, 226, 0.1);
-  --a-border-strong: rgba(226, 232, 226, 0.18);
-  --a-green: #62a184;
-  --a-green-bright: #82d0aa;
-  --a-orange: #c9663f;
-  --a-orange-bright: #ee936a;
+  /* Restyled 2026-08-30 to the landed identity system: evergreen-charcoal
+     grounds, cream ink, ONE orange (#E55728), Sunlit mint for progress and
+     live states. The shell stays always-dark (its own mode; the embedded
+     report card follows the sitewide sky theme). */
+  --a-bg: #26282B;
+  --a-surface: #2F3135;
+  --a-surface-2: #383B40;
+  --a-text: #F7EDE4;
+  --a-text-2: #B8B2A6;
+  --a-text-3: #847F76;
+  --a-border: rgba(247, 237, 228, 0.10);
+  --a-border-strong: rgba(247, 237, 228, 0.20);
+  --a-green: #39846d;
+  --a-green-bright: #5bb59a;
+  --a-orange: #E55728;
+  --a-orange-bright: #F0703F;
 
   min-height: 100dvh;
   padding: 0;
@@ -36,7 +40,7 @@
   margin-inline: auto;
   overflow: hidden;
   background:
-    radial-gradient(circle at 70% 42%, rgba(72, 128, 103, 0.08), transparent 34%),
+    radial-gradient(circle at 70% 42%, rgba(229, 87, 40, 0.05), transparent 36%),
     linear-gradient(rgba(255, 255, 255, 0.012), rgba(255, 255, 255, 0.012)),
     var(--a-bg);
   display: flex;
@@ -345,8 +349,8 @@
   gap: 9px;
   border: 0;
   border-radius: 12px;
-  background: var(--a-orange);
-  color: #16100c;
+  background: var(--a-text);
+  color: #2F3135;
   font-weight: 600;
   font-size: 14.5px;
   padding: 13px 22px;
@@ -355,7 +359,7 @@
   transition: background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 .sa-primary:hover:not(:disabled) {
-  background: var(--a-orange-bright);
+  background: #ffffff;
   box-shadow: 0 0 22px rgba(238, 147, 106, 0.25);
   transform: translateY(-1px);
 }

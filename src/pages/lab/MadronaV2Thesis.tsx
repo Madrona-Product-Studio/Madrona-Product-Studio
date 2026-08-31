@@ -172,7 +172,7 @@ export default function MadronaV2Thesis() {
             </Prose>
             <div className="m2-th-close-links">
               <Link className="m2-text-link" to="/about">Why Madrona exists <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/consulting">How we put it into practice <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/services">How we put it into practice <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>

@@ -21,7 +21,7 @@
 .art-wrap { margin: 0 auto; max-width: 1120px; padding: 0 clamp(20px, 5vw, 40px); }
 
 /* ---- Header (split: title left, illustration right) -------------------- */
-.art-head { border-top: 1px solid var(--art-hair); padding: clamp(36px, 4.5vw, 56px) 0 0; }
+.art-head { border-top: 1px solid var(--art-hair); padding: clamp(60px, 7vw, 92px) 0 0; }
 .art-head-split {
   align-items: center;
   display: grid;
@@ -209,7 +209,7 @@
 .art-pillar + .art-pillar { border-left: 1px solid var(--art-hair-soft); }
 .art-pillar-ico {
   align-items: center;
-  background: var(--tint, #f8e6d8);
+  background: var(--tint, var(--tint-bark));
   border-radius: 9px;
   color: var(--bark-dark);
   display: inline-flex;

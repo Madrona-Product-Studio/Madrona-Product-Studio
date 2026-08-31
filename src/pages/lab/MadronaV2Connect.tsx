@@ -130,7 +130,7 @@ export default function MadronaV2Connect() {
           <div className="m2-cx-card m2-cx-book">
             <h3>Prefer to talk first?</h3>
             <p className="m2-cx-book-sub">Book a free 30-minute call to talk through where you are and where we can help. No prep needed.</p>
-            <a className="m2-button m2-button-secondary" href={bookHref()} onClick={bookClick} target="_blank" rel="noopener noreferrer" {...bookProps()}>Schedule a 30-min call <span>↗</span></a>
+            <a className="m2-button m2-button-secondary" href={bookHref()} onClick={bookClick} target="_blank" rel="noopener noreferrer" {...bookProps()}>Schedule a 30-minute call <span>↗</span></a>
             <p className="m2-cx-book-label">What to expect</p>
             <ul className="m2-cx-expect">
               {expectItems.map((it) => (

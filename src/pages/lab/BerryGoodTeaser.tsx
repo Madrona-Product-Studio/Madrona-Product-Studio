@@ -3,7 +3,7 @@ import { useState } from "react";
 import { berryViews, ViewVisual, type BerryViewId } from "./BerryGoodCaseStudy";
 
 // Short pill labels for the narrow home slot; the full labels live in the
-// worked example on /consulting.
+// worked example on /services.
 const SHORT_LABEL: Record<BerryViewId, string> = {
   brand: "Brand",
   storefront: "Storefront",
@@ -14,7 +14,7 @@ const SHORT_LABEL: Record<BerryViewId, string> = {
 
 // A condensed, interactive version of the Berry Good worked example, sized for
 // the Home "What we do" column. It teases the end-to-end system (brand →
-// storefront → journey → operations → AI); the full module lives on /consulting.
+// storefront → journey → operations → AI); the full module lives on /services.
 export default function BerryGoodTeaser() {
   const [active, setActive] = useState<BerryViewId>("brand");
   const view = berryViews.find((v) => v.id === active) ?? berryViews[0];
