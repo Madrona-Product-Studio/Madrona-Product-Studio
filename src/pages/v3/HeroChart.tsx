@@ -7,7 +7,7 @@ import { THEME_EVENT } from "../../lib/theme";
 // ink survey lines with bark index contours every fifth level, and the
 // Bellingham Bay coordinates stamped in the corner. Colors come from the
 // live theme tokens so the chart follows the day/dusk/night sky states.
-const FALLBACK = { ink: "#1a1714", bark: "#c4553a", muted: "#8c8378" };
+const FALLBACK = { ink: "#1a1714", bark: "#E55728", muted: "#8c8378" };
 
 function chartColors(el: HTMLElement) {
   const cs = getComputedStyle(el);

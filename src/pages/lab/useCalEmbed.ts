@@ -16,7 +16,7 @@ export function useCalEmbed() {
       if (cancelled) return;
       cal("ui", {
         theme: "light",
-        cssVarsPerTheme: { light: { "cal-brand": "#c86a3d" }, dark: { "cal-brand": "#c86a3d" } },
+        cssVarsPerTheme: { light: { "cal-brand": "#E55728" }, dark: { "cal-brand": "#E55728" } },
         hideEventTypeDetails: false,
         layout: "month_view",
       });
