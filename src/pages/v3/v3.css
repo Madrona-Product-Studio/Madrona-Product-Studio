@@ -280,7 +280,7 @@
 .v3-berry{grid-template-columns:minmax(300px,.92fr) minmax(0,1.08fr);gap:60px}
 .v3-berry-window{max-width:560px;justify-self:end}
 .v3-berry-window>img{aspect-ratio:4/3;max-height:none}
-@media(max-width:900px){.v3-berry-window{max-width:none;justify-self:stretch}}
+@media(max-width:900px){.v3-berry{grid-template-columns:1fr;gap:44px}.v3-berry-window{max-width:none;justify-self:stretch}}
 
 /* V4 service template (2026-08-30): CXO hero + old-prod compact rail/strip
    + varied worked-example modules. Refining on AI & Operations first. */

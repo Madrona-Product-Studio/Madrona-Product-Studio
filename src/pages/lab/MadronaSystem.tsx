@@ -98,8 +98,8 @@ export default function MadronaSystem() {
       <section className="m2-system-section" aria-labelledby="references-title">
         <div className="m2-section-heading"><p className="m2-kicker">Reference boards</p><h2 id="references-title">Shared identity direction</h2><p className="m2-guide-note">These boards document intended usage and visual character. The packaged SVG files remain the source of truth for production.</p></div>
         <div className="m2-reference-grid">
-          <a href={usageReference} target="_blank" rel="noreferrer"><img src={usageReference} alt="Madrona website logo usage reference board" /><span>Website usage guide reference ↗</span></a>
-          <a href={systemReference} target="_blank" rel="noreferrer"><img src={systemReference} alt="Madrona logo system and color reference board" /><span>Logo system reference ↗</span></a>
+          <a href={usageReference} target="_blank" rel="noreferrer"><img src={usageReference} alt="Madrona website logo usage reference board" /><span>Website usage guide reference ↗︎</span></a>
+          <a href={systemReference} target="_blank" rel="noreferrer"><img src={systemReference} alt="Madrona logo system and color reference board" /><span>Logo system reference ↗︎</span></a>
         </div>
       </section>
 
