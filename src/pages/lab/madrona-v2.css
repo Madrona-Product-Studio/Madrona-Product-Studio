@@ -2503,3 +2503,17 @@ html[data-theme="night"] .m2-stage--prototype, html[data-theme="dusk"] .m2-stage
 html[data-theme="night"] .m2-stage--concept, html[data-theme="dusk"] .m2-stage--concept { --sc: #CDC5B6; }
 html[data-theme="night"] .m2-stage--outline, html[data-theme="dusk"] .m2-stage--outline { border-color: color-mix(in srgb, var(--sc) 55%, transparent); }
 html[data-theme="night"] .m2-stage:not(.m2-stage--outline), html[data-theme="dusk"] .m2-stage:not(.m2-stage--outline) { background: color-mix(in srgb, var(--sc) 20%, transparent); }
+
+/* Connect: tap-to-select topics (2026-08-30 simplification — three textareas
+   became one; the ask is chips + a sentence). */
+.m2-cx-topics { border: 0; margin: 0; padding: 0; }
+.m2-cx-topics legend { font-size: .85rem; font-weight: 650; margin-bottom: 12px; padding: 0; }
+.m2-cx-topic-grid { display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); }
+.m2-cx-topic { align-items: center; background: var(--surface); border: 1px solid var(--sand); border-radius: 10px; color: var(--ink-soft); cursor: pointer; display: flex; font: 600 .86rem/1.3 Inter, sans-serif; gap: 10px; justify-content: space-between; padding: 13px 15px; text-align: left; transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease; }
+.m2-cx-topic:hover { border-color: var(--bark); }
+.m2-cx-topic.is-on { background: var(--forest); border-color: var(--forest); color: #F7EDE4; }
+.m2-cx-topic i { color: var(--muted); font-style: normal; font-size: .9rem; flex: none; }
+.m2-cx-topic.is-on i { color: #E55728; }
+@media (max-width: 900px) { .m2-cx-topic-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .m2-cx-topic-grid { grid-template-columns: 1fr; } }
+html[data-theme="night"] .m2-cx-formwrap .m2-cx-topic.is-on, html[data-theme="dusk"] .m2-cx-formwrap .m2-cx-topic.is-on { background: #2F3135; border-color: #2F3135; color: #F7EDE4; }

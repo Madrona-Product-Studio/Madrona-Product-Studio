@@ -4,7 +4,8 @@ import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { useCalEmbed } from "../lab/useCalEmbed";
-import { BriefArtifact, ReviewArtifact, WorkflowArtifact } from "./V3Artifacts";
+import { BriefArtifact } from "./V3Artifacts";
+import { BeforeAfterArtifact, JourneyArtifact, RoutingArtifact, ThreadArtifact, VariantsArtifact } from "./ServiceArtifacts";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 
@@ -16,12 +17,12 @@ import "./v3.css";
 // Rolled out to all four doors 08-30 (Charlie sign-off on the refined
 // template); operations keeps bespoke artifacts, the other three build
 // worked examples from the service data until each earns its own.
-type Module = { kicker: string; title: string; body: string; to: string; linkLabel: string; artifact: "brief" | "flow" | "review" | "image" | "list"; items?: string[]; listLabel?: string };
+type Module = { kicker: string; title: string; body: string; to: string; linkLabel: string; artifact: "brief" | "thread" | "routing" | "journey" | "variants" | "beforeafter" | "image" | "list"; items?: string[]; listLabel?: string };
 
 const operationsModules: Module[] = [
   { kicker: "Know what changed", title: "Turn scattered signals into a short brief.", body: "An agent watches the sources that matter, explains what moved, and routes the useful signal to a next step.", to: "/tools/industry-brief", linkLabel: "See the industry brief agent", artifact: "brief" },
-  { kicker: "Move work forward", title: "Connect the request, decision, and action.", body: "We remove repeated entry and brittle handoffs while keeping people in control of the judgment calls.", to: "/tools/customer-inbox", linkLabel: "See the customer inbox agent", artifact: "flow" },
-  { kicker: "Keep review visible", title: "Give people one clear place to approve.", body: "Drafts, exceptions, and open questions arrive ready for review instead of getting buried across tools.", to: "/tools", linkLabel: "Browse the live tools", artifact: "review" },
+  { kicker: "Move work forward", title: "Everything lands somewhere.", body: "Requests come in every shape; each one gets routed with enough context to act, and the judgment calls stay yours.", to: "/tools/customer-inbox", linkLabel: "See the customer inbox agent", artifact: "routing" },
+  { kicker: "Keep review visible", title: "The agent drafts. You decide.", body: "Questions arrive answered, in your voice, waiting for your okay — the conversation where the work actually happens.", to: "/tools", linkLabel: "Browse the live tools", artifact: "thread" },
   { kicker: "See the operation", title: "Make the work legible at a glance.", body: "A focused command surface shows what ran, what changed, and what needs attention next.", to: "https://helm.day", linkLabel: "Open the Helm demo", artifact: "image" },
 ];
 
@@ -32,12 +33,21 @@ function serviceModules(service: ServiceArea): Module[] {
   const [firstGroup, secondGroup] = service.capabilityGroups;
   const proofTo = service.demos?.to ?? service.tryIt?.to ?? "/apps";
   const proofLabel = service.demos?.label ?? service.tryIt?.label ?? "See the work in context";
-  return [
+  const mods: Module[] = [
     { kicker: firstGroup.title, title: service.valuePoints[0].title, body: service.valuePoints[0].description, to: proofTo, linkLabel: proofLabel, artifact: "list", items: firstGroup.items, listLabel: firstGroup.title },
     { kicker: secondGroup.title, title: service.valuePoints[1].title, body: service.valuePoints[1].description, to: proofTo, linkLabel: proofLabel, artifact: "list", items: secondGroup.items, listLabel: secondGroup.title },
     { kicker: "Where we begin", title: "Make the problem concrete before making the solution bigger.", body: service.bestFor, to: "/where-to-start", linkLabel: "Find where to start", artifact: "list", items: service.problems.slice(0, 4), listLabel: "Typical problems" },
     { kicker: "What the work can become", title: service.valuePoints[2].title, body: service.valuePoints[2].description, to: proofTo, linkLabel: proofLabel, artifact: "image" },
   ];
+  // Door-specific deliverable windows (artifact library, 2026-08-30).
+  if (service.id === "brand-and-web") {
+    mods[0] = { ...mods[0], artifact: "beforeafter", title: "The same business, said well.", body: "Positioning work has a before and an after. The after is specific, provable, and easier to buy from." };
+  }
+  if (service.id === "customers-and-growth") {
+    mods[0] = { ...mods[0], artifact: "journey", title: "Find the leak, wire the return.", body: "The come-back path usually breaks in one quiet spot. We make it visible, then install the fix." };
+    mods[3] = { ...mods[3], artifact: "variants", title: "Learn what actually works.", body: "Every send teaches the next one. Honest tests beat taste debates." };
+  }
+  return mods;
 }
 
 function ListArtifact({ label, items }: { label: string; items: string[] }) {
@@ -46,8 +56,11 @@ function ListArtifact({ label, items }: { label: string; items: string[] }) {
 
 function ModuleArtifact({ mod, service }: { mod: Module; service: ServiceArea }) {
   if (mod.artifact === "brief") return <BriefArtifact />;
-  if (mod.artifact === "flow") return <WorkflowArtifact />;
-  if (mod.artifact === "review") return <ReviewArtifact />;
+  if (mod.artifact === "routing") return <RoutingArtifact />;
+  if (mod.artifact === "thread") return <ThreadArtifact />;
+  if (mod.artifact === "journey") return <JourneyArtifact />;
+  if (mod.artifact === "variants") return <VariantsArtifact />;
+  if (mod.artifact === "beforeafter") return <BeforeAfterArtifact />;
   if (mod.artifact === "list") return <ListArtifact label={mod.listLabel ?? "Scope"} items={mod.items ?? []} />;
   return <figure className="v3-module-image v4-module-image"><img src={service.artifact.src} alt={service.artifact.alt} /><figcaption>{service.artifact.caption}</figcaption></figure>;
 }
