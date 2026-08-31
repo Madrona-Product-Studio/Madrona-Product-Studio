@@ -55,7 +55,7 @@ export function ArticleHeader({
   kicker,
   typeMark,
   author,
-  authorHref = "/about",
+  authorHref = "/charlie",
   meta,
   title,
   standfirst,
