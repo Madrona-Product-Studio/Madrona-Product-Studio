@@ -65,3 +65,25 @@ with launch at `/where-to-start` and stays live while this cooks.
 - Success criteria in the owner's terms; impact honest, never
   horoscope. No email gate.
 - Preview-first; Charlie signs off before this replaces the live tool.
+
+## Report inspiration (Charlie, 08-30 evening — CXO deliverables board)
+
+The shape he pointed at:
+- **Report card**: overall score ("41%") + per-dimension meters with
+  WORD grades (MOVING / UNEVEN / EARLY / UNCLEAR / MISSING) + a single
+  NEXT block. Madrona translation: per-area meters in the board hues
+  with owner-plain grades, the named read as the masthead, first move
+  as NEXT.
+- **Opportunity Map**: the automate / augment / ignore / kill 2×2 with
+  the visitor's own items placed in it. Maps perfectly to the ops
+  story; could be the second pane of the report.
+- **Anti-To-Do List**: the kill-list artifact — tasks that should stop
+  being human work. Great voice fit ("stop doing this by hand").
+- **DOWNLOADABLE detailed read**: the on-screen report stays tight; a
+  fuller version (PDF or clean print page) is downloadable — "you keep
+  the read either way" made literal. Email optional, never gated.
+
+These compose with the artifact library being built on
+`post-launch-polish` (thread, counters, routing, journey, variants) —
+the assessment report and the service artifacts should feel like the
+same family of deliverables.
