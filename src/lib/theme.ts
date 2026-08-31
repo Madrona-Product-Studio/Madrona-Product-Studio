@@ -106,9 +106,13 @@ function scheduleNextCheck() {
 }
 
 export function initTheme() {
+  // ?theme= previews a state for THIS visit only — it must never persist
+  // (QA links were pinning visitors' browsers; Charlie caught it 08-30
+  // when his own browser stuck on day after a preview link). Only the
+  // switcher UI writes the stored preference.
   const param = new URLSearchParams(window.location.search).get("theme");
   if (param === "day" || param === "dusk" || param === "night" || param === "auto") {
-    setPref(param);
+    apply(param);
   } else {
     apply(getPref());
   }
