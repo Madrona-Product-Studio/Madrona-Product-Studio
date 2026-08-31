@@ -23,6 +23,7 @@ const MadronaV2InventoryNote = lazy(() => import("./pages/lab/MadronaV2Inventory
 const MadronaV2Open = lazy(() => import("./pages/lab/MadronaV2Open"));
 const MadronaSystem = lazy(() => import("./pages/lab/MadronaSystem"));
 const WhereToStart = lazy(() => import("./pages/v3/WhereToStart"));
+const PitchKit = lazy(() => import("./pages/lab/PitchKit"));
 const AgentMonthEndClose = lazy(() => import("./pages/lab/AgentMonthEndClose"));
 const AgentInvoiceChasing = lazy(() => import("./pages/lab/AgentInvoiceChasing"));
 const AgentIndustryBrief = lazy(() => import("./pages/lab/AgentIndustryBrief"));
@@ -131,6 +132,9 @@ export default function App() {
         {/* Internal design-system study — kept routable for working sessions,
             but never linked from the public site. */}
         <Route path="lab/madrona-system" element={<MadronaSystem />} />
+        {/* Charlie's positioning kit — internal, unlinked, noindex. Source of
+            truth: charlie-hq/job-search/pitch-kit.md. */}
+        <Route path="pitch-kit" element={<PitchKit />} />
 
         {/* Legacy pages not yet rebuilt in V2 (still old chrome). */}
         <Route element={<Layout />}>
