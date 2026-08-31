@@ -37,7 +37,7 @@ function serviceModules(service: ServiceArea): Module[] {
   const mods: Module[] = [
     { kicker: firstGroup.title, title: service.valuePoints[0].title, body: service.valuePoints[0].description, to: proofTo, linkLabel: proofLabel, artifact: "list", items: firstGroup.items, listLabel: firstGroup.title },
     { kicker: secondGroup.title, title: service.valuePoints[1].title, body: service.valuePoints[1].description, to: proofTo, linkLabel: proofLabel, artifact: "list", items: secondGroup.items, listLabel: secondGroup.title },
-    { kicker: "Where we begin", title: "Make the problem concrete before making the solution bigger.", body: service.bestFor, to: "/where-to-start", linkLabel: "Find where to start", artifact: "list", items: service.problems.slice(0, 4), listLabel: "Typical problems" },
+    { kicker: "Where we begin", title: "Make the problem concrete before making the solution bigger.", body: service.bestFor, to: "/where-to-start", linkLabel: "Take the readiness assessment", artifact: "list", items: service.problems.slice(0, 4), listLabel: "Typical problems" },
     { kicker: "What the work can become", title: service.valuePoints[2].title, body: service.valuePoints[2].description, to: proofTo, linkLabel: proofLabel, artifact: "image" },
   ];
   // Door-specific deliverable windows (artifact library, 2026-08-30).

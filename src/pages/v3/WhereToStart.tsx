@@ -106,14 +106,14 @@ export default function WhereToStart() {
   const activePhase = stage.kind === "opener" ? 0 : stage.kind === "question" ? 1 : 2;
 
   return <div className={`sa wts-sa${showResult ? " sa--result" : ""}${stage.kind === "opener" ? " sa--intro" : ""}`}>
-    <LabMeta title="Where to start · a free 2-minute read · Madrona Product Studio" />
+    <LabMeta title="Readiness Assessment · a free 2-minute read · Madrona Product Studio" />
     <div className="sa-shell">
       <header className="sa-top">
         <span className="sa-top-title-wrap">
           <Link to="/" className="sa-wordmark" aria-label="Madrona Product Studio home">
             <MadronaLogo variant="horizontal-reversed" decorative />
           </Link>
-          <span className="sa-top-title">Where to start</span>
+          <span className="sa-top-title">Readiness assessment</span>
         </span>
         {showResult ? (
           <p className="sa-complete">
@@ -138,7 +138,7 @@ export default function WhereToStart() {
         <main className="sa-work">
           {stage.kind === "opener" && (
             <section className="sa-question sa-enter" aria-labelledby="wts-q">
-              <p className="sa-count"><em>Where to start</em><span aria-hidden="true"> · </span>Check all that apply</p>
+              <p className="sa-count"><em>Readiness assessment</em><span aria-hidden="true"> · </span>Check all that apply</p>
               <h1 id="wts-q" ref={headingRef} tabIndex={-1}>Which of these sound like you?</h1>
               <p className="sa-support">We only ask about what you flag, then hand you a short read you keep either way.</p>
               <div className="sa-answers" role="group" aria-labelledby="wts-q">
