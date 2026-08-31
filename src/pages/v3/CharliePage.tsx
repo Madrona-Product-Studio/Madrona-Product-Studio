@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
+import Reveal from "./Reveal";
 import SiteFooter from "../lab/SiteFooter";
 import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
+import portrait from "../../../docs/madrona-v2-build-kit/site-assets/about-charlie.webp";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 import "./charlie.css";
 
-/* /charlie — Charlie's public positioning page: the same career, read three
+/* /charlie — Charlie's public positioning page: the same career, read four
    ways, each door addressed to a different reader. Public and sendable; kept
    out of the main nav. Content derives from charlie-hq/job-search/pitch-kit.md
    (the internal rehearsal surface stays at /pitch-kit). */
@@ -44,21 +46,38 @@ const DOORS = [
     ],
     cta: { label: "See the products", to: "/apps" },
   },
+  {
+    id: "mission",
+    reader: "If your work changes lives",
+    heading: "Small teams change the world.",
+    body: [
+      "Mission-driven work that actually changes people's lives is the work I care most about. The hard, important problems are almost always understaffed, and the teams on them rarely get the senior product help they deserve.",
+      "I believe a small team doing important work can absolutely change the world, and AI just made that more true. Leverage that used to take a floor of engineers now fits in a small room. If you're in social good, advocacy, public health, or anywhere the outcome is measured in lives made better, I want to hear from you.",
+    ],
+    cta: { label: "Tell me what you're working on", to: "/connect" },
+  },
 ];
 
-export default function CharliePage() {
-  useCalEmbed();
-  return <main className="m2 v3 ck">
-    <LabMeta title="Charlie Koch · Madrona Product Studio" />
-    <M2Nav />
-
-    <header className="v3-section v3-shell ck-hero">
-      <p className="v3-kicker">Charlie Koch · Madrona Product Studio · PNW, USA</p>
-      <h1>Builder of modern <span>digital tools.</span></h1>
-      <p className="v3-lede ck-lede">
-        Newest tools, oldest problems. Depending on why you're here, there are
-        three ways to read the same career. Pick your door.
-      </p>
+/* The hero hub — the page premise drawn: the circular portrait fans out
+   through madrona elbow lines into the four door rows (picked from the
+   2026-08-31 placement contact sheet; losing variants removed). */
+function CharlieHero() {
+  return <header className="v3-section v3-shell ck-hero">
+    <p className="v3-kicker">Charlie Koch · Madrona Product Studio · PNW, USA</p>
+    <h1>Builder of modern <span>digital tools.</span></h1>
+    <p className="v3-lede ck-lede">
+      Newest tools, oldest problems. Depending on why you're here, there are
+      four ways to read the same career. Pick your door.
+    </p>
+    <div className="ck-hub">
+      <svg className="ck-hub-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        {[12.5, 37.5, 62.5, 87.5].map((y) => (
+          <path key={y} d={`M21.5 50 C 25.5 50 25.5 ${y} 28.5 ${y}`} vectorEffect="non-scaling-stroke" />
+        ))}
+      </svg>
+      <figure className="ck-hub-portrait">
+        <img src={portrait} alt="Charlie Koch outdoors at golden hour" />
+      </figure>
       <nav className="ck-jump">
         {DOORS.map((d, i) => (
           <a key={d.id} href={`#${d.id}`}>
@@ -66,10 +85,20 @@ export default function CharliePage() {
           </a>
         ))}
       </nav>
-    </header>
+    </div>
+  </header>;
+}
+
+export default function CharliePage() {
+  useCalEmbed();
+  return <main className="m2 v3 ck">
+    <LabMeta title="Charlie Koch · Madrona Product Studio" />
+    <M2Nav />
+
+    <CharlieHero />
 
     {DOORS.map((d, i) => (
-      <section className="v3-section v3-shell ck-door" id={d.id} key={d.id}>
+      <Reveal as="section" className="v3-section v3-shell ck-door" id={d.id} key={d.id}>
         <div className="ck-door-rail">
           <p className="v3-kicker">0{i + 1} · {d.reader}</p>
           <h2>{d.heading}</h2>
@@ -78,10 +107,10 @@ export default function CharliePage() {
           {d.body.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
           <Link className="ck-door-cta" to={d.cta.to}>{d.cta.label} →</Link>
         </div>
-      </section>
+      </Reveal>
     ))}
 
-    <section className="v3-section v3-shell ck-throughline">
+    <Reveal as="section" className="v3-section v3-shell ck-throughline">
       <p className="v3-kicker">The through-line</p>
       <div className="v3-experience ck-experience">
         <span>Experience includes</span>
@@ -93,10 +122,10 @@ export default function CharliePage() {
         Every platform shift, same domains: health, the outdoors, travel. How
         people live well.
       </p>
-    </section>
+    </Reveal>
 
     <section className="v3-final-cta">
-      <div className="v3-shell">
+      <Reveal className="v3-shell">
         <p className="v3-kicker">The short version</p>
         <h2>Operated at scale. Still sits down and builds.</h2>
         <p>
@@ -106,7 +135,7 @@ export default function CharliePage() {
         <a className="v3-btn v3-btn-light" href={bookHref()} {...bookProps()} onClick={bookClick}>
           Book a 30m chat
         </a>
-      </div>
+      </Reveal>
     </section>
 
     <SiteFooter cta={false} />

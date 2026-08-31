@@ -5,7 +5,7 @@
 // reduced-motion paths always get the resting design.
 import { createElement, useEffect, useRef, useState } from "react";
 
-export default function Reveal({ as = "div", className = "", children }: { as?: React.ElementType; className?: string; children: React.ReactNode }) {
+export default function Reveal({ as = "div", className = "", children, ...rest }: { as?: React.ElementType; className?: string; children: React.ReactNode } & Record<string, unknown>) {
   const ref = useRef<HTMLElement>(null);
   const [phase, setPhase] = useState<"idle" | "armed" | "in">("idle");
   useEffect(() => {
@@ -21,5 +21,5 @@ export default function Reveal({ as = "div", className = "", children }: { as?: 
     return () => io.disconnect();
   }, []);
   const cls = `${className} rv${phase === "armed" ? " rv-armed" : ""}${phase === "in" ? " rv-in" : ""}`.trim();
-  return createElement(as, { ref, className: cls }, children);
+  return createElement(as, { ref, className: cls, ...rest }, children);
 }
