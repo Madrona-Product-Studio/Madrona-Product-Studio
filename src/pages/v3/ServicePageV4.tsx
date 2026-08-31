@@ -5,7 +5,7 @@ import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { useCalEmbed } from "../lab/useCalEmbed";
 import { BriefArtifact } from "./V3Artifacts";
-import { BeforeAfterArtifact, JourneyArtifact, RoutingArtifact, ThreadArtifact, VariantsArtifact, WeekArtifact } from "./ServiceArtifacts";
+import { BeforeAfterArtifact, BUILD_JOURNEY, IdentityBoardArtifact, JourneyArtifact, RoutingArtifact, StorefrontArtifact, ThreadArtifact, VariantsArtifact, WeekArtifact } from "./ServiceArtifacts";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 
@@ -17,7 +17,7 @@ import "./v3.css";
 // Rolled out to all four doors 08-30 (Charlie sign-off on the refined
 // template); operations keeps bespoke artifacts, the other three build
 // worked examples from the service data until each earns its own.
-type Module = { kicker: string; title: string; body: string; to: string; linkLabel: string; artifact: "brief" | "thread" | "routing" | "journey" | "variants" | "beforeafter" | "image" | "list"; items?: string[]; listLabel?: string };
+type Module = { kicker: string; title: string; body: string; to: string; linkLabel: string; artifact: "brief" | "thread" | "routing" | "journey" | "buildjourney" | "variants" | "beforeafter" | "identity" | "storefront" | "image" | "list"; items?: string[]; listLabel?: string };
 
 const operationsModules: Module[] = [
   { kicker: "Know what changed", title: "Turn scattered signals into a short brief.", body: "An agent watches the sources that matter, explains what moved, and routes the useful signal to a next step.", to: "/tools/industry-brief", linkLabel: "See the industry brief agent", artifact: "brief" },
@@ -44,6 +44,13 @@ function serviceModules(service: ServiceArea): Module[] {
     mods[0] = { ...mods[0], artifact: "journey", title: "Find the leak, wire the return.", body: "The come-back path usually breaks in one quiet spot. We make it visible, then install the fix." };
     mods[3] = { ...mods[3], artifact: "variants", title: "Learn what actually works.", body: "Every send teaches the next one. Honest tests beat taste debates." };
   }
+  if (service.id === "brand-and-web") {
+    mods[0] = { ...mods[0], artifact: "identity", title: "One identity, carried everywhere.", body: "Not a logo file. A small system of color, type, and voice that makes every touchpoint feel like the same business." };
+    mods[1] = { ...mods[1], artifact: "storefront", title: "Every element earns its place.", body: "A page that converts is built from a few things doing real work: say what you sell, prove it, ask once." };
+  }
+  if (service.id === "new-products") {
+    mods[0] = { ...mods[0], artifact: "buildjourney", title: "Skip the stall. Get it in hands.", body: "Ideas die in the planning gap. A small prototype with real users on it ends the debate faster than any document." };
+  }
   return mods;
 }
 
@@ -64,8 +71,11 @@ function ModuleArtifact({ mod, service }: { mod: Module; service: ServiceArea })
   if (mod.artifact === "routing") return <RoutingArtifact />;
   if (mod.artifact === "thread") return <ThreadArtifact />;
   if (mod.artifact === "journey") return <JourneyArtifact />;
+  if (mod.artifact === "buildjourney") return <JourneyArtifact data={BUILD_JOURNEY} />;
   if (mod.artifact === "variants") return <VariantsArtifact />;
   if (mod.artifact === "beforeafter") return <BeforeAfterArtifact />;
+  if (mod.artifact === "identity") return <IdentityBoardArtifact />;
+  if (mod.artifact === "storefront") return <StorefrontArtifact />;
   if (mod.artifact === "list") return <ListArtifact label={mod.listLabel ?? "Scope"} items={mod.items ?? []} />;
   return <figure className="v3-module-image v4-module-image"><img src={service.artifact.src} alt={service.artifact.alt} /><figcaption>{service.artifact.caption}</figcaption></figure>;
 }
