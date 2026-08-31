@@ -46,10 +46,15 @@ function nowUtcMin(now: Date): number {
 
 export function skyState(now = new Date()): ThemeState {
   const { rise, set } = sunTimesUtcMin(now);
-  const t = nowUtcMin(now);
-  const near = (edge: number) => Math.abs(t - edge) <= DUSK_WINDOW_MIN;
-  if (near(rise) || near(set)) return "dusk";
-  if (t > rise && t < set) return "day";
+  // Bellingham evenings sit past midnight UTC, so `set` runs beyond 24h
+  // (~1617) while the clock wraps back to small minutes. Check the raw
+  // minutes AND the +24h alias so 6 PM local doesn't read as night
+  // (launch-night bug, 2026-08-30).
+  const raw = nowUtcMin(now);
+  for (const t of [raw, raw + 1440]) {
+    if (Math.abs(t - rise) <= DUSK_WINDOW_MIN || Math.abs(t - set) <= DUSK_WINDOW_MIN) return "dusk";
+    if (t > rise && t < set) return "day";
+  }
   return "night";
 }
 

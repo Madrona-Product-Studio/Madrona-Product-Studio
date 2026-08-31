@@ -18,8 +18,14 @@
             var de = 0.006918 - 0.399912 * Math.cos(g) + 0.070257 * Math.sin(g) - 0.006758 * Math.cos(2 * g) + 0.000907 * Math.sin(2 * g) - 0.002697 * Math.cos(3 * g) + 0.00148 * Math.sin(3 * g);
             var ha = Math.acos(Math.cos(90.833 * rad) / (Math.cos(lat * rad) * Math.cos(de)) - Math.tan(lat * rad) * Math.tan(de)) / rad;
             var rise = 720 - 4 * (lon + ha) - eq, sset = 720 - 4 * (lon - ha) - eq;
-            var t = d.getUTCHours() * 60 + d.getUTCMinutes();
-            state = (Math.abs(t - rise) <= 40 || Math.abs(t - sset) <= 40) ? "dusk" : (t > rise && t < sset ? "day" : "night");
+            // Evening `sset` runs past 24h UTC; check raw minutes and the +24h alias.
+            var raw = d.getUTCHours() * 60 + d.getUTCMinutes();
+            state = "night";
+            for (var k = 0; k < 2; k++) {
+              var t = raw + k * 1440;
+              if (Math.abs(t - rise) <= 40 || Math.abs(t - sset) <= 40) { state = "dusk"; break; }
+              if (t > rise && t < sset) { state = "day"; break; }
+            }
           }
           document.documentElement.dataset.theme = state;
         } catch (e) { document.documentElement.dataset.theme = "day"; }
