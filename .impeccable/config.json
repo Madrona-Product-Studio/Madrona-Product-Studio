@@ -41,6 +41,15 @@
         ],
         "createdAt": "2026-08-16T19:52:36.772Z",
         "reason": "temp font-comparison specimen; deliberately lists font names (incl. Fraunces as the 'current' reference) so Charlie can pick a replacement; file is removed once a font is chosen"
+      },
+      {
+        "rule": "border-accent-on-rounded",
+        "value": "*",
+        "files": [
+          "src/pages/v3/v3.css"
+        ],
+        "createdAt": "2026-08-31T01:32:33.988Z",
+        "reason": "Journey-strip artifact uses CXO-style colored top ticks on rounded step cards — Charlie explicitly asked for this treatment from the CXO reference (08-30, 'a little more color... these from cxo are great') and approved the rendered result"
       }
     ]
   }
