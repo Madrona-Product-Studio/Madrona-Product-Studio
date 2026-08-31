@@ -72,8 +72,8 @@ const lockup = (markPx, namePx, subPx) => `
   </div>`;
 
 const mainCard = () => `<!doctype html><html><head>${HEAD}<style>*{margin:0;box-sizing:border-box}</style></head><body>
-<div style="width:1200px;height:630px;position:relative;overflow:hidden;background:#2F3135;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px;font-family:'Hanken Grotesk',sans-serif">
-  ${TOPO}${lockup(110, 56, 24)}
+<div style="width:1200px;height:630px;position:relative;overflow:hidden;background:#2F3135;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:52px;font-family:'Hanken Grotesk',sans-serif">
+  ${TOPO}${lockup(148, 76, 32)}
   <p style="position:relative;font-size:44px;font-weight:400;letter-spacing:-.01em;color:rgba(247,237,228,.85)">A senior digital product studio <em style="font-style:normal;color:#E55728">built for the AI&nbsp;era.</em></p>
 </div></body></html>`;
 

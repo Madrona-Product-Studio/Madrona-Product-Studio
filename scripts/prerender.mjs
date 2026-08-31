@@ -51,7 +51,7 @@ function renderSections(sections) {
 // Page metadata for static pages
 const pages = {
   '/': {
-    title: 'Madrona Product Studio · Bellingham, Washington',
+    title: 'Madrona Product Studio · PNW, USA',
     description: 'Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. Smoother operations, customers who come back, a web presence that earns trust.',
     h1: 'A senior product studio for the AI era.',
     body: 'Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. What we can help with: AI consulting on real workflows, growth and retention, website redesign, and new product building. We figure out what to build, then we build it, and we run our own products and operations the same way, here in the PNW and beyond.',
