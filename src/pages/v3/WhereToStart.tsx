@@ -5,7 +5,8 @@ import MadronaLogo from "../lab/MadronaLogo";
 import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import { track } from "../../lib/analytics";
 import { ReadCard } from "./ReadCard";
-import { openerItems, buildSequence, computeReadProfile, computeBuildProfile, buildProgress, buildRecap, type ThreadId, type WhereToStartAnswers, type StepQuestion } from "./whereToStartEngine";
+import { openerItems, buildSequence, computeReadProfile, computeBuildProfile, computeReadinessReport, buildProgress, buildRecap, type ThreadId, type WhereToStartAnswers, type StepQuestion } from "./whereToStartEngine";
+import { ReadinessReport } from "./ReadinessReport";
 import "../lab/signal-assessment.css";
 import "./v3.css";
 import "./where-to-start.css";
@@ -199,7 +200,7 @@ export default function WhereToStart() {
             <p className="sa-brain-sub">{showResult ? "Built from your answers." : "Assembles as you answer."}</p>
           </header>
           <div className="sa-brain-canvas wts-pane-canvas">
-            <div className={`v3 wts-card wts-card--pane${showResult ? " wts-card--reveal" : ""}`}><ReadCard profile={paneProfile} /></div>
+            <div className={`v3 wts-card wts-card--pane${showResult ? " wts-card--reveal" : ""}`}>{showResult ? <ReadinessReport data={computeReadinessReport(answers)} /> : <ReadCard profile={paneProfile} />}</div>
           </div>
           {!showResult && <footer className="sa-brain-foot" aria-live="polite">
             {progress.flaggedTotal ? `${progress.read} of ${progress.flaggedTotal} flagged areas read.` : "Check what sounds like you and the report starts filling in."}

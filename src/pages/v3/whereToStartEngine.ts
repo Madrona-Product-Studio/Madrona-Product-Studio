@@ -262,3 +262,68 @@ export function buildRecap(a: WhereToStartAnswers): string[] {
   if (a.readiness !== undefined) lines.push(readiness[a.readiness]);
   return lines;
 }
+
+// ---- V2 report (the Readiness Assessment rebuild, 2026-08-30) ----
+// The on-screen report card: named read, an overall word grade, per-area
+// meters with owner-plain grades, and RANKED moves (now / next / later)
+// instead of a single recommendation. Print carries the whyNow detail.
+export interface ReportArea {
+  key: "web" | "repeat" | "hours" | "ai";
+  label: string;
+  grade: string;
+  level: number | null; // 0..1 meter fill; null = not read today
+  flagged: boolean;
+}
+export interface ReadinessReportData {
+  title: string;
+  overall: { grade: string; note: string };
+  areas: ReportArea[];
+  moves: { rank: "Now" | "Next" | "Later"; move: Move }[];
+}
+
+const AREA_LABELS: Record<ReportArea["key"], string> = {
+  web: "Web presence", repeat: "Repeat customers", hours: "Hours lost to admin", ai: "AI leverage",
+};
+
+const OVERALL: [string, string][] = [
+  ["The steady ship", "Nothing urgent flagged. Worth an outside read all the same."],
+  ["One clear move", "One area is asking for attention, and it has a first step."],
+  ["Ready in places", "Strong where it counts, with two clear places to gain ground."],
+  ["Big upside waiting", "Several areas flagged — which means several honest wins available."],
+];
+
+const aiMove: Move = { headline: "Put AI on the work you already repeat.", support: "Start with one workflow that happens the same way every week.", whyNow: "The newest tools are best at exactly this kind of repeated work.", drives: "ai" };
+
+export function computeReadinessReport(a: WhereToStartAnswers): ReadinessReportData {
+  const keys: ReportArea["key"][] = ["web", "repeat", "hours", "ai"];
+  const areas: ReportArea[] = keys.map((key) => {
+    const answer = a[key];
+    if (answer === undefined) return { key, label: AREA_LABELS[key], grade: "Not read today", level: null, flagged: false };
+    const map = statusMaps[key];
+    return { key, label: AREA_LABELS[key], grade: map.statuses[answer], level: map.nows[answer], flagged: map.tones[answer] === "flag" };
+  });
+
+  const flaggedCount = areas.filter((area) => area.flagged).length + (a.product !== undefined ? 1 : 0);
+  const overallPair = OVERALL[Math.min(flaggedCount, 3)];
+
+  const primary = resolveMove(a);
+  const fallbackFor: Record<string, Move> = { web: threadMoves.web, repeat: threadMoves.repeat, hours: workflowMoves[5], ai: aiMove };
+  const seen = new Set([primary.headline]);
+  const candidates: Move[] = [];
+  // severity order: most-broken flagged areas first
+  const flaggedSorted = areas.filter((area) => area.flagged && area.level !== null).sort((x, y) => (x.level! - y.level!));
+  for (const area of flaggedSorted) {
+    const candidate = fallbackFor[area.key];
+    if (candidate && !seen.has(candidate.headline)) { seen.add(candidate.headline); candidates.push(candidate); }
+  }
+  if (a.product !== undefined && primary.drives !== "product") {
+    const productMove = productMoves[a.product];
+    if (!seen.has(productMove.headline)) { seen.add(productMove.headline); candidates.push(productMove); }
+  }
+  if (!candidates.length && primary.drives !== "none") candidates.push(outsideMove);
+
+  const ranks: ("Now" | "Next" | "Later")[] = ["Now", "Next", "Later"];
+  const moves = [primary, ...candidates].slice(0, 3).map((move, index) => ({ rank: ranks[index], move }));
+
+  return { title: READ_TITLES[primary.drives], overall: { grade: overallPair[0], note: overallPair[1] }, areas, moves };
+}

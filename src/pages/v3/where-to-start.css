@@ -90,3 +90,49 @@
 
 /* The named read: give the persona headline display presence. */
 .wts-sa .sa-result h1{font-family:"Hanken Grotesk",Inter,sans-serif;font-weight:500;letter-spacing:-.025em}
+
+/* ---- The V2 report card (Readiness Assessment rebuild) ---- */
+.rr-card{color:var(--v3-ink)}
+.wts-sa .rr-card header.rr-head{display:block;padding:22px 22px 18px;border-bottom:1px solid var(--v3-soft);font-size:inherit;font-weight:400;letter-spacing:normal;text-transform:none}
+.rr-kicker{margin:0 0 10px;color:var(--v3-muted);font:700 9.5px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.wts-sa .rr-card .rr-head h2{margin:0 0 10px;font:500 24px/1.12 "Hanken Grotesk",Inter,sans-serif;letter-spacing:-.02em;color:var(--v3-ink)}
+.rr-overall{margin:0;color:var(--v3-clay);font-size:12.5px;line-height:1.5}
+.rr-overall strong{color:#BC431D}
+.rr-areas,.rr-moves{padding:16px 22px 18px}
+.rr-areas{border-bottom:1px solid var(--v3-soft)}
+.rr-areas h3,.rr-moves h3{margin:0 0 12px;color:var(--v3-muted);font:700 9px/1.2 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.rr-areas ul{margin:0;padding:0;list-style:none}
+.rr-areas li{display:grid;grid-template-columns:13px minmax(96px,auto) 1fr auto;gap:10px;align-items:center;padding:7px 0}
+.rr-areas li.is-quiet{opacity:.55}
+.rr-dot{width:7px;height:7px;border-radius:999px}
+.rr-dot.is-copper{background:var(--hue-copper)}.rr-dot.is-stone{background:var(--hue-stone)}.rr-dot.is-fir{background:var(--hue-fir)}.rr-dot.is-moss{background:var(--hue-moss)}
+.rr-label{font-size:11px;color:var(--v3-ink70)}
+.rr-meter{display:block;height:5px;overflow:hidden;border-radius:999px;background:var(--v3-bg)}
+.rr-meter b{display:block;height:100%;border-radius:inherit;min-width:4px}
+.rr-meter b.is-copper{background:var(--hue-copper-deep)}.rr-meter b.is-stone{background:var(--hue-stone-deep)}.rr-meter b.is-fir{background:var(--hue-fir-deep)}.rr-meter b.is-moss{background:var(--hue-moss-deep)}
+.rr-meter b.is-flagged{background:#E55728}
+.rr-areas li strong{font:700 9px/1.2 Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--v3-muted)}
+.rr-areas li strong.is-flagged{color:#BC431D}
+.rr-moves ol{margin:0;padding:0;list-style:none}
+.rr-moves li{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--v3-soft)}
+.rr-moves li:last-child{border-bottom:0}
+.rr-rank{font:700 9px/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--v3-muted);padding-top:3px}
+.rr-moves li.is-now .rr-rank{color:#BC431D}
+.rr-move{margin:0;font-size:13px;font-weight:600;line-height:1.35}
+.rr-moves li.is-now .rr-move{font-size:14.5px}
+.rr-support{margin:4px 0 0;color:var(--v3-clay);font-size:11px;line-height:1.45}
+.rr-why{display:none}
+.rr-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 22px;border-top:1px solid var(--v3-soft)}
+.rr-foot button{border:0;background:none;padding:0;cursor:pointer;color:#BC431D;font:700 11.5px Inter,sans-serif}
+.rr-foot button:hover{color:#E55728}
+.rr-foot>span{color:var(--v3-faint);font-size:9.5px}
+
+/* The keepable version: print shows ONLY the report, with the whyNow
+   detail lines included — "a bit more detailed, available for download." */
+@media print{
+  .wts-sa .sa-top,.wts-sa .sa-work,.wts-sa .sa-brain-head,.wts-sa .sa-site-foot,.rr-foot button{display:none !important}
+  .wts-sa,.wts-sa .sa-shell{background:#fff !important;min-height:0}
+  .wts-sa .sa-brain{width:100%;border:0}
+  .rr-card{box-shadow:none;border-color:#ddd}
+  .rr-why{display:block;margin:5px 0 0;color:#6f6657;font-size:10.5px;font-style:italic}
+}
