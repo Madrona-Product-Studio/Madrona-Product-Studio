@@ -146,7 +146,7 @@
 .agentx-console-badge {
   margin-left: auto;
   font-size: .64rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase;
-  color: var(--bark); background: rgba(200, 106, 61, .16);
+  color: var(--bark); background: rgba(229, 87, 40, .16);
   border-radius: 999px; padding: 5px 12px;
 }
 
@@ -181,7 +181,7 @@
 
 .agentx-spin {
   width: 14px; height: 14px; border-radius: 50%;
-  border: 2px solid rgba(200, 106, 61, .28); border-top-color: var(--bark);
+  border: 2px solid rgba(229, 87, 40, .28); border-top-color: var(--bark);
   display: block; animation: agentx-spin .7s linear infinite;
 }
 @keyframes agentx-spin { to { transform: rotate(360deg); } }
@@ -320,11 +320,11 @@
 }
 .agentx-mm-approve {
   margin-top: 13px; background: transparent;
-  border: 1px solid rgba(200, 106, 61, .55); border-radius: 8px;
+  border: 1px solid rgba(229, 87, 40, .55); border-radius: 8px;
   color: var(--bark); cursor: pointer; font-size: .83rem; font-weight: 600; padding: 8px 15px;
   transition: background .2s ease, border-color .2s ease;
 }
-.agentx-mm-approve:hover { background: rgba(200, 106, 61, .12); border-color: var(--bark); }
+.agentx-mm-approve:hover { background: rgba(229, 87, 40, .12); border-color: var(--bark); }
 .agentx-approve-all { font-family: var(--font-nav, Inter, sans-serif); }
 
 /* ---- Artifacts (P&L, packet) ---- */

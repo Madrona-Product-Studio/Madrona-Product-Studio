@@ -17,7 +17,7 @@ const colors = [
   ["Sand", "#e3dac5"],
   ["Ink", "#222222"],
   ["Forest", "#1f3b33"],
-  ["Terracotta", "#c86a3d"],
+  ["Madrona", "#E55728"],
 ] as const;
 
 export default function MadronaSystem() {

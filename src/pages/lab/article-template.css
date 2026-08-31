@@ -209,7 +209,7 @@
 .art-pillar + .art-pillar { border-left: 1px solid var(--art-hair-soft); }
 .art-pillar-ico {
   align-items: center;
-  background: var(--tint, var(--tint-bark));
+  background: var(--tint, var(--tint-copper));
   border-radius: 9px;
   color: var(--bark-dark);
   display: inline-flex;
