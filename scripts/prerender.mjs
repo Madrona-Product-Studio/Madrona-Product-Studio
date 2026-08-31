@@ -337,7 +337,7 @@ function generateHtml(route, meta) {
       description: meta.description,
       datePublished: meta.article.datePublished,
       dateModified: meta.article.dateModified || meta.article.datePublished,
-      author: { '@type': 'Person', name: 'Charlie Koch' },
+      author: { '@type': 'Person', name: 'Charlie Koch', url: 'https://www.madronaproduct.com/charlie' },
       publisher: { '@type': 'Organization', name: 'Madrona Product Studio', url: 'https://www.madronaproduct.com' },
       mainEntityOfPage: `https://www.madronaproduct.com${route}`,
     };

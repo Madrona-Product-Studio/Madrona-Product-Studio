@@ -2,13 +2,22 @@
    doors (rail + prose), no centered stacks. */
 
 .ck-hero { padding-bottom: 26px; }
+.ck-hero h1 { margin-bottom: 26px; max-width: 14ch; }
 .ck-hero h1 span { color: var(--v3-bark); }
 .ck-lede { margin-top: 22px; }
+
+/* The hub — circular portrait fanning through madrona elbow lines into the
+   four door rows. One person, read four ways. */
+.ck-hub { align-items: center; display: grid; gap: 0 56px; grid-template-columns: 300px minmax(0, 1fr); margin-top: 64px; position: relative; }
+.ck-hub-lines { height: 100%; inset: 0; pointer-events: none; position: absolute; width: 100%; }
+.ck-hub-lines path { fill: none; opacity: 0.4; stroke: var(--v3-bark); stroke-width: 1.5; }
+.ck-hub-portrait { justify-self: center; margin: 0; width: min(260px, 100%); }
+.ck-hub-portrait img { aspect-ratio: 1; border: 1px solid var(--v3-line); border-radius: 999px; display: block; object-fit: cover; object-position: 50% 32%; width: 100%; }
+.ck-hub .ck-jump { border-top: 1px solid var(--v3-line); margin-top: 0; }
 
 .ck-jump { border-top: 1px solid var(--v3-line); display: flex; flex-direction: column; margin-top: 38px; }
 .ck-jump a {
   align-items: baseline;
-  border-bottom: 1px solid var(--v3-line);
   color: var(--v3-ink);
   display: flex;
   font-size: clamp(1.05rem, 1.6vw, 1.3rem);
@@ -16,10 +25,24 @@
   gap: 18px;
   letter-spacing: -0.015em;
   padding: 16px 2px;
+  position: relative;
   text-decoration: none;
-  transition: color 160ms ease, padding-left 200ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition: color 160ms ease, transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
-.ck-jump a:hover { color: var(--v3-bark-dark); padding-left: 10px; }
+/* Hairline lives on a counter-translated pseudo so the hover nudge can ride
+   transform (not padding) while the rule stays visually pinned. */
+.ck-jump a::after {
+  background: var(--v3-line);
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.ck-jump a:hover { color: var(--v3-bark-dark); transform: translateX(10px); }
+.ck-jump a:hover::after { transform: translateX(-10px); }
 .ck-jump a span { color: var(--v3-faint); font-size: 0.78rem; font-variant-numeric: tabular-nums; font-weight: 700; }
 
 .ck-door { border-top: 1px solid var(--v3-line); display: grid; gap: 20px 64px; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
@@ -33,6 +56,9 @@
 .ck-throughline-note { color: var(--v3-clay); font-size: 0.95rem; margin: 18px 0 0; max-width: 44ch; }
 
 @media (max-width: 760px) {
+  .ck-hub { gap: 36px; grid-template-columns: 1fr; margin-top: 44px; }
+  .ck-hub-lines { display: none; }
+  .ck-hub-portrait { width: 180px; }
   .ck-door { grid-template-columns: 1fr; }
   .ck-door-rail h2 { max-width: none; }
 }
