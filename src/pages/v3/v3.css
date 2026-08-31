@@ -485,6 +485,32 @@
 .sa-sf-foot{padding:10px 18px 14px;color:var(--v3-muted);font-size:10px}
 @media(max-width:600px){.sa-week-grid{grid-template-columns:1fr 1fr}.sa-week-grid section{border-bottom:1px solid var(--v3-soft)}.sa-ba-grid{grid-template-columns:1fr}.sa-ba-grid section:first-child{border-right:0;border-bottom:1px solid var(--v3-soft)}.sa-jn-body ol{grid-template-columns:1fr 1fr}.sa-vr-grid{grid-template-columns:1fr}.sa-id-body{grid-template-columns:1fr}.sa-id-mark{border-right:0;border-bottom:1px solid var(--v3-soft)}}
 
+/* Scroll reveal — "Settle" (motion pass 2026-08-30). Hidden states live only
+   under rv-armed, which Reveal.tsx adds at runtime for below-fold sections;
+   no-JS, prerender, and reduced-motion paths always render the resting design.
+   rv-stagger (the v4 modules) reveals copy children and the window in sequence
+   instead of moving the section as one unit. */
+.rv-armed{opacity:0;transform:translateY(16px)}
+.rv-in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.22,.7,.3,1),transform .6s cubic-bezier(.22,.7,.3,1)}
+.rv-stagger.rv-armed,.rv-stagger.rv-in{opacity:1;transform:none;transition:none}
+.rv-stagger.rv-armed .v4-module-copy>*{opacity:0;transform:translateY(14px)}
+.rv-stagger.rv-in .v4-module-copy>*{opacity:1;transform:none;transition:opacity .55s cubic-bezier(.22,.7,.3,1),transform .55s cubic-bezier(.22,.7,.3,1)}
+.rv-stagger.rv-in .v4-module-copy>*:nth-child(2){transition-delay:.07s}
+.rv-stagger.rv-in .v4-module-copy>*:nth-child(3){transition-delay:.14s}
+.rv-stagger.rv-in .v4-module-copy>*:nth-child(4){transition-delay:.21s}
+.rv-stagger.rv-armed .v4-module-art{opacity:0;transform:translateY(20px)}
+.rv-stagger.rv-in .v4-module-art{opacity:1;transform:none;transition:opacity .65s cubic-bezier(.22,.7,.3,1) .18s,transform .65s cubic-bezier(.22,.7,.3,1) .18s}
+.rv .sa-week-grid i b,.rv .sa-vr-grid section>i{transform-origin:left}
+.rv-armed .sa-week-grid i b,.rv-armed .sa-vr-grid section>i{transform:scaleX(0)}
+.rv-in .sa-week-grid i b,.rv-in .sa-vr-grid section>i{transform:scaleX(1);transition:transform .7s cubic-bezier(.22,.7,.3,1) .55s}
+.rv-armed .sa-jn-body li{opacity:0;transform:translateY(10px)}
+.rv-in .sa-jn-body li{opacity:1;transform:none;transition:opacity .5s ease-out,transform .5s cubic-bezier(.22,.7,.3,1)}
+.rv-in .sa-jn-body li:nth-child(1){transition-delay:.4s}
+.rv-in .sa-jn-body li:nth-child(2){transition-delay:.52s}
+.rv-in .sa-jn-body li:nth-child(3){transition-delay:.64s}
+.rv-in .sa-jn-body li:nth-child(4){transition-delay:.76s}
+@media(prefers-reduced-motion:reduce){.rv-armed,.rv-armed .v4-module-copy>*,.rv-armed .v4-module-art,.rv-armed .sa-week-grid i b,.rv-armed .sa-vr-grid section>i,.rv-armed .sa-jn-body li{opacity:1!important;transform:none!important;transition:none!important}}
+
 /* Berry window: stable frame + crossfade (no layout shift on tab change) */
 .v3-berry-frame{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--v3-paper)}
 .v3-berry-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 260ms ease}
