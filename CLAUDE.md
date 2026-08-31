@@ -76,15 +76,17 @@ aliases (they were removed; use the tokens below).
 - `line` `rgba(26,23,20,0.14)` — standard hairline rules and borders
 - `line-soft` `rgba(26,23,20,0.08)` — the quietest dividers
 
-**Madrona / bark (the signature — used sparingly)**
-- `madrona` `#c4553a` — links, active nav, accent rules, the `.m2-pop` flash
-- `madrona-dark` `#a3432d` — hover and pressed states
+**Madrona / the orange (the signature — used sparingly)**
+- `madrona` `#E55728` — links, active nav, kickers, the `.m2-pop` flash,
+  the frond (day companion `madrona-dark` `#BC431D`; dark-sky companion
+  `#F0703F` — value shifts, never hue)
 - `madrona-light` `#e8a999` — selection highlights, subtle tinted washes
 
-**Forest (the CTA + deep ground — canonized 2026-08-15)**
-- `forest` `#1f3b33` — primary CTA buttons ("Get in touch" / "Send message")
-  and the deep CTA/footer band
-- `forest-soft` `#506b58` — secondary/outline CTA text, hover tints
+**Action grounds (the green is retired — see Discipline below)**
+- charcoal `#2F3135` — primary CTAs on light grounds; `--cta-band` deep band
+- cream `#F7EDE4` — primary CTAs on dark grounds; light-island frames
+- (legacy `forest`/`forest-soft` tokens still exist in code but are no
+  longer the CTA system; sweep remaining `--forest-soft` uses over time)
 
 **Discipline (one orange + opposite ground · canonized 2026-08-30, wrapped
 into canon with Charlie's launch-day decisions):** The color logic is one
