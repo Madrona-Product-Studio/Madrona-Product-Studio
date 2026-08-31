@@ -43,6 +43,9 @@ export default function MadronaV2Connect() {
   useCalEmbed();
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const [topics, setTopics] = useState<string[]>([]);
+  const toggleTopic = (topic: string) =>
+    setTopics(current => current.includes(topic) ? current.filter(item => item !== topic) : [...current, topic]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -51,11 +54,9 @@ export default function MadronaV2Connect() {
     const form = e.currentTarget;
     const val = (n: string) => (form.elements.namedItem(n) as HTMLInputElement | HTMLTextAreaElement)?.value ?? "";
     const message = [
-      val("notWorking") && `What's not working: ${val("notWorking")}`,
-      val("improve") && `Hoping to improve: ${val("improve")}`,
+      topics.length && `Help with: ${topics.join(", ")}`,
       val("organization") && `Organization: ${val("organization")}`,
-      val("website") && `Website: ${val("website")}`,
-      val("notes") && `Anything else: ${val("notes")}`,
+      val("notes") && `Message: ${val("notes")}`,
     ].filter(Boolean).join("\n\n");
     const payload = { name: val("name"), email: val("email"), message, company: val("company") };
 
@@ -109,13 +110,18 @@ export default function MadronaV2Connect() {
                 <label className="m2-cx-field"><span>Your name <b>*</b></span><input name="name" type="text" required autoComplete="name" placeholder="First and last name" /></label>
                 <label className="m2-cx-field"><span>Email address <b>*</b></span><input name="email" type="email" required autoComplete="email" placeholder="name@company.com" /></label>
               </div>
-              <div className="m2-cx-row">
-                <label className="m2-cx-field"><span>Business / Organization <b>*</b></span><input name="organization" type="text" required placeholder="Company or organization name" /></label>
-                <label className="m2-cx-field"><span>Website or prototype URL</span><input name="website" type="text" placeholder="https://yourwebsite.com" /></label>
-              </div>
-              <label className="m2-cx-field"><span>What’s not working right now?</span><textarea name="notWorking" rows={2} placeholder="Share the challenges, gaps, or friction you’re facing." /></label>
-              <label className="m2-cx-field"><span>What are you hoping to improve?</span><textarea name="improve" rows={2} placeholder="What would success look like for this project?" /></label>
-              <label className="m2-cx-field"><span>Anything else we should know?</span><textarea name="notes" rows={3} placeholder="Share any additional context, goals, or timeline." /></label>
+              <label className="m2-cx-field"><span>Business / Organization</span><input name="organization" type="text" placeholder="Company or organization name" /></label>
+              <fieldset className="m2-cx-topics">
+                <legend>What do you need help with?</legend>
+                <div className="m2-cx-topic-grid">
+                  {["AI & Operations", "Brand & Website", "Growth & Retention", "New Products", "Not sure yet"].map(topic => (
+                    <button type="button" key={topic} className={`m2-cx-topic${topics.includes(topic) ? " is-on" : ""}`} aria-pressed={topics.includes(topic)} onClick={() => toggleTopic(topic)}>
+                      {topic}<i aria-hidden="true">{topics.includes(topic) ? "\u2713" : "+"}</i>
+                    </button>
+                  ))}
+                </div>
+              </fieldset>
+              <label className="m2-cx-field"><span>What’s going on?</span><textarea name="notes" rows={3} placeholder="A sentence or two is plenty. We’ll take it from there." /></label>
               <input name="company" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" className="m2-cx-hp" />
               <div className="m2-cx-submit">
                 <button className="m2-button" type="submit" disabled={status === "submitting"}>{status === "submitting" ? "Sending…" : "Send message"} <span>↗</span></button>
