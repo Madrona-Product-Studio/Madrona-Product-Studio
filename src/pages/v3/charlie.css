@@ -2,7 +2,7 @@
    doors (rail + prose), no centered stacks. */
 
 .ck-hero { padding-bottom: 26px; }
-.ck-hero h1 { margin-bottom: 10px; max-width: 14ch; }
+.ck-hero h1 { margin-bottom: 26px; max-width: 14ch; }
 .ck-hero h1 span { color: var(--v3-bark); }
 .ck-lede { margin-top: 22px; }
 

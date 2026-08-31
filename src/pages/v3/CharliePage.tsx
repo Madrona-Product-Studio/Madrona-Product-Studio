@@ -63,16 +63,16 @@ const DOORS = [
    2026-08-31 placement contact sheet; losing variants removed). */
 function CharlieHero() {
   return <header className="v3-section v3-shell ck-hero">
-    <p className="v3-kicker">Charlie Koch · Madrona Product Studio · PNW, USA</p>
+    <p className="v3-kicker">Charlie Koch · Madrona Product Studio · Bellingham, WA</p>
     <h1>Builder of modern <span>digital tools.</span></h1>
     <p className="v3-lede ck-lede">
-      Newest tools, oldest problems. Depending on why you're here, there are
-      four ways to read the same career. Pick your door.
+      Newest tools, oldest problems. Four ways to read the same career,
+      depending on why you're here. Pick your door.
     </p>
     <div className="ck-hub">
       <svg className="ck-hub-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        {[12.5, 37.5, 62.5, 87.5].map((y) => (
-          <path key={y} d={`M21.5 50 C 25.5 50 25.5 ${y} 28.5 ${y}`} vectorEffect="non-scaling-stroke" />
+        {[[44, 12.5], [48.5, 37.5], [51.5, 62.5], [56, 87.5]].map(([sy, ey]) => (
+          <path key={ey} d={`M21 ${sy} C 25.5 ${sy} 25.5 ${ey} 28.5 ${ey}`} vectorEffect="non-scaling-stroke" />
         ))}
       </svg>
       <figure className="ck-hub-portrait">
