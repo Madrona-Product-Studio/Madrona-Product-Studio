@@ -92,12 +92,6 @@ const pages = {
     h1: 'New Products',
     body: 'Have an idea that deserves to become real? Product strategy and validation, prototypes and MVPs, AI-enabled features, and launch and iteration. We take new products from concept to something real people use, and we build and run our own. From Madrona Product Studio in Bellingham, Washington.',
   },
-  '/services/agentic-operations': {
-    title: 'Workflow automation and practical AI · Madrona Product Studio',
-    description: 'Less repetitive work, fewer handoffs, and a clearer view of the operation. Practical automation and AI built around real business workflows.',
-    h1: 'Run smoother with practical automation and AI',
-    body: 'Less repetitive work, fewer handoffs, and a clearer view of the operation. We build practical automation and AI around real business workflows: agents that handle the repetitive load, one command surface to see and steer the work, and engagements that start small and prove value before they grow. From Madrona Product Studio in Bellingham, Washington.',
-  },
   '/thesis': {
     title: 'The Madrona Product Thesis · Madrona Product Studio',
     description: 'AI is not eliminating Product, Design, or Engineering. It is expanding what each discipline can contribute as the cost of building software falls. A working theory from building.',

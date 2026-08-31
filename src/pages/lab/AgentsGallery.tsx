@@ -82,7 +82,7 @@ export default function AgentsGallery() {
           </p>
           <div className="m2-th-close-links">
             <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
-            <Link className="m2-text-link" to="/services/agentic-operations">How agentic operations work <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/services/ai-operations">How agentic operations work <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>

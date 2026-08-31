@@ -12,7 +12,6 @@ import MadronaV2Pov from "./pages/lab/MadronaV2Pov";
 import AgentsGallery from "./pages/lab/AgentsGallery";
 // Everything deeper is route-split: articles, tool demos, the assessment, and
 // legacy/lab pages don't belong in the first-load bundle.
-const AgenticOperations = lazy(() => import("./pages/AgenticOperations"));
 const ServicePageV4 = lazy(() => import("./pages/v3/ServicePageV4"));
 const CharliePage = lazy(() => import("./pages/v3/CharliePage"));
 const MadronaV2Thesis = lazy(() => import("./pages/lab/MadronaV2Thesis"));
@@ -135,7 +134,7 @@ export default function App() {
 
         {/* Legacy pages not yet rebuilt in V2 (still old chrome). */}
         <Route element={<Layout />}>
-          <Route path="services/agentic-operations" element={<AgenticOperations />} />
+          <Route path="services/agentic-operations" element={<Navigate to="/services/ai-operations" replace />} />
         </Route>
         {/* Case studies retired 2026-08-23 → the products page (vercel.json 301s too). */}
         <Route path="work/:slug" element={<Navigate to="/apps" replace />} />
