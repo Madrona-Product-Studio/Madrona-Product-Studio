@@ -348,7 +348,7 @@
   align-items: center;
   gap: 9px;
   border: 0;
-  border-radius: 12px;
+  border-radius: 4px;
   background: var(--a-text);
   color: #2F3135;
   font-weight: 600;

@@ -149,7 +149,7 @@ html:has(.m2) { scroll-behavior: smooth; }
   align-items: center;
   background: var(--forest);
   border: 1px solid var(--forest);
-  border-radius: 999px;
+  border-radius: 4px;
   color: #fff !important;
   cursor: pointer;
   display: inline-flex;
@@ -1452,7 +1452,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-fc-half h2 { font-family: var(--font-sans); font-size: clamp(1.85rem, 2.5vw, 2.4rem); font-weight: 600; letter-spacing: -.035em; line-height: 1.04; margin: 0 0 16px; }
 .m2-fc-half > p { color: rgba(255, 255, 255, .82); font-size: .95rem; line-height: 1.55; margin: 0 0 26px; max-width: 400px; position: relative; }
 .m2-fc-btns { align-items: center; display: flex; flex-wrap: wrap; gap: 14px 24px; margin-bottom: 30px; position: relative; }
-.m2-fc-half .m2-fc-btn { align-items: center; background: var(--paper); border-radius: 10px; color: var(--forest); display: inline-flex; font-size: .92rem; font-weight: 650; gap: 10px; padding: 13px 20px; }
+.m2-fc-half .m2-fc-btn { align-items: center; background: var(--paper); border-radius: 4px; color: var(--forest); display: inline-flex; font-size: .92rem; font-weight: 650; gap: 10px; padding: 13px 20px; }
 .m2-fc-btn svg { flex: none; height: 18px; width: 18px; }
 .m2-fc-btn svg:last-child { height: 15px; width: 15px; }
 .m2-fc-started .m2-fc-btn { color: var(--bark-dark); }
