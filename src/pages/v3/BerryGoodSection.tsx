@@ -29,7 +29,7 @@ export function BerryGoodSection() {
       <h2>One business, improved <span>end to end.</span></h2>
       <p className="v3-help-lede">Berry Good Berry Farm is our demonstration business: a real operation where we build and run everything we sell, from the brand to the storefront to the agents behind the counter.</p>
       <div className="v3-berry-links">
-        <a className="v3-btn v3-btn-primary v3-btn-compact" href={BERRY_URL} target="_blank" rel="noreferrer">Visit the live demo <span aria-hidden="true">↗</span></a>
+        <a className="v3-btn v3-btn-primary v3-btn-compact" href={BERRY_URL} target="_blank" rel="noreferrer">Visit the live demo <span aria-hidden="true">↗︎</span></a>
         <Link className="v3-practice-link" to="/services/ai-operations">See the operations work <span aria-hidden="true">→</span></Link>
       </div>
     </div>

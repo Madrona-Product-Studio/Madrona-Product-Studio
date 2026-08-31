@@ -124,7 +124,7 @@ export default function MadronaV2Connect() {
               <label className="m2-cx-field"><span>What’s going on?</span><textarea name="notes" rows={3} placeholder="A sentence or two is plenty. We’ll take it from there." /></label>
               <input name="company" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" className="m2-cx-hp" />
               <div className="m2-cx-submit">
-                <button className="m2-button" type="submit" disabled={status === "submitting"}>{status === "submitting" ? "Sending…" : "Send message"} <span>↗</span></button>
+                <button className="m2-button" type="submit" disabled={status === "submitting"}>{status === "submitting" ? "Sending…" : "Send message"} <span>↗︎</span></button>
                 <p className="m2-cx-privacy">We respect your privacy. Your information is safe with us.</p>
               </div>
               {status === "error" && <p className="m2-cx-error">{error}</p>}
@@ -136,7 +136,7 @@ export default function MadronaV2Connect() {
           <div className="m2-cx-card m2-cx-book">
             <h3>Prefer to talk first?</h3>
             <p className="m2-cx-book-sub">Book a free 30-minute call to talk through where you are and where we can help. No prep needed.</p>
-            <a className="m2-button m2-button-secondary" href={bookHref()} onClick={bookClick} target="_blank" rel="noopener noreferrer" {...bookProps()}>Schedule a 30-minute call <span>↗</span></a>
+            <a className="m2-button m2-button-secondary" href={bookHref()} onClick={bookClick} target="_blank" rel="noopener noreferrer" {...bookProps()}>Schedule a 30-minute call <span>↗︎</span></a>
             <p className="m2-cx-book-label">What to expect</p>
             <ul className="m2-cx-expect">
               {expectItems.map((it) => (
