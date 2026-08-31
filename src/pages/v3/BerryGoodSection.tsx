@@ -41,7 +41,12 @@ export function BerryGoodSection() {
           {tabs.map((t, index) => <button key={t.id} type="button" role="tab" aria-selected={index === active} className={index === active ? "is-active" : ""} onClick={() => setActive(index)}>{t.label}</button>)}
         </div>
       </header>
-      <img key={tab.id} src={tab.image} alt={tab.alt} loading="lazy" />
+      {/* All four images stay mounted in one fixed-ratio frame and crossfade —
+          remounting on tab change refetched the image with nothing holding
+          the space, so the page jumped (Charlie, launch night). */}
+      <div className="v3-berry-frame">
+        {tabs.map((t, index) => <img key={t.id} src={t.image} alt={index === active ? t.alt : ""} aria-hidden={index !== active} className={index === active ? "is-active" : undefined} loading={index === 0 ? "lazy" : "eager"} />)}
+      </div>
       <footer><p>{tab.caption}</p></footer>
     </article>
   </section>;
