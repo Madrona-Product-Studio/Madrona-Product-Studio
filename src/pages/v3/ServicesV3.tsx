@@ -5,6 +5,7 @@ import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { useCalEmbed } from "../lab/useCalEmbed";
 import { PracticeSection } from "./PracticeSection";
+import Reveal from "./Reveal";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 
@@ -20,7 +21,7 @@ const doorRoutes: Record<ServiceId, string> = {
 
 function ServiceArea({ area, index }: { area: typeof serviceAreas[number]; index: number }) {
   const light = index % 2 === 1;
-  return <section className={`v3-section v3-svc-area${light ? " v3-band-light v3-svc-flip" : ""}`}>
+  return <Reveal as="section" className={`v3-section v3-svc-area${light ? " v3-band-light v3-svc-flip" : ""}`}>
     <div className="v3-shell v3-svc-area-inner">
       <div className="v3-svc-rail">
         <p className="v3-kicker">0{index + 1} · {area.name}</p>
@@ -34,7 +35,7 @@ function ServiceArea({ area, index }: { area: typeof serviceAreas[number]; index
         <figcaption>{area.artifact.caption}</figcaption>
       </figure>
     </div>
-  </section>;
+  </Reveal>;
 }
 
 export default function ServicesV3() {

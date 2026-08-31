@@ -6,6 +6,7 @@ import SiteFooter from "../lab/SiteFooter";
 import { useCalEmbed } from "../lab/useCalEmbed";
 import { BriefArtifact } from "./V3Artifacts";
 import { BeforeAfterArtifact, BUILD_JOURNEY, IdentityBoardArtifact, JourneyArtifact, RoutingArtifact, StorefrontArtifact, ThreadArtifact, VariantsArtifact, WeekArtifact } from "./ServiceArtifacts";
+import Reveal from "./Reveal";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 
@@ -105,13 +106,13 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
         </div>
       </section>
 
-      <section className="v4-points v3-shell">
+      <Reveal as="section" className="v4-points v3-shell">
         {service.valuePoints.map((point, index) => (
           <div key={point.title}><span>0{index + 1}</span><strong>{point.title}</strong><p>{point.description}</p></div>
         ))}
-      </section>
+      </Reveal>
 
-      <section className="v4-strip v3-shell">
+      <Reveal as="section" className="v4-strip v3-shell">
         <div>
           <h2>Included services</h2>
           {service.capabilityGroups.map(group => (
@@ -136,12 +137,12 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
             {service.pov && <Link to={service.pov.to}>{service.pov.label} <span aria-hidden="true">→</span></Link>}
           </div>
         </div>
-      </section>
+      </Reveal>
 
       <section className="v4-modules v3-shell">
-        <div className="v4-modules-intro"><p className="v3-kicker">What we put to work</p><h2>Every useful system produces something you can see.</h2></div>
+        <Reveal className="v4-modules-intro"><p className="v3-kicker">What we put to work</p><h2>Every useful system produces something you can see.</h2></Reveal>
         {modules.map((mod) => (
-          <article className="v4-module" key={mod.title}>
+          <Reveal as="article" className="v4-module rv-stagger" key={mod.title}>
             <div className="v4-module-copy">
               <p className="v3-kicker">{mod.kicker}</p>
               <h3>{mod.title}</h3>
@@ -151,7 +152,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
                 : <Link to={mod.to}>{mod.linkLabel} <span aria-hidden="true">→</span></Link>}
             </div>
             <div className="v4-module-art"><ModuleArtifact mod={mod} service={service} /></div>
-          </article>
+          </Reveal>
         ))}
       </section>
 
