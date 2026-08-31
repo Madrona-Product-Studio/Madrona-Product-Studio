@@ -148,7 +148,9 @@
   /* Hybrid: H1 keeps the editorial Fraunces voice; H2–H4 stay tight Inter */
   h1 {
     font-family: var(--font-serif);
-    font-weight: 500;
+    /* 550 (Charlie, 2026-08-30): 500 read light at display sizes on retina;
+       600 flattens hierarchy against the Inter h2s. Variable font, native. */
+    font-weight: 550;
     line-height: 1.08;
     letter-spacing: -0.02em;
   }
