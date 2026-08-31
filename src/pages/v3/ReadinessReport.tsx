@@ -7,7 +7,7 @@ import type { ReadinessReportData } from "./whereToStartEngine";
 // (now / next / later). "Keep this read" prints a fuller version — the
 // whyNow lines are print-only detail. Same window language as the
 // service-artifact library; in dark skies it rides the light-island rules.
-const AREA_HUES: Record<string, string> = { web: "copper", repeat: "stone", hours: "fir", ai: "moss" };
+const AREA_HUES: Record<string, string> = { web: "copper", repeat: "stone", hours: "fir", ai: "moss", product: "plum" };
 
 export function ReadinessReport({ data }: { data: ReadinessReportData }) {
   const today = new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" });
@@ -28,6 +28,7 @@ export function ReadinessReport({ data }: { data: ReadinessReportData }) {
               <span className="rr-label">{area.label}</span>
               <i className="rr-meter"><b className={`is-${AREA_HUES[area.key]}${area.flagged ? " is-flagged" : ""}`} style={{ width: `${Math.round((area.level ?? 0) * 100)}%` }} /></i>
               <strong className={area.flagged ? "is-flagged" : undefined}>{area.grade}</strong>
+              {area.detail && <p className="rr-detail">{area.detail}</p>}
             </li>
           ))}
         </ul>

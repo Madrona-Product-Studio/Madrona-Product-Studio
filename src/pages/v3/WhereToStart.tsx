@@ -161,7 +161,7 @@ export default function WhereToStart() {
 
           {question && stage.kind === "question" && (
             <section key={stage.index} className="sa-question sa-enter" aria-labelledby="wts-q">
-              <p className="sa-count"><em>Follow-up</em><span aria-hidden="true"> · </span>Question {String(stage.index + 1).padStart(2, "0")} / {String(sequence.length).padStart(2, "0")}</p>
+              <p className="sa-count"><em>{question.module}</em><span aria-hidden="true"> · </span>Question {String(stage.index + 1).padStart(2, "0")} / {String(sequence.length).padStart(2, "0")}</p>
               <h1 id="wts-q" ref={headingRef} tabIndex={-1}>{question.question}</h1>
               {question.support && <p className="sa-support">{question.support}</p>}
               <div className="sa-answers" role="radiogroup" aria-labelledby="wts-q">
