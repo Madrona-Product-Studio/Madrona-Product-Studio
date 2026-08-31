@@ -53,16 +53,68 @@ export function BeforeAfterArtifact() {
   </article>;
 }
 
-// D — the come-back path with the break visible.
-export function JourneyArtifact() {
+// D — a four-step path with the break visible. Defaults to the retention
+// journey; New Products passes the build path.
+interface JourneyStep { tone: string; tag?: string; title: string; body: string }
+const RETENTION_JOURNEY: { path: string; note: string; steps: JourneyStep[]; footer: string } = {
+  path: "customer journey · first order to second", note: "where customers leak",
+  steps: [
+    { tone: "is-fir", title: "First order", body: "They found you, they bought." },
+    { tone: "is-copper", title: "The visit", body: "Great experience, no follow-up." },
+    { tone: "is-broken", tag: "The leak", title: "Silence", body: "Nothing invites them back." },
+    { tone: "is-fixed", tag: "Installed", title: "The return", body: "Thank-you, then a reason to come back, timed right." },
+  ],
+  footer: "Most businesses lose the second order in the quiet spot. We wire it.",
+};
+export const BUILD_JOURNEY: typeof RETENTION_JOURNEY = {
+  path: "new product · idea to real", note: "where ideas stall",
+  steps: [
+    { tone: "is-fir", title: "The idea", body: "Real problem, real conviction." },
+    { tone: "is-copper", title: "The plan", body: "Docs, quotes, big scopes." },
+    { tone: "is-broken", tag: "The stall", title: "Waiting", body: "Too big to start, too dear to drop." },
+    { tone: "is-fixed", tag: "Installed", title: "In hands", body: "A small prototype with ten real users on it." },
+  ],
+  footer: "Ideas die in the planning gap. A prototype in hands ends the debate.",
+};
+export function JourneyArtifact({ data = RETENTION_JOURNEY }: { data?: typeof RETENTION_JOURNEY }) {
   return <article className="v3-artifact sa-jn">
-    <WindowBar path="customer journey · first order to second" note="where customers leak" />
+    <WindowBar path={data.path} note={data.note} />
     <div className="sa-jn-body"><ol>
-      <li className="is-fir"><h3>First order</h3><span>They found you, they bought.</span></li>
-      <li className="is-copper"><h3>The visit</h3><span>Great experience, no follow-up.</span></li>
-      <li className="is-broken"><b>The leak</b><h3>Silence</h3><span>Nothing invites them back.</span></li>
-      <li className="is-fixed"><b>Installed</b><h3>The return</h3><span>Thank-you, then a reason to come back, timed right.</span></li>
-    </ol><footer>Most businesses lose the second order in the quiet spot. We wire it.</footer></div>
+      {data.steps.map(step => <li key={step.title} className={step.tone}>{step.tag && <b>{step.tag}</b>}<h3>{step.title}</h3><span>{step.body}</span></li>)}
+    </ol><footer>{data.footer}</footer></div>
+  </article>;
+}
+
+// G — the identity mini-board: a brand system at a glance (Berry Good).
+export function IdentityBoardArtifact() {
+  return <article className="v3-artifact sa-id">
+    <WindowBar path="berrygood · brand system" note="one identity, every touchpoint" />
+    <div className="sa-id-body">
+      <div className="sa-id-mark"><strong>Berry Good</strong><span>BERRY FARM</span><p>Roadside-stand editorial. Real fruit, real simple.</p></div>
+      <div className="sa-id-side">
+        <div className="sa-id-row"><h3>Color</h3><ul>
+          <li><i style={{ background: "#B8114D" }} />Raspberry</li>
+          <li><i style={{ background: "#3D6B35" }} />Leaf</li>
+          <li><i style={{ background: "#FAF5EA" }} />Cream</li>
+          <li><i style={{ background: "#33202A" }} />Ink</li>
+        </ul></div>
+        <div className="sa-id-row"><h3>Type</h3><p className="sa-id-serif">Fraunces</p><p className="sa-id-sans">Karla</p></div>
+        <div className="sa-id-row"><h3>Voice</h3><p className="sa-id-voice">"Picked with care in the Nooksack Valley."</p></div>
+      </div>
+    </div>
+  </article>;
+}
+
+// H — the storefront teardown: what a page that converts is made of.
+export function StorefrontArtifact() {
+  return <article className="v3-artifact sa-sf">
+    <WindowBar path="the page that converts" note="annotated" />
+    <div className="sa-sf-body">
+      <div className="sa-sf-el"><span className="sa-sf-tag is-fir">Says what you sell</span><div className="sa-sf-hero">Berries picked this morning. <em>Sold out by noon.</em></div></div>
+      <div className="sa-sf-el"><span className="sa-sf-tag is-copper">Proof before the pitch</span><div className="sa-sf-proof"><i>★ 4.9 · 212 reviews</i><i>Featured: Bellingham Herald</i><i>3rd season</i></div></div>
+      <div className="sa-sf-el"><span className="sa-sf-tag is-orange">One clear ask</span><div className="sa-sf-cta">Reserve Saturday pickup</div></div>
+    </div>
+    <footer className="sa-sf-foot">Every element earns its place, or it goes.</footer>
   </article>;
 }
 
