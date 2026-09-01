@@ -3,6 +3,9 @@
 // Same discipline: every report line derives 1:1 from what the visitor gave us.
 // Deterministic v1; LLM post-processing over otherText is phase 2.
 
+import { agents } from "../../data/agents";
+import { thinkingEntries } from "../../data/thinking";
+
 // ---- Types (pinned by spec interface block) ----
 
 export type ChipId =
@@ -60,12 +63,27 @@ export interface OppMove {
   proofLabel: string; // "See the pattern working →" | "Read the inventory →"
 }
 
+export interface OppTool {
+  name: string;
+  blurb: string;
+  href: string;
+}
+
+export interface OppReading {
+  title: string;
+  href: string;
+}
+
 export interface OpportunityReportData {
   title: string;
   overall: { grade: string; note: string };
   map: { runsItself: MapItem[]; amplified: MapItem[]; staysYours: string[] };
   moves: { rank: "Now" | "Next" | "Later"; move: OppMove }[];
   heard: string[]; // one line per flagged area + optional other echo + readiness close
+  // The resource layer (Charlie 09-01): live tools matched to the checked
+  // chips, on the report; personalized reading, on the rail.
+  tools: OppTool[];
+  reading: OppReading[];
 }
 
 // ---- The opener: chip definitions ----
@@ -495,12 +513,39 @@ export function computeOpportunityReport(a: OpportunityAnswers): OpportunityRepo
     heard.push(READINESS_LINES[a.readiness]);
   }
 
+  // ---- Tools worth a look (report resource layer) ----
+  // Every checked chip whose proof is a live /tools demo surfaces its agent
+  // from the registry (name + blurb are the registry's, so copy never
+  // drifts). Registry order; the visitor's picks decide membership.
+  const wantedTools = new Set(
+    chips.map(c => chipDefs.get(c)!).filter(ci => ci.proofLive).map(ci => ci.proofHref),
+  );
+  const tools: OppTool[] = agents
+    .filter(agent => wantedTools.has(agent.href))
+    .map(agent => ({ name: agent.name, blurb: agent.blurb, href: agent.href }));
+
+  // ---- Worth reading (rail resource layer) ----
+  // Personalized picks from the thinking feed, capped at three: the 12-jobs
+  // inventory always leads; the starter guide joins when AI is not yet doing
+  // real work; the era essay joins when the week is leaking in 2+ areas.
+  const byHref = new Map(thinkingEntries.map(entry => [entry.href, entry]));
+  const readingHrefs = ["/thinking/ai-tools-for-small-business"];
+  if (a.ai !== undefined && a.ai <= 1) readingHrefs.push("/thinking/starter-guide-to-building-with-ai");
+  if (flagged.length >= 2) readingHrefs.push("/thinking/the-era-of-agentic-operations");
+  const reading: OppReading[] = readingHrefs
+    .map(href => byHref.get(href))
+    .filter((entry): entry is NonNullable<typeof entry> => !!entry)
+    .slice(0, 3)
+    .map(entry => ({ title: entry.title, href: entry.href }));
+
   return {
     title: READ_TITLES[dominantArea],
     overall: { grade: overallPair[0], note: overallPair[1] },
     map: { runsItself, amplified, staysYours },
     moves,
     heard,
+    tools,
+    reading,
   };
 }
 

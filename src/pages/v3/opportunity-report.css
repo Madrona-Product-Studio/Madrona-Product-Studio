@@ -182,6 +182,53 @@
   color: var(--v3-clay);
 }
 
+/* ---- Tools worth a look ---- */
+.or-tools {
+  padding: 16px 22px 18px;
+  border-bottom: 1px solid var(--v3-soft);
+}
+.or-tools h3 {
+  margin: 0 0 12px;
+  color: var(--v3-muted);
+  font: 700 9px/1.2 Inter, sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.or-tools-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.or-tools-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--v3-soft);
+}
+.or-tools-list li:last-child { border-bottom: 0; }
+.or-tools-list a {
+  font: 600 12.5px/1.3 Inter, sans-serif;
+  color: var(--v3-ink);
+  text-decoration: none;
+}
+.or-tools-list a:hover { color: #E55728; }
+.or-tools-list a span[aria-hidden] { color: var(--v3-muted); }
+.or-tools-list a:hover span[aria-hidden] { color: #E55728; }
+.or-tools-list p {
+  margin: 3px 0 0;
+  color: var(--v3-clay);
+  font-size: 11px;
+  line-height: 1.45;
+  max-width: 58ch;
+}
+.or-tools-all {
+  display: inline-block;
+  margin-top: 12px;
+  font: 700 10.5px/1.2 Inter, sans-serif;
+  color: #BC431D;
+  text-decoration: none;
+  letter-spacing: .02em;
+}
+.or-tools-all:hover { color: #E55728; }
+
 /* ---- What we heard ---- */
 .or-heard {
   padding: 16px 22px 18px;

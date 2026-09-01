@@ -21,6 +21,20 @@
 
 .wts-sa .wts-retake{margin-top:26px}
 
+/* Result rail blocks (Charlie 09-01): the rail is the concierge — ways to
+   get in touch and reading picked from the answers. Quiet lists on
+   hairlines; the report card keeps the loud content. */
+.wts-rail-block{max-width:560px;margin-top:34px;padding-top:22px;border-top:1px solid var(--a-border)}
+.wts-rail-label{margin:0 0 14px;font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--a-text-3)}
+.wts-rail-list{margin:0;padding:0;list-style:none}
+.wts-rail-list li{padding:9px 0}
+.wts-rail-list li+li{border-top:1px solid rgba(247,237,228,.06)}
+.wts-rail-list a{display:block;color:var(--a-text);font-size:14.5px;font-weight:600;text-decoration:none;transition:color .15s ease}
+.wts-rail-list a:hover{color:var(--a-orange-bright)}
+.wts-rail-list a span[aria-hidden]{color:var(--a-text-3);transition:color .15s ease}
+.wts-rail-list a:hover span[aria-hidden]{color:var(--a-orange-bright)}
+.wts-rail-list li>span{display:block;margin-top:3px;color:var(--a-text-3);font-size:12.5px;line-height:1.5}
+
 /* ---- The report, assembling (right pane) ---- */
 /* The pane is narrow, so the card stacks its three panes vertically; it is
    the same component the result resolves into, so nothing swaps at the end,

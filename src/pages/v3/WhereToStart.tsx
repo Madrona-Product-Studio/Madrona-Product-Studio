@@ -368,9 +368,9 @@ function ResultStage({ answers, onRetake }: { answers: OpportunityAnswers; onRet
     headingRef.current?.focus({ preventScroll: true });
   }, []);
   // The finished report lives in the right pane (it's the resolved state of
-  // the assembling card); this column carries only the verdict and the ask.
-  // The card owns its own content (critic pass 09-01: never print the
-  // report twice).
+  // the assembling card); this column carries the verdict, the ways in, and
+  // the reading. The card owns the report content itself (critic pass 09-01:
+  // never print the report twice) — the rail is the concierge beside it.
   return <section className="sa-result sa-enter" aria-labelledby="wts-r">
     <p className="sa-eyebrow">Your read</p>
     <h1 id="wts-r" ref={headingRef} tabIndex={-1}>{report.title ?? "Where to start."}</h1>
@@ -378,10 +378,29 @@ function ResultStage({ answers, onRetake }: { answers: OpportunityAnswers; onRet
     <a className="sa-primary sa-primary--wide" href={bookHref()} {...bookProps()} onClick={(event) => { track("wts_cta_click"); bookClick(event); }}>
       Talk through this read <span aria-hidden="true">→</span>
     </a>
-    <p className="sa-cta-fine">A free 30-minute conversation.</p>
+    <p className="sa-cta-fine">A free 30-minute conversation about what you flagged.</p>
+
+    <div className="wts-rail-block">
+      <p className="wts-rail-label">Other ways in</p>
+      <ul className="wts-rail-list">
+        <li><Link to="/connect">Prefer writing? Send us a note <span aria-hidden="true">→</span></Link><span>Three fields, and a real reply.</span></li>
+        <li><Link to="/services">See how the work happens <span aria-hidden="true">→</span></Link><span>What an engagement looks like, in plain terms.</span></li>
+      </ul>
+    </div>
+
+    {report.reading.length > 0 && (
+      <div className="wts-rail-block">
+        <p className="wts-rail-label">Worth reading, based on your answers</p>
+        <ul className="wts-rail-list">
+          {report.reading.map((entry) => (
+            <li key={entry.href}><Link to={entry.href}>{entry.title} <span aria-hidden="true">→</span></Link></li>
+          ))}
+        </ul>
+      </div>
+    )}
+
     <div className="sa-retake-links wts-retake">
       <button className="sa-back" onClick={onRetake}>Retake</button>
-      <Link className="sa-quiet-link" to="/services">Learn how we work</Link>
     </div>
   </section>;
 }

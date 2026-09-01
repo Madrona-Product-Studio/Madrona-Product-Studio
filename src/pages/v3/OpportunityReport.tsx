@@ -60,6 +60,10 @@ export function OpportunityReportAssembling({ live }: { live: LivePaneState }) {
         <h3>Where to start</h3>
         <p className="or-moves-pending">{live.movePlaceholder}</p>
       </section>
+      <section className="or-tools">
+        <h3>Tools worth a look</h3>
+        <p className="or-moves-pending">Matched from your picks. Revealed at the end.</p>
+      </section>
       <footer className="or-foot">
         <span>Assembled from your answers · no email required</span>
       </footer>
@@ -157,7 +161,26 @@ export function OpportunityReport({ data }: { data: OpportunityReportData }) {
         </section>
       )}
 
-      {/* 4. What we heard */}
+      {/* 4. Tools worth a look — the live demos matched to their picks */}
+      {data.tools.length > 0 && (
+        <section className="or-tools">
+          <h3>Tools worth a look</h3>
+          <ul className="or-tools-list">
+            {data.tools.map((tool) => (
+              <li key={tool.href}>
+                <Link to={tool.href} onClick={() => track("wts_proof_click", { chip: tool.href })}>
+                  {tool.name} <span aria-hidden="true">→</span>
+                  <span className="or-print-url">madronaproduct.com{tool.href}</span>
+                </Link>
+                <p>{tool.blurb}</p>
+              </li>
+            ))}
+          </ul>
+          <Link className="or-tools-all" to="/tools">Every tool, with live demos <span aria-hidden="true">→</span></Link>
+        </section>
+      )}
+
+      {/* 5. What we heard */}
       {heard.length > 0 && (
         <section className="or-heard">
           <h3>What we heard</h3>
@@ -169,7 +192,7 @@ export function OpportunityReport({ data }: { data: OpportunityReportData }) {
         </section>
       )}
 
-      {/* 5. Foot */}
+      {/* 6. Foot */}
       <footer className="or-foot">
         <button type="button" onClick={() => window.print()}>
           Keep this read <span aria-hidden="true">↧</span>
