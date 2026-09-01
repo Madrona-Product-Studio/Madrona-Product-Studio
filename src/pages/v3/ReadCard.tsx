@@ -43,7 +43,7 @@ export interface ReadProfile {
 // Hero fixture. One row deliberately unflagged ("Steady") — the card must be
 // able to say an area is fine, or every read looks like a brochure.
 export const heroReadFixture: ReadProfile = {
-  path: "madronaproduct.com/where-to-start",
+  path: "madronaproduct.com/ai-opportunities",
   note: "example read",
   rows: [
     { label: "Web presence", status: "Underselling", tone: "flag" },

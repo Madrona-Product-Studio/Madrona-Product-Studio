@@ -25,8 +25,9 @@
     { "source": "/how-it-works", "destination": "/services", "permanent": true },
     { "source": "/approach", "destination": "/services", "permanent": true },
     { "source": "/contact", "destination": "/connect", "permanent": true },
-    { "source": "/checkup", "destination": "/where-to-start", "permanent": true },
-    { "source": "/signal-check", "destination": "/where-to-start", "permanent": true },
+    { "source": "/where-to-start", "destination": "/ai-opportunities", "permanent": true },
+    { "source": "/checkup", "destination": "/ai-opportunities", "permanent": true },
+    { "source": "/signal-check", "destination": "/ai-opportunities", "permanent": true },
     { "source": "/lab/madrona-v2/services", "destination": "/services", "permanent": true },
     { "source": "/lab/madrona-v2/apps", "destination": "/apps", "permanent": true },
     { "source": "/lab/madrona-v2", "destination": "/", "permanent": true }

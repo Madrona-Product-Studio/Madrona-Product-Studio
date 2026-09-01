@@ -1,0 +1,324 @@
+/* Opportunity Report card — the AI Opportunity Assessment deliverable.
+   Follows .rr-* patterns from where-to-start.css: same .v3 scope tokens,
+   same board hues, same window-artifact language. Class prefix: or-. */
+
+/* ---- Card shell ---- */
+.or-card { color: var(--v3-ink); }
+
+/* ---- Masthead ---- */
+.wts-sa .or-card header.or-head {
+  display: block;
+  padding: 22px 22px 18px;
+  border-bottom: 1px solid var(--v3-soft);
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+.or-kicker {
+  margin: 0 0 10px;
+  color: var(--v3-muted);
+  font: 700 9.5px/1.2 Inter, sans-serif;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.wts-sa .or-card .or-head h2 {
+  margin: 0 0 10px;
+  font: 500 24px/1.12 "Hanken Grotesk", Inter, sans-serif;
+  letter-spacing: -.02em;
+  color: var(--v3-ink);
+}
+.or-overall {
+  margin: 0;
+  color: var(--v3-clay);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.or-overall strong { color: #BC431D; }
+
+/* ---- Section headings (shared) ---- */
+.or-map h3,
+.or-moves h3,
+.or-heard h3 {
+  margin: 0 0 12px;
+  color: var(--v3-muted);
+  font: 700 9px/1.2 Inter, sans-serif;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* ---- Map section ---- */
+.or-map {
+  padding: 16px 22px 18px;
+  border-bottom: 1px solid var(--v3-soft);
+}
+.or-map-group { margin-bottom: 14px; }
+.or-map-group:last-child { margin-bottom: 0; }
+
+.or-group-head {
+  margin: 0 0 6px;
+  font: 700 9px/1.2 Inter, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--v3-faint);
+}
+
+.or-map-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.or-map-item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--v3-soft);
+  animation: or-fill .4s ease both;
+}
+.or-map-item:last-child { border-bottom: 0; }
+
+/* Area hue dots */
+.or-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  position: relative;
+  top: -1px;
+}
+.or-dot.is-copper { background: var(--hue-copper); }
+.or-dot.is-stone  { background: var(--hue-stone); }
+.or-dot.is-plum   { background: var(--hue-plum); }
+.or-dot.is-fir    { background: var(--hue-fir); }
+
+.or-map-label {
+  flex: 1;
+  font-size: 11.5px;
+  color: var(--v3-ink70);
+  line-height: 1.4;
+}
+.or-map-item--yours .or-map-label { color: var(--v3-clay); font-style: italic; }
+
+/* Quiet "live →" affix on /tools proof links. Muted at rest (critic pass
+   09-01: the orange stays a flash, not wallpaper); orange on hover. */
+.or-proof-live {
+  flex: none;
+  font: 600 9px/1 Inter, sans-serif;
+  letter-spacing: .06em;
+  color: var(--v3-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.or-proof-live:hover { color: #E55728; }
+
+/* ---- Moves section ---- */
+.or-moves {
+  padding: 16px 22px 18px;
+  border-bottom: 1px solid var(--v3-soft);
+}
+.or-moves-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.or-moves-list li {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--v3-soft);
+  animation: or-fill .4s ease both;
+}
+.or-moves-list li:last-child { border-bottom: 0; }
+
+.or-rank {
+  font: 700 9px/1.2 Inter, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--v3-muted);
+  padding-top: 3px;
+}
+.or-moves-list li.is-now .or-rank { color: #BC431D; }
+
+.or-move-body { display: flex; flex-direction: column; gap: 3px; }
+
+.or-move-head {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--v3-ink);
+}
+.or-moves-list li.is-now .or-move-head { font-size: 14.5px; }
+
+.or-move-support {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--v3-clay);
+}
+
+.or-move-proof {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  margin-top: 4px;
+  font: 700 10px/1.2 Inter, sans-serif;
+  color: #BC431D;
+  text-decoration: none;
+  letter-spacing: .02em;
+}
+.or-move-proof:hover { color: #E55728; }
+/* Next/Later links ride quiet so the Now move keeps the only loud accent. */
+.or-move-proof--quiet { color: var(--v3-muted); font-weight: 600; }
+.or-move-proof--quiet:hover { color: #E55728; }
+
+/* Print-only URL: hidden on screen, visible in print */
+.or-print-url {
+  display: none;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--v3-clay);
+}
+
+/* ---- What we heard ---- */
+.or-heard {
+  padding: 16px 22px 18px;
+  border-bottom: 1px solid var(--v3-soft);
+}
+.or-heard-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.or-heard-list li {
+  padding: 7px 0 7px 13px;
+  border-left: 2px solid rgba(229, 87, 40, .3);
+  color: var(--v3-clay);
+  font-size: 12px;
+  line-height: 1.55;
+  animation: or-fill .4s ease both;
+}
+.or-heard-list li + li { margin-top: 8px; }
+
+/* ---- Foot ---- */
+.or-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 22px;
+  border-top: 1px solid var(--v3-soft);
+}
+.or-foot button {
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  color: #BC431D;
+  font: 700 11.5px Inter, sans-serif;
+}
+.or-foot button:hover { color: #E55728; }
+.or-foot > span {
+  color: var(--v3-faint);
+  font-size: 9.5px;
+}
+
+/* ---- The assembling state (the same card, filling in) ---- */
+/* Every section here exists on the final card; the skeleton only withholds.
+   Dormant areas are faint empty slots; a checked chip wakes its row to
+   "Listening"; an answered anchor swaps the status for a redacted shimmer
+   chip. The moves slot only hints. */
+.or-title-slot { margin: 0; }
+.or-shimmer {
+  display: inline-block;
+  width: 44px;
+  height: 8px;
+  border-radius: 3px;
+  background: linear-gradient(100deg, rgba(26,23,20,.1) 40%, rgba(26,23,20,.18) 50%, rgba(26,23,20,.1) 60%) 0 0/220% 100%;
+  animation: or-shimmer 2.2s ease-in-out infinite;
+}
+.or-shimmer--title { width: 148px; height: 13px; border-radius: 4px; }
+.or-map-list--live .or-map-item { animation: none; }
+.or-map-list--live .or-map-item.is-dormant { opacity: .34; }
+.or-map-list--live .or-map-item.is-dormant .or-dot { background: var(--v3-faint); }
+.or-map-list--live .or-map-item.is-listening .or-map-label,
+.or-map-list--live .or-map-item.is-captured .or-map-label { color: var(--v3-ink); }
+.or-live-status {
+  flex: none;
+  font: 600 10px/1 Inter, sans-serif;
+  letter-spacing: .02em;
+  color: var(--v3-muted);
+  animation: or-listen 1.7s ease-in-out infinite;
+}
+/* Vary shimmer widths so the chips read as held content, not a widget. */
+.or-map-list--live .or-map-item:nth-child(1) .or-shimmer { width: 52px; }
+.or-map-list--live .or-map-item:nth-child(2) .or-shimmer { width: 38px; }
+.or-map-list--live .or-map-item:nth-child(4) .or-shimmer { width: 46px; }
+.or-moves-pending {
+  margin: 0;
+  color: var(--v3-muted);
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.or-card--assembling .or-foot { justify-content: flex-end; }
+
+@keyframes or-shimmer {
+  from { background-position: 110% 0; }
+  to   { background-position: -110% 0; }
+}
+@keyframes or-listen {
+  0%, 100% { opacity: .45; }
+  50%      { opacity: .95; }
+}
+
+/* ---- Reveal animation ---- */
+@keyframes or-fill {
+  from { opacity: 0; transform: translateX(4px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Staggered cascade on map items */
+.or-map-item:nth-child(2) { animation-delay: .05s; }
+.or-map-item:nth-child(3) { animation-delay: .10s; }
+.or-map-item:nth-child(4) { animation-delay: .15s; }
+.or-map-item:nth-child(5) { animation-delay: .20s; }
+
+/* Staggered cascade on moves */
+.or-moves-list li:nth-child(2) { animation-delay: .08s; }
+.or-moves-list li:nth-child(3) { animation-delay: .16s; }
+
+/* ---- Print ---- */
+@media print {
+  /* Show only the report card; hide everything else */
+  .wts-sa .sa-top,
+  .wts-sa .sa-work,
+  .wts-sa .sa-brain-head,
+  .wts-sa .sa-site-foot,
+  .or-foot button { display: none !important; }
+
+  .wts-sa,
+  .wts-sa .sa-shell { background: #fff !important; min-height: 0; }
+  .wts-sa .sa-brain { width: 100%; border: 0; }
+  .or-card { box-shadow: none; border-color: #ddd; }
+
+  /* Spell out proof URLs in the moves section */
+  .or-print-url { display: inline; }
+  .or-proof-live { display: none; }
+
+  /* Ensure map and heard items print fully visible */
+  .or-map-item,
+  .or-heard-list li,
+  .or-moves-list li { animation: none; opacity: 1; transform: none; }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .or-map-item,
+  .or-moves-list li,
+  .or-heard-list li,
+  .or-shimmer,
+  .or-live-status { animation: none; }
+}
