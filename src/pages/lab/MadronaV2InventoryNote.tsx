@@ -323,7 +323,7 @@ export default function MadronaV2InventoryNote() {
               <p>When you hit one, that is the moment worth a conversation. Figuring out what to build when the packaged version runs out is our actual work. Either way, take the inventory: somewhere in these twelve jobs, there is a weekend you get back this month.</p>
             </Prose>
             <div className="m2-th-close-links">
-              <Link className="m2-text-link" to="/where-to-start">Not sure which job is yours? Take the free signal check <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/ai-opportunities">Not sure which job is yours? Find your AI opportunities <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/connect">Hit an edge? Get in touch <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>

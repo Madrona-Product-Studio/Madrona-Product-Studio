@@ -99,6 +99,13 @@
   .wts-sa:not(.sa--result) .sa-shell{height:100dvh;min-height:0}
 }
 
+/* Mobile: the assembling pane sits below the fold where nobody can watch it
+   while answering (critic pass 09-01). Hide it until the result; the card
+   arrives as the reveal. */
+@media (max-width:880px){
+  .wts-sa:not(.sa--result) .sa-brain{display:none}
+}
+
 /* agent turns (chat register) */
 .wts-agent{display:flex;gap:10px;align-items:flex-start;max-width:86%}
 .wts-mark{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:#1a1714;border:1px solid rgba(247,237,228,.14)}
@@ -127,22 +134,45 @@
 .wts-sa .wts-island .sa-count em{color:#BC431D}
 .wts-sa .wts-island h1{margin-bottom:0;color:#1a1714;font-size:clamp(21px,1.8vw,27px);line-height:1.12}
 .wts-sa .wts-island .sa-support{margin:8px 0 0;color:#6f6657}
-.wts-sa .wts-island .sa-answers{margin-bottom:20px}
-.wts-sa .wts-island .sa-answer{background:#ffffff;border-color:rgba(26,23,20,.12);color:#403a33}
-.wts-sa .wts-island .sa-answer:hover{border-color:rgba(26,23,20,.30);background:#fff;color:#1a1714}
-.wts-sa .wts-island .sa-answer.is-selected{border-color:#E55728;background:#fbe9df;color:#1a1714}
-.wts-sa .wts-island .sa-answer-key{border-color:rgba(26,23,20,.20);color:#8c8378}
-.wts-sa .wts-island .sa-answer.is-selected .sa-answer-key{border-color:#E55728;color:#BC431D}
-.wts-sa .wts-island .sa-answer-mark{background:#E55728}
-.wts-sa .wts-island .sa-answer-mark svg{stroke:#fff}
-.wts-sa .wts-island .sa-answer:focus-visible{outline-color:#E55728}
-.wts-sa .wts-island .sa-primary{background:#2F3135;color:#f7ede4}
+/* Form pass (Charlie 09-01): options read as a checklist, not a stack of
+   cards. Tighter rows, hairline separation, a real control glyph leading
+   each row (square check for multi, round radio for single), and a smaller
+   Continue with honest spacing around it. */
+.wts-sa .wts-island .sa-answers{margin:0 0 22px;gap:0;border:1px solid rgba(26,23,20,.12);border-radius:10px;background:#fff;overflow:hidden}
+.wts-sa .wts-island .sa-answer{min-height:0;padding:10px 14px;border:0;border-radius:0;background:transparent;color:#403a33;font-size:13.5px;gap:11px;transform:none;align-items:flex-start}
+.wts-sa .wts-island .sa-answer .wts-ctl{margin-top:1.5px}
+.wts-sa .wts-island .sa-answer+.sa-answer{border-top:1px solid rgba(26,23,20,.07)}
+.wts-sa .wts-island .sa-answer:hover{background:#faf7f2;color:#1a1714;transform:none}
+.wts-sa .wts-island .sa-answer.is-selected{background:#fbe9df;color:#1a1714}
+.wts-sa .wts-island .sa-answer:focus-visible{outline-color:#E55728;outline-offset:-2px}
+
+/* The exclusive option ("mostly handled") announces itself before any tap:
+   a quiet "or" seam separates it from the stackable answers above. */
+.wts-or{display:block;padding:5px 14px;border-top:1px solid rgba(26,23,20,.07);background:#faf8f4;color:#8c8378;font:600 10px/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.wts-or+.sa-answer{border-top:1px solid rgba(26,23,20,.07)}
+
+/* The control glyphs. Square = check-all, circle = pick-one. */
+.wts-ctl{flex:none;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid rgba(26,23,20,.28);background:#fff;transition:all .15s ease}
+.wts-ctl--check{border-radius:4px}
+.wts-ctl--check svg{width:10px;height:10px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0;transform:scale(.6);transition:all .15s ease}
+.wts-ctl--radio{border-radius:999px}
+.wts-ctl--radio::after{content:"";width:7px;height:7px;border-radius:999px;background:#E55728;opacity:0;transform:scale(.5);transition:all .15s ease}
+.wts-sa .wts-island .sa-answer.is-selected .wts-ctl--check{background:#E55728;border-color:#E55728}
+.wts-sa .wts-island .sa-answer.is-selected .wts-ctl--check svg{opacity:1;transform:scale(1)}
+.wts-sa .wts-island .sa-answer.is-selected .wts-ctl--radio{border-color:#E55728}
+.wts-sa .wts-island .sa-answer.is-selected .wts-ctl--radio::after{opacity:1;transform:scale(1)}
+
+/* Navigation: smaller Continue, honest disabled, room to breathe. */
+.wts-sa .wts-island .sa-nav{margin-top:22px}
+.wts-sa .wts-island .sa-primary{background:#2F3135;color:#f7ede4;padding:10px 18px;font-size:13.5px;border-radius:6px}
 .wts-sa .wts-island .sa-primary:hover:not(:disabled){background:#1a1714;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.wts-sa .wts-island .sa-primary:disabled{background:transparent;border:1px solid rgba(26,23,20,.18);color:#8c8378;opacity:1;padding:9px 17px}
 .wts-sa .wts-island .sa-back{color:#8c8378}
 .wts-sa .wts-island .sa-back:hover{color:#403a33}
-.wts-sa .wts-island .sa-meta{color:#8c8378}
+.wts-sa .wts-island .sa-meta{margin:0;color:#8c8378}
+.wts-sa .wts-island .wts-freetext{margin-top:18px}
 .wts-sa .wts-island .wts-freetext span{color:#6f6657}
-.wts-sa .wts-island .wts-freetext input{border-color:rgba(26,23,20,.18);background:#fff;color:#1a1714}
+.wts-sa .wts-island .wts-freetext input{padding:11px 14px;border-color:rgba(26,23,20,.18);background:#fff;color:#1a1714;font-size:14px}
 .wts-sa .wts-island .wts-freetext input::placeholder{color:#b8b0a2}
 @media(max-width:560px){
   .wts-island-head{gap:10px}
@@ -158,49 +188,11 @@
 /* The named read: give the persona headline display presence. */
 .wts-sa .sa-result h1{font-family:"Hanken Grotesk",Inter,sans-serif;font-weight:500;letter-spacing:-.025em}
 
-/* ---- The V2 report card (Readiness Assessment rebuild) ---- */
-.rr-card{color:var(--v3-ink)}
-.wts-sa .rr-card header.rr-head{display:block;padding:22px 22px 18px;border-bottom:1px solid var(--v3-soft);font-size:inherit;font-weight:400;letter-spacing:normal;text-transform:none}
-.rr-kicker{margin:0 0 10px;color:var(--v3-muted);font:700 9.5px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
-.wts-sa .rr-card .rr-head h2{margin:0 0 10px;font:500 24px/1.12 "Hanken Grotesk",Inter,sans-serif;letter-spacing:-.02em;color:var(--v3-ink)}
-.rr-overall{margin:0;color:var(--v3-clay);font-size:12.5px;line-height:1.5}
-.rr-overall strong{color:#BC431D}
-.rr-areas,.rr-moves{padding:16px 22px 18px}
-.rr-areas{border-bottom:1px solid var(--v3-soft)}
-.rr-areas h3,.rr-moves h3{margin:0 0 12px;color:var(--v3-muted);font:700 9px/1.2 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}
-.rr-areas ul{margin:0;padding:0;list-style:none}
-.rr-areas li{display:grid;grid-template-columns:13px minmax(96px,auto) 1fr auto;gap:10px;align-items:center;padding:7px 0}
-.rr-areas li.is-quiet{opacity:.55}
-.rr-dot{width:7px;height:7px;border-radius:999px}
-.rr-dot.is-copper{background:var(--hue-copper)}.rr-dot.is-stone{background:var(--hue-stone)}.rr-dot.is-fir{background:var(--hue-fir)}.rr-dot.is-moss{background:var(--hue-moss)}.rr-dot.is-plum{background:var(--hue-plum)}
-.rr-label{font-size:11px;color:var(--v3-ink70)}
-.rr-meter{display:block;height:5px;overflow:hidden;border-radius:999px;background:var(--v3-bg)}
-.rr-meter b{display:block;height:100%;border-radius:inherit;min-width:4px}
-.rr-meter b.is-copper{background:var(--hue-copper-deep)}.rr-meter b.is-stone{background:var(--hue-stone-deep)}.rr-meter b.is-fir{background:var(--hue-fir-deep)}.rr-meter b.is-moss{background:var(--hue-moss-deep)}.rr-meter b.is-plum{background:var(--hue-plum-deep)}
-.rr-meter b.is-flagged{background:#E55728}
-.rr-areas li strong{font:700 9px/1.2 Inter,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--v3-muted)}
-.rr-areas li strong.is-flagged{color:#BC431D}
-.rr-detail{grid-column:2/-1;margin:1px 0 4px;color:var(--v3-clay);font-size:11px;line-height:1.5;max-width:52ch}
-.rr-moves ol{margin:0;padding:0;list-style:none}
-.rr-moves li{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--v3-soft)}
-.rr-moves li:last-child{border-bottom:0}
-.rr-rank{font:700 9px/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--v3-muted);padding-top:3px}
-.rr-moves li.is-now .rr-rank{color:#BC431D}
-.rr-move{margin:0;font-size:13px;font-weight:600;line-height:1.35}
-.rr-moves li.is-now .rr-move{font-size:14.5px}
-.rr-support{margin:4px 0 0;color:var(--v3-clay);font-size:11px;line-height:1.45}
-.rr-why{display:none}
-.rr-foot{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 22px;border-top:1px solid var(--v3-soft)}
-.rr-foot button{border:0;background:none;padding:0;cursor:pointer;color:#BC431D;font:700 11.5px Inter,sans-serif}
-.rr-foot button:hover{color:#E55728}
-.rr-foot>span{color:var(--v3-faint);font-size:9.5px}
-
-/* The keepable version: print shows ONLY the report, with the whyNow
-   detail lines included — "a bit more detailed, available for download." */
+/* Print shell rules: hide chrome, let the OpportunityReport (or-card) show
+   through. The or-* print rules in opportunity-report.css handle the card
+   itself; these rules hide the surrounding assessment shell. */
 @media print{
-  .wts-sa .sa-top,.wts-sa .sa-work,.wts-sa .sa-brain-head,.wts-sa .sa-site-foot,.rr-foot button{display:none !important}
+  .wts-sa .sa-top,.wts-sa .sa-work,.wts-sa .sa-brain-head,.wts-sa .sa-site-foot{display:none !important}
   .wts-sa,.wts-sa .sa-shell{background:#fff !important;min-height:0}
   .wts-sa .sa-brain{width:100%;border:0}
-  .rr-card{box-shadow:none;border-color:#ddd}
-  .rr-why{display:block;margin:5px 0 0;color:#6f6657;font-size:10.5px;font-style:italic}
 }

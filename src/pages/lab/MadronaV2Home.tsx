@@ -158,7 +158,7 @@ export default function MadronaV2Home() {
             <p>Madrona is led by <Link className="m2-inline-link" to="/charlie">Charlie Koch</Link>, a product leader with fifteen years of experience building consumer products at scale and bringing new ideas to life with small teams.</p>
             <div className="m2-consult-links">
               <Link className="m2-text-link" to="/services">Explore how we help <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/where-to-start">Not sure where to start? Take the free signal check <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/ai-opportunities">Find your AI opportunities <span aria-hidden="true">→</span></Link>
             </div>
           </div>
           <BerryGoodTeaser />

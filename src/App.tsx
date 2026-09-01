@@ -117,13 +117,14 @@ export default function App() {
         <Route path="notes" element={<Navigate to="/thinking" replace />} />
         <Route path="playbook" element={<Navigate to="/thinking" replace />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
-        {/* Where to Start — the free assessment (report-first respec,
-            docs/redesign-2026-08/assessment-respec.md). Canonical; it took
-            over from /checkup (Charlie sign-off 2026-08-30). */}
-        <Route path="where-to-start" element={<WhereToStart />} />
+        {/* AI Opportunity Assessment — the refocused free assessment
+            (docs/redesign-2026-08/ai-opportunity-spec.md). Canonical URL is
+            /ai-opportunities (Charlie sign-off 2026-09-01). */}
+        <Route path="ai-opportunities" element={<WhereToStart />} />
         {/* Old assessment URLs → the new canonical tool (vercel.json 301s too). */}
-        <Route path="checkup" element={<Navigate to="/where-to-start" replace />} />
-        <Route path="signal-check" element={<Navigate to="/where-to-start" replace />} />
+        <Route path="where-to-start" element={<Navigate to="/ai-opportunities" replace />} />
+        <Route path="checkup" element={<Navigate to="/ai-opportunities" replace />} />
+        <Route path="signal-check" element={<Navigate to="/ai-opportunities" replace />} />
 
         {/* Preserve old lab URLs (bookmarks) → redirect to canonical roots. */}
         <Route path="lab/madrona-v2" element={<Navigate to="/" replace />} />
