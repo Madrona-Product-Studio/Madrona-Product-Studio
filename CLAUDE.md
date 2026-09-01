@@ -104,6 +104,9 @@ the sky picks the ground.**
 - **The sky picks the ground (day / dusk / night)** — the site follows
   the real Bellingham sun (engine `src/lib/theme.ts`; header switcher; no
   "Auto" option in the UI — following the sun is just what it does).
+  A switcher pin holds only until the sky next changes; on a later visit
+  under a different sky the sun takes back over, decided pre-paint in
+  `index.html`'s mirror so there is no flash (Charlie, 2026-09-01).
   Day = the warm-paper ramp below · night = Evergreen Charcoal `#2F3135`
   · dusk = Smoky Plum `#4C3843` for ~40min around sunrise and sunset.
   In dark skies, **frames are light islands**: browser-window artifacts,
