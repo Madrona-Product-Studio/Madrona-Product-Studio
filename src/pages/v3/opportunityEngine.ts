@@ -13,19 +13,22 @@ export type ChipId =
 
 export type AreaId = "money" | "customers" | "words" | "glue";
 
+// Evidence questions and the blocker are multi-select (several are true at
+// once for a real owner; Charlie 09-01); anchors, the AI scale, and the
+// readiness closer stay single-select. Multi answers are option-index arrays.
 export interface OpportunityAnswers {
   chips: ChipId[];
   otherText?: string;
   moneyHours?: number;
-  moneyEvidence?: number;
+  moneyEvidence?: number[];
   customersHours?: number;
-  customersEvidence?: number;
+  customersEvidence?: number[];
   wordsHours?: number;
-  wordsEvidence?: number;
+  wordsEvidence?: number[];
   glueHours?: number;
-  glueEvidence?: number;
+  glueEvidence?: number[];
   ai?: number;
-  blocker?: number;
+  blocker?: number[];
   readiness?: number;
 }
 
@@ -35,6 +38,10 @@ export interface OppQuestion {
   question: string;
   support?: string;
   options: string[];
+  multi?: boolean;
+  // Option index that stands alone ("mostly handled", "all of it, evenly"):
+  // checking it clears the others, checking any other clears it.
+  exclusive?: number;
 }
 
 export interface MapItem {
@@ -127,6 +134,8 @@ const AREA_QUESTIONS: Record<AreaId, { anchor: OppQuestion; evidence: OppQuestio
       id: "moneyEvidence",
       module: "Money admin",
       question: "What makes it drag?",
+      support: "Check everything that's true.",
+      multi: true,
       options: [
         "Chasing people who owe us",
         "Bookkeeping piles up between sittings",
@@ -148,6 +157,9 @@ const AREA_QUESTIONS: Record<AreaId, { anchor: OppQuestion; evidence: OppQuestio
       id: "customersEvidence",
       module: "Customers",
       question: "What's the honest state of follow-up?",
+      support: "Check everything that's true. No judgment here.",
+      multi: true,
+      exclusive: 4,
       options: [
         "Routine questions eat the inbox",
         "Thank-yous and check-ins rarely happen",
@@ -168,7 +180,10 @@ const AREA_QUESTIONS: Record<AreaId, { anchor: OppQuestion; evidence: OppQuestio
     evidence: {
       id: "wordsEvidence",
       module: "Words and paper",
-      question: "Which pile is biggest?",
+      question: "Where does the writing time go?",
+      support: "Check every pile that's real.",
+      multi: true,
+      exclusive: 4,
       options: [
         "Quotes and estimates",
         "Reports and write-ups",
@@ -190,6 +205,9 @@ const AREA_QUESTIONS: Record<AreaId, { anchor: OppQuestion; evidence: OppQuestio
       id: "glueEvidence",
       module: "Glue work",
       question: "Where does the friction live?",
+      support: "Check all that apply.",
+      multi: true,
+      exclusive: 4,
       options: [
         "Scheduling back-and-forth",
         "Retyping between tools",
@@ -214,7 +232,8 @@ const CROSS_CUTTING: OppQuestion[] = [
     id: "blocker",
     module: "AI today",
     question: "What's kept AI from doing more here?",
-    support: "No wrong answer. This is the part everyone's honest about in person.",
+    support: "No wrong answer. Check everything that's played a part.",
+    multi: true,
     options: ["No time to figure it out", "Tried tools that didn't stick", "Don't trust it with customers", "Our info is scattered everywhere", "Didn't know where to start"],
   },
   {
@@ -374,7 +393,7 @@ export function computeOpportunityReport(a: OpportunityAnswers): OpportunityRepo
 
   // ---- Stays-yours (honesty rules, always ≥1) ----
   const staysYours: string[] = [];
-  if (a.blocker === 2) { // "Don't trust it with customers"
+  if (a.blocker?.includes(2)) { // "Don't trust it with customers"
     staysYours.push("The sensitive replies. Drafts wait for your okay; nothing sends itself.");
   }
   if (chips.includes("followup")) {
@@ -442,14 +461,27 @@ export function computeOpportunityReport(a: OpportunityAnswers): OpportunityRepo
   // One verdict line per flagged area, derived from anchor + evidence.
   const heard: string[] = [];
 
+  // Evidence is multi-select; the card still gets ONE line per area so the
+  // read stays tight. Rule: an exclusive pick speaks for itself; three or
+  // more picks use the area's everything-drags line where one exists (the
+  // exclusive slot doubles as it); otherwise the first-checked line leads.
   for (const area of flagged) {
     const evidenceKey: Record<AreaId, keyof OpportunityAnswers> = {
       money: "moneyEvidence", customers: "customersEvidence", words: "wordsEvidence", glue: "glueEvidence",
     };
-    const evidenceVal = a[evidenceKey[area]] as number | undefined;
+    const picks = (a[evidenceKey[area]] as number[] | undefined) ?? [];
     const verdicts: string[] = area === "money" ? MONEY_VERDICTS : area === "customers" ? CUSTOMER_VERDICTS : area === "words" ? WORDS_VERDICTS : GLUE_VERDICTS;
+    const exclusiveIdx = AREA_QUESTIONS[area].evidence.exclusive;
+    // Only words/glue have an "everything drags" line (their exclusive slot);
+    // customers' exclusive means the opposite ("mostly handled"), so it never
+    // stands in for many picks.
+    const manyIdx = area === "words" || area === "glue" ? exclusiveIdx : undefined;
+    let line: string | undefined;
+    if (exclusiveIdx !== undefined && picks.includes(exclusiveIdx)) line = verdicts[exclusiveIdx];
+    else if (picks.length >= 3 && manyIdx !== undefined) line = verdicts[manyIdx];
+    else if (picks.length) line = verdicts[Math.min(...picks)];
     // Fall back to a neutral line if somehow the evidence wasn't answered.
-    heard.push(evidenceVal !== undefined ? verdicts[evidenceVal] : `Most of the drag in ${AREA_LABELS[area].toLowerCase()} has a repeatable shape. That's what software handles best.`);
+    heard.push(line ?? `Most of the drag in ${AREA_LABELS[area].toLowerCase()} has a repeatable shape. That's what software handles best.`);
   }
 
   // otherText echo (same quoting pattern as whereToStartEngine.ts workflow echo).

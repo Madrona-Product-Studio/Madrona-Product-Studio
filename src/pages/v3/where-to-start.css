@@ -134,22 +134,45 @@
 .wts-sa .wts-island .sa-count em{color:#BC431D}
 .wts-sa .wts-island h1{margin-bottom:0;color:#1a1714;font-size:clamp(21px,1.8vw,27px);line-height:1.12}
 .wts-sa .wts-island .sa-support{margin:8px 0 0;color:#6f6657}
-.wts-sa .wts-island .sa-answers{margin-bottom:20px}
-.wts-sa .wts-island .sa-answer{background:#ffffff;border-color:rgba(26,23,20,.12);color:#403a33}
-.wts-sa .wts-island .sa-answer:hover{border-color:rgba(26,23,20,.30);background:#fff;color:#1a1714}
-.wts-sa .wts-island .sa-answer.is-selected{border-color:#E55728;background:#fbe9df;color:#1a1714}
-.wts-sa .wts-island .sa-answer-key{border-color:rgba(26,23,20,.20);color:#8c8378}
-.wts-sa .wts-island .sa-answer.is-selected .sa-answer-key{border-color:#E55728;color:#BC431D}
-.wts-sa .wts-island .sa-answer-mark{background:#E55728}
-.wts-sa .wts-island .sa-answer-mark svg{stroke:#fff}
-.wts-sa .wts-island .sa-answer:focus-visible{outline-color:#E55728}
-.wts-sa .wts-island .sa-primary{background:#2F3135;color:#f7ede4}
+/* Form pass (Charlie 09-01): options read as a checklist, not a stack of
+   cards. Tighter rows, hairline separation, a real control glyph leading
+   each row (square check for multi, round radio for single), and a smaller
+   Continue with honest spacing around it. */
+.wts-sa .wts-island .sa-answers{margin:0 0 22px;gap:0;border:1px solid rgba(26,23,20,.12);border-radius:10px;background:#fff;overflow:hidden}
+.wts-sa .wts-island .sa-answer{min-height:0;padding:10px 14px;border:0;border-radius:0;background:transparent;color:#403a33;font-size:13.5px;gap:11px;transform:none;align-items:flex-start}
+.wts-sa .wts-island .sa-answer .wts-ctl{margin-top:1.5px}
+.wts-sa .wts-island .sa-answer+.sa-answer{border-top:1px solid rgba(26,23,20,.07)}
+.wts-sa .wts-island .sa-answer:hover{background:#faf7f2;color:#1a1714;transform:none}
+.wts-sa .wts-island .sa-answer.is-selected{background:#fbe9df;color:#1a1714}
+.wts-sa .wts-island .sa-answer:focus-visible{outline-color:#E55728;outline-offset:-2px}
+
+/* The exclusive option ("mostly handled") announces itself before any tap:
+   a quiet "or" seam separates it from the stackable answers above. */
+.wts-or{display:block;padding:5px 14px;border-top:1px solid rgba(26,23,20,.07);background:#faf8f4;color:#8c8378;font:600 10px/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.wts-or+.sa-answer{border-top:1px solid rgba(26,23,20,.07)}
+
+/* The control glyphs. Square = check-all, circle = pick-one. */
+.wts-ctl{flex:none;width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid rgba(26,23,20,.28);background:#fff;transition:all .15s ease}
+.wts-ctl--check{border-radius:4px}
+.wts-ctl--check svg{width:10px;height:10px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:0;transform:scale(.6);transition:all .15s ease}
+.wts-ctl--radio{border-radius:999px}
+.wts-ctl--radio::after{content:"";width:7px;height:7px;border-radius:999px;background:#E55728;opacity:0;transform:scale(.5);transition:all .15s ease}
+.wts-sa .wts-island .sa-answer.is-selected .wts-ctl--check{background:#E55728;border-color:#E55728}
+.wts-sa .wts-island .sa-answer.is-selected .wts-ctl--check svg{opacity:1;transform:scale(1)}
+.wts-sa .wts-island .sa-answer.is-selected .wts-ctl--radio{border-color:#E55728}
+.wts-sa .wts-island .sa-answer.is-selected .wts-ctl--radio::after{opacity:1;transform:scale(1)}
+
+/* Navigation: smaller Continue, honest disabled, room to breathe. */
+.wts-sa .wts-island .sa-nav{margin-top:22px}
+.wts-sa .wts-island .sa-primary{background:#2F3135;color:#f7ede4;padding:10px 18px;font-size:13.5px;border-radius:6px}
 .wts-sa .wts-island .sa-primary:hover:not(:disabled){background:#1a1714;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.wts-sa .wts-island .sa-primary:disabled{background:transparent;border:1px solid rgba(26,23,20,.18);color:#8c8378;opacity:1;padding:9px 17px}
 .wts-sa .wts-island .sa-back{color:#8c8378}
 .wts-sa .wts-island .sa-back:hover{color:#403a33}
-.wts-sa .wts-island .sa-meta{color:#8c8378}
+.wts-sa .wts-island .sa-meta{margin:0;color:#8c8378}
+.wts-sa .wts-island .wts-freetext{margin-top:18px}
 .wts-sa .wts-island .wts-freetext span{color:#6f6657}
-.wts-sa .wts-island .wts-freetext input{border-color:rgba(26,23,20,.18);background:#fff;color:#1a1714}
+.wts-sa .wts-island .wts-freetext input{padding:11px 14px;border-color:rgba(26,23,20,.18);background:#fff;color:#1a1714;font-size:14px}
 .wts-sa .wts-island .wts-freetext input::placeholder{color:#b8b0a2}
 @media(max-width:560px){
   .wts-island-head{gap:10px}

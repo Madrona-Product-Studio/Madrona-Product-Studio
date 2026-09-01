@@ -286,3 +286,13 @@ Keep event names: `wts_start` (payload `threads` → comma-joined chips),
 - tsc + prod build green; desktop 1440 + mobile 390 screenshots of
   opener, mid-flow, result; reduced-motion sanity check.
 - 301s verified; prerender + sitemap updated; OG copy updated.
+
+## Addendum (2026-09-01, Charlie's preview feedback)
+
+Evidence questions and the blocker became MULTI-SELECT (see
+ai-opportunity-feedback-2026-09-01.md for the full resolution log):
+answers are option-index arrays; "mostly handled" / "all of it, evenly" /
+"a dozen small things" are exclusive picks behind an "or" seam; heard
+composes one line per area (exclusive wins, 3+ picks use the
+everything-drags line where one exists, else first-checked). The form UI
+is a hairline checklist with square-check vs radio control vocabulary.

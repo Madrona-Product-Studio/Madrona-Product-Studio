@@ -110,7 +110,23 @@ export default function WhereToStart() {
   }, [chips, otherText]);
 
   const answered = (q: OppQuestion | null): boolean =>
-    !!q && answers[q.id] !== undefined;
+    !!q && (q.multi
+      ? ((answers[q.id] as number[] | undefined)?.length ?? 0) > 0
+      : answers[q.id] !== undefined);
+
+  // Single questions set the index; multi questions toggle it in an array.
+  // An exclusive option ("mostly handled") clears the others and vice versa.
+  const pick = useCallback((q: OppQuestion, i: number) => {
+    setAnswers((a) => {
+      if (!q.multi) return { ...a, [q.id]: i };
+      const current = (a[q.id] as number[] | undefined) ?? [];
+      let next: number[];
+      if (current.includes(i)) next = current.filter((n) => n !== i);
+      else if (q.exclusive === i) next = [i];
+      else next = [...current.filter((n) => n !== q.exclusive), i];
+      return { ...a, [q.id]: next.length ? next : undefined };
+    });
+  }, []);
 
   const advance = useCallback(() => {
     if (stage.kind !== "question" || !answered(sequence[stage.index])) return;
@@ -153,13 +169,13 @@ export default function WhereToStart() {
       }
       if (stage.kind === "question" && question) {
         const n = Number(e.key);
-        if (n >= 1 && n <= question.options.length) setAnswers((a) => ({ ...a, [question.id]: n - 1 }));
+        if (n >= 1 && n <= question.options.length) pick(question, n - 1);
         if (e.key === "Enter") { e.preventDefault(); advance(); }
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [stage, question, chips, begin, advance]);
+  }, [stage, question, chips, begin, advance, pick]);
 
   const activePhase = stage.kind === "opener" ? 0 : stage.kind === "question" ? 1 : 2;
 
@@ -213,7 +229,17 @@ export default function WhereToStart() {
                   {sequence.slice(0, stage.index).map((q) => answers[q.id] !== undefined && (
                     <Fragment key={q.id}>
                       <AgentBubble>{q.question}</AgentBubble>
-                      <div className="wts-you"><div className="wts-you-bubble">{q.options[answers[q.id] as number]}</div></div>
+                      {q.multi ? (
+                        <div className="wts-you">
+                          <div className="wts-you-chips">
+                            {((answers[q.id] as number[]) ?? []).map((n) => (
+                              <span key={n} className="wts-you-chip">{q.options[n]}</span>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="wts-you"><div className="wts-you-bubble">{q.options[answers[q.id] as number]}</div></div>
+                      )}
                     </Fragment>
                   ))}
                 </>
@@ -234,12 +260,11 @@ export default function WhereToStart() {
                       </div>
                     </div>
                     <div className="sa-answers" role="group" aria-labelledby="wts-q">
-                      {openerChips.map((item, i) => {
+                      {openerChips.map((item) => {
                         const selected = chips.includes(item.chip);
                         return <button key={item.chip} role="checkbox" aria-checked={selected} className={`sa-answer${selected ? " is-selected" : ""}`} onClick={() => toggleChip(item.chip)}>
-                          <span className="sa-answer-key" aria-hidden="true">{String.fromCharCode(65 + i)}</span>
+                          <span className="wts-ctl wts-ctl--check" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.4 5 8.9 9.6 3.4" /></svg></span>
                           <span className="sa-answer-label">{item.label}</span>
-                          <span className="sa-answer-mark" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.4 5 8.9 9.6 3.4" /></svg></span>
                         </button>;
                       })}
                     </div>
@@ -271,14 +296,20 @@ export default function WhereToStart() {
                       {question.support && <p className="sa-support">{question.support}</p>}
                     </div>
                   </div>
-                  <div className="sa-answers" role="radiogroup" aria-labelledby="wts-q">
+                  <div className="sa-answers" role={question.multi ? "group" : "radiogroup"} aria-labelledby="wts-q">
                     {question.options.map((option, i) => {
-                      const selected = answers[question.id] === i;
-                      return <button key={option} role="radio" aria-checked={selected} className={`sa-answer${selected ? " is-selected" : ""}`} onClick={() => setAnswers((a) => ({ ...a, [question.id]: i }))}>
-                        <span className="sa-answer-key" aria-hidden="true">{String.fromCharCode(65 + i)}</span>
-                        <span className="sa-answer-label">{option}</span>
-                        <span className="sa-answer-mark" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.4 5 8.9 9.6 3.4" /></svg></span>
-                      </button>;
+                      const selected = question.multi
+                        ? ((answers[question.id] as number[] | undefined) ?? []).includes(i)
+                        : answers[question.id] === i;
+                      return <Fragment key={option}>
+                        {question.exclusive === i && <span className="wts-or" aria-hidden="true">or</span>}
+                        <button role={question.multi ? "checkbox" : "radio"} aria-checked={selected} className={`sa-answer${selected ? " is-selected" : ""}`} onClick={() => pick(question, i)}>
+                          {question.multi
+                            ? <span className="wts-ctl wts-ctl--check" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.4 5 8.9 9.6 3.4" /></svg></span>
+                            : <span className="wts-ctl wts-ctl--radio" aria-hidden="true" />}
+                          <span className="sa-answer-label">{option}</span>
+                        </button>
+                      </Fragment>;
                     })}
                   </div>
                   <div className="sa-nav">
