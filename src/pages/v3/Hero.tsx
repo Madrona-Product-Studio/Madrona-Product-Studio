@@ -22,7 +22,7 @@ function HeroCopy() {
   return <div className="v3-home-copy v3-experiment-copy">
     <h1>A senior digital product studio <span>built for the AI era.</span></h1>
     <p className="v3-lede">We help founders, local businesses, and product teams leverage AI and modern tools to build what actually moves the business.</p>
-    <div className="v3-actions"><Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link><Link className="v3-hero-text-link" to="/where-to-start">Find where to start <span aria-hidden="true">→</span></Link></div>
+    <div className="v3-actions"><Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link><Link className="v3-hero-text-link" to="/where-to-start">Take the readiness assessment <span aria-hidden="true">→</span></Link></div>
   </div>;
 }
 

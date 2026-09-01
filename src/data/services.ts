@@ -70,7 +70,7 @@ export const serviceAreas: ServiceArea[] = [
     artifact: { src: operationsArtifact, alt: "Berry Good operations dashboard with an order-intake agent and structured orders", caption: "Berry Good operations dashboard" },
     demos: { label: "See the tools we deploy, running live", to: "/tools" },
     pov: { label: "Thinking: The era of agentic operations", to: "/thinking/the-era-of-agentic-operations" },
-    tryIt: { label: "Not sure where AI fits? Take the free signal check", to: "/checkup" },
+    tryIt: { label: "Not sure where AI fits? Take the readiness assessment", to: "/where-to-start" },
     open: { label: "The tools behind this are open source", to: "/open" },
   },
   {

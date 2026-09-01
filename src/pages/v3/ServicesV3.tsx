@@ -51,7 +51,7 @@ export default function ServicesV3() {
         <p className="v3-lede">We help you find the highest-leverage move, make it real, and let the work compound. The doors are different; the practice behind them is the same.</p>
         <div className="v3-actions">
           <Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link>
-          <Link className="v3-hero-text-link" to="/where-to-start">Find where to start <span aria-hidden="true">→</span></Link>
+          <Link className="v3-hero-text-link" to="/where-to-start">Take the readiness assessment <span aria-hidden="true">→</span></Link>
         </div>
       </div>
     </section>
