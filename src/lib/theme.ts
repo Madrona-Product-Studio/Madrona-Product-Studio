@@ -58,12 +58,37 @@ export function skyState(now = new Date()): ThemeState {
   return "night";
 }
 
-export function getPref(): ThemePref {
+// A pin is stored with the sky state it was made under, so it can expire
+// when the sky moves on (see initTheme). Legacy plain-string pins predate
+// expiry and never decayed — treat them as stale.
+interface StoredPin { pref: ThemeState; sky: ThemeState }
+
+function isState(v: unknown): v is ThemeState {
+  return v === "day" || v === "dusk" || v === "night";
+}
+
+function clearPin() {
+  try { localStorage.removeItem(STORE_KEY); } catch { /* private mode */ }
+}
+
+function readPin(): StoredPin | null {
   try {
     const v = localStorage.getItem(STORE_KEY);
-    if (v === "day" || v === "dusk" || v === "night" || v === "auto") return v;
-  } catch { /* private mode */ }
-  return "auto";
+    if (!v) return null;
+    if (isState(v) || v === "auto") { clearPin(); return null; } // legacy format
+    const parsed: unknown = JSON.parse(v);
+    if (
+      typeof parsed === "object" && parsed !== null &&
+      isState((parsed as StoredPin).pref) && isState((parsed as StoredPin).sky)
+    ) return parsed as StoredPin;
+    clearPin();
+  } catch { /* private mode / bad JSON */ clearPin(); }
+  return null;
+}
+
+export function getPref(): ThemePref {
+  const pin = readPin();
+  return pin ? pin.pref : "auto";
 }
 
 function resolve(pref: ThemePref): ThemeState {
@@ -90,7 +115,13 @@ export function currentState(): ThemeState {
 }
 
 export function setPref(pref: ThemePref) {
-  try { localStorage.setItem(STORE_KEY, pref); } catch { /* private mode */ }
+  if (pref === "auto") {
+    clearPin();
+  } else {
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify({ pref, sky: skyState() }));
+    } catch { /* private mode */ }
+  }
   apply(pref);
 }
 
@@ -114,7 +145,18 @@ export function initTheme() {
   if (param === "day" || param === "dusk" || param === "night" || param === "auto") {
     apply(param);
   } else {
-    apply(getPref());
+    // A pin holds only until the sky next changes (Charlie, 2026-09-01:
+    // returning visitors were stuck on last visit's scheme). If the sky
+    // has moved on since the pin was made, the sun takes back over —
+    // index.html's pre-paint mirror makes the same call, so there's no
+    // flash on load. Mid-session pins are untouched.
+    const pin = readPin();
+    if (pin && pin.sky !== skyState()) {
+      clearPin();
+      apply("auto");
+    } else {
+      apply(pin ? pin.pref : "auto");
+    }
   }
   scheduleNextCheck();
 }
