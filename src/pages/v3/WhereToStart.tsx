@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import LabMeta from "../lab/LabMeta";
 import MadronaLogo from "../lab/MadronaLogo";
@@ -20,12 +20,55 @@ type Stage = { kind: "opener" } | { kind: "question"; index: number } | { kind: 
 
 const RAIL_PHASES = ["Sounds like you", "Follow-ups", "Your read"];
 
+// The conversational frame (V2, 2026-08-31): answered beats stay on screen as
+// chat history, so the assessment reads like a dialogue instead of a form.
+// Short labels for the "you" reply chips; module names for the flag seam.
+const THREAD_SHORT: Record<ThreadId, string> = {
+  web: "The site undersells us",
+  repeat: "One-and-done customers",
+  hours: "Hours lost to admin",
+  ai: "AI, but where to start",
+  product: "A new thing to make real",
+  steady: "Want an outside read",
+};
+const MODULE_OF_THREAD: Record<ThreadId, string> = {
+  web: "Getting found",
+  repeat: "Coming back",
+  hours: "Running smoother",
+  ai: "AI leverage",
+  product: "The new thing",
+  steady: "An outside read",
+};
+
+// A small madrona frond for the agent avatar (inline path, no webfont).
+function AgentMark({ className }: { className?: string }) {
+  return (
+    <span className={`wts-mark${className ? ` ${className}` : ""}`} aria-hidden="true">
+      <svg viewBox="0 0 20 20">
+        <path d="M10 16V5" />
+        <path d="M10 9.6C10 7.6 11.9 6 14.2 6" />
+        <path d="M10 12.4C10 10.6 11.6 9.2 13.6 9.2" />
+      </svg>
+    </span>
+  );
+}
+
+function AgentBubble({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="wts-agent">
+      <AgentMark />
+      <div className="wts-agent-bubble">{children}</div>
+    </div>
+  );
+}
+
 export default function WhereToStart() {
   useCalEmbed();
   const [stage, setStage] = useState<Stage>({ kind: "opener" });
   const [threads, setThreads] = useState<ThreadId[]>([]);
   const [answers, setAnswers] = useState<WhereToStartAnswers>({ threads: [] });
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const islandRef = useRef<HTMLElement>(null);
 
   const sequence = useMemo(() => buildSequence(threads), [threads]);
   const showResult = stage.kind === "result";
@@ -42,6 +85,12 @@ export default function WhereToStart() {
 
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: true });
+    // Keep the active question anchored near the top of its (internally
+    // scrolling) column as the chat history grows above it, so answering
+    // never pushes the current beat below the fold. Column scroll only; the
+    // report pane stays pinned. Reduced-motion jumps instead of animating.
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    islandRef.current?.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
   }, [stage]);
 
   const toggleThread = (id: ThreadId) =>
@@ -136,55 +185,96 @@ export default function WhereToStart() {
       </header>
 
       <div className="sa-body">
-        <main className="sa-work">
-          {stage.kind === "opener" && (
-            <section className="sa-question sa-enter" aria-labelledby="wts-q">
-              <p className="sa-count"><em>Readiness assessment</em><span aria-hidden="true"> · </span>Check all that apply</p>
-              <h1 id="wts-q" ref={headingRef} tabIndex={-1}>Which of these sound like you?</h1>
-              <p className="sa-support">We only ask about what you flag, then hand you a short read you keep either way.</p>
-              <div className="sa-answers" role="group" aria-labelledby="wts-q">
-                {openerItems.map((item, i) => {
-                  const selected = threads.includes(item.id);
-                  return <button key={item.id} role="checkbox" aria-checked={selected} className={`sa-answer${selected ? " is-selected" : ""}`} onClick={() => toggleThread(item.id)}>
-                    <span className="sa-answer-key" aria-hidden="true">{String.fromCharCode(65 + i)}</span>
-                    <span className="sa-answer-label">{item.statement}</span>
-                    <span className="sa-answer-mark" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.4 5 8.9 9.6 3.4" /></svg></span>
-                  </button>;
-                })}
-              </div>
-              <div className="sa-nav">
-                <p className="sa-meta">About two minutes. No email required.</p>
-                <button className="sa-primary" disabled={!threads.length} onClick={begin}>Continue <span aria-hidden="true">→</span></button>
-              </div>
-            </section>
-          )}
-
-          {question && stage.kind === "question" && (
-            <section key={stage.index} className="sa-question sa-enter" aria-labelledby="wts-q">
-              <p className="sa-count"><em>{question.module}</em><span aria-hidden="true"> · </span>Question {String(stage.index + 1).padStart(2, "0")} / {String(sequence.length).padStart(2, "0")}</p>
-              <h1 id="wts-q" ref={headingRef} tabIndex={-1}>{question.question}</h1>
-              {question.support && <p className="sa-support">{question.support}</p>}
-              <div className="sa-answers" role="radiogroup" aria-labelledby="wts-q">
-                {question.options.map((option, i) => {
-                  const selected = answers[question.id] === i;
-                  return <button key={option} role="radio" aria-checked={selected} className={`sa-answer${selected ? " is-selected" : ""}`} onClick={() => setAnswers(a => ({ ...a, [question.id]: i }))}>
-                    <span className="sa-answer-key" aria-hidden="true">{String.fromCharCode(65 + i)}</span>
-                    <span className="sa-answer-label">{option}</span>
-                    <span className="sa-answer-mark" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.4 5 8.9 9.6 3.4" /></svg></span>
-                  </button>;
-                })}
-              </div>
-              {question.id === "workflow" && (
-                <label className="wts-freetext">
-                  <span>Or say it in your words. The read gets sharper.</span>
-                  <input type="text" maxLength={200} placeholder="The part of the week I dread is…" value={answers.workflowText ?? ""} onChange={e => setAnswers(a => ({ ...a, workflowText: e.target.value }))} />
-                </label>
+        <main className="sa-work wts-work">
+          {!showResult && (
+            <div className="wts-stream">
+              {/* Chat history: the opener turn + every answered follow-up so far. */}
+              {stage.kind === "question" && (
+                <>
+                  <AgentBubble>Which of these sound like you?</AgentBubble>
+                  <div className="wts-you">
+                    <div className="wts-you-chips">
+                      {answers.threads.map(t => <span key={t} className="wts-you-chip">{THREAD_SHORT[t]}</span>)}
+                    </div>
+                  </div>
+                  <div className="wts-seam">
+                    <span className="wts-seam-check" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.4 5 8.9 9.6 3.4" /></svg></span>
+                    <p><b>Flagged.</b> {answers.threads.map(t => MODULE_OF_THREAD[t]).join(", ")}. We only ask about these, then hand you a read you keep either way.</p>
+                  </div>
+                  {sequence.slice(0, stage.index).map(q => answers[q.id] !== undefined && (
+                    <Fragment key={q.id}>
+                      <AgentBubble>{q.question}</AgentBubble>
+                      <div className="wts-you"><div className="wts-you-bubble">{q.options[answers[q.id]!]}</div></div>
+                    </Fragment>
+                  ))}
+                </>
               )}
-              <div className="sa-nav">
-                <button className="sa-back" onClick={back}>← Back</button>
-                <button className="sa-primary" disabled={!answered(question)} onClick={advance}>Continue <span aria-hidden="true">→</span></button>
-              </div>
-            </section>
+
+              {/* The active beat, as a cream light-island (canon: frames are
+                  light islands in dark skies). */}
+              {stage.kind === "opener" && (
+                <>
+                  <AgentBubble>Answer a few taps and I'll assemble your read on the right as we go. Nothing's required. It's yours to keep either way.</AgentBubble>
+                  <section ref={islandRef} className="sa-question sa-enter wts-island" aria-labelledby="wts-q">
+                    <div className="wts-island-head">
+                      <AgentMark className="wts-mark--island" />
+                      <div>
+                        <p className="sa-count"><em>Readiness assessment</em><span aria-hidden="true"> · </span>Check all that apply</p>
+                        <h1 id="wts-q" ref={headingRef} tabIndex={-1}>Which of these sound like you?</h1>
+                        <p className="sa-support">We only ask about what you flag, then hand you a short read you keep either way.</p>
+                      </div>
+                    </div>
+                    <div className="sa-answers" role="group" aria-labelledby="wts-q">
+                      {openerItems.map((item, i) => {
+                        const selected = threads.includes(item.id);
+                        return <button key={item.id} role="checkbox" aria-checked={selected} className={`sa-answer${selected ? " is-selected" : ""}`} onClick={() => toggleThread(item.id)}>
+                          <span className="sa-answer-key" aria-hidden="true">{String.fromCharCode(65 + i)}</span>
+                          <span className="sa-answer-label">{item.statement}</span>
+                          <span className="sa-answer-mark" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.4 5 8.9 9.6 3.4" /></svg></span>
+                        </button>;
+                      })}
+                    </div>
+                    <div className="sa-nav">
+                      <p className="sa-meta">About two minutes. No email required.</p>
+                      <button className="sa-primary" disabled={!threads.length} onClick={begin}>Continue <span aria-hidden="true">→</span></button>
+                    </div>
+                  </section>
+                </>
+              )}
+
+              {question && stage.kind === "question" && (
+                <section ref={islandRef} key={stage.index} className="sa-question sa-enter wts-island" aria-labelledby="wts-q">
+                  <div className="wts-island-head">
+                    <AgentMark className="wts-mark--island" />
+                    <div>
+                      <p className="sa-count"><em>{question.module}</em><span aria-hidden="true"> · </span>Question {String(stage.index + 1).padStart(2, "0")} / {String(sequence.length).padStart(2, "0")}</p>
+                      <h1 id="wts-q" ref={headingRef} tabIndex={-1}>{question.question}</h1>
+                      {question.support && <p className="sa-support">{question.support}</p>}
+                    </div>
+                  </div>
+                  <div className="sa-answers" role="radiogroup" aria-labelledby="wts-q">
+                    {question.options.map((option, i) => {
+                      const selected = answers[question.id] === i;
+                      return <button key={option} role="radio" aria-checked={selected} className={`sa-answer${selected ? " is-selected" : ""}`} onClick={() => setAnswers(a => ({ ...a, [question.id]: i }))}>
+                        <span className="sa-answer-key" aria-hidden="true">{String.fromCharCode(65 + i)}</span>
+                        <span className="sa-answer-label">{option}</span>
+                        <span className="sa-answer-mark" aria-hidden="true"><svg viewBox="0 0 12 12"><path d="M2.5 6.4 5 8.9 9.6 3.4" /></svg></span>
+                      </button>;
+                    })}
+                  </div>
+                  {question.id === "workflow" && (
+                    <label className="wts-freetext">
+                      <span>Or say it in your words. The read gets sharper.</span>
+                      <input type="text" maxLength={200} placeholder="The part of the week I dread is…" value={answers.workflowText ?? ""} onChange={e => setAnswers(a => ({ ...a, workflowText: e.target.value }))} />
+                    </label>
+                  )}
+                  <div className="sa-nav">
+                    <button className="sa-back" onClick={back}>← Back</button>
+                    <button className="sa-primary" disabled={!answered(question)} onClick={advance}>Continue <span aria-hidden="true">→</span></button>
+                  </div>
+                </section>
+              )}
+            </div>
           )}
 
           {showResult && <ResultStage answers={answers} onRetake={retake} />}

@@ -82,6 +82,73 @@
 .wts-card .v3-better-bars i b{background:var(--hue-fir)}
 .wts-card .v3-better-bars i b.is-bark{background:#E55728}
 
+/* ---- V2 conversational frame (2026-08-31): the ported Helm brain-builder
+   left column. Answered beats stay as chat history; the active beat is a
+   cream light-island lifted out of the dark stream. ---- */
+.wts-sa .wts-work{justify-content:flex-start;padding-top:30px}
+.wts-stream{display:flex;flex-direction:column;gap:15px;width:100%;max-width:640px;margin:0 auto}
+
+/* Desktop: pin the shell to the viewport so the chat history scrolls INSIDE
+   the left column (.sa-work already scrolls) instead of growing the page and
+   pushing the active question below the fold. The report pane stays put. The
+   active island is anchored near the top on each step (see WhereToStart.tsx +
+   scroll-margin-top below). Below 880px the layout is single-column and the
+   page scrolls normally, so the cap is desktop-only. Result view is exempt. */
+@media (min-width:881px){
+  .wts-sa:not(.sa--result){height:100dvh}
+  .wts-sa:not(.sa--result) .sa-shell{height:100dvh;min-height:0}
+}
+
+/* agent turns (chat register) */
+.wts-agent{display:flex;gap:10px;align-items:flex-start;max-width:86%}
+.wts-mark{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:#1a1714;border:1px solid rgba(247,237,228,.14)}
+.wts-mark svg{width:15px;height:15px;fill:none;stroke:#E55728;stroke-width:1.4;stroke-linecap:round}
+.wts-agent-bubble{padding:11px 15px;border-radius:4px 15px 15px 15px;background:#2F3135;color:#e9e0d4;border:1px solid rgba(247,237,228,.07);font-size:14px;line-height:1.45}
+
+/* your replies */
+.wts-you{display:flex;justify-content:flex-end}
+.wts-you-bubble{max-width:80%;padding:11px 15px;border-radius:15px 15px 4px 15px;background:#F7EDE4;color:#26282B;font-size:14px;line-height:1.4;font-weight:500}
+.wts-you-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;max-width:88%}
+.wts-you-chip{padding:7px 13px;border-radius:999px;background:#F7EDE4;color:#26282B;font-size:12.5px;font-weight:600}
+
+/* the flag seam (system register, mint) */
+.wts-seam{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:10px;background:rgba(57,132,109,.10);border:1px solid rgba(57,132,109,.28)}
+.wts-seam-check{flex:none;width:18px;height:18px;border-radius:999px;display:grid;place-items:center;margin-top:1px;background:#39846d}
+.wts-seam-check svg{width:10px;height:10px;fill:none;stroke:#f7ede4;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.wts-seam p{margin:0;font-size:12.5px;line-height:1.5;color:#cdd8d1}
+.wts-seam b{color:#7fc4ac}
+
+/* the light-island active beat: recolor the dark .sa-question surface cream */
+.wts-sa .wts-island{background:#fdfcfa;border-radius:16px;border:1px solid rgba(26,23,20,.10);box-shadow:0 22px 55px rgba(0,0,0,.34);padding:22px clamp(18px,2vw,26px) 22px;margin-top:4px;scroll-margin-top:80px}
+.wts-island-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
+.wts-island-head>div{min-width:0}
+.wts-mark--island{background:#1a1714;border-color:transparent;margin-top:2px}
+.wts-sa .wts-island .sa-count{margin-bottom:8px;color:#8c8378}
+.wts-sa .wts-island .sa-count em{color:#BC431D}
+.wts-sa .wts-island h1{margin-bottom:0;color:#1a1714;font-size:clamp(21px,1.8vw,27px);line-height:1.12}
+.wts-sa .wts-island .sa-support{margin:8px 0 0;color:#6f6657}
+.wts-sa .wts-island .sa-answers{margin-bottom:20px}
+.wts-sa .wts-island .sa-answer{background:#ffffff;border-color:rgba(26,23,20,.12);color:#403a33}
+.wts-sa .wts-island .sa-answer:hover{border-color:rgba(26,23,20,.30);background:#fff;color:#1a1714}
+.wts-sa .wts-island .sa-answer.is-selected{border-color:#E55728;background:#fbe9df;color:#1a1714}
+.wts-sa .wts-island .sa-answer-key{border-color:rgba(26,23,20,.20);color:#8c8378}
+.wts-sa .wts-island .sa-answer.is-selected .sa-answer-key{border-color:#E55728;color:#BC431D}
+.wts-sa .wts-island .sa-answer-mark{background:#E55728}
+.wts-sa .wts-island .sa-answer-mark svg{stroke:#fff}
+.wts-sa .wts-island .sa-answer:focus-visible{outline-color:#E55728}
+.wts-sa .wts-island .sa-primary{background:#2F3135;color:#f7ede4}
+.wts-sa .wts-island .sa-primary:hover:not(:disabled){background:#1a1714;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.wts-sa .wts-island .sa-back{color:#8c8378}
+.wts-sa .wts-island .sa-back:hover{color:#403a33}
+.wts-sa .wts-island .sa-meta{color:#8c8378}
+.wts-sa .wts-island .wts-freetext span{color:#6f6657}
+.wts-sa .wts-island .wts-freetext input{border-color:rgba(26,23,20,.18);background:#fff;color:#1a1714}
+.wts-sa .wts-island .wts-freetext input::placeholder{color:#b8b0a2}
+@media(max-width:560px){
+  .wts-island-head{gap:10px}
+  .wts-agent,.wts-you-chips{max-width:100%}
+}
+
 /* Top-bar document title (Charlie 08-30): the tool names itself in the
    chrome, beside the wordmark. */
 .wts-sa .sa-top-title-wrap{display:flex;align-items:center;gap:16px;flex:none}
