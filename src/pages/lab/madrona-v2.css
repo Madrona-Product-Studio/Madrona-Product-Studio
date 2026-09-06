@@ -65,24 +65,24 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-nav nav a { padding: 10px 4px; font-weight: 600; }
 .m2-nav nav a.is-primary { color: var(--bark-dark); }
 .m2-nav-cta { font-family: var(--font-nav); justify-self: end; margin-left: 18px; }
-/* Sky switcher (2026-08-30): shows what the Bellingham sky decided; expands
-   leftward into the three states on click. Auto is behavior, not an option. */
-.sky-switch { align-items: center; display: inline-flex; flex-direction: row-reverse; justify-self: end; margin-left: 22px; }
-.sky-switch-face { align-items: center; background: none; border: 1px solid var(--sand); border-radius: 999px; color: var(--ink-soft); cursor: pointer; display: inline-flex; height: 36px; justify-content: center; transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease; width: 36px; }
+/* Sky switcher (2026-08-30, panel form 2026-09-06): shows what the Bellingham
+   sky decided; the face opens a small panel below it (never over the
+   wordmark) with the three states, visible labels, and a one-line hint.
+   Auto is behavior, not an option. Face and options are 44px targets. */
+.sky-switch { display: inline-flex; justify-self: end; margin-left: 22px; position: relative; }
+.sky-switch-face { align-items: center; background: none; border: 1px solid var(--sand); border-radius: 999px; color: var(--ink-soft); cursor: pointer; display: inline-flex; height: 44px; justify-content: center; transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease; width: 44px; }
 .sky-switch-face:hover { border-color: var(--bark); color: var(--ink); }
 .sky-switch.is-open .sky-switch-face { background: var(--sand); color: var(--ink); }
-.sky-switch-row { display: inline-flex; gap: 2px; max-width: 0; opacity: 0; overflow: hidden; pointer-events: none; transform: translateX(6px); transition: max-width 280ms cubic-bezier(.23,1,.32,1), opacity 200ms ease, transform 280ms cubic-bezier(.23,1,.32,1), margin 280ms cubic-bezier(.23,1,.32,1); }
-.sky-switch.is-open .sky-switch-row { margin-right: 7px; max-width: 130px; opacity: 1; pointer-events: auto; transform: none; }
-.sky-switch-row button { align-items: center; background: none; border: 0; border-radius: 999px; color: var(--muted); cursor: pointer; display: inline-flex; height: 32px; justify-content: center; opacity: 0; transform: translateY(4px); transition: opacity 180ms ease, transform 240ms cubic-bezier(.23,1,.32,1), background-color 160ms ease, color 160ms ease; width: 32px; }
+.sky-switch-panel { background: var(--surface); border: 1px solid var(--sand); border-radius: 14px; box-shadow: 0 16px 36px rgba(26,23,20,.13); opacity: 0; padding: 6px 6px 8px; pointer-events: none; position: absolute; right: 0; top: calc(100% + 8px); transform: translateY(-4px); transition: opacity 200ms ease, transform 280ms cubic-bezier(.23,1,.32,1), visibility 0s linear 280ms; visibility: hidden; width: max-content; z-index: 60; }
+.sky-switch.is-open .sky-switch-panel { opacity: 1; pointer-events: auto; transform: none; transition-delay: 0s; visibility: visible; }
+.sky-switch-row { display: flex; gap: 2px; }
+.sky-switch-row button { align-items: center; background: none; border: 0; border-radius: 10px; color: var(--muted); cursor: pointer; display: inline-flex; flex-direction: column; font-family: var(--font-nav); font-size: .72rem; font-weight: 600; gap: 4px; justify-content: center; letter-spacing: .02em; min-height: 52px; min-width: 64px; opacity: 0; padding: 6px 8px; transform: translateY(4px); transition: opacity 180ms ease, transform 240ms cubic-bezier(.23,1,.32,1), background-color 160ms ease, color 160ms ease; }
 .sky-switch.is-open .sky-switch-row button { opacity: 1; transform: none; }
 .sky-switch-row button:hover { color: var(--ink); }
 .sky-switch-row button.is-on { background: var(--sand); color: var(--ink); }
-@media (prefers-reduced-motion: reduce) { .sky-switch-row, .sky-switch-row button { transition: none; } }
-@media (max-width: 720px) {
-  .sky-switch { position: relative; }
-  .sky-switch-row { background: var(--surface); border: 1px solid var(--sand); border-radius: 999px; padding: 3px 0; position: absolute; right: calc(100% + 8px); top: 50%; transform: translate(6px, -50%); }
-  .sky-switch.is-open .sky-switch-row { margin-right: 0; padding: 3px; transform: translate(0, -50%); }
-}
+.sky-switch-row button[aria-pressed="true"] { box-shadow: inset 0 0 0 1px var(--bark-dark); }
+.sky-switch-hint { color: var(--muted); font-size: .72rem; line-height: 1.3; margin: 6px 0 0; padding: 0 8px; }
+@media (prefers-reduced-motion: reduce) { .sky-switch-panel, .sky-switch-row button { transition: none; } }
 /* Services dropdown (desktop-only; the primary nav hides at the mobile breakpoint) */
 .m2-nav-dd { position: relative; display: inline-flex; }
 .m2-nav-dd-trigger { align-items: center; background: none; border: 0; color: inherit; cursor: pointer; display: inline-flex; font: inherit; gap: 5px; padding: 10px 4px; }

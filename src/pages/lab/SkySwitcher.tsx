@@ -4,9 +4,12 @@ import { track } from "../../lib/analytics";
 
 // The sky switcher (header, 2026-08-30). Auto is not an option — the site
 // always follows the Bellingham sun; this control shows what the sky decided
-// (one glyph, left of Get in touch) and expands on click into the three
-// states for anyone who wants to pin one. Re-tapping the pinned state hands
-// control back to the sky. Collapses on pick or outside click.
+// (one glyph, left of Get in touch) and opens on click into a small panel
+// under the face: the three states with visible labels, plus a one-line
+// hint saying whether the sky or a pin is in charge (audit 2026-09-06; the
+// old leftward glyph row slid over the wordmark on phones). Re-tapping the
+// pinned state hands control back to the sky. Collapses on pick, Escape,
+// or outside click.
 const STATES: { value: ThemeState; label: string }[] = [
   { value: "day", label: "Day" },
   { value: "dusk", label: "Dusk" },
@@ -35,7 +38,7 @@ export default function SkySwitcher() {
   useEffect(() => {
     if (!open) return;
     const close = (e: Event) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
-    const esc = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    const esc = (e: KeyboardEvent) => { if (e.key === "Escape") { setOpen(false); ref.current?.querySelector<HTMLButtonElement>(".sky-switch-face")?.focus(); } };
     window.addEventListener("pointerdown", close);
     window.addEventListener("keydown", esc);
     return () => { window.removeEventListener("pointerdown", close); window.removeEventListener("keydown", esc); };
@@ -50,33 +53,42 @@ export default function SkySwitcher() {
     setOpen(false);
   };
 
+  const currentLabel = STATES.find(s => s.value === current)?.label;
+  const pinned = pref !== "auto";
+  const hint = pinned ? "Pinned until the sky changes" : "Following the Bellingham sky";
+
   return (
     <div className={`sky-switch${open ? " is-open" : ""}`} ref={ref}>
       <button
         type="button"
         className="sky-switch-face"
         aria-expanded={open}
-        aria-label={`Theme: ${STATES.find(s => s.value === current)?.label}${pref === "auto" ? ", following the Bellingham sky" : ""}. Choose a theme.`}
-        title={pref === "auto" ? "Following the Bellingham sky" : "Pinned — tap again in the row to follow the sky"}
+        aria-controls="sky-switch-panel"
+        aria-label={`Sky: ${currentLabel}, ${hint.toLowerCase()}. Choose a sky.`}
+        title={pinned ? `${hint}. Tap the pinned sky again to follow the sun.` : hint}
         onClick={() => setOpen(!open)}
       >
         <Glyph state={current} />
       </button>
-      <div className="sky-switch-row" role="group" aria-label="Theme" aria-hidden={!open}>
-        {STATES.map((s, i) => (
-          <button
-            key={s.value}
-            type="button"
-            tabIndex={open ? 0 : -1}
-            style={{ transitionDelay: open ? `${40 + i * 30}ms` : "0ms" }}
-            className={current === s.value ? "is-on" : undefined}
-            aria-pressed={pref === s.value}
-            title={s.label}
-            onClick={() => choose(s.value)}
-          >
-            <Glyph state={s.value} />
-          </button>
-        ))}
+      <div id="sky-switch-panel" className="sky-switch-panel" aria-hidden={!open}>
+        <div className="sky-switch-row" role="group" aria-label="Sky">
+          {STATES.map((s, i) => (
+            <button
+              key={s.value}
+              type="button"
+              tabIndex={open ? 0 : -1}
+              style={{ transitionDelay: open ? `${40 + i * 30}ms` : "0ms" }}
+              className={current === s.value ? "is-on" : undefined}
+              aria-pressed={pref === s.value}
+              aria-label={pref === s.value ? `${s.label}, pinned. Tap again to follow the sky.` : s.label}
+              onClick={() => choose(s.value)}
+            >
+              <Glyph state={s.value} />
+              <span>{s.label}</span>
+            </button>
+          ))}
+        </div>
+        <p className="sky-switch-hint">{hint}</p>
       </div>
     </div>
   );
