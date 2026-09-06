@@ -121,6 +121,15 @@
   color: var(--a-text-3);
   flex: none;
 }
+/* Phones collapse the phase labels to dots (below); this names the current
+   step beside them so the dots are never the only progress cue. */
+.sa-phase-now {
+  display: none;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--a-text-2);
+  white-space: nowrap;
+}
 /* Result header: the rail's four checks collapse into one quiet confirmation. */
 .sa-complete {
   display: inline-flex;
@@ -712,6 +721,10 @@
   .sa-wordmark img {
     width: 120px;
   }
+  .sa-phases {
+    align-items: center;
+    gap: 8px;
+  }
   .sa-phase {
     font-size: 0;
     gap: 0;
@@ -719,6 +732,10 @@
   .sa-phase i {
     width: 12px;
     height: 12px;
+  }
+  .sa-phase-now {
+    display: inline;
+    margin-left: 6px;
   }
   .sa-body {
     grid-template-columns: 1fr;

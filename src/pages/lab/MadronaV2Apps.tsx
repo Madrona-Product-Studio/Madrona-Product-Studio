@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { track } from "../../lib/analytics";
+import { imgProps, SIZES } from "../../lib/responsiveImage";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -22,7 +23,7 @@ function StageBadge({ stage }: { stage: ProductStage }) {
 function Artifact({ product }: { product: StudioProduct }) {
   const { artifact, stage } = product;
   if (artifact.src) {
-    return <div className="m2-ap-artifact"><img src={artifact.src} alt={artifact.alt} loading="lazy" /></div>;
+    return <div className="m2-ap-artifact"><img {...imgProps(artifact.src, SIZES.appTile)} alt={artifact.alt} loading="lazy" decoding="async" /></div>;
   }
   const note =
     stage === "concept" ? "Early exploration" : stage === "prototype" ? "Prototype in progress" : "In progress";
@@ -59,17 +60,29 @@ function ProductRow({ product }: { product: StudioProduct }) {
   );
 }
 
+const isStage = (value: string | null): value is ProductStage => STAGE_ORDER.includes(value as ProductStage);
+
 export default function MadronaV2Apps() {
   useReveal();
-  const [filter, setFilter] = useState<ProductStage | "all">("all");
+  // The stage filter lives in the URL (?stage=live) so a filtered view can be
+  // linked, shared, and restored on back navigation.
+  const [params, setParams] = useSearchParams();
+  const stageParam = params.get("stage");
+  const filter: ProductStage | "all" = isStage(stageParam) ? stageParam : "all";
+  const setFilter = (next: ProductStage | "all") => {
+    const nextParams = new URLSearchParams(params);
+    if (next === "all") nextParams.delete("stage"); else nextParams.set("stage", next);
+    setParams(nextParams, { replace: true });
+  };
   const counts = stageCounts(studioProducts);
   const presentStages = STAGE_ORDER.filter((s) => counts[s] > 0);
   const visible = sortProducts(studioProducts.filter((p) => filter === "all" || p.stage === filter));
 
   return (
-    <main className="m2 m2-ap-page">
+    <div className="m2 m2-ap-page">
       <LabMeta title="Products · Madrona Product Studio" />
       <M2Nav active="apps" />
+      <main id="main">
 
       <section className="m2-phead">
         <div className="m2-ab-intro-copy">
@@ -85,7 +98,7 @@ export default function MadronaV2Apps() {
         </div>
       </section>
 
-      <div className="m2-ap-filters" role="group" aria-label="Filter apps by stage">
+      <div className="m2-ap-filters" role="group" aria-label="Filter products by stage">
         <button type="button" aria-pressed={filter === "all"} className={filter === "all" ? "is-active" : ""} onClick={() => setFilter("all")}>All <b>{counts.all}</b></button>
         {presentStages.map((s) => (
           <button type="button" key={s} aria-pressed={filter === s} className={filter === s ? "is-active" : ""} onClick={() => setFilter(s)}>
@@ -97,11 +110,13 @@ export default function MadronaV2Apps() {
       <div className="m2-ap-list">
         {visible.map((p) => <ProductRow product={p} key={p.id} />)}
         {visible.length === 0 && (
-          <p className="m2-ap-empty">No products are currently in this stage. <button type="button" className="m2-text-link" onClick={() => setFilter("all")}>Show all apps →</button></p>
+          <p className="m2-ap-empty">No products are currently in this stage. <button type="button" className="m2-text-link" onClick={() => setFilter("all")}>Show all products →</button></p>
         )}
       </div>
 
+      </main>
+
       <SiteFooter />
-    </main>
+    </div>
   );
 }

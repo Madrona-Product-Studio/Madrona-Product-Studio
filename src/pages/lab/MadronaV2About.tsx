@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import LabMeta from "./LabMeta";
+import { imgProps, SIZES } from "../../lib/responsiveImage";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import { studioProfile } from "../../data/studioProfile";
+import { ctaClick } from "../../lib/analytics";
 import "./madrona-v2.css";
 
 const LOGOS: Record<string, string> = {
@@ -71,7 +73,7 @@ function TeamNetworkDiagram() {
       </svg>
 
       <figure className="m2-ab-net-portrait">
-        <img src={intro.portraitSrc} alt={intro.portraitAlt} />
+        <img {...imgProps(intro.portraitSrc, SIZES.aboutPortrait)} alt={intro.portraitAlt} decoding="async" />
         <figcaption className="m2-ab-net-pill">
           <strong>{charlie.name}</strong>
           <span>{charlie.role}</span>
@@ -98,9 +100,10 @@ export default function MadronaV2About() {
   const { experience, community, nameStory } = studioProfile;
 
   return (
-    <main className="m2 m2-ab-page">
+    <div className="m2 m2-ab-page">
       <LabMeta title="About · Madrona Product Studio" />
       <M2Nav active="about" />
+      <main id="main">
 
       {/* 1 · The studio (original hero: copy + proof points | network diagram) */}
       <section className="m2-ab-intro">
@@ -191,11 +194,11 @@ export default function MadronaV2About() {
             <p>AI gives small teams extraordinary leverage. That makes where we point it matter more, not less.</p>
             <p>So we choose deliberately, and take on the work we'd be proud to have built. We believe software can leave the world a little better than it found it.</p>
           </div>
-          <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
+          <Link className="m2-text-link" to="/connect" onClick={ctaClick("Get in touch", "/connect", "about")}>Get in touch <span aria-hidden="true">→</span></Link>
         </div>
         <div className="m2-ab4-worth-media">
-          <img src={community.images[0]} alt="Fresh local produce at a Pacific Northwest market" loading="lazy" />
-          <img src={community.images[1]} alt="Conserved Pacific Northwest land above the water" loading="lazy" />
+          <img {...imgProps(community.images[0], SIZES.aboutPair)} alt="Fresh local produce at a Pacific Northwest market" loading="lazy" decoding="async" />
+          <img {...imgProps(community.images[1], SIZES.aboutPair)} alt="Conserved Pacific Northwest land above the water" loading="lazy" decoding="async" />
         </div>
       </section>
 
@@ -210,12 +213,14 @@ export default function MadronaV2About() {
           </div>
         </div>
         <figure className="m2-ab4-place-media">
-          <img src={nameStory.imageSrc} alt="A madrona tree with peeling orange bark on a bluff above the Salish Sea" loading="lazy" />
+          <img {...imgProps(nameStory.imageSrc, SIZES.aboutPlace)} alt="A madrona tree with peeling orange bark on a bluff above the Salish Sea" loading="lazy" decoding="async" />
           <figcaption>Named for the madrona, the tree on the bluff with the peeling orange bark, leaning out over the Salish Sea. It is where the brand's one color comes from.</figcaption>
         </figure>
       </section>
 
+      </main>
+
       <SiteFooter cta={false} />
-    </main>
+    </div>
   );
 }

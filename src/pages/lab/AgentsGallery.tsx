@@ -5,6 +5,8 @@ import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import { agents } from "../../data/agents";
 import { ConnectorLogos } from "./connectors";
+import { BERRY_URL } from "../../data/proof";
+import { ctaClick, outboundClick } from "../../lib/analytics";
 import "./madrona-v2.css";
 import "./agent-demo.css";
 
@@ -18,9 +20,10 @@ export default function AgentsGallery() {
   const cats = Array.from(new Set(agents.map((a) => a.category)));
 
   return (
-    <main className="m2 m2-ab-page">
+    <div className="m2 m2-ab-page">
       <LabMeta title="Tools we deploy for your business · Madrona Product Studio" />
       <M2Nav active="tools" />
+      <main id="main">
 
       {/* Masthead — same shape as /thinking */}
       <section className="m2-ab4 m2-th-hero">
@@ -29,9 +32,10 @@ export default function AgentsGallery() {
         <p className="m2-th-standfirst">
           The tools we build and deploy for a business: each an AI agent on a
           real workflow, each stopping for a human wherever it touches money,
-          customers, or judgment. Run any of them live on Berry Good, our
-          demonstration farm, then we set it up on your operation and leave you
-          able to run it yourself.
+          customers, or judgment. Walk through any of them as an interactive
+          demo on Berry Good, our demonstration farm, then we set it up on
+          your operation and leave you able to run it yourself. The demos are
+          scripted; the farm&rsquo;s <a className="m2-inline-link" href={BERRY_URL} target="_blank" rel="noopener noreferrer" onClick={outboundClick(BERRY_URL, "tools")}>storefront</a> is live.
         </p>
       </section>
 
@@ -56,7 +60,7 @@ export default function AgentsGallery() {
                       </div>
                       <div className="agx-row-right">
                         <span className="agx-row-cadence">{a.cadence}</span>
-                        <span className="m2-text-link agx-row-cta">Run the demo <span aria-hidden="true">→</span></span>
+                        <span className="m2-text-link agx-row-cta">Walk through the demo <span aria-hidden="true">→</span></span>
                       </div>
                     </Link>
                   ))}
@@ -81,13 +85,15 @@ export default function AgentsGallery() {
             tell you honestly whether an agent belongs on it.
           </p>
           <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/connect" onClick={ctaClick("Get in touch", "/connect", "tools")}>Get in touch <span aria-hidden="true">→</span></Link>
             <Link className="m2-text-link" to="/services/ai-operations">How agentic operations work <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>
 
+      </main>
+
       <SiteFooter />
-    </main>
+    </div>
   );
 }

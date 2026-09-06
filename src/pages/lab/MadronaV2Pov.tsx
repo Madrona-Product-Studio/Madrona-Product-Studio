@@ -6,6 +6,7 @@ import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import PovThumb from "./PovThumb";
 import { useReveal } from "./useReveal";
+import { ctaClick } from "../../lib/analytics";
 import { thinkingEntries, type ThinkingType } from "../../data/thinking";
 import "./madrona-v2.css";
 import "./playbook.css";
@@ -22,9 +23,10 @@ export default function MadronaV2Pov() {
   const shown = filter === "All" ? thinkingEntries : thinkingEntries.filter((e) => e.type === filter);
 
   return (
-    <main className="m2 m2-ab-page">
+    <div className="m2 m2-ab-page">
       <LabMeta title="Thinking · Madrona Product Studio" />
       <M2Nav active="pov" />
+      <main id="main">
 
       {/* Masthead */}
       <section className="m2-ab4 m2-th-hero m2-pov-hero">
@@ -35,9 +37,9 @@ export default function MadronaV2Pov() {
 
       {/* Filters + feed */}
       <section className="m2-ab4">
-        <div className="m2-cu-filters" role="tablist" aria-label="Filter entries">
+        <div className="m2-cu-filters" role="group" aria-label="Filter entries">
           {(["All", ...types] as const).map((t) => (
-            <button key={t} role="tab" aria-selected={filter === t} className={filter === t ? "is-active" : undefined} onClick={() => setFilter(t as "All" | ThinkingType)}>
+            <button key={t} type="button" aria-pressed={filter === t} className={filter === t ? "is-active" : undefined} onClick={() => setFilter(t as "All" | ThinkingType)}>
               {t === "All" ? "All" : `${t}s`}
             </button>
           ))}
@@ -47,7 +49,7 @@ export default function MadronaV2Pov() {
             <Link key={e.href} to={e.href} className="m2-povl-d-row">
               <div className="m2-pov-plate m2-povl-d-plate"><PovThumb motif={e.motif} /></div>
               <div className="m2-povl-d-body">
-                <p className="m2-povl-d-meta m2-tm-b"><TypeCircle type={e.type} /><span className="m2-jr-type">{e.type}</span></p>
+                <p className="m2-povl-d-meta m2-tm-b"><TypeCircle type={e.type} /><span className="m2-jr-type">{e.type}</span><span className="m2-povl-d-date">{e.date}</span></p>
                 <h2>{e.title}</h2>
                 <p className="m2-povl-d-excerpt">{e.excerpt}</p>
               </div>
@@ -67,12 +69,14 @@ export default function MadronaV2Pov() {
         <div className="m2-ab4-body">
           <p>We build it, set it up, and teach you to run it. Sharing what the work teaches us is the same posture: a craft that gets better in the open, and thinking that others can build on.</p>
           <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/connect" onClick={ctaClick("Get in touch", "/connect", "thinking")}>Get in touch <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>
 
+      </main>
+
       <SiteFooter />
-    </main>
+    </div>
   );
 }

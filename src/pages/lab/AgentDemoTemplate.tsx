@@ -1,12 +1,13 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ConnectorRow } from "./connectors";
+import { trackCta } from "../../lib/analytics";
 
 /* =========================================================================
    Agent-deployment demo template
 
    A functional header for an interactive agent demo — the shell for the
-   /agents gallery. Deliberately NOT the /thinking article header: no byline,
+   /tools gallery. Deliberately NOT the /thinking article header: no byline,
    no standfirst. Instead it answers, at a glance, the two questions a business
    owner actually has — what does this agent do, and what would it take to
    deploy it on my operation — with a spec card and clear actions.
@@ -35,15 +36,18 @@ export function AgentDemoHero({
   name,
   tagline,
   spec,
+  source = "tools",
   runHref = "#run",
-  runLabel = "Run the live demo",
+  runLabel = "Walk through the demo",
   deployHref = "/connect",
-  deployLabel = "Deploy this on your books",
+  deployLabel = "Deploy this on your operation",
 }: {
   category: string;
   name: string;
   tagline: ReactNode;
   spec: AgentSpec[];
+  // Analytics source for the two hero CTAs, e.g. "tools/month-end-close".
+  source?: string;
   runHref?: string;
   runLabel?: string;
   deployHref?: string;
@@ -59,10 +63,10 @@ export function AgentDemoHero({
         <h1 className="agx-hero-title">{name}</h1>
         <p className="agx-hero-tagline">{tagline}</p>
         <div className="agx-hero-actions">
-          <a className="m2-button agx-run-btn" href={runHref}>
+          <a className="m2-button agx-run-btn" href={runHref} onClick={() => trackCta(runLabel, runHref, source)}>
             {runLabel}<span aria-hidden="true"> ↓</span>
           </a>
-          <Link className="m2-button m2-button-secondary" to={deployHref}>
+          <Link className="m2-button m2-button-secondary" to={deployHref} onClick={() => trackCta(deployLabel, deployHref, source)}>
             {deployLabel}<span aria-hidden="true"> →</span>
           </Link>
         </div>

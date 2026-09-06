@@ -9,8 +9,8 @@
 export type ThemeState = "day" | "dusk" | "night";
 export type ThemePref = ThemeState | "auto";
 
-const LAT = 48.7491;
-const LON = -122.4787;
+export const LAT = 48.7491; // Bellingham; the hero chart stamps the same coordinates
+export const LON = -122.4787;
 const DUSK_WINDOW_MIN = 40;
 const STORE_KEY = "madrona-theme";
 export const THEME_EVENT = "madrona-theme";

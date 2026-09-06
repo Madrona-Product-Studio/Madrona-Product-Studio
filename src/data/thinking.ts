@@ -5,6 +5,10 @@
 // order — the thesis leads, then the era piece, then the starter guide.
 // New entries slot in wherever they belong, not at the end.
 import type { PovMotif } from "../pages/lab/PovThumb";
+import { publishedLabel } from "./siteMeta.mjs";
+
+// Dates derive from the article table (the same field the JSON-LD uses).
+const dated = (href: string) => publishedLabel(href, { short: true });
 
 export type ThinkingType = "Artifact" | "Essay" | "Learning" | "Guide" | "Announcement";
 
@@ -19,7 +23,7 @@ export type ThinkingEntry = {
 
 export const thinkingEntries: ThinkingEntry[] = [
   {
-    date: "Aug 2026",
+    date: dated("/thesis"),
     type: "Essay",
     title: "The Madrona Product Thesis",
     excerpt: "A working theory of how great software gets built in the AI era, and what that changes about product leadership.",
@@ -27,7 +31,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     motif: "target",
   },
   {
-    date: "Aug 2026",
+    date: dated("/thinking/the-era-of-agentic-operations"),
     type: "Essay",
     title: "The era of agentic operations",
     excerpt: "A business can now run on one source of truth and agents on a rhythm, with a person firmly in charge. What changes, and how to start small.",
@@ -35,7 +39,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     motif: "flow",
   },
   {
-    date: "Aug 2026",
+    date: dated("/thinking/starter-guide-to-building-with-ai"),
     type: "Guide",
     title: "A starter guide to building real software with AI",
     excerpt: "The piece I wish someone had handed me on day one: the tools, the setup, the working prompts, and the habits that take you from zero to shipping.",
@@ -43,7 +47,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     motif: "structure",
   },
   {
-    date: "Aug 2026",
+    date: dated("/thinking/ai-tools-for-small-business"),
     type: "Artifact",
     title: "The 12 jobs AI tools already do for small businesses",
     excerpt: "A living inventory of what out-of-the-box AI handles today, indexed by the problem rather than the product: the close, the invoices, the emails, the ads. Each entry with what it needs from you and where it ends.",
@@ -51,7 +55,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     motif: "inventory",
   },
   {
-    date: "Aug 2026",
+    date: dated("/thinking/solve-the-system-not-the-symptom"),
     type: "Essay",
     title: "Solve the system, not the symptom",
     excerpt: "The higher-leverage fix is rarely the output in front of you. It is the system that produced it. Why AI made fixing the machine the default, the prompts that help you do it, and how to tell which symptoms are worth it.",
@@ -59,7 +63,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     motif: "source",
   },
   {
-    date: "Aug 2026",
+    date: dated("/thinking/under-the-hood"),
     type: "Artifact",
     title: "The engine behind everything we ship",
     excerpt: "Fifteen years of product judgment, encoded into a platform every project inherits, held to the same gates, and compounding with every launch.",

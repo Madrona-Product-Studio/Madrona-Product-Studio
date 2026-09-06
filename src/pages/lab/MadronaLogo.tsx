@@ -49,11 +49,17 @@ export default function MadronaLogo({
   const theme = useThemeState();
   const effective: MadronaLogoVariant =
     theme !== "day" && variant === "horizontal" ? "horizontal-reversed" : variant;
+  // Intrinsic size from each SVG's viewBox (side-stack 570.7 x 104, mark
+  // 300 x 300) so the box is reserved before the file arrives; the CSS
+  // width still sets the rendered size.
+  const mark = effective.startsWith("standalone");
   return (
     <img
       className={["madrona-static-logo", className].filter(Boolean).join(" ")}
       data-logo-variant={effective}
       src={logoSources[effective]}
+      width={mark ? 300 : 571}
+      height={mark ? 300 : 104}
       alt={decorative ? "" : "Madrona Product Studio"}
     />
   );

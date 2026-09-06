@@ -1,13 +1,14 @@
 // Structured content model for the Our Apps page. One shape for every product so
 // new apps are added as data, not new layouts. Counts/sorting derive from here.
 // Content sourced from each product's repository under ~/Developer/apps.
-import lilaArtifact from "../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp";
-import sjbgArtifact from "../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp";
-import lilaYogaArtifact from "../../docs/madrona-v2-build-kit/site-assets/lila-yoga-tile.webp";
-import ariaArtifact from "../../docs/madrona-v2-build-kit/site-assets/aria-health-tile.webp";
-import helmArtifact from "../../docs/madrona-v2-build-kit/site-assets/helm-tile.webp";
-import gardenArtifact from "../../docs/madrona-v2-build-kit/site-assets/garden-hq-tile.webp";
-import plainlyArtifact from "../../docs/madrona-v2-build-kit/site-assets/plainly-tile.webp";
+import type { ResponsiveImage } from "../lib/responsiveImage";
+import lilaArtifact from "../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp?w=640;960;1280&format=webp&as=img";
+import sjbgArtifact from "../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp?w=640;960;1280&format=webp&as=img";
+import lilaYogaArtifact from "../../docs/madrona-v2-build-kit/site-assets/lila-yoga-tile.webp?w=640;960;1280&format=webp&as=img";
+import ariaArtifact from "../../docs/madrona-v2-build-kit/site-assets/aria-health-tile.webp?w=640;960;1280&format=webp&as=img";
+import helmArtifact from "../../docs/madrona-v2-build-kit/site-assets/helm-tile.webp?w=640;960;1280&format=webp&as=img";
+import gardenArtifact from "../../docs/madrona-v2-build-kit/site-assets/garden-hq-tile.webp?w=640;960;1280&format=webp&as=img";
+import plainlyArtifact from "../../docs/madrona-v2-build-kit/site-assets/plainly-tile.webp?w=640;960;1280&format=webp&as=img";
 import iconLilaTrips from "../../docs/madrona-v2-build-kit/site-assets/app-icons/lila-trips.svg";
 import iconSanJuan from "../../docs/madrona-v2-build-kit/site-assets/app-icons/san-juan-boating-guide.svg";
 import iconLilaYoga from "../../docs/madrona-v2-build-kit/site-assets/app-icons/lila-yoga.svg";
@@ -25,7 +26,7 @@ export interface StudioProduct {
   stage: ProductStage;
   logoSrc: string;
   artifact: {
-    src?: string;
+    src?: ResponsiveImage;
     alt: string;
     type: "screenshot" | "map" | "prototype" | "concept-artifact";
     placeholder?: boolean;

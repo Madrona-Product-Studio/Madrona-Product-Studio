@@ -72,6 +72,7 @@ export default function PitchKit() {
     <div className="m2">
       <LabMeta title="Pitch Kit · Madrona Product Studio" noindex />
       <M2Nav />
+      <main id="main">
 
       <header className="pk-hero">
         <div className="pk-shell">
@@ -178,6 +179,8 @@ export default function PitchKit() {
       <div className="pk-shell pk-sourcenote">
         Source of truth: <code>charlie-hq/job-search/pitch-kit.md</code>. Edit there; this page mirrors it.
       </div>
+
+      </main>
 
       <SiteFooter />
     </div>

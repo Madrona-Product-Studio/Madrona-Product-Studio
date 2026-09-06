@@ -1,7 +1,8 @@
-import farmsImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-farms-food.webp";
-import outdoorsImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-outdoor-travel.webp";
-import healthImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-health-wellness.webp";
-import shopsImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-shops-services.webp";
+import { imgProps, SIZES } from "../../lib/responsiveImage";
+import farmsImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-farms-food.webp?w=450;720;900&format=webp&as=img";
+import outdoorsImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-outdoor-travel.webp?w=450;720;900&format=webp&as=img";
+import healthImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-health-wellness.webp?w=450;720;900&format=webp&as=img";
+import shopsImage from "../../../docs/madrona-v2-build-kit/placeholders/photography/audience-shops-services.webp?w=450;720;900&format=webp&as=img";
 
 // "The work we're drawn to" — ported from the live site's AudienceSection
 // (Charlie, 2026-08-29; replaced the bare experience-logos strip). Same four
@@ -32,7 +33,7 @@ export function DrawnToSection() {
     </div>
     <div className="v3-drawn-grid">
       {audiences.map(({ image, id, title, copy }) => <figure key={id}>
-        <img src={image} alt="" loading="lazy" decoding="async" />
+        <img {...imgProps(image, SIZES.tile4)} alt="" loading="lazy" decoding="async" />
         <figcaption><span className={`v3-drawn-icon is-${id}`}><AudienceIcon id={id} /></span><div><strong>{title}</strong><small>{copy}</small></div></figcaption>
       </figure>)}
     </div>

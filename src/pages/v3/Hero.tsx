@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
+import { ctaClick } from "../../lib/analytics";
 import { serviceAreas, type ServiceId } from "../../data/services";
 import { HeroChart } from "./HeroChart";
-import { ReadCard, WindowBar, heroReadFixture } from "./ReadCard";
+import { WindowBar } from "./ReadCard";
+import { OpportunityReport } from "./OpportunityReport";
+import { computeOpportunityReport } from "./opportunityEngine";
+import "./opportunity-report.css";
 
 // The hero direction (Charlie, 2026-08-29): the chart-of-the-bay contour
 // animation bleeding off the right edge (replaced the six-photo rotation),
 // message left on warm paper, and two browser-window artifacts (2026-08-28):
-// the signal-check example and a plain-words what-we-do window.
+// the assessment's example read and a plain-words what-we-do window.
 const doorRoutes: Record<string, string> = { "operations-and-ai": "/services/ai-operations", "customers-and-growth": "/services/growth-retention", "brand-and-web": "/services/brand-website", "new-products": "/services/new-products" };
 
 // Condensed from each door's homepageItems: the hero window leads with the
@@ -18,11 +22,28 @@ const serviceLines: Record<ServiceId, string> = {
   "new-products": "Strategy, prototypes, MVPs",
 };
 
+// The example read is the real artifact: a plausible owner's answers run
+// through the same engine the assessment uses, so the hero never shows a
+// card the tool can't produce. One area deliberately light on hours, so the
+// read can be seen saying "not here".
+const heroRead = computeOpportunityReport({
+  chips: ["invoices", "questions", "retyping"],
+  moneyHours: 3,
+  moneyEvidence: [0],
+  customersHours: 2,
+  customersEvidence: [0],
+  glueHours: 1,
+  glueEvidence: [1],
+  ai: 1,
+  blocker: [0],
+  readiness: 1,
+});
+
 function HeroCopy() {
   return <div className="v3-home-copy v3-experiment-copy">
     <h1>A senior digital product studio <span>built for the AI era.</span></h1>
     <p className="v3-lede">We help founders, local businesses, and product teams leverage AI and modern tools to build what actually moves the business.</p>
-    <div className="v3-actions"><Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link><Link className="v3-hero-text-link" to="/ai-opportunities">Find your AI opportunities <span aria-hidden="true">→</span></Link></div>
+    <div className="v3-actions"><Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "home-hero")}>Get in touch</Link><Link className="v3-hero-text-link" to="/ai-opportunities" onClick={ctaClick("Find your AI opportunities", "/ai-opportunities", "home-hero")}>Find your AI opportunities <span aria-hidden="true">→</span></Link></div>
   </div>;
 }
 
@@ -43,7 +64,7 @@ export function Hero() {
     <div className="v3-shell v3-current-main">
       <HeroCopy />
       <div className="v3-current-images" aria-hidden="true"><HeroChart /></div>
-      <div className="v3-current-cluster"><ReadCard profile={heroReadFixture} /><div className="v3-current-proof-wrap"><ServicesPanel /></div></div>
+      <div className="v3-current-cluster"><OpportunityReport data={heroRead} variant="hero" /><div className="v3-current-proof-wrap"><ServicesPanel /></div></div>
     </div>
   </section>;
 }

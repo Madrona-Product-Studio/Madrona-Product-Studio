@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
-import { track } from "../../lib/analytics";
+import { track, ctaClick } from "../../lib/analytics";
 
 const EMAIL = "hello@madronaproduct.com";
 const CONTACT = "/connect";
@@ -22,7 +22,7 @@ const P = {
 
 export default function SiteFooter({ cta = true }: { cta?: boolean }) {
   return (
-    <section className="m2-fc" aria-label="Contact and site footer">
+    <footer className="m2-fc" aria-label="Contact and site footer">
       {cta && (
         <div className="m2-fc-cta m2-fc-cta--solo">
           <div className="m2-fc-half m2-fc-talk">
@@ -33,7 +33,7 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
                 <p>Bring us an important problem, an early idea, or something already in motion. We help you figure out what to build, then build it.</p>
               </div>
               <div className="m2-fc-solo-actions">
-                <Link className="m2-fc-btn" to={CONTACT}><I d={P.chat} /> Get in touch <I d={P.arrow} /></Link>
+                <Link className="m2-fc-btn" to={CONTACT} onClick={ctaClick("Get in touch", CONTACT, "footer")}><I d={P.chat} /> Get in touch <I d={P.arrow} /></Link>
                 <ul className="m2-fc-trust">
                   <li><span><I d={P.clock} /></span><p>30 minute call if you’re ready</p></li>
                   <li><span><I d={P.people} /></span><p>Senior team from the start</p></li>
@@ -41,7 +41,6 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
                 </ul>
               </div>
             </div>
-            <svg className="m2-fc-trees" viewBox="0 0 260 120" preserveAspectRatio="xMaxYMax slice" aria-hidden="true"><g fill="rgba(255,255,255,.10)"><polygon points="150,120 174,52 198,120" /><polygon points="188,120 218,26 248,120" /><polygon points="228,120 250,58 272,120" /></g></svg>
           </div>
         </div>
       )}
@@ -68,6 +67,6 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
           <span>© 2026 Madrona Product Studio</span>
         </div>
       </div>
-    </section>
+    </footer>
   );
 }

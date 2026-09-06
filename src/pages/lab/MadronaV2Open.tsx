@@ -3,6 +3,7 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
+import { ctaClick, outboundClick } from "../../lib/analytics";
 import "./madrona-v2.css";
 import "./playbook.css";
 
@@ -25,7 +26,7 @@ const CRAFT = [
 
 function ToolCard({ name, desc }: { name: string; desc: string }) {
   return (
-    <a className="m2-open-card" href={`${REPO}/tree/main/plugins/${name}`} target="_blank" rel="noopener noreferrer">
+    <a className="m2-open-card" href={`${REPO}/tree/main/plugins/${name}`} target="_blank" rel="noopener noreferrer" onClick={outboundClick(`${REPO}/tree/main/plugins/${name}`, "open")}>
       <h3>{name}</h3>
       <p className="why">{desc}</p>
       <p className="p">/plugin install {name}@madrona-open</p>
@@ -38,9 +39,10 @@ export default function MadronaV2Open() {
   useReveal();
 
   return (
-    <main className="m2 m2-ab-page">
+    <div className="m2 m2-ab-page">
       <LabMeta title="Open · Madrona Product Studio" />
       <M2Nav active="open" />
+      <main id="main">
 
       {/* Masthead */}
       <section className="m2-ab4 m2-th-hero m2-pov-hero">
@@ -73,7 +75,7 @@ export default function MadronaV2Open() {
             <p>It's the engine we run our own studio on, extracted into a starter you can fork, the ground-level version of <Link className="m2-text-link" to="/thinking/the-era-of-agentic-operations">the era of agentic operations</Link>.</p>
           </div>
         </div>
-        <a className="m2-open-card m2-open-card--feature" href={`${REPO}/tree/main/plugins/operating-system`} target="_blank" rel="noopener noreferrer">
+        <a className="m2-open-card m2-open-card--feature" href={`${REPO}/tree/main/plugins/operating-system`} target="_blank" rel="noopener noreferrer" onClick={outboundClick(`${REPO}/tree/main/plugins/operating-system`, "open")}>
           <h3>operating-system</h3>
           <p className="why">A forkable substrate, a decision layer plus a live work file with machine-maintained blocks, and the routines that keep it current: capture, prioritize, daily-brief, weekly-sync.</p>
           <p className="p">/plugin install operating-system@madrona-open</p>
@@ -104,13 +106,15 @@ export default function MadronaV2Open() {
         <div className="m2-ab4-body m2-th4-point">
           <p>We share what the work teaches us. A craft gets better in the open, and a tool you can read and fork is more honest than one you can only admire. Take these, make them yours.</p>
           <div className="m2-th-close-links">
-            <a className="m2-text-link" href={REPO} target="_blank" rel="noopener noreferrer">The repository on GitHub <span aria-hidden="true">→</span></a>
-            <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
+            <a className="m2-text-link" href={REPO} target="_blank" rel="noopener noreferrer" onClick={outboundClick(REPO, "open")}>The repository on GitHub <span aria-hidden="true">→</span></a>
+            <Link className="m2-text-link" to="/connect" onClick={ctaClick("Get in touch", "/connect", "open")}>Get in touch <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>
 
+      </main>
+
       <SiteFooter />
-    </main>
+    </div>
   );
 }

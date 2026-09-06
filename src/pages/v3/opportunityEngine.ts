@@ -1,7 +1,7 @@
 // AI Opportunity Assessment engine (docs/redesign-2026-08/ai-opportunity-spec.md).
-// Companion to whereToStartEngine.ts; read that file first for idiom context.
-// Same discipline: every report line derives 1:1 from what the visitor gave us.
-// Deterministic v1; LLM post-processing over otherText is phase 2.
+// Discipline: every report line derives 1:1 from what the visitor gave us.
+// Deterministic; the optional AI assist (src/assessment-ai) only suggests
+// chips and bridges the heard lines, it never writes a verdict.
 
 import { agents } from "../../data/agents";
 import { thinkingEntries } from "../../data/thinking";
@@ -45,6 +45,9 @@ export interface OppQuestion {
   // Option index that stands alone ("mostly handled", "all of it, evenly"):
   // checking it clears the others, checking any other clears it.
   exclusive?: number;
+  // The three closers can be skipped; area questions are what the read is
+  // built from, so they stay required.
+  skippable?: boolean;
 }
 
 export interface MapItem {
@@ -64,10 +67,13 @@ export interface OppMove {
 }
 
 export interface OppTool {
+  chip: ChipId;
   name: string;
   blurb: string;
   href: string;
 }
+
+export type MoveRank = "Now" | "Next" | "Later" | "Also";
 
 export interface OppReading {
   title: string;
@@ -78,8 +84,16 @@ export interface OpportunityReportData {
   title: string;
   overall: { grade: string; note: string };
   map: { runsItself: MapItem[]; amplified: MapItem[]; staysYours: string[] };
-  moves: { rank: "Now" | "Next" | "Later"; move: OppMove }[];
+  // A fourth rank exists so four flagged areas never lose one silently.
+  moves: { rank: MoveRank; move: OppMove }[];
+  // One line under the moves heading, set by the AI-today answer: extend
+  // what already runs, or start with one. Absent when the closer was skipped.
+  movesLead?: string;
   heard: string[]; // one line per flagged area + optional other echo + readiness close
+  // The area the title comes from ("none" for the steady ship) and the Now
+  // move's chip, for analytics and the booking notes.
+  dominantArea: AreaId | "none";
+  nowChip?: ChipId;
   // The resource layer (Charlie 09-01): live tools matched to the checked
   // chips, on the report; personalized reading, on the rail.
   tools: OppTool[];
@@ -134,8 +148,10 @@ export const AREA_LABELS: Record<AreaId, string> = {
 // Shared hour scale across all four anchors (spec §"Every anchor uses the same hour scale").
 const HOUR_OPTIONS = ["An hour or so", "2 to 4 hours", "4 to 8 hours", "A full day or more", "I've stopped counting"];
 
-// Hour weights for scoring (index maps to HOUR_OPTIONS). Spec: [1,3,6,9,8].
-const HOUR_WEIGHTS = [1, 3, 6, 9, 8];
+// Hour weights for scoring (index maps to HOUR_OPTIONS). The spec had the
+// last two as 9 and 8; "I've stopped counting" is the most overwhelmed
+// answer, so it weighs the most (audit 2026-09-06).
+const HOUR_WEIGHTS = [1, 3, 6, 9, 10];
 
 // The anchor (how much time) and evidence (what drives it) questions for each area.
 // IDs match the OpportunityAnswers keys so buildSequence returns usable ids.
@@ -244,6 +260,7 @@ const CROSS_CUTTING: OppQuestion[] = [
     module: "AI today",
     question: "Is AI doing any real work in the business today?",
     support: "Real work means it happens even on your busy weeks.",
+    skippable: true,
     options: ["Not at all", "We've poked at ChatGPT", "It helps with a task or two", "It's part of daily work", "Automation runs on its own"],
   },
   {
@@ -252,12 +269,14 @@ const CROSS_CUTTING: OppQuestion[] = [
     question: "What's kept AI from doing more here?",
     support: "No wrong answer. Check everything that's played a part.",
     multi: true,
+    skippable: true,
     options: ["No time to figure it out", "Tried tools that didn't stick", "Don't trust it with customers", "Our info is scattered everywhere", "Didn't know where to start"],
   },
   {
     id: "readiness",
     module: "Wrapping up",
     question: "What are you ready to do about it?",
+    skippable: true,
     options: [
       "Fix something specific that clearly isn't working",
       "Step back and figure out where to focus",
@@ -348,39 +367,100 @@ const OVERALL: [string, string][] = [
   ["A week's worth of leverage.",   "Most of the week has leverage waiting, which means several honest wins available."],
 ];
 
-// ---- Helper: which areas are flagged ----
-function flaggedAreas(chips: ChipId[]): AreaId[] {
-  const chipsByArea = openerChips.reduce<Record<AreaId, ChipId[]>>(
-    (acc, ci) => { acc[ci.area].push(ci.chip); return acc; },
-    { money: [], customers: [], words: [], glue: [] }
-  );
-  const order: AreaId[] = ["money", "customers", "words", "glue"];
-  return order.filter(a => chips.some(c => chipsByArea[a].includes(c)));
+// ---- Helpers: areas, chips, evidence ----
+const AREA_ORDER: AreaId[] = ["money", "customers", "words", "glue"];
+
+const ANCHOR_KEY: Record<AreaId, keyof OpportunityAnswers> = {
+  money: "moneyHours", customers: "customersHours", words: "wordsHours", glue: "glueHours",
+};
+const EVIDENCE_KEY: Record<AreaId, keyof OpportunityAnswers> = {
+  money: "moneyEvidence", customers: "customersEvidence", words: "wordsEvidence", glue: "glueEvidence",
+};
+
+const chipDefs = new Map(openerChips.map(ci => [ci.chip, ci]));
+
+// Evidence option → the chip it speaks for (null = no single chip). This is
+// the seam that keeps "What we heard" and "Where to start" agreeing: an
+// evidence pick scores its chip when the moves are ranked, and a flagged
+// chip pre-checks its evidence row when the question is asked.
+const EVIDENCE_CHIP: Record<AreaId, (ChipId | null)[]> = {
+  money:     ["invoices", "books", "cash", null, null],
+  customers: ["questions", "followup", "reviews", "followup", null],
+  words:     ["quotes", "quotes", "content", "contracts", null],
+  glue:      ["scheduling", "retyping", null, "industry", null],
+};
+
+export function flaggedAreas(chips: ChipId[]): AreaId[] {
+  return AREA_ORDER.filter(a => chips.some(c => chipDefs.get(c)?.area === a));
 }
 
-// ---- Helper: hour weight for an area's anchor answer ----
+function chipsInArea(chips: ChipId[], area: AreaId): ChipId[] {
+  return chips.filter(c => chipDefs.get(c)?.area === area);
+}
+
+function hourIndex(a: OpportunityAnswers, area: AreaId): number | undefined {
+  return a[ANCHOR_KEY[area]] as number | undefined;
+}
+
 function hourWeight(a: OpportunityAnswers, area: AreaId): number {
-  const key: Record<AreaId, keyof OpportunityAnswers> = {
-    money: "moneyHours", customers: "customersHours", words: "wordsHours", glue: "glueHours",
-  };
-  const val = a[key[area]];
-  return val !== undefined ? HOUR_WEIGHTS[val as number] : 0;
+  const val = hourIndex(a, area);
+  return val !== undefined ? HOUR_WEIGHTS[val] : 0;
+}
+
+function evidencePicks(a: OpportunityAnswers, area: AreaId): number[] {
+  return (a[EVIDENCE_KEY[area]] as number[] | undefined) ?? [];
+}
+
+// The evidence rows the checked chips already answer. Used to pre-check the
+// evidence question and to stand in for it when it isn't asked (an area
+// with one chip has nothing to disambiguate).
+export function presetEvidence(chips: ChipId[]): Partial<OpportunityAnswers> {
+  const out: Record<string, number[]> = {};
+  for (const area of flaggedAreas(chips)) {
+    const rows = EVIDENCE_CHIP[area]
+      .map((chip, i) => (chip && chips.includes(chip) ? i : -1))
+      .filter(i => i >= 0);
+    if (rows.length) out[EVIDENCE_KEY[area]] = rows;
+  }
+  return out as Partial<OpportunityAnswers>;
 }
 
 // ---- buildSequence ----
-// Per-area anchor+evidence pairs for flagged areas only, in spec order
-// (money → customers → words → glue), then the three cross-cutting closers.
+// Per-area anchor (+ evidence when the area has more than one chip, since a
+// single chip already says where the time goes) for flagged areas only, in
+// spec order (money → customers → words → glue), then the three closers.
 export function buildSequence(chips: ChipId[]): OppQuestion[] {
-  const order: AreaId[] = ["money", "customers", "words", "glue"];
-  const flagged = flaggedAreas(chips);
   const seq: OppQuestion[] = [];
-  for (const area of order) {
-    if (flagged.includes(area)) {
-      seq.push(AREA_QUESTIONS[area].anchor, AREA_QUESTIONS[area].evidence);
-    }
+  for (const area of flaggedAreas(chips)) {
+    seq.push(AREA_QUESTIONS[area].anchor);
+    if (chipsInArea(chips, area).length > 1) seq.push(AREA_QUESTIONS[area].evidence);
   }
   seq.push(...CROSS_CUTTING);
   return seq;
+}
+
+// Prune answers for areas that are no longer flagged, so going back to the
+// opener and unchecking a chip can't leave a stale anchor steering the read.
+export function pruneAnswers(a: OpportunityAnswers): OpportunityAnswers {
+  const flagged = new Set(flaggedAreas(a.chips));
+  const next: OpportunityAnswers = { ...a };
+  for (const area of AREA_ORDER) {
+    if (!flagged.has(area)) {
+      delete next[ANCHOR_KEY[area]];
+      delete next[EVIDENCE_KEY[area]];
+    }
+  }
+  return next;
+}
+
+// Every question the sequence asks that isn't skippable has an answer.
+export function isComplete(a: OpportunityAnswers): boolean {
+  if (!a.chips.length) return false;
+  return buildSequence(a.chips).every(q => {
+    if (q.skippable) return true;
+    const v = a[q.id];
+    return q.multi ? Array.isArray(v) && v.length > 0 : v !== undefined;
+  });
 }
 
 // ---- computeOpportunityReport ----
@@ -389,7 +469,7 @@ export function buildSequence(chips: ChipId[]): OppQuestion[] {
 const RUNS_ITSELF_CHIPS = new Set<ChipId>(["invoices","books","cash","questions","reviews","scheduling","retyping","industry"]);
 const AMPLIFIED_CHIPS   = new Set<ChipId>(["quotes","content","contracts","followup"]);
 
-// Readiness closer lines — verbatim from whereToStartEngine.ts buildRecap.
+// Readiness closer lines (the same five the earlier assessment used).
 const READINESS_LINES = [
   "You said something specific is broken. The conversation starts there.",
   "You said you want focus. We'd map the options and rank them by payback.",
@@ -398,52 +478,88 @@ const READINESS_LINES = [
   "You asked for perspective first. That's what the free 30 minutes is for.",
 ];
 
+// The AI-today answer sets the register of the moves: extend what runs, or
+// start with one. Index maps to the closer's options; skipped = no line.
+const MOVES_LEAD = [
+  "Nothing runs on its own yet, so start with one move and let it earn the next.",
+  "You've poked at ChatGPT. The first move turns poking into a job that runs on its own.",
+  "AI already helps with a task or two. The first move makes one of those run without you.",
+  "AI is part of daily work here, so these extend what already runs rather than starting over.",
+  "Automation already runs on its own. These moves add to it; nothing here starts from zero.",
+];
+
+// An area that costs an hour or so, or that the visitor called mostly
+// handled, isn't where the leverage is. It stays on the map and gets a
+// heard line, but it doesn't title the read or earn a move.
+function isQuietArea(a: OpportunityAnswers, area: AreaId): boolean {
+  if (hourIndex(a, area) === 0) return true;
+  const exclusive = AREA_QUESTIONS[area].evidence.exclusive;
+  return area === "customers" && exclusive !== undefined && evidencePicks(a, area).includes(exclusive);
+}
+
+const HEARD_QUIET: Record<AreaId, string> = {
+  money:     "Money admin takes about an hour a week. That's not where the hours are hiding, so it stays off the moves.",
+  customers: "Customer follow-up takes about an hour a week. Not where the hours are hiding, so it stays off the moves.",
+  words:     "Writing and paperwork take about an hour a week. Not where the hours are hiding, so they stay off the moves.",
+  glue:      "Glue work takes about an hour a week. Not where the hours are hiding, so it stays off the moves.",
+};
+
 export function computeOpportunityReport(a: OpportunityAnswers): OpportunityReportData {
   const { chips } = a;
   const flagged = flaggedAreas(chips);
 
-  // ---- Map: runsItself, amplified ----
-  // Only checked chips appear; sorted into their group by spec membership.
-  const chipDefs = new Map(openerChips.map(ci => [ci.chip, ci]));
+  // Effective chips: what was checked, plus what the evidence named. A
+  // visitor who checks "invoices" then says the drag is bookkeeping has
+  // flagged the books; the map, moves, and tools follow that.
+  const effective: ChipId[] = [...chips];
+  for (const area of flagged) {
+    for (const i of evidencePicks(a, area)) {
+      const chip = EVIDENCE_CHIP[area][i];
+      if (chip && !effective.includes(chip)) effective.push(chip);
+    }
+  }
 
-  const runsItself: MapItem[] = chips.filter(c => RUNS_ITSELF_CHIPS.has(c)).map(c => chipDefs.get(c)!);
-  const amplified:  MapItem[] = chips.filter(c => AMPLIFIED_CHIPS.has(c)).map(c => chipDefs.get(c)!);
+  // ---- Map: runsItself, amplified ----
+  const runsItself: MapItem[] = effective.filter(c => RUNS_ITSELF_CHIPS.has(c)).map(c => chipDefs.get(c)!);
+  const amplified:  MapItem[] = effective.filter(c => AMPLIFIED_CHIPS.has(c)).map(c => chipDefs.get(c)!);
 
   // ---- Stays-yours (honesty rules, always ≥1) ----
   const staysYours: string[] = [];
   if (a.blocker?.includes(2)) { // "Don't trust it with customers"
     staysYours.push("The sensitive replies. Drafts wait for your okay; nothing sends itself.");
   }
-  if (chips.includes("followup")) {
+  if (effective.includes("followup")) {
     staysYours.push("The relationships. AI drafts the words; the caring stays yours.");
   }
   if (!staysYours.length) {
     staysYours.push("The judgment calls. Pricing, people, and promises stay human.");
   }
 
-  // ---- Named read: dominant area by hour-weight ----
-  // Ties break money → customers → words → glue (spec order, so first-wins).
+  // ---- Active areas: flagged and not quiet ----
+  const active = flagged.filter(area => !isQuietArea(a, area));
+  const scattered = a.blocker?.includes(3) ?? false; // "Our info is scattered everywhere"
+
+  // Area score: hour weight, with a nudge to glue when the info is
+  // scattered (that's the glue problem in the owner's words).
+  const areaScore = (area: AreaId) => hourWeight(a, area) + (scattered && area === "glue" ? 1 : 0);
+
+  // ---- Named read: dominant area by score, ties in spec order ----
   let dominantArea: AreaId | "none" = "none";
-  let bestWeight = 0;
-  for (const area of flagged) { // flagged is already in spec order
-    const w = hourWeight(a, area);
-    if (w > bestWeight) { bestWeight = w; dominantArea = area; }
+  let bestScore = 0;
+  for (const area of active) {
+    const s = areaScore(area);
+    if (s > bestScore) { bestScore = s; dominantArea = area; }
   }
 
-  // ---- Overall grade ----
-  const overallPair = OVERALL[Math.min(flagged.length, 3)];
+  // ---- Overall grade (by count of active areas) ----
+  const overallPair = OVERALL[Math.min(active.length, 3)];
 
-  // ---- Ranked moves (up to 3) ----
-  // Score by area hour-weight; break ties money → customers → words → glue.
-  // Within an area, prefer the checked chip with a live /tools proof first.
-  // Only flagged areas produce moves (they have answers).
-
-  // Sort flagged areas by descending hour-weight (ties keep spec order).
-  const areaOrder: AreaId[] = ["money", "customers", "words", "glue"];
-  const sortedAreas = [...flagged].sort((x, y) => {
-    const diff = hourWeight(a, y) - hourWeight(a, x);
-    if (diff !== 0) return diff;
-    return areaOrder.indexOf(x) - areaOrder.indexOf(y); // lower index = higher priority
+  // ---- Ranked moves, one per active area ----
+  // Areas sort by score; within an area the chip the evidence named wins,
+  // then a live /tools proof breaks ties, then checked order.
+  const sortedAreas = [...active].sort((x, y) => {
+    const diff = areaScore(y) - areaScore(x);
+    return diff !== 0 ? diff : AREA_ORDER.indexOf(x) - AREA_ORDER.indexOf(y);
   });
 
   const buildMove = (chip: ChipId): OppMove => {
@@ -458,71 +574,73 @@ export function computeOpportunityReport(a: OpportunityAnswers): OpportunityRepo
     };
   };
 
-  const ranks: ("Now" | "Next" | "Later")[] = ["Now", "Next", "Later"];
+  const ranks: MoveRank[] = ["Now", "Next", "Later", "Also"];
   const moves: OpportunityReportData["moves"] = [];
   const usedChips = new Set<ChipId>();
 
   for (const area of sortedAreas) {
-    if (moves.length >= 3) break;
-    // Chips for this area that the visitor checked.
-    const areaChips = chips.filter(c => chipDefs.get(c)!.area === area);
-    if (!areaChips.length) continue;
-    // Pick chip: live /tools proof first, then first checked.
-    const pick = areaChips.find(c => chipDefs.get(c)!.proofLive) ?? areaChips[0];
-    if (!usedChips.has(pick)) {
-      usedChips.add(pick);
-      moves.push({ rank: ranks[moves.length], move: buildMove(pick) });
-    }
+    if (moves.length >= ranks.length) break;
+    const named = evidencePicks(a, area).map(i => EVIDENCE_CHIP[area][i]).filter((c): c is ChipId => !!c);
+    const candidates = chipsInArea(effective, area).filter(c => !usedChips.has(c));
+    if (!candidates.length) continue;
+    const chipScore = (c: ChipId) =>
+      (chips.includes(c) ? 1 : 0) +
+      (named.includes(c) ? 2 : 0) +
+      (chipDefs.get(c)!.proofLive ? 0.5 : 0) +
+      (scattered && c === "retyping" ? 2 : 0);
+    const pick = [...candidates].sort((x, y) => {
+      const diff = chipScore(y) - chipScore(x);
+      return diff !== 0 ? diff : effective.indexOf(x) - effective.indexOf(y);
+    })[0];
+    usedChips.add(pick);
+    moves.push({ rank: ranks[moves.length], move: buildMove(pick) });
   }
 
   // ---- What we heard (heard[]) ----
-  // One verdict line per flagged area, derived from anchor + evidence.
+  // One line per flagged area. Rule: an exclusive pick speaks for itself;
+  // three or more distinct piles (two rows that name the same chip, like
+  // quotes and reports, count once) use the area's everything-drags line
+  // where one exists (words and glue); otherwise the first-checked line
+  // leads. Quiet-by-hours areas say so plainly.
   const heard: string[] = [];
-
-  // Evidence is multi-select; the card still gets ONE line per area so the
-  // read stays tight. Rule: an exclusive pick speaks for itself; three or
-  // more picks use the area's everything-drags line where one exists (the
-  // exclusive slot doubles as it); otherwise the first-checked line leads.
   for (const area of flagged) {
-    const evidenceKey: Record<AreaId, keyof OpportunityAnswers> = {
-      money: "moneyEvidence", customers: "customersEvidence", words: "wordsEvidence", glue: "glueEvidence",
-    };
-    const picks = (a[evidenceKey[area]] as number[] | undefined) ?? [];
+    if (hourIndex(a, area) === 0) { heard.push(HEARD_QUIET[area]); continue; }
+    const picks = evidencePicks(a, area);
     const verdicts: string[] = area === "money" ? MONEY_VERDICTS : area === "customers" ? CUSTOMER_VERDICTS : area === "words" ? WORDS_VERDICTS : GLUE_VERDICTS;
     const exclusiveIdx = AREA_QUESTIONS[area].evidence.exclusive;
-    // Only words/glue have an "everything drags" line (their exclusive slot);
-    // customers' exclusive means the opposite ("mostly handled"), so it never
-    // stands in for many picks.
     const manyIdx = area === "words" || area === "glue" ? exclusiveIdx : undefined;
+    const piles = new Set(picks.map(i => EVIDENCE_CHIP[area][i] ?? `row${i}`)).size;
     let line: string | undefined;
     if (exclusiveIdx !== undefined && picks.includes(exclusiveIdx)) line = verdicts[exclusiveIdx];
-    else if (picks.length >= 3 && manyIdx !== undefined) line = verdicts[manyIdx];
-    else if (picks.length) line = verdicts[Math.min(...picks)];
-    // Fall back to a neutral line if somehow the evidence wasn't answered.
+    else if (piles >= 3 && manyIdx !== undefined) line = verdicts[manyIdx];
+    else if (picks.length) line = verdicts[picks[0]];
     heard.push(line ?? `Most of the drag in ${AREA_LABELS[area].toLowerCase()} has a repeatable shape. That's what software handles best.`);
   }
 
-  // otherText echo (same quoting pattern as whereToStartEngine.ts workflow echo).
-  if (a.otherText?.trim()) {
-    const text = a.otherText.trim();
-    heard.push(`In your words: "${/[.!?]$/.test(text) ? text : `${text}.`}" That gets read separately.`);
+  // The blocker that deserves an echo: tools that didn't stick.
+  if (a.blocker?.includes(1)) {
+    heard.push("You've tried tools that didn't stick. Worth naming: the ones that stick start from one job you already repeat, not from the tool.");
   }
 
-  // Readiness closer (verbatim lines, reused from whereToStartEngine.ts).
+  // otherText echo. Nothing in the engine reads it; the call does.
+  if (a.otherText?.trim()) {
+    const text = a.otherText.trim();
+    heard.push(`In your words: "${/[.!?]$/.test(text) ? text : `${text}.`}" We'll bring that up on the call.`);
+  }
+
+  // Readiness closer (skipped = no line).
   if (a.readiness !== undefined) {
     heard.push(READINESS_LINES[a.readiness]);
   }
 
   // ---- Tools worth a look (report resource layer) ----
-  // Every checked chip whose proof is a live /tools demo surfaces its agent
-  // from the registry (name + blurb are the registry's, so copy never
+  // Every effective chip whose proof is a live /tools demo surfaces its
+  // agent from the registry (name + blurb are the registry's, so copy never
   // drifts). Registry order; the visitor's picks decide membership.
-  const wantedTools = new Set(
-    chips.map(c => chipDefs.get(c)!).filter(ci => ci.proofLive).map(ci => ci.proofHref),
-  );
+  const chipByHref = new Map(effective.map(c => chipDefs.get(c)!).filter(ci => ci.proofLive).map(ci => [ci.proofHref, ci.chip]));
   const tools: OppTool[] = agents
-    .filter(agent => wantedTools.has(agent.href))
-    .map(agent => ({ name: agent.name, blurb: agent.blurb, href: agent.href }));
+    .filter(agent => chipByHref.has(agent.href))
+    .map(agent => ({ chip: chipByHref.get(agent.href)!, name: agent.name, blurb: agent.blurb, href: agent.href }));
 
   // ---- Worth reading (rail resource layer) ----
   // Personalized picks from the thinking feed, capped at three: the 12-jobs
@@ -531,7 +649,7 @@ export function computeOpportunityReport(a: OpportunityAnswers): OpportunityRepo
   const byHref = new Map(thinkingEntries.map(entry => [entry.href, entry]));
   const readingHrefs = ["/thinking/ai-tools-for-small-business"];
   if (a.ai !== undefined && a.ai <= 1) readingHrefs.push("/thinking/starter-guide-to-building-with-ai");
-  if (flagged.length >= 2) readingHrefs.push("/thinking/the-era-of-agentic-operations");
+  if (active.length >= 2) readingHrefs.push("/thinking/the-era-of-agentic-operations");
   const reading: OppReading[] = readingHrefs
     .map(href => byHref.get(href))
     .filter((entry): entry is NonNullable<typeof entry> => !!entry)
@@ -543,16 +661,40 @@ export function computeOpportunityReport(a: OpportunityAnswers): OpportunityRepo
     overall: { grade: overallPair[0], note: overallPair[1] },
     map: { runsItself, amplified, staysYours },
     moves,
+    movesLead: a.ai !== undefined && moves.length ? MOVES_LEAD[a.ai] : undefined,
     heard,
+    dominantArea,
+    nowChip: moves[0]?.move.chip,
     tools,
     reading,
   };
 }
 
+// ---- Plain-words answer summary ----
+// What the visitor told us, as one short paragraph of their own choices.
+// Feeds the booking notes, the studio copy of the emailed read, and the
+// AI bridge (which may only restate what is in here).
+export function summarizeAnswers(a: OpportunityAnswers): string {
+  const parts: string[] = [];
+  if (a.chips.length) parts.push(`Flagged: ${a.chips.map(c => chipShort[c]).join(", ")}.`);
+  for (const area of flaggedAreas(a.chips)) {
+    const h = hourIndex(a, area);
+    const picks = evidencePicks(a, area).map(i => AREA_QUESTIONS[area].evidence.options[i]);
+    const bits: string[] = [];
+    if (h !== undefined) bits.push(`${HOUR_OPTIONS[h].toLowerCase()} a week`);
+    if (picks.length) bits.push(picks.join("; ").toLowerCase());
+    if (bits.length) parts.push(`${AREA_LABELS[area]}: ${bits.join(". ")}.`);
+  }
+  if (a.ai !== undefined) parts.push(`AI today: ${CROSS_CUTTING[0].options[a.ai].toLowerCase()}.`);
+  if (a.blocker?.length) parts.push(`What's held it back: ${a.blocker.map(i => CROSS_CUTTING[1].options[i].toLowerCase()).join("; ")}.`);
+  if (a.readiness !== undefined) parts.push(`Ready to: ${CROSS_CUTTING[2].options[a.readiness].toLowerCase()}.`);
+  if (a.otherText?.trim()) parts.push(`In their words: "${a.otherText.trim()}"`);
+  return parts.join(" ");
+}
+
 // ---- Live pane building state ----
 // Right-pane preview while answering: four area rows that wake as chips are
-// checked and redact once the anchor lands. Map shows shimmer groups once any
-// evidence answer exists. Moves hint without revealing.
+// checked and redact once the anchor lands. Moves hint without revealing.
 
 export interface LiveAreaRow {
   area: AreaId;
@@ -564,53 +706,34 @@ export interface LiveAreaRow {
 
 export interface LivePaneState {
   areas: LiveAreaRow[];
-  // One shimmer placeholder per area that has an evidence answer (map is forming).
-  hiddenShimmerCount: number;
   // Hint copy for the moves slot.
   movePlaceholder: string;
 }
 
 export function buildLiveState(a: OpportunityAnswers): LivePaneState {
-  const { chips } = a;
-  const flagged = new Set(flaggedAreas(chips));
+  const flagged = new Set(flaggedAreas(a.chips));
 
   // An area is "captured" once its anchor answer exists.
-  const capturedAreas = new Set<AreaId>();
-  if (a.moneyHours !== undefined)     capturedAreas.add("money");
-  if (a.customersHours !== undefined) capturedAreas.add("customers");
-  if (a.wordsHours !== undefined)     capturedAreas.add("words");
-  if (a.glueHours !== undefined)      capturedAreas.add("glue");
+  const capturedAreas = new Set(AREA_ORDER.filter(area => hourIndex(a, area) !== undefined));
 
-  const areas: LiveAreaRow[] = (["money", "customers", "words", "glue"] as AreaId[]).map(area => ({
+  const areas: LiveAreaRow[] = AREA_ORDER.map(area => ({
     area,
     label: AREA_LABELS[area],
     state: capturedAreas.has(area) ? "captured" : flagged.has(area) ? "listening" : "dormant",
   }));
 
-  // One hidden shimmer per area that has an evidence answer (map is taking shape).
-  const evidenceAnswered = [
-    a.moneyEvidence !== undefined,
-    a.customersEvidence !== undefined,
-    a.wordsEvidence !== undefined,
-    a.glueEvidence !== undefined,
-  ].filter(Boolean).length;
-
-  // Moves hint: "Taking shape." once any evidence answer exists, else "Resolves at the end."
-  const movePlaceholder = evidenceAnswered > 0
+  // Moves hint: "Taking shape." once any anchor is in, else "Resolves at the end."
+  const movePlaceholder = capturedAreas.size > 0
     ? "Taking shape. Revealed at the end."
     : "Resolves at the end.";
 
-  return { areas, hiddenShimmerCount: evidenceAnswered, movePlaceholder };
+  return { areas, movePlaceholder };
 }
 
 // ---- Progress ----
 // How many flagged areas have their anchor answered (= their read is in).
 export function buildProgress(a: OpportunityAnswers): { read: number; flaggedTotal: number } {
   const flagged = flaggedAreas(a.chips);
-  const answered = (anchor: keyof OpportunityAnswers) => a[anchor] !== undefined;
-  const anchorKeys: Record<AreaId, keyof OpportunityAnswers> = {
-    money: "moneyHours", customers: "customersHours", words: "wordsHours", glue: "glueHours",
-  };
-  const read = flagged.filter(area => answered(anchorKeys[area])).length;
+  const read = flagged.filter(area => hourIndex(a, area) !== undefined).length;
   return { read, flaggedTotal: flagged.length };
 }

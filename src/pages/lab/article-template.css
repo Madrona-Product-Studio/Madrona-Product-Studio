@@ -77,7 +77,7 @@
 .art-contents { border-top: 1px solid var(--art-hair-soft); margin: clamp(32px, 4vw, 48px) 0 0; padding: clamp(26px, 3vw, 34px) 0 clamp(28px, 3vw, 36px); }
 .art-contents-label {
   color: var(--bark);
-  font-size: .64rem;
+  font-size: .7rem;
   font-weight: 750;
   letter-spacing: .14em;
   margin: 0 0 18px;
@@ -113,7 +113,7 @@
 /* Section marker line: number sits with the eyebrow, not beside the title. */
 .art-sec-meta { align-items: baseline; display: flex; flex-wrap: wrap; gap: 4px 11px; margin: 0 0 16px; }
 .art-sec-num { color: var(--bark); font-family: var(--art-mono); font-size: .74rem; font-weight: 600; letter-spacing: .02em; }
-.art-sec-eyebrow { color: var(--bark); font-size: .64rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+.art-sec-eyebrow { color: var(--bark-dark); font-size: .7rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
 /* Scoped with .art so the serif title beats `.m2 h2` (Inter). */
 .art .art-sec-title {
   color: var(--ink);
@@ -148,7 +148,7 @@
    never stretched by the text beside them. */
 .art-inv-facts .art-inv-ico { flex: none; height: 44px; margin-bottom: 12px; width: 44px; }
 .art-inv-facts .art-inv-ico svg { height: 21px; width: 21px; }
-.art-inv-facts .art-inv-lbl { color: var(--bark-dark); font-size: .66rem; font-weight: 750; letter-spacing: .13em; margin: 0 0 8px; text-transform: uppercase; }
+.art-inv-facts .art-inv-lbl { color: var(--bark-dark); font-size: .7rem; font-weight: 750; letter-spacing: .13em; margin: 0 0 8px; text-transform: uppercase; }
 .art-inv-facts p { color: var(--ink-soft); font-size: .92rem; line-height: 1.62; margin: 0; }
 @media (max-width: 720px) {
   .art-sec > .art-prose + .art-inv-entry { margin-top: 26px; }
@@ -230,7 +230,7 @@
   z-index: 1;
 }
 .art-pillar.gate .art-pillar-name { color: var(--bark-dark); }
-.art-pillar-gate { color: var(--bark); font-size: .62rem; font-weight: 700; letter-spacing: .08em; position: absolute; right: 14px; text-transform: uppercase; top: 16px; }
+.art-pillar-gate { color: var(--bark-dark); font-size: .7rem; font-weight: 700; letter-spacing: .08em; position: absolute; right: 14px; text-transform: uppercase; top: 16px; }
 
 /* ---- Dark spec panel (the "understood everywhere" README block) --------- */
 .art-panel { background: var(--art-ink-panel); border-radius: 12px; overflow: hidden; padding: 22px 22px 24px; }
@@ -246,7 +246,7 @@
 .art-panel-title { color: #f4efe9; font-size: .98rem; font-weight: 600; letter-spacing: -.01em; margin: 0; }
 .art-panel-file { color: rgba(255,255,255,.42); font-family: var(--art-mono); font-size: .74rem; }
 .art-panel-cols { display: grid; gap: 20px 26px; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
-.art-panel-col h4 { color: var(--bark); font-size: .66rem; font-weight: 700; letter-spacing: .09em; margin: 0 0 10px; text-transform: uppercase; }
+.art-panel-col h4 { color: var(--bark-dark); font-size: .7rem; font-weight: 700; letter-spacing: .09em; margin: 0 0 10px; text-transform: uppercase; }
 .art-panel-col ul { list-style: none; margin: 0; padding: 0; }
 .art-panel-col li { color: rgba(255,255,255,.72); font-family: var(--art-mono); font-size: .76rem; line-height: 1.7; }
 
@@ -255,7 +255,7 @@
 .art-table th {
   border-bottom: 1px solid var(--art-hair);
   color: var(--muted);
-  font-size: .64rem;
+  font-size: .7rem;
   font-weight: 700;
   letter-spacing: .1em;
   padding: 0 16px 10px 0;
@@ -298,7 +298,7 @@
 .art-schema { border: 1px solid var(--art-hair); border-radius: 12px; padding: clamp(18px, 3vw, 28px); }
 .art-schema-flow { align-items: stretch; display: flex; flex-wrap: wrap; gap: 14px; }
 .art-schema-io { flex: 1 1 130px; min-width: 120px; }
-.art-schema-io h4 { color: var(--bark); font-size: .64rem; font-weight: 700; letter-spacing: .1em; margin: 0 0 10px; text-transform: uppercase; }
+.art-schema-io h4 { color: var(--bark-dark); font-size: .7rem; font-weight: 700; letter-spacing: .1em; margin: 0 0 10px; text-transform: uppercase; }
 .art-schema-io ul { list-style: none; margin: 0; padding: 0; }
 .art-schema-io li { color: var(--ink-soft); font-size: .84rem; line-height: 1.7; }
 .art-schema-engine {
@@ -372,7 +372,7 @@
 
 /* ---- Related reading --------------------------------------------------- */
 .art-related-label {
-  color: var(--muted); font-size: .64rem; font-weight: 750; letter-spacing: .14em;
+  color: var(--muted); font-size: .7rem; font-weight: 750; letter-spacing: .14em;
   margin: 0 0 20px; text-transform: uppercase;
 }
 .art-related-grid { display: grid; gap: clamp(18px, 2.5vw, 28px); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
@@ -383,7 +383,7 @@
 }
 .art-related-card:hover .m2-pov-plate { border-color: rgba(201, 106, 61, 0.4); }
 .art-related-body { padding: 14px 2px 0; }
-.art-related-type { color: var(--bark); font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.art-related-type { color: var(--bark-dark); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .art-related-card h3 {
   color: var(--ink); font-family: var(--font-serif);
   font-size: 1.08rem; font-weight: 540; letter-spacing: -.01em; line-height: 1.22; margin: 8px 0 0;
@@ -393,7 +393,7 @@
 
 /* ---- Share ------------------------------------------------------------- */
 .art-share { align-items: center; display: flex; flex-wrap: wrap; gap: 14px 18px; margin-top: clamp(36px, 5vw, 52px); }
-.art-share-lbl { color: var(--muted); font-size: .64rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+.art-share-lbl { color: var(--muted); font-size: .7rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
 .art-share-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .art-share-btn {
   align-items: center; background: var(--color-card, #fff); border: 1px solid var(--art-hair);

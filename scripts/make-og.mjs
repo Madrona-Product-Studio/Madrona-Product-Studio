@@ -88,6 +88,9 @@ const articleCard = (kicker, title) => `<!doctype html><html><head>${HEAD}<style
 
 const articles = [
   { file: "og-thinking.png", kicker: "Thinking", title: "Notes from building the studio we want to work with." },
+  // The assessment card rides the article template: same lockup up top, the
+  // tool's own kicker and its opening question as the title.
+  { file: "og-ai-opportunities.png", kicker: "AI Opportunity Assessment", title: "Where does your week actually go?" },
   { file: "og-pov-thesis.png", kicker: "A working theory", title: "The Madrona Product Thesis" },
   { file: "og-pov-under-the-hood.png", kicker: "Inside the practice", title: "The engine behind everything we ship." },
   { file: "og-pov-agentic-operations.png", kicker: "Operations and AI", title: "The era of agentic operations." },
@@ -96,13 +99,21 @@ const articles = [
   { file: "og-pov-ai-tools-inventory.png", kicker: "Operations and AI", title: "The 12 jobs AI tools already do for small businesses." },
 ];
 
+// Optional filter: `node scripts/make-og.mjs og-ai-opportunities.png` renders
+// only the named card(s) so adding one card doesn't re-render (and re-diff)
+// the whole family.
+const only = new Set(process.argv.slice(2));
+const wanted = (file) => only.size === 0 || only.has(file);
+
 const browser = await chromium.launch({ channel: "chrome" });
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
-await page.setContent(mainCard(), { waitUntil: "networkidle" });
-await page.waitForTimeout(400);
-await page.screenshot({ path: path.join(OUT, "og-main.png") });
-console.log("og-main.png");
-for (const a of articles) {
+if (wanted("og-main.png")) {
+  await page.setContent(mainCard(), { waitUntil: "networkidle" });
+  await page.waitForTimeout(400);
+  await page.screenshot({ path: path.join(OUT, "og-main.png") });
+  console.log("og-main.png");
+}
+for (const a of articles.filter((a) => wanted(a.file))) {
   await page.setContent(articleCard(a.kicker, a.title), { waitUntil: "networkidle" });
   await page.waitForTimeout(300);
   await page.screenshot({ path: path.join(OUT, a.file) });

@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { serviceAreas, type ServiceArea, type ServiceId } from "../../data/services";
+import { imgProps, SIZES } from "../../lib/responsiveImage";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
-import { useCalEmbed } from "../lab/useCalEmbed";
 import { BriefArtifact } from "./V3Artifacts";
-import { BeforeAfterArtifact, BUILD_JOURNEY, IdentityBoardArtifact, JourneyArtifact, RoutingArtifact, StorefrontArtifact, ThreadArtifact, VariantsArtifact, WeekArtifact } from "./ServiceArtifacts";
+import { BeforeAfterArtifact, BuildJourneyArtifact, IdentityBoardArtifact, JourneyArtifact, RoutingArtifact, StorefrontArtifact, ThreadArtifact, VariantsArtifact, WeekArtifact } from "./ServiceArtifacts";
 import Reveal from "./Reveal";
+import { HELM_DEMO_URL } from "../../data/proof";
+import { ctaClick, outboundClick } from "../../lib/analytics";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 
@@ -23,8 +25,8 @@ type Module = { kicker: string; title: string; body: string; to: string; linkLab
 const operationsModules: Module[] = [
   { kicker: "Know what changed", title: "Turn scattered signals into a short brief.", body: "An agent watches the sources that matter, explains what moved, and routes the useful signal to a next step.", to: "/tools/industry-brief", linkLabel: "See the industry brief agent", artifact: "brief" },
   { kicker: "Move work forward", title: "Everything lands somewhere.", body: "Requests come in every shape; each one gets routed with enough context to act, and the judgment calls stay yours.", to: "/tools/customer-inbox", linkLabel: "See the customer inbox agent", artifact: "routing" },
-  { kicker: "Keep review visible", title: "The agent drafts. You decide.", body: "Questions arrive answered, in your voice, waiting for your okay — the conversation where the work actually happens.", to: "/tools", linkLabel: "Browse the live tools", artifact: "thread" },
-  { kicker: "See the operation", title: "Make the work legible at a glance.", body: "A focused command surface shows what ran, what changed, and what needs attention next.", to: "https://helm.day", linkLabel: "Open the Helm demo", artifact: "image" },
+  { kicker: "Keep review visible", title: "The agent drafts. You decide.", body: "Questions arrive answered, in your voice, waiting for your okay. That conversation is where the work actually happens.", to: "/tools", linkLabel: "Walk through the tool demos", artifact: "thread" },
+  { kicker: "See the operation", title: "Make the work legible at a glance.", body: "A focused command surface shows what ran, what changed, and what needs attention next.", to: HELM_DEMO_URL, linkLabel: "Open the Helm demo", artifact: "image" },
 ];
 
 // The other three doors build their worked examples from the service data
@@ -72,23 +74,23 @@ function ModuleArtifact({ mod, service }: { mod: Module; service: ServiceArea })
   if (mod.artifact === "routing") return <RoutingArtifact />;
   if (mod.artifact === "thread") return <ThreadArtifact />;
   if (mod.artifact === "journey") return <JourneyArtifact />;
-  if (mod.artifact === "buildjourney") return <JourneyArtifact data={BUILD_JOURNEY} />;
+  if (mod.artifact === "buildjourney") return <BuildJourneyArtifact />;
   if (mod.artifact === "variants") return <VariantsArtifact />;
   if (mod.artifact === "beforeafter") return <BeforeAfterArtifact />;
   if (mod.artifact === "identity") return <IdentityBoardArtifact />;
   if (mod.artifact === "storefront") return <StorefrontArtifact />;
   if (mod.artifact === "list") return <ListArtifact label={mod.listLabel ?? "Scope"} items={mod.items ?? []} />;
-  return <figure className="v3-module-image v4-module-image"><img src={service.artifact.src} alt={service.artifact.alt} /><figcaption>{service.artifact.caption}</figcaption></figure>;
+  return <figure className="v3-module-image v4-module-image"><img {...imgProps(service.artifact.src, SIZES.half)} alt={service.artifact.alt} loading="lazy" decoding="async" /><figcaption>{service.artifact.caption}</figcaption></figure>;
 }
 
 export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
   const service = serviceAreas.find((item) => item.id === serviceId) ?? serviceAreas[0];
   const modules = serviceModules(service);
-  useCalEmbed();
   return (
-    <main className="m2 v3">
+    <div className="m2 v3">
       <LabMeta title={`${service.name} · Madrona Product Studio`} />
       <M2Nav active="services" />
+      <main id="main">
 
       <section className="v4-hero v3-shell">
         <div className="v4-hero-copy">
@@ -96,12 +98,12 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
           <h1>{service.outcome}</h1>
           <p className="v3-lede">{service.summary}</p>
           <div className="v3-actions">
-            <Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link>
-            {service.tryIt && <Link className="v3-hero-text-link" to={service.tryIt.to}>{service.tryIt.label} <span aria-hidden="true">→</span></Link>}
+            <Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", `${service.id}-hero`)}>Get in touch</Link>
+            {service.tryIt && <Link className="v3-hero-text-link" to={service.tryIt.to} onClick={ctaClick(service.tryIt.label, service.tryIt.to, `${service.id}-hero`)}>{service.tryIt.label} <span aria-hidden="true">→</span></Link>}
           </div>
         </div>
         <div className="v4-hero-art" aria-hidden="true">
-          <figure className="v3-service-proof v4-hero-image"><img src={service.artifact.src} alt="" /><figcaption><span>Working proof</span>{service.artifact.caption}</figcaption></figure>
+          <figure className="v3-service-proof v4-hero-image"><img {...imgProps(service.artifact.src, SIZES.doorHero)} alt="" decoding="async" /><figcaption><span>Working proof</span>{service.artifact.caption}</figcaption></figure>
           <div className="v4-hero-window"><HeroWindow serviceId={service.id} /></div>
         </div>
       </section>
@@ -131,9 +133,9 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
           <h2>How we start</h2>
           <p>{service.startingPoint}</p>
           <div className="v4-start-links">
-            <Link to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
+            <Link to="/connect" onClick={ctaClick("Get in touch", "/connect", `${service.id}-strip`)}>Get in touch <span aria-hidden="true">→</span></Link>
             {service.demos && <Link to={service.demos.to}>{service.demos.label} <span aria-hidden="true">→</span></Link>}
-            {service.tryIt && <Link to={service.tryIt.to}>{service.tryIt.label} <span aria-hidden="true">→</span></Link>}
+            {service.tryIt && <Link to={service.tryIt.to} onClick={ctaClick(service.tryIt.label, service.tryIt.to, `${service.id}-strip`)}>{service.tryIt.label} <span aria-hidden="true">→</span></Link>}
             {service.pov && <Link to={service.pov.to}>{service.pov.label} <span aria-hidden="true">→</span></Link>}
           </div>
         </div>
@@ -148,7 +150,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
               <h3>{mod.title}</h3>
               <p>{mod.body}</p>
               {mod.to.startsWith("http")
-                ? <a href={mod.to} target="_blank" rel="noopener noreferrer">{mod.linkLabel} <span aria-hidden="true">→</span></a>
+                ? <a href={mod.to} target="_blank" rel="noopener noreferrer" onClick={outboundClick(mod.to, `${service.id}-module`)}>{mod.linkLabel} <span aria-hidden="true">→</span></a>
                 : <Link to={mod.to}>{mod.linkLabel} <span aria-hidden="true">→</span></Link>}
             </div>
             <div className="v4-module-art"><ModuleArtifact mod={mod} service={service} /></div>
@@ -156,7 +158,9 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
         ))}
       </section>
 
+      </main>
+
       <SiteFooter />
-    </main>
+    </div>
   );
 }

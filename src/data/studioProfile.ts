@@ -2,18 +2,19 @@
 // other surface that needs the same proof-point / experience language). Keep one
 // version of this copy so the site never drifts into conflicting claims.
 
-import portrait from "../../docs/madrona-v2-build-kit/site-assets/about-charlie.webp";
+import type { ResponsiveImage } from "../lib/responsiveImage";
+import portrait from "../../docs/madrona-v2-build-kit/site-assets/about-charlie.webp?w=360;520;780&format=webp&as=img";
 import ownedProductsImg from "../../docs/madrona-v2-build-kit/site-assets/lila-devices.webp";
-import communityFood from "../../docs/madrona-v2-build-kit/placeholders/photography/audience-farms-food.webp";
-import communityLand from "../../docs/madrona-v2-build-kit/placeholders/photography/audience-outdoor-travel.webp";
-import nameStoryImg from "../../docs/madrona-v2-build-kit/site-assets/about-madrona-tree.webp";
+import communityFood from "../../docs/madrona-v2-build-kit/placeholders/photography/audience-farms-food.webp?w=450;720;900&format=webp&as=img";
+import communityLand from "../../docs/madrona-v2-build-kit/placeholders/photography/audience-outdoor-travel.webp?w=450;720;900&format=webp&as=img";
+import nameStoryImg from "../../docs/madrona-v2-build-kit/site-assets/about-madrona-tree.webp?w=640;960;1280&format=webp&as=img";
 
 export interface StudioProfile {
   intro: {
     heading: string;
     headline: string;
     body: string[];
-    portraitSrc: string;
+    portraitSrc: ResponsiveImage;
     portraitAlt: string;
   };
   charlie: { name: string; role: string };
@@ -37,14 +38,14 @@ export interface StudioProfile {
     eyebrow: string;
     heading: string;
     description: string;
-    images: string[];
+    images: ResponsiveImage[];
     href?: string;
   };
   nameStory: {
     eyebrow: string;
     heading: string;
     description: string;
-    imageSrc: string;
+    imageSrc: ResponsiveImage;
   };
 }
 
@@ -64,8 +65,8 @@ export const studioProfile: StudioProfile = {
   proofPoints: [
     {
       id: "senior-team",
-      title: "Senior team when needed",
-      description: "Bring in the right specialists for the work.",
+      title: "Senior team from the start",
+      description: "Senior from the first conversation, with the right specialists brought in as the work needs them.",
       icon: "senior",
     },
     {

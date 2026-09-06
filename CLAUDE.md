@@ -69,8 +69,10 @@ aliases (they were removed; use the tokens below).
 - `ink` `#1a1714` — primary text, structural elements, logo wordmark
 - `ink70` `#403a33` — secondary text, captions, meta labels
 - `clay` `#6f6657` — tertiary body text, the calmer "Breath" line
-- `muted` `#8c8378` — micro-labels, quiet eyebrow captions
-- `faint` `#b8b0a2` — faintest text, inactive marks
+- `muted` `#766d62` — micro-labels, quiet eyebrow captions (4.5:1 on bg;
+  darkened from `#8c8378` in the 2026-09-06 contrast pass)
+- `faint` `#b8b0a2` — inactive marks and hairline-like glyphs only; never
+  text anyone reads (1.9:1 on bg)
 
 **Hairlines (dividers and quiet borders)**
 - `line` `rgba(26,23,20,0.14)` — standard hairline rules and borders
@@ -78,8 +80,9 @@ aliases (they were removed; use the tokens below).
 
 **Madrona / the orange (the signature — used sparingly)**
 - `madrona` `#E55728` — links, active nav, kickers, the `.m2-pop` flash,
-  the frond (day companion `madrona-dark` `#BC431D`; dark-sky companion
-  `#F0703F` — value shifts, never hue)
+  the frond (day companion `madrona-dark` `#BC431D`; dark-sky companions
+  are white tints of the same orange, night `#ED8A69` / dusk `#F09C80` —
+  value shifts, never hue; the bright orange is display-size text only)
 - `madrona-light` `#e8a999` — selection highlights, subtle tinted washes
 
 **Action grounds (the green is retired — see Discipline below)**
@@ -96,7 +99,10 @@ the sky picks the ground.**
 - **The orange** — madrona red-orange `#E55728` is THE accent in every sky
   state: links, kickers, the headline flash, active states, the frond.
   Its companion shade shifts *value only, never hue*: `#BC431D` on light
-  grounds, `#F0703F` on dark. The old bark (`#c4553a`/`#c86a3d`) and the
+  grounds, `#ED8A69` on night, `#F09C80` on dusk (all clear 4.5:1 on their
+  ground; the companion carries every body-size use: kickers, links,
+  labels). The bright `#E55728` is for fills, the frond, and display-size
+  flashes; dusk hands even the flash to the companion (`--v3-flash`). The old bark (`#c4553a`/`#c86a3d`) and the
   forest-green CTA system are retired.
 - **Action = the opposite ground** — primary CTAs are charcoal `#2F3135`
   on light grounds and cream `#F7EDE4` on dark ones; the deep CTA band
@@ -205,9 +211,12 @@ Every page should be able to route here. Three steps, published on
 
 Booking runs on the **Cal.com popup embed** (settled 2026-08-23; this
 supersedes the earlier Google Calendar recommendation). `CAL_LINK` in
-`src/data/booking.ts` is live; `useCalEmbed()` + `bookProps()`/
+`src/data/booking.ts` is live; `bookHref()` + `bookProps()` +
 `bookClick()` (src/pages/lab/useCalEmbed.ts) power every "Schedule a
-30-min call" CTA, with `BOOKING_URL` as the no-JS fallback href. Booking
+30-min call" CTA. The embed script loads only on intent (hover/focus
+warms it, the click opens the popup programmatically), never at page
+load; `useCalEmbed()` is a kept-for-compatibility no-op. `bookHref()`
+is the no-JS fallback href. Booking
 clicks fire the `book_click` event through the shared dual-sink tracker
 (`src/lib/analytics.ts` — GA4 + Vercel; its header documents the full
 event vocabulary).
@@ -240,7 +249,8 @@ impact line in the owner's terms, and plain-words offerings:
    Berry Farm, openly framed as our demonstration business** (industry
    agent, invoicing agent, customer service agent, the ordering
    surface); dogfood proof is our own operation (Helm demo mode
-   `?demo=1` — NEVER link the real HQ instance).
+   `https://helm.day/demo`, the public demo account — NEVER link the real HQ
+   instance).
 
 **Channel/fulfillment is not a bucket:** first-purchase path → Grow,
 repeat/standing ordering → Retain, behind-the-counter fulfillment →

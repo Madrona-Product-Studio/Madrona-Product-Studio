@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { serviceAreas, type ServiceId } from "../../data/services";
+import { imgProps, SIZES } from "../../lib/responsiveImage";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
-import { useCalEmbed } from "../lab/useCalEmbed";
 import { PracticeSection } from "./PracticeSection";
 import Reveal from "./Reveal";
+import { ctaClick } from "../../lib/analytics";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 
@@ -31,7 +32,7 @@ function ServiceArea({ area, index }: { area: typeof serviceAreas[number]; index
         <Link className="v3-practice-link" to={doorRoutes[area.id]}>Explore {area.name} <span aria-hidden="true">→</span></Link>
       </div>
       <figure className="v3-svc-art">
-        <img src={area.artifact.src} alt={area.artifact.alt} loading="lazy" />
+        <img {...imgProps(area.artifact.src, SIZES.half)} alt={area.artifact.alt} loading="lazy" decoding="async" />
         <figcaption>{area.artifact.caption}</figcaption>
       </figure>
     </div>
@@ -39,10 +40,10 @@ function ServiceArea({ area, index }: { area: typeof serviceAreas[number]; index
 }
 
 export default function ServicesV3() {
-  useCalEmbed();
-  return <main className="m2 v3">
+  return <div className="m2 v3">
     <LabMeta title="How we help · Madrona Product Studio" />
     <M2Nav active="services" />
+    <main id="main">
 
     <section className="v3-current-hero v3-svc-hero">
       <div className="v3-shell">
@@ -50,8 +51,8 @@ export default function ServicesV3() {
         <h1>Four ways in. <span>One practice.</span></h1>
         <p className="v3-lede">We help you find the highest-leverage move, make it real, and let the work compound. The doors are different; the practice behind them is the same.</p>
         <div className="v3-actions">
-          <Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link>
-          <Link className="v3-hero-text-link" to="/ai-opportunities">Find your AI opportunities <span aria-hidden="true">→</span></Link>
+          <Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "services-hero")}>Get in touch</Link>
+          <Link className="v3-hero-text-link" to="/ai-opportunities" onClick={ctaClick("Find your AI opportunities", "/ai-opportunities", "services-hero")}>Find your AI opportunities <span aria-hidden="true">→</span></Link>
         </div>
       </div>
     </section>
@@ -60,6 +61,8 @@ export default function ServicesV3() {
 
     <PracticeSection />
 
+    </main>
+
     <SiteFooter cta />
-  </main>;
+  </div>;
 }

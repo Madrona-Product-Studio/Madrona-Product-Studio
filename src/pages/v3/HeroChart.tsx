@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { THEME_EVENT } from "../../lib/theme";
+import { THEME_EVENT, LAT, LON } from "../../lib/theme";
 
 // The hero's "chart of the bay" — variant B1 from the hero-art lab
 // (Charlie's pick, 2026-08-29; ported from madrona-hero-art
@@ -7,7 +7,12 @@ import { THEME_EVENT } from "../../lib/theme";
 // ink survey lines with bark index contours every fifth level, and the
 // Bellingham Bay coordinates stamped in the corner. Colors come from the
 // live theme tokens so the chart follows the day/dusk/night sky states.
+//
+// The marching-squares pass is a full-canvas loop, so it only runs while
+// the hero is actually on screen and the tab is visible, and it is capped
+// at ~30 fps (the drift is slow; 60 fps bought nothing but battery).
 const FALLBACK = { ink: "#1a1714", bark: "#E55728", muted: "#8c8378" };
+const FRAME_MS = 1000 / 30;
 
 function chartColors(el: HTMLElement) {
   const cs = getComputedStyle(el);
@@ -62,7 +67,7 @@ const chartIso = (l: number) => -1.0 + (2.0 * l) / (LEVELS - 1);
 
 function createChart(canvas: HTMLCanvasElement, w: number, h: number, dpr: number, colors: { ink: string; bark: string; muted: string }) {
   const ctx = canvas.getContext("2d");
-  if (!ctx) return { draw: (_t: number) => {} };
+  if (!ctx) return { draw: () => {} };
   const noise = makeNoise(23);
   const step = Math.max(6, Math.round(7 * dpr));
   const gx = Math.ceil(w / step) + 1, gy = Math.ceil(h / step) + 1;
@@ -97,6 +102,9 @@ function createChart(canvas: HTMLCanvasElement, w: number, h: number, dpr: numbe
     }
     ctx.stroke();
   };
+  // Bellingham, the same coordinates the sky engine runs on.
+  const stampLat = `${LAT.toFixed(4)}° N`;
+  const stampLon = `${Math.abs(LON).toFixed(4)}° W`;
   const draw = (t: number) => {
     const z = t * 0.00004;
     const scale = w * 0.55;
@@ -121,8 +129,8 @@ function createChart(canvas: HTMLCanvasElement, w: number, h: number, dpr: numbe
     ctx.fillStyle = colors.muted;
     ctx.font = `500 ${Math.round(9 * dpr)}px ui-monospace, "SF Mono", Menlo, monospace`;
     ctx.textAlign = "right";
-    ctx.fillText("48.7461° N", w - 26 * dpr, h - 40 * dpr);
-    ctx.fillText("122.4787° W", w - 26 * dpr, h - 26 * dpr);
+    ctx.fillText(stampLat, w - 26 * dpr, h - 40 * dpr);
+    ctx.fillText(stampLon, w - 26 * dpr, h - 26 * dpr);
     ctx.globalAlpha = 1;
   };
   return { draw };
@@ -134,7 +142,35 @@ export function HeroChart() {
     const canvas = ref.current;
     if (!canvas) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let art: { draw: (t: number) => void } | null = null;
     let raf = 0;
+    let onScreen = true;
+    // Drift time only advances while the loop runs, so pausing and resuming
+    // never makes the contours jump.
+    let elapsed = 0;
+    let lastNow = 0;
+    let lastFrame = -Infinity;
+
+    const shouldRun = () => !reduced && onScreen && !document.hidden;
+    const loop = (now: number) => {
+      raf = 0;
+      if (!art || !shouldRun()) return;
+      elapsed += now - lastNow;
+      lastNow = now;
+      if (now - lastFrame >= FRAME_MS - 1) {
+        lastFrame = now;
+        art.draw(elapsed);
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    const play = () => {
+      if (raf || !art || !shouldRun()) return;
+      lastNow = performance.now();
+      raf = requestAnimationFrame(loop);
+    };
+    const pause = () => { cancelAnimationFrame(raf); raf = 0; };
+
     const boot = () => {
       const parent = canvas.parentElement;
       if (!parent) return;
@@ -142,13 +178,13 @@ export function HeroChart() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.max(2, Math.round(rect.width * dpr));
       canvas.height = Math.max(2, Math.round(rect.height * dpr));
-      const art = createChart(canvas, canvas.width, canvas.height, dpr, chartColors(parent));
+      art = createChart(canvas, canvas.width, canvas.height, dpr, chartColors(parent));
       if (reduced) { art.draw(8000); return; }
-      const start = performance.now();
-      const loop = (now: number) => { art.draw(now - start); raf = requestAnimationFrame(loop); };
-      raf = requestAnimationFrame(loop);
+      art.draw(elapsed);
+      play();
     };
     boot();
+
     let tid = 0;
     let lastW = canvas.width;
     const ro = new ResizeObserver(() => {
@@ -160,14 +196,31 @@ export function HeroChart() {
         const wNow = Math.round(parent.getBoundingClientRect().width * dpr);
         if (Math.abs(wNow - lastW) < 4) return;
         lastW = wNow;
-        cancelAnimationFrame(raf);
+        pause();
         boot();
       }, 150);
     });
     if (canvas.parentElement) ro.observe(canvas.parentElement);
-    const onTheme = () => { cancelAnimationFrame(raf); boot(); };
+
+    // Only animate while the hero is actually in view and the tab is visible.
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      if (onScreen) play(); else pause();
+    });
+    io.observe(canvas);
+    const onVisibility = () => { if (document.hidden) pause(); else play(); };
+    document.addEventListener("visibilitychange", onVisibility);
+
+    const onTheme = () => { pause(); boot(); };
     window.addEventListener(THEME_EVENT, onTheme);
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); window.clearTimeout(tid); window.removeEventListener(THEME_EVENT, onTheme); };
+    return () => {
+      pause();
+      ro.disconnect();
+      io.disconnect();
+      window.clearTimeout(tid);
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener(THEME_EVENT, onTheme);
+    };
   }, []);
   return <canvas ref={ref} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", display: "block" }} />;
 }

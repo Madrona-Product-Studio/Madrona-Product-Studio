@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import PovThumb from "./PovThumb";
 import { thinkingEntries } from "../../data/thinking";
@@ -13,40 +13,6 @@ const SITE_ORIGIN = "https://www.madronaproduct.com";
    sections, and a small kit of on-brand technical figures. Content pages
    compose these primitives; no page-specific styling lives here.
    ========================================================================= */
-
-/* ---- Scroll-spy for the sticky TOC ------------------------------------- */
-export function useTocSpy(ids: string[]) {
-  const [active, setActive] = useState(ids[0] ?? "");
-  useEffect(() => {
-    const els = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
-    if (!els.length) return;
-
-    const visible = new Map<string, number>();
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) visible.set(e.target.id, e.intersectionRatio);
-          else visible.delete(e.target.id);
-        }
-        // Highest section still on screen wins; fall back to nearest above.
-        if (visible.size) {
-          const top = [...visible.entries()].sort((a, b) => {
-            const ay = document.getElementById(a[0])!.getBoundingClientRect().top;
-            const by = document.getElementById(b[0])!.getBoundingClientRect().top;
-            return ay - by;
-          })[0][0];
-          setActive(top);
-        }
-      },
-      { rootMargin: "-88px 0px -60% 0px", threshold: [0, 0.25, 0.6, 1] }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [ids]);
-  return active;
-}
 
 /* ---- Header (title section carries the contents nav) ------------------- */
 export type TocItem = { id: string; label: string };
@@ -175,10 +141,12 @@ const shareIcon = (d: string) => (
 export function ArticleShare({ title, href }: { title: string; href: string }) {
   const url = `${SITE_ORIGIN}${href}`;
   const [copied, setCopied] = useState(false);
-  const [canNative, setCanNative] = useState(false);
-  useEffect(() => {
-    setCanNative(typeof navigator !== "undefined" && typeof navigator.share === "function");
-  }, []);
+  // Read once from the browser; false on the server / first static render.
+  const canNative = useSyncExternalStore(
+    () => () => {},
+    () => typeof navigator !== "undefined" && typeof navigator.share === "function",
+    () => false,
+  );
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(url);

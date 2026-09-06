@@ -4,10 +4,11 @@
 // render from this. Canonical labels live here — do not restate in components.
 // Order is meaningful (Charlie, 2026-08-29): AI & Operations leads
 // (agentic-forward), then Brand & Website, Growth & Retention, New Products.
-import brandArtifact from "../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp";
-import customersArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp";
-import operationsArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp";
-import newProductsArtifact from "../../docs/madrona-v2-build-kit/product-proof/lila/new-products-idea-to-real.webp";
+import type { ResponsiveImage } from "../lib/responsiveImage";
+import brandArtifact from "../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp?w=640;960;1280&format=webp&as=img";
+import customersArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp?w=640;960;1280&format=webp&as=img";
+import operationsArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp?w=640;960;1280&format=webp&as=img";
+import newProductsArtifact from "../../docs/madrona-v2-build-kit/product-proof/lila/new-products-idea-to-real.webp?w=640;960;1280&format=webp&as=img";
 
 export type ServiceId = "brand-and-web" | "customers-and-growth" | "operations-and-ai" | "new-products";
 
@@ -25,7 +26,7 @@ export interface ServiceArea {
   bestFor: string;
   startingPoint: string;
   pathSteps: string[];
-  artifact: { src: string; alt: string; caption: string };
+  artifact: { src: ResponsiveImage; alt: string; caption: string };
   // Optional pointer to a POV article that makes the case for this area.
   pov?: { label: string; to: string };
   // Optional interactive entry point (e.g. the AI checkup).
@@ -68,7 +69,7 @@ export const serviceAreas: ServiceArea[] = [
       "An agentic ops setup sprint: we set up agent tooling on the systems you already use, teach it how your business actually works, and teach you to run it. From there, we expand what earns its place.",
     pathSteps: ["Request", "decision", "action"],
     artifact: { src: operationsArtifact, alt: "Berry Good operations dashboard with an order-intake agent and structured orders", caption: "Berry Good operations dashboard" },
-    demos: { label: "See the tools we deploy, running live", to: "/tools" },
+    demos: { label: "Walk through the tools we deploy", to: "/tools" },
     pov: { label: "Thinking: The era of agentic operations", to: "/thinking/the-era-of-agentic-operations" },
     tryIt: { label: "Not sure where AI fits? Find your AI opportunities", to: "/ai-opportunities" },
     open: { label: "The tools behind this are open source", to: "/open" },

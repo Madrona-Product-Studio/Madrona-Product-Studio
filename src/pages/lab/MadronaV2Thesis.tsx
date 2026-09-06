@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { publishedLabel } from "../../data/siteMeta.mjs";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -82,16 +83,17 @@ export default function MadronaV2Thesis() {
   useReveal();
 
   return (
-    <main className="m2 art">
+    <div className="m2 art">
       <LabMeta title="The Madrona Product Thesis · Madrona Product Studio" />
       <M2Nav active="pov" />
+      <main id="main">
 
       <div className="art-wrap">
         <ArticleHeader
           kicker="A working theory"
           typeMark={<TypeCircle type="Essay" />}
           author="Charlie Koch"
-          meta={["5 min read", "August 2026"]}
+          meta={["5 min read", publishedLabel("/thesis")]}
           title="The Madrona Product Thesis"
           standfirst="A point of view on how great software gets built in the AI era, and what that changes about product leadership. It comes from building, and we revise it as the work teaches us."
           toc={TOC}
@@ -178,7 +180,9 @@ export default function MadronaV2Thesis() {
         </ArticleBody>
       </div>
 
+      </main>
+
       <SiteFooter cta={false} />
-    </main>
+    </div>
   );
 }

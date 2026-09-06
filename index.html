@@ -46,14 +46,14 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Enable scroll-reveal only when JS runs and motion is allowed. Runs before
-         paint so prerendered content is never hidden for no-JS / crawlers. -->
-    <script>
-      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        document.documentElement.classList.add("js-reveal");
-      }
-    </script>
-    <title>Madrona Product Studio · PNW, USA</title>
+    <!-- Self-hosted variable fonts, preloaded so the real font is ready at first
+         paint (no swap flash). @font-face declared in src/index.css. Kept ahead
+         of every third-party script so nothing queues in front of them. -->
+    <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+    <title>Madrona Product Studio · Bellingham, Washington</title>
     <meta name="description" content="A small, senior product studio in Bellingham, Washington. We help businesses figure out what AI and modern tools can actually do for them, then build it. Every engagement starts with a free 30-minute conversation." />
 
     <!-- Open Graph -->
@@ -93,20 +93,31 @@
       }
     </script>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFNPFT3TPX"></script>
+    <!-- Google Analytics. The dataLayer + gtag stubs exist immediately so
+         src/lib/analytics.ts can queue events from the first render; the
+         gtag.js script itself is fetched after the page has loaded (idle
+         callback with a timeout) so it never competes with fonts, CSS, or the
+         app bundle for the first paint. gtag.js drains the queue on arrival. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-MFNPFT3TPX');
+      (function () {
+        var load = function () {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-MFNPFT3TPX';
+          document.head.appendChild(s);
+        };
+        var idle = function () {
+          if ('requestIdleCallback' in window) requestIdleCallback(load, { timeout: 2500 });
+          else setTimeout(load, 1);
+        };
+        if (document.readyState === 'complete') idle();
+        else window.addEventListener('load', idle, { once: true });
+      })();
     </script>
-
-    <!-- Self-hosted variable fonts, preloaded so the real font is ready at first
-         paint (no swap flash). @font-face declared in src/index.css. -->
-    <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/figtree-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div id="root"></div>
