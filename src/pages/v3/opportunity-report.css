@@ -1,14 +1,24 @@
 /* Opportunity Report card — the AI Opportunity Assessment deliverable.
-   Follows .rr-* patterns from where-to-start.css: same .v3 scope tokens,
-   same board hues, same window-artifact language. Class prefix: or-. */
+   Same .v3 scope tokens, same board hues, same window-artifact language.
+   Class prefix: or-.
+
+   Type scale: the base card (the assembling pane and the home hero) is
+   compact but floors at 11px for anything a person reads. The result stage
+   (.sa--result) steps everything up to a 13-14px body, and print reads
+   like a document. */
 
 /* ---- Card shell ---- */
 .or-card { color: var(--v3-ink); }
+/* The window chrome inherits 10px from v3.css; floor it here. */
+.or-card .v3-window-bar,
+.or-card .v3-window-bar code,
+.or-card .v3-window-bar small { font-size: 11px; }
+.or-card .v3-window-bar small { white-space: nowrap; }
 
 /* ---- Masthead ---- */
-.wts-sa .or-card header.or-head {
+.or-card header.or-head {
   display: block;
-  padding: 22px 22px 18px;
+  padding: 20px 22px 16px;
   border-bottom: 1px solid var(--v3-soft);
   font-size: inherit;
   font-weight: 400;
@@ -18,13 +28,13 @@
 .or-kicker {
   margin: 0 0 10px;
   color: var(--v3-muted);
-  font: 700 9.5px/1.2 Inter, sans-serif;
-  letter-spacing: .12em;
+  font: 700 11px/1.2 Inter, sans-serif;
+  letter-spacing: .1em;
   text-transform: uppercase;
 }
-.wts-sa .or-card .or-head h2 {
-  margin: 0 0 10px;
-  font: 500 24px/1.12 "Hanken Grotesk", Inter, sans-serif;
+.or-card .or-head h2 {
+  margin: 0 0 8px;
+  font: 500 22px/1.12 "Hanken Grotesk", Inter, sans-serif;
   letter-spacing: -.02em;
   color: var(--v3-ink);
 }
@@ -34,15 +44,13 @@
   font-size: 12.5px;
   line-height: 1.5;
 }
-.or-overall strong { color: #BC431D; }
+.or-overall strong { color: var(--v3-bark-dark); }
 
 /* ---- Section headings (shared) ---- */
-.or-map h3,
-.or-moves h3,
-.or-heard h3 {
+.or-card h3 {
   margin: 0 0 12px;
   color: var(--v3-muted);
-  font: 700 9px/1.2 Inter, sans-serif;
+  font: 700 11px/1.2 Inter, sans-serif;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
@@ -57,7 +65,7 @@
 
 .or-group-head {
   margin: 0 0 6px;
-  font: 700 9px/1.2 Inter, sans-serif;
+  font: 700 11px/1.2 Inter, sans-serif;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--v3-faint);
@@ -94,7 +102,7 @@
 
 .or-map-label {
   flex: 1;
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--v3-ink70);
   line-height: 1.4;
 }
@@ -104,18 +112,25 @@
    09-01: the orange stays a flash, not wallpaper); orange on hover. */
 .or-proof-live {
   flex: none;
-  font: 600 9px/1 Inter, sans-serif;
-  letter-spacing: .06em;
+  font: 600 11px/1 Inter, sans-serif;
+  letter-spacing: .04em;
   color: var(--v3-muted);
   text-decoration: none;
   white-space: nowrap;
 }
-.or-proof-live:hover { color: #E55728; }
+.or-proof-live:hover { color: var(--v3-bark); }
 
 /* ---- Moves section ---- */
 .or-moves {
   padding: 16px 22px 18px;
   border-bottom: 1px solid var(--v3-soft);
+}
+.or-moves-lead {
+  margin: -4px 0 12px;
+  color: var(--v3-clay);
+  font-size: 12px;
+  line-height: 1.5;
+  max-width: 58ch;
 }
 .or-moves-list {
   margin: 0;
@@ -133,13 +148,13 @@
 .or-moves-list li:last-child { border-bottom: 0; }
 
 .or-rank {
-  font: 700 9px/1.2 Inter, sans-serif;
+  font: 700 11px/1.2 Inter, sans-serif;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--v3-muted);
   padding-top: 3px;
 }
-.or-moves-list li.is-now .or-rank { color: #BC431D; }
+.or-moves-list li.is-now .or-rank { color: var(--v3-bark-dark); }
 
 .or-move-body { display: flex; flex-direction: column; gap: 3px; }
 
@@ -154,7 +169,7 @@
 
 .or-move-support {
   margin: 0;
-  font-size: 11px;
+  font-size: 11.5px;
   line-height: 1.45;
   color: var(--v3-clay);
 }
@@ -164,15 +179,15 @@
   align-items: baseline;
   gap: 3px;
   margin-top: 4px;
-  font: 700 10px/1.2 Inter, sans-serif;
-  color: #BC431D;
+  font: 700 11px/1.2 Inter, sans-serif;
+  color: var(--v3-bark-dark);
   text-decoration: none;
   letter-spacing: .02em;
 }
-.or-move-proof:hover { color: #E55728; }
+.or-move-proof:hover { color: var(--v3-bark); }
 /* Next/Later links ride quiet so the Now move keeps the only loud accent. */
 .or-move-proof--quiet { color: var(--v3-muted); font-weight: 600; }
-.or-move-proof--quiet:hover { color: #E55728; }
+.or-move-proof--quiet:hover { color: var(--v3-bark); }
 
 /* Print-only URL: hidden on screen, visible in print */
 .or-print-url {
@@ -186,13 +201,6 @@
 .or-tools {
   padding: 16px 22px 18px;
   border-bottom: 1px solid var(--v3-soft);
-}
-.or-tools h3 {
-  margin: 0 0 12px;
-  color: var(--v3-muted);
-  font: 700 9px/1.2 Inter, sans-serif;
-  letter-spacing: .1em;
-  text-transform: uppercase;
 }
 .or-tools-list {
   margin: 0;
@@ -209,25 +217,25 @@
   color: var(--v3-ink);
   text-decoration: none;
 }
-.or-tools-list a:hover { color: #E55728; }
+.or-tools-list a:hover { color: var(--v3-bark); }
 .or-tools-list a span[aria-hidden] { color: var(--v3-muted); }
-.or-tools-list a:hover span[aria-hidden] { color: #E55728; }
+.or-tools-list a:hover span[aria-hidden] { color: var(--v3-bark); }
 .or-tools-list p {
   margin: 3px 0 0;
   color: var(--v3-clay);
-  font-size: 11px;
+  font-size: 11.5px;
   line-height: 1.45;
   max-width: 58ch;
 }
 .or-tools-all {
   display: inline-block;
   margin-top: 12px;
-  font: 700 10.5px/1.2 Inter, sans-serif;
-  color: #BC431D;
+  font: 700 11px/1.2 Inter, sans-serif;
+  color: var(--v3-bark-dark);
   text-decoration: none;
   letter-spacing: .02em;
 }
-.or-tools-all:hover { color: #E55728; }
+.or-tools-all:hover { color: var(--v3-bark); }
 
 /* ---- What we heard ---- */
 .or-heard {
@@ -248,29 +256,44 @@
   animation: or-fill .4s ease both;
 }
 .or-heard-list li + li { margin-top: 8px; }
+/* The bridge: two or three sentences that connect the lines above, in the
+   studio's voice. Arrives late and quietly, if at all. */
+.or-heard-bridge {
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--v3-soft);
+  color: var(--v3-ink70);
+  font-size: 12.5px;
+  line-height: 1.6;
+  max-width: 60ch;
+  animation: or-bridge .6s ease both;
+}
 
 /* ---- Foot ---- */
 .or-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
+  flex-wrap: wrap;
+  gap: 10px 14px;
   padding: 12px 22px;
   border-top: 1px solid var(--v3-soft);
 }
+.or-foot-actions { display: inline-flex; align-items: center; gap: 16px; }
 .or-foot button {
   border: 0;
   background: none;
   padding: 0;
   cursor: pointer;
-  color: #BC431D;
-  font: 700 11.5px Inter, sans-serif;
+  color: var(--v3-bark-dark);
+  font: 700 12px Inter, sans-serif;
 }
-.or-foot button:hover { color: #E55728; }
-.or-foot > span {
+.or-foot button:hover { color: var(--v3-bark); }
+.or-foot > span:not(.or-foot-actions) {
   color: var(--v3-faint);
-  font-size: 9.5px;
+  font-size: 11px;
 }
+.or-print-permalink { display: none; }
 
 /* ---- The assembling state (the same card, filling in) ---- */
 /* Every section here exists on the final card; the skeleton only withholds.
@@ -294,7 +317,7 @@
 .or-map-list--live .or-map-item.is-captured .or-map-label { color: var(--v3-ink); }
 .or-live-status {
   flex: none;
-  font: 600 10px/1 Inter, sans-serif;
+  font: 600 11px/1 Inter, sans-serif;
   letter-spacing: .02em;
   color: var(--v3-muted);
   animation: or-listen 1.7s ease-in-out infinite;
@@ -306,11 +329,66 @@
 .or-moves-pending {
   margin: 0;
   color: var(--v3-muted);
-  font-size: 10px;
+  font-size: 11.5px;
   font-weight: 500;
   line-height: 1.5;
 }
 .or-card--assembling .or-foot { justify-content: flex-end; }
+
+/* ---- The result stage: the card people actually read ---- */
+.sa--result .or-card .or-head h2 { font-size: 26px; }
+.sa--result .or-kicker { font-size: 11.5px; }
+.sa--result .or-overall { font-size: 14px; }
+.sa--result .or-card h3,
+.sa--result .or-group-head,
+.sa--result .or-rank { font-size: 11.5px; }
+.sa--result .or-map-item { padding: 7px 0; }
+.sa--result .or-map-label { font-size: 13.5px; }
+.sa--result .or-proof-live { font-size: 11.5px; }
+.sa--result .or-moves-lead { font-size: 13px; }
+.sa--result .or-moves-list li { grid-template-columns: 52px 1fr; padding: 12px 0; }
+.sa--result .or-move-head { font-size: 14.5px; }
+.sa--result .or-moves-list li.is-now .or-move-head { font-size: 16.5px; }
+.sa--result .or-move-support { font-size: 13px; line-height: 1.5; }
+.sa--result .or-move-proof { font-size: 12px; }
+.sa--result .or-tools-list a { font-size: 14px; }
+.sa--result .or-tools-list p { font-size: 13px; line-height: 1.5; }
+.sa--result .or-tools-all { font-size: 12px; }
+.sa--result .or-heard-list li { font-size: 13.5px; line-height: 1.6; }
+.sa--result .or-heard-bridge { font-size: 14px; }
+.sa--result .or-foot button { font-size: 13px; }
+.sa--result .or-foot > span:not(.or-foot-actions) { font-size: 11.5px; }
+.sa--result .or-moves-pending { font-size: 13px; }
+
+/* ---- The home hero: the example read, three columns, same footprint as
+   the artifact it replaced. Masthead | the map | the first two moves. ---- */
+.or-card--hero { display: grid; grid-template-columns: 1.02fr .98fr 1.08fr; }
+.or-card--hero .v3-window-bar { grid-column: 1 / -1; }
+.or-card--hero .or-head,
+.or-card--hero .or-map,
+.or-card--hero .or-moves { padding: 15px 17px; border-bottom: 0; }
+.or-card--hero .or-map,
+.or-card--hero .or-moves { border-left: 1px solid var(--v3-line); }
+.or-card--hero .or-head h2 { font-size: 20px; margin-bottom: 8px; }
+.or-card--hero .or-kicker { margin-bottom: 8px; }
+.or-card--hero .or-overall { font-size: 11.5px; }
+.or-card--hero .or-overall strong { display: block; margin-bottom: 2px; }
+.or-card--hero .or-card h3,
+.or-card--hero h3 { margin-bottom: 10px; }
+.or-card--hero .or-map-group { margin-bottom: 0; }
+.or-card--hero .or-map-item { padding: 4px 0; animation: none; }
+.or-card--hero .or-map-label { font-size: 11.5px; }
+.or-card--hero .or-moves-list li { grid-template-columns: 38px 1fr; padding: 8px 0; animation: none; }
+.or-card--hero .or-moves-list li:first-child { padding-top: 0; }
+.or-card--hero .or-moves-list li:last-child { padding-bottom: 0; }
+.or-card--hero .or-move-head { font-size: 12.5px; }
+.or-card--hero .or-moves-list li.is-now .or-move-head { font-size: 14px; }
+.or-card--hero .or-move-support { font-size: 11px; }
+@media (max-width: 900px) {
+  .or-card--hero { grid-template-columns: 1fr; }
+  .or-card--hero .or-map,
+  .or-card--hero .or-moves { border-left: 0; border-top: 1px solid var(--v3-line); }
+}
 
 @keyframes or-shimmer {
   from { background-position: 110% 0; }
@@ -326,6 +404,10 @@
   from { opacity: 0; transform: translateX(4px); }
   to   { opacity: 1; transform: translateX(0); }
 }
+@keyframes or-bridge {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 /* Staggered cascade on map items */
 .or-map-item:nth-child(2) { animation-delay: .05s; }
@@ -336,8 +418,10 @@
 /* Staggered cascade on moves */
 .or-moves-list li:nth-child(2) { animation-delay: .08s; }
 .or-moves-list li:nth-child(3) { animation-delay: .16s; }
+.or-moves-list li:nth-child(4) { animation-delay: .24s; }
 
-/* ---- Print ---- */
+/* ---- Print: the read as a document. The one print block for the
+   assessment (the shell rules used to be duplicated in where-to-start.css). ---- */
 @media print {
   /* Show only the report card; hide everything else */
   .wts-sa .sa-top,
@@ -347,17 +431,31 @@
   .or-foot button { display: none !important; }
 
   .wts-sa,
-  .wts-sa .sa-shell { background: #fff !important; min-height: 0; }
-  .wts-sa .sa-brain { width: 100%; border: 0; }
-  .or-card { box-shadow: none; border-color: #ddd; }
+  .wts-sa .sa-shell { background: #fff !important; min-height: 0; height: auto !important; }
+  .wts-sa .sa-body { display: block; }
+  .wts-sa .sa-brain { width: 100%; border: 0; padding: 0; }
+  .wts-sa .wts-card { margin: 0; }
+  .or-card { box-shadow: none; border-color: var(--v3-line); }
 
-  /* Spell out proof URLs in the moves section */
+  /* Document scale */
+  .or-card .or-head h2 { font-size: 24pt; }
+  .or-kicker, .or-card h3, .or-group-head, .or-rank { font-size: 9pt; }
+  .or-overall, .or-map-label, .or-move-support, .or-tools-list p, .or-heard-list li, .or-heard-bridge, .or-moves-lead { font-size: 11pt; line-height: 1.5; }
+  .or-move-head, .or-tools-list a { font-size: 12pt; }
+  .or-moves-list li.is-now .or-move-head { font-size: 13pt; }
+  .or-move-proof, .or-tools-all, .or-print-url { font-size: 10pt; }
+  .or-map, .or-moves, .or-tools, .or-heard { break-inside: avoid; }
+
+  /* Spell out proof URLs and the permalink */
   .or-print-url { display: inline; }
+  .or-print-permalink { display: block; width: 100%; font-size: 9pt; }
   .or-proof-live { display: none; }
+  .or-foot { flex-direction: column; align-items: flex-start; }
 
   /* Ensure map and heard items print fully visible */
   .or-map-item,
   .or-heard-list li,
+  .or-heard-bridge,
   .or-moves-list li { animation: none; opacity: 1; transform: none; }
 }
 
@@ -366,6 +464,7 @@
   .or-map-item,
   .or-moves-list li,
   .or-heard-list li,
+  .or-heard-bridge,
   .or-shimmer,
   .or-live-status { animation: none; }
 }

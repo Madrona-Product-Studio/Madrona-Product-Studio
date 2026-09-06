@@ -598,9 +598,10 @@ export function computeOpportunityReport(a: OpportunityAnswers): OpportunityRepo
 
   // ---- What we heard (heard[]) ----
   // One line per flagged area. Rule: an exclusive pick speaks for itself;
-  // three or more picks use the area's everything-drags line where one
-  // exists (words and glue); otherwise the first-checked line leads.
-  // Quiet-by-hours areas say so plainly.
+  // three or more distinct piles (two rows that name the same chip, like
+  // quotes and reports, count once) use the area's everything-drags line
+  // where one exists (words and glue); otherwise the first-checked line
+  // leads. Quiet-by-hours areas say so plainly.
   const heard: string[] = [];
   for (const area of flagged) {
     if (hourIndex(a, area) === 0) { heard.push(HEARD_QUIET[area]); continue; }
@@ -608,9 +609,10 @@ export function computeOpportunityReport(a: OpportunityAnswers): OpportunityRepo
     const verdicts: string[] = area === "money" ? MONEY_VERDICTS : area === "customers" ? CUSTOMER_VERDICTS : area === "words" ? WORDS_VERDICTS : GLUE_VERDICTS;
     const exclusiveIdx = AREA_QUESTIONS[area].evidence.exclusive;
     const manyIdx = area === "words" || area === "glue" ? exclusiveIdx : undefined;
+    const piles = new Set(picks.map(i => EVIDENCE_CHIP[area][i] ?? `row${i}`)).size;
     let line: string | undefined;
     if (exclusiveIdx !== undefined && picks.includes(exclusiveIdx)) line = verdicts[exclusiveIdx];
-    else if (picks.length >= 3 && manyIdx !== undefined) line = verdicts[manyIdx];
+    else if (piles >= 3 && manyIdx !== undefined) line = verdicts[manyIdx];
     else if (picks.length) line = verdicts[picks[0]];
     heard.push(line ?? `Most of the drag in ${AREA_LABELS[area].toLowerCase()} has a repeatable shape. That's what software handles best.`);
   }
