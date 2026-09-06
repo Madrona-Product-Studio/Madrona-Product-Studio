@@ -1,5 +1,6 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
+import { useFocusTrap } from "./useFocusTrap";
 
 /* =========================================================================
    Agent document viewer
@@ -40,6 +41,12 @@ export function DocButton({
   children: ReactNode;
 }) {
   const [open, setOpen] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  // Modal focus: land on the close button, keep Tab inside, return to the
+  // button that opened it.
+  useFocusTrap(modalRef, open, { initial: ".agentx-docclose", returnTo: triggerRef });
 
   useEffect(() => {
     if (!open) return;
@@ -55,12 +62,12 @@ export function DocButton({
 
   return (
     <>
-      <button type="button" className="agentx-docbtn" onClick={() => setOpen(true)}>
+      <button ref={triggerRef} type="button" className="agentx-docbtn" onClick={() => setOpen(true)}>
         <FileGlyph />{label}<span aria-hidden="true"> →</span>
       </button>
       {open && createPortal(
         <div className="agentx-docoverlay" role="dialog" aria-modal="true" aria-label={filename} onClick={() => setOpen(false)}>
-          <div className="agentx-docmodal" onClick={(e) => e.stopPropagation()}>
+          <div ref={modalRef} className="agentx-docmodal" onClick={(e) => e.stopPropagation()}>
             <div className="agentx-docbar">
               <span className="agentx-docbar-file"><FileGlyph />{filename}</span>
               <span className="agentx-docbar-kind">{KIND_LABEL[kind]}</span>
@@ -68,7 +75,7 @@ export function DocButton({
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg>
               </button>
             </div>
-            <div className="agentx-docscroll">
+            <div className="agentx-docscroll" tabIndex={0} aria-label="Document">
               <article className={`agentx-doc agentx-doc--${kind}`}>{children}</article>
             </div>
             <p className="agentx-docfoot">Demo: a rendered preview on made-up data, not a live document. A deployed agent produces the real file.</p>
