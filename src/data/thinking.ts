@@ -4,7 +4,7 @@
 // ORDER IS CURATED, not chronological (Charlie, 2026-08-17): read-first
 // order — the thesis leads, then the era piece, then the starter guide.
 // New entries slot in wherever they belong, not at the end.
-import type { PovMotif } from "../pages/lab/PovThumb";
+import type { PovMotif } from "../pages/lab/PovThumb.jsx";
 import { publishedLabel } from "./siteMeta.mjs";
 
 // Dates derive from the article table (the same field the JSON-LD uses).

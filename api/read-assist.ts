@@ -28,7 +28,7 @@ import {
   CHIP_SCHEMA,
   CHIP_SYSTEM,
   checkBridge,
-} from "../src/assessment-ai/prompts";
+} from "../src/assessment-ai/prompts.js";
 
 const TIMEOUT_MS = 3500;
 const RATE_WINDOW_MS = 10 * 60 * 1000;

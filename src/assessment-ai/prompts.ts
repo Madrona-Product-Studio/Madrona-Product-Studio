@@ -13,7 +13,7 @@
 // words. The server re-checks the length, digit, and dash rules and drops
 // the paragraph if the model slips, so a bad output degrades to nothing.
 
-import { openerChips, type ChipId } from "../pages/v3/opportunityEngine";
+import { openerChips, type ChipId } from "../pages/v3/opportunityEngine.js";
 
 export const CHIP_IDS: ChipId[] = openerChips.map(c => c.chip);
 

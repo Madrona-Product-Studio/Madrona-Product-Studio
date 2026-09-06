@@ -12,7 +12,7 @@
 // followed by "." + base64url(utf-8 free text) when the visitor wrote any.
 // Isomorphic on purpose: api/read.ts decodes the same string on the server.
 
-import { openerChips, type ChipId, type OpportunityAnswers } from "./opportunityEngine";
+import { openerChips, type ChipId, type OpportunityAnswers } from "./opportunityEngine.js";
 
 const VERSION = 1;
 const CHIP_ORDER: ChipId[] = openerChips.map(c => c.chip);
