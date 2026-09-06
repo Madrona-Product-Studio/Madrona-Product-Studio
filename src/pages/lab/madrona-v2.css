@@ -1444,7 +1444,6 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-fc-cta--solo .m2-fc-trust li > span { height: 32px; width: 32px; }
 .m2-fc-cta--solo .m2-fc-trust li > span svg { height: 15px; width: 15px; }
 .m2-fc-cta--solo .m2-fc-trust p { font-size: .86rem; }
-.m2-fc-cta--solo .m2-fc-trees { height: 80px; width: 160px; }
 .m2-fc-half { color: #fff; overflow: hidden; padding: clamp(38px, 4vw, 62px); position: relative; }
 .m2-fc-talk { background: var(--cta-band); }
 .m2-fc-started { background: var(--bark-dark); }
@@ -1466,7 +1465,6 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-fc-trust li p { color: rgba(255, 255, 255, .8); font-size: .78rem; line-height: 1.3; margin: 0; }
 .m2-fc-confidential { align-items: center; color: rgba(255, 255, 255, .8); display: flex; font-size: .82rem; gap: 9px; margin: 0; position: relative; }
 .m2-fc-confidential svg { flex: none; height: 16px; width: 16px; }
-.m2-fc-trees { bottom: 0; height: 120px; pointer-events: none; position: absolute; right: 0; width: 260px; }
 
 .m2-fc-foot { background: var(--paper); padding: 30px clamp(28px, 3vw, 48px); }
 .m2-fc-foot-main { align-items: center; display: grid; gap: 34px; grid-template-columns: auto 1fr auto auto; }
@@ -2481,7 +2479,6 @@ html[data-theme="night"] .m2-fc-talk, html[data-theme="dusk"] .m2-fc-talk { back
 html[data-theme="night"] .m2-fc-talk.m2-fc-half, html[data-theme="dusk"] .m2-fc-talk.m2-fc-half { color:#2F3135; }
 html[data-theme="night"] .m2-fc-talk .m2-fc-icon, html[data-theme="dusk"] .m2-fc-talk .m2-fc-icon { border-color:rgba(26,23,20,.28); }
 html[data-theme="night"] .m2-fc-talk .m2-fc-btn, html[data-theme="dusk"] .m2-fc-talk .m2-fc-btn { background:#2F3135; color:#F7EDE4; }
-html[data-theme="night"] .m2-fc-talk .m2-fc-trees g, html[data-theme="dusk"] .m2-fc-talk .m2-fc-trees g { fill:rgba(26,23,20,.08); }
 html[data-theme="night"] .m2-cx-formwrap, html[data-theme="dusk"] .m2-cx-formwrap,
 html[data-theme="night"] .m2-cx-card, html[data-theme="dusk"] .m2-cx-card {
   --forest: #2F3135; --forest-soft: #506b58; background: #fffdf8; border-color: rgba(26,23,20,.16); color: #222;

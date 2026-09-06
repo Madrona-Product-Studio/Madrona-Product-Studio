@@ -41,7 +41,6 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
                 </ul>
               </div>
             </div>
-            <svg className="m2-fc-trees" viewBox="0 0 260 120" preserveAspectRatio="xMaxYMax slice" aria-hidden="true"><g fill="rgba(255,255,255,.10)"><polygon points="150,120 174,52 198,120" /><polygon points="188,120 218,26 248,120" /><polygon points="228,120 250,58 272,120" /></g></svg>
           </div>
         </div>
       )}
