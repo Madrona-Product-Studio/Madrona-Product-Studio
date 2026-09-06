@@ -6,6 +6,7 @@ import SiteFooter from "../lab/SiteFooter";
 import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import { imgProps, SIZES } from "../../lib/responsiveImage";
 import portrait from "../../../docs/madrona-v2-build-kit/site-assets/about-charlie.webp?w=360;520;780&format=webp&as=img";
+import { ctaClick } from "../../lib/analytics";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 import "./charlie.css";
@@ -105,7 +106,7 @@ export default function CharliePage() {
         </div>
         <div className="ck-door-body">
           {d.body.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
-          <Link className="ck-door-cta" to={d.cta.to}>{d.cta.label} →</Link>
+          <Link className="ck-door-cta" to={d.cta.to} onClick={ctaClick(d.cta.label, d.cta.to, `charlie-${d.id}`)}>{d.cta.label} →</Link>
         </div>
       </Reveal>
     ))}
@@ -133,7 +134,7 @@ export default function CharliePage() {
           I'd genuinely like to talk.
         </p>
         <a className="v3-btn v3-btn-light" href={bookHref()} {...bookProps()} onClick={bookClick}>
-          Book a 30m chat
+          Schedule a 30-minute call
         </a>
       </Reveal>
     </section>

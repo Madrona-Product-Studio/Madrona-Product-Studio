@@ -5,14 +5,15 @@ import storefrontImage from "../../../docs/madrona-v2-build-kit/product-proof/be
 import brandImage from "../../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp?w=640;960;1280&format=webp&as=img";
 import journeyImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp?w=640;960;1280&format=webp&as=img";
 import operationsImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp?w=640;960;1280&format=webp&as=img";
+import { BERRY_URL, BERRY_HOST } from "../../data/proof";
+import { outboundClick } from "../../lib/analytics";
 
 // Section 4 of the v3 architecture: the Berry Good worked example — one
 // business improved end to end, shown as a tabbed browser window that ties
 // the section-2 service labels back together. Berry Good is openly framed
-// as our demonstration business (canon). Live demo deploys at BERRY_URL
-// (the berrygoodberryfarm.com chrome label stays illustrative; the explicit
-// "Visit the live demo" link is the real, verified destination).
-const BERRY_URL = "https://berry-good-sigma.vercel.app";
+// as our demonstration business (canon). The live storefront deploys at
+// BERRY_URL (data/proof.ts); the window chrome shows that real host so nothing
+// on the page claims a domain that does not resolve.
 
 const tabs = [
   { id: "brand", label: "Brand", image: brandImage, alt: "Berry Good brand system: logo, palette, typography, and packaging", caption: "A cohesive identity on every touchpoint, from the berry box to the roadside sign." },
@@ -30,14 +31,14 @@ export function BerryGoodSection() {
       <h2>One business, improved <span>end to end.</span></h2>
       <p className="v3-help-lede">Berry Good Berry Farm is our demonstration business: a real operation where we build and run everything we sell, from the brand to the storefront to the agents behind the counter.</p>
       <div className="v3-berry-links">
-        <a className="v3-btn v3-btn-primary v3-btn-compact" href={BERRY_URL} target="_blank" rel="noreferrer">Visit the live demo <span aria-hidden="true">↗︎</span></a>
+        <a className="v3-btn v3-btn-primary v3-btn-compact" href={BERRY_URL} target="_blank" rel="noreferrer" onClick={outboundClick(BERRY_URL, "home-berry")}>Visit the live storefront <span aria-hidden="true">↗︎</span></a>
         <Link className="v3-practice-link" to="/services/ai-operations">See the operations work <span aria-hidden="true">→</span></Link>
       </div>
     </div>
     <article className="v3-artifact v3-berry-window">
       <header className="v3-window-bar v3-berry-bar">
         <span className="v3-window-dots" aria-hidden="true"><i /><i /><i /></span>
-        <code>berrygoodberryfarm.com</code>
+        <code>{BERRY_HOST}</code>
         <div className="v3-berry-tabs" role="tablist" aria-label="Berry Good example areas">
           {tabs.map((t, index) => <button key={t.id} type="button" role="tab" aria-selected={index === active} className={index === active ? "is-active" : ""} onClick={() => setActive(index)}>{t.label}</button>)}
         </div>

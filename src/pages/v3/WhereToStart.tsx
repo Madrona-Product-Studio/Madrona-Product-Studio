@@ -83,12 +83,10 @@ function buildCalNotes(report: OpportunityReportData, answers: OpportunityAnswer
   return parts.join(" · ");
 }
 
-function bookPropsWithNotes(notes: string): Record<string, string> {
+function bookPropsWithNotes(notes: string): ReturnType<typeof bookProps> & { "data-cal-notes"?: string } {
   const props = bookProps();
   if (!Object.keys(props).length) return props;
-  let config: Record<string, unknown> = {};
-  try { config = JSON.parse(props["data-cal-config"] ?? "{}"); } catch { config = {}; }
-  return { ...props, "data-cal-notes": notes, "data-cal-config": JSON.stringify({ ...config, notes }) };
+  return { ...props, "data-cal-notes": notes };
 }
 
 function connectHref(report: OpportunityReportData, answers: OpportunityAnswers): string {

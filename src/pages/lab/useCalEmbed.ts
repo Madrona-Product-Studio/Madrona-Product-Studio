@@ -47,12 +47,12 @@ function applyUi(cal: CalApi) {
 }
 
 // Open the booking popup. Resolves false when the embed is unavailable.
-export async function openCal(): Promise<boolean> {
+export async function openCal(notes?: string): Promise<boolean> {
   if (!CAL_LINK) return false;
   const cal = await prefetchCal();
   if (!cal) return false;
   applyUi(cal);
-  cal("modal", { calLink: CAL_LINK, config: { layout: "month_view" } });
+  cal("modal", { calLink: CAL_LINK, config: notes ? { layout: "month_view", notes } : { layout: "month_view" } });
   return true;
 }
 
@@ -73,11 +73,15 @@ export function bookHref(): string {
 // lives outside the page, so the primary conversion is recorded here. Then
 // the modal opens in place; if the embed can't load (blocked, offline) the
 // click falls through to the plain cal.com page instead.
-export function bookClick(e: { preventDefault: () => void }): void {
+// A `data-cal-notes` attribute on the anchor (the assessment result sets one
+// with the read) is prefilled into the booking's notes field.
+export function bookClick(e: { preventDefault: () => void; currentTarget?: EventTarget | null }): void {
   track("book_click", { source: window.location.pathname });
   if (!CAL_LINK) return;
   e.preventDefault();
-  void openCal().then((opened) => {
+  const el = e.currentTarget as HTMLElement | null | undefined;
+  const notes = el && el.dataset ? el.dataset.calNotes : undefined;
+  void openCal(notes).then((opened) => {
     if (opened) return;
     const w = window.open(bookHref(), "_blank", "noopener");
     if (!w) window.location.assign(bookHref());

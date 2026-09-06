@@ -14,7 +14,6 @@ import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
 import RouteGround from "./components/RouteGround";
 const MadronaV2About = lazy(() => import("./pages/lab/MadronaV2About"));
 const MadronaV2Pov = lazy(() => import("./pages/lab/MadronaV2Pov"));
-const AgentsGallery = lazy(() => import("./pages/lab/AgentsGallery"));
 const CharliePage = lazy(() => import("./pages/v3/CharliePage"));
 const MadronaV2Thesis = lazy(() => import("./pages/lab/MadronaV2Thesis"));
 const MadronaV2EngineNote = lazy(() => import("./pages/lab/MadronaV2EngineNote"));
@@ -27,16 +26,8 @@ const MadronaSystem = lazy(() => import("./pages/lab/MadronaSystem"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const WhereToStart = lazy(() => import("./pages/v3/WhereToStart"));
 const PitchKit = lazy(() => import("./pages/lab/PitchKit"));
-const AgentMonthEndClose = lazy(() => import("./pages/lab/AgentMonthEndClose"));
-const AgentInvoiceChasing = lazy(() => import("./pages/lab/AgentInvoiceChasing"));
-const AgentIndustryBrief = lazy(() => import("./pages/lab/AgentIndustryBrief"));
-const AgentCustomerInbox = lazy(() => import("./pages/lab/AgentCustomerInbox"));
-const AgentCashPosition = lazy(() => import("./pages/lab/AgentCashPosition"));
-const AgentPayrollPlanning = lazy(() => import("./pages/lab/AgentPayrollPlanning"));
-const AgentPostSaleFollowup = lazy(() => import("./pages/lab/AgentPostSaleFollowup"));
-const AgentReviewRequests = lazy(() => import("./pages/lab/AgentReviewRequests"));
-const AgentBestCustomers = lazy(() => import("./pages/lab/AgentBestCustomers"));
-const AgentContractReview = lazy(() => import("./pages/lab/AgentContractReview"));
+const AgentsGallery = lazy(() => import("./pages/lab/AgentsGallery"));
+const AgentDemoPage = lazy(() => import("./pages/lab/AgentDemoPage"));
 
 // Retired URLs (old /agents, /pov, /current, /work, /how-it-works, the /v3
 // previews, the old assessment slugs, and the /lab/madrona-v2 pages) are
@@ -71,20 +62,12 @@ export default function App() {
         <Route path="thinking/solve-the-system-not-the-symptom" element={<MadronaV2SystemNote />} />
         <Route path="thinking/ai-tools-for-small-business" element={<MadronaV2InventoryNote />} />
         <Route path="open" element={<MadronaV2Open />} />
-        {/* Tools — the deployable-agent gallery + one live demo per agent,
-            all built on the AgentConsole engine + agent-deployment template.
-            Moved from /agents → /tools (2026-08-21); old URLs 301 in vercel.json. */}
+        {/* Tools — the deployable-agent gallery + one interactive demo per
+            agent, all one data-driven page (data/agents.ts + data/agentDemos)
+            on the AgentConsole engine. Unknown slugs redirect to /tools from
+            old URLs redirect below. */}
         <Route path="tools" element={<AgentsGallery />} />
-        <Route path="tools/month-end-close" element={<AgentMonthEndClose />} />
-        <Route path="tools/invoice-chasing" element={<AgentInvoiceChasing />} />
-        <Route path="tools/industry-brief" element={<AgentIndustryBrief />} />
-        <Route path="tools/customer-inbox" element={<AgentCustomerInbox />} />
-        <Route path="tools/cash-position" element={<AgentCashPosition />} />
-        <Route path="tools/payroll-planning" element={<AgentPayrollPlanning />} />
-        <Route path="tools/post-sale-followup" element={<AgentPostSaleFollowup />} />
-        <Route path="tools/review-requests" element={<AgentReviewRequests />} />
-        <Route path="tools/best-customers" element={<AgentBestCustomers />} />
-        <Route path="tools/contract-review" element={<AgentContractReview />} />
+        <Route path="tools/:slug" element={<AgentDemoPage />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
         {/* AI Opportunity Assessment — the refocused free assessment
             (docs/redesign-2026-08/ai-opportunity-spec.md). Canonical URL is

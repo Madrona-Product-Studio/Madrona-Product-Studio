@@ -381,3 +381,54 @@
   .agentx-prompt-month { display: none; }
   .agentx-packet-foot { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
+
+/* =========================================================================
+   Proof line under the console + the "try it on your own text" panel
+   (the two live-demo pages pair the scripted console with the panel).
+   ========================================================================= */
+.agx-demo-proof { color: var(--muted); font-size: .8rem; line-height: 1.5; margin: 6px 0 0; max-width: 62ch; }
+.agx-demo-proof a { color: var(--bark-dark); font-weight: 650; }
+.agx-demo-proof a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.agx-demo--paired { display: grid; gap: clamp(22px, 3vw, 36px); grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1024px) {
+  .agx-demo--paired { align-items: start; grid-template-columns: minmax(0, 1.45fr) minmax(320px, 1fr); }
+}
+
+.agx-try {
+  background: var(--surface);
+  border: 1px solid var(--art-hair, rgba(26,23,20,.14));
+  border-radius: 14px;
+  display: flex; flex-direction: column; gap: 16px;
+  padding: clamp(18px, 2.4vw, 26px);
+}
+.agx-try-head h2 { font-family: var(--font-serif); font-size: 1.3rem; letter-spacing: -.01em; line-height: 1.15; margin: 0 0 8px; }
+.agx-try-head p { color: var(--muted); font-size: .88rem; line-height: 1.5; margin: 0; }
+.agx-try-kicker { color: var(--bark-dark); font-size: .64rem; font-weight: 750; letter-spacing: .13em; margin: 0 0 10px; text-transform: uppercase; }
+.agx-try-form { display: flex; flex-direction: column; gap: 12px; }
+.agx-try-field textarea {
+  background: var(--paper);
+  border: 1px solid var(--sand);
+  border-radius: 9px;
+  color: var(--ink);
+  font: inherit; font-size: .92rem; line-height: 1.5;
+  padding: 11px 13px;
+  resize: vertical;
+  width: 100%;
+}
+.agx-try-field textarea::placeholder { color: var(--muted); }
+.agx-try-field textarea:focus { border-color: var(--bark); outline: none; }
+.agx-try-field textarea:disabled { opacity: .7; }
+.agx-try-row { align-items: center; display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; }
+.agx-try-run { align-items: center; display: inline-flex; gap: 8px; }
+.agx-try-run:disabled { cursor: default; opacity: .55; }
+.agx-try-count { color: var(--muted); font-size: .74rem; font-variant-numeric: tabular-nums; }
+.agx-try-spin { animation: agx-try-spin .8s linear infinite; border: 2px solid currentColor; border-radius: 50%; border-top-color: transparent; display: inline-block; height: 13px; opacity: .85; width: 13px; }
+@keyframes agx-try-spin { to { transform: rotate(360deg); } }
+.agx-try-note { color: var(--muted); font-size: .84rem; line-height: 1.5; margin: 0; }
+.agx-try-note.is-error { color: var(--bark-dark); }
+.agx-try-doc { background: var(--surface); border: 1px solid var(--art-hair, rgba(26,23,20,.14)); border-radius: 12px; overflow: hidden; }
+.agx-try-doc-body { max-width: none; padding: clamp(18px, 2.4vw, 26px); }
+.agx-try-foot { border-top: 1px dashed var(--sand); color: var(--muted); font-size: .76rem; line-height: 1.5; margin: 0; padding-top: 12px; }
+.agx-sr { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+@media (prefers-reduced-motion: reduce) { .agx-try-spin { animation: none; } }

@@ -6,6 +6,7 @@ import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { PracticeSection } from "./PracticeSection";
 import Reveal from "./Reveal";
+import { ctaClick } from "../../lib/analytics";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 
@@ -49,8 +50,8 @@ export default function ServicesV3() {
         <h1>Four ways in. <span>One practice.</span></h1>
         <p className="v3-lede">We help you find the highest-leverage move, make it real, and let the work compound. The doors are different; the practice behind them is the same.</p>
         <div className="v3-actions">
-          <Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link>
-          <Link className="v3-hero-text-link" to="/ai-opportunities">Find your AI opportunities <span aria-hidden="true">→</span></Link>
+          <Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "services-hero")}>Get in touch</Link>
+          <Link className="v3-hero-text-link" to="/ai-opportunities" onClick={ctaClick("Find your AI opportunities", "/ai-opportunities", "services-hero")}>Find your AI opportunities <span aria-hidden="true">→</span></Link>
         </div>
       </div>
     </section>

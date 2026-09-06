@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
-import { track } from "../../lib/analytics";
+import { track, ctaClick } from "../../lib/analytics";
 
 const EMAIL = "hello@madronaproduct.com";
 const CONTACT = "/connect";
@@ -33,7 +33,7 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
                 <p>Bring us an important problem, an early idea, or something already in motion. We help you figure out what to build, then build it.</p>
               </div>
               <div className="m2-fc-solo-actions">
-                <Link className="m2-fc-btn" to={CONTACT}><I d={P.chat} /> Get in touch <I d={P.arrow} /></Link>
+                <Link className="m2-fc-btn" to={CONTACT} onClick={ctaClick("Get in touch", CONTACT, "footer")}><I d={P.chat} /> Get in touch <I d={P.arrow} /></Link>
                 <ul className="m2-fc-trust">
                   <li><span><I d={P.clock} /></span><p>30 minute call if you’re ready</p></li>
                   <li><span><I d={P.people} /></span><p>Senior team from the start</p></li>
