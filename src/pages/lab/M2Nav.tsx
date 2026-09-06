@@ -2,14 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
 import SkySwitcher from "./SkySwitcher";
-import { CAL_LINK, BOOKING_URL } from "../../data/booking";
-import { track } from "../../lib/analytics";
+import { useCalEmbed, bookHref, bookProps, bookClick } from "./useCalEmbed";
+import { ctaClick } from "../../lib/analytics";
 
 type NavKey = "apps" | "tools" | "services" | "pov" | "open" | "about";
-
-// Direct booking link (matches bookHref() without pulling the Cal embed into
-// the global nav bundle — booking.ts is just string constants).
-const SCHEDULE_HREF = CAL_LINK ? `https://cal.com/${CAL_LINK}` : (BOOKING_URL ?? "/connect");
 
 // Functional labels: Products · Services · Tools · Articles.
 // "Tools" is the deployable-agent gallery (moved from /agents). Nav links stay
@@ -39,6 +35,9 @@ export default function M2Nav({ active }: { active?: NavKey }) {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
+  // The drawer's "Schedule" CTA rides the shared Cal popup; the nav is on
+  // every page, so the embed initializes here once for all of them.
+  useCalEmbed();
 
   // Lock body scroll + close on Escape while the mobile menu is open.
   useEffect(() => {
@@ -80,7 +79,7 @@ export default function M2Nav({ active }: { active?: NavKey }) {
           ) : <Link key={l.key} to={l.href} className={l.primary ? "is-primary" : undefined} aria-current={active === l.key ? "page" : undefined}>{l.label}</Link>)}
         </nav>
         <SkySwitcher />
-        <Link className="m2-button m2-nav-cta" to="/connect">Get in touch</Link>
+        <Link className="m2-button m2-nav-cta" to="/connect" onClick={ctaClick("Get in touch", "/connect", "nav")}>Get in touch</Link>
         <button className="m2-nav-burger" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
           <span className="m2-burger" aria-hidden="true"><span /><span /><span /></span>
         </button>
@@ -103,9 +102,12 @@ export default function M2Nav({ active }: { active?: NavKey }) {
         </nav>
         <div className="m2-navmenu-foot">
           <h2 className="m2-navmenu-title">Let’s connect.</h2>
-          <p className="m2-navmenu-invite">Tell us what you’re working on, or book a free 30-minute chat. We usually reply within a day.</p>
-          <Link className="m2-button m2-navmenu-primary" to="/connect#send" onClick={() => setOpen(false)}>Send a message</Link>
-          <a className="m2-button m2-button-secondary m2-navmenu-secondary" href={SCHEDULE_HREF} target="_blank" rel="noopener noreferrer" onClick={() => { track("book_click", { source: "nav-menu" }); setOpen(false); }}>Schedule a 30-minute call <ArrowUpRight /></a>
+          <p className="m2-navmenu-invite">Tell us what you’re working on, or schedule a free 30-minute call. We reply within two business days.</p>
+          <Link className="m2-button m2-navmenu-primary" to="/connect#send" onClick={() => { ctaClick("Send a message", "/connect#send", "nav-drawer")(); setOpen(false); }}>Send a message</Link>
+          {/* Same booking wiring as every other "Schedule" CTA: bookClick tracks
+              book_click {source: pathname}; the placement attribute tells the
+              drawer apart from the page body in the event stream. */}
+          <a className="m2-button m2-button-secondary m2-navmenu-secondary" href={bookHref()} {...bookProps()} data-book-placement="nav-drawer" onClick={(e) => { bookClick(e); setOpen(false); }}>Schedule a 30-minute call <ArrowUpRight /></a>
         </div>
       </div>
     </>

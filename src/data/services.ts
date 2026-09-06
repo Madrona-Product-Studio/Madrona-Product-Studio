@@ -68,7 +68,7 @@ export const serviceAreas: ServiceArea[] = [
       "An agentic ops setup sprint: we set up agent tooling on the systems you already use, teach it how your business actually works, and teach you to run it. From there, we expand what earns its place.",
     pathSteps: ["Request", "decision", "action"],
     artifact: { src: operationsArtifact, alt: "Berry Good operations dashboard with an order-intake agent and structured orders", caption: "Berry Good operations dashboard" },
-    demos: { label: "See the tools we deploy, running live", to: "/tools" },
+    demos: { label: "Walk through the tools we deploy", to: "/tools" },
     pov: { label: "Thinking: The era of agentic operations", to: "/thinking/the-era-of-agentic-operations" },
     tryIt: { label: "Not sure where AI fits? Find your AI opportunities", to: "/ai-opportunities" },
     open: { label: "The tools behind this are open source", to: "/open" },

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { serviceAreas } from "../../data/services";
 import { WindowBar } from "./Hero";
+import { ctaClick } from "../../lib/analytics";
 
 // The practice window (locked 2026-08-29): skills, stack, and tools as one
 // browser-window ledger. Stack shows best-in-class marks across the business
@@ -28,7 +29,7 @@ const stackItems: { name: string; mark?: string }[] = [
 ];
 
 // Coming-soon entries cover the rest of the skills journey (unlinked until
-// their live demos exist on the agent engine).
+// their interactive demos exist on the agent engine).
 const upcomingTools = ["SEO health check", "Content drafts", "Win-back emails", "Landing page test"];
 
 const tools = [
@@ -63,7 +64,7 @@ export function PracticeWindowSection() {
       </div>
       <div className="v3-pw-row">
         <h3>Tools</h3>
-        <div><ul className="v3-pw-toolchips">{tools.map(([name, to]) => <li key={to}><Link to={to}>{name}</Link></li>)}{upcomingTools.map(name => <li key={name} className="v3-pw-soon">{name}</li>)}</ul><Link className="v3-pw-all" to="/tools">Try the live demos <span aria-hidden="true">→</span></Link></div>
+        <div><ul className="v3-pw-toolchips">{tools.map(([name, to]) => <li key={to}><Link to={to}>{name}</Link></li>)}{upcomingTools.map(name => <li key={name} className="v3-pw-soon">{name}</li>)}</ul><Link className="v3-pw-all" to="/tools" onClick={ctaClick("Walk through the demos", "/tools", "home-practice-window")}>Walk through the demos <span aria-hidden="true">→</span></Link></div>
       </div>
     </article>
   </div></section>;

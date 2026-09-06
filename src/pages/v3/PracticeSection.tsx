@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { ctaClick } from "../../lib/analytics";
 
 // Section 3: how we work — output-first (Charlie, 2026-08-29): each step
 // leads with the thing you walk away with; the process name becomes the
@@ -10,7 +11,12 @@ const steps = [
 ];
 
 export function PracticeSection() {
-  return <section className="v3-section v3-band-light v3-practice"><div className="v3-shell">
+  // On /services the practice section IS the engagement-model content, so the
+  // "how an engagement runs" link is an in-page anchor; elsewhere it deep-links
+  // to that anchor. (/how-it-works 301s to /services and would loop here.)
+  const onServices = useLocation().pathname === "/services";
+  const source = onServices ? "services-practice" : "home-practice";
+  return <section className="v3-section v3-band-light v3-practice" id="practice"><div className="v3-shell">
     <div className="v3-help-head">
       <p className="v3-kicker">How we work</p><h2>We figure out what to build. <span>Then we build it.</span></h2>
       <p className="v3-help-lede">The doors are different. The practice behind them is the same: find the highest-leverage move, start small, and let the work compound.</p>
@@ -24,8 +30,10 @@ export function PracticeSection() {
       </li>)}
     </ol>
     <div className="v3-practice-ctas">
-      <Link className="v3-btn v3-btn-primary v3-btn-compact" to="/connect">Get in touch</Link>
-      <Link className="v3-practice-link" to="/how-it-works">See how an engagement runs <span aria-hidden="true">→</span></Link>
+      <Link className="v3-btn v3-btn-primary v3-btn-compact" to="/connect" onClick={ctaClick("Get in touch", "/connect", source)}>Get in touch</Link>
+      {onServices
+        ? <a className="v3-practice-link" href="#practice">See how an engagement runs <span aria-hidden="true">→</span></a>
+        : <Link className="v3-practice-link" to="/services#practice">See how an engagement runs <span aria-hidden="true">→</span></Link>}
     </div>
   </div></section>;
 }

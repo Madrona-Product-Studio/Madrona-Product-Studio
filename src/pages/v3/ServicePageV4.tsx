@@ -7,6 +7,8 @@ import { useCalEmbed } from "../lab/useCalEmbed";
 import { BriefArtifact } from "./V3Artifacts";
 import { BeforeAfterArtifact, BUILD_JOURNEY, IdentityBoardArtifact, JourneyArtifact, RoutingArtifact, StorefrontArtifact, ThreadArtifact, VariantsArtifact, WeekArtifact } from "./ServiceArtifacts";
 import Reveal from "./Reveal";
+import { HELM_DEMO_URL } from "../../data/proof";
+import { ctaClick, outboundClick } from "../../lib/analytics";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 
@@ -23,8 +25,8 @@ type Module = { kicker: string; title: string; body: string; to: string; linkLab
 const operationsModules: Module[] = [
   { kicker: "Know what changed", title: "Turn scattered signals into a short brief.", body: "An agent watches the sources that matter, explains what moved, and routes the useful signal to a next step.", to: "/tools/industry-brief", linkLabel: "See the industry brief agent", artifact: "brief" },
   { kicker: "Move work forward", title: "Everything lands somewhere.", body: "Requests come in every shape; each one gets routed with enough context to act, and the judgment calls stay yours.", to: "/tools/customer-inbox", linkLabel: "See the customer inbox agent", artifact: "routing" },
-  { kicker: "Keep review visible", title: "The agent drafts. You decide.", body: "Questions arrive answered, in your voice, waiting for your okay — the conversation where the work actually happens.", to: "/tools", linkLabel: "Browse the live tools", artifact: "thread" },
-  { kicker: "See the operation", title: "Make the work legible at a glance.", body: "A focused command surface shows what ran, what changed, and what needs attention next.", to: "https://helm.day", linkLabel: "Open the Helm demo", artifact: "image" },
+  { kicker: "Keep review visible", title: "The agent drafts. You decide.", body: "Questions arrive answered, in your voice, waiting for your okay. That conversation is where the work actually happens.", to: "/tools", linkLabel: "Walk through the tool demos", artifact: "thread" },
+  { kicker: "See the operation", title: "Make the work legible at a glance.", body: "A focused command surface shows what ran, what changed, and what needs attention next.", to: HELM_DEMO_URL, linkLabel: "Open the Helm demo", artifact: "image" },
 ];
 
 // The other three doors build their worked examples from the service data
@@ -96,8 +98,8 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
           <h1>{service.outcome}</h1>
           <p className="v3-lede">{service.summary}</p>
           <div className="v3-actions">
-            <Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link>
-            {service.tryIt && <Link className="v3-hero-text-link" to={service.tryIt.to}>{service.tryIt.label} <span aria-hidden="true">→</span></Link>}
+            <Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", `${service.id}-hero`)}>Get in touch</Link>
+            {service.tryIt && <Link className="v3-hero-text-link" to={service.tryIt.to} onClick={ctaClick(service.tryIt.label, service.tryIt.to, `${service.id}-hero`)}>{service.tryIt.label} <span aria-hidden="true">→</span></Link>}
           </div>
         </div>
         <div className="v4-hero-art" aria-hidden="true">
@@ -131,9 +133,9 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
           <h2>How we start</h2>
           <p>{service.startingPoint}</p>
           <div className="v4-start-links">
-            <Link to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
+            <Link to="/connect" onClick={ctaClick("Get in touch", "/connect", `${service.id}-strip`)}>Get in touch <span aria-hidden="true">→</span></Link>
             {service.demos && <Link to={service.demos.to}>{service.demos.label} <span aria-hidden="true">→</span></Link>}
-            {service.tryIt && <Link to={service.tryIt.to}>{service.tryIt.label} <span aria-hidden="true">→</span></Link>}
+            {service.tryIt && <Link to={service.tryIt.to} onClick={ctaClick(service.tryIt.label, service.tryIt.to, `${service.id}-strip`)}>{service.tryIt.label} <span aria-hidden="true">→</span></Link>}
             {service.pov && <Link to={service.pov.to}>{service.pov.label} <span aria-hidden="true">→</span></Link>}
           </div>
         </div>
@@ -148,7 +150,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
               <h3>{mod.title}</h3>
               <p>{mod.body}</p>
               {mod.to.startsWith("http")
-                ? <a href={mod.to} target="_blank" rel="noopener noreferrer">{mod.linkLabel} <span aria-hidden="true">→</span></a>
+                ? <a href={mod.to} target="_blank" rel="noopener noreferrer" onClick={outboundClick(mod.to, `${service.id}-module`)}>{mod.linkLabel} <span aria-hidden="true">→</span></a>
                 : <Link to={mod.to}>{mod.linkLabel} <span aria-hidden="true">→</span></Link>}
             </div>
             <div className="v4-module-art"><ModuleArtifact mod={mod} service={service} /></div>

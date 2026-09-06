@@ -6,6 +6,7 @@ import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import PovThumb from "./PovThumb";
 import { useReveal } from "./useReveal";
+import { ctaClick } from "../../lib/analytics";
 import { thinkingEntries, type ThinkingType } from "../../data/thinking";
 import "./madrona-v2.css";
 import "./playbook.css";
@@ -67,7 +68,7 @@ export default function MadronaV2Pov() {
         <div className="m2-ab4-body">
           <p>We build it, set it up, and teach you to run it. Sharing what the work teaches us is the same posture: a craft that gets better in the open, and thinking that others can build on.</p>
           <div className="m2-th-close-links">
-            <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
+            <Link className="m2-text-link" to="/connect" onClick={ctaClick("Get in touch", "/connect", "thinking")}>Get in touch <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </section>

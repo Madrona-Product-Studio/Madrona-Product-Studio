@@ -64,8 +64,8 @@ export const studioProfile: StudioProfile = {
   proofPoints: [
     {
       id: "senior-team",
-      title: "Senior team when needed",
-      description: "Bring in the right specialists for the work.",
+      title: "Senior team from the start",
+      description: "Senior from the first conversation, with the right specialists brought in as the work needs them.",
       icon: "senior",
     },
     {

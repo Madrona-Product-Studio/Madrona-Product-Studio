@@ -4,6 +4,7 @@ import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
 import { studioProfile } from "../../data/studioProfile";
+import { ctaClick } from "../../lib/analytics";
 import "./madrona-v2.css";
 
 const LOGOS: Record<string, string> = {
@@ -191,7 +192,7 @@ export default function MadronaV2About() {
             <p>AI gives small teams extraordinary leverage. That makes where we point it matter more, not less.</p>
             <p>So we choose deliberately, and take on the work we'd be proud to have built. We believe software can leave the world a little better than it found it.</p>
           </div>
-          <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
+          <Link className="m2-text-link" to="/connect" onClick={ctaClick("Get in touch", "/connect", "about")}>Get in touch <span aria-hidden="true">→</span></Link>
         </div>
         <div className="m2-ab4-worth-media">
           <img src={community.images[0]} alt="Fresh local produce at a Pacific Northwest market" loading="lazy" />

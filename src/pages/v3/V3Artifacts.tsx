@@ -53,7 +53,7 @@ export function ReviewArtifact() {
       <header><span>Review queue</span><small>2 need attention</small></header>
       <div><span>Customer reply</span><b>Standing order availability</b><em>Ready to approve</em></div>
       <div><span>Invoice follow-up</span><b>North Fork Market · 14 days</b><em>Drafted</em></div>
-      <Link to="/tools">Open the live demos <span aria-hidden="true">→</span></Link>
+      <Link to="/tools">Walk through the demos <span aria-hidden="true">→</span></Link>
     </article>
   );
 }

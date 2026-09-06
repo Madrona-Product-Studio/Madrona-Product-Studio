@@ -15,7 +15,7 @@ export function ThreadArtifact() {
         <p>Do you have any raspberries left for today?</p></div></div>
       <div className="sa-msg"><span className="sa-av is-charcoal">AI</span><div>
         <p className="sa-who is-plum">Inbox agent <small>8:42 AM</small></p>
-        <p>Draft ready: “We have 20 pints picked this morning — want me to hold 6 for your usual pickup?” Inventory checked, price current.</p>
+        <p>Draft ready: “We have 20 pints picked this morning. Want me to hold 6 for your usual pickup?” Inventory checked, price current.</p>
         <div className="sa-acts"><b className="is-go">Send it</b><b>Edit first</b><b>Hold 6 pints</b></div></div></div>
       <div className="sa-msg"><span className="sa-av is-fir">MK</span><div>
         <p className="sa-who">Maya (owner) <small>8:44 AM</small></p>
@@ -128,7 +128,7 @@ export function RoutingArtifact() {
   ];
   return <article className="v3-artifact sa-rt">
     <WindowBar path="intake · yesterday" note="routed with context" />
-    <table>{/* eslint-disable-next-line */}
+    <table>
       <tbody>{rows.map(([what, dest, hue, status, ok]) =>
         <tr key={what}><td>{what}</td><td className={`is-${hue}`}>{dest}</td><td className={ok ? "is-ok" : "is-own"}>{status}</td></tr>)}
       </tbody></table>
