@@ -3,7 +3,6 @@ import { serviceAreas, type ServiceArea, type ServiceId } from "../../data/servi
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
-import { useCalEmbed } from "../lab/useCalEmbed";
 import { BriefArtifact } from "./V3Artifacts";
 import { BeforeAfterArtifact, BuildJourneyArtifact, IdentityBoardArtifact, JourneyArtifact, RoutingArtifact, StorefrontArtifact, ThreadArtifact, VariantsArtifact, WeekArtifact } from "./ServiceArtifacts";
 import Reveal from "./Reveal";
@@ -84,7 +83,6 @@ function ModuleArtifact({ mod, service }: { mod: Module; service: ServiceArea })
 export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
   const service = serviceAreas.find((item) => item.id === serviceId) ?? serviceAreas[0];
   const modules = serviceModules(service);
-  useCalEmbed();
   return (
     <main className="m2 v3">
       <LabMeta title={`${service.name} · Madrona Product Studio`} />

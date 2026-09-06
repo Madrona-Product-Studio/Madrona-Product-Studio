@@ -3,7 +3,6 @@ import { serviceAreas, type ServiceId } from "../../data/services";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
-import { useCalEmbed } from "../lab/useCalEmbed";
 import { PracticeSection } from "./PracticeSection";
 import Reveal from "./Reveal";
 import "../lab/madrona-v2.css";
@@ -39,7 +38,6 @@ function ServiceArea({ area, index }: { area: typeof serviceAreas[number]; index
 }
 
 export default function ServicesV3() {
-  useCalEmbed();
   return <main className="m2 v3">
     <LabMeta title="How we help · Madrona Product Studio" />
     <M2Nav active="services" />

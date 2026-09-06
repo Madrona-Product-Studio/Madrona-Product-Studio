@@ -205,9 +205,12 @@ Every page should be able to route here. Three steps, published on
 
 Booking runs on the **Cal.com popup embed** (settled 2026-08-23; this
 supersedes the earlier Google Calendar recommendation). `CAL_LINK` in
-`src/data/booking.ts` is live; `useCalEmbed()` + `bookProps()`/
+`src/data/booking.ts` is live; `bookHref()` + `bookProps()` +
 `bookClick()` (src/pages/lab/useCalEmbed.ts) power every "Schedule a
-30-min call" CTA, with `BOOKING_URL` as the no-JS fallback href. Booking
+30-min call" CTA. The embed script loads only on intent (hover/focus
+warms it, the click opens the popup programmatically), never at page
+load; `useCalEmbed()` is a kept-for-compatibility no-op. `bookHref()`
+is the no-JS fallback href. Booking
 clicks fire the `book_click` event through the shared dual-sink tracker
 (`src/lib/analytics.ts` — GA4 + Vercel; its header documents the full
 event vocabulary).

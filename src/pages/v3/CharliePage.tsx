@@ -3,7 +3,7 @@ import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import Reveal from "./Reveal";
 import SiteFooter from "../lab/SiteFooter";
-import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
+import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import portrait from "../../../docs/madrona-v2-build-kit/site-assets/about-charlie.webp";
 import "../lab/madrona-v2.css";
 import "./v3.css";
@@ -90,7 +90,6 @@ function CharlieHero() {
 }
 
 export default function CharliePage() {
-  useCalEmbed();
   return <main className="m2 v3 ck">
     <LabMeta title="Charlie Koch · Madrona Product Studio" />
     <M2Nav />

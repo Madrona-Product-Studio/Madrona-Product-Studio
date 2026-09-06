@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
-import { useCalEmbed } from "../lab/useCalEmbed";
 import { Hero } from "./Hero";
 import { HelpSection } from "./HelpSection";
 import { PracticeSection } from "./PracticeSection";
@@ -19,7 +18,6 @@ import berryImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-g
 
 
 export default function HomeV3() {
-  useCalEmbed();
   return <main className="m2 v3">
     <LabMeta title="Madrona Product Studio · Bellingham, Washington" />
     <M2Nav />
