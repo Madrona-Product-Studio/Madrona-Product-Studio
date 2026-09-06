@@ -1,17 +1,20 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ScrollToTop, PageFade } from "./components/RouteMotion";
-// Primary-nav destinations stay eager so top-level navigation is instant.
+// The home, the services overview, the four service doors (the most-clicked
+// links off the home), the products page and /connect stay eager so the
+// core path never waits on a chunk. Everything else is route-split so that
+// only its own CSS (playbook.css, agent-demo.css, charlie.css...) rides
+// along; those were previously render-blocking on every page.
 import ServicesV3 from "./pages/v3/ServicesV3";
 import HomeV3 from "./pages/v3/HomeV3";
+import ServicePageV4 from "./pages/v3/ServicePageV4";
 import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
-import MadronaV2About from "./pages/lab/MadronaV2About";
-import MadronaV2Pov from "./pages/lab/MadronaV2Pov";
-import AgentsGallery from "./pages/lab/AgentsGallery";
-// Everything deeper is route-split: articles, tool demos, the assessment, and
-// legacy/lab pages don't belong in the first-load bundle.
-const ServicePageV4 = lazy(() => import("./pages/v3/ServicePageV4"));
+import RouteGround from "./components/RouteGround";
+const MadronaV2About = lazy(() => import("./pages/lab/MadronaV2About"));
+const MadronaV2Pov = lazy(() => import("./pages/lab/MadronaV2Pov"));
+const AgentsGallery = lazy(() => import("./pages/lab/AgentsGallery"));
 const CharliePage = lazy(() => import("./pages/v3/CharliePage"));
 const MadronaV2Thesis = lazy(() => import("./pages/lab/MadronaV2Thesis"));
 const MadronaV2EngineNote = lazy(() => import("./pages/lab/MadronaV2EngineNote"));
@@ -44,7 +47,7 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <PageFade>
-      <Suspense fallback={null}>
+      <Suspense fallback={<RouteGround />}>
       <Routes>
         {/* V3 promoted 2026-08-29: the redesign is the live site. */}
         <Route path="/" element={<HomeV3 />} />
