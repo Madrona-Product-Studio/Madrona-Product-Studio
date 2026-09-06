@@ -113,7 +113,7 @@
 /* Section marker line: number sits with the eyebrow, not beside the title. */
 .art-sec-meta { align-items: baseline; display: flex; flex-wrap: wrap; gap: 4px 11px; margin: 0 0 16px; }
 .art-sec-num { color: var(--bark); font-family: var(--art-mono); font-size: .74rem; font-weight: 600; letter-spacing: .02em; }
-.art-sec-eyebrow { color: var(--bark); font-size: .64rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+.art-sec-eyebrow { color: var(--bark-dark); font-size: .64rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
 /* Scoped with .art so the serif title beats `.m2 h2` (Inter). */
 .art .art-sec-title {
   color: var(--ink);
@@ -230,7 +230,7 @@
   z-index: 1;
 }
 .art-pillar.gate .art-pillar-name { color: var(--bark-dark); }
-.art-pillar-gate { color: var(--bark); font-size: .62rem; font-weight: 700; letter-spacing: .08em; position: absolute; right: 14px; text-transform: uppercase; top: 16px; }
+.art-pillar-gate { color: var(--bark-dark); font-size: .62rem; font-weight: 700; letter-spacing: .08em; position: absolute; right: 14px; text-transform: uppercase; top: 16px; }
 
 /* ---- Dark spec panel (the "understood everywhere" README block) --------- */
 .art-panel { background: var(--art-ink-panel); border-radius: 12px; overflow: hidden; padding: 22px 22px 24px; }
@@ -246,7 +246,7 @@
 .art-panel-title { color: #f4efe9; font-size: .98rem; font-weight: 600; letter-spacing: -.01em; margin: 0; }
 .art-panel-file { color: rgba(255,255,255,.42); font-family: var(--art-mono); font-size: .74rem; }
 .art-panel-cols { display: grid; gap: 20px 26px; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
-.art-panel-col h4 { color: var(--bark); font-size: .66rem; font-weight: 700; letter-spacing: .09em; margin: 0 0 10px; text-transform: uppercase; }
+.art-panel-col h4 { color: var(--bark-dark); font-size: .66rem; font-weight: 700; letter-spacing: .09em; margin: 0 0 10px; text-transform: uppercase; }
 .art-panel-col ul { list-style: none; margin: 0; padding: 0; }
 .art-panel-col li { color: rgba(255,255,255,.72); font-family: var(--art-mono); font-size: .76rem; line-height: 1.7; }
 
@@ -298,7 +298,7 @@
 .art-schema { border: 1px solid var(--art-hair); border-radius: 12px; padding: clamp(18px, 3vw, 28px); }
 .art-schema-flow { align-items: stretch; display: flex; flex-wrap: wrap; gap: 14px; }
 .art-schema-io { flex: 1 1 130px; min-width: 120px; }
-.art-schema-io h4 { color: var(--bark); font-size: .64rem; font-weight: 700; letter-spacing: .1em; margin: 0 0 10px; text-transform: uppercase; }
+.art-schema-io h4 { color: var(--bark-dark); font-size: .64rem; font-weight: 700; letter-spacing: .1em; margin: 0 0 10px; text-transform: uppercase; }
 .art-schema-io ul { list-style: none; margin: 0; padding: 0; }
 .art-schema-io li { color: var(--ink-soft); font-size: .84rem; line-height: 1.7; }
 .art-schema-engine {
@@ -383,7 +383,7 @@
 }
 .art-related-card:hover .m2-pov-plate { border-color: rgba(201, 106, 61, 0.4); }
 .art-related-body { padding: 14px 2px 0; }
-.art-related-type { color: var(--bark); font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.art-related-type { color: var(--bark-dark); font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .art-related-card h3 {
   color: var(--ink); font-family: var(--font-serif);
   font-size: 1.08rem; font-weight: 540; letter-spacing: -.01em; line-height: 1.22; margin: 8px 0 0;
