@@ -128,7 +128,8 @@ export function RoutingArtifact() {
   ];
   return <article className="v3-artifact sa-rt">
     <WindowBar path="intake · yesterday" note="routed with context" />
-    <table>{/* eslint-disable-next-line */}
+    <table>
+      <thead><tr><th scope="col">Came in</th><th scope="col">Routed to</th><th scope="col">Status</th></tr></thead>
       <tbody>{rows.map(([what, dest, hue, status, ok]) =>
         <tr key={what}><td>{what}</td><td className={`is-${hue}`}>{dest}</td><td className={ok ? "is-ok" : "is-own"}>{status}</td></tr>)}
       </tbody></table>
