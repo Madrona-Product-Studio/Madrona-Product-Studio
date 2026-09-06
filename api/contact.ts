@@ -20,8 +20,8 @@
  */
 import { z } from "zod";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
-import { claudeClient, MODEL } from "./_lib/claude";
-import { clientIp, isEmail, isJsonRequest, json, overDailyCap, rateLimited, str, strList } from "./_lib/guard";
+import { claudeClient, MODEL } from "./_lib/claude.js";
+import { clientIp, isEmail, isJsonRequest, json, overDailyCap, rateLimited, str, strList } from "./_lib/guard.js";
 
 const TO = process.env.CONTACT_TO || "hello@madronaproduct.com";
 const FROM = process.env.CONTACT_FROM || "Madrona Product Studio <hello@madronaproduct.com>";

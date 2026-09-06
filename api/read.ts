@@ -14,9 +14,9 @@
  * rule on /api/read. Local testing requires `vercel dev`.
  */
 
-import { computeOpportunityReport, isComplete, summarizeAnswers, chipShort } from "../src/pages/v3/opportunityEngine";
-import { decodeAnswers, encodeAnswers } from "../src/pages/v3/readLink";
-import { renderReadText, SITE_ORIGIN } from "../src/pages/v3/readText";
+import { computeOpportunityReport, isComplete, summarizeAnswers, chipShort } from "../src/pages/v3/opportunityEngine.js";
+import { decodeAnswers, encodeAnswers } from "../src/pages/v3/readLink.js";
+import { renderReadText, SITE_ORIGIN } from "../src/pages/v3/readText.js";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TO = process.env.CONTACT_TO || "hello@madronaproduct.com";

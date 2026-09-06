@@ -3,8 +3,8 @@
 // Deterministic; the optional AI assist (src/assessment-ai) only suggests
 // chips and bridges the heard lines, it never writes a verdict.
 
-import { agents } from "../../data/agents";
-import { thinkingEntries } from "../../data/thinking";
+import { agents } from "../../data/agents.js";
+import { thinkingEntries } from "../../data/thinking.js";
 
 // ---- Types (pinned by spec interface block) ----
 

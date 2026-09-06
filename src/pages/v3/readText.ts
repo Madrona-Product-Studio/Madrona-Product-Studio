@@ -2,7 +2,7 @@
 // the card, in order, with the proof URLs spelled out. No HTML on purpose;
 // a read is a document, and plain text survives every mail client.
 
-import type { OpportunityReportData } from "./opportunityEngine";
+import type { OpportunityReportData } from "./opportunityEngine.js";
 
 export const SITE_ORIGIN = "https://madronaproduct.com";
 

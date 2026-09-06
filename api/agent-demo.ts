@@ -23,8 +23,8 @@
  */
 import { z } from "zod";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
-import { claudeClient, MODEL } from "./_lib/claude";
-import { clientIp, isJsonRequest, json, overDailyCap, rateLimited } from "./_lib/guard";
+import { claudeClient, MODEL } from "./_lib/claude.js";
+import { clientIp, isJsonRequest, json, overDailyCap, rateLimited } from "./_lib/guard.js";
 
 const INPUT_MAX = 4000;
 const RATE_LIMIT = 8;
