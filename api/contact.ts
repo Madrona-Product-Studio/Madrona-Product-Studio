@@ -200,7 +200,7 @@ export async function POST(request: Request): Promise<Response> {
     "If anything changes in the meantime, just reply to this email.",
     "",
     "Madrona Product Studio",
-    "Bellingham, Washington",
+    "PNW, USA",
     "hello@madronaproduct.com",
   ].join("\n");
   const confirm = await sendEmail(apiKey, {

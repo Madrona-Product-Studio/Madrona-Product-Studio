@@ -32,7 +32,7 @@ const proof: { image: ResponsiveImage; name: string; status: string; href: strin
 
 export default function HomeV3() {
   return <div className="m2 v3">
-    <LabMeta title="Madrona Product Studio · Bellingham, Washington" />
+    <LabMeta title="Madrona Product Studio · PNW, USA" />
     <M2Nav />
     <main id="main">
     <Hero />
