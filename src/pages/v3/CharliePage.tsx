@@ -65,7 +65,7 @@ const DOORS = [
    2026-08-31 placement contact sheet; losing variants removed). */
 function CharlieHero() {
   return <header className="v3-section v3-shell ck-hero">
-    <p className="v3-kicker">Charlie Koch · Madrona Product Studio · Bellingham, WA</p>
+    <p className="v3-kicker">Charlie Koch · Madrona Product Studio · PNW,&nbsp;USA</p>
     <h1>Builder of modern <span>digital tools.</span></h1>
     <p className="v3-lede ck-lede">
       Newest tools, oldest problems. Four ways to read the same career,
