@@ -24,16 +24,7 @@ const MadronaV2Open = lazy(() => import("./pages/lab/MadronaV2Open"));
 const MadronaSystem = lazy(() => import("./pages/lab/MadronaSystem"));
 const WhereToStart = lazy(() => import("./pages/v3/WhereToStart"));
 const PitchKit = lazy(() => import("./pages/lab/PitchKit"));
-const AgentMonthEndClose = lazy(() => import("./pages/lab/AgentMonthEndClose"));
-const AgentInvoiceChasing = lazy(() => import("./pages/lab/AgentInvoiceChasing"));
-const AgentIndustryBrief = lazy(() => import("./pages/lab/AgentIndustryBrief"));
-const AgentCustomerInbox = lazy(() => import("./pages/lab/AgentCustomerInbox"));
-const AgentCashPosition = lazy(() => import("./pages/lab/AgentCashPosition"));
-const AgentPayrollPlanning = lazy(() => import("./pages/lab/AgentPayrollPlanning"));
-const AgentPostSaleFollowup = lazy(() => import("./pages/lab/AgentPostSaleFollowup"));
-const AgentReviewRequests = lazy(() => import("./pages/lab/AgentReviewRequests"));
-const AgentBestCustomers = lazy(() => import("./pages/lab/AgentBestCustomers"));
-const AgentContractReview = lazy(() => import("./pages/lab/AgentContractReview"));
+const AgentDemoPage = lazy(() => import("./pages/lab/AgentDemoPage"));
 
 // Old /agents/:slug demo URLs → /tools/:slug (client-side; vercel.json 301s too).
 function AgentsToTools() {
@@ -85,20 +76,13 @@ export default function App() {
         <Route path="thinking/solve-the-system-not-the-symptom" element={<MadronaV2SystemNote />} />
         <Route path="thinking/ai-tools-for-small-business" element={<MadronaV2InventoryNote />} />
         <Route path="open" element={<MadronaV2Open />} />
-        {/* Tools — the deployable-agent gallery + one live demo per agent,
-            all built on the AgentConsole engine + agent-deployment template.
-            Moved from /agents → /tools (2026-08-21); old URLs redirect below. */}
+        {/* Tools — the deployable-agent gallery + one interactive demo per
+            agent, all one data-driven page (data/agents.ts + data/agentDemos)
+            on the AgentConsole engine. Unknown slugs redirect to /tools from
+            inside AgentDemoPage. Moved from /agents → /tools (2026-08-21);
+            old URLs redirect below. */}
         <Route path="tools" element={<AgentsGallery />} />
-        <Route path="tools/month-end-close" element={<AgentMonthEndClose />} />
-        <Route path="tools/invoice-chasing" element={<AgentInvoiceChasing />} />
-        <Route path="tools/industry-brief" element={<AgentIndustryBrief />} />
-        <Route path="tools/customer-inbox" element={<AgentCustomerInbox />} />
-        <Route path="tools/cash-position" element={<AgentCashPosition />} />
-        <Route path="tools/payroll-planning" element={<AgentPayrollPlanning />} />
-        <Route path="tools/post-sale-followup" element={<AgentPostSaleFollowup />} />
-        <Route path="tools/review-requests" element={<AgentReviewRequests />} />
-        <Route path="tools/best-customers" element={<AgentBestCustomers />} />
-        <Route path="tools/contract-review" element={<AgentContractReview />} />
+        <Route path="tools/:slug" element={<AgentDemoPage />} />
         {/* Old /agents URLs → /tools (belt-and-suspenders with vercel.json 301s). */}
         <Route path="agents" element={<Navigate to="/tools" replace />} />
         <Route path="agents/:slug" element={<AgentsToTools />} />
