@@ -13,7 +13,7 @@
 .wts-sa .wts-freetext input{width:100%;padding:14px 16px;border:1px solid rgba(253,252,250,.18);border-radius:6px;background:rgba(253,252,250,.05);color:var(--a-text);font:500 15px/1.4 Inter,sans-serif}
 .wts-sa .wts-freetext input::placeholder{color:rgba(253,252,250,.35)}
 .wts-sa .wts-freetext input:focus{outline:2px solid var(--a-orange);outline-offset:0;border-color:transparent}
-.wts-sa .wts-freetext small{display:block;margin-top:7px;font-size:11.5px;line-height:1.45;color:var(--v3-muted,#8c8378)}
+.wts-sa .wts-freetext small{display:block;margin-top:7px;font-size:11.5px;line-height:1.45;color:var(--v3-muted,#766d62)}
 
 .wts-sa .wts-retake{margin-top:26px}
 
@@ -108,13 +108,13 @@
 .wts-island-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px}
 .wts-island-head>div{min-width:0}
 .wts-mark--island{background:#1a1714;border-color:transparent;margin-top:2px}
-.wts-sa .wts-island .sa-count{margin-bottom:8px;color:#8c8378}
+.wts-sa .wts-island .sa-count{margin-bottom:8px;color:#766d62}
 .wts-sa .wts-island .sa-count em{color:#BC431D}
-.wts-sa .wts-island .sa-count .wts-optional{letter-spacing:.06em;text-transform:none;color:#8c8378}
+.wts-sa .wts-island .sa-count .wts-optional{letter-spacing:.06em;text-transform:none;color:#766d62}
 .wts-sa .wts-island h1{margin-bottom:0;color:#1a1714;font-size:clamp(21px,1.8vw,27px);line-height:1.12}
 .wts-sa .wts-island .sa-support{margin:8px 0 0;color:#6f6657}
 /* Phone progress line: one quiet sentence where the pane footer would be. */
-.wts-progress{margin:10px 0 0;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:#8c8378}
+.wts-progress{margin:10px 0 0;font-size:11.5px;font-weight:600;letter-spacing:.04em;color:#766d62}
 .wts-progress:empty{display:none}
 /* Form pass (Charlie 09-01): options read as a checklist, not a stack of
    cards. Tighter rows, hairline separation, a real control glyph leading
@@ -135,7 +135,7 @@
 
 /* The exclusive option ("mostly handled") announces itself before any tap:
    a quiet "or" seam separates it from the stackable answers above. */
-.wts-or{display:block;padding:5px 14px;border-top:1px solid rgba(26,23,20,.07);background:#faf8f4;color:#8c8378;font:600 11px/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.wts-or{display:block;padding:5px 14px;border-top:1px solid rgba(26,23,20,.07);background:#faf8f4;color:#766d62;font:600 11px/1.2 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase}
 .wts-or+.sa-answer{border-top:1px solid rgba(26,23,20,.07)}
 
 /* The control glyphs. Square = check-all, circle = pick-one. */
@@ -164,17 +164,17 @@
 .wts-nav-right{display:inline-flex;align-items:center;gap:8px}
 .wts-sa .wts-island .sa-primary{background:#2F3135;color:#f7ede4;padding:10px 18px;font-size:13.5px;border-radius:6px}
 .wts-sa .wts-island .sa-primary:hover:not(:disabled){background:#1a1714;box-shadow:0 8px 22px rgba(0,0,0,.18)}
-.wts-sa .wts-island .sa-primary:disabled{background:transparent;border:1px solid rgba(26,23,20,.18);color:#8c8378;opacity:1;padding:9px 17px}
-.wts-sa .wts-island .sa-back{color:#8c8378}
+.wts-sa .wts-island .sa-primary:disabled{background:transparent;border:1px solid rgba(26,23,20,.18);color:#766d62;opacity:1;padding:9px 17px}
+.wts-sa .wts-island .sa-back{color:#766d62}
 .wts-sa .wts-island .sa-back:hover{color:#403a33}
 .wts-sa .wts-island .wts-skip{padding:10px 10px}
-.wts-sa .wts-island .sa-meta{margin:0;color:#8c8378}
+.wts-sa .wts-island .sa-meta{margin:0;color:#766d62}
 .wts-sa .wts-island .wts-freetext{margin-top:18px}
 .wts-sa .wts-island .wts-freetext span{color:#6f6657}
 .wts-sa .wts-island .wts-freetext input{padding:11px 14px;border-color:rgba(26,23,20,.18);background:#fff;color:#1a1714;font-size:14px}
-.wts-sa .wts-island .wts-freetext input::placeholder{color:#b8b0a2}
+.wts-sa .wts-island .wts-freetext input::placeholder{color:#766d62}
 /* Keyboard hint: desktop with a real pointer only. */
-.wts-keys{display:none;margin:12px 0 0;font-size:11px;letter-spacing:.04em;color:#b8b0a2}
+.wts-keys{display:none;margin:12px 0 0;font-size:11px;letter-spacing:.04em;color:#766d62}
 @media (hover:hover) and (pointer:fine) and (min-width:881px){.wts-keys{display:block}}
 @media(max-width:560px){
   .wts-island-head{gap:10px}

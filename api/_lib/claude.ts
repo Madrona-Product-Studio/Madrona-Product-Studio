@@ -9,10 +9,13 @@
  */
 import Anthropic from "@anthropic-ai/sdk";
 
-// One model for both routes, run at low effort: the tasks are short
-// classification and drafting jobs, and low effort keeps the round trip
-// inside the route timeouts (4 s for triage, 20 s for the demo).
-export const MODEL = "claude-opus-5";
+// One model for both routes: the contact triage line and the two tool demos
+// are short classification and drafting jobs where a mid-tier model is
+// plenty and the round trip stays inside the route timeouts (4 s for
+// triage, 20 s for the demo). The assessment assist uses the small fast
+// model (src/assessment-ai/prompts.ts). Override per environment with
+// ANTHROPIC_MODEL if a deploy wants to trade cost for judgment.
+export const MODEL = process.env.ANTHROPIC_MODEL || "claude-sonnet-5";
 
 let client: Anthropic | null | undefined;
 

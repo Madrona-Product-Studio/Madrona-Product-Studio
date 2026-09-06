@@ -319,6 +319,7 @@ export default function WhereToStart() {
     <LabMeta title="AI Opportunity Assessment · a free read in a few minutes · Madrona Product Studio" />
     <div className="sa-shell">
       <header className="sa-top">
+        <a className="m2-skip" href="#main">Skip to content</a>
         <span className="sa-top-title-wrap">
           <Link to="/" className="sa-wordmark" aria-label="Madrona Product Studio home">
             <MadronaLogo variant="horizontal-reversed" decorative />
@@ -335,9 +336,9 @@ export default function WhereToStart() {
             {RAIL_PHASES.map((title, i) => {
               const done = i < activePhase;
               const active = i === activePhase;
-              return <span key={title} className={`sa-phase${active ? " is-active" : ""}${done ? " is-done" : ""}`} aria-current={active ? "step" : undefined} aria-label={`${title}${done ? ", done" : active ? ", current" : ""}`}>
+              return <span key={title} className={`sa-phase${active ? " is-active" : ""}${done ? " is-done" : ""}`} aria-current={active ? "step" : undefined}>
                 <i aria-hidden="true">{done && <svg viewBox="0 0 10 10"><path d="M2 5.2 4.2 7.4 8 3" /></svg>}</i>
-                <span aria-hidden="true">{title}</span>
+                <span className="sa-phase-title">{title}<span className="sr-only">{done ? ", done" : active ? ", current" : ""}</span></span>
               </span>;
             })}
             {/* Phones collapse the phases to dots; this names the current one. */}

@@ -68,7 +68,7 @@
   font: 700 11px/1.2 Inter, sans-serif;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--v3-faint);
+  color: var(--v3-muted);
 }
 
 .or-map-list {
@@ -290,7 +290,7 @@
 }
 .or-foot button:hover { color: var(--v3-bark); }
 .or-foot > span:not(.or-foot-actions) {
-  color: var(--v3-faint);
+  color: var(--v3-muted);
   font-size: 11px;
 }
 .or-print-permalink { display: none; }

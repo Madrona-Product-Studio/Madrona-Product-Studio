@@ -51,8 +51,8 @@ html:has(.m2) { scroll-behavior: smooth; }
 
 /* Skip link: visually hidden until it takes keyboard focus, then it sits
    on the bar as a small charcoal/cream chip so the first Tab has a target. */
-.m2-skip { position: absolute; left: 16px; top: -100px; z-index: 60; padding: 10px 14px; border-radius: 4px; background: var(--forest); color: var(--paper); font: 600 13px/1 Inter, sans-serif; text-decoration: none; }
-.m2-skip:focus-visible { top: 12px; outline: 2px solid var(--bark); outline-offset: 2px; }
+.m2-skip { position: absolute; left: 16px; top: -100px; z-index: 60; padding: 10px 14px; border-radius: 4px; background: var(--forest, #2F3135); color: var(--paper, #fdfcfa); font: 600 13px/1 Inter, sans-serif; text-decoration: none; }
+.m2-skip:focus-visible { top: 12px; outline: 2px solid var(--bark, #E55728); outline-offset: 2px; }
 .m2-nav {
   align-items: center;
   display: grid;
