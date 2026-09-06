@@ -243,7 +243,8 @@ impact line in the owner's terms, and plain-words offerings:
    Berry Farm, openly framed as our demonstration business** (industry
    agent, invoicing agent, customer service agent, the ordering
    surface); dogfood proof is our own operation (Helm demo mode
-   `?demo=1` — NEVER link the real HQ instance).
+   `https://helm.day/demo`, the public demo account — NEVER link the real HQ
+   instance).
 
 **Channel/fulfillment is not a bucket:** first-purchase path → Grow,
 repeat/standing ordering → Retain, behind-the-counter fulfillment →

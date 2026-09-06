@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ctaClick } from "../../lib/analytics";
 import { serviceAreas, type ServiceId } from "../../data/services";
 import { HeroChart } from "./HeroChart";
 import { WindowBar } from "./ReadCard";
@@ -42,7 +43,7 @@ function HeroCopy() {
   return <div className="v3-home-copy v3-experiment-copy">
     <h1>A senior digital product studio <span>built for the AI era.</span></h1>
     <p className="v3-lede">We help founders, local businesses, and product teams leverage AI and modern tools to build what actually moves the business.</p>
-    <div className="v3-actions"><Link className="v3-btn v3-btn-primary" to="/connect">Get in touch</Link><Link className="v3-hero-text-link" to="/ai-opportunities">Find your AI opportunities <span aria-hidden="true">→</span></Link></div>
+    <div className="v3-actions"><Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "home-hero")}>Get in touch</Link><Link className="v3-hero-text-link" to="/ai-opportunities" onClick={ctaClick("Find your AI opportunities", "/ai-opportunities", "home-hero")}>Find your AI opportunities <span aria-hidden="true">→</span></Link></div>
   </div>;
 }
 

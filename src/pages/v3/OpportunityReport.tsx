@@ -229,7 +229,7 @@ export function OpportunityReport({ data, variant = "full", permalink, bridge = 
         )}
       </section>
 
-      {/* 4. Tools worth a look: the live demos matched to their picks */}
+      {/* 4. Tools worth a look: the interactive demos matched to their picks */}
       {!hero && data.tools.length > 0 && (
         <section className="or-tools">
           <h3>Tools worth a look</h3>
@@ -244,7 +244,7 @@ export function OpportunityReport({ data, variant = "full", permalink, bridge = 
               </li>
             ))}
           </ul>
-          <Link className="or-tools-all" to="/tools">Every tool, with live demos <span aria-hidden="true">→</span></Link>
+          <Link className="or-tools-all" to="/tools">Every tool, with interactive demos <span aria-hidden="true">→</span></Link>
         </section>
       )}
 
