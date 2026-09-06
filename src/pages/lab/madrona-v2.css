@@ -59,6 +59,7 @@ html:has(.m2) { scroll-behavior: smooth; }
   padding: 10px 32px;
 }
 .m2-logo-link { display: inline-block; justify-self: start; padding: 4px 0; }
+@media (max-width: 1050px) { .m2-logo-link { align-items: center; display: inline-flex; min-height: 44px; padding: 0; } }
 .m2-nav img { height: auto; width: clamp(200px, 17vw, 252px); }
 .m2 .madrona-static-logo { object-fit: contain; }
 .m2-nav nav { display: flex; align-items: center; gap: 30px; font-family: var(--font-nav); font-size: .88rem; letter-spacing: .005em; justify-self: end; }
@@ -1752,9 +1753,9 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-ap-filters button { align-items: center; background: transparent; border: 1px solid var(--sand); border-radius: 999px; color: var(--ink-soft); cursor: pointer; display: inline-flex; font-size: .84rem; font-weight: 500; gap: 8px; padding: 8px 15px; transition: background .2s ease, color .2s ease, border-color .2s ease; }
 .m2-ap-filters button b { color: var(--muted); font-weight: 600; }
 .m2-ap-filters button.is-active { background: var(--forest); border-color: var(--forest); color: var(--paper); }
-.m2-ap-filters button.is-active b { color: rgba(255, 255, 255, .7); }
+.m2-ap-filters button.is-active b { color: color-mix(in srgb, var(--paper) 70%, transparent); }
 .m2-ap-dot { background: var(--sc); border-radius: 50%; height: 7px; width: 7px; }
-.m2-ap-filters button.is-active .m2-ap-dot { background: rgba(255, 255, 255, .85); }
+.m2-ap-filters button.is-active .m2-ap-dot { background: color-mix(in srgb, var(--paper) 85%, transparent); }
 
 /* Product list — one reusable row for every app */
 .m2-ap-list { display: flex; flex-direction: column; gap: 18px; margin: 0 auto; max-width: 1300px; }
@@ -2517,3 +2518,17 @@ html[data-theme="night"] .m2-stage:not(.m2-stage--outline), html[data-theme="dus
 @media (max-width: 900px) { .m2-cx-topic-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .m2-cx-topic-grid { grid-template-columns: 1fr; } }
 html[data-theme="night"] .m2-cx-formwrap .m2-cx-topic.is-on, html[data-theme="dusk"] .m2-cx-formwrap .m2-cx-topic.is-on { background: #2F3135; border-color: #2F3135; color: #F7EDE4; }
+
+/* Touch targets (audit 2026-09-06). Text links keep their type and rhythm;
+   a pseudo-element widens the hit area to 44px on touch widths. Standalone
+   rows (footer nav, drawer children, filters) get real minimum heights. */
+@media (max-width: 900px) {
+  .m2-text-link, .m2-ap-jump, .m2-fc-contact a { position: relative; }
+  .m2-text-link::after, .m2-ap-jump::after, .m2-fc-contact a::after { content: ""; height: 44px; left: 0; position: absolute; right: 0; top: 50%; transform: translateY(-50%); }
+  .m2-fc-nav { gap: 0 26px; }
+  .m2-fc-nav a { align-items: center; display: inline-flex; min-height: 44px; }
+  .m2-fc-logo { display: inline-flex; min-height: 44px; align-items: center; }
+  .m2-navmenu-children a { align-items: center; display: flex; min-height: 44px; }
+  .m2-ap-filters button { min-height: 44px; }
+  .m2-cu-filters button { min-height: 44px; }
+}

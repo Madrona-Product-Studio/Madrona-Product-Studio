@@ -517,3 +517,14 @@
 .v3-berry-frame img.is-active{opacity:1}
 .v3-berry-window footer p{min-height:2.9em;display:flex;align-items:center}
 @media(prefers-reduced-motion:reduce){.v3-berry-frame img{transition:none}}
+
+/* Touch targets (audit 2026-09-06). Text links keep their type and rhythm;
+   a pseudo-element widens the hit area to 44px on touch widths. Tabs and
+   chips are standalone rows, so they get real minimum heights instead. */
+@media(max-width:900px){
+.v3 .v3-practice-link,.v3 .v3-pw-all,.v3 .v3-proof-all,.v3 .v3-hero-text-link{position:relative}
+.v3 .v3-practice-link::after,.v3 .v3-pw-all::after,.v3 .v3-proof-all::after,.v3 .v3-hero-text-link::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+.v3 .v3-berry-tabs button{min-height:44px}
+.v3 .v3-btn-compact{min-height:44px}
+.v3 .v3-pw-toolchips a{display:inline-flex;align-items:center;min-height:44px}
+}
