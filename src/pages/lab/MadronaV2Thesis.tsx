@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { publishedLabel } from "../../data/siteMeta.mjs";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -91,7 +92,7 @@ export default function MadronaV2Thesis() {
           kicker="A working theory"
           typeMark={<TypeCircle type="Essay" />}
           author="Charlie Koch"
-          meta={["5 min read", "August 2026"]}
+          meta={["5 min read", publishedLabel("/thesis")]}
           title="The Madrona Product Thesis"
           standfirst="A point of view on how great software gets built in the AI era, and what that changes about product leadership. It comes from building, and we revise it as the work teaches us."
           toc={TOC}

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { publishedLabel, starterGuideFaq } from "../../data/siteMeta.mjs";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -141,32 +142,9 @@ const PROMPTS = [
   },
 ];
 
-const FAQ = [
-  {
-    q: "What does this cost?",
-    a: <>GitHub and Vercel have free tiers that will carry you a long way. The agents are the real cost: Claude Code comes with Claude Pro and Codex comes with ChatGPT Plus, each about $20 a month as I write this. Starting with just Claude Code is fine.</>,
-  },
-  {
-    q: "I'm not on a Mac. Does this still work?",
-    a: <>Yes. Everything here runs on Windows and Linux too, and both installers cover all three. The guide reads Mac because that is what I work on, but nothing about the loop is Mac-only.</>,
-  },
-  {
-    q: "Do I need to know how to code?",
-    a: <>No. You need to describe what you want clearly and look carefully at what you get back. You will absorb more than you expect by asking why, but the agents supply the syntax. You supply the judgment.</>,
-  },
-  {
-    q: "Can it break something?",
-    a: <>The agents ask before running commands or changing files, and git means every committed change is saved and reversible. The honest risk is not a broken computer. It is shipping something you didn't look at, which is what the habits are for.</>,
-  },
-  {
-    q: "What if the agent gets stuck?",
-    a: <>Commit what works, clear the conversation, and restate the goal in one sentence. If it is still circling, ask the other agent. A second opinion usually breaks the loop, which is half the reason we run two.</>,
-  },
-  {
-    q: "How long until I have something real?",
-    a: <>An afternoon for the setup, a weekend for a first version you can put in front of someone. The loop is fast. The judgment takes longer, and that part is the fun.</>,
-  },
-];
+// The FAQ text lives in src/data/siteMeta.mjs so the FAQPage structured data
+// the prerender emits is this exact copy.
+const FAQ = starterGuideFaq;
 
 const HABITS = [
   { icon: P.sprout, tone: "sprout", strong: "Build something real and small.", text: "Not a tutorial. Something you will actually use this month." },
@@ -199,7 +177,7 @@ export default function MadronaV2StarterGuideNote() {
           kicker="From the workshop"
           typeMark={<TypeCircle type="Guide" />}
           author="Charlie Koch"
-          meta={["8 min read", "August 2026"]}
+          meta={["8 min read", publishedLabel("/thinking/starter-guide-to-building-with-ai")]}
           title="A starter guide to building real software with AI."
           standfirst="This is the piece I wish someone had handed me when I started. You do not need a computer science degree to build real software with AI anymore. You need a handful of tools set up the right way, a few habits, and something worth building. Here is the whole setup, in an afternoon."
           toc={TOC}

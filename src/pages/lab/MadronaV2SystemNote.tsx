@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { publishedLabel } from "../../data/siteMeta.mjs";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -125,7 +126,7 @@ export default function MadronaV2SystemNote() {
           kicker="A point of view"
           typeMark={<TypeCircle type="Essay" />}
           author="Charlie Koch"
-          meta={["5 min read", "August 2026"]}
+          meta={["5 min read", publishedLabel("/thinking/solve-the-system-not-the-symptom")]}
           title="Solve the system, not the symptom."
           standfirst="When something is wrong, the instinct is to fix the thing in front of you. Recolor the button, redo the one bad output. The higher-leverage move is almost always one level down: fix the system that produced it, so everything it makes next is better. AI made that trade cheap enough to be the default."
           toc={TOC}

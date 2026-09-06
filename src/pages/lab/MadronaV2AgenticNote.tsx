@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { publishedLabel } from "../../data/siteMeta.mjs";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -91,7 +92,7 @@ export default function MadronaV2AgenticNote() {
           kicker="A point of view"
           typeMark={<TypeCircle type="Essay" />}
           author="Charlie Koch"
-          meta={["6 min read", "August 2026"]}
+          meta={["6 min read", publishedLabel("/thinking/the-era-of-agentic-operations")]}
           title="The era of agentic operations."
           standfirst="A business used to run on scattered tools and someone's memory. It can now run on one source of truth and a handful of AI agents on a rhythm, with a person firmly in charge. The change is not AI doing your work. It is your operation briefing you, so your attention goes to deciding."
           toc={TOC}

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { updatedLabel } from "../../data/siteMeta.mjs";
 import { Link } from "react-router-dom";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
@@ -120,7 +121,7 @@ export default function MadronaV2InventoryNote() {
           kicker="An inventory"
           typeMark={<TypeCircle type="Artifact" />}
           author="Charlie Koch"
-          meta={["9 min read", "Updated August 2026"]}
+          meta={["9 min read", `Updated ${updatedLabel("/thinking/ai-tools-for-small-business")}`]}
           title="The 12 jobs AI tools already do for small businesses."
           standfirst="A lot of the work that fills your week is already handled, out of the box, by tools you may be paying for today. Nobody lays that shelf out plainly, so we did: twelve jobs, organized by problem rather than product, each with what it needs from you and where it ends. We update this page as the shelf changes."
           toc={TOC}

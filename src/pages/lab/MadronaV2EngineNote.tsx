@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { publishedLabel } from "../../data/siteMeta.mjs";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -156,7 +157,7 @@ export default function MadronaV2EngineNote() {
           kicker="Inside the practice"
           typeMark={<TypeCircle type="Artifact" />}
           author="Charlie Koch"
-          meta={["10 min read", "August 2026"]}
+          meta={["10 min read", publishedLabel("/thinking/under-the-hood")]}
           title={<>The engine behind everything we&nbsp;ship.</>}
           standfirst="Fifteen years of product judgment, encoded into a platform every project inherits. AI is the power tool; the engine is the judgment it executes."
           toc={TOC}
