@@ -33,7 +33,7 @@
     { "source": "/lab/madrona-v2", "destination": "/", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    { "source": "/lab/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {

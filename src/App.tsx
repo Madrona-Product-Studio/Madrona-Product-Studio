@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScrollToTop, PageFade } from "./components/RouteMotion";
 // The home, the services overview, the four service doors (the most-clicked
 // links off the home), the products page and /connect stay eager so the
@@ -24,6 +24,7 @@ const MadronaV2SystemNote = lazy(() => import("./pages/lab/MadronaV2SystemNote")
 const MadronaV2InventoryNote = lazy(() => import("./pages/lab/MadronaV2InventoryNote"));
 const MadronaV2Open = lazy(() => import("./pages/lab/MadronaV2Open"));
 const MadronaSystem = lazy(() => import("./pages/lab/MadronaSystem"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 const WhereToStart = lazy(() => import("./pages/v3/WhereToStart"));
 const PitchKit = lazy(() => import("./pages/lab/PitchKit"));
 const AgentMonthEndClose = lazy(() => import("./pages/lab/AgentMonthEndClose"));
@@ -96,8 +97,9 @@ export default function App() {
             truth: charlie-hq/job-search/pitch-kit.md. */}
         <Route path="pitch-kit" element={<PitchKit />} />
 
-        {/* Unknown URLs land home rather than on a blank screen. */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* Unknown URLs get a real 404 (the prerender emits dist/404.html
+            from the same copy for direct hits). */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       </Suspense>
       </PageFade>
