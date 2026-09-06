@@ -5,7 +5,7 @@ import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { useCalEmbed } from "../lab/useCalEmbed";
 import { BriefArtifact } from "./V3Artifacts";
-import { BeforeAfterArtifact, BUILD_JOURNEY, IdentityBoardArtifact, JourneyArtifact, RoutingArtifact, StorefrontArtifact, ThreadArtifact, VariantsArtifact, WeekArtifact } from "./ServiceArtifacts";
+import { BeforeAfterArtifact, BuildJourneyArtifact, IdentityBoardArtifact, JourneyArtifact, RoutingArtifact, StorefrontArtifact, ThreadArtifact, VariantsArtifact, WeekArtifact } from "./ServiceArtifacts";
 import Reveal from "./Reveal";
 import "../lab/madrona-v2.css";
 import "./v3.css";
@@ -72,7 +72,7 @@ function ModuleArtifact({ mod, service }: { mod: Module; service: ServiceArea })
   if (mod.artifact === "routing") return <RoutingArtifact />;
   if (mod.artifact === "thread") return <ThreadArtifact />;
   if (mod.artifact === "journey") return <JourneyArtifact />;
-  if (mod.artifact === "buildjourney") return <JourneyArtifact data={BUILD_JOURNEY} />;
+  if (mod.artifact === "buildjourney") return <BuildJourneyArtifact />;
   if (mod.artifact === "variants") return <VariantsArtifact />;
   if (mod.artifact === "beforeafter") return <BeforeAfterArtifact />;
   if (mod.artifact === "identity") return <IdentityBoardArtifact />;

@@ -62,7 +62,7 @@ const chartIso = (l: number) => -1.0 + (2.0 * l) / (LEVELS - 1);
 
 function createChart(canvas: HTMLCanvasElement, w: number, h: number, dpr: number, colors: { ink: string; bark: string; muted: string }) {
   const ctx = canvas.getContext("2d");
-  if (!ctx) return { draw: (_t: number) => {} };
+  if (!ctx) return { draw: () => {} };
   const noise = makeNoise(23);
   const step = Math.max(6, Math.round(7 * dpr));
   const gx = Math.ceil(w / step) + 1, gy = Math.ceil(h / step) + 1;

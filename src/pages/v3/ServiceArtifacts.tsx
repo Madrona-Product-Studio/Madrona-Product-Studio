@@ -66,7 +66,7 @@ const RETENTION_JOURNEY: { path: string; note: string; steps: JourneyStep[]; foo
   ],
   footer: "Most businesses lose the second order in the quiet spot. We wire it.",
 };
-export const BUILD_JOURNEY: typeof RETENTION_JOURNEY = {
+const BUILD_JOURNEY: typeof RETENTION_JOURNEY = {
   path: "new product · idea to real", note: "where ideas stall",
   steps: [
     { tone: "is-fir", title: "The idea", body: "Real problem, real conviction." },
@@ -76,6 +76,9 @@ export const BUILD_JOURNEY: typeof RETENTION_JOURNEY = {
   ],
   footer: "Ideas die in the planning gap. A prototype in hands ends the debate.",
 };
+export function BuildJourneyArtifact() {
+  return <JourneyArtifact data={BUILD_JOURNEY} />;
+}
 export function JourneyArtifact({ data = RETENTION_JOURNEY }: { data?: typeof RETENTION_JOURNEY }) {
   return <article className="v3-artifact sa-jn">
     <WindowBar path={data.path} note={data.note} />
@@ -128,7 +131,7 @@ export function RoutingArtifact() {
   ];
   return <article className="v3-artifact sa-rt">
     <WindowBar path="intake · yesterday" note="routed with context" />
-    <table>{/* eslint-disable-next-line */}
+    <table>
       <tbody>{rows.map(([what, dest, hue, status, ok]) =>
         <tr key={what}><td>{what}</td><td className={`is-${hue}`}>{dest}</td><td className={ok ? "is-ok" : "is-own"}>{status}</td></tr>)}
       </tbody></table>

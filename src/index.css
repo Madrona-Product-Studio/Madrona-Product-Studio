@@ -182,23 +182,6 @@
 }
 
 @layer components {
-  /* Scroll reveal — content starts slightly down + transparent, settles when it
-     enters the viewport (toggled via data-shown by useReveal). One-time, subtle.
-     transform/opacity only, so it stays on the GPU. Hidden state is scoped to
-     html.js-reveal (set before paint in index.html) so prerendered / no-JS
-     content is always fully visible. */
-  .js-reveal .reveal {
-    opacity: 0;
-    transform: translateY(10px);
-    transition:
-      opacity 600ms var(--ease-snap),
-      transform 600ms var(--ease-snap);
-  }
-  .js-reveal .reveal[data-shown="true"] {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   /* Press feedback — any pressable element scales down a hair on :active so the
      UI feels like it heard the click. Subtle (0.97), snappy (140ms). Owns the
      color transition too, so it doesn't get clobbered by transition-colors. */
@@ -214,28 +197,17 @@
 }
 
 /* Reduced motion — keep opacity/color cues that aid comprehension, drop the
-   movement. Reveal elements show immediately rather than sliding in. */
+   movement. */
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
   .press:active {
     transform: none;
   }
   .route-fade {
     animation: none;
   }
-  .animate-dot-bounce,
-  .animate-\[cursor-blink_1s_steps\(2\,start\)_infinite\] {
+  .animate-dot-bounce {
     animation: none !important;
   }
-}
-
-@keyframes cursor-blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
 }
 
 @keyframes dot-bounce {

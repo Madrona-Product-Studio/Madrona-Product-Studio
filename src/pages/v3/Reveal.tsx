@@ -3,23 +3,27 @@
 // screen at load renders instantly with no entrance. Hidden states only ever
 // come from the rv-armed class this component adds at runtime, so no-JS and
 // reduced-motion paths always get the resting design.
-import { createElement, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Reveal({ as = "div", className = "", children, ...rest }: { as?: React.ElementType; className?: string; children: React.ReactNode } & Record<string, unknown>) {
   const ref = useRef<HTMLElement>(null);
-  const [phase, setPhase] = useState<"idle" | "armed" | "in">("idle");
+  // The arm/in phases are applied straight to the element's classList from
+  // the effect (the decision needs layout, and React never re-renders this
+  // wrapper with a different className), so nothing hidden ever reaches the
+  // server or no-JS render.
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
-    setPhase("armed");
+    el.classList.add("rv-armed");
     const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setPhase("in"); io.disconnect(); }
+      if (entry.isIntersecting) { el.classList.remove("rv-armed"); el.classList.add("rv-in"); io.disconnect(); }
     }, { rootMargin: "0px 0px -10% 0px" });
     io.observe(el);
-    return () => io.disconnect();
+    return () => { io.disconnect(); el.classList.remove("rv-armed", "rv-in"); };
   }, []);
-  const cls = `${className} rv${phase === "armed" ? " rv-armed" : ""}${phase === "in" ? " rv-in" : ""}`.trim();
-  return createElement(as, { ref, className: cls, ...rest }, children);
+  const cls = `${className} rv`.trim();
+  const Tag = as;
+  return <Tag ref={ref} className={cls} {...rest}>{children}</Tag>;
 }

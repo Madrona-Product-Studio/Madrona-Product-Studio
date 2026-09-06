@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 
 // Force an instant jump to the top on navigation (bypassing the global
@@ -34,13 +34,13 @@ export function ScrollToTop() {
 // continuously instead of snapping. Keyed by pathname (hash changes don't
 // re-fire). CSS lives in index.css (.route-fade); honors reduced-motion.
 export function PageFade({ children }: { children: ReactNode }) {
-  const { pathname } = useLocation();
-  // Skip the settle on the initial mount (createRoot over prerendered HTML)
-  // so first paint doesn't flicker; only animate on client navigations.
-  const first = useRef(true);
-  useEffect(() => { first.current = false; }, []);
+  const { pathname, key } = useLocation();
+  // Skip the settle on the initial document load so first paint doesn't
+  // flicker; only animate on client navigations. React Router gives the
+  // initial history entry the key "default"; every navigation mints a new one.
+  const initial = key === "default";
   return (
-    <div key={pathname} className={first.current ? undefined : "route-fade"}>
+    <div key={pathname} className={initial ? undefined : "route-fade"}>
       {children}
     </div>
   );

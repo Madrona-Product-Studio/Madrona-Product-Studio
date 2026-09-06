@@ -28,7 +28,7 @@ export default function MadronaSystem() {
         <p className="m2-kicker">Internal design lab · noindex</p>
         <h1>A warm, practical system for serious work.</h1>
         <p>Editorial hierarchy, grounded materials, and useful product evidence. Calm enough to trust. Specific enough to remember.</p>
-        <Link className="m2-text-link" to="/lab/madrona-v2">View the homepage concept <span>→</span></Link>
+        <Link className="m2-text-link" to="/">View the live homepage <span>→</span></Link>
       </header>
 
       <section className="m2-system-section" aria-labelledby="logo-title">

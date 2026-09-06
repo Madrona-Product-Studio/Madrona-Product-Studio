@@ -25,7 +25,7 @@ export function PracticeSection() {
     </ol>
     <div className="v3-practice-ctas">
       <Link className="v3-btn v3-btn-primary v3-btn-compact" to="/connect">Get in touch</Link>
-      <Link className="v3-practice-link" to="/how-it-works">See how an engagement runs <span aria-hidden="true">→</span></Link>
+      <Link className="v3-practice-link" to="/services">See how an engagement runs <span aria-hidden="true">→</span></Link>
     </div>
   </div></section>;
 }
