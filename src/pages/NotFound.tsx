@@ -13,9 +13,10 @@ import "./v3/v3.css";
 // longer exists).
 export default function NotFound() {
   return (
-    <main className="m2 v3">
+    <div className="m2 v3">
       <LabMeta title={notFound.title} noindex />
       <M2Nav />
+      <main id="main">
       <section className="v3-current-hero v3-svc-hero">
         <div className="v3-shell">
           <p className="v3-kicker">{notFound.kicker}</p>
@@ -29,7 +30,8 @@ export default function NotFound() {
           </div>
         </div>
       </section>
+      </main>
       <SiteFooter cta={false} />
-    </main>
+    </div>
   );
 }

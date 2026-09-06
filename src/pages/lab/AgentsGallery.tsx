@@ -20,9 +20,10 @@ export default function AgentsGallery() {
   const cats = Array.from(new Set(agents.map((a) => a.category)));
 
   return (
-    <main className="m2 m2-ab-page">
+    <div className="m2 m2-ab-page">
       <LabMeta title="Tools we deploy for your business · Madrona Product Studio" />
       <M2Nav active="tools" />
+      <main id="main">
 
       {/* Masthead — same shape as /thinking */}
       <section className="m2-ab4 m2-th-hero">
@@ -90,7 +91,9 @@ export default function AgentsGallery() {
         </div>
       </section>
 
+      </main>
+
       <SiteFooter />
-    </main>
+    </div>
   );
 }

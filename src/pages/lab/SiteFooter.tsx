@@ -22,7 +22,7 @@ const P = {
 
 export default function SiteFooter({ cta = true }: { cta?: boolean }) {
   return (
-    <section className="m2-fc" aria-label="Contact and site footer">
+    <footer className="m2-fc" aria-label="Contact and site footer">
       {cta && (
         <div className="m2-fc-cta m2-fc-cta--solo">
           <div className="m2-fc-half m2-fc-talk">
@@ -67,6 +67,6 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
           <span>© 2026 Madrona Product Studio</span>
         </div>
       </div>
-    </section>
+    </footer>
   );
 }

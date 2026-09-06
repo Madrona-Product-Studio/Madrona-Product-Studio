@@ -49,6 +49,10 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2 :focus-visible { outline: 3px solid var(--bark); outline-offset: 4px; }
 .m2 img { display: block; max-width: 100%; }
 
+/* Skip link: visually hidden until it takes keyboard focus, then it sits
+   on the bar as a small charcoal/cream chip so the first Tab has a target. */
+.m2-skip { position: absolute; left: 16px; top: -100px; z-index: 60; padding: 10px 14px; border-radius: 4px; background: var(--forest); color: var(--paper); font: 600 13px/1 Inter, sans-serif; text-decoration: none; }
+.m2-skip:focus-visible { top: 12px; outline: 2px solid var(--bark); outline-offset: 2px; }
 .m2-nav {
   align-items: center;
   display: grid;
@@ -394,8 +398,6 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-ab4-ico[data-tone="layers"], .m2-ab4-chips li[data-tone="layers"], .m2-ab4-loop-node[data-tone="layers"] .m2-ab4-loop-ico { background: var(--tint-plum); color: var(--tint-plum-ink); }
 .m2-ab4-cols--evidence { margin-top: 34px; }
 .m2-ab4-loop { align-self: center; aspect-ratio: 1; justify-self: center; max-width: 490px; position: relative; width: 100%; }
-.m2-ab4-loop-arcs { color: #b3aa9b; height: 100%; inset: 0; position: absolute; width: 100%; }
-.m2-ab4-loop-arcs path { fill: none; stroke: currentColor; stroke-width: 1.2px; vector-effect: non-scaling-stroke; }
 .m2-ab4-loop-node { position: absolute; text-align: center; transform: translate(-50%, -50%); }
 .m2-ab4-loop-ico { align-items: center; border-radius: 50%; display: flex; height: 58px; justify-content: center; margin: 0 auto; width: 58px; }
 .m2-ab4-loop-ico svg { height: 26px; width: 26px; }

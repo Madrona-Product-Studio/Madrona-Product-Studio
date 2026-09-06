@@ -39,9 +39,10 @@ export default function MadronaV2Open() {
   useReveal();
 
   return (
-    <main className="m2 m2-ab-page">
+    <div className="m2 m2-ab-page">
       <LabMeta title="Open · Madrona Product Studio" />
       <M2Nav active="open" />
+      <main id="main">
 
       {/* Masthead */}
       <section className="m2-ab4 m2-th-hero m2-pov-hero">
@@ -111,7 +112,9 @@ export default function MadronaV2Open() {
         </div>
       </section>
 
+      </main>
+
       <SiteFooter />
-    </main>
+    </div>
   );
 }

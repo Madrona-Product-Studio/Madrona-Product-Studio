@@ -164,9 +164,10 @@ export default function MadronaV2Connect() {
   const mailto = <a href={`mailto:${EMAIL}`} onClick={() => track("email_click", { source: "connect" })}>{EMAIL}</a>;
 
   return (
-    <main className="m2 m2-cx-page">
+    <div className="m2 m2-cx-page">
       <LabMeta title="Let’s connect · Madrona Product Studio" />
       <M2Nav />
+      <main id="main">
 
       <section className="m2-cx-hero">
         <div className="m2-cx-hero-copy">
@@ -253,7 +254,9 @@ export default function MadronaV2Connect() {
         </aside>
       </section>
 
+      </main>
+
       <SiteFooter cta={false} />
-    </main>
+    </div>
   );
 }

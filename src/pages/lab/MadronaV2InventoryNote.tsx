@@ -113,9 +113,10 @@ export default function MadronaV2InventoryNote() {
   useReveal();
 
   return (
-    <main className="m2 art">
+    <div className="m2 art">
       <LabMeta title="AI tools for small business: the 12 jobs they already do · Thinking" />
       <M2Nav active="pov" />
+      <main id="main">
       <div className="art-wrap">
         <ArticleHeader
           kicker="An inventory"
@@ -330,7 +331,8 @@ export default function MadronaV2InventoryNote() {
           </ArticleSection>
         </ArticleBody>
       </div>
+      </main>
       <SiteFooter cta={false} />
-    </main>
+    </div>
   );
 }

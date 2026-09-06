@@ -92,9 +92,10 @@ function CharlieHero() {
 }
 
 export default function CharliePage() {
-  return <main className="m2 v3 ck">
+  return <div className="m2 v3 ck">
     <LabMeta title="Charlie Koch · Madrona Product Studio" />
     <M2Nav />
+    <main id="main">
 
     <CharlieHero />
 
@@ -139,6 +140,8 @@ export default function CharliePage() {
       </Reveal>
     </section>
 
+    </main>
+
     <SiteFooter cta={false} />
-  </main>;
+  </div>;
 }

@@ -45,9 +45,10 @@ export default function AgentDemoPage() {
   const pipeline: Pillar[] = demo.pipeline.map((step) => ({ name: step.name, d: step.d, icon: <Glyph d={IC[step.icon]} />, gate: step.gate }));
 
   return (
-    <main className="m2 art agentx-page">
+    <div className="m2 art agentx-page">
       <LabMeta title={`${demo.title} · Madrona Product Studio`} />
       <M2Nav active="tools" />
+      <main id="main">
       <div className="art-wrap">
         <AgentDemoHero
           category={agent.category}
@@ -94,7 +95,8 @@ export default function AgentDemoPage() {
           </ArticleSection>
         </ArticleBody>
       </div>
+      </main>
       <SiteFooter />
-    </main>
+    </div>
   );
 }

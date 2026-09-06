@@ -83,9 +83,10 @@ export default function MadronaV2Thesis() {
   useReveal();
 
   return (
-    <main className="m2 art">
+    <div className="m2 art">
       <LabMeta title="The Madrona Product Thesis · Madrona Product Studio" />
       <M2Nav active="pov" />
+      <main id="main">
 
       <div className="art-wrap">
         <ArticleHeader
@@ -179,7 +180,9 @@ export default function MadronaV2Thesis() {
         </ArticleBody>
       </div>
 
+      </main>
+
       <SiteFooter cta={false} />
-    </main>
+    </div>
   );
 }

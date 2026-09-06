@@ -118,9 +118,10 @@ export default function MadronaV2SystemNote() {
   useReveal();
 
   return (
-    <main className="m2 art">
+    <div className="m2 art">
       <LabMeta title="Solve the system, not the symptom · Thinking" />
       <M2Nav active="pov" />
+      <main id="main">
       <div className="art-wrap">
         <ArticleHeader
           kicker="A point of view"
@@ -218,7 +219,8 @@ export default function MadronaV2SystemNote() {
           </ArticleSection>
         </ArticleBody>
       </div>
+      </main>
       <SiteFooter cta={false} />
-    </main>
+    </div>
   );
 }

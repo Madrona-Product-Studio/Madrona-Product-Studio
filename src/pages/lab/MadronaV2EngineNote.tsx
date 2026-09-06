@@ -148,9 +148,10 @@ export default function MadronaV2EngineNote() {
   useReveal();
 
   return (
-    <main className="m2 art">
+    <div className="m2 art">
       <LabMeta title="The engine behind everything we ship · Thinking" />
       <M2Nav active="pov" />
+      <main id="main">
 
       <div className="art-wrap">
         <ArticleHeader
@@ -273,7 +274,9 @@ export default function MadronaV2EngineNote() {
         </ArticleBody>
       </div>
 
+      </main>
+
       <SiteFooter cta={false} />
-    </main>
+    </div>
   );
 }

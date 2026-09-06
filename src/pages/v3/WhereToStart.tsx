@@ -347,7 +347,7 @@ export default function WhereToStart() {
       </header>
 
       <div className="sa-body">
-        <main className="sa-work wts-work">
+        <main id="main" className="sa-work wts-work">
           {!showResult && (
             <div className="wts-stream">
               {/* Chat history: the opener turn + every answered follow-up so far. */}

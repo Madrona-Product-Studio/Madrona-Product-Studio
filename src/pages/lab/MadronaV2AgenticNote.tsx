@@ -83,9 +83,10 @@ export default function MadronaV2AgenticNote() {
   useReveal();
 
   return (
-    <main className="m2 art">
+    <div className="m2 art">
       <LabMeta title="The era of agentic operations · Thinking" />
       <M2Nav active="pov" />
+      <main id="main">
 
       <div className="art-wrap">
         <ArticleHeader
@@ -326,7 +327,9 @@ export default function MadronaV2AgenticNote() {
         </ArticleBody>
       </div>
 
+      </main>
+
       <SiteFooter cta={false} />
-    </main>
+    </div>
   );
 }

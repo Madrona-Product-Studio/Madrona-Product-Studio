@@ -168,9 +168,10 @@ export default function MadronaV2StarterGuideNote() {
   useReveal();
 
   return (
-    <main className="m2 art">
+    <div className="m2 art">
       <LabMeta title="A starter guide to building real software with AI · Thinking" />
       <M2Nav active="pov" />
+      <main id="main">
 
       <div className="art-wrap">
         <ArticleHeader
@@ -345,7 +346,9 @@ export default function MadronaV2StarterGuideNote() {
         </ArticleBody>
       </div>
 
+      </main>
+
       <SiteFooter cta={false} />
-    </main>
+    </div>
   );
 }

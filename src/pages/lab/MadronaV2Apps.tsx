@@ -79,9 +79,10 @@ export default function MadronaV2Apps() {
   const visible = sortProducts(studioProducts.filter((p) => filter === "all" || p.stage === filter));
 
   return (
-    <main className="m2 m2-ap-page">
+    <div className="m2 m2-ap-page">
       <LabMeta title="Products · Madrona Product Studio" />
       <M2Nav active="apps" />
+      <main id="main">
 
       <section className="m2-phead">
         <div className="m2-ab-intro-copy">
@@ -113,7 +114,9 @@ export default function MadronaV2Apps() {
         )}
       </div>
 
+      </main>
+
       <SiteFooter />
-    </main>
+    </div>
   );
 }

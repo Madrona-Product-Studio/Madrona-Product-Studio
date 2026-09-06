@@ -73,6 +73,7 @@ export default function M2Nav({ active }: { active?: NavKey }) {
   return (
     <>
       <header className="m2-nav">
+        <a className="m2-skip" href="#main">Skip to content</a>
         <Link className="m2-logo-link" to="/" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></Link>
         <nav aria-label="Primary">
           {LINKS.map((l) => l.key === "services" ? (
@@ -96,7 +97,7 @@ export default function M2Nav({ active }: { active?: NavKey }) {
             <span className="m2-burger is-x" aria-hidden="true"><span /><span /><span /></span>
           </button>
         </div>
-        <nav className="m2-navmenu-links" aria-label="Primary">
+        <nav className="m2-navmenu-links" aria-label="Menu">
           <Link className="m2-navmenu-parent" to="/apps" aria-current={active === "apps" ? "page" : undefined} onClick={() => setOpen(false)}>Products</Link>
           <Link className="m2-navmenu-parent" to="/services" aria-current={active === "services" ? "page" : undefined} onClick={() => setOpen(false)}>Services</Link>
           <div className="m2-navmenu-children">{SERVICE_LINKS.map(item => <Link to={item.href} key={item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}</div>

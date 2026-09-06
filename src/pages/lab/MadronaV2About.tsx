@@ -100,9 +100,10 @@ export default function MadronaV2About() {
   const { experience, community, nameStory } = studioProfile;
 
   return (
-    <main className="m2 m2-ab-page">
+    <div className="m2 m2-ab-page">
       <LabMeta title="About · Madrona Product Studio" />
       <M2Nav active="about" />
+      <main id="main">
 
       {/* 1 · The studio (original hero: copy + proof points | network diagram) */}
       <section className="m2-ab-intro">
@@ -217,7 +218,9 @@ export default function MadronaV2About() {
         </figure>
       </section>
 
+      </main>
+
       <SiteFooter cta={false} />
-    </main>
+    </div>
   );
 }

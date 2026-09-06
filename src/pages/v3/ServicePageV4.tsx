@@ -87,9 +87,10 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
   const service = serviceAreas.find((item) => item.id === serviceId) ?? serviceAreas[0];
   const modules = serviceModules(service);
   return (
-    <main className="m2 v3">
+    <div className="m2 v3">
       <LabMeta title={`${service.name} · Madrona Product Studio`} />
       <M2Nav active="services" />
+      <main id="main">
 
       <section className="v4-hero v3-shell">
         <div className="v4-hero-copy">
@@ -157,7 +158,9 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
         ))}
       </section>
 
+      </main>
+
       <SiteFooter />
-    </main>
+    </div>
   );
 }

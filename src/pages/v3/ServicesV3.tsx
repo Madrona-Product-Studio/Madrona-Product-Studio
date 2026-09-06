@@ -40,9 +40,10 @@ function ServiceArea({ area, index }: { area: typeof serviceAreas[number]; index
 }
 
 export default function ServicesV3() {
-  return <main className="m2 v3">
+  return <div className="m2 v3">
     <LabMeta title="How we help · Madrona Product Studio" />
     <M2Nav active="services" />
+    <main id="main">
 
     <section className="v3-current-hero v3-svc-hero">
       <div className="v3-shell">
@@ -60,6 +61,8 @@ export default function ServicesV3() {
 
     <PracticeSection />
 
+    </main>
+
     <SiteFooter cta />
-  </main>;
+  </div>;
 }
