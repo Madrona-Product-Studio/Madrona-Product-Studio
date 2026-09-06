@@ -16,6 +16,15 @@
 
 **Standing rule for this series:** exports in madrona-open are genericized, leak-scanned copies regenerated from studio canonicals — port lessons, never hand-edit only there. Every published field note follows the site pattern: prerender entry, OG card, Charlie voice pass before merge.
 
+## Audit 2026-09 follow-ups (PR #67 shipped all 50 items; these are the non-blocking leftovers)
+- [ ] **Set `ANTHROPIC_API_KEY` in the Vercel project (all environments).** Until it exists the assessment assist (`api/read-assist.ts`), the tool try-it panel (`api/agent-demo.ts`), and the contact triage line stay silently off; nothing breaks. Optional `ANTHROPIC_MODEL` overrides the mid-tier default for the demo and triage routes.
+- [ ] **Add a Vercel WAF rate-limit rule on `/api/(.*)`** (e.g. 10 requests per 60 s per IP, Deny). The in-function limiters in `api/_lib/guard.ts` only hold per warm instance; the honeypot and time-on-page gate still stand without the rule.
+- [ ] **Verify on production after deploy:** `curl -I https://www.madronaproduct.com/nope` returns 404 (the catch-all rewrite is gone; `dist/404.html` is the fallback) and `/assets/...` returns `cache-control: ... immutable`. Then send one real contact form submission and one "Email me this read" to confirm the Resend paths end to end (they typecheck and fail open, but could not be exercised locally).
+- [ ] **Real static HTML for the prerender** (audit B44, skipped): a Vite SSR pass with `renderToString` + `hydrateRoot` needs `SkySwitcher` to stop reading localStorage in its `useState` initializer and `MadronaLogo` to survive a post-hydration theme swap without the night-time flash. Medium.
+- [ ] **Router weight** (audit B23): React Router 7 is ~355 KB raw of the main chunk; a small router would save ~30 KB gzipped per page but touches every `Link`/`Navigate`. Measure on the field data first.
+- [ ] **`?theme=` preview param does not update the sky switcher's "current" label** (it shows the sun's state). Pre-existing, cosmetic, only affects internal previews.
+- [ ] **CLAUDE.md sweeps:** the design-token notes were updated for the new muted/companion values; the "Two-accent" and booking paragraphs already read correctly. Re-read after the next design change.
+
 ## In flight
 - [x] **Our POV section — shipped as `/thinking`** (four articles live: Thesis, Under the hood, Agentic operations, Starter guide; /pov and /current redirect). Leftover from the original plan: launch checklist + Madrona Principles still sit in the drawer as unrouted components.
 
