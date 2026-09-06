@@ -254,6 +254,24 @@
 .v3 .v3-practice-steps p{margin:0 0 16px;max-width:36ch;font-size:12.5px;line-height:1.5}
 .v3 .v3-practice-terms{margin-top:0}
 .v3-practice-ctas{margin-top:24px}
+/* Mobile spacing pass (Charlie, 2026-09-06). Two fixes: the round-17
+   li+li indent out-specified the 900px reset, so steps 02/03 sat 34px in;
+   and the help ledger stacked three indent levels on a phone. Now the
+   number and the icon share the left edge, the question and the answer
+   share the text edge, and the type steps down one notch. */
+@media(max-width:900px){.v3 .v3-practice-steps li+li{padding-left:0}}
+@media(max-width:600px){
+.v3 .v3-help-head h2{font-size:2.05rem}
+.v3 .v3-help-head{margin-bottom:28px}
+.v3 .v3-help-head .v3-help-lede{margin-top:12px;font-size:.95rem}
+.v3 .v3-help-ledger-row{grid-template-columns:30px 1fr;gap:10px;padding:18px 0}
+.v3 .v3-help-ledger-num{padding-top:6px}
+.v3 .v3-help-ledger-row h3{max-width:none;font-size:1.35rem;line-height:1.12}
+.v3 .v3-help-ledger-answer{grid-column:1/-1;grid-template-columns:30px 1fr;gap:10px;margin-top:12px}
+.v3 .v3-help-ledger-icon{width:30px;height:30px;border-radius:7px}.v3 .v3-help-ledger-icon svg{width:13px;height:13px}
+.v3 .v3-help-ledger-answer strong{margin-bottom:3px;font-size:13.5px}
+.v3 .v3-help-ledger-answer p{margin-bottom:4px;max-width:none}
+}
 /* Round 18 (2026-08-30): v3 /services overview — hero + four area bands. */
 .v3-svc-hero{min-height:0;padding-block:clamp(64px,9vw,110px) 8px}
 .v3-svc-hero .v3-shell{max-width:820px}
