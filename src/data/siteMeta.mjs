@@ -61,17 +61,17 @@ export const notFound = {
 
 export const pages = {
   "/": {
-    title: "Madrona Product Studio · Bellingham, Washington",
+    title: "Madrona Product Studio · PNW, USA",
     description: "Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. Smoother operations, customers who come back, a web presence that earns trust.",
     h1: "A senior digital product studio built for the AI era.",
     body: "Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. What we can help with: AI consulting on real workflows, growth and retention, website redesign, and new product building. We figure out what to build, then we build it, and we run our own products and operations the same way, here in the PNW and beyond.",
   },
   "/ai-opportunities": {
     title: "AI Opportunity Assessment · a free 2-minute read · Madrona Product Studio",
-    description: "Flag where your week actually goes and we hand you a short, honest map of where AI can help. About two minutes, no email needed. From Madrona Product Studio in Bellingham, Washington.",
+    description: "Flag where your week actually goes and we hand you a short, honest map of where AI can help. About two minutes, no email needed. From Madrona Product Studio in the Pacific Northwest.",
     h1: "Where does your week actually go?",
     ogImage: "/og-ai-opportunities.png",
-    body: "Flag what eats your time, and a live opportunity map fills in as you answer. We sort your week into what AI can run itself, what it amplifies, and what stays yours, then name the highest-leverage first move. About two minutes, no email required, and the read is yours to keep. From Madrona Product Studio in Bellingham, Washington.",
+    body: "Flag what eats your time, and a live opportunity map fills in as you answer. We sort your week into what AI can run itself, what it amplifies, and what stays yours, then name the highest-leverage first move. About two minutes, no email required, and the read is yours to keep. From Madrona Product Studio in the Pacific Northwest.",
   },
   "/services": {
     title: "How we help · Madrona Product Studio",
@@ -83,29 +83,29 @@ export const pages = {
     title: "AI & Operations · Madrona Product Studio",
     description: "Practical AI on your real workflows, from the first map to working agents. Automation, AI assistants and agents, and internal tools that give you hours back every week.",
     h1: "Put AI to work on your real workflows, and get hours back every week.",
-    body: "Feels like AI should help, but not sure where to start? We map how work actually happens, identify the highest-friction handoffs, and build practical tools, automations, and AI agents around the real workflow. Workflow and process design, automation, AI assistants and agents, internal tools and dashboards. We run our own studio this way. From Madrona Product Studio in Bellingham, Washington.",
+    body: "Feels like AI should help, but not sure where to start? We map how work actually happens, identify the highest-friction handoffs, and build practical tools, automations, and AI agents around the real workflow. Workflow and process design, automation, AI assistants and agents, internal tools and dashboards. We run our own studio this way. From Madrona Product Studio in the Pacific Northwest.",
   },
   "/services/growth-retention": {
     title: "Growth & Retention · Madrona Product Studio",
     description: "Make it easier for customers to buy, return, and stay connected. Online stores, loyalty, and lifecycle email from a small senior product studio.",
     h1: "Make it easier for customers to buy, return, and stay connected.",
-    body: "People buy once, then you never hear from them again? We design the customer journey end to end: customer research, journey and experience design, commerce and loyalty, retention and lifecycle communication. Make it easier for customers to buy, come back, and stay connected. From Madrona Product Studio in Bellingham, Washington.",
+    body: "People buy once, then you never hear from them again? We design the customer journey end to end: customer research, journey and experience design, commerce and loyalty, retention and lifecycle communication. Make it easier for customers to buy, come back, and stay connected. From Madrona Product Studio in the Pacific Northwest.",
   },
   "/services/brand-website": {
     title: "Brand & Website · Madrona Product Studio",
     description: "Website redesign, brand, and messaging that give people a clear reason to understand, trust, and choose you.",
     h1: "Give people a clear reason to understand, trust, and choose you.",
-    body: "Website just OK, and not doing the business justice? Positioning and strategy, messaging and voice, visual identity, and websites and stores built to earn trust and convert. Give people a clear reason to understand, trust, and choose you. From Madrona Product Studio in Bellingham, Washington.",
+    body: "Website just OK, and not doing the business justice? Positioning and strategy, messaging and voice, visual identity, and websites and stores built to earn trust and convert. Give people a clear reason to understand, trust, and choose you. From Madrona Product Studio in the Pacific Northwest.",
   },
   "/services/new-products": {
     title: "New Products · Madrona Product Studio",
     description: "Take a new product from idea to something real people use. Product strategy and validation, prototypes and MVPs, AI-enabled features, launch and iteration.",
     h1: "Take a new product from idea to something real people use.",
-    body: "Have an idea that deserves to become real? Product strategy and validation, prototypes and MVPs, AI-enabled features, and launch and iteration. We take new products from concept to something real people use, and we build and run our own. From Madrona Product Studio in Bellingham, Washington.",
+    body: "Have an idea that deserves to become real? Product strategy and validation, prototypes and MVPs, AI-enabled features, and launch and iteration. We take new products from concept to something real people use, and we build and run our own. From Madrona Product Studio in the Pacific Northwest.",
   },
   "/charlie": {
     title: "Charlie Koch · Madrona Product Studio",
-    description: "Charlie Koch is the founder of Madrona Product Studio in Bellingham, Washington: a product leader from Microsoft, REI, and Healthline who now ships AI-native products weekly. One career, read four ways, depending on why you're here.",
+    description: "Charlie Koch is the founder of Madrona Product Studio in the Pacific Northwest: a product leader from Microsoft, REI, and Healthline who now ships AI-native products weekly. One career, read four ways, depending on why you're here.",
     h1: "Builder of modern digital tools.",
     body: "Newest tools, oldest problems. Charlie Koch led consumer product at Microsoft, REI, and Healthline, and now runs Madrona Product Studio, where he takes products from idea to live software in weeks. Four ways to read the same career: if you're hiring a product leader, if you run a business, if you build in travel, the outdoors, or wellness, and if your work changes lives. Every path starts with a conversation.",
   },

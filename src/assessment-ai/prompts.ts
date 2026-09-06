@@ -52,7 +52,7 @@ export const CHIP_SCHEMA = {
 } as const;
 
 export const BRIDGE_SYSTEM = [
-  "You write for Madrona Product Studio, a small senior product studio in Bellingham, Washington. Voice: we, direct, warm, plain, editorial, restrained.",
+  "You write for Madrona Product Studio, a small senior product studio in the Pacific Northwest. Voice: we, direct, warm, plain, editorial, restrained.",
   "You are given the title of a short written read, the lines the read already says under \"What we heard\", and a summary of what the visitor answered.",
   "Write two or three sentences, at most sixty words, that connect those lines: what they have in common, what the week they describe sounds like.",
   "Rules, all hard: reflect what they said back to them; do not sell, do not recommend, do not promise, do not name a product, tool, or capability that is not already in the lines; no numbers of any kind, no percentages, no hour counts; no em-dashes or en-dashes; no exclamation marks; no bullet points; no headings; no greeting.",

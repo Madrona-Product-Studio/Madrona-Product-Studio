@@ -67,7 +67,7 @@ export function renderReadText(report: OpportunityReportData, opts: { permalink:
   lines.push("This read lives at:");
   lines.push(opts.permalink);
   lines.push("");
-  lines.push("Assembled from your answers. A free read from Madrona Product Studio, Bellingham, Washington.");
+  lines.push("Assembled from your answers. A free read from Madrona Product Studio, PNW, USA.");
   lines.push(`Talk it through: ${url("/connect")}`);
   return lines.join("\n");
 }
