@@ -1,20 +1,8 @@
 import { Link } from "react-router-dom";
 
-export function SignalReport() {
-  return (
-    <article className="v3-artifact v3-signal-card" aria-label="Example signal check report">
-      <header><span>Signal check · example</span><small>Prepared today</small></header>
-      <div className="v3-signal-score"><strong>3</strong><span>strong places<br />to begin</span></div>
-      <p>Your clearest opportunity is not another tool. It is a better handoff between incoming requests and the people who act on them.</p>
-      <ul>
-        <li><span>01</span><b>Collect requests in one place</b><em>Start here</em></li>
-        <li><span>02</span><b>Draft the first response</b><em>Good fit</em></li>
-        <li><span>03</span><b>Show what needs review</b><em>Human led</em></li>
-      </ul>
-      <Link to="/ai-opportunities">Find your AI opportunities <span aria-hidden="true">→</span></Link>
-    </article>
-  );
-}
+// The example read that used to live here (SignalReport) is now the real
+// artifact: Hero.tsx renders OpportunityReport from a fixture the engine
+// itself produces.
 
 export function BriefArtifact() {
   const rows = [
