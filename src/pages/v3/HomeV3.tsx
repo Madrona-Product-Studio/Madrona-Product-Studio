@@ -11,11 +11,20 @@ import { PracticeWindowSection } from "./PracticeWindow";
 import Reveal from "./Reveal";
 import "../lab/madrona-v2.css";
 import "./v3.css";
-import helmImage from "../../../docs/madrona-v2-build-kit/site-assets/helm-tile.webp";
-import lilaImage from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp";
-import sanJuanImage from "../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp";
-import berryImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp";
+import { imgProps, SIZES, type ResponsiveImage } from "../../lib/responsiveImage";
+import helmImage from "../../../docs/madrona-v2-build-kit/site-assets/helm-tile.webp?w=640;960;1280&format=webp&as=img";
+import lilaImage from "../../../docs/madrona-v2-build-kit/product-proof/lila/lila-tile-devices.webp?w=640;960;1280&format=webp&as=img";
+import sanJuanImage from "../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp?w=640;960;1280&format=webp&as=img";
+import berryImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp?w=640;960;1280&format=webp&as=img";
 
+
+// The curated proof grid: two live products, the command center, the demo farm.
+const proof: { image: ResponsiveImage; name: string; status: string; href: string; external: boolean }[] = [
+  { image: helmImage, name: "Helm", status: "Beta · Our command center", href: "/apps", external: false },
+  { image: lilaImage, name: "Lila Trips", status: "Live · Adventure travel", href: "https://lilatrips.com", external: true },
+  { image: sanJuanImage, name: "San Juan Boating Guide", status: "Live · Salish Sea routes", href: "https://www.sjiboating.com/", external: true },
+  { image: berryImage, name: "Berry Good", status: "Demo · A connected farm operation", href: "/apps", external: false },
+];
 
 export default function HomeV3() {
   return <main className="m2 v3">
@@ -29,7 +38,7 @@ export default function HomeV3() {
 
     <Reveal><PracticeWindowSection /></Reveal>
 
-    <Reveal as="section" className="v3-section v3-shell v3-proof"><div className="v3-help-head"><p className="v3-kicker">Proof in the work</p><h2>We build products, <span>and we run them.</span></h2><p className="v3-help-lede">Our own apps keep our product judgment close to real users, from live travel products to the demonstration farm.</p></div><div className="v3-proof-grid">{[[helmImage,"Helm","Beta · Our command center","/apps",false],[lilaImage,"Lila Trips","Live · Adventure travel","https://lilatrips.com",true],[sanJuanImage,"San Juan Boating Guide","Live · Salish Sea routes","https://www.sjiboating.com/",true],[berryImage,"Berry Good","Demo · A connected farm operation","/apps",false]].map(([src,name,status,href,external]) => external ? <a className="v3-proof-card" key={name as string} href={href as string} target="_blank" rel="noreferrer"><img src={src as string} alt={`${name} product interface`} /><figcaption><div><strong>{name}</strong><span>{status}</span></div><i aria-hidden="true">↗︎</i></figcaption></a> : <Link className="v3-proof-card" key={name as string} to={href as string}><img src={src as string} alt={`${name} product interface`} /><figcaption><div><strong>{name}</strong><span>{status}</span></div><i aria-hidden="true">→</i></figcaption></Link>)}</div><Link className="v3-practice-link v3-proof-all" to="/apps">See all products <span aria-hidden="true">→</span></Link></Reveal>
+    <Reveal as="section" className="v3-section v3-shell v3-proof"><div className="v3-help-head"><p className="v3-kicker">Proof in the work</p><h2>We build products, <span>and we run them.</span></h2><p className="v3-help-lede">Our own apps keep our product judgment close to real users, from live travel products to the demonstration farm.</p></div><div className="v3-proof-grid">{proof.map(({ image, name, status, href, external }) => external ? <a className="v3-proof-card" key={name} href={href} target="_blank" rel="noreferrer"><img {...imgProps(image, SIZES.tile4)} alt={`${name} product interface`} loading="lazy" decoding="async" /><figcaption><div><strong>{name}</strong><span>{status}</span></div><i aria-hidden="true">↗︎</i></figcaption></a> : <Link className="v3-proof-card" key={name} to={href}><img {...imgProps(image, SIZES.tile4)} alt={`${name} product interface`} loading="lazy" decoding="async" /><figcaption><div><strong>{name}</strong><span>{status}</span></div><i aria-hidden="true">→</i></figcaption></Link>)}</div><Link className="v3-practice-link v3-proof-all" to="/apps">See all products <span aria-hidden="true">→</span></Link></Reveal>
 
     <Reveal><DrawnToSection /></Reveal>
 

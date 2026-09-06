@@ -4,10 +4,11 @@
 // render from this. Canonical labels live here — do not restate in components.
 // Order is meaningful (Charlie, 2026-08-29): AI & Operations leads
 // (agentic-forward), then Brand & Website, Growth & Retention, New Products.
-import brandArtifact from "../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp";
-import customersArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp";
-import operationsArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp";
-import newProductsArtifact from "../../docs/madrona-v2-build-kit/product-proof/lila/new-products-idea-to-real.webp";
+import type { ResponsiveImage } from "../lib/responsiveImage";
+import brandArtifact from "../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp?w=640;960;1280&format=webp&as=img";
+import customersArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp?w=640;960;1280&format=webp&as=img";
+import operationsArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp?w=640;960;1280&format=webp&as=img";
+import newProductsArtifact from "../../docs/madrona-v2-build-kit/product-proof/lila/new-products-idea-to-real.webp?w=640;960;1280&format=webp&as=img";
 
 export type ServiceId = "brand-and-web" | "customers-and-growth" | "operations-and-ai" | "new-products";
 
@@ -25,7 +26,7 @@ export interface ServiceArea {
   bestFor: string;
   startingPoint: string;
   pathSteps: string[];
-  artifact: { src: string; alt: string; caption: string };
+  artifact: { src: ResponsiveImage; alt: string; caption: string };
   // Optional pointer to a POV article that makes the case for this area.
   pov?: { label: string; to: string };
   // Optional interactive entry point (e.g. the AI checkup).

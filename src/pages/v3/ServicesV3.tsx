@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { serviceAreas, type ServiceId } from "../../data/services";
+import { imgProps, SIZES } from "../../lib/responsiveImage";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
@@ -30,7 +31,7 @@ function ServiceArea({ area, index }: { area: typeof serviceAreas[number]; index
         <Link className="v3-practice-link" to={doorRoutes[area.id]}>Explore {area.name} <span aria-hidden="true">→</span></Link>
       </div>
       <figure className="v3-svc-art">
-        <img src={area.artifact.src} alt={area.artifact.alt} loading="lazy" />
+        <img {...imgProps(area.artifact.src, SIZES.half)} alt={area.artifact.alt} loading="lazy" decoding="async" />
         <figcaption>{area.artifact.caption}</figcaption>
       </figure>
     </div>

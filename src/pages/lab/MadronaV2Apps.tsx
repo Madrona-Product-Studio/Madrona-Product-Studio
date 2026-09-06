@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { track } from "../../lib/analytics";
+import { imgProps, SIZES } from "../../lib/responsiveImage";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
@@ -22,7 +23,7 @@ function StageBadge({ stage }: { stage: ProductStage }) {
 function Artifact({ product }: { product: StudioProduct }) {
   const { artifact, stage } = product;
   if (artifact.src) {
-    return <div className="m2-ap-artifact"><img src={artifact.src} alt={artifact.alt} loading="lazy" /></div>;
+    return <div className="m2-ap-artifact"><img {...imgProps(artifact.src, SIZES.appTile)} alt={artifact.alt} loading="lazy" decoding="async" /></div>;
   }
   const note =
     stage === "concept" ? "Early exploration" : stage === "prototype" ? "Prototype in progress" : "In progress";

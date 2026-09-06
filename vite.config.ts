@@ -1,9 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { imagetools } from 'vite-imagetools'
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  // imagetools serves the `?w=...&format=webp&as=img` imports the tile
+  // images use (see src/lib/responsiveImage.ts).
+  plugins: [react(), tailwindcss(), imagetools()],
   build: {
     rolldownOptions: {
       output: {

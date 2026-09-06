@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { serviceAreas, type ServiceArea, type ServiceId } from "../../data/services";
+import { imgProps, SIZES } from "../../lib/responsiveImage";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
@@ -77,7 +78,7 @@ function ModuleArtifact({ mod, service }: { mod: Module; service: ServiceArea })
   if (mod.artifact === "identity") return <IdentityBoardArtifact />;
   if (mod.artifact === "storefront") return <StorefrontArtifact />;
   if (mod.artifact === "list") return <ListArtifact label={mod.listLabel ?? "Scope"} items={mod.items ?? []} />;
-  return <figure className="v3-module-image v4-module-image"><img src={service.artifact.src} alt={service.artifact.alt} /><figcaption>{service.artifact.caption}</figcaption></figure>;
+  return <figure className="v3-module-image v4-module-image"><img {...imgProps(service.artifact.src, SIZES.half)} alt={service.artifact.alt} loading="lazy" decoding="async" /><figcaption>{service.artifact.caption}</figcaption></figure>;
 }
 
 export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
@@ -99,7 +100,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
           </div>
         </div>
         <div className="v4-hero-art" aria-hidden="true">
-          <figure className="v3-service-proof v4-hero-image"><img src={service.artifact.src} alt="" /><figcaption><span>Working proof</span>{service.artifact.caption}</figcaption></figure>
+          <figure className="v3-service-proof v4-hero-image"><img {...imgProps(service.artifact.src, SIZES.doorHero)} alt="" decoding="async" /><figcaption><span>Working proof</span>{service.artifact.caption}</figcaption></figure>
           <div className="v4-hero-window"><HeroWindow serviceId={service.id} /></div>
         </div>
       </section>

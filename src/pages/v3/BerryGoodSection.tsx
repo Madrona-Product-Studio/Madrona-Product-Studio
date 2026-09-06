@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import storefrontImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-storefront-desktop.webp";
-import brandImage from "../../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp";
-import journeyImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp";
-import operationsImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp";
+import { imgProps, SIZES } from "../../lib/responsiveImage";
+import storefrontImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-storefront-desktop.webp?w=640;960;1280&format=webp&as=img";
+import brandImage from "../../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp?w=640;960;1280&format=webp&as=img";
+import journeyImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp?w=640;960;1280&format=webp&as=img";
+import operationsImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp?w=640;960;1280&format=webp&as=img";
 
 // Section 4 of the v3 architecture: the Berry Good worked example — one
 // business improved end to end, shown as a tabbed browser window that ties
@@ -45,7 +46,7 @@ export function BerryGoodSection() {
           remounting on tab change refetched the image with nothing holding
           the space, so the page jumped (Charlie, launch night). */}
       <div className="v3-berry-frame">
-        {tabs.map((t, index) => <img key={t.id} src={t.image} alt={index === active ? t.alt : ""} aria-hidden={index !== active} className={index === active ? "is-active" : undefined} loading={index === 0 ? "lazy" : "eager"} />)}
+        {tabs.map((t, index) => <img key={t.id} {...imgProps(t.image, SIZES.berry)} alt={index === active ? t.alt : ""} aria-hidden={index !== active} className={index === active ? "is-active" : undefined} loading="lazy" decoding="async" />)}
       </div>
       <footer><p>{tab.caption}</p></footer>
     </article>
