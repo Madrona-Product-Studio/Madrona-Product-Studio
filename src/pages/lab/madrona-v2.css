@@ -1894,6 +1894,11 @@ html:has(.m2) { scroll-behavior: smooth; }
 .m2-cx-submit { align-items: center; display: flex; flex-wrap: wrap; gap: 16px 22px; justify-content: space-between; margin-top: 4px; }
 .m2-cx-privacy { color: var(--muted); font-size: .78rem; margin: 0; }
 .m2-cx-error { color: var(--bark-dark); font-size: .85rem; margin: 0; }
+.m2-cx-error a, .m2-cx-contact a { color: var(--bark-dark); font-weight: 650; }
+.m2-cx-error a:hover, .m2-cx-contact a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Inline validation: the field's rule turns bark and a short message sits under it. */
+.m2-cx-field.is-invalid input { border-bottom-color: var(--bark-dark); }
+.m2-cx-field-msg { color: var(--bark-dark); font-size: .78rem; font-style: normal; line-height: 1.4; }
 .m2-cx-success { padding: 20px 0; }
 .m2-cx-success h3 { font-size: 1.4rem; font-weight: 600; letter-spacing: -.02em; margin: 18px 0 8px; }
 .m2-cx-success p { color: var(--muted); margin: 0; }
