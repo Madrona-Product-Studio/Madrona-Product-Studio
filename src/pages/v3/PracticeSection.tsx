@@ -18,7 +18,7 @@ export function PracticeSection() {
   const source = onServices ? "services-practice" : "home-practice";
   return <section className="v3-section v3-band-light v3-practice" id="practice"><div className="v3-shell">
     <div className="v3-help-head">
-      <p className="v3-kicker">How we work</p><h2>We figure out what to build. <span>Then we build it.</span></h2>
+      <p className="v3-kicker">How we work</p><h2>We figure out what to build. <span className="v3-flash">Then we build it.</span></h2>
       <p className="v3-help-lede">The doors are different. The practice behind them is the same: find the highest-leverage move, start small, and let the work compound.</p>
     </div>
     <ol className="v3-practice-steps">

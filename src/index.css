@@ -81,8 +81,8 @@
   --color-ink:   #1a1714;
   --color-ink70: #403a33;
   --color-clay:  #6f6657;
-  --color-muted: #8c8378;
-  --color-faint: #b8b0a2;
+  --color-muted: #766d62; /* 4.5:1 on bg (audit 2026-09-06; was #8c8378 at 3.3) */
+  --color-faint: #b8b0a2; /* marks and hairline-like inactive glyphs only, never text */
 
   /* Bark — the brand-ID accent (kept; used scarcely, the swiss way).
      Bark does brand identity, links, active nav, section kickers, and the
@@ -91,7 +91,7 @@
      site-wide. These only render on the older non-lab pages; unified here
      to prevent drift if any get relinked. */
   --color-madrona: #E55728;
-  --color-madrona-dark: #BC431D;
+  --color-madrona-dark: #BC431D; /* the text companion: body-size links, kickers (4.7:1 on bg) */
   --color-madrona-light: #e8a999;
 
   /* Forest — the CTA + deep-ground color (canonized 2026-08-15).
@@ -168,11 +168,11 @@
   p { line-height: 1.6; }
 
   a {
-    color: var(--color-madrona);
+    color: var(--color-madrona-dark);
     text-decoration: none;
     transition: color 0.15s ease;
   }
-  a:hover { color: var(--color-madrona-dark); }
+  a:hover { color: var(--color-ink); }
   :where(a, button, input, textarea, select):focus-visible {
     outline: 2px solid var(--color-madrona);
     outline-offset: 3px;
@@ -227,9 +227,12 @@
 }
 
 /* Day/dusk/night (2026-08-30): html ground + token ramps so utility-driven
-   surfaces follow the sky too. Engine: src/lib/theme.ts. */
-html[data-theme="night"]{background:#2F3135;--color-bg:#2F3135;--color-card:#383B40;--color-paper:#35383D;--color-ink:#F7EDE4;--color-ink70:#D9D2C7;--color-clay:#AFA89D;--color-muted:#8F8A80;--color-faint:#6B6660;--color-line:rgba(247,237,228,.14);--color-line-soft:rgba(247,237,228,.09);--color-madrona:#E55728;--color-madrona-dark:#F0703F}
-html[data-theme="dusk"]{background:#4C3843;--color-bg:#4C3843;--color-card:#5A4450;--color-paper:#55404C;--color-ink:#F7EDE4;--color-ink70:#E4D3CB;--color-clay:#C9B3B8;--color-muted:#B39DA6;--color-faint:#8A7480;--color-line:rgba(247,237,228,.15);--color-line-soft:rgba(247,237,228,.10);--color-madrona:#E55728;--color-madrona-dark:#F0703F}
+   surfaces follow the sky too. Engine: src/lib/theme.ts.
+   Contrast pass 2026-09-06: muted clears 4.5:1 on each ground; the orange
+   text companion (-dark) is a white tint of #E55728 in dark skies (night
+   #ED8A69 5.2:1, dusk #F09C80 5.0:1). Value shifts only, never hue. */
+html[data-theme="night"]{background:#2F3135;--color-bg:#2F3135;--color-card:#383B40;--color-paper:#35383D;--color-ink:#F7EDE4;--color-ink70:#D9D2C7;--color-clay:#AFA89D;--color-muted:#ADA79B;--color-faint:#6B6660;--color-line:rgba(247,237,228,.14);--color-line-soft:rgba(247,237,228,.09);--color-madrona:#E55728;--color-madrona-dark:#ED8A69}
+html[data-theme="dusk"]{background:#4C3843;--color-bg:#4C3843;--color-card:#5A4450;--color-paper:#55404C;--color-ink:#F7EDE4;--color-ink70:#E4D3CB;--color-clay:#C9B3B8;--color-muted:#C8B6BD;--color-faint:#8A7480;--color-line:rgba(247,237,228,.15);--color-line-soft:rgba(247,237,228,.10);--color-madrona:#E55728;--color-madrona-dark:#F09C80}
 
 /* Sky fade: state changes wash in over ~700ms (theme.ts toggles the class;
    skipped for prefers-reduced-motion). */

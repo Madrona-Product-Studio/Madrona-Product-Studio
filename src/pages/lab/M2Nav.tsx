@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
 import SkySwitcher from "./SkySwitcher";
-import { useCalEmbed, bookHref, bookProps, bookClick } from "./useCalEmbed";
+import { bookHref, bookProps, bookClick } from "./useCalEmbed";
 import { ctaClick } from "../../lib/analytics";
+import { useFocusTrap } from "./useFocusTrap";
 
 type NavKey = "apps" | "tools" | "services" | "pov" | "open" | "about";
 
@@ -35,9 +36,12 @@ export default function M2Nav({ active }: { active?: NavKey }) {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
-  // The drawer's "Schedule" CTA rides the shared Cal popup; the nav is on
-  // every page, so the embed initializes here once for all of them.
-  useCalEmbed();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const burgerRef = useRef<HTMLButtonElement>(null);
+
+  // The drawer is a modal: focus lands on its close button, Tab stays
+  // inside, and the burger gets focus back on close.
+  useFocusTrap(menuRef, open, { initial: ".m2-navmenu-close", returnTo: burgerRef });
 
   // Lock body scroll + close on Escape while the mobile menu is open.
   useEffect(() => {
@@ -72,20 +76,20 @@ export default function M2Nav({ active }: { active?: NavKey }) {
         <Link className="m2-logo-link" to="/" aria-label="Madrona Product Studio home"><MadronaLogo decorative /></Link>
         <nav aria-label="Primary">
           {LINKS.map((l) => l.key === "services" ? (
-            <div ref={servicesRef} className={`m2-nav-dd${servicesOpen ? " is-open" : ""}`} key={l.key} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
-              <button className={`m2-nav-dd-trigger${active === "services" ? " is-active" : ""}`} type="button" aria-expanded={servicesOpen} aria-haspopup="menu" onClick={() => setServicesOpen(true)}>Services <span className="m2-nav-caret" aria-hidden="true">⌄</span></button>
-              <div className="m2-nav-dd-menu" role="menu">{SERVICE_LINKS.map(item => <Link role="menuitem" to={item.href} key={item.href} onClick={() => setServicesOpen(false)}>{item.label}</Link>)}<Link className="m2-nav-dd-all" role="menuitem" to="/services" onClick={() => setServicesOpen(false)}>All services <span aria-hidden="true">→</span></Link></div>
+            <div ref={servicesRef} className={`m2-nav-dd${servicesOpen ? " is-open" : ""}`} key={l.key} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)} onBlur={(e) => { if (!servicesRef.current?.contains(e.relatedTarget as Node)) setServicesOpen(false); }}>
+              <button className={`m2-nav-dd-trigger${active === "services" ? " is-active" : ""}`} type="button" aria-expanded={servicesOpen} aria-controls="m2-nav-services" onClick={() => setServicesOpen(o => !o)}>Services <span className="m2-nav-caret" aria-hidden="true">⌄</span></button>
+              <div className="m2-nav-dd-menu" id="m2-nav-services">{SERVICE_LINKS.map(item => <Link to={item.href} key={item.href} tabIndex={servicesOpen ? 0 : -1} onClick={() => setServicesOpen(false)}>{item.label}</Link>)}<Link className="m2-nav-dd-all" to="/services" tabIndex={servicesOpen ? 0 : -1} onClick={() => setServicesOpen(false)}>All services <span aria-hidden="true">→</span></Link></div>
             </div>
           ) : <Link key={l.key} to={l.href} className={l.primary ? "is-primary" : undefined} aria-current={active === l.key ? "page" : undefined}>{l.label}</Link>)}
         </nav>
         <SkySwitcher />
         <Link className="m2-button m2-nav-cta" to="/connect" onClick={ctaClick("Get in touch", "/connect", "nav")}>Get in touch</Link>
-        <button className="m2-nav-burger" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
+        <button ref={burgerRef} className="m2-nav-burger" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
           <span className="m2-burger" aria-hidden="true"><span /><span /><span /></span>
         </button>
       </header>
 
-      <div className={`m2-navmenu${open ? " is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Menu">
+      <div ref={menuRef} className={`m2-navmenu${open ? " is-open" : ""}`} role="dialog" aria-modal="true" aria-label="Menu" aria-hidden={!open}>
         <div className="m2-navmenu-bar">
           <Link className="m2-navmenu-logo" to="/" aria-label="Madrona Product Studio home" onClick={() => setOpen(false)}><MadronaLogo decorative /></Link>
           <button className="m2-navmenu-close" aria-label="Close menu" onClick={() => setOpen(false)}>

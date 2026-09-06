@@ -3,7 +3,7 @@
 
 .ck-hero { padding-bottom: 26px; }
 .ck-hero h1 { margin-bottom: 26px; max-width: 14ch; }
-.ck-hero h1 span { color: var(--v3-bark); }
+.ck-hero h1 span { color: var(--v3-flash); }
 .ck-lede { margin-top: 22px; }
 
 /* The hub — circular portrait fanning through madrona elbow lines into the
@@ -43,7 +43,7 @@
 }
 .ck-jump a:hover { color: var(--v3-bark-dark); transform: translateX(10px); }
 .ck-jump a:hover::after { transform: translateX(-10px); }
-.ck-jump a span { color: var(--v3-faint); font-size: 0.78rem; font-variant-numeric: tabular-nums; font-weight: 700; }
+.ck-jump a span { color: var(--v3-muted); font-size: 0.78rem; font-variant-numeric: tabular-nums; font-weight: 700; }
 
 .ck-door { border-top: 1px solid var(--v3-line); display: grid; gap: 20px 64px; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
 .ck-door-rail h2 { font-size: clamp(1.9rem, 3vw, 2.9rem); letter-spacing: -0.035em; line-height: 1.04; max-width: 15ch; }

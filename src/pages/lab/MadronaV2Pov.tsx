@@ -36,9 +36,9 @@ export default function MadronaV2Pov() {
 
       {/* Filters + feed */}
       <section className="m2-ab4">
-        <div className="m2-cu-filters" role="tablist" aria-label="Filter entries">
+        <div className="m2-cu-filters" role="group" aria-label="Filter entries">
           {(["All", ...types] as const).map((t) => (
-            <button key={t} role="tab" aria-selected={filter === t} className={filter === t ? "is-active" : undefined} onClick={() => setFilter(t as "All" | ThinkingType)}>
+            <button key={t} type="button" aria-pressed={filter === t} className={filter === t ? "is-active" : undefined} onClick={() => setFilter(t as "All" | ThinkingType)}>
               {t === "All" ? "All" : `${t}s`}
             </button>
           ))}
