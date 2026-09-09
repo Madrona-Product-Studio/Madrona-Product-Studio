@@ -8,41 +8,39 @@ interface HelpItem {
   id: string;
   question: string;
   label: string;
-  nouns: string;
   route: string;
 }
 
 // Canon door order: Work smarter leads sitewide (agentic-forward, 2026-08-13).
 // The per-row `detail` benefit line and the section lede were cut in the
-// 2026-09-09 density pass: this ledger is now the homepage's single statement
-// of the four services, so each row is question -> label -> concrete nouns.
+// 2026-09-09 density pass, and the `nouns` line went with them when Charlie
+// kept the hero services window the same day: the window carries the concrete
+// nouns, so this ledger only has to carry the symptom and the door it opens.
+// Each block does one job - the window says what we do, the ledger says why
+// you'd come and which door is yours.
 const helpItems: HelpItem[] = [
   {
     id: "ai",
     question: "Feels like AI should help, but not sure where to start?",
     label: "AI & Operations",
-    nouns: "Agents, assistants, automation, internal tools",
     route: "/services/ai-operations",
   },
   {
     id: "web",
     question: "Website just OK, and not doing the business justice?",
     label: "Brand & Website",
-    nouns: "Positioning, identity, websites and stores",
     route: "/services/brand-website",
   },
   {
     id: "growth",
     question: "People buy once, then you never hear from them again?",
     label: "Growth & Retention",
-    nouns: "Online stores, loyalty, lifecycle email",
     route: "/services/growth-retention",
   },
   {
     id: "product",
     question: "Have an idea that deserves to become real?",
     label: "New Products",
-    nouns: "Strategy, prototypes, MVPs, launch",
     route: "/services/new-products",
   },
 ];
@@ -77,7 +75,6 @@ export function HelpSection() {
           <span className={`v3-help-ledger-icon v3-tile-${item.id}`}><HelpIcon id={item.id} /></span>
           <div>
             <strong>{item.label} <i aria-hidden="true">→</i></strong>
-            <small>{item.nouns}</small>
           </div>
         </div>
       </Link>)}

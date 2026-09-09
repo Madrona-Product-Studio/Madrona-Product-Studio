@@ -60,7 +60,7 @@
 .v3-hero-services li strong{font-size:12px}
 .v3-hero-services li span{color:var(--v3-clay);font-size:12px;line-height:1.45}
 .v3-hero-services li i{color:var(--v3-bark-dark);font-size:12px;font-style:normal}
-@media(max-width:600px){.v3-hero-services li a{grid-template-columns:1fr auto}.v3-hero-services li span{display:none}}
+@media(max-width:600px){.v3-hero-services li a{grid-template-columns:1fr auto}}
 /* Round 7 (Charlie, 2026-08-28): CXO-tight copy stack, compact uppercase CTAs,
    browser-window chrome on both artifacts, next-steps band removed. The
    .v3 .v3-btn-primary color fix outranks the unlayered .m2 a inherit rule
@@ -551,11 +551,24 @@
 /* ── Cold-read fixes, 2026-09-09 ───────────────────────────────────────────
    From a fresh critic reading the reworked page against the brand rubric. */
 
-/* The hero centred its copy in a 520px box, leaving ~206px of dead ground
-   under the CTAs — larger than any other gap on the page. */
-.v3 .v3-hero-plain .v3-current-main{min-height:460px}
-.v3 .v3-hero-plain{padding-bottom:72px}
-@media(max-width:900px){.v3 .v3-hero-plain .v3-current-main{min-height:400px}.v3 .v3-hero-plain{padding-bottom:56px}}
+/* The hero is a two-column spread now: copy left, the services window right,
+   the contour art behind both. It replaces the old stacked cluster, where two
+   overlapping windows sat in a band under the copy. Centring the two columns
+   also closes the ~206px of dead ground the solo-copy version left. */
+.v3 .v3-hero-plain .v3-current-main{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(390px,.8fr);gap:56px;align-items:center;min-height:400px}
+.v3 .v3-hero-plain .v3-current-main>.v3-experiment-copy{width:100%}
+/* In the narrower column the headline broke as "A senior digital product /
+   studio", orphaning one word above the flash line. Balanced, it reads
+   "A senior digital / product studio". */
+.v3 .v3-hero-plain .v3-current-main>.v3-experiment-copy h1{text-wrap:balance}
+.v3 .v3-hero-plain{padding-bottom:80px}
+.v3-hero-panel-wrap{position:relative;z-index:4}
+@media(max-width:900px){
+  .v3 .v3-hero-plain .v3-current-main{grid-template-columns:1fr;gap:40px;min-height:0}
+  .v3 .v3-hero-plain{padding-bottom:72px}
+  .v3-hero-panel-wrap{width:min(560px,100%)}
+}
+@media(max-width:600px){.v3 .v3-hero-plain .v3-current-main{gap:32px}.v3 .v3-hero-plain{padding-bottom:56px}}
 
 /* Section headlines ran at five different sizes (47.5 / 47.5 / 37.4 / 41.8 /
    57.6px at 1440), and the closing CTA was larger than the h1 — a hierarchy
@@ -566,7 +579,10 @@
 /* The Q->A connector floated in dead space: it began ~250px after the
    question and stopped ~40px short of the icon, connecting nothing. It now
    bridges its whole column and runs into the answer block. */
-.v3 .v3-help-ledger-row{grid-template-columns:34px minmax(280px,.82fr) minmax(110px,.26fr) minmax(300px,.76fr)}
+/* The answer column only carries the icon and the door now (the nouns moved
+   to the hero window), so it narrows and the connector gets the slack. */
+.v3 .v3-help-ledger-row{grid-template-columns:34px minmax(280px,.9fr) minmax(150px,.36fr) minmax(210px,.5fr)}
+.v3 .v3-help-ledger-answer{align-items:center}
 .v3 .v3-help-ledger-line{margin-right:-24px}
 
 /* The products strip was the only content block on the page with no kicker,
