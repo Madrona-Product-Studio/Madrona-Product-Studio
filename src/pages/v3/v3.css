@@ -631,3 +631,25 @@
    against canon's one-flash rule. The numerals are ordinals, not accents;
    the orange stays on the arrows, which are the actionable mark. */
 .v3 .v3-help-ledger-num{color:var(--v3-muted)}
+
+
+/* The hero services window (Charlie, 2026-09-09). It read thin as four rows
+   of grey text, so it took on what the retired practice window carried: the
+   concrete things we make, as one chip row per door, and the stack as a quiet
+   strip along the bottom. The marks are the texture the all-text box lacked,
+   and they are the credible part - real tools, not a capability list. The
+   panel column widens so each chip row holds one line. */
+.v3 .v3-hero-plain .v3-current-main{grid-template-columns:minmax(0,.92fr) minmax(430px,.92fr);gap:48px}
+.v3 .v3-hero-services li a{grid-template-columns:158px 1fr auto;align-items:center;padding:11px 16px}
+.v3-hero-chips{display:flex;flex-wrap:wrap;gap:5px}
+.v3 .v3-hero-services .v3-hero-chips em{padding:4px 9px;border:1px solid var(--v3-soft);border-radius:999px;background:var(--v3-paper);color:var(--v3-ink70);font:500 11px/1.3 Inter,sans-serif;font-style:normal;white-space:nowrap}
+.v3-hero-stack{display:flex;align-items:center;gap:16px;padding:13px 16px;border-top:1px solid var(--v3-line);background:color-mix(in srgb,var(--v3-ink) 3%,var(--v3-card))}
+.v3-hero-stack>span{flex:none;color:var(--v3-muted);font:700 10px/1 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase}
+.v3 .v3-hero-stack ul{display:flex;align-items:center;gap:18px;margin:0 0 0 auto;padding:0;list-style:none}
+.v3 .v3-hero-stack li{border-bottom:0}
+.v3-hero-stack img{width:17px;height:17px;object-fit:contain;opacity:.72}
+/* This rule sits after the earlier responsive block, so the collapse has to
+   be restated here or the 430px minimum column survives below 900px and
+   pushes the window off a phone screen. */
+@media(max-width:900px){.v3 .v3-hero-plain .v3-current-main{grid-template-columns:1fr;gap:40px}.v3 .v3-hero-services li a{grid-template-columns:1fr auto;row-gap:8px}.v3-hero-chips{grid-column:1}}
+@media(max-width:600px){.v3-hero-stack{gap:10px;padding:12px 14px}.v3 .v3-hero-stack ul{gap:13px}.v3-hero-stack img{width:15px;height:15px}}
