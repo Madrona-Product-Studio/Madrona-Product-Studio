@@ -21,8 +21,11 @@ export interface ResponsiveImage {
 }
 
 export const SIZES = {
-  // Four-up tile grids on a 1240px shell (home proof grid, "drawn to").
+  // Four-up tile grids on a 1240px shell.
   tile4: "(max-width: 600px) calc(100vw - 32px), (max-width: 900px) 50vw, 300px",
+  // Three-up tile grid on a 1240px shell (home proof strip, after the
+  // 2026-09-09 density pass dropped Berry Good's duplicate card).
+  tile3: "(max-width: 600px) calc(100vw - 32px), (max-width: 900px) 235px, 404px",
   // Half of the shell: services overview art, door-page module image.
   half: "(max-width: 600px) calc(100vw - 32px), (max-width: 900px) 720px, 576px",
   // The door page hero figure (min(520px, 92%) of its column).
