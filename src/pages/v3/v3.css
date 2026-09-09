@@ -335,14 +335,13 @@
    fir, moss, plum, copper, sage, stone — the PNW register. "-deep" is the
    board tone itself; the base is a lifted version for dark-ground ink. */
 .v3{--hue-fir:#7C9271;--hue-fir-deep:#394933;--hue-moss:#9A9A62;--hue-moss-deep:#666642;--hue-plum:#8F6B7E;--hue-plum-deep:#513B46;--hue-copper:#C98A5E;--hue-copper-deep:#A0603A;--hue-sage:#A3AC8B;--hue-sage-deep:#6F7A55;--hue-stone:#C4B5A5;--hue-stone-deep:#8F8272}
-.v3-tile-ai{background:color-mix(in srgb,var(--hue-fir-deep) 14%,#fff);color:var(--hue-fir-deep)}
-.v3-tile-web{background:color-mix(in srgb,var(--hue-copper-deep) 14%,#fff);color:var(--hue-copper-deep)}
-.v3-tile-growth{background:color-mix(in srgb,var(--hue-stone-deep) 16%,#fff);color:var(--hue-stone-deep)}
-.v3-tile-product{background:color-mix(in srgb,var(--hue-moss-deep) 15%,#fff);color:var(--hue-moss-deep)}
-[data-theme="night"] .v3 .v3-tile-ai,[data-theme="dusk"] .v3 .v3-tile-ai{background:color-mix(in srgb,var(--hue-fir-deep) 78%,var(--v3-bg));color:color-mix(in srgb,var(--hue-fir) 70%,#fff)}
-[data-theme="night"] .v3 .v3-tile-web,[data-theme="dusk"] .v3 .v3-tile-web{background:color-mix(in srgb,var(--hue-copper-deep) 62%,var(--v3-bg));color:color-mix(in srgb,var(--hue-copper) 72%,#fff)}
-[data-theme="night"] .v3 .v3-tile-growth,[data-theme="dusk"] .v3 .v3-tile-growth{background:color-mix(in srgb,var(--hue-stone-deep) 72%,var(--v3-bg));color:color-mix(in srgb,var(--hue-stone) 82%,#fff)}
-[data-theme="night"] .v3 .v3-tile-product,[data-theme="dusk"] .v3 .v3-tile-product{background:color-mix(in srgb,var(--hue-moss-deep) 74%,var(--v3-bg));color:color-mix(in srgb,var(--hue-moss) 72%,#fff)}
+/* One chip for all four (Charlie, 2026-09-09). The per-door hues were mixed
+   with #fff against a warm #f5f1ea ground, so they landed as four almost-
+   identical cool greys: a colour system in name only, and muddy next to the
+   paper. Mixed with the ground now, and unified, so the orange arrow is the
+   only accent in the row. */
+.v3-help-ledger-icon{background:color-mix(in srgb,var(--v3-ink) 7%,var(--v3-bg));color:var(--v3-ink70)}
+[data-theme="night"] .v3 .v3-help-ledger-icon,[data-theme="dusk"] .v3 .v3-help-ledger-icon{background:color-mix(in srgb,#F7EDE4 11%,var(--v3-bg));color:color-mix(in srgb,#F7EDE4 76%,var(--v3-bg))}
 [data-theme="night"] .v3 .v3-practice-terms,[data-theme="dusk"] .v3 .v3-practice-terms{background:rgba(247,237,228,.12);color:#EDE6D9}
 [data-theme="night"] .v3 .v3-experience img,[data-theme="dusk"] .v3 .v3-experience img{filter:grayscale(1) invert(1) brightness(1.65)}
 [data-theme="night"] .v3 .v3-artifact,[data-theme="night"] .v3 .v3-service-proof{border-color:rgba(247,237,228,.22);box-shadow:0 20px 55px rgba(0,0,0,.5)}
@@ -620,3 +619,15 @@
    both ways. Canon: full-width hairlines carry the rhythm. */
 .v3 .v3-section.v3-shell{position:relative;border-top:0}
 .v3 .v3-section.v3-shell::before{content:"";position:absolute;top:0;left:50%;width:100vw;height:1px;transform:translateX(-50%);background:var(--v3-line)}
+
+/* Ledger refinement (Charlie, 2026-09-09). The question ran 28.8px in the
+   display face against a 14px answer label — a 2.1x gap between the two
+   halves of one correspondence, so the question shouted (four sub-headlines
+   competing with the 47.5px section head) and the actionable half whispered.
+   Closed to ~1.4x by bringing the question down and the label up. */
+.v3 .v3-help-ledger-row h3{font-size:clamp(1.35rem,1.65vw,1.75rem);line-height:1.14}
+.v3 .v3-help-ledger-answer strong{font-size:16.5px;letter-spacing:-.01em}
+/* Nine orange marks in one section (kicker + four numerals + four arrows)
+   against canon's one-flash rule. The numerals are ordinals, not accents;
+   the orange stays on the arrows, which are the actionable mark. */
+.v3 .v3-help-ledger-num{color:var(--v3-muted)}
