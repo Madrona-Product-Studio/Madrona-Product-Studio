@@ -3,14 +3,15 @@ import { ctaClick } from "../../lib/analytics";
 import { serviceAreas, type ServiceId } from "../../data/services";
 import { HeroChart } from "./HeroChart";
 import { WindowBar } from "./ReadCard";
-import { OpportunityReport } from "./OpportunityReport";
-import { computeOpportunityReport } from "./opportunityEngine";
-import "./opportunity-report.css";
 
 // The hero direction (Charlie, 2026-08-29): the chart-of-the-bay contour
-// animation bleeding off the right edge (replaced the six-photo rotation),
-// message left on warm paper, and two browser-window artifacts (2026-08-28):
-// the assessment's example read and a plain-words what-we-do window.
+// animation bleeding off the right edge, message left on warm paper.
+// The 2026-09-09 density pass cut the assessment's example read — a stranger
+// had to decode a three-part report card before learning what the studio is —
+// and kept the services window (Charlie, same day): it is the fastest answer
+// to "what do you actually do", so it earns the fold. The two artifacts used
+// to overlap in a cluster below the copy; with one left, the hero is a plain
+// two-column spread, copy against panel, art behind both.
 const doorRoutes: Record<string, string> = { "operations-and-ai": "/services/ai-operations", "customers-and-growth": "/services/growth-retention", "brand-and-web": "/services/brand-website", "new-products": "/services/new-products" };
 
 // Condensed from each door's homepageItems: the hero window leads with the
@@ -22,23 +23,6 @@ const serviceLines: Record<ServiceId, string> = {
   "new-products": "Strategy, prototypes, MVPs",
 };
 
-// The example read is the real artifact: a plausible owner's answers run
-// through the same engine the assessment uses, so the hero never shows a
-// card the tool can't produce. One area deliberately light on hours, so the
-// read can be seen saying "not here".
-const heroRead = computeOpportunityReport({
-  chips: ["invoices", "questions", "retyping"],
-  moneyHours: 3,
-  moneyEvidence: [0],
-  customersHours: 2,
-  customersEvidence: [0],
-  glueHours: 1,
-  glueEvidence: [1],
-  ai: 1,
-  blocker: [0],
-  readiness: 1,
-});
-
 function HeroCopy() {
   return <div className="v3-home-copy v3-experiment-copy">
     <h1>A senior digital product studio <span>built for the AI era.</span></h1>
@@ -47,11 +31,6 @@ function HeroCopy() {
   </div>;
 }
 
-export { WindowBar };
-
-// The second hero artifact (rethought 2026-08-28): what we do, in concrete
-// nouns, so the practice is legible on landing. Door phrases stay on the
-// service pages themselves.
 function ServicesPanel() {
   return <article className="v3-artifact v3-hero-services">
     <WindowBar path="madronaproduct.com/services" note="four ways in" />
@@ -60,11 +39,11 @@ function ServicesPanel() {
 }
 
 export function Hero() {
-  return <section className="v3-current-hero">
+  return <section className="v3-current-hero v3-hero-plain">
     <div className="v3-shell v3-current-main">
       <HeroCopy />
       <div className="v3-current-images" aria-hidden="true"><HeroChart /></div>
-      <div className="v3-current-cluster"><OpportunityReport data={heroRead} variant="hero" /><div className="v3-current-proof-wrap"><ServicesPanel /></div></div>
+      <div className="v3-hero-panel-wrap"><ServicesPanel /></div>
     </div>
   </section>;
 }
