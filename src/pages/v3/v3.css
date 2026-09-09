@@ -167,16 +167,6 @@
    drawn-to section ported from the live site, and the head compacts. */
 .v3 .v3-help-head{display:block;margin-bottom:40px}
 .v3 .v3-help-head .v3-help-lede{max-width:52ch;margin-top:16px}
-.v3-drawn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.v3-drawn-grid figure{margin:0}
-.v3-drawn-grid img{display:block;width:100%;height:230px;object-fit:cover;border-radius:8px}
-.v3-drawn-grid figcaption{display:flex;gap:12px;align-items:center;padding:14px 2px 0;border-top:1px solid var(--v3-line);margin-top:14px}
-.v3-drawn-icon{display:inline-flex;flex:none;width:34px;height:34px;align-items:center;justify-content:center;border-radius:50%;background:var(--tint-copper);color:var(--v3-bark-dark)}
-.v3-drawn-icon svg{width:15px;height:15px}
-.v3-drawn-grid strong{display:block;font-size:13px;letter-spacing:-.01em}
-.v3-drawn-grid small{color:var(--v3-muted);font-size:11px}
-@media(max-width:900px){.v3-drawn-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.v3-drawn-grid{grid-template-columns:1fr}.v3-drawn-grid img{height:200px}}
 /* Round 13 (2026-08-29): alternating grounds + spacing round two. Light
    bands (paper) carry practice, the practice window, and drawn-to, echoing
    the live site's strata; section rhythm steps down again. */
@@ -192,28 +182,6 @@
 @media(max-width:600px){.v3 .v3-thinking{grid-template-columns:1fr;gap:28px}}
 /* Round 14 (2026-08-29): practice window locked — logos-only stack (engine
    layer cut as too much). Folded from the practice-window lab. */
-.v3-pw{max-width:1080px;box-shadow:0 22px 58px rgba(26,23,20,.14)}
-.v3-pw-skills{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.v3-pw-skills section{display:flex;flex-direction:column;gap:7px}
-.v3-pw-skills strong{margin-bottom:5px;font-size:12.5px}
-.v3-pw-skills span{color:var(--v3-clay);font-size:11.5px}
-.v3-pw-row{display:grid;grid-template-columns:84px 1fr;gap:20px;padding:20px 24px;border-bottom:1px solid var(--v3-soft)}
-.v3-pw-row:last-child{border-bottom:0}
-.v3 .v3-pw-row h3{margin:2px 0;color:var(--v3-muted);font:700 11px/1.2 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase}
-.v3-pw-marks{display:grid;grid-template-columns:repeat(5,1fr);gap:16px 24px;margin:0;padding:0;list-style:none}
-.v3-pw-mark{display:flex;align-items:center;gap:9px}
-.v3-pw-mark img{width:17px;height:17px;object-fit:contain;opacity:.82}
-.v3-pw-mark i{display:inline-flex;width:17px;height:17px;align-items:center;justify-content:center;border-radius:4px;background:var(--v3-soft);color:var(--v3-ink70);font-style:normal;font:700 11px/1 Inter,sans-serif}
-.v3-pw-mark span{font-size:12.5px;font-weight:600;letter-spacing:-.005em}
-.v3-pw-toolchips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 14px;padding:0;list-style:none}
-.v3 .v3-pw-toolchips a{display:inline-block;padding:7px 11px;border:1px solid var(--v3-soft);border-radius:999px;background:var(--v3-paper);color:var(--v3-ink70);font-size:11.5px;transition:border-color 160ms ease,color 160ms ease}
-.v3 .v3-pw-toolchips a:hover{border-color:var(--v3-bark);color:var(--v3-bark-dark)}
-.v3 .v3-pw-all{font:700 11px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--v3-ink)}
-.v3 .v3-pw-all span{color:var(--v3-bark-dark)}
-.v3 .v3-pw-all:hover{color:var(--v3-bark-dark)}
-@media(max-width:900px){.v3-pw-skills{grid-template-columns:1fr 1fr}}
-@media(max-width:900px){.v3-pw-marks{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:600px){.v3-pw-skills{grid-template-columns:1fr}.v3-pw-row{grid-template-columns:1fr;gap:10px}.v3-pw-marks{grid-template-columns:repeat(2,1fr);gap:12px 16px}}
 /* Round 15 (2026-08-29): practice output-first + compact; Berry 4:3 frame;
    proof cards linkable + tighter; tools coverage chips. */
 .v3 .v3-practice-steps li{padding:24px 32px 22px 0}
@@ -237,7 +205,6 @@
 .v3 .v3-proof-card i{color:var(--v3-bark-dark);font-style:normal;font-size:13px;transition:transform .18s ease}
 .v3 .v3-proof-card:hover i{transform:translateX(2px)}
 .v3 .v3-proof-all{display:inline-flex;margin-top:26px}
-.v3-pw-soon{padding:7px 11px;border:1px dashed var(--v3-line);border-radius:999px;color:var(--v3-muted);font-size:11.5px}
 @media(max-width:600px){.v3 .v3-practice-steps li{padding:20px 0}.v3-practice-ctas{flex-direction:column;align-items:stretch;gap:12px}.v3 .v3-practice-ctas .v3-practice-link{align-self:flex-start}.v3 .v3-proof-card img{height:200px}}
 /* Round 16 (2026-08-29): Berry links row (visit-live-demo + operations). */
 .v3-berry-links{display:flex;align-items:center;gap:22px;margin-top:20px;flex-wrap:wrap}
@@ -372,23 +339,14 @@
 .v3-tile-web{background:color-mix(in srgb,var(--hue-copper-deep) 14%,#fff);color:var(--hue-copper-deep)}
 .v3-tile-growth{background:color-mix(in srgb,var(--hue-stone-deep) 16%,#fff);color:var(--hue-stone-deep)}
 .v3-tile-product{background:color-mix(in srgb,var(--hue-moss-deep) 15%,#fff);color:var(--hue-moss-deep)}
-.v3-drawn-icon.is-health{background:color-mix(in srgb,var(--hue-sage-deep) 14%,#fff);color:var(--hue-sage-deep)}
-.v3-drawn-icon.is-outdoors{background:color-mix(in srgb,var(--hue-fir-deep) 14%,#fff);color:var(--hue-fir-deep)}
-.v3-drawn-icon.is-shops{background:color-mix(in srgb,var(--hue-copper-deep) 14%,#fff);color:var(--hue-copper-deep)}
-.v3-drawn-icon.is-farms{background:color-mix(in srgb,var(--hue-moss-deep) 15%,#fff);color:var(--hue-moss-deep)}
 [data-theme="night"] .v3 .v3-tile-ai,[data-theme="dusk"] .v3 .v3-tile-ai{background:color-mix(in srgb,var(--hue-fir-deep) 78%,var(--v3-bg));color:color-mix(in srgb,var(--hue-fir) 70%,#fff)}
 [data-theme="night"] .v3 .v3-tile-web,[data-theme="dusk"] .v3 .v3-tile-web{background:color-mix(in srgb,var(--hue-copper-deep) 62%,var(--v3-bg));color:color-mix(in srgb,var(--hue-copper) 72%,#fff)}
 [data-theme="night"] .v3 .v3-tile-growth,[data-theme="dusk"] .v3 .v3-tile-growth{background:color-mix(in srgb,var(--hue-stone-deep) 72%,var(--v3-bg));color:color-mix(in srgb,var(--hue-stone) 82%,#fff)}
 [data-theme="night"] .v3 .v3-tile-product,[data-theme="dusk"] .v3 .v3-tile-product{background:color-mix(in srgb,var(--hue-moss-deep) 74%,var(--v3-bg));color:color-mix(in srgb,var(--hue-moss) 72%,#fff)}
-[data-theme="night"] .v3 .v3-drawn-icon.is-health,[data-theme="dusk"] .v3 .v3-drawn-icon.is-health{background:color-mix(in srgb,var(--hue-sage-deep) 66%,var(--v3-bg));color:color-mix(in srgb,var(--hue-sage) 74%,#fff)}
-[data-theme="night"] .v3 .v3-drawn-icon.is-outdoors,[data-theme="dusk"] .v3 .v3-drawn-icon.is-outdoors{background:color-mix(in srgb,var(--hue-fir-deep) 78%,var(--v3-bg));color:color-mix(in srgb,var(--hue-fir) 70%,#fff)}
-[data-theme="night"] .v3 .v3-drawn-icon.is-shops,[data-theme="dusk"] .v3 .v3-drawn-icon.is-shops{background:color-mix(in srgb,var(--hue-copper-deep) 62%,var(--v3-bg));color:color-mix(in srgb,var(--hue-copper) 72%,#fff)}
-[data-theme="night"] .v3 .v3-drawn-icon.is-farms,[data-theme="dusk"] .v3 .v3-drawn-icon.is-farms{background:color-mix(in srgb,var(--hue-moss-deep) 74%,var(--v3-bg));color:color-mix(in srgb,var(--hue-moss) 72%,#fff)}
 [data-theme="night"] .v3 .v3-practice-terms,[data-theme="dusk"] .v3 .v3-practice-terms{background:rgba(247,237,228,.12);color:#EDE6D9}
 [data-theme="night"] .v3 .v3-experience img,[data-theme="dusk"] .v3 .v3-experience img{filter:grayscale(1) invert(1) brightness(1.65)}
-[data-theme="night"] .v3 .v3-pw-soon,[data-theme="dusk"] .v3 .v3-pw-soon{border-color:rgba(247,237,228,.30);color:#BDB6AA}
-[data-theme="night"] .v3 .v3-artifact,[data-theme="night"] .v3 .v3-pw,[data-theme="night"] .v3 .v3-service-proof{border-color:rgba(247,237,228,.22);box-shadow:0 20px 55px rgba(0,0,0,.5)}
-[data-theme="dusk"] .v3 .v3-artifact,[data-theme="dusk"] .v3 .v3-pw,[data-theme="dusk"] .v3 .v3-service-proof{border-color:rgba(247,237,228,.24);box-shadow:0 20px 55px rgba(26,15,22,.5)}
+[data-theme="night"] .v3 .v3-artifact,[data-theme="night"] .v3 .v3-service-proof{border-color:rgba(247,237,228,.22);box-shadow:0 20px 55px rgba(0,0,0,.5)}
+[data-theme="dusk"] .v3 .v3-artifact,[data-theme="dusk"] .v3 .v3-service-proof{border-color:rgba(247,237,228,.24);box-shadow:0 20px 55px rgba(26,15,22,.5)}
 [data-theme="night"] .v3 .v3-proof-grid figure,[data-theme="dusk"] .v3 .v3-proof-grid figure{border:1px solid rgba(247,237,228,.16)}
 
 /* Light islands (Charlie 08-30): dark skies keep their ground, but frames —
@@ -540,9 +498,52 @@
    a pseudo-element widens the hit area to 44px on touch widths. Tabs and
    chips are standalone rows, so they get real minimum heights instead. */
 @media(max-width:900px){
-.v3 .v3-practice-link,.v3 .v3-pw-all,.v3 .v3-proof-all,.v3 .v3-hero-text-link{position:relative}
-.v3 .v3-practice-link::after,.v3 .v3-pw-all::after,.v3 .v3-proof-all::after,.v3 .v3-hero-text-link::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
+.v3 .v3-practice-link,.v3 .v3-proof-all,.v3 .v3-hero-text-link{position:relative}
+.v3 .v3-practice-link::after,.v3 .v3-proof-all::after,.v3 .v3-hero-text-link::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
 .v3 .v3-berry-tabs button{min-height:44px}
 .v3 .v3-btn-compact{min-height:44px}
-.v3 .v3-pw-toolchips a{display:inline-flex;align-items:center;min-height:44px}
 }
+
+/* ── Density pass, 2026-09-09 (Charlie) ────────────────────────────────────
+   Four sections came off the homepage. Section padding had been squeezed
+   from 150px to 72px over successive rounds to fit the payload; with the
+   payload gone the air comes back. Nothing here changes the type ramp or
+   the palette — it only gives what remains more room. */
+
+/* The hero no longer carries the two browser windows, so .v3-current-main's
+   720px min-height (sized for the cluster) would leave a void. It now only
+   has to hold the copy and the contour art bleeding off the right edge. */
+/* With the windows gone the copy is the only flow child, so it centers
+   against the contour art instead of stranding ~330px of dead space below. */
+.v3 .v3-hero-plain .v3-current-main{display:flex;align-items:center;min-height:520px}
+.v3 .v3-hero-plain{padding-bottom:96px}
+@media(max-width:900px){.v3 .v3-hero-plain .v3-current-main{min-height:440px}.v3 .v3-hero-plain{padding-bottom:72px}}
+@media(max-width:600px){.v3 .v3-hero-plain .v3-current-main{display:flex;flex-direction:column;align-items:stretch;min-height:0}.v3 .v3-hero-plain{padding-bottom:8px}}
+
+/* Air restored between sections. */
+.v3 .v3-section{padding-block:112px}
+@media(max-width:900px){.v3 .v3-section{padding-block:88px}}
+@media(max-width:600px){.v3 .v3-section{padding-block:68px}}
+
+/* The ledger is now the homepage's only statement of the four services, so
+   its rows can breathe and the nouns can be read rather than squinted at. */
+.v3 .v3-help-ledger-row{padding:28px 0}
+.v3 .v3-help-ledger-answer small{font-size:12px;letter-spacing:-.005em}
+@media(max-width:600px){.v3 .v3-help-ledger-row{padding:24px 0}}
+
+/* Berry Good and the product grid are one proof section now: the worked
+   example leads, the live products follow as a quiet strip below a hairline. */
+.v3-proof-strip{margin-top:88px;padding-top:38px;border-top:1px solid var(--v3-line)}
+.v3 .v3-proof-strip-label{max-width:56ch;margin:0 0 26px;color:var(--v3-clay);font-size:14px;line-height:1.55}
+.v3 .v3-proof-strip .v3-proof-grid{grid-template-columns:repeat(3,1fr)}
+/* The base .v3-proof-grid figcaption rule sets flex-direction:column, which the
+   later .v3-proof-card rule never overrode — so align-items:center was centering
+   the card captions. Rows, left-aligned, per the brand's no-centered-layouts rule. */
+.v3 .v3-proof-card figcaption{flex-direction:row}
+@media(max-width:900px){.v3-proof-strip{margin-top:64px}.v3 .v3-proof-strip .v3-proof-grid{grid-template-columns:repeat(3,1fr);gap:10px}.v3 .v3-proof-strip .v3-proof-card img{height:140px}}
+@media(max-width:600px){.v3-proof-strip{margin-top:48px;padding-top:30px}.v3 .v3-proof-strip .v3-proof-grid{grid-template-columns:1fr}.v3 .v3-proof-strip .v3-proof-card img{height:200px}}
+
+/* The Thinking headline never used .v3-help-head, so it kept the full 4.25rem
+   h2 clamp. With four sections gone it became the loudest headline on the
+   page, over the quietest content. Matched to the section-headline scale. */
+.v3 .v3-thinking h2{max-width:20ch;font-size:clamp(2.05rem,2.9vw,3rem);line-height:1.04;text-wrap:balance}

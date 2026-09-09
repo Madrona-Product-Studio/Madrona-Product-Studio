@@ -8,18 +8,19 @@ interface HelpItem {
   id: string;
   question: string;
   label: string;
-  detail: string;
   nouns: string;
   route: string;
 }
 
 // Canon door order: Work smarter leads sitewide (agentic-forward, 2026-08-13).
+// The per-row `detail` benefit line and the section lede were cut in the
+// 2026-09-09 density pass: this ledger is now the homepage's single statement
+// of the four services, so each row is question -> label -> concrete nouns.
 const helpItems: HelpItem[] = [
   {
     id: "ai",
     question: "Feels like AI should help, but not sure where to start?",
     label: "AI & Operations",
-    detail: "Practical AI on your real workflows, from the first map to working agents.",
     nouns: "Agents, assistants, automation, internal tools",
     route: "/services/ai-operations",
   },
@@ -27,7 +28,6 @@ const helpItems: HelpItem[] = [
     id: "web",
     question: "Website just OK, and not doing the business justice?",
     label: "Brand & Website",
-    detail: "Brand, messaging, and a site built to earn trust.",
     nouns: "Positioning, identity, websites and stores",
     route: "/services/brand-website",
   },
@@ -35,7 +35,6 @@ const helpItems: HelpItem[] = [
     id: "growth",
     question: "People buy once, then you never hear from them again?",
     label: "Growth & Retention",
-    detail: "Make it easier for customers to buy, come back, and stay connected.",
     nouns: "Online stores, loyalty, lifecycle email",
     route: "/services/growth-retention",
   },
@@ -43,7 +42,6 @@ const helpItems: HelpItem[] = [
     id: "product",
     question: "Have an idea that deserves to become real?",
     label: "New Products",
-    detail: "From concept to something real people use.",
     nouns: "Strategy, prototypes, MVPs, launch",
     route: "/services/new-products",
   },
@@ -69,7 +67,6 @@ export function HelpSection() {
   return <section className="v3-section v3-shell v3-help">
     <div className="v3-help-head">
       <p className="v3-kicker">What we can help with</p><h2>Four problems we hear <span>every week.</span></h2>
-      <p className="v3-help-lede">Owners, founders, and teams bring us these. Each one has a clear first move, and we have built it before.</p>
     </div>
     <div className="v3-help-ledger">
       {helpItems.map((item, index) => <Link to={item.route} key={item.id} className="v3-help-ledger-row">
@@ -80,7 +77,6 @@ export function HelpSection() {
           <span className={`v3-help-ledger-icon v3-tile-${item.id}`}><HelpIcon id={item.id} /></span>
           <div>
             <strong>{item.label} <i aria-hidden="true">→</i></strong>
-            <p>{item.detail}</p>
             <small>{item.nouns}</small>
           </div>
         </div>
