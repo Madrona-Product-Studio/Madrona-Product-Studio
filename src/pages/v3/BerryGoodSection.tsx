@@ -67,6 +67,7 @@ export function BerryGoodSection() {
     </div>
 
     <div className="v3-proof-strip">
+      <p className="v3-kicker">Our own products</p>
       <p className="v3-proof-strip-label">We build products, and we run them. Our own apps keep our product judgment close to real users.</p>
       <div className="v3-proof-grid">{proof.map(({ image, name, status, href, external }) => external
         ? <a className="v3-proof-card" key={name} href={href} target="_blank" rel="noreferrer" onClick={outboundClick(href, "home-proof")}><img {...imgProps(image, SIZES.tile3)} alt={`${name} product interface`} loading="lazy" decoding="async" /><figcaption><div><strong>{name}</strong><span>{status}</span></div><i aria-hidden="true">↗︎</i></figcaption></a>

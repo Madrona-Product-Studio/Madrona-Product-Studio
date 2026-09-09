@@ -547,3 +547,31 @@
    h2 clamp. With four sections gone it became the loudest headline on the
    page, over the quietest content. Matched to the section-headline scale. */
 .v3 .v3-thinking h2{max-width:20ch;font-size:clamp(2.05rem,2.9vw,3rem);line-height:1.04;text-wrap:balance}
+
+/* ── Cold-read fixes, 2026-09-09 ───────────────────────────────────────────
+   From a fresh critic reading the reworked page against the brand rubric. */
+
+/* The hero centred its copy in a 520px box, leaving ~206px of dead ground
+   under the CTAs — larger than any other gap on the page. */
+.v3 .v3-hero-plain .v3-current-main{min-height:460px}
+.v3 .v3-hero-plain{padding-bottom:72px}
+@media(max-width:900px){.v3 .v3-hero-plain .v3-current-main{min-height:400px}.v3 .v3-hero-plain{padding-bottom:56px}}
+
+/* Section headlines ran at five different sizes (47.5 / 47.5 / 37.4 / 41.8 /
+   57.6px at 1440), and the closing CTA was larger than the h1 — a hierarchy
+   inversion. Two steps now: full-width heads, then rail heads, both under h1. */
+.v3 .v3-berry-rail h2,.v3 .v3-thinking h2{font-size:clamp(2.05rem,2.95vw,3.1rem)}
+.v3 .v3-final-cta h2{font-size:clamp(2.2rem,3.6vw,3.9rem)}
+
+/* The Q->A connector floated in dead space: it began ~250px after the
+   question and stopped ~40px short of the icon, connecting nothing. It now
+   bridges its whole column and runs into the answer block. */
+.v3 .v3-help-ledger-row{grid-template-columns:34px minmax(280px,.82fr) minmax(110px,.26fr) minmax(300px,.76fr)}
+.v3 .v3-help-ledger-line{margin-right:-24px}
+
+/* The products strip was the only content block on the page with no kicker,
+   so it floated unlabelled between two labelled spreads. */
+.v3-proof-strip .v3-kicker{margin-bottom:14px}
+
+/* Band rhythm: three of the four light bands left with the cut sections, so
+   "How we work" was a lone alternation reading as arbitrary. Alternates again. */
