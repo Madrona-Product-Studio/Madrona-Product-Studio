@@ -124,9 +124,9 @@ export const pages = {
     body: "Madrona exists to put the Madrona Product Thesis into practice. Our own products and client work are the evidence, built with trusted people across disciplines, and pointed at work that leaves the world a little better than we found it.",
   },
   "/apps": {
-    title: "Products · Madrona Product Studio",
-    description: "Products Madrona builds to solve real customer problems, create useful software, and practice better ways of building.",
-    h1: "Our products",
+    title: "Apps · Madrona Product Studio",
+    description: "Apps Madrona builds to solve real customer problems, create useful software, and practice better ways of building.",
+    h1: "Our apps",
     body: "Each Madrona product begins with a real customer problem and creates a place to test ideas, improve our methods, and make something useful in its own right.",
   },
   "/thinking": {

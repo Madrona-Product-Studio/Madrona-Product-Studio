@@ -86,7 +86,7 @@ export default function MadronaV2Apps() {
 
       <section className="m2-phead">
         <div className="m2-ab-intro-copy">
-          <h1>Our products</h1>
+          <h1>Our apps</h1>
           <span className="m2-ab-rule" aria-hidden="true" />
           <p className="m2-ab-headline">We build our own products because the best way to understand a new way of working is to practice it.</p>
           <div className="m2-ab-body">

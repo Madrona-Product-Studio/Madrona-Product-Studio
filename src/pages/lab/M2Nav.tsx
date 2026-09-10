@@ -8,11 +8,12 @@ import { useFocusTrap } from "./useFocusTrap";
 
 type NavKey = "apps" | "tools" | "services" | "pov" | "open" | "about";
 
-// Functional labels: Products · Services · Tools · Articles.
+// Functional labels: Apps · Services · Tools · Articles. ("Products" became
+// "Apps" 2026-09-10, Charlie — the /apps route always matched.)
 // "Tools" is the deployable-agent gallery (moved from /agents). Nav links stay
 // ink; only the active page carries the bark accent.
 const LINKS: { href: string; label: string; key: NavKey; primary?: boolean }[] = [
-  { href: "/apps", label: "Products", key: "apps" },
+  { href: "/apps", label: "Apps", key: "apps" },
   { href: "/services", label: "Services", key: "services" },
   { href: "/tools", label: "Tools", key: "tools" },
   { href: "/thinking", label: "Articles", key: "pov" },
@@ -98,7 +99,7 @@ export default function M2Nav({ active }: { active?: NavKey }) {
           </button>
         </div>
         <nav className="m2-navmenu-links" aria-label="Menu">
-          <Link className="m2-navmenu-parent" to="/apps" aria-current={active === "apps" ? "page" : undefined} onClick={() => setOpen(false)}>Products</Link>
+          <Link className="m2-navmenu-parent" to="/apps" aria-current={active === "apps" ? "page" : undefined} onClick={() => setOpen(false)}>Apps</Link>
           <Link className="m2-navmenu-parent" to="/services" aria-current={active === "services" ? "page" : undefined} onClick={() => setOpen(false)}>Services</Link>
           <div className="m2-navmenu-children">{SERVICE_LINKS.map(item => <Link to={item.href} key={item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}</div>
           <Link className="m2-navmenu-parent" to="/tools" aria-current={active === "tools" ? "page" : undefined} onClick={() => setOpen(false)}>Tools</Link>

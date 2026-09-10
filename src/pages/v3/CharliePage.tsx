@@ -46,7 +46,7 @@ const DOORS = [
       "Their health, the outdoors, how they travel. That's not positioning: I'm a hiker, skier, and boater in the Pacific Northwest, and I've built for those lives through every platform shift. Mobile at Microsoft, then eight years at REI through mobile, marketplaces, and a 22-million-member loyalty relaunch, then Healthline, where I shipped AI patient guidance at 90-million-visitor scale.",
       "Now I run a studio in the same three lanes, and I ship AI-native products weekly. Every shift, same domains. AI is the biggest shift yet, which is why I'm all in on it.",
     ],
-    cta: { label: "See the products", to: "/apps" },
+    cta: { label: "See the apps", to: "/apps" },
   },
   {
     id: "mission",
