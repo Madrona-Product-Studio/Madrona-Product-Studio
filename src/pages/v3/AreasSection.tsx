@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { AutomationMap } from "./showcase/AutomationMap";
 import { InspectionShowcase } from "./showcase/InspectionShowcase";
@@ -69,7 +70,7 @@ interface Area {
 }
 
 // Canon door order (AI & Operations leads), numbered to match.
-const areas: Area[] = [
+export const areas: Area[] = [
   {
     id: "ai-operations",
     name: "AI & Operations",
@@ -158,17 +159,19 @@ function BuiltList({ items, label = "Work and examples" }: { items: Built[]; lab
   </div>;
 }
 
-export function AreasSection() {
+// `intro` replaces the default section header (TEMP: used by the hero-to-work
+// transition preview, 2026-09-29); `firstClassName` adds a class to area 01.
+export function AreasSection({ intro, firstClassName = "" }: { intro?: ReactNode; firstClassName?: string } = {}) {
   return <div className="ar-areas">
     {areas.map((area, index) => {
       const { Showcase } = area;
       const number = String(index + 1).padStart(2, "0");
-      return <section key={area.id} id={`area-${area.id}`} className={`v3-section ar-area ${index % 2 ? "ar-area-flip v3-band-light" : ""}`} aria-labelledby={`area-${area.id}-q`}>
+      return <section key={area.id} id={`area-${area.id}`} className={`v3-section ar-area ${index % 2 ? "ar-area-flip v3-band-light" : ""} ${index === 0 ? firstClassName : ""}`} aria-labelledby={`area-${area.id}-q`}>
         <div className="v3-shell">
-          {index === 0 && <header className="ar-intro" id="work">
+          {index === 0 && (intro !== undefined ? intro : <header className="ar-intro" id="work">
             <div><p className="v3-kicker">The work</p>
             <h2>Here’s what we build.</h2></div>
-          </header>}
+          </header>)}
           <div className="ar-spread">
             <div className="ar-rail">
               <p className="v3-kicker ar-kicker"><span>{number}</span>{area.name}</p>

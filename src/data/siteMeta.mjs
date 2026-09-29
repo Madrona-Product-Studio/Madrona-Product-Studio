@@ -107,7 +107,7 @@ export const pages = {
     title: "Charlie Koch · Madrona Product Studio",
     description: "Charlie Koch is the founder of Madrona Product Studio in the Pacific Northwest: a product leader from Microsoft, REI, and Healthline who now ships AI-native products weekly. One career, read four ways, depending on why you're here.",
     noindex: true,
-    h1: "Products people come back to, through every platform shift.",
+    h1: "Building products and communities people come back to.",
     body: "Charlie Koch builds products people come back to because they are good for them, and has led that work through every platform shift: mobile, membership, and now AI. Charlie Koch led consumer product at Microsoft, REI, and Healthline, and now runs Madrona Product Studio, where he takes products from idea to live software in weeks. Four ways to read the same career: if you're hiring a product leader, if you run a business, if you build in travel, the outdoors, or wellness, and if your work changes lives. Every path starts with a conversation.",
   },
   "/thesis": {

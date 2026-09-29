@@ -66,7 +66,7 @@ const DOORS = [
 function CharlieHero() {
   return <header className="v3-section v3-shell ck-hero">
     <p className="v3-kicker">Charlie Koch · Madrona Product Studio · PNW,&nbsp;USA</p>
-    <h1>Products people come back to, <span>through every platform shift.</span></h1>
+    <h1>Building products and communities <span>people come back to.</span></h1>
     <p className="v3-lede ck-lede">
       I build products people come back to because they’re good for them, and I’ve led that work
       through every platform shift: mobile, membership, and now AI. Four ways to read the same career,
