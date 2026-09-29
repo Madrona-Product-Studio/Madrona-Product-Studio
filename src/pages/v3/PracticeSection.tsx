@@ -7,7 +7,7 @@ import { ctaClick } from "../../lib/analytics";
 const steps = [
   ["01", "Talk it through", "A clear read on where to start", "A free 30-minute conversation with a published agenda, and a clear first move by the end.", "Free · 30 minutes"],
   ["02", "Get it in writing", "A written point of view, yours to keep", "A short, honest read on where we can help, and where we can't.", "Free · yours either way"],
-  ["03", "Start small", "The smallest useful build, live", "A scoped first project with its win named up front, and visible payback.", "Paid · only if it makes sense"],
+  ["03", "Start small", "A strategy sprint or a first build", "Scoped, with its win named up front. Sometimes the best answer is not to build.", "Paid · only if it makes sense"],
 ];
 
 export function PracticeSection() {

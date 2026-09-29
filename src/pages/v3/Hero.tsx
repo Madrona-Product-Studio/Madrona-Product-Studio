@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { ctaClick } from "../../lib/analytics";
-import { serviceAreas, type ServiceId } from "../../data/services";
 import { HeroChart } from "./HeroChart";
 import { WindowBar } from "./ReadCard";
 
@@ -10,42 +9,39 @@ import { WindowBar } from "./ReadCard";
 // services window; the window then read thin as four rows of grey text, so it
 // took on the substance the retired practice window used to carry, at a
 // fraction of its size (Charlie, same day).
-const doorRoutes: Record<string, string> = { "operations-and-ai": "/services/ai-operations", "customers-and-growth": "/services/growth-retention", "brand-and-web": "/services/brand-website", "new-products": "/services/new-products" };
-
-// Concrete things we actually make, one row each. These replaced the abstract
-// capability nouns ("Automation, AI agents, internal tools"): a business owner
-// learns more from "Invoice chasing · Customer inbox · Month-end close".
-const examples: Record<ServiceId, string[]> = {
-  "operations-and-ai": ["Invoice chasing", "Customer inbox", "Month-end close"],
-  "brand-and-web": ["Brand systems", "Storefronts", "Landing pages"],
-  "customers-and-growth": ["Loyalty programs", "Win-back email", "Repeat ordering"],
-  "new-products": ["Prototypes", "MVPs", "AI features"],
-};
-
-// The stack the practice window used to list in full. Eight marks is enough to
-// place us: the build tools, then the run-the-business roster.
-const STACK = ["anthropic", "cursor", "vercel", "github", "shopify", "stripe", "quickbooks", "square"];
+// Positioning clarity pass, 2026-09-29 (Charlie): the hero stopped listing
+// four service departments and three audiences. It now says the two things we
+// lead with (brand and web, AI in the workflow) and shows one real workflow
+// instead of a menu. The window is the marine survey tool, anonymized until
+// the client grants reference permission. Its rows are the field-sheet review
+// step: the surveyor's shorthand, our reading, and who has to confirm it.
+const readings = [
+  { sheet: "Minor corrosion on fuel tanks", reading: "Minor corrosion on fuel tanks", area: "Fuel system", status: "Confirmed", tone: "done" },
+  { sheet: "Flares x", reading: "Flares expired or missing", area: "Safety equipment", status: "Confirm", tone: "check" },
+  { sheet: "ge? detector", reading: "Gas detector, or a generator item?", area: "Unclear", status: "Needs him", tone: "ask" },
+];
 
 function HeroCopy() {
   return <div className="v3-home-copy v3-experiment-copy">
-    <h1>A senior digital product studio <span>built for the AI era.</span></h1>
-    <p className="v3-lede">We help founders, local businesses, and product teams leverage AI and modern tools to build what actually moves the business.</p>
-    <div className="v3-actions"><Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "home-hero")}>Get in touch</Link><Link className="v3-hero-text-link" to="/ai-opportunities" onClick={ctaClick("Find your AI opportunities", "/ai-opportunities", "home-hero")}>Find your AI opportunities <span aria-hidden="true">→</span></Link></div>
+    <h1>Better brands, websites, and workflows. <span>Built with AI, done well.</span></h1>
+    <p className="v3-lede">For businesses that are better than their brand, their website, or the way their work gets done. We bring twenty years of digital craft and hands-on AI experience, figure out what will actually help, then build it.</p>
+    <div className="v3-actions"><Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "home-hero")}>Get in touch</Link><a className="v3-hero-text-link" href="#work" onClick={ctaClick("See the work", "#work", "home-hero")}>See the work <span aria-hidden="true">→</span></a></div>
   </div>;
 }
 
-function ServicesPanel() {
-  return <article className="v3-artifact v3-hero-services">
-    <WindowBar path="madronaproduct.com/services" note="four ways in" />
-    <ul>{serviceAreas.map(service => <li key={service.id}><Link to={doorRoutes[service.id]}>
-      <strong>{service.name}</strong>
-      <span className="v3-hero-chips">{examples[service.id].map(item => <em key={item}>{item}</em>)}</span>
-      <i aria-hidden="true">→</i>
-    </Link></li>)}</ul>
-    <footer className="v3-hero-stack">
-      <span>We build with</span>
-      <ul>{STACK.map(mark => <li key={mark}><img src={`/images/stack/${mark}.svg`} alt="" loading="lazy" /></li>)}</ul>
-    </footer>
+function WorkflowPanel() {
+  return <article className="v3-artifact v3-hero-flow" aria-label="Example: a marine survey report workflow">
+    <WindowBar path="survey-report / review field sheet" note="client work" />
+    <div className="v3-flow-inputs">
+      <span>In</span>
+      <ul><li><strong>Field sheets</strong><em>photos of handwritten notes</em></li><li><strong>Boat photos</strong><em>straight off the camera</em></li><li><strong>Vessel record</strong><em>by official number</em></li></ul>
+    </div>
+    <ol className="v3-flow-reads">{readings.map(row => <li key={row.sheet} className={`is-${row.tone}`}>
+      <code>&ldquo;{row.sheet}&rdquo;</code>
+      <div><strong>{row.reading}</strong><small>{row.area}</small></div>
+      <b>{row.status}</b>
+    </li>)}</ol>
+    <footer className="v3-flow-out"><span>Out</span><p><strong>A draft report in his own Word template.</strong> Findings numbered, photos placed, comparable sales pulled. Nothing goes in unconfirmed.</p></footer>
   </article>;
 }
 
@@ -54,7 +50,7 @@ export function Hero() {
     <div className="v3-shell v3-current-main">
       <HeroCopy />
       <div className="v3-current-images" aria-hidden="true"><HeroChart /></div>
-      <div className="v3-hero-panel-wrap"><ServicesPanel /></div>
+      <div className="v3-hero-panel-wrap"><WorkflowPanel /></div>
     </div>
   </section>;
 }
