@@ -67,3 +67,12 @@ Each showcase lives in `src/pages/v3/showcase/<Name>.tsx`, exports a **named** c
 
 - The marine-survey workflow window built earlier today (hero version): `docs/positioning-2026-09/ref-workflow-panel-hero.tsx.txt`, styles `.v3-flow-*` in `src/pages/v3/home-clarity.css` (you may copy them into your own CSS; do not import home-clarity.css).
 - Astra's and Claude's reviews and Charlie's decisions: `docs/positioning-2026-09/consolidated-feedback.md`.
+
+## Numbers and wording of record (added mid-run, from charlie-hq's positioning handoff, 2026-09-29; binding)
+
+Source: /Users/charliekoch/Developer/hq/charlie-hq/briefs/2026-09-29-positioning-handoff.md. Words and numbers have one home in charlie-hq; do not invent claims.
+- **No career-total year counts** anywhere ("twenty years", "20 years in digital", "fifteen years", "15+ years"). Name the shifts instead: mobile at Microsoft (via Iconmobile), then REI; membership at REI; AI at Healthline; now Madrona.
+- REI membership: "relaunched for 22M+ members" (never "grew to"). REI mobile: "$200M+ annual mobile P&L".
+- 90M: "a portfolio serving 90M+ monthly visitors", never "90 million users".
+- Madrona products: Lila Trips live with a paywall; Helm in beta. No user or revenue numbers.
+- The studio site reads as a great digital studio; keep the personal hiring voice off it.
