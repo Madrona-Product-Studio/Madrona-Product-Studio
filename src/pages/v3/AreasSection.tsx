@@ -164,10 +164,9 @@ export function AreasSection() {
       const number = String(index + 1).padStart(2, "0");
       return <section key={area.id} id={`area-${area.id}`} className={`v3-section ar-area ${index % 2 ? "ar-area-flip v3-band-light" : ""}`} aria-labelledby={`area-${area.id}-q`}>
         <div className="v3-shell">
-          {index === 0 && <header className="ar-intro">
-            <div><p className="v3-kicker">What we build</p>
-            <h2>Four areas, and the work behind each.</h2></div>
-            <p className="v3-help-lede">Our own products, our demonstration business, working demos, and a few illustrative examples, each labeled for what it is.</p>
+          {index === 0 && <header className="ar-intro" id="work">
+            <div><p className="v3-kicker">The work</p>
+            <h2>Here’s what we build.</h2></div>
           </header>}
           <div className="ar-spread">
             <div className="ar-rail">

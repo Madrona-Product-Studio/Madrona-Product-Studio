@@ -1,71 +1,104 @@
+// The homepage hero (Charlie picked round-2 option H2, 2026-09-29): AI at
+// work, the week handled. Brief: docs/positioning-2026-09/round2-brief.md
+//
+// The right-hand window is a "this week" list for an example business. On
+// load the routine jobs tick over one day at a time, queued → working → done,
+// and the last one (a reply to an unhappy review) stops on "Needs you" and
+// stays there. The motion concept is a list settling into done, not a
+// conversation (H1 owns the thread).
+//
+// Motion rules (madrona-motion): the markup renders the settled week, so a
+// still frame, no-JS, and reduced motion all show the finished state. JS arms
+// the sequence before first paint (useLayoutEffect) and holds it paused until
+// the window is on screen, then it plays once (~5s) and rests. Opacity and
+// transform only; ease-out; no layout shift (the three status labels share
+// one grid cell).
+import { useLayoutEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ctaClick } from "../../lib/analytics";
-import { serviceAreas, type ServiceId } from "../../data/services";
 import { HeroChart } from "./HeroChart";
 import { WindowBar } from "./ReadCard";
+import "./hero-week.css";
 
-// The hero direction (Charlie, 2026-08-29): the chart-of-the-bay contour
-// animation bleeding off the right edge, message left on warm paper.
-// The 2026-09-09 density pass cut the assessment's example read and kept the
-// services window; the window then read thin as four rows of grey text, so it
-// took on the substance the retired practice window used to carry, at a
-// fraction of its size (Charlie, same day).
-// Homepage refactor, 2026-09-29 (Charlie): the headline says what the studio
-// is and that the proof follows; the secondary CTA became "See the work"; the
-// window rows now preview the four area spreads below and jump to them.
-// Real things we've built, one row per area (homepage refactor, 2026-09-29).
-// These replaced the small-business chores ("Invoice chasing · Month-end
-// close") so the window previews the proof below it, not a task menu. Each
-// chip names something that exists as a product, a demo, or labeled client
-// work in the area spread it points at. Review pass (same day): the lede says
-// the promise once and leaves the labeling to the spreads; the window note
-// says "examples", since its first chip is illustrative client work, not
-// something built here first; "Customer assistants" became "Review requests"
-// (Lila Yoga is a cited static corpus, not an assistant).
-const examples: Record<ServiceId, string[]> = {
-  "operations-and-ai": ["Field notes to reports", "Month-end agents", "Ops dashboards"],
-  "brand-and-web": ["Brand systems", "Storefronts", "Local guides"],
-  "customers-and-growth": ["Win-back flows", "Review requests", "Onboarding"],
-  "new-products": ["AI trip planning", "Live maps", "Voice intake"],
-};
+type Job = { day: string; title: string; detail: string; working: string; done: string; needsYou?: boolean };
 
-// Each row jumps to its area spread on this page, where the examples are shown
-// and labeled; the spread carries the link on to the service page.
-const areaAnchors: Record<ServiceId, string> = { "operations-and-ai": "ai-operations", "brand-and-web": "brand-website", "customers-and-growth": "growth-retention", "new-products": "new-products" };
+// An example week for a small service business. No counts, no time claims:
+// the story is which work runs on its own and which waits for a person.
+const WEEK: Job[] = [
+  { day: "Mon", title: "Invoices sent", detail: "Built from the job log", working: "Drafting…", done: "Sent" },
+  { day: "Tue", title: "New inquiries answered", detail: "From your own prices and hours", working: "Replying…", done: "Replied" },
+  { day: "Wed", title: "Weekly report drafted", detail: "Sales, bookings, what changed", working: "Drafting…", done: "Ready" },
+  { day: "Thu", title: "Reply to a two-star review", detail: "Drafted. Yours to send.", working: "Drafting…", done: "Needs you", needsYou: true },
+];
 
-// The stack the practice window used to list in full. Eight marks is enough to
-// place us: the build tools, then the run-the-business roster.
-const STACK = ["anthropic", "cursor", "vercel", "github", "shopify", "stripe", "quickbooks", "square"];
-
-function HeroCopy() {
-  return <div className="v3-home-copy v3-experiment-copy">
-    <h1>A full-service digital studio <span>with the work to prove it.</span></h1>
-    <p className="v3-lede">Great websites, practical AI tools, and new products, built by a small senior team with specialists brought in as needed. Most of what follows we built for ourselves first. We can build it for you.</p>
-    <div className="v3-actions"><Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "home-hero")}>Get in touch</Link><a className="v3-hero-text-link" href="#area-ai-operations" onClick={ctaClick("See the work", "#area-ai-operations", "home-hero")}>See the work <span aria-hidden="true">→</span></a></div>
-  </div>;
+function Check() {
+  return <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 8.4 7 10.8l4.6-5.3" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg>;
 }
 
-function ServicesPanel() {
-  return <article className="v3-artifact v3-hero-services">
-    <WindowBar path="madronaproduct.com/services" note="Examples of our work" />
-    <ul>{serviceAreas.map(service => <li key={service.id}><a href={`#area-${areaAnchors[service.id]}`}>
-      <strong>{service.name}</strong>
-      <span className="v3-hero-chips">{examples[service.id].map(item => <em key={item}>{item}</em>)}</span>
-      <i aria-hidden="true">↓</i>
-    </a></li>)}</ul>
-    <footer className="v3-hero-stack">
-      <span>We build with</span>
-      <ul>{STACK.map(mark => <li key={mark}><img src={`/images/stack/${mark}.svg`} alt="" loading="lazy" /></li>)}</ul>
+function WeekPanel() {
+  const ref = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Arm before paint so the settled frame never flashes, hold until seen.
+    el.classList.add("hw-play", "hw-hold");
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) { el.classList.remove("hw-hold"); io.disconnect(); }
+    }, { threshold: 0.35 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const handled = WEEK.filter(j => !j.needsYou).length;
+  const waiting = WEEK.length - handled;
+
+  return <article ref={ref} className="v3-artifact hw-panel" aria-label="An example week: routine jobs handled, one waiting for a person">
+    <WindowBar path="ops / this week" note="Illustrative example" />
+    <div className="hw-head">
+      <strong>This week</strong>
+      <span className="hw-swap hw-summary">
+        <em className="hw-sum-a" aria-hidden="true">Working through the week</em>
+        <em className="hw-sum-b">{handled} handled · <b>{waiting} needs you</b></em>
+      </span>
+    </div>
+    <ol className="hw-list">
+      {WEEK.map((job, i) => <li key={job.title} className={job.needsYou ? "hw-row is-you" : "hw-row"} style={{ "--i": i } as React.CSSProperties}>
+        <i className="hw-rule" aria-hidden="true" />
+        <span className="hw-day">{job.day}</span>
+        <span className="hw-mark" aria-hidden="true">
+          <i className="hw-ring" />
+          {job.needsYou ? <i className="hw-dot" /> : <i className="hw-check"><Check /></i>}
+        </span>
+        <span className="hw-text"><strong>{job.title}</strong><small>{job.detail}</small></span>
+        <span className="hw-swap hw-state">
+          <em className="hw-s-q" aria-hidden="true">Queued</em>
+          <em className="hw-s-w" aria-hidden="true">{job.working}</em>
+          <em className="hw-s-d">{job.done}</em>
+        </span>
+      </li>)}
+    </ol>
+    <footer className="hw-foot">
+      <span className="hw-bar" aria-hidden="true">{WEEK.map((job, i) => <i key={job.title} className={job.needsYou ? "is-you" : ""} style={{ "--i": i } as React.CSSProperties} />)}</span>
+      <p><span>Runs on its own</span><span className="is-you">You decide what matters</span></p>
     </footer>
   </article>;
 }
 
 export function Hero() {
-  return <section className="v3-current-hero v3-hero-plain">
+  return <section className="v3-current-hero v3-hero-plain hw-hero">
     <div className="v3-shell v3-current-main">
-      <HeroCopy />
+      <div className="v3-home-copy v3-experiment-copy hw-copy">
+        <p className="v3-kicker">A Pacific Northwest studio</p>
+        <h1>Great digital work, <span>with AI built in.</span></h1>
+        <p className="v3-lede">We design websites and brands, build new products, and put AI to work inside your business: in your inbox, your paperwork, and your customer follow-up, with a person checking what matters.</p>
+        <div className="v3-actions">
+          <Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "home-hero")}>Get in touch</Link>
+          <a className="v3-hero-text-link" href="#work" onClick={ctaClick("See the work", "#work", "home-hero")}>See the work <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
       <div className="v3-current-images" aria-hidden="true"><HeroChart /></div>
-      <div className="v3-hero-panel-wrap"><ServicesPanel /></div>
+      <div className="v3-hero-panel-wrap"><WeekPanel /></div>
     </div>
   </section>;
 }

@@ -1,80 +1,52 @@
-/* AutomationMap (Growth & Retention area, 2026-09-29 refactor). One customer's
-   journey for an illustrative plumbing company, as a single rail in a light-
-   island window (.v3-artifact; the dusk/night rules re-pin the day ramp
-   inside, so every token here reads as day). Unmarked = runs on its own, ink
-   ring and outline pill = a person's call, mint = the good branch. No orange
-   inside the window: it is the identity color, not a status (review pass). A container query (not a viewport
-   query) handles the narrow layout, since the spread column sets the width. */
+/* F1 · Flow map (round 2, TEMP). A node-and-connector map in a light-island
+   window (.v3-artifact re-pins the day ramp in dusk and night, so every token
+   here reads as day). Two SVG drawings, one per shape: the wide one above a
+   520px column, the tall one below it (a container query, since the spread
+   column, not the viewport, sets the width). Soft fill = runs on its own,
+   ink outline = your call, pill = the customer. No orange inside. */
 
-.v3 .v3-am{--am-mint:var(--hue-mint-deep,#39846d);--am-mint-ink:#2f6f5b;--am-rail:14px;--am-gap:12px;--am-pad:18px;width:100%;max-width:640px;container-type:inline-size}
+.v3 .fn{--fn-edge:color-mix(in srgb,var(--v3-ink) 40%,transparent);--fn-auto:color-mix(in srgb,var(--v3-ink) 8%,var(--v3-card));--fn-mint:#2f6f5b;width:100%;max-width:680px;container-type:inline-size}
 
-/* Head: what this is, in one read. */
-.v3-am-head{padding:18px var(--am-pad) 16px}
-.v3 .v3-am-eyebrow{margin:0 0 6px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
-.v3 .v3-am-title{margin:0;color:var(--v3-ink);font:600 17px/1.25 Inter,sans-serif;letter-spacing:-.012em;text-wrap:balance}
-.v3 .v3-am-sub{margin:5px 0 0;color:var(--v3-clay);font-size:12.5px;line-height:1.45}
+/* Head: what this is, and the two-item legend, in one read. */
+.fn-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding:18px 20px 6px}
+.v3 .fn-eyebrow{margin:0 0 6px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.v3 .fn-title{margin:0;color:var(--v3-ink);font:600 17px/1.25 Inter,sans-serif;letter-spacing:-.012em;text-wrap:balance}
+.fn-legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0;padding:0 0 2px;list-style:none}
+.fn-legend li{display:flex;align-items:center;gap:7px;color:var(--v3-ink70);font:500 11.5px/1.2 Inter,sans-serif;white-space:nowrap}
+.fn-legend i{display:block;width:18px;height:12px;border-radius:3px}
+.fn-legend i.is-auto{background:var(--fn-auto)}
+.fn-legend i.is-you{border:1.5px solid var(--v3-ink);background:var(--v3-card)}
+.fn-legend i.is-customer{border:1px solid var(--fn-edge);border-radius:999px;background:var(--v3-card)}
 
-/* The flow: phases on hairlines, one continuous rail through them. */
-.v3-am-flow,.v3-am-steps,.v3-am-out ul{margin:0;padding:0;list-style:none}
-.v3-am-phase{display:grid;grid-template-columns:76px minmax(0,1fr);padding:0 var(--am-pad);border-top:1px solid var(--v3-soft)}
-.v3-am-phase-label{padding-top:13px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase}
+/* The drawing. */
+.fn-map{margin:0;padding:10px 0 14px}
+.fn-svg{display:block;width:100%;height:auto;overflow:visible}
+.fn-tall{display:none;max-width:400px;margin-inline:auto}
+.fn-svg text{font-family:Inter,sans-serif;font-size:12.5px;font-weight:500;fill:var(--v3-ink);letter-spacing:-.005em}
+.fn-node rect{fill:var(--fn-auto)}
+.fn-node.is-you rect{fill:var(--v3-card);stroke:var(--v3-ink);stroke-width:1.5}
+.fn-node.is-you text{font-weight:650}
+.fn-node.is-customer rect{fill:var(--v3-card);stroke:var(--fn-edge);stroke-width:1}
+.fn-svg .fn-cap{font-size:9.5px;font-weight:700;letter-spacing:.11em;fill:var(--v3-muted)}
+.fn-svg .fn-cap.is-good{fill:var(--fn-mint)}
+.fn-svg .fn-phase{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;fill:var(--v3-muted)}
+.fn-edge{fill:none;stroke:var(--fn-edge);stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+.fn-tip{fill:none;stroke:var(--fn-edge);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.fn-diamond{fill:var(--v3-card);stroke:var(--v3-ink);stroke-width:1.25}
+.fn-join{fill:var(--fn-edge)}
 
-.v3-am-step,.v3-am-branch{position:relative;display:grid;grid-template-columns:var(--am-rail) minmax(0,1fr) auto;column-gap:var(--am-gap);padding:9px 0}
-.v3-am-step:before,.v3-am-branch:before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--am-rail) / 2 - .5px);width:1px;background:var(--v3-line)}
-.v3-am-phase:first-child .v3-am-step:first-child:before{top:17px}
-.v3-am-phase:last-child .v3-am-step:last-child:before{bottom:auto;height:18px}
+/* Outcomes, as words. */
+.fn-out{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px;padding:14px 20px 16px;border-top:1px solid var(--v3-soft);background:var(--v3-paper)}
+.fn-out>span{color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase}
+.fn-out ul{display:flex;flex-wrap:wrap;gap:4px 20px;margin:0;padding:0;list-style:none}
+.fn-out li{color:var(--v3-ink);font-size:12.5px;font-weight:600;line-height:1.35}
 
-.v3-am-mark{position:relative;z-index:1;justify-self:center;width:9px;height:9px;margin-top:4px;border:1.5px solid color-mix(in srgb,var(--v3-ink) 34%,transparent);border-radius:50%;background:var(--v3-card);box-shadow:0 0 0 3px var(--v3-card)}
-.is-start>.v3-am-mark{border-color:var(--v3-ink);background:var(--v3-ink)}
-.is-you>.v3-am-mark{border:2px solid var(--v3-ink);background:var(--v3-card)}
-
-.v3-am-text{display:flex;flex-direction:column;gap:2px;min-width:0}
-.v3-am-text strong,.v3-am-arm strong{color:var(--v3-ink);font-size:13px;font-weight:600;line-height:1.35}
-.v3-am-text span,.v3-am-arm span{color:var(--v3-muted);font-size:12px;line-height:1.4;text-wrap:pretty}
-
-/* Tags: only a person's call gets a pill, an ink outline; the customer's
-   first step gets a quiet word. */
-.v3 .v3-am-tag{align-self:start;margin-top:1px;padding:3px 8px;border:1px solid var(--v3-ink);border-radius:999px;color:var(--v3-ink);font:600 10.5px/1.2 Inter,sans-serif;white-space:nowrap}
-.v3-am-step.is-you strong{font-weight:700}
-.v3 .is-start>.v3-am-tag{padding-inline:0;border-color:transparent;color:var(--v3-muted);font-weight:500}
-
-/* The branch: a fork off the rail into two arms, side by side. The right
-   stub lands on the hairline between the arms, so it reads as one line. */
-.v3-am-branch{padding:0 0 14px}
-.v3-am-fork{position:relative;grid-column:2/-1;height:20px;margin-top:2px}
-.v3-am-fork:before{content:"";position:absolute;top:0;left:calc(-1 * (var(--am-gap) + var(--am-rail) / 2) + .5px);width:calc(50% + var(--am-gap) + var(--am-rail) / 2);height:1px;background:var(--v3-line)}
-.v3-am-fork i{position:absolute;top:0;width:1px;height:20px;background:var(--v3-line)}
-.v3-am-fork i:first-child{left:16px}
-.v3-am-fork i:last-child{left:50%}
-/* Two columns split by one hairline, no card borders (boxes in a box read
-   heavy). */
-.v3-am-arms{grid-column:2/-1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0}
-.v3-am-arm{display:flex;flex-direction:column;gap:2px;padding:2px 12px 4px 16px}
-.v3-am-arm.is-bad{border-left:1px solid var(--v3-soft)}
-.v3 .v3-am-arm-when{margin:0 0 4px;color:var(--am-mint-ink);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}
-.v3 .is-bad .v3-am-arm-when{color:var(--v3-muted)}
-.v3 .v3-am-arm .v3-am-tag{align-self:flex-start;margin-top:8px}
-
-/* Outcomes, as words: three short phrases on the text column. */
-.v3-am-out{display:grid;grid-template-columns:76px minmax(0,1fr);align-items:start;padding:14px var(--am-pad) 16px;border-top:1px solid var(--v3-soft);background:var(--v3-paper)}
-.v3-am-out>span{padding-top:2px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase}
-.v3-am-out ul{display:flex;flex-wrap:wrap;gap:4px 24px;padding-left:calc(var(--am-rail) + var(--am-gap))}
-.v3-am-out li{color:var(--v3-ink);font-size:12.5px;font-weight:600;line-height:1.35}
-
-/* Narrow column (phones): phase labels ride above their steps on the rail,
-   the arms stack and each takes its own stub off the rail. */
-@container (max-width:500px){
-  .v3 .v3-am{--am-pad:14px;--am-gap:10px}
-  .v3-am-phase{grid-template-columns:minmax(0,1fr)}
-  .v3-am-phase-label{position:relative;padding:14px 0 2px calc(var(--am-rail) + var(--am-gap))}
-  .v3-am-phase:not(:first-child) .v3-am-phase-label:before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--am-rail) / 2 - .5px);width:1px;background:var(--v3-line)}
-  .v3-am-fork{display:none}
-  .v3-am-branch{padding-top:4px}
-  .v3-am-arms{grid-template-columns:minmax(0,1fr);gap:12px}
-  .v3-am-arm{position:relative;padding:0 0 0 2px}
-  .v3-am-arm.is-bad{padding-top:12px;border-top:1px solid var(--v3-soft);border-left:0}
-  .v3-am-arm.is-bad:before{top:17px}
-  .v3-am-arm:before{content:"";position:absolute;top:5px;left:calc(-1 * (var(--am-gap) + var(--am-rail) / 2) - .5px);width:calc(var(--am-gap) + var(--am-rail) / 2);height:1px;background:var(--v3-line)}
-  .v3-am-out{grid-template-columns:minmax(0,1fr);gap:6px}
-  .v3-am-out ul{flex-direction:column;gap:3px;padding-left:0}
+@container (max-width:520px){
+  .fn-wide{display:none}
+  .fn-tall{display:block}
+  .fn-head{flex-direction:column;align-items:flex-start;padding:16px 16px 4px}
+  .fn-legend{padding-top:6px}
+  .fn-map{padding:12px 0 10px}
+  .fn-out{flex-direction:column;gap:6px;padding:14px 16px}
+  .fn-out ul{flex-direction:column;gap:3px}
 }
