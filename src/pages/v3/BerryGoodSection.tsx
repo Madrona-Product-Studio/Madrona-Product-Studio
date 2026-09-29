@@ -37,12 +37,12 @@ const proof: { image: ResponsiveImage; name: string; status: string; href: strin
 export function BerryGoodSection() {
   const [active, setActive] = useState(0);
   const tab = tabs[active];
-  return <section className="v3-section v3-shell v3-proof-section" id="brand">
+  return <section className="v3-section v3-shell v3-proof-section">
     <div className="v3-berry">
       <div className="v3-berry-rail">
-        <p className="v3-kicker">Our demonstration business</p>
+        <p className="v3-kicker">Proof in the work</p>
         <h2>One business, improved <span>end to end.</span></h2>
-        <p className="v3-help-lede">Berry Good Berry Farm is the business we use to show the whole range: brand, storefront, ordering, and the agents behind the counter, built end to end as a working example.</p>
+        <p className="v3-help-lede">Berry Good Berry Farm is our demonstration business: a real operation where we build and run everything we sell, from the brand to the storefront to the agents behind the counter.</p>
         <div className="v3-berry-links">
           <a className="v3-btn v3-btn-primary v3-btn-compact" href={BERRY_URL} target="_blank" rel="noreferrer" onClick={outboundClick(BERRY_URL, "home-berry")}>Visit the live storefront <span aria-hidden="true">↗︎</span></a>
           <Link className="v3-practice-link" to="/services/ai-operations">See the operations work <span aria-hidden="true">→</span></Link>

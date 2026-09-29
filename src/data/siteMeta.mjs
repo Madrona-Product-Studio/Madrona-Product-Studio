@@ -62,9 +62,9 @@ export const notFound = {
 export const pages = {
   "/": {
     title: "Madrona Product Studio · PNW, USA",
-    description: "Madrona helps businesses make their brand, website, and workflows dramatically better. Twenty years of digital craft and hands-on AI experience, applied carefully. We figure out what will actually help, then build it.",
-    h1: "Better brands, websites, and workflows. Built with AI, done well.",
-    body: "For businesses that are better than their brand, their website, or the way their work gets done. Madrona leads with two things: brand and web, designed and built to a high bar, and AI in the workflow, where software does the assembly and people keep the judgment. We also build new products, run paid strategy sprints, and serve as an ongoing digital partner. Twenty years in digital, from agency work to leading product at REI and Healthline, now building with AI every day, here in the PNW and beyond.",
+    description: "Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. Smoother operations, customers who come back, a web presence that earns trust.",
+    h1: "A senior digital product studio built for the AI era.",
+    body: "Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. What we can help with: AI consulting on real workflows, growth and retention, website redesign, and new product building. We figure out what to build, then we build it, and we run our own products and operations the same way, here in the PNW and beyond.",
   },
   "/ai-opportunities": {
     title: "AI Opportunity Assessment · a free 2-minute read · Madrona Product Studio",
