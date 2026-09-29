@@ -24,7 +24,6 @@ export interface StudioProfile {
     heading: string;
     description: string;
     companies: string[];
-    years: string;
   };
   ownedProducts: {
     eyebrow: string;
@@ -54,14 +53,14 @@ export const studioProfile: StudioProfile = {
     heading: "About",
     headline: "Hi, I'm Charlie. I build products, and I started Madrona to build the ones that matter.",
     body: [
-      "For fifteen years I've built products, at scale at REI and Healthline, and from a blank page here at Madrona. Somewhere in there I got clear about how the good ones actually get made, and what I want to spend that on.",
+      "I've built products at scale at REI and Healthline, and from a blank page here at Madrona. Somewhere in there I got clear about how the good ones actually get made, and what I want to spend that on.",
       "Madrona is where I do that deliberately: a small, senior studio that stays close to the craft, uses AI where it genuinely helps, and points its energy at work that matters.",
     ],
     portraitSrc: portrait,
     portraitAlt:
       "Charlie Koch, founder of Madrona Product Studio, outdoors at sunset.",
   },
-  charlie: { name: "Charlie", role: "Founder/Principal" },
+  charlie: { name: "Charlie", role: "Founder & Head of Product" },
   proofPoints: [
     {
       id: "senior-team",
@@ -96,7 +95,6 @@ export const studioProfile: StudioProfile = {
     description:
       "Charlie spent years leading products and teams at scale. Building directly again sharpened a belief that product leadership is about creating the conditions for multidisciplinary teams to solve important customer problems.",
     companies: ["REI", "Healthline", "Microsoft"],
-    years: "15+ years",
   },
   ownedProducts: {
     eyebrow: "Practice, not theory",

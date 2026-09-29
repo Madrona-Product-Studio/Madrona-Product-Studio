@@ -106,8 +106,9 @@ export const pages = {
   "/charlie": {
     title: "Charlie Koch · Madrona Product Studio",
     description: "Charlie Koch is the founder of Madrona Product Studio in the Pacific Northwest: a product leader from Microsoft, REI, and Healthline who now ships AI-native products weekly. One career, read four ways, depending on why you're here.",
-    h1: "Builder of modern digital tools.",
-    body: "Newest tools, oldest problems. Charlie Koch led consumer product at Microsoft, REI, and Healthline, and now runs Madrona Product Studio, where he takes products from idea to live software in weeks. Four ways to read the same career: if you're hiring a product leader, if you run a business, if you build in travel, the outdoors, or wellness, and if your work changes lives. Every path starts with a conversation.",
+    noindex: true,
+    h1: "Products people come back to, through every platform shift.",
+    body: "Charlie Koch builds products people come back to because they are good for them, and has led that work through every platform shift: mobile, membership, and now AI. Charlie Koch led consumer product at Microsoft, REI, and Healthline, and now runs Madrona Product Studio, where he takes products from idea to live software in weeks. Four ways to read the same career: if you're hiring a product leader, if you run a business, if you build in travel, the outdoors, or wellness, and if your work changes lives. Every path starts with a conversation.",
   },
   "/thesis": {
     title: "The Madrona Product Thesis · Madrona Product Studio",
@@ -159,7 +160,7 @@ export const pages = {
     article: { datePublished: "2026-08-05", dateModified: "2026-08-15" },
     h1: "The engine behind everything we ship.",
     ogImage: "/og-pov-under-the-hood.png",
-    body: "Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new. The parts, if you want to set this up yourself: a bootstrap template with standards pre-wired and verified green, one monitoring setup (Sentry, health endpoints, uptime checks, one alert destination) applied by stakes across the portfolio, a design intelligence layer installed as agent plugins, and an image system that builds type in code and generates atmosphere. Each part is becoming its own field note; this page collects them as they land.",
+    body: "Hard-won product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new. The parts, if you want to set this up yourself: a bootstrap template with standards pre-wired and verified green, one monitoring setup (Sentry, health endpoints, uptime checks, one alert destination) applied by stakes across the portfolio, a design intelligence layer installed as agent plugins, and an image system that builds type in code and generates atmosphere. Each part is becoming its own field note; this page collects them as they land.",
   },
   "/thinking/solve-the-system-not-the-symptom": {
     title: "Solve the system, not the symptom: fix the machine, not the output · Madrona Product Studio",

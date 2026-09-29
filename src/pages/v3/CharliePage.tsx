@@ -24,7 +24,7 @@ const DOORS = [
     body: [
       "Leading consumer product at Microsoft, REI, and Healthline taught me judgment: what to build, what to kill, what good looks like. The last year gave me something most product leaders don't have. I ship.",
       "AI collapsed the distance between strategy and execution, and I rebuilt my toolkit around that. At my studio I take products from idea to live software in weeks. Lila Trips is live with real users and a working paywall. Helm, my flagship, is in beta.",
-      "What I bring is the combination: scale experience from 90 million monthly users and a 22-million-member program, plus the daily practice of building with AI.",
+      "What I bring is the combination: scale experience from a portfolio serving 90M+ monthly visitors and a membership program relaunched for 22M+ members, plus the daily practice of building with AI.",
     ],
     cta: { label: "Let's talk", to: "/connect" },
   },
@@ -66,10 +66,11 @@ const DOORS = [
 function CharlieHero() {
   return <header className="v3-section v3-shell ck-hero">
     <p className="v3-kicker">Charlie Koch · Madrona Product Studio · PNW,&nbsp;USA</p>
-    <h1>Builder of modern <span>digital tools.</span></h1>
+    <h1>Products people come back to, <span>through every platform shift.</span></h1>
     <p className="v3-lede ck-lede">
-      Newest tools, oldest problems. Four ways to read the same career,
-      depending on why you're here. Pick your door.
+      I build products people come back to because they’re good for them, and I’ve led that work
+      through every platform shift: mobile, membership, and now AI. Four ways to read the same career,
+      depending on why you’re here. Pick your door.
     </p>
     <div className="ck-hub">
       <svg className="ck-hub-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">

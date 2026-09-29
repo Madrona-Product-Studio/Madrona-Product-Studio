@@ -115,7 +115,7 @@ function generateHtml(route, meta, { seoHtml, noindex = false } = {}) {
       image: [ogImage],
       datePublished: meta.article.datePublished,
       dateModified: meta.article.dateModified || meta.article.datePublished,
-      author: { '@type': 'Person', name: 'Charlie Koch', url: `${SITE_ORIGIN}/charlie` },
+      author: { '@type': 'Person', name: 'Charlie Koch', url: `${SITE_ORIGIN}/about` },
       publisher: {
         '@type': 'Organization',
         name: 'Madrona Product Studio',

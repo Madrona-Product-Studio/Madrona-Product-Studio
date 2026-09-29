@@ -50,15 +50,6 @@
         ],
         "createdAt": "2026-08-31T01:32:33.988Z",
         "reason": "Journey-strip artifact uses CXO-style colored top ticks on rounded step cards — Charlie explicitly asked for this treatment from the CXO reference (08-30, 'a little more color... these from cxo are great') and approved the rendered result"
-      },
-      {
-        "rule": "broken-image",
-        "value": "*",
-        "files": [
-          "src/pages/lab/homeOptions/HomeOptions.tsx"
-        ],
-        "createdAt": "2026-09-29T18:10:14.719Z",
-        "reason": "Claude: src comes from the imgProps() spread; image verified rendering in option A/B screenshots 2026-09-29. File is a TEMP preview harness."
       }
     ]
   }

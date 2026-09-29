@@ -160,7 +160,7 @@ export default function MadronaV2EngineNote() {
           author="Charlie Koch"
           meta={["10 min read", publishedLabel("/thinking/under-the-hood")]}
           title={<>The engine behind everything we&nbsp;ship.</>}
-          standfirst="Fifteen years of product judgment, encoded into a platform every project inherits. AI is the power tool; the engine is the judgment it executes."
+          standfirst="Hard-won product judgment, encoded into a platform every project inherits. AI is the power tool; the engine is the judgment it executes."
           toc={TOC}
           visual={
             <div className="art-head-plate">

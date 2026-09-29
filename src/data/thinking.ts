@@ -66,7 +66,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     date: dated("/thinking/under-the-hood"),
     type: "Artifact",
     title: "The engine behind everything we ship",
-    excerpt: "Fifteen years of product judgment, encoded into a platform every project inherits, held to the same gates, and compounding with every launch.",
+    excerpt: "Hard-won product judgment, encoded into a platform every project inherits, held to the same gates, and compounding with every launch.",
     href: "/thinking/under-the-hood",
     motif: "modules",
   },
