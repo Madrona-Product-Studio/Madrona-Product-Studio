@@ -3,6 +3,9 @@ import { AutomationMap } from "./showcase/AutomationMap";
 import { InspectionShowcase } from "./showcase/InspectionShowcase";
 import { BrandShowcase } from "./showcase/BrandShowcase";
 import { ProductsShowcase } from "./showcase/ProductsShowcase";
+import { BERRY_URL, HELM_DEMO_URL } from "../../data/proof";
+import { studioProducts } from "../../data/studioProducts";
+import { outboundClick } from "../../lib/analytics";
 
 // The four areas (homepage refactor, 2026-09-29; brief in
 // docs/positioning-2026-09/refactor-brief.md). This replaced the "Four
@@ -20,11 +23,38 @@ import { ProductsShowcase } from "./showcase/ProductsShowcase";
 // examples", because an illustrative item is not something we've built; claims
 // were checked against the products (Lila Trips has a paid unlock and sign-up,
 // not booking; Lila Yoga is a cited corpus, not an assistant).
+//
+// Round 2 (2026-09-29, Charlie): the source tags link to the example wherever
+// one can be opened. External tags open in a new tab with an ↗; internal /tools
+// demos take a →. Illustrative items stay plain text, on purpose: there is
+// nothing to open. Berry Good's storefront is the one Berry Good surface a
+// visitor can use, so it backs the brand and storefront rows; its operations
+// row points at /tools, where the Berry Good agent runs live. Helm always goes
+// to the public demo (HELM_DEMO_URL), never the real instance.
+interface Source {
+  label: string;
+  href?: string; // "/..." is an internal route; anything else opens in a new tab
+}
+
 interface Built {
   what: string;
-  source: string;
-  to?: string; // internal route, when the thing itself can be opened on this site
+  sources: Source[];
 }
+
+// Product links come from studioProducts.ts so the homepage never drifts from
+// the /apps page. Helm is the exception: its product link is the marketing
+// site, and the proof here is the public demo.
+function productHref(id: string): string | undefined {
+  return studioProducts.find(product => product.id === id)?.primaryAction?.href;
+}
+
+const src = {
+  illustrative: (detail?: string): Source => ({ label: detail ? `Illustrative · ${detail}` : "Illustrative" }),
+  demo: (slug?: string): Source => ({ label: "Demo", href: slug ? `/tools/${slug}` : "/tools" }),
+  berry: (label = "Berry Good · demo business", href = BERRY_URL): Source => ({ label, href }),
+  helm: (label = "Helm · beta"): Source => ({ label, href: HELM_DEMO_URL }),
+  product: (id: string, label: string): Source => ({ label, href: productHref(id) }),
+};
 
 interface Area {
   id: string;
@@ -45,10 +75,10 @@ const areas: Area[] = [
     question: "Losing hours to work software should be doing?",
     does: "Practical AI and tools built on your real workflows, with a person checking anything that matters.",
     built: [
-      { what: "Field notes and photos into draft reports", source: "Illustrative · marine survey" },
-      { what: "Bookkeeping, invoicing, and month-end agents", source: "Demo", to: "/tools" },
-      { what: "Customer inbox triage", source: "Demo", to: "/tools/customer-inbox" },
-      { what: "Operations dashboards", source: "Berry Good demo · Helm beta" },
+      { what: "Field notes and photos into draft reports", sources: [src.illustrative("marine survey")] },
+      { what: "Bookkeeping, invoicing, and month-end agents", sources: [src.demo()] },
+      { what: "Customer inbox triage", sources: [src.demo("customer-inbox")] },
+      { what: "Operations dashboards", sources: [src.berry("Berry Good demo", "/tools"), src.helm("Helm beta")] },
     ],
     route: "/services/ai-operations",
     Showcase: InspectionShowcase,
@@ -59,10 +89,10 @@ const areas: Area[] = [
     question: "Website just OK, and not doing the business justice?",
     does: "Brands, websites, and online experiences, designed and built to a high bar.",
     built: [
-      { what: "Brand systems and packaging", source: "Berry Good · demo business" },
-      { what: "Storefronts and online ordering", source: "Berry Good · demo business" },
-      { what: "Local guides with maps and live conditions", source: "San Juan Boating Guide · live" },
-      { what: "Sign-up and checkout flows", source: "Lila Trips · live" },
+      { what: "Brand systems and packaging", sources: [src.berry()] },
+      { what: "Storefronts and online ordering", sources: [src.berry()] },
+      { what: "Local guides with maps and live conditions", sources: [src.product("san-juan-boating-guide", "San Juan Boating Guide · live")] },
+      { what: "Sign-up and checkout flows", sources: [src.product("lila-trips", "Lila Trips · live")] },
     ],
     route: "/services/brand-website",
     Showcase: BrandShowcase,
@@ -73,10 +103,10 @@ const areas: Area[] = [
     question: "People buy once, then you never hear from them again?",
     does: "The follow-up, reminders, and answers that keep people coming back, whether they’re customers, members, donors, or volunteers. Mostly automated, with a person where it counts.",
     built: [
-      { what: "Booking, reminder, review, and win-back automations", source: "Illustrative" },
-      { what: "Guides built on your own content, every claim cited", source: "Lila Yoga · beta" },
-      { what: "Onboarding flows", source: "Aria beta · Lila Trips live" },
-      { what: "Review requests and post-sale follow-up", source: "Demo", to: "/tools/review-requests" },
+      { what: "Booking, reminder, review, and win-back automations", sources: [src.illustrative()] },
+      { what: "Guides built on your own content, every claim cited", sources: [src.product("lila-yoga", "Lila Yoga · beta")] },
+      { what: "Onboarding flows", sources: [src.product("aria-health", "Aria beta"), src.product("lila-trips", "Lila Trips live")] },
+      { what: "Review requests and post-sale follow-up", sources: [src.demo("review-requests")] },
     ],
     route: "/services/growth-retention",
     Showcase: AutomationMap,
@@ -94,23 +124,35 @@ const areas: Area[] = [
     // studioProducts.ts. To restore the brief's list, swap this array back.
     builtLabel: "Also ours",
     built: [
-      { what: "A command center people and agents both read", source: "Helm · beta" },
-      { what: "A yoga practice built on the original texts", source: "Lila Yoga · beta" },
-      { what: "A true-to-scale map for planning a food garden", source: "Garden HQ · in development" },
+      { what: "A command center people and agents both read", sources: [src.helm()] },
+      { what: "A yoga practice built on the original texts", sources: [src.product("lila-yoga", "Lila Yoga · beta")] },
+      { what: "A true-to-scale map for planning a food garden", sources: [src.product("garden-hq", "Garden HQ · in development")] },
     ],
     route: "/services/new-products",
     Showcase: ProductsShowcase,
   },
 ];
 
+function SourceTag({ source }: { source: Source }) {
+  const { label, href } = source;
+  if (!href) return <span className="ar-src">{label}</span>;
+  if (href.startsWith("/")) {
+    return <Link className="ar-src ar-src-link" to={href}>{label}<i aria-hidden="true">→</i></Link>;
+  }
+  return <a className="ar-src ar-src-link" href={href} target="_blank" rel="noreferrer" onClick={outboundClick(href, "home-areas-tag")}>
+    {label}<i aria-hidden="true">↗</i><span className="ar-sr"> (opens in a new tab)</span>
+  </a>;
+}
+
 function BuiltList({ items, label = "Work and examples" }: { items: Built[]; label?: string }) {
   return <div className="ar-built">
     <p className="ar-built-label">{label}</p>
     <ul>{items.map(item => <li key={item.what}>
-      {item.to
-        ? <Link to={item.to}>{item.what} <i aria-hidden="true">→</i></Link>
-        : <span>{item.what}</span>}
-      <small>{item.source}</small>
+      <span>{item.what}</span>
+      <small>{item.sources.map((source, i) => <span key={source.label}>
+        {i > 0 && <span className="ar-src-sep" aria-hidden="true"> · </span>}
+        <SourceTag source={source} />
+      </span>)}</small>
     </li>)}</ul>
   </div>;
 }

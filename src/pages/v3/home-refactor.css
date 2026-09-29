@@ -42,12 +42,19 @@
 .ar-built-label{margin:0 0 10px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
 .ar-built ul{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-line)}
 .ar-built li{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--v3-soft)}
-.ar-built li>span,.ar-built li>a{min-width:0;color:var(--v3-ink);font-size:14px;line-height:1.4}
-.ar-built li>a{transition:color 160ms ease}
-.ar-built li>a i{display:inline-block;margin-left:2px;color:var(--v3-bark-dark);font-style:normal;transition:transform .2s ease}
-.ar-built li>a:hover{color:var(--v3-bark-dark)}
-.ar-built li>a:hover i{transform:translateX(3px)}
+.ar-built li>span{min-width:0;color:var(--v3-ink);font-size:14px;line-height:1.4}
 .ar-built small{flex:none;max-width:48%;color:var(--v3-muted);font-size:11px;font-weight:600;letter-spacing:.01em;line-height:1.4;text-align:right}
+/* Source tags (round 2): linked where the example can be opened. Same quiet
+   muted type as the plain tags; a hairline underline says "link" without
+   shouting, and hover warms the tag to the bark companion and nudges the
+   arrow. Illustrative tags stay plain (.ar-src without -link). */
+.ar-src-sep{color:var(--v3-muted)}
+.v3 a.ar-src-link{color:var(--v3-muted);text-decoration:underline;text-decoration-color:var(--v3-line);text-decoration-thickness:1px;text-underline-offset:3px;transition:color 160ms ease,text-decoration-color 160ms ease}
+.ar-src-link i{display:inline-block;margin-left:3px;font-style:normal;font-weight:500;transition:transform 200ms cubic-bezier(.23,1,.32,1)}
+.v3 a.ar-src-link:hover,.v3 a.ar-src-link:focus-visible{color:var(--v3-bark-dark);text-decoration-color:currentColor}
+a.ar-src-link:hover i[aria-hidden]{transform:translate(2px,0)}
+a.ar-src-link[target]:hover i[aria-hidden]{transform:translate(1.5px,-1.5px)}
+.ar-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .v3 .ar-rail .v3-practice-link{margin-top:30px}
 
 .ar-showcase{min-width:0}
@@ -92,4 +99,4 @@
   .ar-built small{max-width:none;text-align:left}
   .v3-depth-list li{grid-template-columns:minmax(0,1fr);gap:4px}
 }
-@media(prefers-reduced-motion:reduce){.ar-built li>a,.ar-built li>a i{transition:none}}
+@media(prefers-reduced-motion:reduce){.ar-src-link,.ar-src-link i{transition:none}a.ar-src-link:hover i[aria-hidden],a.ar-src-link[target]:hover i[aria-hidden]{transform:none}}

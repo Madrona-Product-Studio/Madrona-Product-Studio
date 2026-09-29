@@ -1,0 +1,83 @@
+/* F2 · Two lanes (round 2, TEMP). A swimlane timeline inside a light-island
+   window (.v3-artifact re-pins the day ramp in dusk/night, so every token here
+   reads as day). No orange inside the window: orange is identity, not status.
+   Ink = a person's call; mint = the good branch. One grid, two layouts: each
+   item carries --t (its moment, 2..6); wide = --t is the column, narrow = --t
+   is the row. A container query, since the spread column sets the width. */
+
+.v3 .fl{--fl-mint:var(--hue-mint-deep,#39846d);--fl-mint-ink:#2f6f5b;--fl-pad:18px;--fl-m:7px;--fl-mv:10px;width:100%;max-width:640px;container-type:inline-size}
+.fl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.fl-head{padding:18px var(--fl-pad) 16px}
+.v3 .fl-eyebrow{margin:0 0 6px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.v3 .fl-title{margin:0;color:var(--v3-ink);font:600 17px/1.25 Inter,sans-serif;letter-spacing:-.012em;text-wrap:balance}
+.v3 .fl-sub{margin:5px 0 0;color:var(--v3-clay);font-size:12.5px;line-height:1.45;text-wrap:pretty}
+
+/* The board. Wide: gutter · five moments · gutter; rows are
+   axis / auto label / auto steps / your steps / your label. */
+.fl-board{position:relative;display:grid;grid-template-columns:calc(var(--fl-pad) - var(--fl-m)) repeat(5,minmax(0,1fr)) calc(var(--fl-pad) - var(--fl-m));grid-template-rows:auto auto auto auto auto;border-top:1px solid var(--v3-soft)}
+
+/* Lane grounds: the automatic lane on the card, yours on paper, one hairline
+   between them (the line the hand-offs cross). */
+.fl-band{grid-column:1/-1}
+.fl-band.is-auto{grid-row:2/4}
+.fl-band.is-you{grid-row:4/6;border-top:1px solid var(--v3-line);background:var(--v3-paper)}
+
+/* Time axis: a small tick and the moment, on one rule. */
+.v3 .fl-time{position:relative;grid-row:1;grid-column:var(--t);margin:0;padding:12px var(--fl-m) 10px calc(var(--fl-m) + 9px);border-bottom:1px solid var(--v3-soft);color:var(--v3-muted);font:700 9.5px/1.2 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase;white-space:nowrap}
+.fl-time:before{content:"";position:absolute;left:var(--fl-m);top:12px;width:1px;height:11px;background:var(--v3-faint)}
+
+/* Lane labels: the name and a count, top of the top lane, foot of the bottom
+   lane, so the two halves mirror around the hand-off line. */
+.v3 .fl-lane{display:flex;align-items:baseline;gap:8px;grid-column:2/-2;margin:0;padding:0 var(--fl-m)}
+.fl-lane.is-auto{grid-row:2;padding-top:14px}
+.fl-lane.is-you{grid-row:5;padding-bottom:14px}
+.fl-lane b{color:var(--v3-ink);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase}
+.fl-lane span{color:var(--v3-muted);font-size:11px}
+
+/* The automatic track: one rule through the lane, the steps sit on it. */
+.fl-track{position:relative;grid-row:3;grid-column:2/-2;pointer-events:none}
+.fl-track:before{content:"";position:absolute;left:var(--fl-m);right:var(--fl-m);top:50%;height:1px;background:color-mix(in srgb,var(--v3-ink) 30%,transparent)}
+
+/* Hand-offs: a line from the automatic step down to the person's step. */
+.fl-drop{position:relative;grid-row:3/5;grid-column:var(--t);pointer-events:none}
+.fl-drop:before{content:"";position:absolute;left:50%;top:var(--fl-mv);bottom:var(--fl-mv);width:1px;background:var(--v3-ink)}
+
+/* Steps. Both lanes stretch to their row, so edges line up and the lines
+   meet them cleanly. */
+.fl-node{position:relative;z-index:1;display:flex;flex-direction:column;gap:3px;min-width:0;margin:var(--fl-mv) var(--fl-m);padding:9px 9px 10px;border-radius:6px;background:var(--v3-card)}
+.fl-node.is-auto{grid-row:3;grid-column:var(--t);border:1px solid var(--v3-line)}
+.fl-node.is-you{grid-row:4;grid-column:var(--t);border:1.5px solid var(--v3-ink)}
+.fl-node strong{color:var(--v3-ink);font-size:12.5px;font-weight:600;line-height:1.3;text-wrap:balance}
+.fl-node.is-auto strong{color:var(--v3-ink70);font-weight:500}
+.v3 .fl-node small{color:var(--v3-muted);font:700 9.5px/1.2 Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase}
+.fl-node em{display:flex;gap:5px;align-items:baseline;margin-top:3px;color:var(--fl-mint-ink);font-size:11px;font-style:normal;font-weight:600;line-height:1.3}
+.fl-node em:before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--fl-mint);transform:translateY(-1px)}
+
+/* Outcomes, as words. */
+.fl-out{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 24px;padding:14px var(--fl-pad) 16px;border-top:1px solid var(--v3-soft);background:var(--v3-card)}
+.fl-out>span{color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase}
+.fl-out ul{display:flex;flex-wrap:wrap;gap:4px 20px;margin:0;padding:0;list-style:none}
+.fl-out li{color:var(--v3-ink);font-size:12.5px;font-weight:600;line-height:1.35}
+
+/* Narrow column: transpose. Columns are gutter · moment · auto · you ·
+   gutter; row 1 carries the lane labels, rows 2 to 6 the moments. */
+@container (max-width:520px){
+  .v3 .fl{--fl-pad:14px;--fl-m:6px;--fl-mv:7px}
+  .fl-board{grid-template-columns:calc(var(--fl-pad) - var(--fl-m)) 62px minmax(0,1fr) minmax(0,1fr) calc(var(--fl-pad) - var(--fl-m));grid-template-rows:auto repeat(5,auto)}
+  .fl-band.is-auto{grid-row:1/-1;grid-column:3}
+  .fl-band.is-you{grid-row:1/-1;grid-column:4/-1;border-top:0;border-left:1px solid var(--v3-line)}
+  .v3 .fl-time{grid-row:var(--t);grid-column:2;align-self:center;padding:0 0 0 var(--fl-m);border:0;white-space:normal}
+  .fl-time:before{display:none}
+  .v3 .fl-lane{grid-row:1;flex-direction:column;gap:2px;padding:12px var(--fl-m) 4px}
+  .fl-lane.is-auto{grid-column:3}
+  .fl-lane.is-you{grid-column:4;padding-bottom:4px}
+  .fl-track{grid-row:2/-1;grid-column:3}
+  .fl-track:before{left:50%;right:auto;top:24px;bottom:24px;width:1px;height:auto}
+  .fl-drop{grid-row:var(--t);grid-column:3/5}
+  .fl-drop:before{left:var(--fl-m);right:var(--fl-m);top:50%;bottom:auto;width:auto;height:1px}
+  .fl-node.is-auto{grid-row:var(--t);grid-column:3}
+  .fl-node.is-you{grid-row:var(--t);grid-column:4}
+  .fl-out{flex-direction:column;gap:6px}
+  .fl-out ul{flex-direction:column;gap:3px}
+}
