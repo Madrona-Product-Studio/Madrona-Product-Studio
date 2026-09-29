@@ -50,7 +50,8 @@ function productHref(id: string): string | undefined {
 
 const src = {
   illustrative: (detail?: string): Source => ({ label: detail ? `Illustrative · ${detail}` : "Illustrative" }),
-  demo: (slug?: string): Source => ({ label: "Demo", href: slug ? `/tools/${slug}` : "/tools" }),
+  // One tag pattern everywhere (final cold read): "Name · status".
+  demo: (name: string, slug?: string): Source => ({ label: `${name} · demo`, href: slug ? `/tools/${slug}` : "/tools" }),
   berry: (label = "Berry Good · demo business", href = BERRY_URL): Source => ({ label, href }),
   helm: (label = "Helm · beta"): Source => ({ label, href: HELM_DEMO_URL }),
   product: (id: string, label: string): Source => ({ label, href: productHref(id) }),
@@ -76,9 +77,9 @@ const areas: Area[] = [
     does: "Practical AI and tools built on your real workflows, with a person checking anything that matters.",
     built: [
       { what: "Field notes and photos into draft reports", sources: [src.illustrative("marine survey")] },
-      { what: "Bookkeeping, invoicing, and month-end agents", sources: [src.demo()] },
-      { what: "Customer inbox triage", sources: [src.demo("customer-inbox")] },
-      { what: "Operations dashboards", sources: [src.berry("Berry Good demo", "/tools"), src.helm("Helm beta")] },
+      { what: "Bookkeeping, invoicing, and month-end agents", sources: [src.demo("Finance agents")] },
+      { what: "Customer inbox triage", sources: [src.demo("Customer inbox", "customer-inbox")] },
+      { what: "Operations dashboards", sources: [src.berry(), src.helm()] },
     ],
     route: "/services/ai-operations",
     Showcase: InspectionShowcase,
@@ -105,8 +106,8 @@ const areas: Area[] = [
     built: [
       { what: "Booking, reminder, review, and win-back automations", sources: [src.illustrative()] },
       { what: "Guides built on your own content, every claim cited", sources: [src.product("lila-yoga", "Lila Yoga · beta")] },
-      { what: "Onboarding flows", sources: [src.product("aria-health", "Aria beta"), src.product("lila-trips", "Lila Trips live")] },
-      { what: "Review requests and post-sale follow-up", sources: [src.demo("review-requests")] },
+      { what: "Onboarding flows", sources: [src.product("aria-health", "Aria · beta"), src.product("lila-trips", "Lila Trips · live")] },
+      { what: "Review requests and post-sale follow-up", sources: [src.demo("Review requests", "review-requests")] },
     ],
     route: "/services/growth-retention",
     Showcase: AutomationMap,
