@@ -18,6 +18,7 @@ import "../madrona-v2.css";
 import "../../v3/v3.css";
 import "../../v3/home-clarity.css";
 import "./home-options.css";
+import OptionD from "./OptionD";
 
 const Arrow = () => <span aria-hidden="true">→</span>;
 
@@ -142,6 +143,7 @@ const FinalCta = () => <section className="v3-final-cta"><div className="v3-shel
 
 export default function HomeOptions() {
   const v = (useParams().v ?? "a").toLowerCase();
+  if (v === "d") return <OptionD />;
   let body: React.ReactNode;
   if (v === "b") {
     body = <>
