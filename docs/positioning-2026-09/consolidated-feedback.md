@@ -75,3 +75,43 @@ Local businesses and the PNW stay as a lane and a source of proof, and every eng
 4. **Local lane weight:** does "owner-run businesses" stay a named audience in the hero, or move down to a lane?
 5. **/charlie:** retire it, or keep it noindexed as an unlinked page for job-search use?
 6. **The AI-forward test:** the 08-13 re-weight was going to be validated in real outreach. Did that produce any signal?
+
+---
+
+## Charlie's decisions (2026-09-29) and the revised direction
+
+**The wedge, in Charlie's words:** helping companies improve their digital operation (brand, website, processes), because few people have this depth in both digital and AI *and* the judgment to apply them well enough to make a dramatic difference. **Lead with two things:** great web design and execution (branded experiences), and AI applied to real workflows. New websites, branded experiences and new products should all read as things the studio does.
+
+**Decisions:**
+1. The mix: lead with **branded experiences** and **AI in the workflow**, with new products third. (This overrides the merged proposal above, which led with product direction.)
+2. Brand and websites: a **lead offer**, not a sub-capability. (This reverses the reviewers' shared recommendation. The reviewers were reacting to how *generic* it looks. The fix is to show craft, not to demote it.)
+3. Paid strategy sprint that can end in "don't build it": **yes**.
+4. Audience naming in the hero: **clarifying, see below**.
+5. /charlie: **retire it** (redirect to /about, pull the useful client-facing material into About).
+6. AI-forward outreach test: not run yet. Positioning comes first, then outreach, so this site version is what outreach will point to.
+
+**The flagship proof is the marine survey report tool** (`~/Developer/clients/boat-inspections`). Its story is exactly the wedge. A marine surveyor's field shorthand, boat photos and vessel facts become a finished draft report in his own Word template. Back-office assembly drops from about 3 hours to well under 1, with no quality loss and nothing entering the report unconfirmed. It includes a comps-based valuation. It is real client work, not a demonstration business, which is what Berry Good can't be. **Gate:** permission to use it as a reference, named or anonymized, is item 1 in the draft terms (`deliverables/terms-2026-09-22-DRAFT.md:62`) and has not been granted yet. Until it is, show it anonymized ("a marine surveyor"), or not at all.
+
+### Revised offer shape (v2)
+
+| | Offer | What it covers | Proof |
+|---|---|---|---|
+| **Lead** | **Brand and web** (branded experiences) | Brand, websites, storefronts, the customer-facing experience, designed and built to a high bar | Berry Good brand + site, Lila Trips, San Juan |
+| **Lead** | **AI in the workflow** | Take the slow manual process (notes, photos, data, documents, reports, follow-up) and rebuild it so people do the judgment and software does the assembly | **Marine survey report tool** (flagship), Helm, the agent demos |
+| **Also** | **New products** | Prototype to launched product | Lila Trips, Helm, San Juan |
+| **Entry** | **Strategy sprint** (paid) | Figure out what will actually help. "Don't build it" is a valid result. | The written read |
+| **Ongoing** | Stewardship | An ongoing senior product/digital partner | |
+
+Growth & Retention stops being its own door. Customers coming back becomes an outcome of the brand and web work, plus the REI credential in About. The invoice/month-end chips come off the hero; bookkeeping demos stay on /tools as examples inside AI in the workflow.
+
+What's genuinely different from the current site is less the category list than: (a) a stated wedge instead of a menu, (b) two leads instead of four peers, (c) real proof of meaningful scale (the marine tool) instead of SMB chores, (d) Charlie's depth visible on the homepage.
+
+### Hero directions under v2 (for reaction, not final)
+
+- "Better brands, websites, and workflows. Built with AI, done well."
+- "How your business looks, and how it works. Both, dramatically better."
+- "We figure out what to build. Then we build it." (kept as the headline), with the descriptor carrying the wedge: *Brand, websites, and AI-powered workflows from a senior team with deep roots in both digital and AI.*
+
+### Pass 0 status
+- DONE: mobile hero overflow. Two bare `1fr` grid tracks (`v3.css` hero-plain at max-width 900, hero-services row) floored at min-content. Both are now `minmax(0,1fr)`, verified at 390, desktop unchanged.
+- OPEN: proof labels ("one real week", "180 customers", Berry Good "real operation"), /services mobile stacking, the blank New Products image.

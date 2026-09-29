@@ -651,5 +651,7 @@
 /* This rule sits after the earlier responsive block, so the collapse has to
    be restated here or the 430px minimum column survives below 900px and
    pushes the window off a phone screen. */
-@media(max-width:900px){.v3 .v3-hero-plain .v3-current-main{grid-template-columns:1fr;gap:40px}.v3 .v3-hero-services li a{grid-template-columns:1fr auto;row-gap:8px}.v3-hero-chips{grid-column:1}}
+/* minmax(0,1fr), not 1fr: a bare 1fr track floors at min-content, and the
+   hero window's chip rows pushed the column past a 390 viewport. */
+@media(max-width:900px){.v3 .v3-hero-plain .v3-current-main{grid-template-columns:minmax(0,1fr);gap:40px}.v3 .v3-hero-services li a{grid-template-columns:minmax(0,1fr) auto;row-gap:8px}.v3-hero-chips{grid-column:1}}
 @media(max-width:600px){.v3-hero-stack{gap:10px;padding:12px 14px}.v3 .v3-hero-stack ul{gap:13px}.v3-hero-stack img{width:15px;height:15px}}
