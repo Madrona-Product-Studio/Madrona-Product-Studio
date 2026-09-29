@@ -23,7 +23,8 @@
 .v3-flow-reads .is-ask strong{color:var(--v3-bark-dark)}
 .v3-flow-out p{margin:0;color:var(--v3-clay);font-size:12px;line-height:1.5}
 .v3-flow-out p strong{display:block;margin-bottom:2px;color:var(--v3-ink);font-size:13px}
-[data-theme="night"] .v3 .v3-flow-reads .is-done b,[data-theme="dusk"] .v3 .v3-flow-reads .is-done b{color:#8fd1bb}
+/* No dark-sky override: the window is a light island in dusk and night, so the
+   day mint already sits on cream there. */
 
 /* ── What we do: two leads + the "also" row ────────────────────────────── */
 .v3-leads-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--v3-line)}
