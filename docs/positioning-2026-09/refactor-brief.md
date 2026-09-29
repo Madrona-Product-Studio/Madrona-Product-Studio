@@ -76,3 +76,6 @@ Source: /Users/charliekoch/Developer/hq/charlie-hq/briefs/2026-09-29-positioning
 - 90M: "a portfolio serving 90M+ monthly visitors", never "90 million users".
 - Madrona products: Lila Trips live with a paywall; Helm in beta. No user or revenue numbers.
 - The studio site reads as a great digital studio; keep the personal hiring voice off it.
+- Charlie's Madrona title everywhere: "Founder & Head of Product".
+- Healthline AI: "launched Healthline's first AI patient guidance" is verified; fuller form is a human-plus-AI model (evaluated with medical experts; expert Guides kept).
+- /charlie: do not touch (pending Charlie's decision).
