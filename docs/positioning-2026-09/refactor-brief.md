@@ -78,4 +78,4 @@ Source: /Users/charliekoch/Developer/hq/charlie-hq/briefs/2026-09-29-positioning
 - The studio site reads as a great digital studio; keep the personal hiring voice off it.
 - Charlie's Madrona title everywhere: "Founder & Head of Product".
 - Healthline AI: "launched Healthline's first AI patient guidance" is verified; fuller form is a human-plus-AI model (evaluated with medical experts; expert Guides kept).
-- /charlie: do not touch (pending Charlie's decision).
+- /charlie: Charlie decided (09-29) to KEEP it as an unlinked, noindexed personal page carrying the hiring spine. Homepage agents: do not link to /charlie and do not edit it (Claude handles it after this run).

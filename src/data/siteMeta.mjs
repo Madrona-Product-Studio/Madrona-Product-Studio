@@ -62,9 +62,9 @@ export const notFound = {
 export const pages = {
   "/": {
     title: "Madrona Product Studio · PNW, USA",
-    description: "Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. Smoother operations, customers who come back, a web presence that earns trust.",
-    h1: "A senior digital product studio built for the AI era.",
-    body: "Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. What we can help with: AI consulting on real workflows, growth and retention, website redesign, and new product building. We figure out what to build, then we build it, and we run our own products and operations the same way, here in the PNW and beyond.",
+    description: "Madrona is a full-service digital studio in the Pacific Northwest. Great websites, practical AI tools, and new products, designed and built by a small senior team, with examples of each.",
+    h1: "A full-service digital studio with the work to prove it.",
+    body: "Madrona is a full-service digital studio: great websites, practical AI tools, and new products, designed and built by a small senior team that brings in specialists as the work needs them. Most of the work on this page we built for ourselves first, and each example is labeled for what it is: our own products, our demonstration business, working demos, or an illustrative example. We can build it for you. AI and operations: field notes into draft reports, bookkeeping and month-end agents, customer inbox triage, operations dashboards. Brand and website: brand systems, storefronts and online ordering, local guides with live maps. Growth and retention: follow-up, reminders, reviews, and guides grounded in your own content, for customers, members, donors, and volunteers. New products: Lila Trips, the San Juan Boating Guide, Plainly, and Aria. Every engagement starts with a free 30-minute conversation, here in the PNW and beyond.",
   },
   "/ai-opportunities": {
     title: "AI Opportunity Assessment · a free 2-minute read · Madrona Product Studio",

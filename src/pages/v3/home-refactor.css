@@ -1,0 +1,95 @@
+/* Homepage refactor (2026-09-29): the page frame. The four area spreads and
+   "Why us". Tokens only; the sky themes re-ground them. The showcases style
+   themselves in showcase/*.css. */
+
+/* ── Hero window ───────────────────────────────────────────────────────── */
+/* The mobile rule in v3.css sets the row's span to display:block, which
+   turned the chips into inline <em>s with no break opportunity between them;
+   longer built-thing chips then ran off the row at 390. Keep them a wrapping
+   flex row at every width. */
+.v3 .v3-hero-services li span.v3-hero-chips{display:flex;flex-wrap:wrap;gap:5px}
+/* On a phone the window labels ("Examples of our work", "Illustrative
+   example") leave the path too little room, and it broke mid-word onto two
+   lines. On this page's windows the path truncates instead; the label is the
+   part that has to read. */
+@media(max-width:600px){
+  .v3 .v3-hero-services .v3-window-bar code,.v3 .ar-showcase .v3-window-bar code{overflow:hidden;overflow-wrap:normal;white-space:nowrap;text-overflow:ellipsis}
+}
+
+/* ── The four areas ────────────────────────────────────────────────────── */
+/* Grounds alternate bg / paper after the hero (01 bg, 02 paper, 03 bg,
+   04 paper), then Why us (bg) and How we work (paper) keep the rhythm. */
+.ar-area{scroll-margin-top:12px}
+.ar-intro{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:80px;align-items:end;margin-bottom:64px}
+.v3 .ar-intro h2{max-width:20ch;margin:0;font-size:clamp(2.2rem,3.3vw,3.5rem);line-height:1.02;text-wrap:balance}
+.v3 .ar-intro .v3-help-lede{margin:0}
+
+/* Rails top-align with their window (review pass, 2026-09-29): centered
+   against a tall showcase, the kicker landed 100 to 180px below the window
+   top and the eye had to hunt for where each spread starts. (A sticky rail
+   would need .v3 to drop overflow:hidden, a page-wide change; not done.) */
+.ar-spread{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:88px;align-items:start}
+.ar-area-flip .ar-spread{grid-template-columns:minmax(0,1.14fr) minmax(0,.86fr)}
+.ar-area-flip .ar-rail{order:2}
+.ar-intro+.ar-spread{padding-top:56px;border-top:1px solid var(--v3-line)}
+
+.ar-rail{min-width:0}
+.v3 .ar-kicker{display:flex;gap:12px;margin-bottom:22px}
+.ar-kicker span{color:var(--v3-muted);font-variant-numeric:tabular-nums}
+.v3 .ar-rail h2{max-width:17ch;margin:0 0 18px;font-size:clamp(1.9rem,2.6vw,2.7rem);line-height:1.06;letter-spacing:-.025em;text-wrap:balance}
+.v3 .ar-does{max-width:44ch;margin:0 0 30px;color:var(--v3-clay);font-size:1rem;line-height:1.6}
+
+.ar-built-label{margin:0 0 10px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.ar-built ul{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-line)}
+.ar-built li{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--v3-soft)}
+.ar-built li>span,.ar-built li>a{min-width:0;color:var(--v3-ink);font-size:14px;line-height:1.4}
+.ar-built li>a{transition:color 160ms ease}
+.ar-built li>a i{display:inline-block;margin-left:2px;color:var(--v3-bark-dark);font-style:normal;transition:transform .2s ease}
+.ar-built li>a:hover{color:var(--v3-bark-dark)}
+.ar-built li>a:hover i{transform:translateX(3px)}
+.ar-built small{flex:none;max-width:48%;color:var(--v3-muted);font-size:11px;font-weight:600;letter-spacing:.01em;line-height:1.4;text-align:right}
+.v3 .ar-rail .v3-practice-link{margin-top:30px}
+
+.ar-showcase{min-width:0}
+/* One system across the four spreads: every showcase fills its column (two
+   of them capped themselves at 640px, which left a ragged 17px short edge
+   against the shell), and the windows share the base .v3-artifact shadow. */
+.v3 .ar-showcase>.v3-artifact,.v3 .ar-showcase>*{width:100%;max-width:none}
+
+/* ── One primary button (review pass, 2026-09-29) ──────────────────────
+   The hero, How we work, and the final band each drew "Get in touch" in a
+   different size and case. All three now take the hero's treatment. */
+.v3 .v3-practice-ctas .v3-btn,.v3 .v3-final-cta .v3-btn{min-height:44px;padding:0 22px;border-radius:3px;font:700 12px/1 Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase}
+
+/* ── Why us (moved here from home-clarity.css, which the homepage no
+   longer imports) ─────────────────────────────────────────────────────── */
+.v3-depth{display:grid;grid-template-columns:minmax(300px,.8fr) minmax(0,1.2fr);gap:96px;align-items:start}
+.v3 .v3-depth-rail h2{max-width:15ch;margin-bottom:22px;font-size:clamp(2.2rem,3.1vw,3.2rem);line-height:1.04;text-wrap:balance}
+.v3-depth-rail .v3-practice-link{margin-top:28px}
+.v3-depth-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-line)}
+.v3-depth-list li{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:20px 0;border-bottom:1px solid var(--v3-line)}
+.v3-depth-list strong{font-size:14px}
+.v3-depth-list p{margin:0;color:var(--v3-ink70);font-size:15px;line-height:1.5}
+.v3-depth-list li:last-child strong{color:var(--v3-bark-dark)}
+
+@media(max-width:1100px){
+  .ar-spread,.ar-area-flip .ar-spread{gap:56px}
+}
+@media(max-width:900px){
+  .ar-intro{grid-template-columns:minmax(0,1fr);gap:16px;margin-bottom:40px}
+  .ar-spread,.ar-area-flip .ar-spread{grid-template-columns:minmax(0,1fr);gap:44px}
+  .ar-area-flip .ar-rail{order:0}
+  .ar-intro+.ar-spread{padding-top:40px}
+  .v3-depth{grid-template-columns:minmax(0,1fr);gap:44px}
+}
+@media(max-width:600px){
+  /* The contour chart sits straight behind the headline and lede on a phone;
+     at its desktop strength the orange lines crossed the body copy. */
+  .v3 .v3-current-images{opacity:.3}
+  .ar-intro+.ar-spread{padding-top:32px}
+  .v3 .ar-rail h2{font-size:2rem}
+  .ar-built li{flex-direction:column;gap:3px}
+  .ar-built small{max-width:none;text-align:left}
+  .v3-depth-list li{grid-template-columns:minmax(0,1fr);gap:4px}
+}
+@media(prefers-reduced-motion:reduce){.ar-built li>a,.ar-built li>a i{transition:none}}
