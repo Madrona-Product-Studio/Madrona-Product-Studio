@@ -6,7 +6,7 @@
 // of concept, so the page states the goal and never a measured time saving.
 const steps = [
   ["Read", "His shorthand becomes structured findings, each with a confidence level."],
-  ["Confirm", "Anything uncertain waits for him. Nothing enters the report unconfirmed."],
+  ["Confirm", "Anything uncertain waits for the surveyor. Nothing enters the report unconfirmed."],
   ["Assemble", "Findings, system tables, and photos land in his template, numbered and cross-referenced."],
   ["Value", "Comparable sales become a draft value range he can adjust."],
 ];

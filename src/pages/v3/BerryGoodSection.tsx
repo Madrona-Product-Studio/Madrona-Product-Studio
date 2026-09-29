@@ -37,7 +37,7 @@ const proof: { image: ResponsiveImage; name: string; status: string; href: strin
 export function BerryGoodSection() {
   const [active, setActive] = useState(0);
   const tab = tabs[active];
-  return <section className="v3-section v3-shell v3-proof-section">
+  return <section className="v3-section v3-shell v3-proof-section" id="brand">
     <div className="v3-berry">
       <div className="v3-berry-rail">
         <p className="v3-kicker">Our demonstration business</p>

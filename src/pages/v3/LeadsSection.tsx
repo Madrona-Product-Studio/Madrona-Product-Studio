@@ -12,6 +12,7 @@ const leads = [
     body: "Positioning, identity, and the site or store people actually use, designed and built to a high bar so they understand you, trust you, and choose you.",
     includes: ["Brand identity and messaging", "Websites and online stores", "Customer journeys that bring people back"],
     route: "/services/brand-website",
+    linkText: "More on brand and web",
   },
   {
     id: "workflow",
@@ -20,6 +21,7 @@ const leads = [
     body: "We find the slow, manual work, the notes, photos, documents, reports, and follow-up, and rebuild it so people keep the judgment and software does the rest.",
     includes: ["Reports and documents drafted from raw material", "Intake, inbox, and follow-up", "Internal tools and agents, with a human checkpoint"],
     route: "/services/ai-operations",
+    linkText: "More on AI in the workflow",
   },
 ];
 
@@ -33,7 +35,7 @@ export function LeadsSection() {
   return <section className="v3-section v3-shell v3-leads">
     <div className="v3-help-head">
       <p className="v3-kicker">What we do</p>
-      <h2>How your business looks. <span className="v3-flash">How it works.</span></h2>
+      <h2>How your business looks. <span>How it works.</span></h2>
     </div>
     <div className="v3-leads-grid">
       {leads.map((lead, index) => <article key={lead.id} className="v3-lead">
@@ -41,7 +43,7 @@ export function LeadsSection() {
         <h3>{lead.title}</h3>
         <p>{lead.body}</p>
         <ul>{lead.includes.map(item => <li key={item}>{item}</li>)}</ul>
-        <Link className="v3-practice-link" to={lead.route}>{lead.label} <span aria-hidden="true">→</span></Link>
+        <Link className="v3-practice-link" to={lead.route}>{lead.linkText} <span aria-hidden="true">→</span></Link>
       </article>)}
     </div>
     <div className="v3-also">

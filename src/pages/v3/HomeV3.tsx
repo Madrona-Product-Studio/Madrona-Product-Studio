@@ -40,7 +40,7 @@ export default function HomeV3() {
     <Reveal><BerryGoodSection /></Reveal>
     <Reveal><DepthSection /></Reveal>
     <Reveal><PracticeSection /></Reveal>
-    <Reveal as="section" className="v3-final-cta"><div className="v3-shell"><p className="v3-kicker">Start with a conversation</p><h2>Tell us what isn't working yet.</h2><p>The brand, the website, or the process that eats the week. It starts with a free 30-minute conversation.</p><Link className="v3-btn v3-btn-light" to="/connect" onClick={ctaClick("Get in touch", "/connect", "home-final")}>Get in touch</Link></div></Reveal>
+    <Reveal as="section" className="v3-final-cta"><div className="v3-shell"><p className="v3-kicker">Start with a conversation</p><h2>Tell us what isn’t working yet.</h2><p>The brand, the website, or the process that eats the week. It starts with a free 30-minute conversation.</p><Link className="v3-btn v3-btn-light" to="/connect" onClick={ctaClick("Get in touch", "/connect", "home-final")}>Get in touch</Link></div></Reveal>
     </main>
     <SiteFooter cta={false} />
   </div>;

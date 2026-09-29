@@ -26,6 +26,12 @@
 /* No dark-sky override: the window is a light island in dusk and night, so the
    day mint already sits on cream there. */
 
+.v3 .v3-hero-cred{margin:30px 0 0;color:var(--v3-muted);font-size:12px;font-weight:600;letter-spacing:.02em}
+.v3-hero-cred i{margin-inline:6px;color:var(--v3-faint);font-style:normal}
+.v3 .v3-hero-caption{margin:14px 2px 0;color:var(--v3-muted);font-size:12px}
+.v3-hero-caption a{margin-left:4px;color:var(--v3-bark-dark);font-weight:600}
+.v3-hero-caption a:hover{text-decoration:underline}
+
 /* ── What we do: two leads + the "also" row ────────────────────────────── */
 .v3-leads-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--v3-line)}
 .v3-lead{display:flex;flex-direction:column;padding:40px 56px 0 0}
@@ -57,8 +63,9 @@
 .v3-story-steps span{grid-row:span 2;color:var(--v3-bark-dark);font:600 11px/1.6 ui-monospace,"SF Mono",Menlo,monospace}
 .v3-story-steps strong{font-size:17px}
 .v3-story-steps p{margin:0;color:var(--v3-clay);font-size:14px;line-height:1.55}
-.v3-story-bar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;margin-top:28px;border:1px solid var(--v3-line);border-radius:8px;overflow:hidden;background:var(--v3-line)}
-.v3-story-bar>div{padding:18px 20px;background:var(--v3-card)}
+.v3-story-bar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:28px;border-bottom:1px solid var(--v3-line)}
+.v3-story-bar>div{padding:18px 28px 20px 0}
+.v3-story-bar>div+div{padding-left:28px;border-left:1px solid var(--v3-line)}
 .v3-story-bar span{display:block;margin-bottom:6px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
 .v3-story-bar>div+div span{color:var(--v3-bark-dark)}
 .v3-story-bar p{margin:0;font-size:14px;line-height:1.5}
@@ -89,5 +96,7 @@
   .v3-story-steps{grid-template-columns:minmax(0,1fr)}
   .v3-story-steps li,.v3-story-steps li:nth-child(even){padding:20px 0;border-left:0}
   .v3-story-bar{grid-template-columns:minmax(0,1fr)}
+  .v3-story-bar>div,.v3-story-bar>div+div{padding:16px 0;border-left:0}
+  .v3-story-bar>div+div{border-top:1px solid var(--v3-line)}
   .v3-depth-list li{grid-template-columns:minmax(0,1fr);gap:4px}
 }
