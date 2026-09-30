@@ -21,9 +21,15 @@
 
 /* The frame: every image mounted, crossfading, so nothing reflows. */
 .bsc-frame{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--v3-paper)}
-.bsc-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 260ms ease}
-.bsc-frame img.is-active{opacity:1}
-@media(prefers-reduced-motion:reduce){.bsc-frame img{transition:none}}
+.bsc-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.015);transition:opacity 480ms cubic-bezier(.23,1,.32,1),transform 900ms cubic-bezier(.23,1,.32,1)}
+.bsc-frame img.is-active{opacity:1;transform:none}
+/* Autoplay: a hairline under the active tab fills while it dwells. */
+.bsc-progress{position:absolute;left:12px;right:12px;bottom:6px;height:2px;border-radius:1px;background:var(--v3-bark);transform:scaleX(0);transform-origin:0 50%;animation:bsc-fill linear forwards}
+.bsc.is-held .bsc-progress{animation-play-state:paused}
+@keyframes bsc-fill{to{transform:scaleX(1)}}
+.bsc-caption{animation:bsc-caption 420ms cubic-bezier(.23,1,.32,1)}
+@keyframes bsc-caption{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.bsc-frame img{transition:none;transform:none}.bsc-caption{animation:none}.bsc-progress{display:none}}
 
 /* Footer: project + tag, the one-line caption, the real host. */
 .bsc-foot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 20px;align-items:end;padding:16px 18px 18px;border-top:1px solid var(--v3-soft)}
