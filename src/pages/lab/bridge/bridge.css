@@ -1,0 +1,8 @@
+/* TEMP bridge harness chrome only. Variants style themselves in their own files. */
+.br-gallery-head{padding-block:48px 16px}
+.br-g{border-top:2px dashed var(--v3-line);padding-top:12px}
+.br-g-label{margin:0;font:600 14px/1.3 Inter,sans-serif;color:var(--v3-ink)}
+.br-g-label a{margin-left:10px;color:var(--v3-muted);font-weight:500;font-size:12px}
+.br-g-after{padding-block:56px 72px}
+.br-g-after h2{margin:0;font-size:clamp(2.2rem,3.3vw,3.5rem)}
+.v3 .br-after{border-top:0}

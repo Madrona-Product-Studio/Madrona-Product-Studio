@@ -1,0 +1,5 @@
+// TEMP motion option (2026-09-29). STUB: replaced by its owning agent.
+// Brief: docs/positioning-2026-09/bridge-motion-brief.md
+export function BridgePeek() {
+  return <div className="v3-shell" style={{ padding: 24, border: "1px dashed var(--v3-line)" }}>BridgePeek (stub)</div>;
+}
