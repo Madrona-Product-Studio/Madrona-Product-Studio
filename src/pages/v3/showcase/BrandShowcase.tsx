@@ -51,7 +51,7 @@ const tabs = [
   },
   {
     id: "guide",
-    label: "Boating guide",
+    label: "Local guide",
     project: "San Juan Boating Guide",
     tag: "Live, our own product",
     image: sanJuanImage,
