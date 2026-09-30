@@ -71,7 +71,7 @@ interface Area {
 }
 
 // Canon door order (AI & Operations leads), numbered to match.
-export const areas: Area[] = [
+const areas: Area[] = [
   {
     id: "ai-operations",
     name: "AI & Operations",

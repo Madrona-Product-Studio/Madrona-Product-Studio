@@ -22,9 +22,16 @@
 // scrolled past the hero, it plots at once. Transform and opacity only (legs
 // are scaleX / scaleY hairlines); no layout shift.
 import { useLayoutEffect, useRef, type CSSProperties } from "react";
-import { areas } from "./AreasSection";
 import { afterHero } from "./heroSequence";
 import "./bridge-trail.css";
+
+// The four areas, in canon order, matching the section anchors in AreasSection.
+const areas = [
+  { id: "ai-operations", name: "AI & Operations" },
+  { id: "brand-website", name: "Brand & Website" },
+  { id: "growth-retention", name: "Growth & Retention" },
+  { id: "new-products", name: "New Products" },
+];
 
 const words: Record<string, string> = {
   "ai-operations": "Reports, finance agents, inbox triage",
