@@ -3,8 +3,6 @@ import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { Hero } from "./Hero";
 import { AreasSection } from "./AreasSection";
-import { ClosingSection } from "./ClosingSection";
-import Reveal from "./Reveal";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 import "./home-refactor.css";
@@ -32,9 +30,8 @@ export default function HomeV3() {
     <main id="main">
     <Hero />
     <AreasSection intro={null} />
-    <Reveal><ClosingSection /></Reveal>
 
     </main>
-    <SiteFooter cta={false} />
+    <SiteFooter />
   </div>;
 }

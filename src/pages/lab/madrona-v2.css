@@ -2243,3 +2243,32 @@ html[data-theme="night"] .m2-cx-formwrap .m2-cx-topic.is-on, html[data-theme="du
 .m2-ab-close-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 14px 28px; margin-top: 28px; }
 .m2-ab-thesis-link { color: rgba(253, 252, 250, .72); font-size: 14px; font-weight: 600; text-decoration: none; }
 .m2-ab-thesis-link:hover, .m2-ab-thesis-link:focus-visible { color: #fdfcfa; }
+
+/* The closing ask in the dark footer box (2026-09-30). */
+.fc-close > div > .fc-kicker { color: #e8a999; font: 700 11px/1.2 Inter, sans-serif; letter-spacing: .12em; margin: 0 0 14px; text-transform: uppercase; }
+.m2-fc-cta--solo .fc-close h2 { font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1.02; margin-bottom: 16px; }
+.fc-close h2 span { color: var(--bark); display: block; }
+html[data-theme="dusk"] .fc-close h2 span { color: #F09C80; }
+.fc-close > div > p:not(.fc-kicker) { color: rgba(255, 255, 255, .78); margin-bottom: 28px; }
+.fc-close .m2-fc-btn { font-size: .82rem; letter-spacing: .09em; padding: 16px 24px; text-transform: uppercase; }
+.fc-steps { border-top: 1px solid rgba(255, 255, 255, .16); list-style: none; margin: 8px 0 0; padding: 0; }
+.fc-steps li { align-items: baseline; border-bottom: 1px solid rgba(255, 255, 255, .16); display: grid; gap: 16px; grid-template-columns: 28px minmax(0, 1fr) auto; padding: 20px 0; }
+.fc-steps li p { color: rgba(247, 237, 228, .66); font-size: 13.5px; line-height: 1.5; margin: 4px 0 0; }
+.fc-steps span { color: #e8a999; font: 500 11px/1 ui-monospace, "SF Mono", Menlo, monospace; }
+.fc-steps strong { color: #F7EDE4; font-size: 16px; font-weight: 600; }
+.fc-steps em { background: rgba(247, 237, 228, .1); border-radius: 999px; color: rgba(247, 237, 228, .85); font-size: 11.5px; font-style: normal; font-weight: 600; padding: 4px 10px; white-space: nowrap; }
+@media (max-width: 640px) {
+  .fc-steps li { grid-template-columns: 24px minmax(0, 1fr); row-gap: 4px; }
+  .fc-steps em { grid-column: 2; justify-self: start; }
+}
+/* Dark skies make the box a cream light island, so the close re-inks to the
+   day ramp inside it (matching the rules above). */
+html[data-theme="night"] .fc-close > div > .fc-kicker, html[data-theme="dusk"] .fc-close > div > .fc-kicker,
+html[data-theme="night"] .fc-steps span, html[data-theme="dusk"] .fc-steps span { color: #BC431D; }
+html[data-theme="night"] .fc-close h2 span, html[data-theme="dusk"] .fc-close h2 span { color: #E55728; }
+html[data-theme="night"] .fc-close > div > p:not(.fc-kicker), html[data-theme="dusk"] .fc-close > div > p:not(.fc-kicker) { color: #403a33; }
+html[data-theme="night"] .fc-steps, html[data-theme="dusk"] .fc-steps,
+html[data-theme="night"] .fc-steps li, html[data-theme="dusk"] .fc-steps li { border-color: rgba(26,23,20,.14); }
+html[data-theme="night"] .fc-steps strong, html[data-theme="dusk"] .fc-steps strong { color: #1a1714; }
+html[data-theme="night"] .fc-steps em, html[data-theme="dusk"] .fc-steps em { background: rgba(229,87,40,.1); color: #403a33; }
+html[data-theme="night"] .fc-steps li p, html[data-theme="dusk"] .fc-steps li p { color: #6f6657; }

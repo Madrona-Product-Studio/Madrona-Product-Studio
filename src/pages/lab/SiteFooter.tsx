@@ -20,26 +20,30 @@ const P = {
   arrow: "M5 12h13m-5-6 6 6-6 6",
 };
 
+// The closing ask, back in the dark rounded box joined to the footer
+// (Charlie, 2026-09-30), carrying the simplified homepage close: one
+// conversation, one button, and the three steps on the right, each with its
+// line and its terms.
+const STEPS = [
+  { n: "01", name: "Talk it through", line: "A free 30-minute call. You leave with a clear first move.", terms: "Free · 30 min" },
+  { n: "02", name: "Get it in writing", line: "A short written read on where we can help, and where we can’t.", terms: "Free · yours to keep" },
+  { n: "03", name: "Start small", line: "A scoped first project with its win named up front.", terms: "Paid · only if it makes sense" },
+];
+
 export default function SiteFooter({ cta = true }: { cta?: boolean }) {
   return (
     <footer className="m2-fc" aria-label="Contact and site footer">
       {cta && (
         <div className="m2-fc-cta m2-fc-cta--solo">
           <div className="m2-fc-half m2-fc-talk">
-            <div className="m2-fc-solo-inner">
+            <div className="m2-fc-solo-inner fc-close">
               <div>
-                <span className="m2-fc-icon"><I d={P.chat} /></span>
-                <h2>Have something worth building?</h2>
-                <p>Bring us an important problem, an early idea, or something already in motion. We help you figure out what to build, then build it.</p>
+                <p className="fc-kicker">Get started</p>
+                <h2>It starts with <span>one conversation.</span></h2>
+                <p>Free, and it takes 30 minutes. Tell us where the friction is, or what you’d like to exist next.</p>
+                <Link className="m2-fc-btn" to={CONTACT} onClick={ctaClick("Get in touch", CONTACT, "footer")}>Get in touch <I d={P.arrow} /></Link>
               </div>
-              <div className="m2-fc-solo-actions">
-                <Link className="m2-fc-btn" to={CONTACT} onClick={ctaClick("Get in touch", CONTACT, "footer")}><I d={P.chat} /> Get in touch <I d={P.arrow} /></Link>
-                <ul className="m2-fc-trust">
-                  <li><span><I d={P.clock} /></span><p>30 minute call if you’re ready</p></li>
-                  <li><span><I d={P.people} /></span><p>Senior team from the start</p></li>
-                  <li><span><I d={P.lock} /></span><p>Everything you share stays confidential</p></li>
-                </ul>
-              </div>
+              <ol className="fc-steps">{STEPS.map(s => <li key={s.n}><span>{s.n}</span><div><strong>{s.name}</strong><p>{s.line}</p></div><em>{s.terms}</em></li>)}</ol>
             </div>
           </div>
         </div>

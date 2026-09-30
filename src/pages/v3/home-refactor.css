@@ -95,22 +95,47 @@
 .v3 .ar-rail .ar-extra{display:flex;width:max-content}
 
 
-/* The homepage close (option B, 2026-09-30): the ask in the rail, the three
-   steps with their terms on the right. */
-.v3-close-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:88px;align-items:start}
-.v3 .v3-close h2{max-width:14ch;margin-bottom:18px;font-size:clamp(2.2rem,3.4vw,3.5rem);line-height:1.02}
-.v3-close h2 span{display:block;color:var(--v3-flash)}
-.v3 .v3-close-lede{max-width:46ch;margin:0 0 26px;color:var(--v3-clay);font-size:1.05rem;line-height:1.55}
-/* The one action: sized and set like the hero's primary button. */
-.v3 .v3-close-btn{min-height:52px;padding:0 30px;border-radius:3px;font:700 13px/1 Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase}
-.v3-close-steps{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-line)}
-.v3-close-steps li{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:18px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--v3-line)}
-.v3-close-steps span{color:var(--v3-bark-dark);font:500 11px/1 ui-monospace,"SF Mono",Menlo,monospace}
-.v3-close-steps strong{display:block;font-size:16px;font-weight:600}
-.v3 .v3-close-steps p{margin:4px 0 0;color:var(--v3-clay);font-size:14px;line-height:1.5}
-.v3-close-steps em{padding:4px 10px;border-radius:999px;background:color-mix(in srgb,var(--v3-bark) 10%,var(--v3-card));color:var(--v3-ink70);font-size:11.5px;font-style:normal;font-weight:600;white-space:nowrap}
+
+/* The lean area pages (2026-09-30): one hero image, "What we make" as a
+   single numbered list, two examples, then the homepage close. */
+.sp-hero-image{margin:0}
+.sp-hero-image img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.sp-make-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:88px;align-items:start}
+.v3 .sp-make h2{max-width:26ch;margin:0;font-size:clamp(1.5rem,2vw,1.95rem);line-height:1.15;letter-spacing:-.02em}
+.sp-offer{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-line)}
+.sp-offer li{display:grid;grid-template-columns:36px minmax(0,1fr);column-gap:18px;row-gap:4px;padding:20px 0;border-bottom:1px solid var(--v3-line)}
+.sp-offer span{grid-row:span 2;color:var(--v3-bark-dark);font:500 11px/22px ui-monospace,"SF Mono",Menlo,monospace}
+.sp-offer strong{font-size:16px;font-weight:600;line-height:22px}
+.v3 .sp-offer p{margin:0;color:var(--v3-clay);font-size:14.5px;line-height:1.5}
+.v3 .sp-examples{padding-bottom:64px}
+.sp-start{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:88px;align-items:baseline;padding-top:36px;border-top:1px solid var(--v3-soft)}
+.sp-start>div{display:flex;flex-direction:column;gap:12px}
+.sp-start a{color:var(--v3-bark-dark);font-size:15px;font-weight:650}
+@media(max-width:900px){
+  .sp-make-grid,.sp-start{grid-template-columns:minmax(0,1fr);gap:28px}
+}
+
+/* /services, streamlined (2026-09-30): a short index of the four areas. */
+.sv-hero{padding-block:88px 40px}
+.v3 .sv-hero h1{max-width:18ch;margin:10px 0 18px;font-size:clamp(2.6rem,4.4vw,4.4rem);line-height:1.02}
+.sv-hero h1 span{display:block;color:var(--v3-flash)}
+.v3 .sv-hero .v3-lede{max-width:52ch;margin:0}
+.sv-index{padding-bottom:96px}
+.sv-index ol{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-line)}
+.v3 .sv-index li a{display:grid;grid-template-columns:40px minmax(150px,.55fr) minmax(0,1.45fr) 24px;gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--v3-line);color:var(--v3-ink);text-decoration:none}
+.sv-num{color:var(--v3-bark-dark);font:500 11px/1 ui-monospace,"SF Mono",Menlo,monospace}
+.sv-name{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--v3-ink70)}
+.sv-body strong{display:block;font:500 clamp(1.3rem,1.9vw,1.7rem)/1.2 var(--font-serif),sans-serif;letter-spacing:-.02em}
+.sv-body em{display:block;max-width:60ch;margin-top:6px;color:var(--v3-clay);font-size:14.5px;font-style:normal;line-height:1.5}
+.sv-go{color:var(--v3-bark-dark);font-size:18px;transition:transform 200ms cubic-bezier(.23,1,.32,1)}
+.v3 .sv-index li a:hover .sv-body strong{color:var(--v3-bark-dark)}
+.v3 .sv-index li a:hover .sv-go{transform:translateX(4px)}
+.v3 .sv-assess{margin:28px 0 0;color:var(--v3-clay);font-size:15px}
+.v3 .sv-assess a{color:var(--v3-bark-dark);font-weight:650}
 @media(max-width:760px){
-  .v3-close-grid{grid-template-columns:minmax(0,1fr);gap:40px}
-  .v3-close-steps li{grid-template-columns:28px minmax(0,1fr)}
-  .v3-close-steps em{grid-column:2;justify-self:start}
+  .v3 .sv-index li a{grid-template-columns:32px minmax(0,1fr);row-gap:8px}
+  .sv-name{grid-column:2}
+  .sv-body{grid-column:2}
+  .sv-go{display:none}
+  .sv-hero{padding-block:56px 28px}
 }
