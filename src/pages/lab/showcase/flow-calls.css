@@ -1,0 +1,90 @@
+/* TEMP showcase option G3 · Your calls light up (2026-09-29). Delete before ship.
+   A copy of automation-map.css under the flc- prefix, plus the ring, the
+   why-captions, and the light-up sequence. The window is a light island
+   (.v3-artifact re-pins the day ramp in dusk and night), so every token here
+   reads as day. No orange inside the window. */
+
+.v3 .flc{
+  --flc-edge:color-mix(in srgb,var(--v3-ink) 40%,transparent);
+  --flc-auto:color-mix(in srgb,var(--v3-ink) 8%,var(--v3-card));
+  --flc-ring:color-mix(in srgb,var(--v3-ink) 34%,transparent);
+  --flc-mint:#2f6f5b;
+  --flc-out:cubic-bezier(.23,1,.32,1);
+  --flc-io:cubic-bezier(.77,0,.175,1);
+  --flc-t0:120ms;        /* first beat of the wave after the map is seen */
+  --flc-wave:210ms;      /* stagger between automatic boxes */
+  --flc-c0:1300ms;       /* first "your call" lights up */
+  --flc-step:760ms;      /* between the three calls */
+  width:100%;max-width:680px;container-type:inline-size
+}
+
+/* Head: what this is, and the legend, in one read. */
+.flc-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding:18px 20px 6px}
+.v3 .flc-eyebrow{margin:0 0 6px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.v3 .flc-title{margin:0;color:var(--v3-ink);font:600 17px/1.25 Inter,sans-serif;letter-spacing:-.012em;text-wrap:balance}
+.flc-legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0;padding:0 0 2px;list-style:none}
+.flc-legend li{display:flex;align-items:center;gap:7px;color:var(--v3-ink70);font:500 11.5px/1.2 Inter,sans-serif;white-space:nowrap}
+.flc-legend i{display:block;width:18px;height:12px;border-radius:3px}
+.flc-legend i.is-auto{background:var(--flc-auto)}
+.flc-legend i.is-you{border:1.5px solid var(--v3-ink);background:var(--v3-card);box-shadow:0 0 0 2px var(--v3-card),0 0 0 3px var(--flc-ring)}
+.flc-legend i.is-customer{border:1px solid var(--flc-edge);border-radius:999px;background:var(--v3-card)}
+
+/* The drawing. */
+.flc-map{margin:0;padding:10px 0 14px}
+.flc-svg{display:block;width:100%;height:auto;overflow:visible}
+.flc-tall{display:none;max-width:400px;margin-inline:auto}
+.flc-svg text{font-family:Inter,sans-serif;font-size:12.5px;font-weight:500;fill:var(--v3-ink);letter-spacing:-.005em}
+.flc-node rect{fill:var(--flc-auto)}
+.flc-node.is-you rect{fill:var(--v3-card);stroke:var(--v3-ink);stroke-width:1.5}
+.flc-node.is-you .flc-label{font-weight:650}
+.flc-node.is-customer rect{fill:var(--v3-card);stroke:var(--flc-edge);stroke-width:1}
+.flc-svg .flc-cap{font-size:9.5px;font-weight:700;letter-spacing:.11em;fill:var(--v3-muted)}
+.flc-svg .flc-cap.is-good{fill:var(--flc-mint)}
+.flc-svg .flc-phase{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;fill:var(--v3-muted)}
+.flc-edge{fill:none;stroke:var(--flc-edge);stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round}
+.flc-tip{fill:none;stroke:var(--flc-edge);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.flc-diamond{fill:var(--v3-card);stroke:var(--v3-ink);stroke-width:1.25}
+.flc-join{fill:var(--flc-edge)}
+
+/* The human moments: a hairline ring outside the box, and why a person. */
+.flc-node.is-you .flc-ring{fill:none;stroke:var(--flc-ring);stroke-width:1;stroke-dasharray:1 0}
+.flc-svg .flc-sub{font-size:10.5px;font-weight:500;fill:var(--v3-ink70);letter-spacing:0}
+/* The wave's wash over an automatic box (only seen while it plays). */
+.flc-node .flc-wash{fill:var(--v3-ink);opacity:0}
+
+/* Outcomes, as words. */
+.flc-out{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px;padding:14px 20px 16px;border-top:1px solid var(--v3-soft);background:var(--v3-paper)}
+.flc-out>span{color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase}
+.flc-out ul{display:flex;flex-wrap:wrap;gap:4px 20px;margin:0;padding:0;list-style:none}
+.flc-out li{color:var(--v3-ink);font-size:12.5px;font-weight:600;line-height:1.35}
+
+@container (max-width:520px){
+  .flc-wide{display:none}
+  .flc-tall{display:block}
+  .flc-head{flex-direction:column;align-items:flex-start;padding:16px 16px 4px}
+  .flc-legend{padding-top:6px}
+  .flc-map{padding:12px 0 10px}
+  .flc-out{flex-direction:column;gap:6px;padding:14px 16px}
+  .flc-out ul{flex-direction:column;gap:3px}
+}
+
+/* ---- The sequence (armed by JS; the markup alone is the resting map) ----
+   1. The wave: each automatic box takes a soft wash and lets it go, in path
+      order, --flc-wave apart. The machine runs; nobody touches it.
+   2. The calls: the three "your call" boxes wait at low opacity through the
+      wave, then light up one by one, --flc-step apart: the box comes to full
+      ink, its ring draws around it, and the why settles in beneath the label. */
+.flc-play .flc-node.is-auto .flc-wash{animation:flc-wash 1000ms var(--flc-io) calc(var(--flc-t0) + var(--k) * var(--flc-wave)) both}
+.flc-play .flc-node.is-you .flc-body{animation:flc-light 520ms var(--flc-out) calc(var(--flc-c0) + var(--k) * var(--flc-step)) both}
+.flc-play .flc-node.is-you .flc-ring{stroke-dasharray:1;animation:flc-draw 820ms var(--flc-out) calc(var(--flc-c0) + 60ms + var(--k) * var(--flc-step)) both}
+.flc-play .flc-node.is-you .flc-sub{animation:flc-settle 480ms var(--flc-out) calc(var(--flc-c0) + 240ms + var(--k) * var(--flc-step)) both}
+.flc-hold .flc-wash,.flc-hold .flc-body,.flc-hold .flc-ring,.flc-hold .flc-sub{animation-play-state:paused}
+
+@keyframes flc-wash{0%{opacity:0}32%{opacity:.09}100%{opacity:0}}
+@keyframes flc-light{from{opacity:.3}to{opacity:1}}
+@keyframes flc-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes flc-settle{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  .flc-play .flc-wash,.flc-play .flc-body,.flc-play .flc-ring,.flc-play .flc-sub{animation:none}
+}

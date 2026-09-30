@@ -1,0 +1,100 @@
+/* TEMP showcase option I2 · Sorting sure from unsure (2026-09-29). Delete with
+   src/pages/lab/showcase before ship. A copy of inspection.css (iba- renamed
+   inss-) plus the sort: the paper slips, the armed state, reduced motion. */
+.inss{margin:0;min-width:0}
+.inss-stage{display:grid;grid-template-columns:minmax(0,1fr) 108px minmax(0,1fr);align-items:stretch;padding-inline:4px}
+.inss-side{display:flex;flex-direction:column;min-width:0}
+.v3 .inss-label{margin:0 0 14px;color:var(--v3-muted);font:700 11px/1.2 Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase}
+
+/* Pages: quieter than the hero window. Specificity beats the sky rules'
+   heavier artifact shadow in v3.css. */
+.v3 .inss-stage .inss-page.v3-artifact{flex:1;border-radius:3px;box-shadow:0 10px 30px rgba(26,23,20,.10)}
+[data-theme="night"] .v3 .inss-stage .inss-page.v3-artifact,[data-theme="dusk"] .v3 .inss-stage .inss-page.v3-artifact{box-shadow:0 14px 36px rgba(0,0,0,.34)}
+
+/* Mark shared by both pages and the bridge. */
+.inss-mark{display:inline-flex;flex:none;width:17px;height:17px;align-items:center;justify-content:center;border:1.25px solid var(--v3-ink);border-radius:50%;color:var(--v3-ink);font:700 10px/1 Inter,sans-serif;font-style:normal}
+
+/* Before: a ruled field sheet, set down a little crooked. */
+.v3 .inss-stage .inss-notes{display:flex;flex-direction:column;padding:18px 16px 18px 34px;transform:rotate(-1.4deg);background-color:var(--v3-paper);background-image:
+  linear-gradient(to right,transparent 23px,color-mix(in srgb,var(--v3-bark) 32%,transparent) 23px 24px,transparent 24px),
+  repeating-linear-gradient(to bottom,transparent 0 25px,var(--v3-soft) 25px 26px);background-position:0 0,0 18px}
+.v3 .inss-scrawl-head{margin:0 0 0;color:var(--v3-clay);font:italic 500 11px/26px ui-monospace,"SF Mono",Menlo,monospace}
+.inss-notes ul{margin:0;padding:0;list-style:none}
+.inss-notes li{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:26px;color:var(--v3-ink70);font:italic 500 12px/26px ui-monospace,"SF Mono",Menlo,monospace;white-space:nowrap}
+.inss-notes li>span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.inss-notes s{color:var(--v3-muted);text-decoration-thickness:1.5px}
+.inss-notes li.is-flag>span{color:var(--v3-ink)}
+
+/* Placeholder photo tiles: flat, neutral, labeled by filename. No stock. */
+.inss-tile{display:flex;align-items:flex-end;aspect-ratio:4/3;min-width:0;padding:5px 6px;border:1px solid var(--v3-soft);background:color-mix(in srgb,var(--hue-stone) 42%,var(--v3-paper));color:var(--v3-ink70);font:500 10px/1 ui-monospace,"SF Mono",Menlo,monospace}
+.inss-tile:nth-child(2){background:color-mix(in srgb,var(--hue-sage) 38%,var(--v3-paper))}
+.inss-snaps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:300px;margin-top:auto;padding-top:18px}
+.inss-snaps .inss-tile{box-shadow:0 2px 6px rgba(26,23,20,.10)}
+.inss-snaps .inss-tile:nth-child(1){transform:rotate(-3deg)}
+.inss-snaps .inss-tile:nth-child(2){transform:rotate(2deg) translateY(3px)}
+.inss-snaps .inss-tile:nth-child(3){transform:rotate(-1deg)}
+
+/* The bridge: the one thing to read between the pages. */
+.inss-bridge{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 10px 0;text-align:center}
+.v3 .inss-bridge p{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0}
+.inss-bridge b{color:var(--v3-ink);font:500 46px/.9 "Hanken Grotesk",Inter,sans-serif;letter-spacing:-.03em}
+.inss-bridge span{max-width:12ch;color:var(--v3-ink70);font:600 12.5px/1.35 Inter,sans-serif}
+.inss-bridge>i{position:relative;display:block;width:60px;height:1px;margin-top:16px;background:var(--v3-ink70)}
+.inss-bridge>i::after{content:"";position:absolute;top:-3.5px;right:0;width:7px;height:7px;border-top:1px solid var(--v3-ink70);border-right:1px solid var(--v3-ink70);transform:rotate(45deg)}
+
+/* After: a clean report page, square to the grid. */
+.v3 .inss-stage .inss-report{padding:16px 16px 18px}
+.inss-doc-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0;padding:0 0 9px;border-bottom:1px solid var(--v3-line)}
+.v3 .inss-report .inss-doc-head{padding:0 0 9px;border-bottom:1px solid var(--v3-line);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--v3-muted)}
+.inss-doc-head em{font-style:normal;font-weight:600;letter-spacing:.08em}
+.v3 .inss-report h4{margin:12px 0 6px;color:var(--v3-ink);font:500 21px/1.1 "Hanken Grotesk",Inter,sans-serif;letter-spacing:-.02em}
+.inss-report ol{margin:0;padding:0;list-style:none}
+.inss-report ol:not(.inss-held) li{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:6px 10px;align-items:start;padding:8px 0;border-bottom:1px solid var(--v3-soft)}
+.inss-report li>span{color:var(--v3-muted);font:500 11px/1.45 ui-monospace,"SF Mono",Menlo,monospace}
+.inss-report li strong{display:block;color:var(--v3-ink);font-size:12px;line-height:1.35}
+.v3 .inss-report li p{margin:1px 0 0;color:var(--v3-ink70);font-size:11.5px;line-height:1.4}
+.inss-report li:nth-child(2)>.inss-tile{background:color-mix(in srgb,var(--hue-sage) 38%,var(--v3-paper))}
+.inss-report li>.inss-tile{width:54px;padding:3px 4px;font-size:10px;letter-spacing:-.02em}
+.v3 .inss-report .inss-held{margin-top:10px}
+.inss-held li{display:grid;grid-template-columns:18px minmax(0,1fr) 17px;gap:6px;align-items:center;padding:5px 0}
+.inss-held b{display:block;color:var(--v3-muted);font-size:13px;font-weight:600}
+.inss-held b em{font-style:normal;font-weight:400}
+
+.v3 .inss-caption{margin:22px 2px 0;max-width:62ch;color:var(--v3-muted);font-size:12px;line-height:1.5}
+.inss-caption strong{color:var(--v3-ink70);font-weight:600}
+
+/* Phone and narrow columns: stack, the bridge turns into a down-pointing row. */
+@media(max-width:640px){
+  .inss-stage{grid-template-columns:minmax(0,1fr)}
+  .v3 .inss-stage .inss-notes{transform:rotate(-.8deg)}
+  .inss-bridge{flex-direction:row;justify-content:flex-start;gap:16px;padding:26px 4px 24px}
+  .v3 .inss-bridge p{flex-direction:row;gap:12px;text-align:left}
+  .inss-bridge b{font-size:40px}
+  .inss-bridge span{max-width:14ch}
+  .inss-bridge>i{width:1px;height:34px;margin:0 0 0 4px}
+  .inss-bridge>i::after{top:auto;right:-3.5px;bottom:0;transform:rotate(135deg)}
+}
+
+/* ── The sort ─────────────────────────────────────────────────────────── */
+.inss-stage{position:relative}
+.inss-fly{position:absolute;inset:0;z-index:3;pointer-events:none}
+
+/* A slip: the note line on a scrap of the same paper. It is a light island
+   (.v3-artifact) so it stays paper-colored over dusk and night grounds. */
+.v3 .inss-fly .inss-slip.v3-artifact{position:absolute;top:0;left:0;display:block;padding:0 7px;border:1px solid rgba(26,23,20,.14);border-radius:3px;background:var(--v3-paper);box-shadow:0 6px 16px rgba(26,23,20,.14);color:var(--v3-ink70);font:italic 500 12px/22px ui-monospace,"SF Mono",Menlo,monospace;white-space:nowrap;opacity:0;transform-origin:50% 50%;will-change:transform,opacity}
+[data-theme="night"] .v3 .inss-fly .inss-slip.v3-artifact,[data-theme="dusk"] .v3 .inss-fly .inss-slip.v3-artifact{box-shadow:0 8px 20px rgba(0,0,0,.32)}
+.inss-slip s{color:var(--v3-muted);text-decoration-thickness:1.5px}
+
+/* Armed (JS, motion allowed, not yet played): the report's rows are empty
+   ruled slots and the bridge line waits. The markup is the finished page, so
+   no JS and reduced motion never see this. */
+.inss[data-state] .inss-found>li>*,
+.inss[data-state] .inss-held>li>*,
+.inss[data-state] .inss-bridge p{opacity:0}
+
+@media (prefers-reduced-motion:reduce){
+  .inss[data-state] .inss-found>li>*,
+  .inss[data-state] .inss-held>li>*,
+  .inss[data-state] .inss-bridge p{opacity:1}
+  .inss-fly{display:none}
+}

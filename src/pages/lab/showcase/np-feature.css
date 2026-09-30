@@ -1,0 +1,81 @@
+/* TEMP option N1 · One lead, two beside (New Products). Prefix npf-.
+   Tokens only; the sky themes re-ground them. Layout reuses the homepage's
+   .ar-spread / .ar-rail from home-refactor.css. */
+.v3 .npf{display:flex;flex-direction:column;min-width:0;color:var(--v3-ink)}
+.v3 .npf-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Every product is one link: image, name + stage, capability, detail, host. */
+.v3 .npf-item{display:flex;flex-direction:column;min-width:0;color:var(--v3-ink);text-decoration:none}
+.v3 .npf-frame{display:block;overflow:hidden;border:1px solid var(--v3-line);border-radius:8px;background:var(--v3-paper)}
+.v3 .npf-frame img{display:block;width:100%;height:100%;object-fit:cover}
+.v3 .npf-copy{display:flex;flex-direction:column;min-width:0}
+
+/* Meta: product name + honest stage. */
+.v3 .npf-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:12px;line-height:1.3}
+.v3 .npf-meta strong{color:var(--v3-ink);font-weight:700}
+.v3 .npf-stage{display:inline-flex;align-items:center;gap:6px;color:var(--v3-muted);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.v3 .npf-stage i{width:6px;height:6px;border-radius:50%;background:var(--hue-stone-deep)}
+.v3 .npf-stage--live i{background:var(--hue-mint-deep,#39846d)}
+.v3 .npf-stage--beta i{background:var(--hue-copper-deep)}
+.v3 .npf-stage--in-development i{background:transparent;box-shadow:inset 0 0 0 1.5px var(--hue-stone-deep)}
+
+.v3 .npf-cap{color:var(--v3-ink);font-weight:600;letter-spacing:-.015em;text-wrap:balance;transition:color 160ms ease}
+.v3 .npf-detail{color:var(--v3-clay);line-height:1.55}
+.v3 .npf-out{display:inline-flex;align-items:center;gap:5px;color:var(--v3-bark-dark);font-size:12px;font-weight:600;letter-spacing:.01em}
+.v3 .npf-out i{display:inline-block;font-style:normal;transition:transform 180ms cubic-bezier(.23,1,.32,1)}
+
+/* The lead: Helm, large. */
+.v3 .npf-lead .npf-frame{aspect-ratio:16/10}
+.v3 .npf-lead .npf-frame img{object-position:50% 34%}
+.v3 .npf-lead .npf-copy{padding-top:22px}
+.v3 .npf-lead .npf-cap{max-width:24ch;margin:10px 0 10px;font-size:1.5rem;line-height:1.15;letter-spacing:-.02em}
+.v3 .npf-lead .npf-detail{max-width:48ch;font-size:14px}
+.v3 .npf-lead .npf-out{margin-top:14px}
+
+/* Two beside: equal, smaller, one hairline above them. */
+.v3 .npf-beside{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;margin:40px 0 0;padding:32px 0 0;list-style:none;border-top:1px solid var(--v3-line)}
+.v3 .npf-beside li{min-width:0;display:flex}
+.v3 .npf-tile{flex:1}
+.v3 .npf-tile .npf-frame{aspect-ratio:16/10;border-radius:6px}
+.v3 .npf-tile .npf-copy{padding-top:16px}
+.v3 .npf-tile .npf-cap{margin:8px 0 6px;font-size:16px;line-height:1.3}
+.v3 .npf-tile .npf-detail{font-size:13px}
+.v3 .npf-tile .npf-out{margin-top:10px}
+/* Lila's artifact is a wide 2.4:1 shot; hold the tablet and phones in frame. */
+.v3 .npf-beside li:first-child .npf-frame img{object-position:100% 50%}
+
+.v3 a.npf-item:hover .npf-cap{color:var(--v3-bark-dark)}
+.v3 a.npf-item:hover .npf-out i{transform:translate(2px,-2px)}
+.v3 a.npf-item:focus-visible{outline:2px solid var(--v3-bark);outline-offset:4px;border-radius:4px}
+
+/* Rail: both ways out, the service page first, the portfolio quieter. */
+.v3 .npf-ways{display:flex;flex-direction:column;align-items:flex-start}
+.v3 .npf-rail .npf-ways .v3-practice-link{margin-top:8px}
+.v3 .npf-all{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--v3-ink70);font-size:13px;font-weight:600;transition:color 160ms ease}
+.v3 .npf-all span{color:var(--v3-bark-dark);display:inline-block;transition:transform 180ms cubic-bezier(.23,1,.32,1)}
+.v3 .npf-all:hover{color:var(--v3-bark-dark)}
+.v3 .npf-all:hover span{transform:translateX(3px)}
+.v3 .npf-all:focus-visible{outline:2px solid var(--v3-bark);outline-offset:3px;border-radius:2px}
+
+/* Dark skies: photos keep a cream hairline so they don't sink into the ground. */
+[data-theme="night"] .v3 .npf-frame,[data-theme="dusk"] .v3 .npf-frame{border-color:rgba(247,237,228,.18)}
+[data-theme="night"] .v3 .npf-stage--live i,[data-theme="dusk"] .v3 .npf-stage--live i{background:color-mix(in srgb,#39846d 75%,#F7EDE4)}
+[data-theme="night"] .v3 .npf-stage--beta i,[data-theme="dusk"] .v3 .npf-stage--beta i{background:var(--hue-copper)}
+
+/* Phones: the two beside become compact rows (thumbnail + copy) so the lead
+   stays the lead instead of three stacked images of equal weight. */
+@media (max-width:600px){
+  .v3 .npf-lead .npf-cap{font-size:1.3rem}
+  .v3 .npf-beside{grid-template-columns:minmax(0,1fr);gap:0;margin-top:32px;padding-top:0}
+  .v3 .npf-beside li{border-bottom:1px solid var(--v3-soft)}
+  .v3 .npf-tile{display:grid;grid-template-columns:104px minmax(0,1fr);gap:16px;align-items:start;padding:18px 0}
+  .v3 .npf-tile .npf-frame{aspect-ratio:4/3;border-radius:5px}
+  .v3 .npf-tile .npf-copy{padding-top:0}
+  .v3 .npf-tile .npf-cap{margin:6px 0 4px;font-size:15px}
+  .v3 .npf-tile .npf-out{margin-top:8px}
+  .v3 .npf-beside li:first-child .npf-frame img{object-position:60% 50%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .v3 .npf-out i,.v3 .npf-all,.v3 .npf-all span,.v3 .npf-cap{transition:none}
+}
