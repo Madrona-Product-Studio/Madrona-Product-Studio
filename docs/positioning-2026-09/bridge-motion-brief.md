@@ -33,3 +33,7 @@ The four areas, in order, each a jump link to its section anchor: `#area-ai-oper
 ## Verify
 
 Screenshots of `/lab/bridge?v=<x>&theme=dusk` and `&theme=day` at 1440 and 390, settled; confirm `document.documentElement.scrollWidth` equals the viewport width at 390. Put files in `/private/tmp/claude-501/-Users-charliekoch-Developer-studio-madrona-studio-site/c30b3957-3b06-4175-a4d5-b28adbd4fabd/scratchpad/bridge/`.
+
+## Choreography (Charlie, added mid-run, binding for the winner)
+
+The hero's this-week animation plays first; the bridge's entrance waits for it. `src/pages/v3/heroSequence.ts` exposes `afterHero(cb)`: it fires when the hero announces it has settled (about 3.8s after the hero window comes into view), or after a 5.2s fallback. The bridge should start its entrance only when it is in view AND `afterHero` has fired, except: if the visitor has scrolled the hero mostly out of view, play immediately; under reduced motion, show the settled state immediately. Options built before this note get the wiring when the winner is integrated.

@@ -18,7 +18,12 @@ import { Link } from "react-router-dom";
 import { ctaClick } from "../../lib/analytics";
 import { HeroChart } from "./HeroChart";
 import { WindowBar } from "./ReadCard";
+import { markHeroSettled, resetHeroSequence } from "./heroSequence";
 import "./hero-week.css";
+
+// Length of the this-week sequence once it starts: the last row settles at
+// 400 + 3 x 850 + 520 ms and its bar segment fills 360 ms after that.
+const SEQUENCE_MS = 400 + 3 * 850 + 520 + 360;
 
 type Job = { day: string; title: string; detail: string; working: string; done: string; needsYou?: boolean };
 
@@ -40,14 +45,21 @@ function WeekPanel() {
 
   useLayoutEffect(() => {
     const el = ref.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    resetHeroSequence();
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) { markHeroSettled(); return; }
     // Arm before paint so the settled frame never flashes, hold until seen.
     el.classList.add("hw-play", "hw-hold");
+    let timer = 0;
     const io = new IntersectionObserver(entries => {
-      if (entries.some(e => e.isIntersecting)) { el.classList.remove("hw-hold"); io.disconnect(); }
+      if (entries.some(e => e.isIntersecting)) {
+        el.classList.remove("hw-hold"); io.disconnect();
+        // The last bar segment fills at ~3.5s (see hero-week.css timings);
+        // then the bridge below may make its entrance (heroSequence.ts).
+        timer = window.setTimeout(markHeroSettled, SEQUENCE_MS);
+      }
     }, { threshold: 0.35 });
     io.observe(el);
-    return () => io.disconnect();
+    return () => { io.disconnect(); clearTimeout(timer); };
   }, []);
 
   const handled = WEEK.filter(j => !j.needsYou).length;
