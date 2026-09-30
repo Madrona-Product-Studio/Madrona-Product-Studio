@@ -170,7 +170,7 @@ export default function MadronaV2StarterGuideNote() {
   return (
     <div className="m2 art">
       <LabMeta title="A starter guide to building real software with AI · Thinking" />
-      <M2Nav active="pov" />
+      <M2Nav active="resources" />
       <main id="main">
 
       <div className="art-wrap">
@@ -339,7 +339,7 @@ export default function MadronaV2StarterGuideNote() {
               <p>This setup is where we started too. Everything else we have written about, the build engine, the agentic operations pattern, grew out of this loop plus time and shipped products. Start the loop, keep it turning, and write down what it teaches you.</p>
             </Prose>
             <div className="m2-th-close-links">
-              <Link className="m2-text-link" to="/thinking">More from Thinking <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/resources#articles">More articles <span aria-hidden="true">→</span></Link>
               <Link className="m2-text-link" to="/connect">Get in touch <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>

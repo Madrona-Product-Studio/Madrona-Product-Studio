@@ -120,7 +120,7 @@ export default function MadronaV2SystemNote() {
   return (
     <div className="m2 art">
       <LabMeta title="Solve the system, not the symptom · Thinking" />
-      <M2Nav active="pov" />
+      <M2Nav active="resources" />
       <main id="main">
       <div className="art-wrap">
         <ArticleHeader

@@ -115,7 +115,7 @@ export default function MadronaV2InventoryNote() {
   return (
     <div className="m2 art">
       <LabMeta title="AI tools for small business: the 12 jobs they already do · Thinking" />
-      <M2Nav active="pov" />
+      <M2Nav active="resources" />
       <main id="main">
       <div className="art-wrap">
         <ArticleHeader

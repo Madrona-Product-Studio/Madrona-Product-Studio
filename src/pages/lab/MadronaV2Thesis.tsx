@@ -85,7 +85,7 @@ export default function MadronaV2Thesis() {
   return (
     <div className="m2 art">
       <LabMeta title="The Madrona Product Thesis · Madrona Product Studio" />
-      <M2Nav active="pov" />
+      <M2Nav active="resources" />
       <main id="main">
 
       <div className="art-wrap">

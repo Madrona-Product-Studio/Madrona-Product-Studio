@@ -1,0 +1,67 @@
+{
+  "href": "/thinking/ai-prompt-starter-pack",
+  "type": "Artifact",
+  "kicker": "A starter pack",
+  "title": "An AI prompt starter pack for small business owners.",
+  "shareTitle": "An AI prompt starter pack for small business owners",
+  "standfirst": "Nine copy-and-paste prompts for the everyday jobs of running a small business: answering customers, handling paperwork, and keeping track of the week. They work in ChatGPT, Claude, Gemini, or Copilot. Fill in the brackets, add your own examples, and read the result before it goes anywhere.",
+  "readTime": "6 min read",
+  "motif": "modules",
+  "sections": [
+    {
+      "id": "how-to-use",
+      "eyebrow": "Before you start",
+      "title": "How to use these.",
+      "blocks": [
+        { "type": "li", "text": "Replace everything in [brackets] with your details." },
+        { "type": "li", "text": "Paste in real examples when a prompt asks for them. A few past emails or quotes teach it your voice faster than any description." },
+        { "type": "li", "text": "Read every result before you send or save it. These prompts draft; you decide." },
+        { "type": "li", "text": "Keep the ones that work in a note, so next time is one paste away." }
+      ]
+    },
+    {
+      "id": "customers",
+      "eyebrow": "Customers",
+      "title": "Answering and keeping customers.",
+      "blocks": [
+        { "type": "prompt", "title": "Reply to a customer question", "why": "Your answers, drafted in your voice. You edit and send.", "text": "You help me answer customer emails for [business name], a [type of business]. Here are our prices, hours, and policies: [paste them]. Here are two replies I have written before, so you can match my tone: [paste two]. Draft a reply to this message. Keep it short and friendly, and if the answer is not in what I gave you, say so instead of guessing: [paste the customer's message]" },
+        { "type": "prompt", "title": "Respond to a review", "why": "A thoughtful reply for a good review or a hard one.", "text": "Draft a public reply to this [star rating]-star review of [business name]. Thank them by name, respond to the specific points they raised, and keep it under 80 words. If the review is negative, acknowledge the problem without arguing, and invite them to contact us at [email or phone] to make it right. Review: [paste it]" },
+        { "type": "prompt", "title": "Follow up after a sale", "why": "The thank-you and check-in that rarely gets sent.", "text": "Write a short follow-up email to a customer who bought [product or service] from [business name] [how long ago]. Thank them, ask one simple question about how it is going, and mention [one helpful tip, or a related offer]. Warm, plain, no hard sell, under 100 words." }
+      ]
+    },
+    {
+      "id": "paperwork",
+      "eyebrow": "Paperwork",
+      "title": "The paperwork you retype.",
+      "blocks": [
+        { "type": "prompt", "title": "Turn notes into a quote or write-up", "why": "From rough notes to something you can send.", "text": "Turn these rough notes into a clear [quote / job write-up] for [customer name]. Use this structure: what we will do, what is included, what is not included, price, and timing. Keep my wording where it is specific. If anything important is missing, list it as a question at the end instead of making it up. Notes: [paste notes]" },
+        { "type": "prompt", "title": "Summarize a long email thread", "why": "Where things stand, and what you owe whom.", "text": "Summarize this email thread in five bullet points or fewer: what was decided, what is still open, and who is waiting on whom. Then list any dates, amounts, or promises mentioned. Thread: [paste it]" },
+        { "type": "prompt", "title": "Remind a customer about an overdue invoice", "why": "Polite and clear, so you do not have to find the words.", "text": "Draft a polite reminder to [customer name] that invoice [number] for [amount] was due on [date]. Assume it was an oversight. Include how to pay: [payment details]. Friendly but clear, under 90 words. Give me a second, firmer version too, for if the first gets no reply." }
+      ]
+    },
+    {
+      "id": "running-the-business",
+      "eyebrow": "The week",
+      "title": "Running the business.",
+      "blocks": [
+        { "type": "prompt", "title": "A weekly summary from your numbers", "why": "What changed, in plain English.", "text": "Here is last week's [sales / bookings] export from [system]. In plain English, tell me: the total compared to the week before, what went up, what went down, and anything that looks unusual. Then suggest one question I should look into. Do not guess at numbers that are not in the data. [paste the export or attach the file]" },
+        { "type": "prompt", "title": "Write down how a task is done", "why": "A simple checklist anyone on the team can follow.", "text": "I am going to describe how I do [task] in my own words. Turn it into a numbered checklist someone new could follow, with a short list of what they need before they start. Ask me up to three questions about anything that is unclear before you write it. Here is how I do it: [describe it]" },
+        { "type": "prompt", "title": "Plan next week from a messy list", "why": "From a brain dump to a plan.", "text": "Here is everything on my plate: [paste the list]. Sort it into this week and later, flag the three things that matter most, and suggest which ones I could hand off or drop. I have about [number] hours of real working time this week." }
+      ]
+    },
+    {
+      "id": "better-prompts",
+      "eyebrow": "Getting better results",
+      "title": "Making prompts work better.",
+      "blocks": [
+        { "type": "li", "text": "Show, do not describe. Two real examples of your writing beat a paragraph about your tone." },
+        { "type": "li", "text": "Say who the reader is. A reply to a long-time customer reads differently from one to a stranger." },
+        { "type": "li", "text": "Ask it to ask you questions first when the job is fuzzy. It will catch what you forgot to say." },
+        { "type": "li", "text": "Tell it what to do when it does not know. \"Say so instead of guessing\" prevents most confident mistakes." },
+        { "type": "p", "text": "When a prompt works every week, it is a sign the job could run with less of you in it. That is the step past a starter pack." },
+        { "type": "link", "to": "/thinking/getting-started-with-ai", "text": "New to all of this? Read the plain-language guide for owners" },
+        { "type": "link", "to": "/connect", "text": "Ready to take a job off your plate? Get in touch" }
+      ]
+    }
+  ]
+}

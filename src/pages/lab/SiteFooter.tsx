@@ -50,10 +50,9 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
           <Link className="m2-fc-logo" to="/" aria-label="Madrona Product Studio home"><MadronaLogo variant="horizontal" decorative /></Link>
           {/* Same vocabulary as the header nav, plus the two footer-only doors. */}
           <nav className="m2-fc-nav" aria-label="Footer">
-            <Link to="/apps">Apps</Link>
             <Link to="/services">Services</Link>
-            <Link to="/tools">Tools</Link>
-            <Link to="/thinking">Articles</Link>
+            <Link to="/apps">Apps</Link>
+            <Link to="/resources">Resources</Link>
             <Link to="/about">About</Link>
             <Link to="/ai-opportunities">AI opportunity assessment</Link>
             <Link to="/connect">Contact</Link>

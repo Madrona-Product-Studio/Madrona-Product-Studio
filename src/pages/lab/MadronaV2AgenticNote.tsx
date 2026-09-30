@@ -85,7 +85,7 @@ export default function MadronaV2AgenticNote() {
   return (
     <div className="m2 art">
       <LabMeta title="The era of agentic operations · Thinking" />
-      <M2Nav active="pov" />
+      <M2Nav active="resources" />
       <main id="main">
 
       <div className="art-wrap">

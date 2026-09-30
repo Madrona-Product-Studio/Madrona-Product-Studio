@@ -744,11 +744,11 @@ html:has(.m2) { scroll-behavior: smooth; }
   .m2-consult-page .m2-ab-intro-visual { display: none; }
 }
 
-.m2-ab-net-portrait { aspect-ratio: 1; left: 50%; margin: 0; position: absolute; top: 50%; transform: translate(-50%, -50%); width: 46%; z-index: 2; }
-.m2-ab-net-portrait img { border: 3px solid var(--paper); border-radius: 50%; box-shadow: 0 6px 24px rgba(26, 23, 20, .12); display: block; height: 100%; object-fit: cover; object-position: center 32%; width: 100%; }
+.m2-ab-net-portrait { aspect-ratio: 1; left: 50%; margin: 0; position: absolute; top: 50%; transform: translate(-50%, -50%); width: 36%; z-index: 2; }
+.m2-ab-net-portrait img { aspect-ratio: 1; border: 3px solid var(--paper); border-radius: 50%; box-shadow: 0 6px 24px rgba(26, 23, 20, .12); display: block; height: 100%; object-fit: cover; object-position: center 32%; width: 100%; }
 .m2-ab-net-pill { align-items: center; background: var(--forest); border-radius: 999px; bottom: -6%; color: var(--paper); display: flex; flex-direction: column; left: 50%; line-height: 1.15; padding: 8px 22px; position: absolute; text-align: center; transform: translateX(-50%); white-space: nowrap; z-index: 3; }
 .m2-ab-net-pill strong { font-size: .92rem; font-weight: 600; }
-.m2-ab-net-pill span { color: rgba(255, 255, 255, .74); font-size: .72rem; }
+.m2-ab-net-pill span { color: color-mix(in srgb, currentColor 74%, transparent); font-size: .72rem; }
 .m2-ab-net-nodes { display: contents; }
 .m2-ab-node { position: absolute; transform: translate(-50%, -50%); z-index: 2; }
 .m2-ab-node-ico { align-items: center; background: var(--surface); border: 1px solid var(--sand); border-radius: 50%; color: var(--bark); display: flex; height: 58px; justify-content: center; width: 58px; }
@@ -1886,7 +1886,7 @@ html:has(.m2) { scroll-behavior: smooth; }
   /* Simplify the network on mobile: portrait + 2-col role grid, no connectors */
   .m2-ab-net { align-items: center; aspect-ratio: auto; display: flex; flex-direction: column; gap: 26px; max-width: 380px; }
   .m2-ab-net-lines { display: none; }
-  .m2-ab-net-portrait { left: auto; position: relative; top: auto; transform: none; width: 188px; }
+  .m2-ab-net-portrait { left: auto; position: relative; top: auto; transform: none; width: 150px; }
   .m2-ab-net-core { left: auto; position: relative; top: auto; transform: none; width: 168px; }
   .m2-ab-net-nodes { display: grid; gap: 24px 16px; grid-template-columns: 1fr 1fr; margin-top: 10px; width: 100%; }
   .m2-ab-node { align-items: center; display: flex; flex-direction: column; position: static; transform: none; }
@@ -2230,3 +2230,16 @@ html[data-theme="night"] .m2-cx-formwrap .m2-cx-topic.is-on, html[data-theme="du
   .m2-ap-filters button { min-height: 44px; }
   .m2-cu-filters button { min-height: 44px; }
 }
+
+/* About, streamlined (2026-09-30): Why us and the closing ask are homepage
+   (.v3) sections, scoped in their own wrappers so the rest of the page keeps
+   its own type. */
+.m2-ab-page .m2-ab-v3 { background: transparent; }
+/* One left edge down the page: the intro and From here take the homepage
+   shell width (.v3-shell) instead of their own containers. */
+.m2-ab-page .m2-ab-intro.v3-shell { max-width: none; padding-inline: 0; }
+.m2-ab-page .m2-ab4.v3-shell { max-width: none; margin-inline: auto; }
+.m2-ab-v3 .v3-depth { border-top: 1px solid var(--line-soft, rgba(26,23,20,.09)); }
+.m2-ab-close-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 14px 28px; margin-top: 28px; }
+.m2-ab-thesis-link { color: rgba(253, 252, 250, .72); font-size: 14px; font-weight: 600; text-decoration: none; }
+.m2-ab-thesis-link:hover, .m2-ab-thesis-link:focus-visible { color: #fdfcfa; }

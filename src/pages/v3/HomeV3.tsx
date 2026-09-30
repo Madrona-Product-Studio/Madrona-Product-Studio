@@ -1,17 +1,13 @@
-import { Link } from "react-router-dom";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { Hero } from "./Hero";
-import { Bridge } from "./Bridge";
 import { AreasSection } from "./AreasSection";
-import { DepthSection } from "./DepthSection";
-import { PracticeSection } from "./PracticeSection";
+import { ClosingSection } from "./ClosingSection";
 import Reveal from "./Reveal";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 import "./home-refactor.css";
-import { ctaClick } from "../../lib/analytics";
 
 // Density pass, 2026-09-09 (Charlie): the homepage ran nine sections, ~859
 // words and 41 links — roughly double every other page on the site. Cut here:
@@ -25,19 +21,19 @@ import { ctaClick } from "../../lib/analytics";
 // spread pairs the area with things we've built), so the page reads: say it,
 // show what we've built in each area, why us, how we work, ask. The Thinking
 // section left the homepage.
+// 2026-09-30 (Charlie): the bridge strip under the hero became the hero's
+// right column (a vertical route); the week window moved to area 01. Later
+// the same day, "How we work" and the final CTA band merged into one close,
+// and Why us moved to /about with no teaser left behind.
 export default function HomeV3() {
   return <div className="m2 v3">
     <LabMeta title="Madrona Product Studio · PNW, USA" />
     <M2Nav />
     <main id="main">
     <Hero />
+    <AreasSection intro={null} />
+    <Reveal><ClosingSection /></Reveal>
 
-    <Bridge />
-    <AreasSection intro={null} firstClassName="ar-after-bridge" />
-    <Reveal><DepthSection /></Reveal>
-    <Reveal><PracticeSection /></Reveal>
-
-    <Reveal as="section" className="v3-final-cta"><div className="v3-shell"><p className="v3-kicker">Start with a conversation</p><h2>Seen something your organization could use?</h2><p>Tell us where the friction is, or what you’d like to exist next. The first conversation is free, and it takes 30 minutes.</p><Link className="v3-btn v3-btn-light" to="/connect" onClick={ctaClick("Get in touch", "/connect", "home-final")}>Get in touch</Link></div></Reveal>
     </main>
     <SiteFooter cta={false} />
   </div>;

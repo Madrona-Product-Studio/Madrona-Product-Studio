@@ -6,17 +6,17 @@ import { bookHref, bookProps, bookClick } from "./useCalEmbed";
 import { ctaClick } from "../../lib/analytics";
 import { useFocusTrap } from "./useFocusTrap";
 
-type NavKey = "apps" | "tools" | "services" | "pov" | "open" | "about";
+type NavKey = "apps" | "resources" | "services" | "open" | "about";
 
-// Functional labels: Apps · Services · Tools · Articles. ("Products" became
+// Functional labels: Services · Apps · Resources (Charlie 2026-09-30:
+// Services first; Tools and Articles merged into Resources). ("Products" became
 // "Apps" 2026-09-10, Charlie — the /apps route always matched.)
 // "Tools" is the deployable-agent gallery (moved from /agents). Nav links stay
 // ink; only the active page carries the bark accent.
 const LINKS: { href: string; label: string; key: NavKey; primary?: boolean }[] = [
-  { href: "/apps", label: "Apps", key: "apps" },
   { href: "/services", label: "Services", key: "services" },
-  { href: "/tools", label: "Tools", key: "tools" },
-  { href: "/thinking", label: "Articles", key: "pov" },
+  { href: "/apps", label: "Apps", key: "apps" },
+  { href: "/resources", label: "Resources", key: "resources" },
   // "Open" is out of the nav while the /open page gets redesigned (2026-08-15).
   // The page stays live — /thinking essays and /services still deep-link it.
   { href: "/about", label: "About", key: "about" },
@@ -99,11 +99,10 @@ export default function M2Nav({ active }: { active?: NavKey }) {
           </button>
         </div>
         <nav className="m2-navmenu-links" aria-label="Menu">
-          <Link className="m2-navmenu-parent" to="/apps" aria-current={active === "apps" ? "page" : undefined} onClick={() => setOpen(false)}>Apps</Link>
           <Link className="m2-navmenu-parent" to="/services" aria-current={active === "services" ? "page" : undefined} onClick={() => setOpen(false)}>Services</Link>
           <div className="m2-navmenu-children">{SERVICE_LINKS.map(item => <Link to={item.href} key={item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}</div>
-          <Link className="m2-navmenu-parent" to="/tools" aria-current={active === "tools" ? "page" : undefined} onClick={() => setOpen(false)}>Tools</Link>
-          <Link className="m2-navmenu-parent" to="/thinking" aria-current={active === "pov" ? "page" : undefined} onClick={() => setOpen(false)}>Articles</Link>
+          <Link className="m2-navmenu-parent" to="/apps" aria-current={active === "apps" ? "page" : undefined} onClick={() => setOpen(false)}>Apps</Link>
+          <Link className="m2-navmenu-parent" to="/resources" aria-current={active === "resources" ? "page" : undefined} onClick={() => setOpen(false)}>Resources</Link>
           <Link className="m2-navmenu-parent" to="/about" aria-current={active === "about" ? "page" : undefined} onClick={() => setOpen(false)}>About</Link>
         </nav>
         <div className="m2-navmenu-foot">

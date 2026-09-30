@@ -54,7 +54,7 @@ export function renderReadText(report: OpportunityReportData, opts: { permalink:
       lines.push(`${tool.name}: ${url(tool.href)}`);
       lines.push(`  ${tool.blurb}`);
     }
-    lines.push(`Every tool, with live demos: ${url("/tools")}`);
+    lines.push(`Every tool, with live demos: ${url("/resources")}`);
     lines.push("");
   }
 

@@ -13,7 +13,11 @@ import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
 import RouteGround from "./components/RouteGround";
 const MadronaV2About = lazy(() => import("./pages/lab/MadronaV2About"));
-const MadronaV2Pov = lazy(() => import("./pages/lab/MadronaV2Pov"));
+// Resources: Tools + Articles in one place (2026-09-30). /tools and
+// /thinking 301 here in vercel.json; their detail pages keep their URLs.
+const Resources = lazy(() => import("./pages/lab/Resources"));
+const GettingStartedNote = lazy(() => import("./pages/lab/GettingStartedNote"));
+const PromptPackNote = lazy(() => import("./pages/lab/PromptPackNote"));
 const CharliePage = lazy(() => import("./pages/v3/CharliePage"));
 const MadronaV2Thesis = lazy(() => import("./pages/lab/MadronaV2Thesis"));
 const MadronaV2EngineNote = lazy(() => import("./pages/lab/MadronaV2EngineNote"));
@@ -26,7 +30,6 @@ const MadronaSystem = lazy(() => import("./pages/lab/MadronaSystem"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const WhereToStart = lazy(() => import("./pages/v3/WhereToStart"));
 const PitchKit = lazy(() => import("./pages/lab/PitchKit"));
-const AgentsGallery = lazy(() => import("./pages/lab/AgentsGallery"));
 const AgentDemoPage = lazy(() => import("./pages/lab/AgentDemoPage"));
 
 // Retired URLs (old /agents, /pov, /current, /work, /how-it-works, the /v3
@@ -55,7 +58,9 @@ export default function App() {
         <Route path="connect" element={<MadronaV2Connect />} />
         <Route path="about" element={<MadronaV2About />} />
         {/* Thinking — the studio feed (renamed from Our POV 2026-08-07). */}
-        <Route path="thinking" element={<MadronaV2Pov />} />
+        <Route path="resources" element={<Resources />} />
+        <Route path="thinking/getting-started-with-ai" element={<GettingStartedNote />} />
+        <Route path="thinking/ai-prompt-starter-pack" element={<PromptPackNote />} />
         <Route path="thinking/under-the-hood" element={<MadronaV2EngineNote />} />
         <Route path="thinking/the-era-of-agentic-operations" element={<MadronaV2AgenticNote />} />
         <Route path="thinking/starter-guide-to-building-with-ai" element={<MadronaV2StarterGuideNote />} />
@@ -66,7 +71,6 @@ export default function App() {
             agent, all one data-driven page (data/agents.ts + data/agentDemos)
             on the AgentConsole engine. Unknown slugs redirect to /tools from
             old URLs redirect below. */}
-        <Route path="tools" element={<AgentsGallery />} />
         <Route path="tools/:slug" element={<AgentDemoPage />} />
         <Route path="thesis" element={<MadronaV2Thesis />} />
         {/* AI Opportunity Assessment — the refocused free assessment

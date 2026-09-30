@@ -561,11 +561,11 @@
    "A senior digital / product studio". */
 .v3 .v3-hero-plain .v3-current-main>.v3-experiment-copy h1{text-wrap:balance}
 .v3 .v3-hero-plain{padding-bottom:80px}
-.v3-hero-panel-wrap{position:relative;z-index:4}
+
 @media(max-width:900px){
   .v3 .v3-hero-plain .v3-current-main{grid-template-columns:1fr;gap:40px;min-height:0}
   .v3 .v3-hero-plain{padding-bottom:72px}
-  .v3-hero-panel-wrap{width:min(560px,100%)}
+  .v3-hero-route-wrap{width:min(560px,100%)}
 }
 @media(max-width:600px){.v3 .v3-hero-plain .v3-current-main{gap:32px}.v3 .v3-hero-plain{padding-bottom:56px}}
 

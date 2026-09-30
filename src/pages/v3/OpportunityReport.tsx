@@ -244,7 +244,7 @@ export function OpportunityReport({ data, variant = "full", permalink, bridge = 
               </li>
             ))}
           </ul>
-          <Link className="or-tools-all" to="/tools">Every tool, with interactive demos <span aria-hidden="true">→</span></Link>
+          <Link className="or-tools-all" to="/resources#tools">Every tool, with interactive demos <span aria-hidden="true">→</span></Link>
         </section>
       )}
 

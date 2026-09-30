@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { THEME_EVENT, LAT, LON } from "../../lib/theme";
+import { ROUTE_LEG, ROUTE_STEP, ROUTE_T0, chartRouteClock, chartRoutePlaying, measureChartRoute, type RouteGeo } from "./chartRoute";
 
 // The hero's "chart of the bay" — variant B1 from the hero-art lab
 // (Charlie's pick, 2026-08-29; ported from madrona-hero-art
@@ -62,10 +63,24 @@ function makeNoise(seed: number) {
   };
 }
 
+// How the chart makes room for the hero's route (chartRoute.ts). A waypoint
+// rises out of the chart as it is reached, so the contours ring it like a
+// sounding; each leg, leader, and label clears the contours under it as it
+// arrives, the way a printed chart clears the water around its annotations.
+const RISE = 0.62;        // height of a waypoint's rise (in field units)
+const RISE_SIGMA = 17;    // its spread, CSS px
+const CLEAR_LEG = 16;     // channel width along a leg, CSS px
+const CLEAR_LEAD = 12;    // along a leader
+const CLEAR_PAD = 8;      // around a label box
+const CLEAR_SOFT = 14;    // feathered edge of every clearing
+const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
+const easeOut = (v: number) => 1 - Math.pow(1 - v, 3);
+type RouteFrame = { geo: RouteGeo | null; clock: number };
+
 const LEVELS = 14;
 const chartIso = (l: number) => -1.0 + (2.0 * l) / (LEVELS - 1);
 
-function createChart(canvas: HTMLCanvasElement, w: number, h: number, dpr: number, colors: { ink: string; bark: string; muted: string }) {
+function createChart(canvas: HTMLCanvasElement, w: number, h: number, dpr: number, colors: { ink: string; bark: string; muted: string }, getRoute: () => RouteFrame) {
   const ctx = canvas.getContext("2d");
   if (!ctx) return { draw: () => {} };
   const noise = makeNoise(23);
@@ -102,18 +117,63 @@ function createChart(canvas: HTMLCanvasElement, w: number, h: number, dpr: numbe
     }
     ctx.stroke();
   };
+  // Erase the contours under the route with a feathered edge (destination-out,
+  // with the shadow blur doing the feathering).
+  const clearForRoute = (geo: RouteGeo, clock: number) => {
+    const { fixes, labels } = geo;
+    ctx.save();
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.strokeStyle = ctx.fillStyle = ctx.shadowColor = "#000";
+    ctx.shadowBlur = CLEAR_SOFT * dpr;
+    ctx.lineCap = "round";
+    fixes.forEach((f, k) => {
+      const at = clock - ROUTE_T0 - 40 - k * ROUTE_STEP;
+      const next = fixes[k + 1];
+      const p = easeOut(clamp01(at / ROUTE_LEG));
+      if (next && p > 0) {
+        ctx.globalAlpha = 1;
+        ctx.lineWidth = CLEAR_LEG * dpr;
+        ctx.beginPath();
+        ctx.moveTo(f.x * dpr, f.y * dpr);
+        ctx.lineTo((f.x + (next.x - f.x) * p) * dpr, (f.y + (next.y - f.y) * p) * dpr);
+        ctx.stroke();
+      }
+      const box = labels[k];
+      const q = easeOut(clamp01(at / 420));
+      if (box && q > 0) {
+        ctx.globalAlpha = q;
+        ctx.lineWidth = CLEAR_LEAD * dpr;
+        ctx.beginPath();
+        ctx.moveTo(f.x * dpr, f.y * dpr);
+        ctx.lineTo(box.x * dpr, f.y * dpr);
+        ctx.stroke();
+        ctx.fillRect((box.x - CLEAR_PAD) * dpr, (box.y - CLEAR_PAD) * dpr, (box.w + CLEAR_PAD * 2) * dpr, (box.h + CLEAR_PAD * 2) * dpr);
+      }
+    });
+    ctx.restore();
+  };
   // Bellingham, the same coordinates the sky engine runs on.
   const stampLat = `${LAT.toFixed(4)}° N`;
   const stampLon = `${Math.abs(LON).toFixed(4)}° W`;
+  const inv2s2 = 1 / (2 * (RISE_SIGMA * dpr) ** 2);
   const draw = (t: number) => {
     const z = t * 0.00004;
     const scale = w * 0.55;
+    const { geo, clock } = getRoute();
+    const rises = geo && clock >= 0 ? geo.fixes.map((f, k) => ({
+      x: f.x * dpr, y: f.y * dpr,
+      a: RISE * easeOut(clamp01((clock - ROUTE_T0 - k * ROUTE_STEP + 80) / 700)),
+    })).filter(r => r.a > 0) : [];
     for (let j = 0; j < gy; j++) {
       for (let i = 0; i < gx; i++) {
         const nx = (i * step) / scale, ny = (j * step) / scale;
         let v = noise(nx * 1.6, ny * 2.1, z);
         v += 0.5 * noise(nx * 3.2, ny * 4.2, z * 1.6 + 11);
         v += 0.25 * noise(nx * 6.4, ny * 8.4, z * 2.2 + 37);
+        for (const r of rises) {
+          const dx = i * step - r.x, dy = j * step - r.y;
+          v += r.a * Math.exp(-(dx * dx + dy * dy) * inv2s2);
+        }
         field[j * gx + i] = v;
       }
     }
@@ -125,6 +185,7 @@ function createChart(canvas: HTMLCanvasElement, w: number, h: number, dpr: numbe
       ctx.lineWidth = (isIndex ? 1.4 : 0.7) * dpr;
       march(chartIso(l));
     }
+    if (geo && clock >= 0) clearForRoute(geo, clock);
     ctx.globalAlpha = 0.85;
     ctx.fillStyle = colors.muted;
     ctx.font = `500 ${Math.round(9 * dpr)}px ui-monospace, "SF Mono", Menlo, monospace`;
@@ -158,7 +219,8 @@ export function HeroChart() {
       if (!art || !shouldRun()) return;
       elapsed += now - lastNow;
       lastNow = now;
-      if (now - lastFrame >= FRAME_MS - 1) {
+      // Full frame rate while the route plots, so the chart keeps pace with it.
+      if (now - lastFrame >= FRAME_MS - 1 || chartRoutePlaying(now)) {
         lastFrame = now;
         art.draw(elapsed);
       }
@@ -178,7 +240,8 @@ export function HeroChart() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.max(2, Math.round(rect.width * dpr));
       canvas.height = Math.max(2, Math.round(rect.height * dpr));
-      art = createChart(canvas, canvas.width, canvas.height, dpr, chartColors(parent));
+      const getRoute = (): RouteFrame => ({ geo: measureChartRoute(parent.getBoundingClientRect()), clock: chartRouteClock() });
+      art = createChart(canvas, canvas.width, canvas.height, dpr, chartColors(parent), getRoute);
       if (reduced) { art.draw(8000); return; }
       art.draw(elapsed);
       play();

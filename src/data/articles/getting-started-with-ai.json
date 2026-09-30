@@ -1,0 +1,85 @@
+{
+  "href": "/thinking/getting-started-with-ai",
+  "type": "Guide",
+  "kicker": "A guide for owners",
+  "title": "Getting started with AI: a plain-language guide for owners.",
+  "shareTitle": "Getting started with AI: a plain-language guide for owners",
+  "standfirst": "You keep hearing that AI could help your business, and it is hard to tell where to begin. This is the guide we wish more owners got first: what AI is actually good at today, three safe first projects, what to avoid, what it costs, and how to spend your first week.",
+  "readTime": "7 min read",
+  "motif": "target",
+  "sections": [
+    {
+      "id": "start-with-the-week",
+      "eyebrow": "The first move",
+      "title": "Start with the week, not the tool.",
+      "blocks": [
+        { "type": "p", "text": "Most people start with a tool. They hear about one, sign up, poke at it for an evening, and never quite find the place it fits. The better starting point is your own week." },
+        { "type": "p", "text": "Look for the work that is repetitive, follows a pattern, and eats real hours: the same questions answered by email, notes retyped into a quote, a report pieced together from three places every Monday. That is where AI earns its keep first. The rare, high-stakes decisions stay yours." },
+        { "type": "link", "to": "/ai-opportunities", "text": "Not sure where your week goes? Take the two-minute AI opportunity assessment" }
+      ]
+    },
+    {
+      "id": "what-its-good-at",
+      "eyebrow": "The honest picture",
+      "title": "What AI is good at today.",
+      "blocks": [
+        { "type": "p", "text": "Today's general assistants (ChatGPT, Claude, Gemini, Copilot) are genuinely good at a handful of jobs:" },
+        { "type": "li", "text": "Drafting: replies, quotes, posts, job write-ups, and polite reminders, in your voice once it has seen a few examples." },
+        { "type": "li", "text": "Summarizing: long email threads, documents, meeting notes, and the week's sales into a few plain sentences." },
+        { "type": "li", "text": "Sorting and pulling out details: triaging an inbox, reading an invoice or a form, and putting the facts into the right fields." },
+        { "type": "li", "text": "Answering from your own material: your prices, hours, and policies, once you give them to it." },
+        { "type": "li", "text": "A first pass at analysis: what changed in a spreadsheet, which items sell, where the numbers look odd." },
+        { "type": "p", "text": "And it is not good at a few things, which matters just as much. It does not know what it cannot see, so an answer is only as good as what you gave it. It can state a wrong number with total confidence, so anything with money or facts gets checked. And it does not carry relationships or judgment: who gets grace on a late invoice is still your call." }
+      ]
+    },
+    {
+      "id": "three-first-projects",
+      "eyebrow": "Where to begin",
+      "title": "Three safe first projects.",
+      "blocks": [
+        { "type": "p", "text": "Each of these is safe for the same reason: a person reads the result before anything leaves the building." },
+        { "type": "h3", "text": "1. Customer replies from your own answers." },
+        { "type": "p", "text": "Write down your prices, hours, policies, and the ten questions you answer most. Give that to an assistant and have it draft replies to new inquiries. You edit and send. Most owners find the drafts are close to right within a day or two, and the page of answers is useful on its own." },
+        { "type": "h3", "text": "2. A weekly summary you actually read." },
+        { "type": "p", "text": "Export last week's sales or bookings as a spreadsheet and ask for a plain-English summary: what went up, what went down, what looks unusual. It takes minutes, and it is a good way to learn where the assistant is sharp and where it needs checking." },
+        { "type": "h3", "text": "3. The paperwork you retype." },
+        { "type": "p", "text": "Quotes from site notes, write-ups from a voice memo, a clean invoice note from a messy one. If you find yourself copying the same details from one place into another, an assistant can do the first draft." },
+        { "type": "link", "to": "/thinking/ai-prompt-starter-pack", "text": "Get copy-and-paste prompts for all three in the prompt starter pack" }
+      ]
+    },
+    {
+      "id": "what-to-avoid",
+      "eyebrow": "Early mistakes",
+      "title": "What to avoid early.",
+      "blocks": [
+        { "type": "li", "text": "Letting it send on its own. Start with drafts you approve. Automatic sending comes later, if ever, and only for low-stakes messages." },
+        { "type": "li", "text": "Pasting sensitive customer or financial details into a personal account. Use a business plan, and check its data settings before you share anything private." },
+        { "type": "li", "text": "Buying a platform before one job works. Prove the value on a single task with a general assistant first." },
+        { "type": "li", "text": "Automating a process nobody has written down. If you cannot describe the steps, the assistant cannot follow them either." }
+      ]
+    },
+    {
+      "id": "what-it-costs",
+      "eyebrow": "The money",
+      "title": "What it costs.",
+      "blocks": [
+        { "type": "p", "text": "Less than most people expect, in dollars. The main assistants offer a free tier to try, and paid plans are a monthly subscription per person. Before you buy anything, check what you already pay for: many of the tools small businesses use every day, from email and documents to bookkeeping and online stores, now include AI features." },
+        { "type": "p", "text": "The real cost is your time. Plan on a few hours in the first couple of weeks to set it up, give it examples, and review what it produces. That investment is what turns a clever demo into something you rely on." }
+      ]
+    },
+    {
+      "id": "your-first-week",
+      "eyebrow": "The plan",
+      "title": "Your first week.",
+      "blocks": [
+        { "type": "li", "text": "Day 1: Pick one job. Not five. The one that ate last weekend." },
+        { "type": "li", "text": "Day 2: Write down how you do it today, with two or three real examples." },
+        { "type": "li", "text": "Day 3: Try it in a general assistant, using your examples and a starter prompt." },
+        { "type": "li", "text": "Days 4 and 5: Use it on the real work. Read every result, and note what it gets wrong." },
+        { "type": "li", "text": "End of the week: keep it, adjust the instructions, or drop it and try the next job." },
+        { "type": "p", "text": "When one job works, add the next. When you hit an edge, like two tools that will not talk to each other or a process that almost fits, that is the moment a conversation is worth having." },
+        { "type": "link", "to": "/connect", "text": "Hit an edge? Get in touch" }
+      ]
+    }
+  ]
+}
