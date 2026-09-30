@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { serviceAreas, type ServiceId } from "../../data/services";
-import { imgProps, SIZES } from "../../lib/responsiveImage";
+import { AREAS } from "../../data/areas";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
@@ -9,60 +8,40 @@ import Reveal from "./Reveal";
 import { ctaClick } from "../../lib/analytics";
 import "../lab/madrona-v2.css";
 import "./v3.css";
+import "./home-refactor.css";
 
-// The v3 /services overview (Charlie, 2026-08-30): the capability view — the
-// four areas in depth, each driving into its dedicated door page, plus the
-// engagement model. Distinct from the home (no Berry/apps duplication).
-const doorRoutes: Record<ServiceId, string> = {
-  "operations-and-ai": "/services/ai-operations",
-  "customers-and-growth": "/services/growth-retention",
-  "brand-and-web": "/services/brand-website",
-  "new-products": "/services/new-products",
-};
-
-function ServiceArea({ area, index }: { area: typeof serviceAreas[number]; index: number }) {
-  const light = index % 2 === 1;
-  return <Reveal as="section" className={`v3-section v3-svc-area${light ? " v3-band-light v3-svc-flip" : ""}`}>
-    <div className="v3-shell v3-svc-area-inner">
-      <div className="v3-svc-rail">
-        <p className="v3-kicker">0{index + 1} · {area.name}</p>
-        <h2>{area.outcome}</h2>
-        <p className="v3-help-lede">{area.summary}</p>
-        <ul className="v3-svc-offerings">{area.homepageItems.map(item => <li key={item}>{item}</li>)}</ul>
-        <Link className="v3-practice-link" to={doorRoutes[area.id]}>Explore {area.name} <span aria-hidden="true">→</span></Link>
-      </div>
-      <figure className="v3-svc-art">
-        <img {...imgProps(area.artifact.src, SIZES.half)} alt={area.artifact.alt} loading="lazy" decoding="async" />
-        <figcaption>{area.artifact.caption}</figcaption>
-      </figure>
-    </div>
-  </Reveal>;
-}
-
+// /services, streamlined (Charlie, 2026-09-30: the old overview had become
+// the homepage again). A short index of the four areas, each a compact row
+// that leads to its page, then the one thing that lives only here: how an
+// engagement runs, step by step.
 export default function ServicesV3() {
   return <div className="m2 v3">
-    <LabMeta title="How we help · Madrona Product Studio" />
+    <LabMeta title="Services · Madrona Product Studio" />
     <M2Nav active="services" />
     <main id="main">
 
-    <section className="v3-current-hero v3-svc-hero">
-      <div className="v3-shell">
-        <p className="v3-kicker">How we help</p>
-        <h1>Four ways in. <span>One practice.</span></h1>
-        <p className="v3-lede">We help you find the highest-leverage move, make it real, and let the work compound. The doors are different; the practice behind them is the same.</p>
-        <div className="v3-actions">
-          <Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "services-hero")}>Get in touch</Link>
-          <Link className="v3-hero-text-link" to="/ai-opportunities" onClick={ctaClick("Find your AI opportunities", "/ai-opportunities", "services-hero")}>Find your AI opportunities <span aria-hidden="true">→</span></Link>
-        </div>
-      </div>
+    <section className="v3-shell sv-hero">
+      <p className="v3-kicker">Services</p>
+      <h1>Four areas. <span>One senior team.</span></h1>
+      <p className="v3-lede">Pick the question that sounds like your week. Every engagement starts the same way: one free conversation.</p>
     </section>
 
-    {serviceAreas.map((area, index) => <ServiceArea area={area} index={index} key={area.id} />)}
+    <Reveal as="section" className="v3-shell sv-index" aria-label="The four areas">
+      <ol>{AREAS.map((a, i) => <li key={a.slug}>
+        <Link to={a.route}>
+          <span className="sv-num">{String(i + 1).padStart(2, "0")}</span>
+          <span className="sv-name">{a.name}</span>
+          <span className="sv-body"><strong>{a.question}</strong><em>{a.does}</em></span>
+          <span className="sv-go" aria-hidden="true">→</span>
+        </Link>
+      </li>)}</ol>
+      <p className="sv-assess">Not sure which fits? <Link to="/ai-opportunities" onClick={ctaClick("Find your AI opportunities", "/ai-opportunities", "services-index")}>Take the free two-minute assessment <span aria-hidden="true">→</span></Link></p>
+    </Reveal>
 
     <PracticeSection />
 
     </main>
 
-    <SiteFooter cta />
+    <SiteFooter />
   </div>;
 }

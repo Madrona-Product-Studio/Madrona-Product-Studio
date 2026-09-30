@@ -1,9 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
-import { ctaClick } from "../../lib/analytics";
-
-// Section 3: how we work — output-first (Charlie, 2026-08-29): each step
-// leads with the thing you walk away with; the process name becomes the
-// label, and price/terms read as first-class pills instead of faint mono.
+// How an engagement runs, output-first (Charlie, 2026-08-29): each step leads
+// with the thing you walk away with; the process name becomes the label, and
+// price/terms read as first-class pills. Since 2026-09-30 it lives only on
+// /services; the footer's closing ask (compact there) carries the action.
 const steps = [
   ["01", "Talk it through", "A clear read on where to start", "A free 30-minute conversation with a published agenda, and a clear first move by the end.", "Free · 30 minutes"],
   ["02", "Get it in writing", "A written point of view, yours to keep", "A short, honest read on where we can help, and where we can’t.", "Free · yours either way"],
@@ -11,11 +9,6 @@ const steps = [
 ];
 
 export function PracticeSection() {
-  // On /services the practice section IS the engagement-model content, so the
-  // "how an engagement runs" link is an in-page anchor; elsewhere it deep-links
-  // to that anchor. (/how-it-works 301s to /services and would loop here.)
-  const onServices = useLocation().pathname === "/services";
-  const source = onServices ? "services-practice" : "home-practice";
   return <section className="v3-section v3-band-light v3-practice" id="practice"><div className="v3-shell">
     <div className="v3-help-head">
       <p className="v3-kicker">How we work</p><h2>We figure out what to build. <span className="v3-flash">Then we build it.</span></h2>
@@ -28,11 +21,5 @@ export function PracticeSection() {
         <strong className="v3-practice-terms">{terms}</strong>
       </li>)}
     </ol>
-    <div className="v3-practice-ctas">
-      <Link className="v3-btn v3-btn-primary v3-btn-compact" to="/connect" onClick={ctaClick("Get in touch", "/connect", source)}>Get in touch</Link>
-      {onServices
-        ? <a className="v3-practice-link" href="#practice">See how an engagement runs <span aria-hidden="true">→</span></a>
-        : <Link className="v3-practice-link" to="/services#practice">See how an engagement runs <span aria-hidden="true">→</span></Link>}
-    </div>
   </div></section>;
 }
