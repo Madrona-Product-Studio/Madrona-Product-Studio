@@ -1,64 +1,71 @@
-/* ProductsShowcase (New Products area). Lead product + hairline list.
-   Tokens only; the sky themes re-ground them. */
-.v3 .ps{display:flex;flex-direction:column;min-width:0;color:var(--v3-ink)}
-.v3 .ps-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* The New Products showcase, layout N2 · Three equal rows (Charlie, 2026-09-29). Prefix npr-.
+   Tokens only; the sky themes re-ground them. Layout reuses the homepage's
+   .ar-spread / .ar-rail from home-refactor.css. */
+.v3 .npr{min-width:0;color:var(--v3-ink)}
+.v3 .npr-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
-/* The lead: the artifact large, the capability as the headline. */
-.v3 .ps-lead-frame{overflow:hidden;aspect-ratio:1600/667;border:1px solid var(--v3-line);border-radius:8px;background:var(--v3-paper)}
-.v3 .ps-lead-frame img{display:block;width:100%;height:100%;object-fit:cover}
-.v3 .ps-lead-copy{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:24px;padding-top:22px}
-.v3 .ps-lead-copy .ps-meta,.v3 .ps-lead-copy h3,.v3 .ps-lead-copy .ps-detail{grid-column:1}
-.v3 .ps-lead h3{margin:10px 0 8px;font:600 1.5rem/1.15 Inter,sans-serif;letter-spacing:-.02em;color:var(--v3-ink)}
-.v3 .ps-detail{max-width:46ch;margin:0;color:var(--v3-clay);font-size:14px;line-height:1.55}
-.v3 .ps-out{grid-column:2;grid-row:1;align-self:center;color:var(--v3-bark-dark);font-size:12px;font-weight:600;white-space:nowrap}
-.v3 .ps-out span[aria-hidden]{display:inline-block;transition:transform 180ms cubic-bezier(.23,1,.32,1)}
-.v3 .ps-out:hover span[aria-hidden]{transform:translate(2px,-2px)}
+/* The column label sits where the rail's kicker sits, so the two tops line up. */
+.v3 .npr-label{margin:0 0 14px;color:var(--v3-muted);font:700 10px/1.3 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
 
-/* Meta line: product name + honest stage. */
-.v3 .ps-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0;font-size:12px;line-height:1.3}
-.v3 .ps-meta strong{color:var(--v3-ink);font-weight:700}
-.v3 .ps-stage{display:inline-flex;align-items:center;gap:6px;color:var(--v3-muted);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
-.v3 .ps-stage i{width:6px;height:6px;border-radius:50%;background:var(--hue-stone-deep)}
-.v3 .ps-stage--live i{background:var(--hue-mint-deep,#39846d)}
-.v3 .ps-stage--beta i{background:var(--hue-copper-deep)}
-.v3 .ps-stage--in-development i{background:transparent;box-shadow:inset 0 0 0 1.5px var(--hue-stone-deep)}
+/* Three rows, equal weight, hairline separated; no boxes. */
+.v3 .npr-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-line)}
+.v3 .npr-list li{border-bottom:1px solid var(--v3-line)}
+.v3 .npr-row{display:grid;grid-template-columns:minmax(0,.4fr) minmax(0,.6fr);gap:32px;align-items:center;padding:28px 0;color:var(--v3-ink);text-decoration:none}
 
-/* The rest: a compact hairline list, capability first. */
-.v3 .ps-list{margin:40px 0 0;padding:0;list-style:none;border-top:1px solid var(--v3-line)}
-.v3 .ps-list li{border-bottom:1px solid var(--v3-line)}
-.v3 .ps-row{position:relative;display:grid;grid-template-columns:112px minmax(0,1fr) auto;gap:20px;align-items:center;padding:18px 0;color:var(--v3-ink)}
-.v3 .ps-thumb{display:block;overflow:hidden;aspect-ratio:4/3;border:1px solid var(--v3-soft);border-radius:5px;background:var(--v3-paper)}
-.v3 .ps-thumb img{display:block;width:100%;height:100%;object-fit:cover}
-.v3 .ps-row-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
-.v3 .ps-cap{font-size:16px;font-weight:600;line-height:1.3;letter-spacing:-.01em;color:var(--v3-ink);transition:color 160ms ease}
-.v3 .ps-row-detail{color:var(--v3-clay);font-size:13px;line-height:1.5}
-.v3 .ps-arrow{color:var(--v3-bark-dark);font-size:13px;transition:transform 180ms cubic-bezier(.23,1,.32,1)}
-.v3 a.ps-row:hover .ps-cap{color:var(--v3-bark-dark)}
-.v3 a.ps-row:hover .ps-arrow{transform:translate(2px,-2px)}
-.v3 a.ps-row:focus-visible,.v3 .ps-out:focus-visible,.v3 .ps-all:focus-visible{outline:2px solid var(--v3-bark);outline-offset:3px;border-radius:2px}
+.v3 .npr-frame{display:block;aspect-ratio:3/2;overflow:hidden;border:1px solid var(--v3-line);border-radius:6px;background:var(--v3-paper)}
+.v3 .npr-frame img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.001);transition:transform 420ms cubic-bezier(.23,1,.32,1)}
 
-/* The quiet way out to the full portfolio. */
-.v3 .ps-all{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;margin-top:26px;font:700 12px/1 Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--v3-ink)}
-.v3 .ps-all span{color:var(--v3-bark-dark);display:inline-block;transition:transform 180ms cubic-bezier(.23,1,.32,1)}
-.v3 .ps-all:hover{color:var(--v3-bark-dark)}
-.v3 .ps-all:hover span{transform:translateX(3px)}
+.v3 .npr-copy{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+
+/* Meta: product name + honest stage. */
+.v3 .npr-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:12px;line-height:1.3}
+.v3 .npr-meta strong{color:var(--v3-ink);font-weight:700}
+.v3 .npr-stage{display:inline-flex;align-items:center;gap:6px;color:var(--v3-muted);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.v3 .npr-stage i{width:6px;height:6px;border-radius:50%;background:var(--hue-stone-deep)}
+.v3 .npr-stage--live i{background:var(--hue-mint-deep,#39846d)}
+.v3 .npr-stage--beta i{background:var(--hue-copper-deep)}
+.v3 .npr-stage--in-development i{background:transparent;box-shadow:inset 0 0 0 1.5px var(--hue-stone-deep)}
+
+/* The capability is the row's headline: what a business could buy. */
+.v3 .npr-cap{max-width:26ch;margin:10px 0 8px;color:var(--v3-ink);font-size:19px;font-weight:600;line-height:1.25;letter-spacing:-.018em;text-wrap:balance;transition:color 160ms ease}
+.v3 .npr-detail{max-width:44ch;text-wrap:pretty;color:var(--v3-clay);font-size:14px;line-height:1.55}
+.v3 .npr-out{display:inline-flex;align-items:center;gap:5px;margin-top:12px;color:var(--v3-bark-dark);font-size:12px;font-weight:600;letter-spacing:.01em}
+.v3 .npr-out i{display:inline-block;font-style:normal;transition:transform 180ms cubic-bezier(.23,1,.32,1)}
+
+@media (hover:hover) and (pointer:fine){
+  .v3 a.npr-row:hover .npr-cap{color:var(--v3-bark-dark)}
+  .v3 a.npr-row:hover .npr-frame img{transform:scale(1.03)}
+  .v3 a.npr-row:hover .npr-out i{transform:translate(2px,-2px)}
+}
+.v3 a.npr-row:focus-visible{outline:2px solid var(--v3-bark);outline-offset:4px;border-radius:4px}
+
+/* Rail: both ways out, the service page first, the portfolio quieter. */
+.v3 .npr-ways{display:flex;flex-direction:column;align-items:flex-start}
+.v3 .npr-ways .v3-practice-link{margin-top:10px}
+.v3 .npr-all{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--v3-ink70);font-size:13px;font-weight:600;text-decoration:underline;text-decoration-color:var(--v3-line);text-decoration-thickness:1px;text-underline-offset:4px;transition:color 160ms ease,text-decoration-color 160ms ease}
+.v3 .npr-all span{color:var(--v3-bark-dark);display:inline-block;transition:transform 180ms cubic-bezier(.23,1,.32,1)}
+.v3 .npr-all:hover{color:var(--v3-bark-dark);text-decoration-color:currentColor}
+.v3 .npr-all:hover span{transform:translateX(3px)}
+.v3 .npr-all:focus-visible{outline:2px solid var(--v3-bark);outline-offset:3px;border-radius:2px}
 
 /* Dark skies: photos keep a cream hairline so they don't sink into the ground. */
-[data-theme="night"] .v3 .ps-lead-frame,[data-theme="dusk"] .v3 .ps-lead-frame,
-[data-theme="night"] .v3 .ps-thumb,[data-theme="dusk"] .v3 .ps-thumb{border-color:rgba(247,237,228,.18)}
-[data-theme="night"] .v3 .ps-stage--live i,[data-theme="dusk"] .v3 .ps-stage--live i{background:color-mix(in srgb,#39846d 75%,#F7EDE4)}
-[data-theme="night"] .v3 .ps-stage--beta i,[data-theme="dusk"] .v3 .ps-stage--beta i{background:var(--hue-copper)}
-[data-theme="night"] .v3 .ps-stage--in-development i,[data-theme="dusk"] .v3 .ps-stage--in-development i{box-shadow:inset 0 0 0 1.5px var(--hue-stone)}
+[data-theme="night"] .v3 .npr-frame,[data-theme="dusk"] .v3 .npr-frame{border-color:rgba(247,237,228,.18)}
+[data-theme="night"] .v3 .npr-stage--live i,[data-theme="dusk"] .v3 .npr-stage--live i{background:color-mix(in srgb,#39846d 75%,#F7EDE4)}
+[data-theme="night"] .v3 .npr-stage--beta i,[data-theme="dusk"] .v3 .npr-stage--beta i{background:var(--hue-copper)}
 
+@media (max-width:900px){
+  .v3 .npr-row{grid-template-columns:minmax(0,.38fr) minmax(0,.62fr);gap:28px}
+}
+/* Phones: a thumbnail and the copy, still one row per product. */
 @media (max-width:600px){
-  .v3 .ps-lead-copy{grid-template-columns:minmax(0,1fr)}
-  .v3 .ps-out{grid-column:1;grid-row:auto;justify-self:start;margin-top:14px}
-  .v3 .ps-lead h3{font-size:1.3rem}
-  .v3 .ps-row{grid-template-columns:76px minmax(0,1fr) auto;gap:14px;align-items:start}
-  .v3 .ps-cap{font-size:15px}
-  .v3 .ps-arrow{padding-top:2px}
+  .v3 .npr-row{grid-template-columns:116px minmax(0,1fr);gap:16px;align-items:start;padding:20px 0}
+  .v3 .npr-frame{aspect-ratio:4/3;border-radius:5px}
+  .v3 .npr-cap{margin:6px 0 6px;font-size:16px;line-height:1.3}
+  .v3 .npr-detail{font-size:13px;line-height:1.5}
+  .v3 .npr-out{margin-top:8px}
 }
 
 @media (prefers-reduced-motion:reduce){
-  .v3 .ps-out span,.v3 .ps-arrow,.v3 .ps-all span{transition:none}
+  .v3 .npr-frame img,.v3 .npr-out i,.v3 .npr-all,.v3 .npr-all span,.v3 .npr-cap{transition:none}
+  .v3 a.npr-row:hover .npr-frame img{transform:none}
 }

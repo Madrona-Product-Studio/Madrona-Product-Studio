@@ -1,78 +1,98 @@
-/* TEMP round-2 option I1 · Before and after (2026-09-29).
-   Two pages and one callout. Both pages are .v3-artifact, so dusk and night
-   re-pin the day ramp inside them (light islands); the labels, the bridge,
-   and the caption sit on the page ground and use the sky-aware tokens.
-   Status is ink, never orange: the outlined "?" mark means "a person decides". */
-.iba{margin:0;min-width:0}
-.iba-stage{display:grid;grid-template-columns:minmax(0,1fr) 108px minmax(0,1fr);align-items:stretch;padding-inline:4px}
-.iba-side{display:flex;flex-direction:column;min-width:0}
-.v3 .iba-label{margin:0 0 14px;color:var(--v3-muted);font:700 11px/1.2 Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase}
+/* The AI & Operations showcase, motion I1 · Reading the notes (Charlie,
+   2026-09-29).
+   Base: a copy of the shipped InspectionShowcase styles (iba- renamed insr-).
+   Motion additions at the bottom. Every rule here describes the RESTING,
+   finished state; the sequence is driven by WAAPI from InsReading.tsx, so
+   no-JS, reduced motion, and any still show the complete page. */
+.insr{margin:0;min-width:0}
+.insr-stage{display:grid;grid-template-columns:minmax(0,1fr) 108px minmax(0,1fr);align-items:stretch;padding-inline:4px}
+.insr-side{display:flex;flex-direction:column;min-width:0}
+.v3 .insr-label{margin:0 0 14px;color:var(--v3-muted);font:700 11px/1.2 Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase}
 
 /* Pages: quieter than the hero window. Specificity beats the sky rules'
    heavier artifact shadow in v3.css. */
-.v3 .iba-stage .iba-page.v3-artifact{flex:1;border-radius:3px;box-shadow:0 10px 30px rgba(26,23,20,.10)}
-[data-theme="night"] .v3 .iba-stage .iba-page.v3-artifact,[data-theme="dusk"] .v3 .iba-stage .iba-page.v3-artifact{box-shadow:0 14px 36px rgba(0,0,0,.34)}
+.v3 .insr-stage .insr-page.v3-artifact{flex:1;border-radius:3px;box-shadow:0 10px 30px rgba(26,23,20,.10)}
+[data-theme="night"] .v3 .insr-stage .insr-page.v3-artifact,[data-theme="dusk"] .v3 .insr-stage .insr-page.v3-artifact{box-shadow:0 14px 36px rgba(0,0,0,.34)}
 
 /* Mark shared by both pages and the bridge. */
-.iba-mark{display:inline-flex;flex:none;width:17px;height:17px;align-items:center;justify-content:center;border:1.25px solid var(--v3-ink);border-radius:50%;color:var(--v3-ink);font:700 10px/1 Inter,sans-serif;font-style:normal}
+.insr-mark{display:inline-flex;flex:none;width:17px;height:17px;align-items:center;justify-content:center;border:1.25px solid var(--v3-ink);border-radius:50%;color:var(--v3-ink);font:700 10px/1 Inter,sans-serif;font-style:normal}
 
 /* Before: a ruled field sheet, set down a little crooked. */
-.v3 .iba-stage .iba-notes{display:flex;flex-direction:column;padding:18px 16px 18px 34px;transform:rotate(-1.4deg);background-color:var(--v3-paper);background-image:
+.v3 .insr-stage .insr-notes{display:flex;flex-direction:column;padding:18px 16px 18px 34px;transform:rotate(-1.4deg);background-color:var(--v3-paper);background-image:
   linear-gradient(to right,transparent 23px,color-mix(in srgb,var(--v3-bark) 32%,transparent) 23px 24px,transparent 24px),
   repeating-linear-gradient(to bottom,transparent 0 25px,var(--v3-soft) 25px 26px);background-position:0 0,0 18px}
-.v3 .iba-scrawl-head{margin:0 0 0;color:var(--v3-clay);font:italic 500 11px/26px ui-monospace,"SF Mono",Menlo,monospace}
-.iba-notes ul{margin:0;padding:0;list-style:none}
-.iba-notes li{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:26px;color:var(--v3-ink70);font:italic 500 12px/26px ui-monospace,"SF Mono",Menlo,monospace;white-space:nowrap}
-.iba-notes li>span{min-width:0;overflow:hidden;text-overflow:ellipsis}
-.iba-notes s{color:var(--v3-muted);text-decoration-thickness:1.5px}
-.iba-notes li.is-flag>span{color:var(--v3-ink)}
+.v3 .insr-scrawl-head{margin:0 0 0;color:var(--v3-clay);font:italic 500 11px/26px ui-monospace,"SF Mono",Menlo,monospace}
+.insr-notes ul{margin:0;padding:0;list-style:none}
+.insr-notes li{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:26px;color:var(--v3-ink70);font:italic 500 12px/26px ui-monospace,"SF Mono",Menlo,monospace;white-space:nowrap}
+.insr-notes li>span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.insr-notes s{color:var(--v3-muted);text-decoration-thickness:1.5px}
+.insr-notes li.is-flag>span{color:var(--v3-ink)}
 
 /* Placeholder photo tiles: flat, neutral, labeled by filename. No stock. */
-.iba-tile{display:flex;align-items:flex-end;aspect-ratio:4/3;min-width:0;padding:5px 6px;border:1px solid var(--v3-soft);background:color-mix(in srgb,var(--hue-stone) 42%,var(--v3-paper));color:var(--v3-ink70);font:500 10px/1 ui-monospace,"SF Mono",Menlo,monospace}
-.iba-tile:nth-child(2){background:color-mix(in srgb,var(--hue-sage) 38%,var(--v3-paper))}
-.iba-snaps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:300px;margin-top:auto;padding-top:18px}
-.iba-snaps .iba-tile{box-shadow:0 2px 6px rgba(26,23,20,.10)}
-.iba-snaps .iba-tile:nth-child(1){transform:rotate(-3deg)}
-.iba-snaps .iba-tile:nth-child(2){transform:rotate(2deg) translateY(3px)}
-.iba-snaps .iba-tile:nth-child(3){transform:rotate(-1deg)}
+.insr-tile{display:flex;align-items:flex-end;aspect-ratio:4/3;min-width:0;padding:5px 6px;border:1px solid var(--v3-soft);background:color-mix(in srgb,var(--hue-stone) 42%,var(--v3-paper));color:var(--v3-ink70);font:500 10px/1 ui-monospace,"SF Mono",Menlo,monospace}
+.insr-tile:nth-child(2){background:color-mix(in srgb,var(--hue-sage) 38%,var(--v3-paper))}
+.insr-snaps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:300px;margin-top:auto;padding-top:18px}
+.insr-snaps .insr-tile{box-shadow:0 2px 6px rgba(26,23,20,.10)}
+.insr-snaps .insr-tile:nth-child(1){transform:rotate(-3deg)}
+.insr-snaps .insr-tile:nth-child(2){transform:rotate(2deg) translateY(3px)}
+.insr-snaps .insr-tile:nth-child(3){transform:rotate(-1deg)}
 
 /* The bridge: the one thing to read between the pages. */
-.iba-bridge{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 10px 0;text-align:center}
-.v3 .iba-bridge p{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0}
-.iba-bridge b{color:var(--v3-ink);font:500 46px/.9 "Hanken Grotesk",Inter,sans-serif;letter-spacing:-.03em}
-.iba-bridge span{max-width:12ch;color:var(--v3-ink70);font:600 12.5px/1.35 Inter,sans-serif}
-.iba-bridge>i{position:relative;display:block;width:60px;height:1px;margin-top:16px;background:var(--v3-ink70)}
-.iba-bridge>i::after{content:"";position:absolute;top:-3.5px;right:0;width:7px;height:7px;border-top:1px solid var(--v3-ink70);border-right:1px solid var(--v3-ink70);transform:rotate(45deg)}
+.insr-bridge{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 10px 0;text-align:center}
+.v3 .insr-bridge p{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0}
+.insr-bridge b{color:var(--v3-ink);font:500 46px/.9 "Hanken Grotesk",Inter,sans-serif;letter-spacing:-.03em}
+.insr-bridge p>span{max-width:12ch;color:var(--v3-ink70);font:600 12.5px/1.35 Inter,sans-serif}
+.insr-bridge>i{position:relative;display:block;width:60px;height:1px;margin-top:16px;background:var(--v3-ink70)}
+.insr-bridge>i::after{content:"";position:absolute;top:-3.5px;right:0;width:7px;height:7px;border-top:1px solid var(--v3-ink70);border-right:1px solid var(--v3-ink70);transform:rotate(45deg)}
 
 /* After: a clean report page, square to the grid. */
-.v3 .iba-stage .iba-report{padding:16px 16px 18px}
-.iba-doc-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0;padding:0 0 9px;border-bottom:1px solid var(--v3-line)}
-.v3 .iba-report .iba-doc-head{padding:0 0 9px;border-bottom:1px solid var(--v3-line);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--v3-muted)}
-.iba-doc-head em{font-style:normal;font-weight:600;letter-spacing:.08em}
-.v3 .iba-report h4{margin:12px 0 6px;color:var(--v3-ink);font:500 21px/1.1 "Hanken Grotesk",Inter,sans-serif;letter-spacing:-.02em}
-.iba-report ol{margin:0;padding:0;list-style:none}
-.iba-report ol:not(.iba-held) li{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:6px 10px;align-items:start;padding:8px 0;border-bottom:1px solid var(--v3-soft)}
-.iba-report li>span{color:var(--v3-muted);font:500 11px/1.45 ui-monospace,"SF Mono",Menlo,monospace}
-.iba-report li strong{display:block;color:var(--v3-ink);font-size:12px;line-height:1.35}
-.v3 .iba-report li p{margin:1px 0 0;color:var(--v3-ink70);font-size:11.5px;line-height:1.4}
-.iba-report li:nth-child(2)>.iba-tile{background:color-mix(in srgb,var(--hue-sage) 38%,var(--v3-paper))}
-.iba-report li>.iba-tile{width:54px;padding:3px 4px;font-size:10px;letter-spacing:-.02em}
-.v3 .iba-report .iba-held{margin-top:10px}
-.iba-held li{display:grid;grid-template-columns:18px minmax(0,1fr) 17px;gap:6px;align-items:center;padding:5px 0}
-.iba-held b{display:block;color:var(--v3-muted);font-size:13px;font-weight:600}
-.iba-held b em{font-style:normal;font-weight:400}
+.v3 .insr-stage .insr-report{padding:16px 16px 18px}
+.insr-doc-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0;padding:0 0 9px;border-bottom:1px solid var(--v3-line)}
+.v3 .insr-report .insr-doc-head{padding:0 0 9px;border-bottom:1px solid var(--v3-line);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--v3-muted)}
+.insr-doc-head em{font-style:normal;font-weight:600;letter-spacing:.08em}
+.v3 .insr-report h4{margin:12px 0 6px;color:var(--v3-ink);font:500 21px/1.1 "Hanken Grotesk",Inter,sans-serif;letter-spacing:-.02em}
+.insr-report ol{margin:0;padding:0;list-style:none}
+.insr-report ol:not(.insr-held) li{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:6px 10px;align-items:start;padding:8px 0;border-bottom:1px solid var(--v3-soft)}
+.insr-report li>span{color:var(--v3-muted);font:500 11px/1.45 ui-monospace,"SF Mono",Menlo,monospace}
+.insr-report li strong{display:block;color:var(--v3-ink);font-size:12px;line-height:1.35}
+.v3 .insr-report li p{margin:1px 0 0;color:var(--v3-ink70);font-size:11.5px;line-height:1.4}
+.insr-report li:nth-child(2)>.insr-tile{background:color-mix(in srgb,var(--hue-sage) 38%,var(--v3-paper))}
+.insr-report li>.insr-tile{width:54px;padding:3px 4px;font-size:10px;letter-spacing:-.02em}
+.v3 .insr-report .insr-held{margin-top:10px}
+.insr-held li{display:grid;grid-template-columns:18px minmax(0,1fr) 17px;gap:6px;align-items:center;padding:5px 0}
+.insr-held b{display:block;color:var(--v3-muted);font-size:13px;font-weight:600}
+.insr-held b em{font-style:normal;font-weight:400}
 
-.v3 .iba-caption{margin:22px 2px 0;max-width:62ch;color:var(--v3-muted);font-size:12px;line-height:1.5}
-.iba-caption strong{color:var(--v3-ink70);font-weight:600}
+.v3 .insr-caption{margin:22px 2px 0;max-width:62ch;color:var(--v3-muted);font-size:12px;line-height:1.5}
+.insr-caption strong{color:var(--v3-ink70);font-weight:600}
 
 /* Phone and narrow columns: stack, the bridge turns into a down-pointing row. */
 @media(max-width:640px){
-  .iba-stage{grid-template-columns:minmax(0,1fr)}
-  .v3 .iba-stage .iba-notes{transform:rotate(-.8deg)}
-  .iba-bridge{flex-direction:row;justify-content:flex-start;gap:16px;padding:26px 4px 24px}
-  .v3 .iba-bridge p{flex-direction:row;gap:12px;text-align:left}
-  .iba-bridge b{font-size:40px}
-  .iba-bridge span{max-width:14ch}
-  .iba-bridge>i{width:1px;height:34px;margin:0 0 0 4px}
-  .iba-bridge>i::after{top:auto;right:-3.5px;bottom:0;transform:rotate(135deg)}
+  .insr-stage{grid-template-columns:minmax(0,1fr)}
+  .v3 .insr-stage .insr-notes{transform:rotate(-.8deg)}
+  .insr-bridge{flex-direction:row;justify-content:flex-start;gap:16px;padding:26px 4px 24px}
+  .v3 .insr-bridge p{flex-direction:row;gap:12px;text-align:left}
+  .insr-bridge b{font-size:40px}
+  .insr-bridge p>span{max-width:14ch}
+  .insr-bridge>i{width:1px;height:34px;margin:0 0 0 4px}
+  .insr-bridge>i::after{top:auto;right:-3.5px;bottom:0;transform:rotate(135deg)}
 }
+
+/* ---- Reading the notes: motion scaffolding (resting state) ---- */
+
+/* The notes lines sit in a positioned box so the reading band can travel
+   down them. The band is a soft highlighter wash, hidden at rest. */
+.insr-lines{position:relative}
+.insr-lines ul{position:relative;z-index:1}
+.insr-band{position:absolute;top:0;left:-7px;right:-7px;height:26px;border-radius:3px;background:color-mix(in srgb,var(--v3-bark) 13%,transparent);opacity:0;pointer-events:none;will-change:transform,opacity}
+
+/* The bridge count is an odometer: a column 0 to 3 in a one-digit window.
+   At rest it shows 3 (the column shifted up three digits). Screen readers
+   get the plain number. */
+.insr-bridge b.insr-count{display:block;height:1em;overflow:hidden;line-height:1;font-variant-numeric:tabular-nums;-webkit-mask-image:linear-gradient(transparent,#000 16%,#000 84%,transparent);mask-image:linear-gradient(transparent,#000 16%,#000 84%,transparent)}
+.insr-odo{display:block;transform:translateY(-75%);will-change:transform}
+.insr-odo>span{display:block;height:1em;line-height:1}
+.insr-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* The fig tiles and marks animate on their own; keep them transform-ready. */
+.insr-report li>.insr-tile,.insr .insr-mark{transform-origin:center}

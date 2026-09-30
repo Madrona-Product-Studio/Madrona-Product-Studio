@@ -113,3 +113,6 @@ a.ar-src-link[target]:hover i[aria-hidden]{transform:translate(1.5px,-1.5px)}
    first area drops its top rule and tightens up beneath it. */
 .v3 .ar-after-bridge{border-top:0;padding-top:96px}
 @media(max-width:600px){.v3 .ar-after-bridge{padding-top:64px}}
+
+/* The New Products rail: its second link sits under "More on New Products". */
+.v3 .ar-rail .ar-extra{display:flex;width:max-content}

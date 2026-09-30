@@ -65,6 +65,7 @@ interface Area {
   does: string;
   built: Built[];
   builtLabel?: string; // defaults to "Work and examples"
+  extraLink?: { label: string; to: string };
   route: string;
   Showcase: () => React.ReactElement;
 }
@@ -118,18 +119,10 @@ export const areas: Area[] = [
     name: "New Products",
     question: "Have an idea that deserves to become real?",
     does: "From prototype to launched product. We build and run our own, so we know what launching takes.",
-    // Integration pass (2026-09-29): the brief's four built items for this
-    // area (Lila Trips, San Juan, Plainly, Aria) are exactly what
-    // ProductsShowcase shows, capability first, in the same words; listing
-    // them here too read as the same section twice, worst on mobile. So the
-    // rail names the rest of the portfolio instead, stages straight from
-    // studioProducts.ts. To restore the brief's list, swap this array back.
-    builtLabel: "Also ours",
-    built: [
-      { what: "A command center people and agents both read", sources: [src.helm()] },
-      { what: "A yoga practice built on the original texts", sources: [src.product("lila-yoga", "Lila Yoga · beta")] },
-      { what: "A true-to-scale map for planning a food garden", sources: [src.product("garden-hq", "Garden HQ · in development")] },
-    ],
+    // Charlie (2026-09-29): the rail no longer lists products; the showcase
+    // carries Helm, Lila Trips, and San Juan, and the rail links to the rest.
+    built: [],
+    extraLink: { label: "See all our products", to: "/apps" },
     route: "/services/new-products",
     Showcase: ProductsShowcase,
   },
@@ -177,8 +170,9 @@ export function AreasSection({ intro, firstClassName = "" }: { intro?: ReactNode
               <p className="v3-kicker ar-kicker"><span>{number}</span>{area.name}</p>
               <h2 id={`area-${area.id}-q`}>{area.question}</h2>
               <p className="ar-does">{area.does}</p>
-              <BuiltList items={area.built} label={area.builtLabel} />
+              {area.built.length > 0 && <BuiltList items={area.built} label={area.builtLabel} />}
               <Link className="v3-practice-link" to={area.route}>More on {area.name} <span aria-hidden="true">→</span></Link>
+              {area.extraLink && <Link className="npr-all ar-extra" to={area.extraLink.to}>{area.extraLink.label} <span aria-hidden="true">→</span></Link>}
             </div>
             <div className="ar-showcase"><Showcase /></div>
           </div>

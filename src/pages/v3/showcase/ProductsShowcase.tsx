@@ -1,82 +1,100 @@
-import { Link } from "react-router-dom";
+// The New Products showcase (Charlie picked layout N2, 2026-09-29): Helm,
+// Lila Trips, and San Juan as three equal rows in one column.
 import { imgProps } from "../../../lib/responsiveImage";
 import { studioProducts, STAGE_META, type ProductStage, type StudioProduct } from "../../../data/studioProducts";
+import { HELM_DEMO_URL } from "../../../data/proof";
 import { outboundClick } from "../../../lib/analytics";
 import "./products.css";
 
-// New Products showcase (2026-09-29 refactor). The studio's own products,
-// each shown as the capability it proves a business could buy. One lead
-// product with the large artifact, the rest as a compact hairline list, so
-// the column never becomes three identical boxed cards. Stages come straight
-// from studioProducts.ts so they stay honest as products move.
+// Brief: docs/positioning-2026-09/showcase-motion-brief.md
+//
+// Originally built as the whole New Products spread, rail and showcase, in the homepage's flipped
+// position (showcase left, rail right). One column, one reading order: Helm,
+// Lila Trips, San Juan as three rows of equal weight. Each row is one link:
+// image left, then name + stage, the capability it proves, a line of detail,
+// and where it lives. No card boxes; hairlines separate the rows. Plainly and
+// Aria are off the homepage, and the rail's "Also ours" list is gone. Static
+// on purpose; the only motion is the site's usual hover response.
+//
+// Honesty: stages come straight from studioProducts.ts; Helm links to the
+// public demo (HELM_DEMO_URL), never the real instance.
 
-// Review pass (same day): Lila Trips has a one-time paid unlock, not a
-// subscription; its detail now bridges to what a client could commission, as
-// San Juan's caption does. Plainly's "read in a minute" was never measured.
-const LEAD = { id: "lila-trips", capability: "AI-planned itineraries, with a paid unlock", detail: "An open-ended idea becomes a day-by-day trip. Planning, sign-up, and checkout in one product, the kind a tour operator or travel brand could offer." };
+interface Row {
+  id: string;
+  capability: string;
+  detail: string;
+  href?: string; // overrides the product's primary link (Helm → public demo)
+  focus?: string; // object-position for the image crop
+}
 
-const REST = [
-  { id: "san-juan-boating-guide", capability: "Live maps and conditions", detail: "Tides, wind, and anchorages on one map for boaters." },
-  { id: "plainly", capability: "Voice-first intake", detail: "A short spoken conversation becomes a concise profile for a therapist." },
-  { id: "aria-health", capability: "Stage-aware guidance with guardrails", detail: "Menopause guidance that adapts to each person and stays grounded in evidence." },
+const ROWS: Row[] = [
+  {
+    id: "helm",
+    capability: "A command center people and AI agents both work from",
+    detail: "Projects, priorities, and notes that people and agents read and write together. We run our own work on it.",
+    href: HELM_DEMO_URL,
+    focus: "50% 30%",
+  },
+  {
+    id: "lila-trips",
+    capability: "AI-planned itineraries, with a paid unlock",
+    detail: "An open-ended idea becomes a day-by-day trip, with sign-up and checkout built in.",
+    focus: "78% 50%",
+  },
+  {
+    id: "san-juan-boating-guide",
+    capability: "Live maps and conditions for boaters",
+    detail: "Tides, wind, and anchorages across the San Juan Islands on one map.",
+    focus: "50% 45%",
+  },
 ];
 
-const SIZES_LEAD = "(max-width: 900px) calc(100vw - 32px), 620px";
-const SIZES_THUMB = "120px";
+// Measured from the CSS: the image column is 40% of a ~640px showcase column
+// at 1440 (~250px), ~38% of the full width between 600 and 900, and a 116px
+// thumbnail on phones.
+const SIZES = "(max-width: 600px) 116px, (max-width: 900px) 38vw, 260px";
 
 function product(id: string): StudioProduct {
   const p = studioProducts.find((x) => x.id === id);
-  if (!p) throw new Error(`ProductsShowcase: unknown product ${id}`);
+  if (!p) throw new Error(`NpRows: unknown product ${id}`);
   return p;
 }
 
-function Stage({ stage }: { stage: ProductStage }) {
-  return <span className={`ps-stage ps-stage--${stage}`}><i aria-hidden="true" />{STAGE_META[stage].label}</span>;
+function hostOf(href: string) {
+  try {
+    const u = new URL(href);
+    return u.host.replace(/^www\./, "") + u.pathname.replace(/\/$/, "");
+  } catch { return href; }
 }
 
-function hostOf(href: string) {
-  try { return new URL(href).host.replace(/^www\./, ""); } catch { return href; }
+function Stage({ stage }: { stage: ProductStage }) {
+  return <span className={`npr-stage npr-stage--${stage}`}><i aria-hidden="true" />{STAGE_META[stage].label}</span>;
+}
+
+function ProductRow({ row }: { row: Row }) {
+  const p = product(row.id);
+  const href = row.href ?? p.primaryAction?.href;
+  const inner = <>
+    <span className="npr-frame">
+      {p.artifact.src && <img {...imgProps(p.artifact.src, SIZES)} alt={p.artifact.alt} loading="lazy" decoding="async" style={row.focus ? { objectPosition: row.focus } : undefined} />}
+    </span>
+    <span className="npr-copy">
+      <span className="npr-meta"><strong>{p.name}</strong><Stage stage={p.stage} /></span>
+      <span className="npr-cap">{row.capability}</span>
+      <span className="npr-detail">{row.detail}</span>
+      {href && <span className="npr-out">{hostOf(href)} <i aria-hidden="true">↗</i></span>}
+    </span>
+  </>;
+  if (!href) return <div className="npr-row">{inner}</div>;
+  return <a className="npr-row" href={href} target="_blank" rel="noreferrer" onClick={outboundClick(href, "home-products")}>
+    {inner}<span className="npr-sr"> (opens in a new tab)</span>
+  </a>;
 }
 
 export function ProductsShowcase() {
-  const lead = product(LEAD.id);
-  const leadHref = lead.primaryAction?.href;
-  return <div className="ps">
-    <article className="ps-lead">
-      {lead.artifact.src && <div className="ps-lead-frame">
-        <img {...imgProps(lead.artifact.src, SIZES_LEAD)} alt={lead.artifact.alt} loading="lazy" decoding="async" />
-      </div>}
-      <div className="ps-lead-copy">
-        <p className="ps-meta"><strong>{lead.name}</strong><Stage stage={lead.stage} /></p>
-        <h3>{LEAD.capability}</h3>
-        <p className="ps-detail">{LEAD.detail}</p>
-        {leadHref && <a className="ps-out" href={leadHref} target="_blank" rel="noreferrer" onClick={outboundClick(leadHref, "home-products")}>
-          {hostOf(leadHref)} <span aria-hidden="true">↗︎</span><span className="ps-sr"> (opens in a new tab)</span>
-        </a>}
-      </div>
-    </article>
-
-    <ul className="ps-list" aria-label="More products of ours">
-      {REST.map(({ id, capability, detail }) => {
-        const p = product(id);
-        const href = p.primaryAction?.href;
-        const body = <>
-          {p.artifact.src && <span className="ps-thumb"><img {...imgProps(p.artifact.src, SIZES_THUMB)} alt="" loading="lazy" decoding="async" /></span>}
-          <span className="ps-row-copy">
-            <span className="ps-meta"><strong>{p.name}</strong><Stage stage={p.stage} /></span>
-            <b className="ps-cap">{capability}</b>
-            <span className="ps-row-detail">{detail}</span>
-          </span>
-          {href && <span className="ps-arrow" aria-hidden="true">↗︎</span>}
-        </>;
-        return <li key={id}>
-          {href
-            ? <a className="ps-row" href={href} target="_blank" rel="noreferrer" onClick={outboundClick(href, "home-products")}>{body}<span className="ps-sr"> (opens in a new tab)</span></a>
-            : <div className="ps-row">{body}</div>}
-        </li>;
-      })}
+  return <div className="npr">
+    <ul className="npr-list">
+      {ROWS.map((row) => <li key={row.id}><ProductRow row={row} /></li>)}
     </ul>
-
-    <Link className="ps-all" to="/apps">See all our products <span aria-hidden="true">→</span></Link>
   </div>;
 }
