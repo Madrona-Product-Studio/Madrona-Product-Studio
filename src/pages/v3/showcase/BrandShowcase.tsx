@@ -67,7 +67,8 @@ const tabs = [
 // through the three tabs on its own, one lap, and rests back on Brand. A thin
 // line under the active tab fills while it dwells, and the tab advances when
 // the line completes (the CSS animation's end drives the state, so pausing
-// the animation pauses the tour). It pauses on hover, keyboard focus, when
+// the animation pauses the tour). It pauses on hovering or focusing the tab
+// strip, when
 // scrolled away, or in a background tab, and stops for good the moment the
 // visitor picks a tab. Reduced motion: no autoplay, tabs work as normal.
 const DWELL_MS = 5200;
@@ -126,14 +127,14 @@ export function BrandShowcase() {
   return <article
     ref={rootRef}
     className={`v3-artifact bsc${auto ? " is-auto" : ""}${playing ? "" : " is-held"}`}
-    onPointerEnter={() => setHeld(true)}
-    onPointerLeave={() => setHeld(false)}
-    onFocus={() => setHeld(true)}
-    onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setHeld(false); }}
   >
     <header className="bsc-bar">
       <span className="bsc-dots" aria-hidden="true"><i /><i /><i /></span>
-      <div className="bsc-tabs" role="tablist" aria-label="Brand and website examples" onKeyDown={onKeyDown}>
+      {/* Only the tab strip pauses the tour: a cursor resting on the image
+          while scrolling must not freeze it (Charlie saw it never move). */}
+      <div className="bsc-tabs" role="tablist" aria-label="Brand and website examples" onKeyDown={onKeyDown}
+        onPointerEnter={() => setHeld(true)} onPointerLeave={() => setHeld(false)}
+        onFocus={() => setHeld(true)} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setHeld(false); }}>
         {tabs.map((t, index) => <button
           key={t.id}
           ref={(el) => { tabRefs.current[index] = el; }}
