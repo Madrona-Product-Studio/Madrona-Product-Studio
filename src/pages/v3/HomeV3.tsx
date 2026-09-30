@@ -3,7 +3,6 @@ import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { Hero } from "./Hero";
-import { Bridge } from "./Bridge";
 import { AreasSection } from "./AreasSection";
 import { DepthSection } from "./DepthSection";
 import { PracticeSection } from "./PracticeSection";
@@ -25,15 +24,15 @@ import { ctaClick } from "../../lib/analytics";
 // spread pairs the area with things we've built), so the page reads: say it,
 // show what we've built in each area, why us, how we work, ask. The Thinking
 // section left the homepage.
+// 2026-09-30 (Charlie): the bridge strip under the hero became the hero's
+// right column (a vertical route); the week window moved to area 01.
 export default function HomeV3() {
   return <div className="m2 v3">
     <LabMeta title="Madrona Product Studio · PNW, USA" />
     <M2Nav />
     <main id="main">
     <Hero />
-
-    <Bridge />
-    <AreasSection intro={null} firstClassName="ar-after-bridge" />
+    <AreasSection intro={null} />
     <Reveal><DepthSection /></Reveal>
     <Reveal><PracticeSection /></Reveal>
 

@@ -102,17 +102,11 @@ a.ar-src-link[target]:hover i[aria-hidden]{transform:translate(1.5px,-1.5px)}
 @media(prefers-reduced-motion:reduce){.ar-src-link,.ar-src-link i{transition:none}a.ar-src-link:hover i[aria-hidden],a.ar-src-link[target]:hover i[aria-hidden]{transform:none}}
 
 /* Final cold read (2026-09-29): the same floating shadow on every window read
-   as a template. The hero window keeps it; the showcase windows sit flat on a
-   hairline so the page has one lifted object, not four. */
+   as a template. The showcase windows sit flat on a
+   hairline rather than floating. */
 .v3 .ar-area .v3-artifact{box-shadow:0 1px 2px rgba(26,23,20,.05)}
-.v3 .ar-area .iba-stage .iba-page.v3-artifact{box-shadow:0 1px 3px rgba(26,23,20,.07)}
 /* A tag never breaks mid-label (its arrow wrapped alone onto a new line). */
 .v3 .ar-src{white-space:nowrap}
-
-/* The bridge (Bridge.tsx) now carries the hand-off from the hero, so the
-   first area drops its top rule and tightens up beneath it. */
-.v3 .ar-after-bridge{border-top:0;padding-top:96px}
-@media(max-width:600px){.v3 .ar-after-bridge{padding-top:64px}}
 
 /* The New Products rail: its second link sits under "More on New Products". */
 .v3 .ar-rail .ar-extra{display:flex;width:max-content}

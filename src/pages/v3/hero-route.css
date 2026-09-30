@@ -1,0 +1,81 @@
+/* The hero route (Charlie picked B3 · Drawn into the chart, 2026-09-30).
+   The four areas as a course tacking down the hero's right column, over the
+   chart of the bay. The chart itself makes room for it (chartRoute.ts +
+   HeroChart.tsx): contours ring each waypoint and part along each leg,
+   leader, and label, so nothing is laid over the map.
+   Geometry: --tw is the track the course tacks across. A waypoint sits at
+   x * tw; each stop's leg SVG spans the full track (viewBox 0-100 on both
+   axes, stretched), so its line runs from this waypoint to the next one at
+   any stop height. */
+.hw-copy .v3-kicker{margin-bottom:22px}
+.v3-hero-route-wrap{position:relative;z-index:4}
+/* A paper knockout on the labels, the way a printed chart clears the
+   contours around its lettering (a backstop to the chart's own clearing). */
+.v3-hero-route-wrap strong,.v3-hero-route-wrap em,.v3-hero-route-wrap .hrt-num{text-shadow:0 0 3px var(--v3-bg),0 0 8px var(--v3-bg),0 0 14px var(--v3-bg)}
+
+.hrt{
+  --d:13px;--cy:12px;--gap:34px;--tw:250px;--step:460ms;--t0:360ms; /* mirror ROUTE_STEP / ROUTE_T0 in chartRoute.ts */
+  --out:cubic-bezier(.23,1,.32,1);--travel:cubic-bezier(.65,0,.35,1);
+  --course:color-mix(in srgb,var(--v3-bark) 78%,transparent);
+  --ring:color-mix(in srgb,var(--v3-ink) 55%,transparent);
+  position:relative;max-width:560px;
+}
+.hrt ol{position:relative;margin:0;padding:0;list-style:none}
+.hrt-stop{position:relative;padding-bottom:var(--gap)}
+.hrt-stop.is-last{padding-bottom:0}
+
+.hrt-leg{position:absolute;top:var(--cy);left:calc(var(--d) / 2);width:var(--tw);height:100%;overflow:visible;pointer-events:none}
+.hrt-leg line{stroke:var(--course);stroke-width:1.25;stroke-linecap:round}
+.hrt-stop.is-last .hrt-leg{height:80px;-webkit-mask-image:linear-gradient(to bottom,#000,transparent);mask-image:linear-gradient(to bottom,#000,transparent)}
+
+/* The mark rides the diagonal: the outer box carries it down one stop, the
+   inner dot across by the leg's run. */
+.hrt-mark{position:absolute;top:calc(var(--cy) - 3px);left:calc(var(--d) / 2 - 3px + var(--x) * var(--tw));width:6px;height:100%;opacity:0;pointer-events:none}
+.hrt-mark i{position:absolute;top:0;left:0;width:6px;height:6px;border-radius:50%;background:var(--v3-bark)}
+.hrt-stop.is-last .hrt-mark{height:56px}
+
+.v3 .hrt a{position:relative;z-index:1;display:block;padding-left:calc(var(--tw) + var(--d) + 22px);color:var(--v3-ink);text-decoration:none;border-radius:4px}
+.hrt-dot{position:absolute;top:calc(var(--cy) - var(--d) / 2);left:calc(var(--x) * var(--tw));width:var(--d);height:var(--d);border-radius:50%;background:var(--v3-bg);box-shadow:inset 0 0 0 1.5px var(--ring);transition:transform 220ms var(--out),box-shadow 220ms ease}
+.hrt-dot i{position:absolute;inset:3.5px;border-radius:50%;background:var(--v3-bark)}
+/* The leader: a dotted rule from the fix to its label, as on a chart. */
+.hrt-lead{position:absolute;top:calc(var(--cy) - .5px);left:calc(var(--x) * var(--tw) + var(--d) + 5px);width:calc((1 - var(--x)) * var(--tw) + 10px);height:0;border-top:1px dotted color-mix(in srgb,var(--v3-ink) 38%,transparent);transform-origin:0 50%;transition:border-color 180ms ease}
+.hrt a:hover .hrt-lead,.hrt a:focus-visible .hrt-lead{border-top-color:var(--v3-bark)}
+.hrt-label{min-width:0}
+.hrt-num{margin-right:8px;color:var(--v3-muted);font:600 10.5px/24px ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.05em;vertical-align:top}
+.hrt-label strong{color:var(--v3-ink);font-size:18px;font-weight:600;line-height:24px;letter-spacing:-.012em}
+.hrt-label em{display:block;margin-top:2px;color:var(--v3-clay);font-size:13.5px;font-style:normal;line-height:1.45;transition:color 180ms ease}
+.hrt a:hover .hrt-dot,.hrt a:focus-visible .hrt-dot{transform:scale(1.3);box-shadow:inset 0 0 0 1.5px var(--v3-bark)}
+.hrt a:hover .hrt-label strong,.hrt a:focus-visible .hrt-label strong{color:var(--v3-bark-dark)}
+.hrt a:hover .hrt-label em,.hrt a:focus-visible .hrt-label em{color:var(--v3-ink70)}
+.v3 .hrt a:focus-visible{outline:2px solid var(--v3-bark-dark);outline-offset:6px}
+
+/* ---- The plot ---- */
+.hrt-play .hrt-leg{animation:hrt-draw 420ms var(--travel) calc(var(--t0) + 40ms + var(--i) * var(--step)) both}
+.hrt-play .is-last .hrt-leg{animation-duration:620ms;animation-timing-function:var(--out)}
+.hrt-play .hrt-mark{animation:hrt-sail-y 420ms var(--travel) calc(var(--t0) + 40ms + var(--i) * var(--step)) both}
+.hrt-play .hrt-mark i{animation:hrt-sail-x 420ms var(--travel) calc(var(--t0) + 40ms + var(--i) * var(--step)) both}
+.hrt-play .is-last .hrt-mark,.hrt-play .is-last .hrt-mark i{animation-duration:620ms;animation-timing-function:var(--out)}
+.hrt-play .hrt-dot{animation:hrt-ring 320ms var(--out) calc(var(--t0) - 60ms + var(--i) * var(--step)) both}
+.hrt-play .hrt-dot i{animation:hrt-fill 280ms var(--out) calc(var(--t0) + var(--i) * var(--step)) both}
+.hrt-play .hrt-lead{animation:hrt-lead 360ms var(--out) calc(var(--t0) + 40ms + var(--i) * var(--step)) both}
+.hrt-play .hrt-label{animation:hrt-settle 560ms var(--out) calc(var(--t0) + 60ms + var(--i) * var(--step)) both}
+.hrt-hold *{animation-play-state:paused!important}
+
+@keyframes hrt-draw{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 -4px 0)}}
+@keyframes hrt-sail-y{0%{opacity:0;transform:none}12%,88%{opacity:1}100%{opacity:0;transform:translateY(100%)}}
+@keyframes hrt-sail-x{from{transform:none}to{transform:translateX(calc(var(--dx) * var(--tw)))}}
+@keyframes hrt-fill{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:none}}
+@keyframes hrt-ring{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@keyframes hrt-settle{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes hrt-lead{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+@media (max-width:600px){
+  .hrt{--cy:11px;--gap:28px;--d:11px;--tw:104px}
+  .hrt-label strong{font-size:16.5px;line-height:22px}
+  .hrt-num{line-height:22px}
+  .hrt-label em{font-size:13px}
+  .hrt-dot i{inset:3px}
+  .v3 .hrt a{padding-left:calc(var(--tw) + var(--d) + 14px)}
+  .hrt-lead{width:calc((1 - var(--x)) * var(--tw) + 5px)}
+}
+@media (prefers-reduced-motion:reduce){.hrt-mark{display:none}.hrt *{animation:none!important;transition:none!important}}

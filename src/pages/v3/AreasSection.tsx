@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { AutomationMap } from "./showcase/AutomationMap";
-import { InspectionShowcase } from "./showcase/InspectionShowcase";
+import { WeekShowcase } from "./showcase/WeekShowcase";
 import { BrandShowcase } from "./showcase/BrandShowcase";
 import { ProductsShowcase } from "./showcase/ProductsShowcase";
 import { BERRY_URL, HELM_DEMO_URL } from "../../data/proof";
@@ -84,7 +84,7 @@ const areas: Area[] = [
       { what: "Operations dashboards", sources: [src.berry(), src.helm()] },
     ],
     route: "/services/ai-operations",
-    Showcase: InspectionShowcase,
+    Showcase: WeekShowcase,
   },
   {
     id: "brand-website",
