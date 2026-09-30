@@ -1,0 +1,94 @@
+/* The bridge: option A · Trail (Charlie, 2026-09-29).
+   A course line under the hero: straight hairline legs between four
+   waypoints (the nautical waypoint mark: a ring with a filled centre).
+   Geometry: every stop is an equal grid column with no gap, and each stop's
+   waypoint sits at the same offset inside it, so a leg that starts at this
+   waypoint's centre and is 100% of the stop long lands exactly on the next
+   waypoint's centre, at any width. Phones turn the same idea vertical. */
+.btr{
+  --btr-line:color-mix(in srgb,var(--v3-bark) 55%,transparent);
+  --btr-ring:color-mix(in srgb,var(--v3-ink) 58%,transparent);
+  --btr-d:11px;          /* waypoint diameter */
+  --btr-cy:31.5px;       /* waypoint centre from the top of a stop (14 + 12 + 5.5) */
+  --btr-step:380ms;      /* one leg plus a short dwell at the waypoint */
+  --btr-t0:80ms;
+  --btr-out:cubic-bezier(.23,1,.32,1);
+  --btr-travel:cubic-bezier(.65,0,.35,1);
+  position:relative;
+  padding-top:8px;
+}
+.btr-route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;padding:0;list-style:none}
+.btr-stop{position:relative;min-width:0;padding-right:32px}
+
+/* Legs: a 1px hairline from this waypoint's centre to the next one. */
+.btr-leg{position:absolute;top:calc(var(--btr-cy) - .5px);left:calc(var(--btr-d) / 2);z-index:0;width:100%;height:1px;background:var(--btr-line);transform-origin:0 50%}
+/* The last leg runs on past 04 and fades: the route continues into the work. */
+.btr-stop.is-last .btr-leg{width:calc(100% - var(--btr-d) / 2);-webkit-mask-image:linear-gradient(to right,#000 0%,transparent 100%);mask-image:linear-gradient(to right,#000 0%,transparent 100%)}
+
+/* The mark that rides the leading edge while a leg draws (only visible
+   during the plot; the finished route rests without it). The box is one
+   stop wide, so translateX(100%) carries it exactly to the next waypoint. */
+.btr-mark{position:absolute;top:calc(var(--btr-cy) - 2.5px);left:calc(var(--btr-d) / 2 - 2.5px);z-index:0;width:100%;height:5px;opacity:0;pointer-events:none}
+.btr-mark::before{content:"";position:absolute;top:0;left:0;width:5px;height:5px;border-radius:50%;background:var(--v3-bark)}
+
+.v3 .btr a{position:relative;z-index:1;display:block;color:var(--v3-ink);text-decoration:none;border-radius:4px}
+.btr-num{display:block;height:14px;margin-bottom:12px;color:var(--v3-muted);font:600 11px/14px ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.btr-dot{position:relative;display:block;width:var(--btr-d);height:var(--btr-d);border-radius:50%;background:var(--v3-bg);box-shadow:inset 0 0 0 1.5px var(--btr-ring);transition:transform 220ms var(--btr-out),box-shadow 220ms ease}
+.btr-dot i{position:absolute;inset:3px;border-radius:50%;background:var(--v3-bark)}
+.btr-label{display:block;margin-top:16px}
+.btr-label strong{display:block;color:var(--v3-ink70);font-size:15px;font-weight:600;line-height:1.3;letter-spacing:-.005em;transition:color 180ms ease}
+.btr-label em{display:block;margin-top:4px;color:var(--v3-clay);font-size:13px;font-style:normal;line-height:1.45;transition:color 180ms ease}
+
+/* Hover / focus: the waypoint grows a touch, the label comes forward. */
+.btr a:hover .btr-dot,.btr a:focus-visible .btr-dot{transform:scale(1.36);box-shadow:inset 0 0 0 1.5px var(--v3-bark)}
+.btr a:hover .btr-label strong,.btr a:focus-visible .btr-label strong{color:var(--v3-ink)}
+.btr a:hover .btr-label em,.btr a:focus-visible .btr-label em{color:var(--v3-ink70)}
+.v3 .btr a:focus-visible{outline:2px solid var(--v3-bark-dark);outline-offset:8px}
+
+/* ---- The plot (armed by JS; the markup alone is the finished route) ----
+   Waypoint i is reached at t0 + i x step. The leg out of it starts 40ms
+   later and travels for 340ms, so it lands as the next waypoint fills. */
+.btr-play .btr-leg{animation:btr-draw-x 340ms var(--btr-travel) calc(var(--btr-t0) + 40ms + var(--i) * var(--btr-step)) both}
+.btr-play .is-last .btr-leg{animation-duration:460ms;animation-timing-function:var(--btr-out)}
+.btr-play .btr-mark{animation:btr-sail-x 340ms var(--btr-travel) calc(var(--btr-t0) + 40ms + var(--i) * var(--btr-step)) both}
+.btr-play .is-last .btr-mark{animation-name:btr-sail-x-out;animation-duration:460ms;animation-timing-function:var(--btr-out)}
+.btr-play .btr-dot{animation:btr-ring 320ms var(--btr-out) calc(var(--btr-t0) - 60ms + var(--i) * var(--btr-step)) both}
+.btr-play .btr-dot i{animation:btr-fill 280ms var(--btr-out) calc(var(--btr-t0) + var(--i) * var(--btr-step)) both}
+.btr-play .btr-num,.btr-play .btr-label{animation:btr-settle 520ms var(--btr-out) calc(var(--btr-t0) + var(--i) * var(--btr-step)) both}
+.btr-play .btr-label{animation-delay:calc(var(--btr-t0) + 50ms + var(--i) * var(--btr-step))}
+.btr-hold .btr-mark,.btr-hold .btr-leg,.btr-hold .btr-dot,.btr-hold .btr-dot i,.btr-hold .btr-num,.btr-hold .btr-label{animation-play-state:paused}
+
+@keyframes btr-draw-x{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes btr-draw-y{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes btr-sail-x{0%{opacity:0;transform:none}12%,88%{opacity:1}100%{opacity:0;transform:translateX(100%)}}
+@keyframes btr-sail-x-out{0%{opacity:0;transform:none}12%{opacity:1}100%{opacity:0;transform:translateX(62%)}}
+@keyframes btr-sail-y{0%{opacity:0;transform:none}12%,88%{opacity:1}100%{opacity:0;transform:translateY(100%)}}
+@keyframes btr-sail-y-out{0%{opacity:0;transform:none}12%{opacity:1}100%{opacity:0;transform:translateY(40px)}}
+@keyframes btr-fill{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
+@keyframes btr-settle{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes btr-ring{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+
+/* ---- Phones: the trail runs down the page ---- */
+@media (max-width:640px){
+  .btr{--btr-cy:7px;padding-top:4px;padding-bottom:8px}
+  .btr-route{grid-template-columns:minmax(0,1fr)}
+  .btr-stop{padding:0 0 22px 30px}
+  .btr-stop.is-last{padding-bottom:0}
+  .btr-leg{top:var(--btr-cy);left:calc(var(--btr-d) / 2 - .5px);width:1px;height:100%;transform-origin:50% 0}
+  .btr-stop.is-last .btr-leg{width:1px;height:44px;-webkit-mask-image:linear-gradient(to bottom,#000 0%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,transparent 100%)}
+  .btr-num{margin-bottom:4px}
+  .btr-dot{position:absolute;top:calc(var(--btr-cy) - var(--btr-d) / 2);left:-30px}
+  .btr-label{margin-top:0}
+  .btr-label strong{font-size:15px}
+  .btr-mark{top:calc(var(--btr-cy) - 2.5px);left:calc(var(--btr-d) / 2 - 2.5px);width:5px;height:100%}
+  .btr-play .btr-leg{animation-name:btr-draw-y}
+  .btr-play .btr-mark{animation-name:btr-sail-y}
+  .btr-play .is-last .btr-mark{animation-name:btr-sail-y-out}
+  .v3 .btr a:focus-visible{outline-offset:4px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .btr-mark{display:none}
+  .btr-leg,.btr-dot,.btr-dot i,.btr-num,.btr-label{animation:none!important}
+  .btr-dot,.btr-label strong,.btr-label em{transition:none}
+}

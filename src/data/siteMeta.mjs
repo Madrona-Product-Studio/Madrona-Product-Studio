@@ -62,9 +62,9 @@ export const notFound = {
 export const pages = {
   "/": {
     title: "Madrona Product Studio · PNW, USA",
-    description: "Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. Smoother operations, customers who come back, a web presence that earns trust.",
-    h1: "A senior digital product studio built for the AI era.",
-    body: "Madrona helps businesses figure out what AI and modern tools can actually do for them, then builds it. What we can help with: AI consulting on real workflows, growth and retention, website redesign, and new product building. We figure out what to build, then we build it, and we run our own products and operations the same way, here in the PNW and beyond.",
+    description: "Madrona is a full-service digital studio in the Pacific Northwest. Great websites, practical AI tools, and new products, designed and built by a small senior team, with examples of each.",
+    h1: "Great digital work, with AI built in.",
+    body: "A Pacific Northwest studio. We design websites and brands, build new products, and put AI to work inside your business, with a person checking what matters. Great websites, practical AI tools, and new products, designed and built by a small senior team that brings in specialists as the work needs them. Most of the work on this page we built for ourselves first, and each example is labeled for what it is: our own products, our demonstration business, working demos, or an illustrative example. We can build it for you. AI and operations: field notes into draft reports, bookkeeping and month-end agents, customer inbox triage, operations dashboards. Brand and website: brand systems, storefronts and online ordering, local guides with live maps. Growth and retention: follow-up, reminders, reviews, and guides grounded in your own content, for customers, members, donors, and volunteers. New products: Helm, Lila Trips, and the San Juan Boating Guide. Every engagement starts with a free 30-minute conversation, here in the PNW and beyond.",
   },
   "/ai-opportunities": {
     title: "AI Opportunity Assessment · a free 2-minute read · Madrona Product Studio",
@@ -106,8 +106,9 @@ export const pages = {
   "/charlie": {
     title: "Charlie Koch · Madrona Product Studio",
     description: "Charlie Koch is the founder of Madrona Product Studio in the Pacific Northwest: a product leader from Microsoft, REI, and Healthline who now ships AI-native products weekly. One career, read four ways, depending on why you're here.",
-    h1: "Builder of modern digital tools.",
-    body: "Newest tools, oldest problems. Charlie Koch led consumer product at Microsoft, REI, and Healthline, and now runs Madrona Product Studio, where he takes products from idea to live software in weeks. Four ways to read the same career: if you're hiring a product leader, if you run a business, if you build in travel, the outdoors, or wellness, and if your work changes lives. Every path starts with a conversation.",
+    noindex: true,
+    h1: "Building products and communities people come back to.",
+    body: "Charlie Koch builds products people come back to because they are good for them, and has led that work through every platform shift: mobile, membership, and now AI. Charlie Koch led consumer product at Microsoft, REI, and Healthline, and now runs Madrona Product Studio, where he takes products from idea to live software in weeks. Four ways to read the same career: if you're hiring a product leader, if you run a business, if you build in travel, the outdoors, or wellness, and if your work changes lives. Every path starts with a conversation.",
   },
   "/thesis": {
     title: "The Madrona Product Thesis · Madrona Product Studio",
@@ -159,7 +160,7 @@ export const pages = {
     article: { datePublished: "2026-08-05", dateModified: "2026-08-15" },
     h1: "The engine behind everything we ship.",
     ogImage: "/og-pov-under-the-hood.png",
-    body: "Fifteen years of product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new. The parts, if you want to set this up yourself: a bootstrap template with standards pre-wired and verified green, one monitoring setup (Sentry, health endpoints, uptime checks, one alert destination) applied by stakes across the portfolio, a design intelligence layer installed as agent plugins, and an image system that builds type in code and generates atmosphere. Each part is becoming its own field note; this page collects them as they land.",
+    body: "Hard-won product judgment, encoded into a platform every project inherits: design systems, proven integrations, hardened code, standards, and quality gates. AI is the power tool; the engine is the judgment it executes. Every launch teaches it something new. The parts, if you want to set this up yourself: a bootstrap template with standards pre-wired and verified green, one monitoring setup (Sentry, health endpoints, uptime checks, one alert destination) applied by stakes across the portfolio, a design intelligence layer installed as agent plugins, and an image system that builds type in code and generates atmosphere. Each part is becoming its own field note; this page collects them as they land.",
   },
   "/thinking/solve-the-system-not-the-symptom": {
     title: "Solve the system, not the symptom: fix the machine, not the output · Madrona Product Studio",

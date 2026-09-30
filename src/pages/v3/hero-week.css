@@ -1,0 +1,105 @@
+/* The homepage hero window (Charlie picked round-2 option H2, 2026-09-29): the week, handled. Base layout comes
+   from the homepage hero (.v3-current-hero.v3-hero-plain in v3.css); this
+   file styles the "this week" window and its one-time settle sequence.
+   The window is a .v3-artifact, so dusk/night re-pin the day ramp inside it
+   (light island) and every token below resolves to the day values there. */
+
+.hw-copy .v3-kicker{margin-bottom:22px}
+
+/* ── The window ─────────────────────────────────────────────────────────── */
+.hw-panel{position:relative}
+.hw-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 20px 14px}
+.hw-head strong{font:500 22px/1.1 "Hanken Grotesk",Inter,sans-serif;letter-spacing:-.02em;color:var(--v3-ink)}
+.hw-swap{display:grid}
+.hw-swap>em{grid-area:1/1;font-style:normal}
+.hw-summary{justify-items:end;text-align:right;color:var(--v3-muted);font-size:12px;line-height:1.3}
+.hw-summary b{color:var(--v3-ink70);font-weight:650}
+
+.hw-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-soft)}
+.hw-row{position:relative;display:grid;grid-template-columns:30px 16px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--v3-soft);isolation:isolate}
+/* ::before is the "working on it" wash that passes over each row in turn;
+   ::after is the resting tint on the one row that waits for a person. */
+.hw-row::before,.hw-row::after{content:"";position:absolute;inset:0;z-index:-1;opacity:0;pointer-events:none}
+.hw-row::before{background:var(--v3-bg)}
+.hw-row.is-you::after{opacity:1;background:color-mix(in srgb,var(--v3-bark) 6%,var(--v3-card))}
+.hw-rule{display:none}
+.hw-row.is-you .hw-rule{display:block;position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--v3-bark);transform-origin:50% 50%}
+
+.hw-day{color:var(--v3-muted);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.hw-mark{display:grid;width:16px;height:16px}
+.hw-mark>i{grid-area:1/1;display:block;width:16px;height:16px;border-radius:50%}
+.hw-ring{border:1.5px solid var(--v3-faint);opacity:0}
+.hw-mark>.hw-check{display:grid;place-items:center;background:var(--hue-mint-deep,#39846d);color:var(--v3-card)}
+.hw-check svg{width:16px;height:16px}
+.hw-dot{position:relative;border:1.5px solid var(--v3-bark)}
+.hw-dot::after{content:"";position:absolute;inset:3.5px;border-radius:50%;background:var(--v3-bark)}
+
+.hw-text{display:flex;min-width:0;flex-direction:column;gap:3px}
+.hw-text strong{color:var(--v3-ink);font-size:13.5px;font-weight:600;line-height:1.3}
+.hw-text small{color:var(--v3-clay);font-size:12px;line-height:1.35}
+
+.hw-state{justify-items:end}
+.hw-state em{font-size:10.5px;font-weight:700;letter-spacing:.08em;line-height:1;text-transform:uppercase;white-space:nowrap}
+.hw-s-q,.hw-s-w,.hw-sum-a{opacity:0}
+.hw-s-q{color:var(--v3-faint)}
+.hw-s-w{color:var(--v3-ink70)}
+.hw-s-d{color:var(--v3-muted)}
+.hw-row.is-you .hw-s-d{padding:5px 8px;border:1px solid color-mix(in srgb,var(--v3-bark) 45%,transparent);border-radius:999px;color:var(--v3-bark-dark);background:var(--v3-card)}
+.hw-row.is-you .hw-s-q,.hw-row.is-you .hw-s-w{padding:5px 0}
+
+.hw-foot{padding:16px 20px 18px}
+.hw-bar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.hw-bar i{display:block;height:4px;border-radius:2px;background:var(--hue-mint-deep,#39846d);transform-origin:0 50%}
+.hw-bar i.is-you{background:var(--v3-bark)}
+.hw-foot p{display:flex;flex-wrap:wrap;gap:6px 18px;margin:12px 0 0;color:var(--v3-muted);font-size:11.5px;line-height:1.3}
+.hw-foot p span{display:inline-flex;align-items:center;gap:7px}
+.hw-foot p span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--hue-mint-deep,#39846d)}
+.hw-foot p span.is-you::before{background:var(--v3-bark)}
+
+/* ── The settle sequence ───────────────────────────────────────────────────
+   One pass, ~4.9s: each day's row lifts from queued, shows its working
+   label under a passing wash, then checks off; Friday stops on "Needs you".
+   Every animation fills "both", so before its delay an element holds the
+   pending frame and after it holds the settled one (the CSS above). */
+.hw-play .hw-row{--t:calc(400ms + var(--i) * 850ms);--done:calc(var(--t) + 520ms)}
+.hw-play .hw-bar i{--done:calc(920ms + var(--i) * 850ms)}
+.hw-play .hw-day,.hw-play .hw-text{animation:hw-lift 280ms cubic-bezier(.23,1,.32,1) var(--t) both}
+.hw-play .hw-row::before{animation:hw-wash 900ms cubic-bezier(.23,1,.32,1) var(--t) both}
+.hw-play .hw-row.is-you::after{animation:hw-in-plain 360ms cubic-bezier(.23,1,.32,1) var(--done) both}
+.hw-play .hw-ring{animation:hw-ring-out 200ms cubic-bezier(.23,1,.32,1) var(--done) both}
+.hw-play .hw-check,.hw-play .hw-dot{animation:hw-pop 280ms cubic-bezier(.23,1,.32,1) var(--done) both}
+.hw-play .hw-s-q{animation:hw-q-out 160ms cubic-bezier(.23,1,.32,1) var(--t) both}
+.hw-play .hw-s-w{animation:hw-blip 540ms cubic-bezier(.23,1,.32,1) var(--t) both}
+.hw-play .hw-s-d{animation:hw-rise 240ms cubic-bezier(.23,1,.32,1) var(--done) both}
+.hw-play .hw-rule{animation:hw-grow 380ms cubic-bezier(.23,1,.32,1) var(--done) both}
+.hw-play .hw-bar i{animation:hw-fill 360ms cubic-bezier(.23,1,.32,1) var(--done) both}
+.hw-play .hw-sum-a{animation:hw-q-out 200ms cubic-bezier(.23,1,.32,1) 4.55s both}
+.hw-play .hw-sum-b{animation:hw-rise 260ms cubic-bezier(.23,1,.32,1) 4.62s both}
+/* Held (paused, pending frame showing) until the window is on screen. */
+.hw-hold *,.hw-hold *::before,.hw-hold *::after{animation-play-state:paused!important}
+
+@keyframes hw-lift{from{opacity:.4}to{opacity:1}}
+@keyframes hw-wash{0%{opacity:0}22%{opacity:1}68%{opacity:1}100%{opacity:0}}
+@keyframes hw-in-plain{from{opacity:0}to{opacity:1}}
+@keyframes hw-ring-out{from{opacity:1}to{opacity:0}}
+@keyframes hw-pop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+@keyframes hw-q-out{from{opacity:1}to{opacity:0}}
+@keyframes hw-blip{0%{opacity:0;transform:translateY(3px)}25%{opacity:1;transform:none}80%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-3px)}}
+@keyframes hw-rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes hw-grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes hw-fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+@media(prefers-reduced-motion:reduce){
+  .hw-panel *,.hw-panel *::before,.hw-panel *::after{animation:none!important}
+}
+
+/* ── Phone ─────────────────────────────────────────────────────────────── */
+@media(max-width:600px){
+  .hw-head{padding:16px 16px 12px}
+  .hw-head strong{font-size:19px}
+  .hw-summary{font-size:11.5px}
+  .hw-row{grid-template-columns:28px 16px minmax(0,1fr) auto;gap:10px;padding:13px 16px}
+  .hw-text strong{font-size:13px}
+  .hw-text small{font-size:11.5px}
+  .hw-foot{padding:14px 16px 16px}
+}

@@ -167,7 +167,7 @@ export default function MadronaV2About() {
         <div className="m2-ab4-rail">
           <p className="m2-kicker m2-who-kicker">Built with people I trust</p>
           <div className="m2-ab4-body">
-            <p>Over the last fifteen years, I've had the privilege of working alongside incredible people: designers, engineers, researchers, marketers, strategists, data scientists, writers, and product leaders.</p>
+            <p>Across Microsoft, REI, Healthline, and now Madrona, I've had the privilege of working alongside incredible people: designers, engineers, researchers, marketers, strategists, data scientists, writers, and product leaders.</p>
             <p>Many of those relationships have lasted for years.</p>
             <p>Madrona is an opportunity to keep building together. Every project is different, so we bring together the right senior people for the work, stay small, and stay close to the decisions.</p>
           </div>
@@ -180,7 +180,7 @@ export default function MadronaV2About() {
             <ul className="m2-ab4-logos">
               {experience.companies.map((c) => <li key={c}><img src={LOGOS[c]} alt={c} /></li>)}
             </ul>
-            <p><strong>{experience.years}</strong> building consumer products at scale</p>
+            <p>Consumer products at scale, through <strong>mobile, membership, and AI</strong></p>
           </div>
         </div>
       </section>
