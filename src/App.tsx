@@ -23,6 +23,8 @@ const MadronaV2SystemNote = lazy(() => import("./pages/lab/MadronaV2SystemNote")
 const MadronaV2InventoryNote = lazy(() => import("./pages/lab/MadronaV2InventoryNote"));
 const MadronaV2Open = lazy(() => import("./pages/lab/MadronaV2Open"));
 const MadronaSystem = lazy(() => import("./pages/lab/MadronaSystem"));
+// TEMP (2026-09-29): showcase motion + New Products options. Remove with src/pages/lab/showcase.
+const ShowcasePreview = lazy(() => import("./pages/lab/showcase/ShowcasePreview"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const WhereToStart = lazy(() => import("./pages/v3/WhereToStart"));
 const PitchKit = lazy(() => import("./pages/lab/PitchKit"));
@@ -76,6 +78,7 @@ export default function App() {
         {/* Internal design-system study — kept routable for working sessions,
             but never linked from the public site. */}
         <Route path="lab/madrona-system" element={<MadronaSystem />} />
+        <Route path="lab/showcase" element={<ShowcasePreview />} />
         {/* Charlie's positioning kit — internal, unlinked, noindex. Source of
             truth: charlie-hq/job-search/pitch-kit.md. */}
         <Route path="pitch-kit" element={<PitchKit />} />
