@@ -1,4 +1,4 @@
-/* TEMP option A · Trail (2026-09-29). Delete with the /lab/bridge harness.
+/* The bridge: option A · Trail (Charlie, 2026-09-29).
    A course line under the hero: straight hairline legs between four
    waypoints (the nautical waypoint mark: a ring with a filled centre).
    Geometry: every stop is an equal grid column with no gap, and each stop's
@@ -6,7 +6,7 @@
    waypoint's centre and is 100% of the stop long lands exactly on the next
    waypoint's centre, at any width. Phones turn the same idea vertical. */
 .btr{
-  --btr-line:color-mix(in srgb,var(--v3-ink) 32%,transparent);
+  --btr-line:color-mix(in srgb,var(--v3-bark) 55%,transparent);
   --btr-ring:color-mix(in srgb,var(--v3-ink) 58%,transparent);
   --btr-d:11px;          /* waypoint diameter */
   --btr-cy:31.5px;       /* waypoint centre from the top of a stop (14 + 12 + 5.5) */
@@ -52,10 +52,11 @@
 .btr-play .is-last .btr-leg{animation-duration:460ms;animation-timing-function:var(--btr-out)}
 .btr-play .btr-mark{animation:btr-sail-x 340ms var(--btr-travel) calc(var(--btr-t0) + 40ms + var(--i) * var(--btr-step)) both}
 .btr-play .is-last .btr-mark{animation-name:btr-sail-x-out;animation-duration:460ms;animation-timing-function:var(--btr-out)}
+.btr-play .btr-dot{animation:btr-ring 320ms var(--btr-out) calc(var(--btr-t0) - 60ms + var(--i) * var(--btr-step)) both}
 .btr-play .btr-dot i{animation:btr-fill 280ms var(--btr-out) calc(var(--btr-t0) + var(--i) * var(--btr-step)) both}
 .btr-play .btr-num,.btr-play .btr-label{animation:btr-settle 520ms var(--btr-out) calc(var(--btr-t0) + var(--i) * var(--btr-step)) both}
 .btr-play .btr-label{animation-delay:calc(var(--btr-t0) + 50ms + var(--i) * var(--btr-step))}
-.btr-hold .btr-mark,.btr-hold .btr-leg,.btr-hold .btr-dot i,.btr-hold .btr-num,.btr-hold .btr-label{animation-play-state:paused}
+.btr-hold .btr-mark,.btr-hold .btr-leg,.btr-hold .btr-dot,.btr-hold .btr-dot i,.btr-hold .btr-num,.btr-hold .btr-label{animation-play-state:paused}
 
 @keyframes btr-draw-x{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes btr-draw-y{from{transform:scaleY(0)}to{transform:scaleY(1)}}
@@ -64,7 +65,8 @@
 @keyframes btr-sail-y{0%{opacity:0;transform:none}12%,88%{opacity:1}100%{opacity:0;transform:translateY(100%)}}
 @keyframes btr-sail-y-out{0%{opacity:0;transform:none}12%{opacity:1}100%{opacity:0;transform:translateY(40px)}}
 @keyframes btr-fill{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:scale(1)}}
-@keyframes btr-settle{from{opacity:.45;transform:translateY(3px)}to{opacity:1;transform:none}}
+@keyframes btr-settle{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes btr-ring{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
 
 /* ---- Phones: the trail runs down the page ---- */
 @media (max-width:640px){
@@ -87,6 +89,6 @@
 
 @media (prefers-reduced-motion:reduce){
   .btr-mark{display:none}
-  .btr-leg,.btr-dot i,.btr-num,.btr-label{animation:none!important}
+  .btr-leg,.btr-dot,.btr-dot i,.btr-num,.btr-label{animation:none!important}
   .btr-dot,.btr-label strong,.btr-label em{transition:none}
 }

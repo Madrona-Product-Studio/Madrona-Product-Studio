@@ -1,5 +1,5 @@
-// TEMP motion option A · Trail (2026-09-29). Delete with the /lab/bridge harness.
-// Brief: docs/positioning-2026-09/bridge-motion-brief.md
+// The bridge between the hero and the work (Charlie picked option A · Trail,
+// 2026-09-29). Brief: docs/positioning-2026-09/bridge-motion-brief.md
 //
 // No card. A course line runs across the page under the hero, like a route
 // laid on the chart of the bay above it: straight legs between four
@@ -14,13 +14,16 @@
 // Motion rules (madrona-motion): the markup renders the finished route, so a
 // still frame, no-JS, and reduced motion all show it drawn. JS arms the
 // sequence before first paint (useLayoutEffect) and holds it paused until the
-// trail is on screen; then it plays once (~1.7s) and rests. The held frame is
-// legible on its own: waypoints and their labels (dimmed), no route yet. If
-// the trail is on screen at load, it waits for the hero's week to settle so
-// the two never play at once: the hero finishes, then the route is plotted. Transform and
-// opacity only (legs are scaleX / scaleY hairlines); no layout shift.
+// trail is on screen; then it plays once (~1.7s) and rests. Charlie's call:
+// nothing shows while the hero animates. The held frame is empty (the space
+// is reserved, so nothing shifts), and waypoints, numbers, and labels arrive
+// with the route. Choreography (heroSequence.ts): the hero's week plays first
+// and the route is plotted after it settles; if the visitor has already
+// scrolled past the hero, it plots at once. Transform and opacity only (legs
+// are scaleX / scaleY hairlines); no layout shift.
 import { useLayoutEffect, useRef, type CSSProperties } from "react";
-import { areas } from "../../v3/AreasSection";
+import { areas } from "./AreasSection";
+import { afterHero } from "./heroSequence";
 import "./bridge-trail.css";
 
 const words: Record<string, string> = {
@@ -30,10 +33,7 @@ const words: Record<string, string> = {
   "new-products": "Prototype to launched product",
 };
 
-// The hero's week sequence settles about 4.9s after load (hero-week.css).
-const HERO_SETTLE_MS = 4400;
-
-export function BridgeTrail() {
+export function Bridge() {
   const ref = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
@@ -41,18 +41,18 @@ export function BridgeTrail() {
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     // Arm before paint so the finished route never flashes, hold until seen.
     el.classList.add("btr-play", "btr-hold");
-    // Handoff: when the trail is already on screen at load (desktop), let the
-    // hero's week settle first, then plot the route. Later, it plots at once.
-    const mountedAt = performance.now();
-    let timer = 0;
+    const play = () => el.classList.remove("btr-hold");
+    let cancel = () => {};
     const io = new IntersectionObserver(entries => {
       if (!entries.some(e => e.isIntersecting)) return;
       io.disconnect();
-      const wait = Math.max(0, mountedAt + HERO_SETTLE_MS - performance.now());
-      timer = window.setTimeout(() => el.classList.remove("btr-hold"), wait);
+      // Hand-off: if the hero's week is still in view, let it settle first.
+      const hero = document.querySelector(".hw-panel");
+      const heroInView = hero ? hero.getBoundingClientRect().bottom > 80 : false;
+      if (heroInView) cancel = afterHero(play); else play();
     }, { threshold: 0.6 });
     io.observe(el);
-    return () => { io.disconnect(); window.clearTimeout(timer); };
+    return () => { io.disconnect(); cancel(); };
   }, []);
 
   return <nav ref={ref} className="btr v3-shell" aria-label="The four areas">

@@ -3,6 +3,7 @@ import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { Hero } from "./Hero";
+import { Bridge } from "./Bridge";
 import { AreasSection } from "./AreasSection";
 import { DepthSection } from "./DepthSection";
 import { PracticeSection } from "./PracticeSection";
@@ -31,7 +32,8 @@ export default function HomeV3() {
     <main id="main">
     <Hero />
 
-    <AreasSection />
+    <Bridge />
+    <AreasSection firstClassName="ar-after-bridge" />
     <Reveal><DepthSection /></Reveal>
     <Reveal><PracticeSection /></Reveal>
 

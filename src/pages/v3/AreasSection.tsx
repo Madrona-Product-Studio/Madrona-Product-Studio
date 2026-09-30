@@ -159,8 +159,8 @@ function BuiltList({ items, label = "Work and examples" }: { items: Built[]; lab
   </div>;
 }
 
-// `intro` replaces the default section header (TEMP: used by the hero-to-work
-// transition preview, 2026-09-29); `firstClassName` adds a class to area 01.
+// `intro` replaces the default section header; `firstClassName` adds a class
+// to area 01 (the homepage uses it to sit area 01 under the bridge).
 export function AreasSection({ intro, firstClassName = "" }: { intro?: ReactNode; firstClassName?: string } = {}) {
   return <div className="ar-areas">
     {areas.map((area, index) => {

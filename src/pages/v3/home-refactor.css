@@ -108,3 +108,8 @@ a.ar-src-link[target]:hover i[aria-hidden]{transform:translate(1.5px,-1.5px)}
 .v3 .ar-area .iba-stage .iba-page.v3-artifact{box-shadow:0 1px 3px rgba(26,23,20,.07)}
 /* A tag never breaks mid-label (its arrow wrapped alone onto a new line). */
 .v3 .ar-src{white-space:nowrap}
+
+/* The bridge (Bridge.tsx) now carries the hand-off from the hero, so the
+   first area drops its top rule and tightens up beneath it. */
+.v3 .ar-after-bridge{border-top:0;padding-top:96px}
+@media(max-width:600px){.v3 .ar-after-bridge{padding-top:64px}}
