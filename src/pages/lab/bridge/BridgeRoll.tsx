@@ -11,15 +11,18 @@
 // Motion rules (madrona-motion): the markup renders the settled strip with
 // each column's first built item showing, so a still frame, no-JS, and reduced
 // motion all show a complete strip. JS arms the entrance before first paint
-// (useLayoutEffect) and holds it until the strip is on screen: the rule draws
+// (useLayoutEffect) and holds it until the strip is on screen and the hero's
+// this-week sequence has settled (heroSequence.ts, Charlie's choreography
+// note), or at once if the hero is mostly scrolled away. Then the rule draws
 // left to right, each column divider drops as the rule reaches it, and the
-// columns settle in (about 1.3s total). The roll then starts. It pauses on
+// columns settle in (about 1.1s total). The roll starts after a ~3s rest. It pauses on
 // hover or keyboard focus anywhere in the strip, when the strip is offscreen,
 // and when the tab is hidden; resuming always waits a full rest first.
 // Transform and opacity only; the rolling lines share one grid cell, so no
 // layout shift. CSS transitions (not keyframes) so a pause mid-roll settles.
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
+import { useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import { areas } from "../../v3/AreasSection";
+import { afterHero } from "../../v3/heroSequence";
 import "./bridge-roll.css";
 
 // Short forms of each area's built items (areas[i].built in AreasSection.tsx),
@@ -41,7 +44,7 @@ const SUMMARY: Record<string, string> = {
   "new-products": "Prototype to launched product",
 };
 
-const FIRST_ROLL = 3200; // after the strip comes on screen (entrance ~1.3s, then a rest)
+const FIRST_ROLL = 4200; // from the entrance: ~1.1s entrance, then a ~3s rest
 const CYCLE = 5400; // roll to roll: the wave takes ~1.1s, then a ~4.3s rest
 
 const pad = (i: number) => String(i + 1).padStart(2, "0");
@@ -50,38 +53,52 @@ export function BridgeRoll() {
   const ref = useRef<HTMLElement>(null);
   const [step, setStep] = useState(0);
 
-  // Entrance: arm before paint, play once when seen.
+  // One effect runs the whole choreography. It arms before first paint so the
+  // settled frame never flashes, then: entrance once the strip is in view and
+  // the hero has settled (or the hero is mostly scrolled away), then the roll.
   useLayoutEffect(() => {
     const el = ref.current;
     if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     el.classList.add("brr-armed");
-    const io = new IntersectionObserver(entries => {
-      if (entries.some(e => e.isIntersecting)) { el.classList.add("brr-in"); io.disconnect(); }
-    }, { threshold: 0.4 });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  // The roll: a timer that only runs while the strip is seen and left alone.
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let timer = 0;
-    let started = false;
+    const hero = el.previousElementSibling;
+    let heroDone = false;
     let visible = false;
+    let entered = false;
     let held = false; // hover or keyboard focus inside the strip
+    let started = false;
+    let timer = 0;
+
+    const heroGone = () => {
+      if (!hero) return true;
+      const r = hero.getBoundingClientRect();
+      const seen = Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0));
+      return seen < r.height * 0.4;
+    };
+    // The roll: a timer that only runs after the entrance, while the strip is
+    // seen and left alone. Resuming always waits a full rest.
     const run = () => {
       window.clearTimeout(timer);
-      if (!visible || held || document.hidden) return;
+      if (!entered || !visible || held || document.hidden) return;
       timer = window.setTimeout(() => { started = true; setStep(s => s + 1); run(); }, started ? CYCLE : FIRST_ROLL);
     };
-    const io = new IntersectionObserver(entries => { visible = entries.some(e => e.isIntersecting); run(); }, { threshold: 0.4 });
-    io.observe(el);
-    const hold = () => { held = true; run(); };
-    const release = () => {
-      held = el.matches(":hover") || el.contains(document.activeElement);
+    const maybeEnter = () => {
+      if (entered || !visible || !(heroDone || heroGone())) return;
+      entered = true;
+      el.classList.add("brr-in");
+      window.removeEventListener("scroll", maybeEnter);
       run();
     };
+    const stopWaiting = afterHero(() => { heroDone = true; maybeEnter(); });
+    window.addEventListener("scroll", maybeEnter, { passive: true });
+    const io = new IntersectionObserver(entries => {
+      visible = entries.some(e => e.isIntersecting);
+      maybeEnter();
+      run();
+    }, { threshold: 0.4 });
+    io.observe(el);
+
+    const hold = () => { held = true; run(); };
+    const release = () => { held = el.matches(":hover") || el.contains(document.activeElement); run(); };
     const onFocusOut = (e: FocusEvent) => { if (!el.contains(e.relatedTarget as Node | null)) release(); };
     el.addEventListener("pointerenter", hold);
     el.addEventListener("pointerleave", release);
@@ -90,7 +107,9 @@ export function BridgeRoll() {
     document.addEventListener("visibilitychange", run);
     return () => {
       window.clearTimeout(timer);
+      stopWaiting();
       io.disconnect();
+      window.removeEventListener("scroll", maybeEnter);
       el.removeEventListener("pointerenter", hold);
       el.removeEventListener("pointerleave", release);
       el.removeEventListener("focusin", hold);
