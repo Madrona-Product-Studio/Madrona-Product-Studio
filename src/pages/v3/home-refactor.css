@@ -41,20 +41,8 @@
 
 .ar-built-label{margin:0 0 10px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
 .ar-built ul{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-line)}
-.ar-built li{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--v3-soft)}
-.ar-built li>span{min-width:0;color:var(--v3-ink);font-size:14px;line-height:1.4}
-.ar-built small{flex:none;max-width:48%;color:var(--v3-muted);font-size:11px;font-weight:600;letter-spacing:.01em;line-height:1.4;text-align:right}
-/* Source tags (round 2): linked where the example can be opened. Same quiet
-   muted type as the plain tags; a hairline underline says "link" without
-   shouting, and hover warms the tag to the bark companion and nudges the
-   arrow. Illustrative tags stay plain (.ar-src without -link). */
-.ar-src-sep{color:var(--v3-muted)}
-.v3 a.ar-src-link{color:var(--v3-muted);text-decoration:underline;text-decoration-color:var(--v3-line);text-decoration-thickness:1px;text-underline-offset:3px;transition:color 160ms ease,text-decoration-color 160ms ease}
-.ar-src-link i{display:inline-block;margin-left:3px;font-style:normal;font-weight:500;transition:transform 200ms cubic-bezier(.23,1,.32,1)}
-.v3 a.ar-src-link:hover,.v3 a.ar-src-link:focus-visible{color:var(--v3-bark-dark);text-decoration-color:currentColor}
-a.ar-src-link:hover i[aria-hidden]{transform:translate(2px,0)}
-a.ar-src-link[target]:hover i[aria-hidden]{transform:translate(1.5px,-1.5px)}
-.ar-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ar-built li{padding:12px 0;border-bottom:1px solid var(--v3-soft)}
+.ar-built li>span{color:var(--v3-ink);font-size:14px;line-height:1.4}
 .v3 .ar-rail .v3-practice-link{margin-top:30px}
 
 .ar-showcase{min-width:0}
@@ -95,18 +83,34 @@ a.ar-src-link[target]:hover i[aria-hidden]{transform:translate(1.5px,-1.5px)}
   .v3 .v3-current-images{opacity:.3}
   .ar-intro+.ar-spread{padding-top:32px}
   .v3 .ar-rail h2{font-size:2rem}
-  .ar-built li{flex-direction:column;gap:3px}
-  .ar-built small{max-width:none;text-align:left}
   .v3-depth-list li{grid-template-columns:minmax(0,1fr);gap:4px}
 }
-@media(prefers-reduced-motion:reduce){.ar-src-link,.ar-src-link i{transition:none}a.ar-src-link:hover i[aria-hidden],a.ar-src-link[target]:hover i[aria-hidden]{transform:none}}
 
 /* Final cold read (2026-09-29): the same floating shadow on every window read
    as a template. The showcase windows sit flat on a
    hairline rather than floating. */
 .v3 .ar-area .v3-artifact{box-shadow:0 1px 2px rgba(26,23,20,.05)}
-/* A tag never breaks mid-label (its arrow wrapped alone onto a new line). */
-.v3 .ar-src{white-space:nowrap}
 
 /* The New Products rail: its second link sits under "More on New Products". */
 .v3 .ar-rail .ar-extra{display:flex;width:max-content}
+
+
+/* The homepage close (option B, 2026-09-30): the ask in the rail, the three
+   steps with their terms on the right. */
+.v3-close-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:88px;align-items:start}
+.v3 .v3-close h2{max-width:14ch;margin-bottom:18px;font-size:clamp(2.2rem,3.4vw,3.5rem);line-height:1.02}
+.v3-close h2 span{display:block;color:var(--v3-flash)}
+.v3 .v3-close-lede{max-width:46ch;margin:0 0 26px;color:var(--v3-clay);font-size:1.05rem;line-height:1.55}
+/* The one action: sized and set like the hero's primary button. */
+.v3 .v3-close-btn{min-height:52px;padding:0 30px;border-radius:3px;font:700 13px/1 Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase}
+.v3-close-steps{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-line)}
+.v3-close-steps li{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:18px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--v3-line)}
+.v3-close-steps span{color:var(--v3-bark-dark);font:500 11px/1 ui-monospace,"SF Mono",Menlo,monospace}
+.v3-close-steps strong{display:block;font-size:16px;font-weight:600}
+.v3 .v3-close-steps p{margin:4px 0 0;color:var(--v3-clay);font-size:14px;line-height:1.5}
+.v3-close-steps em{padding:4px 10px;border-radius:999px;background:color-mix(in srgb,var(--v3-bark) 10%,var(--v3-card));color:var(--v3-ink70);font-size:11.5px;font-style:normal;font-weight:600;white-space:nowrap}
+@media(max-width:760px){
+  .v3-close-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+  .v3-close-steps li{grid-template-columns:28px minmax(0,1fr)}
+  .v3-close-steps em{grid-column:2;justify-self:start}
+}

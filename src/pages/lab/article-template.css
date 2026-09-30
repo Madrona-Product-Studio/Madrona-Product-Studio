@@ -129,6 +129,13 @@
 /* ---- Prose -------------------------------------------------------------- */
 .art-prose p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.68; margin: 0 0 18px; max-width: var(--art-measure); }
 .art-prose p:last-child { margin-bottom: 0; }
+/* Lists and subheads inside prose (added for the data articles, 2026-09-30). */
+.art-prose ul { list-style: disc; margin: 0 0 18px; max-width: var(--art-measure); padding-left: 1.15em; }
+.art-prose ul:last-child { margin-bottom: 0; }
+.art-prose li { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.6; margin: 0 0 8px; padding-left: 4px; }
+.art-prose li::marker { color: var(--bark); }
+.art-prose h3 { color: var(--ink); font-size: 1.12rem; font-weight: 650; letter-spacing: -.01em; line-height: 1.3; margin: 30px 0 8px; max-width: var(--art-measure); }
+.art-prose h3:first-child { margin-top: 0; }
 .art-prose strong, .art-prose b { color: var(--ink); font-weight: 650; }
 .art-prose a { color: var(--bark-dark); font-weight: 600; }
 

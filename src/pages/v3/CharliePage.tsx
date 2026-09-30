@@ -5,7 +5,7 @@ import Reveal from "./Reveal";
 import SiteFooter from "../lab/SiteFooter";
 import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import { imgProps, SIZES } from "../../lib/responsiveImage";
-import portrait from "../../../docs/madrona-v2-build-kit/site-assets/about-charlie.webp?w=360;520;780&format=webp&as=img";
+import portrait from "../../../docs/madrona-v2-build-kit/site-assets/about-charlie-headshot.webp?w=360;520;780&format=webp&as=img";
 import { ctaClick } from "../../lib/analytics";
 import "../lab/madrona-v2.css";
 import "./v3.css";
@@ -79,7 +79,7 @@ function CharlieHero() {
         ))}
       </svg>
       <figure className="ck-hub-portrait">
-        <img {...imgProps(portrait, SIZES.charliePortrait)} alt="Charlie Koch outdoors at golden hour" decoding="async" />
+        <img {...imgProps(portrait, SIZES.charliePortrait)} alt="Charlie Koch in a navy blazer against a wood wall" decoding="async" />
       </figure>
       <nav className="ck-jump">
         {DOORS.map((d, i) => (

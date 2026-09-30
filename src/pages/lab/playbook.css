@@ -390,3 +390,12 @@ a.m2-pb-app:hover { border-color: var(--color-madrona); }
 .m2-open-card .p { background: var(--color-bg); border-left: 2px solid color-mix(in srgb, var(--color-madrona) 30%, transparent); border-radius: 0 6px 6px 0; color: var(--color-ink70); font: 450 11.5px/1.6 ui-monospace, Menlo, monospace; margin: 0 0 12px; padding: 8px 12px; white-space: pre-wrap; }
 .m2-open-card .m2-open-gh { font: 600 12px/1 var(--font-sans); color: var(--color-madrona-dark); }
 .m2-open-card--feature { align-self: start; }
+
+/* Data articles (2026-09-30): the prompt starter pack's copyable cards. Two
+   columns, since each prompt is long enough to need the measure. */
+.da-prompts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.da-prompt-head { align-items: baseline; display: flex; gap: 12px; justify-content: space-between; }
+.da-copy { background: none; border: 1px solid var(--color-line); border-radius: 999px; color: var(--color-ink70); cursor: pointer; flex: none; font: 600 11px/1 var(--font-sans); padding: 5px 10px; transition: border-color 160ms ease, color 160ms ease; }
+.da-copy:hover, .da-copy:focus-visible { border-color: var(--color-madrona); color: var(--color-madrona-dark, var(--bark-dark)); }
+.da-links { margin-top: 22px; }
+@media (max-width: 760px) { .da-prompts { grid-template-columns: minmax(0, 1fr); } }

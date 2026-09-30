@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
-
-// Why us (positioning clarity pass, 2026-09-29): the depth behind the wedge,
-// placed on the homepage for the first time. Both reviewers flagged that
+// Why us (positioning clarity pass, 2026-09-29): the depth behind the wedge.
+// It sat on the homepage until 2026-09-30, when Charlie moved it to /about
+// (the homepage keeps a one-line credential). Both reviewers flagged that
 // Charlie's background only surfaced on About. Figures come from the resume
 // baseline (v8) and match what /about already publishes; Microsoft work is
 // attributed through Iconmobile, as it happened. Healthline (refactor,
@@ -23,8 +22,7 @@ export function DepthSection() {
     <div className="v3-depth-rail">
       <p className="v3-kicker">Why us</p>
       <h2>Mobile, then membership, then AI. Now Madrona.</h2>
-      <p className="v3-help-lede">Madrona is led by Charlie Koch, Founder &amp; Head of Product. His career covers both halves of what we offer: the brand, web, and product craft, and now the daily practice of putting AI to work. That is how we can tell you what will actually help.</p>
-      <Link className="v3-practice-link" to="/about">More about Charlie <span aria-hidden="true">→</span></Link>
+      <p className="v3-help-lede">Charlie’s career covers both halves of what we offer: the brand, web, and product craft, and now the daily practice of putting AI to work. That is how we can tell you what will actually help.</p>
     </div>
     <ol className="v3-depth-list">{chapters.map(([where, what]) => <li key={where}><strong>{where}</strong><p>{what}</p></li>)}</ol>
   </section>;

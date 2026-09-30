@@ -25,7 +25,7 @@ type Module = { kicker: string; title: string; body: string; to: string; linkLab
 const operationsModules: Module[] = [
   { kicker: "Know what changed", title: "Turn scattered signals into a short brief.", body: "An agent watches the sources that matter, explains what moved, and routes the useful signal to a next step.", to: "/tools/industry-brief", linkLabel: "See the industry brief agent", artifact: "brief" },
   { kicker: "Move work forward", title: "Everything lands somewhere.", body: "Requests come in every shape; each one gets routed with enough context to act, and the judgment calls stay yours.", to: "/tools/customer-inbox", linkLabel: "See the customer inbox agent", artifact: "routing" },
-  { kicker: "Keep review visible", title: "The agent drafts. You decide.", body: "Questions arrive answered, in your voice, waiting for your okay. That conversation is where the work actually happens.", to: "/tools", linkLabel: "Walk through the tool demos", artifact: "thread" },
+  { kicker: "Keep review visible", title: "The agent drafts. You decide.", body: "Questions arrive answered, in your voice, waiting for your okay. That conversation is where the work actually happens.", to: "/resources#tools", linkLabel: "Walk through the tool demos", artifact: "thread" },
   { kicker: "See the operation", title: "Make the work legible at a glance.", body: "A focused command surface shows what ran, what changed, and what needs attention next.", to: HELM_DEMO_URL, linkLabel: "Open the Helm demo", artifact: "image" },
 ];
 

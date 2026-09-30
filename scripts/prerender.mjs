@@ -25,6 +25,23 @@ const articleContent = JSON.parse(
   fs.readFileSync(path.resolve('scripts/thinking-content.json'), 'utf-8')
 );
 
+// Articles written as data (src/data/articles/*.json) render from the same file
+// the page reads, so their crawler copy cannot drift. Flatten each to sections.
+const dataArticleDir = path.resolve('src/data/articles');
+for (const file of fs.existsSync(dataArticleDir) ? fs.readdirSync(dataArticleDir) : []) {
+  if (!file.endsWith('.json')) continue;
+  const a = JSON.parse(fs.readFileSync(path.join(dataArticleDir, file), 'utf-8'));
+  const out = [{ type: 'h1', text: a.title }, { type: 'p', text: a.standfirst }];
+  for (const sec of a.sections) {
+    out.push({ type: 'h2', text: sec.title });
+    for (const b of sec.blocks) {
+      if (b.type === 'prompt') out.push({ type: 'h3', text: b.title }, { type: 'p', text: b.why }, { type: 'quote', text: b.text });
+      else out.push({ type: b.type === 'link' ? 'p' : b.type, text: b.text });
+    }
+  }
+  articleContent[a.href] = out;
+}
+
 const escapeHtml = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const attr = (s) => escapeHtml(s).replace(/"/g, '&quot;');

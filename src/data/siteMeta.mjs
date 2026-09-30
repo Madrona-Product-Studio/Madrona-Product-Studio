@@ -130,12 +130,28 @@ export const pages = {
     h1: "Our apps",
     body: "Each Madrona product begins with a real customer problem and creates a place to test ideas, improve our methods, and make something useful in its own right.",
   },
-  "/thinking": {
-    title: "Thinking · Madrona Product Studio",
-    description: "How we see building software in the AI era: essays, artifacts, and guides from inside a working product studio. Published when the work has taught us something worth sharing.",
-    h1: "Thinking.",
-    ogImage: "/og-thinking.png",
-    body: "Learnings, artifacts, and guides from inside Madrona. When the work teaches us something, we organize the thinking here so we can build on it, and so can you. The Madrona Product Thesis, the engine behind everything we ship, the era of agentic operations, and a starter guide to building real software with AI.",
+  // Resources (2026-09-30): Tools + Articles in one place. /tools and
+  // /thinking 301 here (vercel.json); the tool demos and articles keep their
+  // own routes below.
+  "/resources": {
+    title: "Resources · Madrona Product Studio",
+    description: "Tools and articles from Madrona Product Studio: interactive demos of the AI agents we deploy on real business workflows, and essays, guides, and artifacts on building software in the AI era.",
+    h1: "Resources.",
+    body: "Two kinds of resource, one place: tools you can try, and the thinking behind them. The tools are AI agents Madrona builds and deploys on real workflows (month-end close, invoice chasing, cash position, payroll planning, customer email, post-sale follow-up, review requests, best customers, industry intelligence, and contract review), each an interactive demo on Berry Good, our demonstration farm, and each stopping for a person wherever money, customers, or judgment are involved. The articles are essays, guides, and artifacts from inside the studio: the Madrona Product Thesis, the era of agentic operations, a starter guide to building real software with AI, and more.",
+  },
+  "/thinking/getting-started-with-ai": {
+    title: "Getting started with AI: a plain-language guide for small business owners · Madrona Product Studio",
+    description: "Where to start with AI in a small business: what AI is good at today, three safe first projects, what to avoid, what it really costs, and a day-by-day plan for your first week.",
+    article: { datePublished: "2026-09-30", dateModified: "2026-09-30" },
+    h1: "Getting started with AI: a plain-language guide for owners.",
+    body: "What AI is actually good at today, three safe first projects, what to avoid, what it costs, and how to spend your first week.",
+  },
+  "/thinking/ai-prompt-starter-pack": {
+    title: "AI prompts for small business owners: a free starter pack · Madrona Product Studio",
+    description: "Nine copy-and-paste AI prompts for small business owners: customer replies, review responses, follow-ups, quotes, email summaries, invoice reminders, weekly numbers, checklists, and planning. Works in ChatGPT, Claude, Gemini, or Copilot.",
+    article: { datePublished: "2026-09-30", dateModified: "2026-09-30" },
+    h1: "An AI prompt starter pack for small business owners.",
+    body: "Nine copy-and-paste prompts for the everyday jobs of running a small business: answering customers, handling paperwork, and keeping track of the week.",
   },
   "/thinking/the-era-of-agentic-operations": {
     title: "The era of agentic operations: running a business on AI agents · Madrona Product Studio",
@@ -191,15 +207,9 @@ export const pages = {
     body: "Whatever's easiest: book a 30-minute call or send a message about your project. Every way in starts the same, a free 30-minute conversation with a published agenda. Email hello@madronaproduct.com.",
   },
 
-  // Tools: the deployable-agent gallery + one live demo per agent. Each demo
-  // page is its own high-intent landing page ("AI month-end close QuickBooks").
-  // OG cards come from scripts/make-agent-og.mjs by slug (resolveOgImage).
-  "/tools": {
-    title: "Tools we deploy for your business · Madrona Product Studio",
-    description: "AI agents Madrona builds and deploys on real business workflows: month-end close, invoice chasing, cash position, payroll, customer email, follow-up, reviews, industry intelligence, best customers, contract review. Each stops for a human wherever it touches money or customers. Run them live on Berry Good, our demonstration farm.",
-    h1: "Tools we build and deploy for your business.",
-    body: "A gallery of AI agent tools Madrona builds and runs on real business workflows, each one stopping for a human wherever it touches money, customers, or judgment. Month-end close, invoice chasing, cash position, payroll planning, customer email, post-sale follow-up, review requests, industry intelligence, best customers, and contract review: run any of them live on Berry Good, our demonstration farm, then we deploy it on your operation and leave you able to run it yourself. Start with one workflow, a human stays in charge, and it is yours to keep with no lock-in.",
-  },
+  // Tool demos: one page per agent. Each is its own high-intent landing page
+  // ("AI month-end close QuickBooks"). OG cards come from
+  // scripts/make-agent-og.mjs by slug (resolveOgImage).
   "/tools/month-end-close": {
     title: "Month-end close agent (QuickBooks): a working demo · Madrona Product Studio",
     description: "Watch an AI month-end close run: it reconciles QuickBooks against Square and PayPal, flags mismatches for your approval, writes a plain-English P&L, and packages an accountant-ready close. Every step that touches money stops for you.",

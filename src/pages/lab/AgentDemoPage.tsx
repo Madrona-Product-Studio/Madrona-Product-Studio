@@ -32,7 +32,7 @@ export default function AgentDemoPage() {
   const agent = findAgent(slug);
   const demo = slug ? agentDemos[slug] : undefined;
   useReveal();
-  if (!agent || !demo) return <Navigate to="/tools" replace />;
+  if (!agent || !demo) return <Navigate to="/resources#tools" replace />;
 
   const source = `tools/${agent.id}`;
   const proof = PROOF[agent.proof];
@@ -47,7 +47,7 @@ export default function AgentDemoPage() {
   return (
     <div className="m2 art agentx-page">
       <LabMeta title={`${demo.title} · Madrona Product Studio`} />
-      <M2Nav active="tools" />
+      <M2Nav active="resources" />
       <main id="main">
       <div className="art-wrap">
         <AgentDemoHero
@@ -90,7 +90,7 @@ export default function AgentDemoPage() {
             <Prose>{demo.deploy.body.map((para, index) => <p key={index}>{para}</p>)}</Prose>
             <div className="art-close-links">
               <Link className="m2-text-link" to="/connect" onClick={ctaClick("Get in touch", "/connect", source)}>Get in touch <span aria-hidden="true">→</span></Link>
-              <Link className="m2-text-link" to="/tools">See the other tools <span aria-hidden="true">→</span></Link>
+              <Link className="m2-text-link" to="/resources#tools">See the other tools <span aria-hidden="true">→</span></Link>
             </div>
           </ArticleSection>
         </ArticleBody>

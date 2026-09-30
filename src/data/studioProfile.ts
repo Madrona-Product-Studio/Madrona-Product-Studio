@@ -3,10 +3,8 @@
 // version of this copy so the site never drifts into conflicting claims.
 
 import type { ResponsiveImage } from "../lib/responsiveImage";
-import portrait from "../../docs/madrona-v2-build-kit/site-assets/about-charlie.webp?w=360;520;780&format=webp&as=img";
-import ownedProductsImg from "../../docs/madrona-v2-build-kit/site-assets/lila-devices.webp";
-import communityFood from "../../docs/madrona-v2-build-kit/placeholders/photography/audience-farms-food.webp?w=450;720;900&format=webp&as=img";
-import communityLand from "../../docs/madrona-v2-build-kit/placeholders/photography/audience-outdoor-travel.webp?w=450;720;900&format=webp&as=img";
+// Studio headshot (Charlie, 2026-09-30), shared with /charlie.
+import portrait from "../../docs/madrona-v2-build-kit/site-assets/about-charlie-headshot.webp?w=360;520;780&format=webp&as=img";
 import nameStoryImg from "../../docs/madrona-v2-build-kit/site-assets/about-madrona-tree.webp?w=640;960;1280&format=webp&as=img";
 
 export interface StudioProfile {
@@ -20,26 +18,6 @@ export interface StudioProfile {
   charlie: { name: string; role: string };
   proofPoints: { id: string; title: string; description: string; icon: string }[];
   specialists: { id: string; title: string; tags: string; icon: string; x: number; y: number }[];
-  experience: {
-    heading: string;
-    description: string;
-    companies: string[];
-  };
-  ownedProducts: {
-    eyebrow: string;
-    heading: string;
-    description: string;
-    href: string;
-    action: string;
-    imageSrc: string;
-  };
-  community: {
-    eyebrow: string;
-    heading: string;
-    description: string;
-    images: ResponsiveImage[];
-    href?: string;
-  };
   nameStory: {
     eyebrow: string;
     heading: string;
@@ -51,14 +29,16 @@ export interface StudioProfile {
 export const studioProfile: StudioProfile = {
   intro: {
     heading: "About",
-    headline: "Hi, I'm Charlie. I build products, and I started Madrona to build the ones that matter.",
+    // Streamlined 2026-09-30 (Charlie): what we do, in the homepage's voice,
+    // and how the team works. The credentials live in Why us, below it.
+    headline: "A small, senior studio in the Pacific Northwest.",
     body: [
-      "I've built products at scale at REI and Healthline, and from a blank page here at Madrona. Somewhere in there I got clear about how the good ones actually get made, and what I want to spend that on.",
-      "Madrona is where I do that deliberately: a small, senior studio that stays close to the craft, uses AI where it genuinely helps, and points its energy at work that matters.",
+      "We design websites and brands, build new products, and put AI to work inside your business: in your inbox, your paperwork, and your customer follow-up.",
+      "Every engagement is led by Charlie Koch, with trusted senior designers, engineers, and researchers brought in as the work needs them.",
     ],
     portraitSrc: portrait,
     portraitAlt:
-      "Charlie Koch, founder of Madrona Product Studio, outdoors at sunset.",
+      "Charlie Koch, founder of Madrona Product Studio, in a navy blazer against a wood wall.",
   },
   charlie: { name: "Charlie", role: "Founder & Head of Product" },
   proofPoints: [
@@ -74,12 +54,6 @@ export const studioProfile: StudioProfile = {
       description: "Direct partnership from first conversation to delivery.",
       icon: "founder",
     },
-    {
-      id: "work-that-matters",
-      title: "Work that matters",
-      description: "Energy pointed at good for people and place.",
-      icon: "sprig",
-    },
   ],
   // Positions are percentages within the square network diagram (portrait at 50,50).
   specialists: [
@@ -90,28 +64,6 @@ export const studioProfile: StudioProfile = {
     { id: "marketers", title: "Marketers", tags: "Go-to-market, Growth", icon: "marketing", x: 85, y: 50 },
     { id: "content", title: "Content / Brand", tags: "Messaging, Copy, Brand voice", icon: "content", x: 85, y: 80 },
   ],
-  experience: {
-    heading: "Experience at scale, brought close to the work.",
-    description:
-      "Charlie spent years leading products and teams at scale. Building directly again sharpened a belief that product leadership is about creating the conditions for multidisciplinary teams to solve important customer problems.",
-    companies: ["REI", "Healthline", "Microsoft"],
-  },
-  ownedProducts: {
-    eyebrow: "Practice, not theory",
-    heading: "We build our own products, too.",
-    description:
-      "Each product is designed to create value in its own right while keeping us close to customers, craft, operating decisions, and the realities of learning through working software.",
-    href: "/apps",
-    action: "See what we build",
-    imageSrc: ownedProductsImg,
-  },
-  community: {
-    eyebrow: "Work worth doing",
-    heading: "We want to direct our energy toward meaningful problems.",
-    description:
-      "We are especially drawn to work that improves health and well-being, strengthens local businesses and communities, expands access, and supports a healthier relationship with the places around us.",
-    images: [communityFood, communityLand],
-  },
   nameStory: {
     eyebrow: "The name",
     heading: "Named for the tree at the water’s edge.",

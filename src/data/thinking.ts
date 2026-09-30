@@ -22,6 +22,24 @@ export type ThinkingEntry = {
 };
 
 export const thinkingEntries: ThinkingEntry[] = [
+  // The two Start-here pieces (2026-09-30) lead the feed: they are where a
+  // visitor looking for help should begin.
+  {
+    date: dated("/thinking/getting-started-with-ai"),
+    type: "Guide",
+    title: "Getting started with AI: a plain-language guide for owners",
+    excerpt: "What AI is actually good at today, three safe first projects, what to avoid, what it costs, and how to spend your first week.",
+    href: "/thinking/getting-started-with-ai",
+    motif: "target",
+  },
+  {
+    date: dated("/thinking/ai-prompt-starter-pack"),
+    type: "Artifact",
+    title: "An AI prompt starter pack for small business owners",
+    excerpt: "Nine copy-and-paste prompts for answering customers, handling paperwork, and keeping track of the week. Works in ChatGPT, Claude, Gemini, or Copilot.",
+    href: "/thinking/ai-prompt-starter-pack",
+    motif: "modules",
+  },
   {
     date: dated("/thesis"),
     type: "Essay",
