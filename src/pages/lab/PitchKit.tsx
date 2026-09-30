@@ -34,7 +34,7 @@ const PITCHES = [
     id: "V2",
     title: "Judgment, proven by shipping",
     room: "AI-native and Staff/Principal rooms. The Lenny Summit default.",
-    body: "Leading consumer product at Microsoft, REI, and Healthline taught me judgment: what to build, what to kill, what good looks like. The last year gave me something most product leaders don't have. I ship. AI collapsed the distance between strategy and execution, and I rebuilt my toolkit around that. At my studio I take products from idea to live software in weeks. Lila Trips is live with real users and a working paywall. Helm, my flagship, is in beta. What I bring is the combination: scale experience from 90 million monthly users and a 22-million-member program, plus the daily practice of building with AI. Judgment, proven by shipping.",
+    body: "Leading consumer product at Microsoft, REI, and Healthline taught me judgment: what to build, what to kill, what good looks like. The last year gave me something most product leaders don't have. I ship. AI collapsed the distance between strategy and execution, and I rebuilt my toolkit around that. At my studio I take products from idea to live software in weeks. Lila Trips is live with real users and a working paywall. Helm, my flagship, is in beta. What I bring is the combination: scale experience from a portfolio serving 90M+ monthly visitors and a membership program relaunched for 22M+ members, plus the daily practice of building with AI. Judgment, proven by shipping.",
   },
   {
     id: "V3",
