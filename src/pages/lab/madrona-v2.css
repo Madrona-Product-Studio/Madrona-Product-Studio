@@ -2272,3 +2272,12 @@ html[data-theme="night"] .fc-steps li, html[data-theme="dusk"] .fc-steps li { bo
 html[data-theme="night"] .fc-steps strong, html[data-theme="dusk"] .fc-steps strong { color: #1a1714; }
 html[data-theme="night"] .fc-steps em, html[data-theme="dusk"] .fc-steps em { background: rgba(229,87,40,.1); color: #403a33; }
 html[data-theme="night"] .fc-steps li p, html[data-theme="dusk"] .fc-steps li p { color: #6f6657; }
+
+/* Nav over the hero chart (2026-09-30): each item sits on a feathered patch
+   of paper, the way the chart clears around the hero's route labels, so the
+   contours fade out behind the words. The sky switcher gets a solid face. */
+.m2-nav > nav > a, .m2-nav .m2-nav-dd-trigger { background: var(--v3-bg, var(--paper)); border-radius: 999px; box-shadow: 0 0 12px 8px var(--v3-bg, var(--paper)); }
+.m2-nav .sky-switch-face { background: var(--v3-bg, var(--paper)); }
+/* Services is a <button>, so the generic `.m2 button` reset kept it at 400
+   while the other nav links are 600. */
+.m2-nav .m2-nav-dd-trigger { font-weight: 600; }
