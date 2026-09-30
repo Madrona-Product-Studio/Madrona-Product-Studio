@@ -745,7 +745,7 @@ html:has(.m2) { scroll-behavior: smooth; }
 }
 
 .m2-ab-net-portrait { aspect-ratio: 1; left: 50%; margin: 0; position: absolute; top: 50%; transform: translate(-50%, -50%); width: 36%; z-index: 2; }
-.m2-ab-net-portrait img { aspect-ratio: 1; border: 3px solid var(--paper); border-radius: 50%; box-shadow: 0 6px 24px rgba(26, 23, 20, .12); display: block; height: 100%; object-fit: cover; object-position: center 32%; width: 100%; }
+.m2-ab-net-portrait img { aspect-ratio: 1; border: 3px solid var(--paper); border-radius: 50%; box-shadow: 0 6px 24px rgba(26, 23, 20, .12); display: block; height: 100%; object-fit: cover; object-position: center 18%; width: 100%; }
 .m2-ab-net-pill { align-items: center; background: var(--forest); border-radius: 999px; bottom: -6%; color: var(--paper); display: flex; flex-direction: column; left: 50%; line-height: 1.15; padding: 8px 22px; position: absolute; text-align: center; transform: translateX(-50%); white-space: nowrap; z-index: 3; }
 .m2-ab-net-pill strong { font-size: .92rem; font-weight: 600; }
 .m2-ab-net-pill span { color: color-mix(in srgb, currentColor 74%, transparent); font-size: .72rem; }

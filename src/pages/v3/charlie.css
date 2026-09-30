@@ -12,7 +12,7 @@
 .ck-hub-lines { height: 100%; inset: 0; pointer-events: none; position: absolute; width: 100%; }
 .ck-hub-lines path { fill: none; opacity: 0.4; stroke: var(--v3-bark); stroke-width: 1.5; }
 .ck-hub-portrait { justify-self: center; margin: 0; width: min(260px, 100%); }
-.ck-hub-portrait img { aspect-ratio: 1; border: 1px solid var(--v3-line); border-radius: 999px; display: block; object-fit: cover; object-position: 50% 32%; width: 100%; }
+.ck-hub-portrait img { aspect-ratio: 1; border: 1px solid var(--v3-line); border-radius: 999px; display: block; object-fit: cover; object-position: 50% 18%; width: 100%; }
 .ck-hub .ck-jump { border-top: 1px solid var(--v3-line); margin-top: 0; }
 
 .ck-jump { border-top: 1px solid var(--v3-line); display: flex; flex-direction: column; margin-top: 38px; }
