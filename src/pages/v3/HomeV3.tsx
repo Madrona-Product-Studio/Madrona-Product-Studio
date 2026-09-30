@@ -33,7 +33,7 @@ export default function HomeV3() {
     <Hero />
 
     <Bridge />
-    <AreasSection firstClassName="ar-after-bridge" />
+    <AreasSection intro={null} firstClassName="ar-after-bridge" />
     <Reveal><DepthSection /></Reveal>
     <Reveal><PracticeSection /></Reveal>
 

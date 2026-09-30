@@ -106,7 +106,7 @@ export function Hero() {
         <p className="v3-lede">We design websites and brands, build new products, and put AI to work inside your business: in your inbox, your paperwork, and your customer follow-up, with a person checking what matters.</p>
         <div className="v3-actions">
           <Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "home-hero")}>Get in touch</Link>
-          <a className="v3-hero-text-link" href="#work" onClick={ctaClick("See the work", "#work", "home-hero")}>See the work <span aria-hidden="true">→</span></a>
+          <a className="v3-hero-text-link" href="#area-ai-operations" onClick={ctaClick("See the work", "#area-ai-operations", "home-hero")}>See the work <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div className="v3-current-images" aria-hidden="true"><HeroChart /></div>
