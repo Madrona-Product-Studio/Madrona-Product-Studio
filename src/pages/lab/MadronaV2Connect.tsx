@@ -32,7 +32,7 @@ function CxIcon({ name }: { name: string }) {
 
 const EMAIL = "hello@madronaproduct.com";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const TOPICS = ["AI & Operations", "Brand & Website", "Growth & Retention", "New Products", "Not sure yet"];
+const TOPICS = ["AI & Operations", "Brand & Website", "Ecommerce & Loyalty", "New Products", "Not sure yet"];
 
 const expectItems = [
   { icon: "chat", title: "A 30-minute conversation", body: "We’ll explore your goals, challenges, and what’s possible." },

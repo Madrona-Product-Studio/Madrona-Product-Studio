@@ -17,7 +17,7 @@ function Glyph({ id }: { id: ServiceId }) {
       </>
     );
   }
-  if (id === "customers-and-growth") {
+  if (id === "ecommerce-and-loyalty") {
     return (
       <>
         <path d="M4.5 17 11 10.5l3 3L19.5 8" />

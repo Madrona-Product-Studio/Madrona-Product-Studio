@@ -29,7 +29,7 @@ export type AgentEntry = {
 
 export const CATEGORY = {
   finance: "Bookkeeping & finance",
-  customer: "Customer & retention",
+  customer: "Customers & loyalty",
   intelligence: "Sales & market intelligence",
   admin: "Admin & legal",
 } as const;
@@ -85,7 +85,7 @@ export const agents: AgentEntry[] = [
     proof: "helm",
   },
 
-  // Customer & retention
+  // Customers & loyalty
   {
     id: "customer-inbox",
     name: "Customer email",

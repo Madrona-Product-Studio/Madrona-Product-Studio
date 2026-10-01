@@ -1,8 +1,7 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { AutomationMap } from "./showcase/AutomationMap";
 import { WeekShowcase } from "./showcase/WeekShowcase";
-import { BrandShowcase } from "./showcase/BrandShowcase";
+import { BrandShowcase, CommerceShowcase } from "./showcase/BrandShowcase";
 import { ProductsShowcase } from "./showcase/ProductsShowcase";
 import { AREAS } from "../../data/areas";
 
@@ -23,7 +22,7 @@ import { AREAS } from "../../data/areas";
 const SHOWCASES: Record<string, () => React.ReactElement> = {
   "ai-operations": WeekShowcase,
   "brand-website": BrandShowcase,
-  "growth-retention": AutomationMap,
+  "ecommerce-loyalty": CommerceShowcase,
   "new-products": ProductsShowcase,
 };
 

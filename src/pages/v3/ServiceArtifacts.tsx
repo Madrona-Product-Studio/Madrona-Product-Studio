@@ -156,3 +156,24 @@ export function VariantsArtifact() {
     <footer>Scarcity beat sentiment and discounts. The next send already knows.</footer>
   </article>;
 }
+
+// I — the regulars board (Ecommerce & Loyalty, 2026-10-01): a small rewards
+// program for Berry Good, our demonstration business. Who is close to a perk,
+// who has gone quiet, and the nudge each one gets next. Illustrative numbers.
+export function LoyaltyArtifact() {
+  const rows: [string, number, string, string][] = [
+    ["Greenridge Market", 9, "1 pint to a free flat", "fir"],
+    ["The Hendersons", 5, "Halfway to a free flat", "copper"],
+    ["Dana R.", 3, "Quiet for 5 weeks: win-back sent", "orange"],
+  ];
+  return <article className="v3-artifact sa-ly">
+    <WindowBar path="berrygood · regulars" note="demo business" />
+    <div className="sa-ly-head"><strong>Berry Good regulars</strong><span>Every 10th pint is on the farm</span></div>
+    <ul className="sa-ly-rows">{rows.map(([who, pints, next, hue]) => <li key={who}>
+      <span className="sa-ly-who">{who}</span>
+      <span className="sa-ly-bar" aria-label={`${pints} of 10 pints`}>{Array.from({ length: 10 }, (_, i) => <i key={i} className={i < pints ? `is-${hue}` : undefined} />)}</span>
+      <span className={`sa-ly-next is-${hue}`}>{next}</span>
+    </li>)}</ul>
+    <footer>The punch card, the reminder, and the win-back run on their own. You see who is close.</footer>
+  </article>;
+}

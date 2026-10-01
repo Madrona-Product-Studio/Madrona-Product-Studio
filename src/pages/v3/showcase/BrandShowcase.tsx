@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { imgProps, SIZES } from "../../../lib/responsiveImage";
 import brandImage from "../../../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp?w=640;960;1280&format=webp&as=img";
 import storefrontImage from "../../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-storefront-desktop.webp?w=640;960;1280&format=webp&as=img";
+import journeyImage from "../../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp?w=640;960;1280&format=webp&as=img";
 import sanJuanImage from "../../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp?w=640;960;1280&format=webp&as=img";
 import { BERRY_URL } from "../../../data/proof";
 import { outboundClick } from "../../../lib/analytics";
@@ -24,7 +25,12 @@ import "./brand.css";
 // clean, so its label names it.
 const SJ_URL = "https://www.sjiboating.com/";
 
-const tabs = [
+type Tab = { id: string; label: string; project: string; tag: string; image: typeof brandImage; position: string; alt: string; caption: string; href: string; linkLabel: string };
+
+// 2026-10-01: Ecommerce & Loyalty took the storefront, so Brand & Website
+// shows the brand system and a website (the San Juan guide, a site we built
+// and run). The commerce window below reuses the same tabbed frame.
+const BRAND_TABS: Tab[] = [
   {
     id: "brand",
     label: "Brand",
@@ -35,10 +41,25 @@ const tabs = [
     alt: "Berry Good brand system: logo, color palette, typography, a pint box, a hang tag, and a thank-you card",
     caption: "A brand system for a berry farm: logo, palette, and type, carried onto packaging mockups from the pint box to the thank-you card.",
     href: BERRY_URL,
-    linkLabel: "Visit the storefront",
+    linkLabel: "Visit the farm’s site",
   },
   {
-    id: "storefront",
+    id: "website",
+    label: "Website",
+    project: "San Juan Boating Guide",
+    tag: "Live, our own product",
+    image: sanJuanImage,
+    position: "50% 50%",
+    alt: "San Juan Boating Guide on a tablet map of the islands and a phone showing live wind and tides",
+    caption: "A website people use every trip: marinas, parks, and dining on one map, with live wind and tides.",
+    href: SJ_URL,
+    linkLabel: "Visit sjiboating.com",
+  },
+];
+
+const COMMERCE_TABS: Tab[] = [
+  {
+    id: "store",
     label: "Storefront",
     project: "Berry Good Berry Farm",
     tag: "Our demonstration business",
@@ -50,16 +71,16 @@ const tabs = [
     linkLabel: "Visit the storefront",
   },
   {
-    id: "guide",
-    label: "Local guide",
-    project: "San Juan Boating Guide",
-    tag: "Live, our own product",
-    image: sanJuanImage,
+    id: "order",
+    label: "Order to pickup",
+    project: "Berry Good Berry Farm",
+    tag: "Our demonstration business",
+    image: journeyImage,
     position: "50% 50%",
-    alt: "San Juan Boating Guide on a tablet map of the islands and a phone showing live wind and tides",
-    caption: "Marinas, parks, and dining on one map, with live wind and tides. The kind of guide a marina, outfitter, or tourism group could offer.",
-    href: SJ_URL,
-    linkLabel: "Visit sjiboating.com",
+    alt: "Berry Good customer order journey on phones: browse, order, confirm, and pickup",
+    caption: "Browse, order, confirm, pick up: each step on a phone, with nothing to call about.",
+    href: BERRY_URL,
+    linkLabel: "Try ordering",
   },
 ];
 
@@ -74,6 +95,14 @@ const tabs = [
 const DWELL_MS = 5200;
 
 export function BrandShowcase() {
+  return <TabShowcase tabs={BRAND_TABS} id="brand" label="Brand and website examples" />;
+}
+
+export function CommerceShowcase() {
+  return <TabShowcase tabs={COMMERCE_TABS} id="commerce" label="Ecommerce examples" />;
+}
+
+function TabShowcase({ tabs, id, label }: { tabs: Tab[]; id: string; label: string }) {
   const [active, setActive] = useState(0);
   const [auto, setAuto] = useState(false);
   const [inView, setInView] = useState(false);
@@ -104,7 +133,7 @@ export function BrandShowcase() {
   const advance = () => {
     const next = (active + 1) % tabs.length;
     setActive(next);
-    // One lap: after the last tab it returns to Brand and rests there.
+    // One lap: after the last tab it returns to the first and rests there.
     if (steps + 1 >= tabs.length) setAuto(false); else setSteps(steps + 1);
   };
   const choose = (index: number) => { setAuto(false); setActive(index); };
@@ -132,7 +161,7 @@ export function BrandShowcase() {
       <span className="bsc-dots" aria-hidden="true"><i /><i /><i /></span>
       {/* Only the tab strip pauses the tour: a cursor resting on the image
           while scrolling must not freeze it (Charlie saw it never move). */}
-      <div className="bsc-tabs" role="tablist" aria-label="Brand and website examples" onKeyDown={onKeyDown}
+      <div className="bsc-tabs" role="tablist" aria-label={label} onKeyDown={onKeyDown}
         onPointerEnter={() => setHeld(true)} onPointerLeave={() => setHeld(false)}
         onFocus={() => setHeld(true)} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setHeld(false); }}>
         {tabs.map((t, index) => <button
@@ -140,8 +169,8 @@ export function BrandShowcase() {
           ref={(el) => { tabRefs.current[index] = el; }}
           type="button"
           role="tab"
-          id={`bsc-tab-${t.id}`}
-          aria-controls="bsc-panel"
+          id={`${id}-tab-${t.id}`}
+          aria-controls={`${id}-panel`}
           aria-selected={index === active}
           tabIndex={index === active ? 0 : -1}
           className={index === active ? "is-active" : undefined}
@@ -150,7 +179,7 @@ export function BrandShowcase() {
       </div>
     </header>
 
-    <div id="bsc-panel" role="tabpanel" aria-labelledby={`bsc-tab-${tab.id}`}>
+    <div id={`${id}-panel`} role="tabpanel" aria-labelledby={`${id}-tab-${tab.id}`}>
       <div className="bsc-frame">
         {tabs.map((t, index) => <img
           key={t.id}
@@ -166,7 +195,7 @@ export function BrandShowcase() {
       <footer className="bsc-foot">
         <p className="bsc-meta"><strong>{tab.project}</strong><span>{tab.tag}</span></p>
         <p className="bsc-caption" key={tab.id}>{tab.caption}</p>
-        <a className="bsc-link" href={tab.href} target="_blank" rel="noreferrer" onClick={outboundClick(tab.href, `home-brand-${tab.id}`)}>
+        <a className="bsc-link" href={tab.href} target="_blank" rel="noreferrer" onClick={outboundClick(tab.href, `home-${id}-${tab.id}`)}>
           <span>{tab.linkLabel}</span><span aria-hidden="true">↗︎</span><span className="bsc-sr"> (opens in a new tab)</span>
         </a>
       </footer>

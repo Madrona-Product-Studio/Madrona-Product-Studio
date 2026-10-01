@@ -75,9 +75,9 @@ export const pages = {
   },
   "/services": {
     title: "Services · Madrona Product Studio",
-    description: "We help you figure out what to build, then build it. Four areas, one senior team: operations and AI, customers and growth, brand and web, and new products, from a small senior team in the Pacific Northwest.",
+    description: "We help you figure out what to build, then build it. Four areas, one senior team: AI and operations, brand and website, ecommerce and loyalty, and new products, from a small senior team in the Pacific Northwest.",
     h1: "Four areas. One senior team.",
-    body: "Four areas, one senior team, and every engagement starts with one free conversation. AI & Operations: losing hours to work software should be doing? Practical AI and tools on your real workflows, with a person checking anything that matters. Brand & Website: websites, brand systems, and online stores designed and built to a high bar. Growth & Retention: the follow-up, reminders, and answers that keep people coming back. New Products: from prototype to launched product. How an engagement runs: a free 30-minute conversation, a written read on where we can help, then a small first project with its win named up front, paid only if it makes sense.",
+    body: "Four areas, one senior team, and every engagement starts with one free conversation. AI & Operations: losing hours to work software should be doing? Practical AI and tools on your real workflows, with a person checking anything that matters. Brand & Website: brands and websites, designed and built to a high bar. Ecommerce & Loyalty: online stores that make buying easy, and the memberships, rewards, and follow-up that turn first orders into regulars. New Products: from prototype to launched product. How an engagement runs: a free 30-minute conversation, a written read on where we can help, then a small first project with its win named up front, paid only if it makes sense.",
   },
   "/services/ai-operations": {
     title: "AI & Operations · Madrona Product Studio",
@@ -85,17 +85,17 @@ export const pages = {
     h1: "Losing hours to work software should be doing?",
     body: "Feels like AI should help, but not sure where to start? We map how work actually happens, identify the highest-friction handoffs, and build practical tools, automations, and AI agents around the real workflow. Workflow and process design, automation, AI assistants and agents, internal tools and dashboards. We run our own studio this way. From Madrona Product Studio in the Pacific Northwest.",
   },
-  "/services/growth-retention": {
-    title: "Growth & Retention · Madrona Product Studio",
-    description: "Make it easier for customers to buy, return, and stay connected. Online stores, loyalty, and lifecycle email from a small senior product studio.",
-    h1: "People buy once, then you never hear from them again?",
-    body: "People buy once, then you never hear from them again? We design the customer journey end to end: customer research, journey and experience design, commerce and loyalty, retention and lifecycle communication. Make it easier for customers to buy, come back, and stay connected. From Madrona Product Studio in the Pacific Northwest.",
+  "/services/ecommerce-loyalty": {
+    title: "Ecommerce & Loyalty: online stores, memberships, and repeat customers · Madrona Product Studio",
+    description: "Online stores and Shopify builds that make buying easy, plus the memberships, rewards, reorders, and follow-up that turn first orders into regulars. From a small senior studio in the Pacific Northwest.",
+    h1: "Selling online, but people only buy once?",
+    body: "Online stores that make buying easy, and the memberships, rewards, and follow-up that turn first orders into regulars. Online stores: Shopify builds and replatforms, with a checkout that gets out of the way. Ordering and pickup: order ahead, reorder in a tap, and pickup that runs itself. Memberships and rewards for customers, members, or donors. Follow-up and reviews: the thank-you, the review ask, and the win-back, mostly automated. Our background is deepest here: e-commerce platforms for national brands, and REI's membership relaunch.",
   },
   "/services/brand-website": {
     title: "Brand & Website · Madrona Product Studio",
-    description: "Website redesign, brand, and messaging that give people a clear reason to understand, trust, and choose you.",
+    description: "Websites, brand systems, and messaging that give people a clear reason to understand, trust, and choose you. Designed and built by a small senior studio in the Pacific Northwest.",
     h1: "Website just OK, and not doing the business justice?",
-    body: "Website just OK, and not doing the business justice? Positioning and strategy, messaging and voice, visual identity, and websites and stores built to earn trust and convert. Give people a clear reason to understand, trust, and choose you. From Madrona Product Studio in the Pacific Northwest.",
+    body: "Website just OK, and not doing the business justice? Brands and websites, designed and built to a high bar: clear, fast websites that say what you do and prove it; brand systems of color, type, and voice; positioning and messaging in plain words; and sites your team can keep current.",
   },
   "/services/new-products": {
     title: "New Products · Madrona Product Studio",
