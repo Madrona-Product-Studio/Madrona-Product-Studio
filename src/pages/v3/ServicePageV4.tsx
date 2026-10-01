@@ -7,7 +7,7 @@ import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import { BriefArtifact } from "./V3Artifacts";
-import { BuildJourneyArtifact, IdentityBoardArtifact, JourneyArtifact, StorefrontArtifact, ThreadArtifact, VariantsArtifact } from "./ServiceArtifacts";
+import { BeforeAfterArtifact, BuildJourneyArtifact, IdentityBoardArtifact, LoyaltyArtifact, StorefrontArtifact, ThreadArtifact } from "./ServiceArtifacts";
 import { ProductsShowcase } from "./showcase/ProductsShowcase";
 import Reveal from "./Reveal";
 import { BERRY_URL } from "../../data/proof";
@@ -33,11 +33,11 @@ const EXAMPLES: Record<ServiceId, Example[]> = {
   ],
   "brand-and-web": [
     { kicker: "Brand system", title: "One identity, carried everywhere.", body: "Not a logo file. A small system of color, type, and voice that makes every touchpoint feel like the same business.", Art: IdentityBoardArtifact },
-    { kicker: "Website and store", title: "Every element earns its place.", body: "A page that converts is built from a few things doing real work: say what you sell, prove it, ask once.", link: { to: BERRY_URL, label: "Visit the Berry Good storefront" }, Art: StorefrontArtifact },
+    { kicker: "Website", title: "Say the specific thing.", body: "Most sites say what everyone says. We find the line only you can say, then build the site around it.", link: { to: "https://www.sjiboating.com/", label: "See a site we built and run: sjiboating.com" }, Art: BeforeAfterArtifact },
   ],
-  "customers-and-growth": [
-    { kicker: "Find the leak", title: "Find the leak, wire the return.", body: "The come-back path usually breaks in one quiet spot. We make it visible, then install the fix.", link: { to: "/tools/post-sale-followup", label: "Try the post-sale follow-up demo" }, Art: () => <JourneyArtifact /> },
-    { kicker: "Learn what works", title: "Every send teaches the next one.", body: "Small, honest tests show what brings people back, so decisions stop being taste debates.", link: { to: "/tools/review-requests", label: "Try the review requests demo" }, Art: VariantsArtifact },
+  "ecommerce-and-loyalty": [
+    { kicker: "The store", title: "Every element earns its place.", body: "A store that sells says what you sell, proves it, and asks once. Then checkout gets out of the way.", link: { to: BERRY_URL, label: "Visit the Berry Good storefront" }, Art: StorefrontArtifact },
+    { kicker: "The second order", title: "Turn first orders into regulars.", body: "A simple rewards program, a reminder when someone is close, and a win-back when they go quiet. Mostly automated, and you see who is close.", link: { to: "/tools/post-sale-followup", label: "Try the post-sale follow-up demo" }, Art: LoyaltyArtifact },
   ],
   "new-products": [
     { kicker: "Get it in hands", title: "Skip the stall.", body: "Ideas die in the planning gap. A small prototype with real users on it ends the debate faster than any document.", Art: BuildJourneyArtifact },

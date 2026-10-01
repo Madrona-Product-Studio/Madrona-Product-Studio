@@ -48,7 +48,7 @@ export default function App() {
         <Route path="/" element={<HomeV3 />} />
         <Route path="services/ai-operations" element={<ServicePageV4 serviceId="operations-and-ai" />} />
         <Route path="services/brand-website" element={<ServicePageV4 serviceId="brand-and-web" />} />
-        <Route path="services/growth-retention" element={<ServicePageV4 serviceId="customers-and-growth" />} />
+        <Route path="services/ecommerce-loyalty" element={<ServicePageV4 serviceId="ecommerce-and-loyalty" />} />
         <Route path="services/new-products" element={<ServicePageV4 serviceId="new-products" />} />
         {/* Charlie's public positioning page — sendable, out of the nav.
             Sibling of the internal /pitch-kit rehearsal surface. */}

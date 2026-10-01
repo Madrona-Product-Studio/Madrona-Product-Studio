@@ -25,8 +25,8 @@ import "./hero-route.css";
 // The four areas, in canon order, matching the section anchors in AreasSection.
 const AREAS = [
   { id: "ai-operations", name: "AI & Operations", words: "Reports, finance agents, inbox triage" },
-  { id: "brand-website", name: "Brand & Website", words: "Brands, storefronts, local guides" },
-  { id: "growth-retention", name: "Growth & Retention", words: "Follow-up, reviews, onboarding" },
+  { id: "brand-website", name: "Brand & Website", words: "Brands, websites, messaging" },
+  { id: "ecommerce-loyalty", name: "Ecommerce & Loyalty", words: "Online stores, memberships, repeat orders" },
   { id: "new-products", name: "New Products", words: "Prototype to launched product" },
 ];
 

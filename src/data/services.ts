@@ -4,14 +4,14 @@
 // capability groups, problems, and outputs retired with the old template
 // (they are in git history). Canonical labels live here and in areas.ts.
 // Order is meaningful (Charlie, 2026-08-29): AI & Operations leads
-// (agentic-forward), then Brand & Website, Growth & Retention, New Products.
+// (agentic-forward), then Brand & Website, Ecommerce & Loyalty, New Products.
 import type { ResponsiveImage } from "../lib/responsiveImage";
 import brandArtifact from "../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp?w=640;960;1280&format=webp&as=img";
 import customersArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp?w=640;960;1280&format=webp&as=img";
 import operationsArtifact from "../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-operations-dashboard.webp?w=640;960;1280&format=webp&as=img";
 import newProductsArtifact from "../../docs/madrona-v2-build-kit/product-proof/lila/new-products-idea-to-real.webp?w=640;960;1280&format=webp&as=img";
 
-export type ServiceId = "brand-and-web" | "customers-and-growth" | "operations-and-ai" | "new-products";
+export type ServiceId = "brand-and-web" | "ecommerce-and-loyalty" | "operations-and-ai" | "new-products";
 
 export interface ServiceArea {
   id: ServiceId;
@@ -35,14 +35,14 @@ export const serviceAreas: ServiceArea[] = [
     id: "brand-and-web",
     name: "Brand & Website",
     summary:
-      "We clarify what makes the business valuable, turn that into a coherent identity and message, and build digital experiences that help people take action.",
-    artifact: { src: brandArtifact, alt: "Berry Good brand system shown across a palette, packaging, and a storefront", caption: "Berry Good brand system" },
+      "We clarify what makes the business valuable, turn that into a coherent identity and message, and build the website that carries it.",
+    artifact: { src: brandArtifact, alt: "Berry Good brand system shown across a palette, packaging, and a website", caption: "Berry Good brand system" },
   },
   {
-    id: "customers-and-growth",
-    name: "Growth & Retention",
+    id: "ecommerce-and-loyalty",
+    name: "Ecommerce & Loyalty",
     summary:
-      "We improve the full customer relationship, from first interest through purchase, follow-up, loyalty, and repeat engagement.",
+      "We build online stores that make buying easy, then the memberships, rewards, and follow-up that bring people back. It is where we have the most miles: e-commerce platforms for national brands, and REI's membership relaunch.",
     artifact: { src: customersArtifact, alt: "Berry Good customer order journey from browse to checkout", caption: "Berry Good customer order journey" },
   },
   {
