@@ -1,6 +1,6 @@
 // The four areas, as visitors see them (2026-09-30): one source for the
 // homepage spreads (AreasSection), the /services index, and the four area
-// pages, so the question, the one-line promise, and "what we make" read the
+// pages, so the headline, the one-line promise, and "what we make" read the
 // same everywhere. services.ts keeps the deeper service data (images, SEO).
 // Canon order: AI & Operations leads.
 import type { ServiceId } from "./services";
@@ -10,7 +10,7 @@ export interface Area {
   serviceId: ServiceId;  // the matching entry in services.ts
   route: string;
   name: string;
-  question: string;      // the plain question the area answers
+  headline: string;      // the outcome, stated (2026-10-02: statements, not problem questions)
   does: string;          // one line: what we do about it
   makes: string[];       // homepage rail: three plain lines
   offer: { name: string; line: string }[]; // area page: what we make, with a line each
@@ -22,7 +22,7 @@ export const AREAS: Area[] = [
     serviceId: "operations-and-ai",
     route: "/services/ai-operations",
     name: "AI & Operations",
-    question: "Losing hours to work software should be doing?",
+    headline: "Get hours back every week.",
     does: "Practical AI and tools built on your real workflows, with a person checking anything that matters.",
     makes: ["Bookkeeping and invoicing agents", "Customer inbox triage", "Operations dashboards"],
     offer: [
@@ -37,7 +37,7 @@ export const AREAS: Area[] = [
     serviceId: "brand-and-web",
     route: "/services/brand-website",
     name: "Brand & Website",
-    question: "Website just OK, and not doing the business justice?",
+    headline: "A website that does your business justice.",
     does: "Brands and websites, designed and built to a high bar.",
     makes: ["Websites, designed and built", "Brand systems and packaging", "Positioning and messaging"],
     offer: [
@@ -56,7 +56,7 @@ export const AREAS: Area[] = [
     serviceId: "ecommerce-and-loyalty",
     route: "/services/ecommerce-loyalty",
     name: "Ecommerce & Loyalty",
-    question: "Selling online, but people only buy once?",
+    headline: "Sell online, and keep them coming back.",
     does: "Online stores that make buying easy, and the memberships, rewards, and follow-up that turn first orders into regulars.",
     makes: ["Online stores and Shopify builds", "Memberships and rewards", "Reorders and win-back follow-up"],
     offer: [
@@ -71,7 +71,7 @@ export const AREAS: Area[] = [
     serviceId: "new-products",
     route: "/services/new-products",
     name: "New Products",
-    question: "Have an idea that deserves to become real?",
+    headline: "Turn a good idea into a real product.",
     does: "From prototype to launched product. We build and run our own, so we know what launching takes.",
     makes: [],
     offer: [

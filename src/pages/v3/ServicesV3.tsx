@@ -23,7 +23,7 @@ export default function ServicesV3() {
     <section className="v3-shell sv-hero">
       <p className="v3-kicker">Services</p>
       <h1>Four areas. <span>One senior team.</span></h1>
-      <p className="v3-lede">Pick the question that sounds like your week. Every engagement starts the same way: one free conversation.</p>
+      <p className="v3-lede">Pick the one that sounds like what you need. Every engagement starts the same way: one free conversation.</p>
     </section>
 
     <Reveal as="section" className="v3-shell sv-index" aria-label="The four areas">
@@ -31,7 +31,7 @@ export default function ServicesV3() {
         <Link to={a.route}>
           <span className="sv-num">{String(i + 1).padStart(2, "0")}</span>
           <span className="sv-name">{a.name}</span>
-          <span className="sv-body"><strong>{a.question}</strong><em>{a.does}</em></span>
+          <span className="sv-body"><strong>{a.headline}</strong><em>{a.does}</em></span>
           <span className="sv-go" aria-hidden="true">→</span>
         </Link>
       </li>)}</ol>
