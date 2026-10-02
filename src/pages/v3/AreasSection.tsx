@@ -10,7 +10,7 @@ import { AREAS } from "../../data/areas";
 // problems" ledger and the Berry Good + apps strip: the studio's own work
 // stops being a side section and becomes the proof inside each area. One
 // two-column spread per area, alternating sides and grounds: a rail (the
-// area, its plain question, what we do, what we've built) and a showcase.
+// area, its headline, what we do, what we make) and a showcase.
 //
 // Pull-back, 2026-09-30 (Charlie): the rails were carrying too much detail.
 // Each now lists what we make as plain lines, with no source tags or links;
@@ -56,7 +56,7 @@ export function AreasSection({ intro, firstClassName = "" }: { intro?: ReactNode
           <div className="ar-spread">
             <div className="ar-rail">
               <p className="v3-kicker ar-kicker"><span>{number}</span>{area.name}</p>
-              <h2 id={`area-${area.slug}-q`}>{area.question}</h2>
+              <h2 id={`area-${area.slug}-q`}>{area.headline}</h2>
               <p className="ar-does">{area.does}</p>
               {area.makes.length > 0 && <MakesList items={area.makes} />}
               <Link className="v3-practice-link" to={area.route}>More on {area.name} <span aria-hidden="true">→</span></Link>

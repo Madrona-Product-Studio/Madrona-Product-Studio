@@ -19,7 +19,7 @@ import "./home-refactor.css";
 
 // The area pages, leaned out (Charlie, 2026-09-30: the V4 pages were
 // overwhelming and out of date). Four beats, about half the old length:
-// the hero asks the homepage's question, "What we make" is one list with a
+// the hero states the homepage's headline, "What we make" is one list with a
 // line each (it replaced the value points, the four-column strip, and the
 // typical-problems list), two worked examples instead of four, and the
 // homepage's one-conversation close. Copy comes from data/areas.ts so the
@@ -74,7 +74,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
       <section className="v4-hero sp-hero v3-shell">
         <div className="v4-hero-copy">
           <p className="v3-kicker">{area.name}</p>
-          <h1>{area.question}</h1>
+          <h1>{area.headline}</h1>
           <p className="v3-lede">{service.summary}</p>
           <div className="v3-actions">
             <Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", `${service.id}-hero`)}>Get in touch</Link>
