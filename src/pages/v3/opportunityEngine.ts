@@ -12,7 +12,8 @@ export type ChipId =
   | "invoices" | "books" | "cash"
   | "questions" | "followup" | "reviews"
   | "quotes" | "content" | "contracts"
-  | "scheduling" | "retyping" | "industry";
+  | "scheduling" | "retyping" | "industry"
+  | "orders" | "reorders"; // ecommerce topics (2026-10-01), appended so old read links decode
 
 export type AreaId = "money" | "customers" | "words" | "glue";
 
@@ -63,7 +64,7 @@ export interface OppMove {
   headline: string;
   support: string;
   proofHref: string;
-  proofLabel: string; // "See the pattern working →" | "Read the inventory →"
+  proofLabel: string; // set by proofLabelFor(): demo, prompts, service page, or the inventory
 }
 
 export interface OppTool {
@@ -111,12 +112,16 @@ export const openerChips: MapItem[] = [
   { chip: "questions",  label: "Answering the same customer questions",       area: "customers", proofHref: "/tools/customer-inbox",               proofLive: true  },
   { chip: "followup",   label: "Following up after the sale",                 area: "customers", proofHref: "/tools/post-sale-followup",           proofLive: true  },
   { chip: "reviews",    label: "Asking for reviews and replying to them",     area: "customers", proofHref: "/tools/review-requests",              proofLive: true  },
-  { chip: "quotes",     label: "Writing quotes, reports, and write-ups",      area: "words",     proofHref: "/thinking/ai-tools-for-small-business", proofLive: false },
-  { chip: "content",    label: "Social posts and marketing content",          area: "words",     proofHref: "/thinking/ai-tools-for-small-business", proofLive: false },
+  { chip: "quotes",     label: "Writing quotes, reports, and write-ups",      area: "words",     proofHref: "/thinking/ai-prompt-starter-pack", proofLive: false },
+  { chip: "content",    label: "Social posts and marketing content",          area: "words",     proofHref: "/thinking/ai-prompt-starter-pack", proofLive: false },
   { chip: "contracts",  label: "Reading contracts and paperwork before signing", area: "words",  proofHref: "/tools/contract-review",              proofLive: true  },
   { chip: "scheduling", label: "Scheduling back-and-forth",                   area: "glue",      proofHref: "/thinking/ai-tools-for-small-business", proofLive: false },
   { chip: "retyping",   label: "Retyping things between tools",               area: "glue",      proofHref: "/thinking/ai-tools-for-small-business", proofLive: false },
   { chip: "industry",   label: "Keeping up with what's changing in the industry", area: "glue",  proofHref: "/tools/industry-brief",               proofLive: true  },
+  // Ecommerce & Loyalty (2026-10-01). Appended last: the read permalink packs
+  // chips in this order.
+  { chip: "orders",     label: "Managing online orders and inventory",        area: "glue",      proofHref: "/services/ecommerce-loyalty",          proofLive: false },
+  { chip: "reorders",   label: "Getting customers to order again",            area: "customers", proofHref: "/services/ecommerce-loyalty",          proofLive: false },
 ];
 
 // Reply-pill short labels for chat history (same order as openerChips).
@@ -133,6 +138,8 @@ export const chipShort: Record<ChipId, string> = {
   scheduling: "Scheduling",
   retyping:   "Retyping between tools",
   industry:   "Industry keeping-up",
+  orders:     "Online orders",
+  reorders:   "Repeat orders",
 };
 
 // Human-readable module labels for the four areas.
@@ -332,7 +339,7 @@ const GLUE_VERDICTS = [
 ];
 
 // ---- Move copy table (pinned from spec) ----
-// Per-chip headline and support. proofLabel rule: /tools proofs → "See the pattern working →", article → "Read the inventory →".
+// Per-chip headline and support. Proof labels come from proofLabelFor().
 
 const MOVE_TABLE: Record<ChipId, { headline: string; support: string }> = {
   invoices:   { headline: "Let the invoice chasing run itself.",           support: "Overdue invoices get a polite reminder drafted in your voice. You decide who gets grace." },
@@ -347,7 +354,17 @@ const MOVE_TABLE: Record<ChipId, { headline: string; support: string }> = {
   scheduling: { headline: "Let the scheduling run itself.",                  support: "The back-and-forth, confirmations, and reminders held end to end." },
   retyping:   { headline: "Kill the retyping between tools.",                support: "Information moves itself between the systems you already use." },
   industry:   { headline: "Get briefed on your trade overnight.",            support: "The sources read while you sleep; what actually changed, each with a next move." },
+  orders:     { headline: "Let the orders move themselves.",                support: "Orders, stock, and pickup kept in one place, so nothing gets retyped or oversold." },
+  reorders:   { headline: "Turn first orders into regulars.",               support: "A reorder reminder, a reward for coming back, and a win-back when someone goes quiet." },
 };
+
+// The proof link's label follows what it opens.
+function proofLabelFor(href: string): string {
+  if (href.startsWith("/tools/")) return "See the pattern working →";
+  if (href === "/thinking/ai-prompt-starter-pack") return "Get the prompts →";
+  if (href.startsWith("/services/")) return "See how we set this up →";
+  return "Read the inventory →";
+}
 
 // ---- Named reads (dominant area by score) ----
 // Spec: dominant area = highest hour-weight on its anchor; ties break money → customers → words → glue.
@@ -466,8 +483,8 @@ export function isComplete(a: OpportunityAnswers): boolean {
 // ---- computeOpportunityReport ----
 
 // Spec group membership (determines runsItself vs amplified bucket).
-const RUNS_ITSELF_CHIPS = new Set<ChipId>(["invoices","books","cash","questions","reviews","scheduling","retyping","industry"]);
-const AMPLIFIED_CHIPS   = new Set<ChipId>(["quotes","content","contracts","followup"]);
+const RUNS_ITSELF_CHIPS = new Set<ChipId>(["invoices","books","cash","questions","reviews","scheduling","retyping","industry","orders"]);
+const AMPLIFIED_CHIPS   = new Set<ChipId>(["quotes","content","contracts","followup","reorders"]);
 
 // Readiness closer lines (the same five the earlier assessment used).
 const READINESS_LINES = [
@@ -570,7 +587,7 @@ export function computeOpportunityReport(a: OpportunityAnswers): OpportunityRepo
       headline,
       support,
       proofHref: ci.proofHref,
-      proofLabel: ci.proofLive ? "See the pattern working →" : "Read the inventory →",
+      proofLabel: proofLabelFor(ci.proofHref),
     };
   };
 
@@ -647,8 +664,12 @@ export function computeOpportunityReport(a: OpportunityAnswers): OpportunityRepo
   // inventory always leads; the starter guide joins when AI is not yet doing
   // real work; the era essay joins when the week is leaking in 2+ areas.
   const byHref = new Map(thinkingEntries.map(entry => [entry.href, entry]));
-  const readingHrefs = ["/thinking/ai-tools-for-small-business"];
-  if (a.ai !== undefined && a.ai <= 1) readingHrefs.push("/thinking/starter-guide-to-building-with-ai");
+  // Newcomers (no AI yet, or a ChatGPT poke) start with the owner's guide and
+  // the prompt pack (2026-10-01; the builder's starter guide was for people
+  // writing software, not running a business).
+  const readingHrefs = a.ai !== undefined && a.ai <= 1
+    ? ["/thinking/getting-started-with-ai", "/thinking/ai-prompt-starter-pack", "/thinking/ai-tools-for-small-business"]
+    : ["/thinking/ai-tools-for-small-business"];
   if (active.length >= 2) readingHrefs.push("/thinking/the-era-of-agentic-operations");
   const reading: OppReading[] = readingHrefs
     .map(href => byHref.get(href))

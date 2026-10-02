@@ -3,8 +3,8 @@
 // same report. Layout (bit-packed, then base64url; version nibble first so
 // the format can change without breaking old links):
 //
-//   4  version (1)
-//   12 chip mask, openerChips order
+//   4  version (2; v1 links carried a 12-bit chip mask and still decode)
+//   14 chip mask, openerChips order (v1: 12)
 //   4x3 anchors, 0 = unanswered, else option index + 1
 //   4x5 evidence masks, option index = bit
 //   3  ai (0 = skipped), 5 blocker mask, 3 readiness (0 = skipped)
@@ -14,7 +14,10 @@
 
 import { openerChips, type ChipId, type OpportunityAnswers } from "./opportunityEngine.js";
 
-const VERSION = 1;
+const VERSION = 2;
+// Chip-mask width per format version: v1 had 12 chips, v2 adds the two
+// ecommerce chips (appended, so v1 indexes still mean the same chips).
+const CHIP_BITS: Record<number, number> = { 1: 12, 2: 14 };
 const CHIP_ORDER: ChipId[] = openerChips.map(c => c.chip);
 const ANCHORS = ["moneyHours", "customersHours", "wordsHours", "glueHours"] as const;
 const EVIDENCE = ["moneyEvidence", "customersEvidence", "wordsEvidence", "glueEvidence"] as const;
@@ -92,7 +95,7 @@ function unmask(m: number, width: number): number[] | undefined {
 export function encodeAnswers(a: OpportunityAnswers): string {
   const w = new BitWriter();
   w.write(VERSION, 4);
-  w.write(mask(a.chips.map(c => CHIP_ORDER.indexOf(c)), 12), 12);
+  w.write(mask(a.chips.map(c => CHIP_ORDER.indexOf(c)), CHIP_BITS[VERSION]), CHIP_BITS[VERSION]);
   for (const key of ANCHORS) w.write(a[key] === undefined ? 0 : (a[key] as number) + 1, 3);
   for (const key of EVIDENCE) w.write(mask(a[key], 5), 5);
   w.write(a.ai === undefined ? 0 : a.ai + 1, 3);
@@ -110,8 +113,9 @@ export function decodeAnswers(code: string | null | undefined): OpportunityAnswe
   const bytes = fromBase64url(head);
   if (!bytes || bytes.length < 8) return null;
   const r = new BitReader(bytes);
-  if (r.read(4) !== VERSION) return null;
-  const chipMask = r.read(12);
+  const version = r.read(4);
+  if (!(version in CHIP_BITS)) return null;
+  const chipMask = r.read(CHIP_BITS[version]);
   const a: OpportunityAnswers = { chips: CHIP_ORDER.filter((_, i) => chipMask & (1 << i)) };
   for (const key of ANCHORS) {
     const v = r.read(3);

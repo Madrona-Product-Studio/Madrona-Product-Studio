@@ -2,6 +2,7 @@ import type { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { serviceAreas, type ServiceId } from "../../data/services";
 import { areaByServiceId } from "../../data/areas";
+import { SETUP_SPRINT } from "../../data/offer";
 import { imgProps, SIZES } from "../../lib/responsiveImage";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
@@ -92,6 +93,23 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
           <ol className="sp-offer">{area.offer.map((o, i) => <li key={o.name}><span>{String(i + 1).padStart(2, "0")}</span><strong>{o.name}</strong><p>{o.line}</p></li>)}</ol>
         </div>
       </Reveal>
+
+      {service.id === "operations-and-ai" && <Reveal as="section" className="v3-section sp-sprint" id="setup-sprint" aria-labelledby="sp-sprint-h">
+        <div className="v3-shell sp-sprint-grid">
+          <div>
+            <p className="v3-kicker">The fixed-price start</p>
+            <h2 id="sp-sprint-h">{SETUP_SPRINT.name}</h2>
+            <p className="sp-sprint-promise">{SETUP_SPRINT.promise}</p>
+            <p className="sp-sprint-price">{SETUP_SPRINT.price}</p>
+            <p className="sp-sprint-fine">{SETUP_SPRINT.terms}</p>
+            <Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "setup-sprint")}>Get in touch</Link>
+          </div>
+          <div>
+            <ul className="sp-offer sp-sprint-scope">{SETUP_SPRINT.scope.map((it, i) => <li key={it.name}><span>{String(i + 1).padStart(2, "0")}</span><strong>{it.name}</strong><p>{it.line}</p></li>)}</ul>
+            <p className="sp-sprint-note">{SETUP_SPRINT.tools} {SETUP_SPRINT.after}</p>
+          </div>
+        </div>
+      </Reveal>}
 
       <section className="v4-modules sp-examples v3-shell">
         <Reveal className="v4-modules-intro"><p className="v3-kicker">See it working</p><h2>Two examples, up close.</h2></Reveal>

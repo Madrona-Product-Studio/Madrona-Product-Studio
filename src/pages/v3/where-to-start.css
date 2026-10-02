@@ -197,3 +197,9 @@
 
 /* Print: the shell rules live with the card's own print rules in
    opportunity-report.css, so there is one place to look. */
+
+/* The fixed-price next step under the booking CTA (2026-10-01). */
+.wts-sprint .wts-sprint-move{margin:0 0 6px;color:var(--a-text);font-size:16px;font-weight:650;line-height:1.35}
+.wts-sprint .wts-sprint-line{margin:0 0 12px;color:var(--a-text-2);font-size:14px;line-height:1.5}
+.wts-sprint a{color:var(--a-text);font-size:14.5px;font-weight:600;text-decoration:none;transition:color .15s ease}
+.wts-sprint a:hover{color:var(--a-orange-bright)}

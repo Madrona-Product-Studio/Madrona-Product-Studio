@@ -5,7 +5,7 @@
 const steps = [
   ["01", "Talk it through", "A clear read on where to start", "A free 30-minute conversation with a published agenda, and a clear first move by the end.", "Free · 30 minutes"],
   ["02", "Get it in writing", "A written point of view, yours to keep", "A short, honest read on where we can help, and where we can’t.", "Free · yours either way"],
-  ["03", "Start small", "The smallest useful build, live", "A scoped first project with its win named up front, and visible payback.", "Paid · only if it makes sense"],
+  ["03", "Start small", "The smallest useful build, live", "A scoped first project with its win named up front, like a two-week AI setup from $1,500.", "Paid · only if it makes sense"],
 ];
 
 export function PracticeSection() {
