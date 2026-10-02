@@ -1,14 +1,15 @@
 // The fixed-scope AI offer (Charlie, 2026-10-01): a named, priced first
 // project so a nervous owner can say yes to something specific. One source for
 // every place it appears: the AI & Operations page, step 03 of how we work,
-// and the assessment's closing step. Tool framing stays outcome-first: Claude
+// and the assessment's closing step. The price shows only on AI & Operations,
+// as a quiet detail (Charlie, 2026-10-01: a big number everywhere could scare
+// off smaller businesses). Tool framing stays outcome-first: Claude
 // by default, or the AI already inside the tools a business uses. No vendor
 // partnership is implied.
 export const SETUP_SPRINT = {
   name: "AI Setup Sprint",
   promise: "One job off your plate, running in two weeks.",
   price: "From $1,500",
-  priceShort: "from $1,500",
   href: "/services/ai-operations#setup-sprint",
   scope: [
     { name: "Connected to what you use", line: "Email, calendar, documents, and your books (Google Workspace or Microsoft 365, QuickBooks), set up securely." },

@@ -100,8 +100,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
             <p className="v3-kicker">The fixed-price start</p>
             <h2 id="sp-sprint-h">{SETUP_SPRINT.name}</h2>
             <p className="sp-sprint-promise">{SETUP_SPRINT.promise}</p>
-            <p className="sp-sprint-price">{SETUP_SPRINT.price}</p>
-            <p className="sp-sprint-fine">{SETUP_SPRINT.terms}</p>
+            <p className="sp-sprint-fine"><strong>{SETUP_SPRINT.price}.</strong> {SETUP_SPRINT.terms}</p>
             <Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "setup-sprint")}>Get in touch</Link>
           </div>
           <div>

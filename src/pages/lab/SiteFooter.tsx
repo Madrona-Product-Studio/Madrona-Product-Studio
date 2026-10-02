@@ -27,7 +27,7 @@ const P = {
 const STEPS = [
   { n: "01", name: "Talk it through", line: "A free 30-minute call. You leave with a clear first move.", terms: "Free · 30 min" },
   { n: "02", name: "Get it in writing", line: "A short written read on where we can help, and where we can’t.", terms: "Free · yours to keep" },
-  { n: "03", name: "Start small", line: "A scoped first project, like a two-week AI setup from $1,500.", terms: "Paid · only if it makes sense" },
+  { n: "03", name: "Start small", line: "A scoped first project with its win named up front, like a two-week AI setup.", terms: "Paid · only if it makes sense" },
 ];
 
 export default function SiteFooter({ cta = true }: { cta?: boolean }) {

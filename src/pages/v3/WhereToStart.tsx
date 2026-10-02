@@ -597,7 +597,7 @@ function ResultStage({ report, answers, code, onRetake }: {
     {report.moves[0] && <div className="wts-rail-block wts-sprint">
       <p className="wts-rail-label">Then, your first move</p>
       <p className="wts-sprint-move">{report.moves[0].move.headline}</p>
-      <p className="wts-sprint-line">The {SETUP_SPRINT.name} gets it running in two weeks, {SETUP_SPRINT.priceShort}. Fixed price, agreed after the free call.</p>
+      <p className="wts-sprint-line">The {SETUP_SPRINT.name} gets it running in two weeks, at a fixed price agreed after the free call.</p>
       <Link to={SETUP_SPRINT.href} onClick={() => track("wts_cta_click", { read: report.title, to: SETUP_SPRINT.href })}>See what the sprint includes <span aria-hidden="true">→</span></Link>
     </div>}
 
