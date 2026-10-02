@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import LabMeta from "../lab/LabMeta";
 import MadronaLogo from "../lab/MadronaLogo";
 import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
+import { SETUP_SPRINT } from "../../data/offer";
 import { track } from "../../lib/analytics";
 import {
   openerChips,
@@ -590,6 +591,15 @@ function ResultStage({ report, answers, code, onRetake }: {
       Talk through this read <span aria-hidden="true">→</span>
     </a>
     <p className="sa-cta-fine">A free 30-minute conversation about what you flagged. Your read comes with the booking.</p>
+
+    {/* The fixed-price next step (2026-10-01): the read names a first move;
+        the setup sprint is how it gets running. */}
+    {report.moves[0] && <div className="wts-rail-block wts-sprint">
+      <p className="wts-rail-label">Then, your first move</p>
+      <p className="wts-sprint-move">{report.moves[0].move.headline}</p>
+      <p className="wts-sprint-line">The {SETUP_SPRINT.name} gets it running in two weeks, {SETUP_SPRINT.priceShort}. Fixed price, agreed after the free call.</p>
+      <Link to={SETUP_SPRINT.href} onClick={() => track("wts_cta_click", { read: report.title, to: SETUP_SPRINT.href })}>See what the sprint includes <span aria-hidden="true">→</span></Link>
+    </div>}
 
     <div className="wts-rail-block">
       <p className="wts-rail-label">Other ways in</p>

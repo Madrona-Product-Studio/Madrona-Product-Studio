@@ -83,7 +83,7 @@ export const pages = {
     title: "AI & Operations · Madrona Product Studio",
     description: "Practical AI on your real workflows, from the first map to working agents. Automation, AI assistants and agents, and internal tools that give you hours back every week.",
     h1: "Losing hours to work software should be doing?",
-    body: "Feels like AI should help, but not sure where to start? We map how work actually happens, identify the highest-friction handoffs, and build practical tools, automations, and AI agents around the real workflow. Workflow and process design, automation, AI assistants and agents, internal tools and dashboards. We run our own studio this way. From Madrona Product Studio in the Pacific Northwest.",
+    body: "Feels like AI should help, but not sure where to start? We map how work actually happens, identify the highest-friction handoffs, and build practical tools, automations, and AI agents around the real workflow. Workflow and process design, automation, AI assistants and agents, internal tools and dashboards. We run our own studio this way. From Madrona Product Studio in the Pacific Northwest. The fixed-price start: the AI Setup Sprint, one job off your plate running in two weeks, from $1,500. Fixed price and scope in writing after a free first conversation.",
   },
   "/services/ecommerce-loyalty": {
     title: "Ecommerce & Loyalty: online stores, memberships, and repeat customers · Madrona Product Studio",
