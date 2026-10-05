@@ -96,22 +96,6 @@
 
 
 
-/* The lean area pages (2026-09-30): one hero image, "What we make" as a
-   single numbered list, two examples, then the homepage close. */
-.sp-hero-image{margin:0}
-.sp-hero-image img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
-.sp-make-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:88px;align-items:start}
-.v3 .sp-make h2{max-width:26ch;margin:0;font-size:clamp(1.5rem,2vw,1.95rem);line-height:1.15;letter-spacing:-.02em}
-.sp-offer{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-line)}
-.sp-offer li{display:grid;grid-template-columns:36px minmax(0,1fr);column-gap:18px;row-gap:4px;padding:20px 0;border-bottom:1px solid var(--v3-line)}
-.sp-offer span{grid-row:span 2;color:var(--v3-bark-dark);font:500 11px/22px ui-monospace,"SF Mono",Menlo,monospace}
-.sp-offer strong{font-size:16px;font-weight:600;line-height:22px}
-.v3 .sp-offer p{margin:0;color:var(--v3-clay);font-size:14.5px;line-height:1.5}
-.v3 .sp-examples{padding-bottom:64px}
-@media(max-width:900px){
-  .sp-make-grid{grid-template-columns:minmax(0,1fr);gap:28px}
-}
-
 /* /services, streamlined (2026-09-30): a short index of the four areas. */
 .sv-hero{padding-block:88px 40px}
 .v3 .sv-hero h1{max-width:18ch;margin:10px 0 18px;font-size:clamp(2.6rem,4.4vw,4.4rem);line-height:1.02}
@@ -239,17 +223,15 @@ html[data-theme="night"] .ais-hero,html[data-theme="dusk"] .ais-hero,html[data-t
 .v3 .ais-new a{color:var(--v3-bark-dark);font-weight:650}
 
 /* Ecommerce landing visuals (2026-10-05). */
-.ais-orders,.ais-hero .sa-sf{box-shadow:0 30px 70px rgba(0,0,0,.35)}
-.ais-orders-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0;padding:16px 18px}
-.ais-orders-stats div{padding:10px 12px;border:1px solid var(--v3-soft);border-radius:7px;background:var(--v3-paper)}
-.ais-orders-stats dt{color:var(--v3-clay);font-size:11px}
-.ais-orders-stats dd{margin:4px 0 0;color:var(--v3-ink);font:600 22px/1 Inter,sans-serif;font-variant-numeric:tabular-nums}
-.ais-orders-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-soft)}
-.ais-orders-list li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--v3-soft)}
-.ais-orders-list li:last-child{border-bottom:0}
-.ais-orders-list b{display:block;color:var(--v3-ink);font-size:14px;font-weight:600}
-.ais-orders-list small{display:block;margin-top:2px;color:var(--v3-clay);font-size:12px}
-.ais-orders-list em{flex:none;padding:3px 9px;border-radius:999px;background:var(--v3-paper);color:var(--v3-clay);font-size:10.5px;font-style:normal;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.ais-orders-list em.is-repeat{background:color-mix(in srgb,#39846d 12%,transparent);color:#2d6b58}
 .ais-commerce{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:32px;align-items:start}
 @media(max-width:900px){.ais-commerce{grid-template-columns:minmax(0,1fr)}}
+.ais-hero-art .v3-artifact{box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.ais-hero-img{margin:0;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.ais-hero-img img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 0}
+/* "Works with" in the landing heroes (2026-10-05): real marks where we have
+   them, plain names otherwise. */
+.ais-works{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:22px;padding-top:20px;border-top:1px solid rgba(247,237,228,.14)}
+.ais-works-label{color:rgba(247,237,228,.55);font:700 10.5px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.ais-works ul{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.ais-works li{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid rgba(247,237,228,.18);border-radius:999px;color:rgba(247,237,228,.86);font-size:13px;font-weight:550}
+.ais-works svg{width:14px;height:14px;flex:none}

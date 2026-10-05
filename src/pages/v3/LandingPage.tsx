@@ -7,6 +7,7 @@ import Reveal from "./Reveal";
 import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import type { PathStep } from "../../data/offer";
 import { ctaClick } from "../../lib/analytics";
+import { brandPath } from "../lab/connectors";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 import "./home-refactor.css";
@@ -26,6 +27,7 @@ export type LandingConfig = {
   lede: string;
   alt?: { label: string; to: string }; // secondary hero link
   heroVisual: ReactNode;
+  worksWith?: string[];               // tools shown in the hero (logos where we have a real mark)
   changes: { heading: string; colToday?: string; colAfter: string; rows: { job: string; before: string; after: string }[] };
   path: { heading: string; steps: PathStep[]; timing: Record<string, string> };
   showcase: { kicker: string; heading: string; intro: string; node: ReactNode };
@@ -55,6 +57,10 @@ export default function LandingPage({ c }: { c: LandingConfig }) {
             {c.alt && <Link className="ais-alt" to={c.alt.to} onClick={ctaClick(c.alt.label, c.alt.to, `${c.slug}-hero`)}>{c.alt.label} <span aria-hidden="true">→</span></Link>}
           </div>
           <ul className="ais-trust"><li>Free first call</li><li>Fixed price, in writing</li><li>Yours to keep, no lock-in</li></ul>
+          {c.worksWith && <div className="ais-works"><span className="ais-works-label">Works with</span><ul>{c.worksWith.map(t => {
+            const d = brandPath(t);
+            return <li key={t}>{d && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={d} /></svg>}{t}</li>;
+          })}</ul></div>}
         </div>
         {c.heroVisual}
       </div>

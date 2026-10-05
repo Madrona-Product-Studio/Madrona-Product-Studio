@@ -1,7 +1,8 @@
 import { COMMERCE_PATH } from "../../data/offer";
 import { CommerceShowcase } from "./showcase/BrandShowcase";
 import { LoyaltyArtifact } from "./ServiceArtifacts";
-import { WindowBar } from "./ReadCard";
+import { HeroShot } from "./HeroShot";
+import storefrontImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-storefront-desktop.webp?w=640;960;1280&format=webp&as=img";
 import LandingPage, { type LandingConfig } from "./LandingPage";
 
 // Ecommerce & Loyalty as a landing page (Charlie, 2026-10-05). Offer and
@@ -9,30 +10,14 @@ import LandingPage, { type LandingConfig } from "./LandingPage";
 // from $2,500 in about two weeks (loyalty from $750), growth only if wanted.
 // Charlie: keep the store price near what a DIY Shopify setup costs.
 
-// The benefit, shown: a week of orders for Berry Good. Illustrative.
-function OrdersWeek() {
-  const rows: [string, string, string, boolean][] = [
-    ["#BGF-0124", "2 pints raspberries", "Pickup Sat", true],
-    ["#BGF-0123", "Flat of blueberries", "Shipped", false],
-    ["#BGF-0122", "Mixed box", "Pickup Sat", true],
-  ];
-  return <article className="v3-artifact ais-orders" aria-label="An example week of online orders">
-    <WindowBar path="berry good · orders this week" note="Illustrative · demo business" />
-    <dl className="ais-orders-stats"><div><dt>Orders</dt><dd>38</dd></div><div><dt>From regulars</dt><dd>41%</dd></div><div><dt>Reorder reminders</dt><dd>9 sent</dd></div></dl>
-    <ul className="ais-orders-list">{rows.map(([id, what, how, repeat]) => <li key={id}>
-      <span><b>{what}</b><small>{id} · {how}</small></span>
-      {repeat ? <em className="is-repeat">Came back</em> : <em>New</em>}
-    </li>)}</ul>
-  </article>;
-}
-
 const CONFIG: LandingConfig = {
   slug: "ecommerce-loyalty",
   title: "Ecommerce & Loyalty · Madrona Product Studio",
   kicker: "Ecommerce & Loyalty",
   headline: <>Sell online, and turn first orders <span>into regulars.</span></>,
-  lede: "We set up your Shopify store in about two weeks, from $2,500, then add the rewards and reminders that bring people back. You run it; we make it easy to.",
-  heroVisual: <OrdersWeek />,
+  lede: "We set up your Shopify store in about two weeks, then add the rewards and reminders that bring people back. You run it; we make it easy to.",
+  worksWith: ["Shopify", "PayPal", "Stripe", "QuickBooks", "Google Shopping", "Gmail"],
+  heroVisual: <HeroShot src={storefrontImage} path="berrygood · store" note="Our demonstration business" alt="The Berry Good online store: what's ripe today, berries to order, and pickup" />,
   changes: {
     heading: "How you sell, before and after.",
     colAfter: "After setup",
@@ -52,7 +37,7 @@ const CONFIG: LandingConfig = {
     kicker: "A store, start to finish",
     heading: "From the storefront to the second order.",
     intro: "Berry Good Berry Farm, our demonstration business: the store, ordering through pickup, and the rewards that bring regulars back.",
-    node: <div className="ais-commerce"><CommerceShowcase /><LoyaltyArtifact /></div>,
+    node: <div className="ais-commerce"><CommerceShowcase start={1} /><LoyaltyArtifact /></div>,
   },
   faq: [
     { q: "Why Shopify?", a: "It is reliable, easy to run yourself, and has the payments, shipping, and apps a small store needs. If you are on another platform that works for you, we can work with that instead." },

@@ -1,6 +1,8 @@
 import { BRAND_PATH } from "../../data/offer";
 import { BrandShowcase } from "./showcase/BrandShowcase";
-import { BeforeAfterArtifact, StorefrontArtifact } from "./ServiceArtifacts";
+import { BeforeAfterArtifact } from "./ServiceArtifacts";
+import { HeroShot } from "./HeroShot";
+import brandImage from "../../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp?w=640;960;1280&format=webp&as=img";
 import LandingPage, { type LandingConfig } from "./LandingPage";
 
 // Brand & Website as a landing page (Charlie, 2026-10-05). Offer and prices
@@ -11,8 +13,9 @@ const CONFIG: LandingConfig = {
   title: "Brand & Website · Madrona Product Studio",
   kicker: "Brand & Website",
   headline: <>A website you’re proud to send people to, <span>live in two weeks.</span></>,
-  lede: "We design and build a clear, fast site for your business, from $2,000. It says what you do, proves it, and you can update it yourself. Nothing is monthly unless you want it.",
-  heroVisual: <StorefrontArtifact />,
+  lede: "We design and build a clear, fast site that says what you do and proves it, and you can update it yourself. Nothing is monthly unless you want it.",
+  worksWith: ["Shopify", "Squarespace", "Webflow", "Google Business Profile", "Square"],
+  heroVisual: <HeroShot src={brandImage} path="berrygood · brand system" note="Our demonstration business" position="50% 50%" alt="Berry Good brand system: logo, palette, and type carried onto packaging, a hang tag, and the website on a phone" />,
   changes: {
     heading: "Your website, before and after.",
     colAfter: "After launch",

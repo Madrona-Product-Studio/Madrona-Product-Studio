@@ -98,12 +98,14 @@ export function BrandShowcase() {
   return <TabShowcase tabs={BRAND_TABS} id="brand" label="Brand and website examples" />;
 }
 
-export function CommerceShowcase() {
-  return <TabShowcase tabs={COMMERCE_TABS} id="commerce" label="Ecommerce examples" />;
+// `start` picks the opening tab (the Ecommerce page opens on Order to pickup,
+// since its hero already shows the storefront).
+export function CommerceShowcase({ start = 0 }: { start?: number } = {}) {
+  return <TabShowcase tabs={COMMERCE_TABS} id="commerce" label="Ecommerce examples" start={start} />;
 }
 
-function TabShowcase({ tabs, id, label }: { tabs: Tab[]; id: string; label: string }) {
-  const [active, setActive] = useState(0);
+function TabShowcase({ tabs, id, label, start = 0 }: { tabs: Tab[]; id: string; label: string; start?: number }) {
+  const [active, setActive] = useState(start);
   const [auto, setAuto] = useState(false);
   const [inView, setInView] = useState(false);
   const [held, setHeld] = useState(false);
