@@ -8,7 +8,6 @@ import { ScrollToTop, PageFade } from "./components/RouteMotion";
 // along; those were previously render-blocking on every page.
 import ServicesV3 from "./pages/v3/ServicesV3";
 import HomeV3 from "./pages/v3/HomeV3";
-import ServicePageV4 from "./pages/v3/ServicePageV4";
 import MadronaV2Apps from "./pages/lab/MadronaV2Apps";
 import MadronaV2Connect from "./pages/lab/MadronaV2Connect";
 import RouteGround from "./components/RouteGround";
@@ -20,6 +19,7 @@ const Resources = lazy(() => import("./pages/lab/Resources"));
 const AiSetupPage = lazy(() => import("./pages/v3/AiSetupPage"));
 const BrandLandingPage = lazy(() => import("./pages/v3/BrandLandingPage"));
 const CommerceLandingPage = lazy(() => import("./pages/v3/CommerceLandingPage"));
+const ProductLandingPage = lazy(() => import("./pages/v3/ProductLandingPage"));
 const GettingStartedNote = lazy(() => import("./pages/lab/GettingStartedNote"));
 const PromptPackNote = lazy(() => import("./pages/lab/PromptPackNote"));
 const CharliePage = lazy(() => import("./pages/v3/CharliePage"));
@@ -53,7 +53,7 @@ export default function App() {
         <Route path="services/ai-operations" element={<AiSetupPage />} />
         <Route path="services/brand-website" element={<BrandLandingPage />} />
         <Route path="services/ecommerce-loyalty" element={<CommerceLandingPage />} />
-        <Route path="services/new-products" element={<ServicePageV4 serviceId="new-products" />} />
+        <Route path="services/new-products" element={<ProductLandingPage />} />
         {/* Charlie's public positioning page — sendable, out of the nav.
             Sibling of the internal /pitch-kit rehearsal surface. */}
         <Route path="charlie" element={<CharliePage />} />

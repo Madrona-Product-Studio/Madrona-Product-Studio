@@ -98,10 +98,10 @@ export const pages = {
     body: "We design and build a clear, fast site for your business, from $2,000. It says what you do, proves it, and you can update it yourself. Step one, a website review: free, in the first call, with an honest read on your current site and a fixed quote. Step two, a new website from $2,000, live in one to two weeks: a few well-built pages that work on every screen and that search engines can read. Bigger sites, or brand and site together, are quoted in writing. Step three, care only if you want it: from $75 a month, or pay as you go.",
   },
   "/services/new-products": {
-    title: "New Products · Madrona Product Studio",
-    description: "Take a new product from idea to something real people use. Product strategy and validation, prototypes and MVPs, AI-enabled features, launch and iteration.",
-    h1: "Turn a good idea into a real product.",
-    body: "Turn a good idea into a real product. Product strategy and validation, prototypes and MVPs, AI-enabled features, and launch and iteration. We take new products from concept to something real people use, and we build and run our own. From Madrona Product Studio in the Pacific Northwest.",
+    title: "New Products: validate an idea from $3,000, then build the first release · Madrona Product Studio",
+    description: "Turn a good idea into a real product without betting the business on it. A validation sprint from $3,000 tests the idea with real people; then one senior team builds the smallest version worth shipping. From a small senior studio in the Pacific Northwest.",
+    h1: "Turn a good idea into a real product, without betting the business on it.",
+    body: "We test the idea with real people first, from $3,000, then build the smallest version worth shipping. Step one, a validation sprint from $3,000: a clickable prototype, sessions with the people it is for, and a written go, change, or stop. Step two, prototype to first release, quoted after validation: design and engineering from one senior team, AI features where they help, and the code and accounts are yours. Step three, a product partner after launch, monthly. We build and run our own products, including Helm, Lila Trips, and the San Juan Boating Guide.",
   },
   "/charlie": {
     title: "Charlie Koch · Madrona Product Studio",

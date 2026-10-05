@@ -104,3 +104,23 @@ export const COMMERCE_PATH: PathStep[] = [
     gets: ["Win-back and review requests running and improving", "A short monthly read on what sold and what to try", "Cancel any time"],
   },
 ];
+
+// New Products offer (Charlie, 2026-10-05): prove the idea cheaply first;
+// the build and the ongoing partnership are quoted once the idea has proof.
+export const PRODUCT_PATH: PathStep[] = [
+  {
+    id: "validate", n: "01", name: "Validation sprint", price: "From $3,000",
+    line: "Test the idea with real people before you commit a real budget.",
+    gets: ["A clickable prototype of the core idea", "Sessions with the people it is for", "A written go, change, or stop, with what the first version should be"],
+  },
+  {
+    id: "build", n: "02", name: "Prototype to first release", price: "Quoted after validation",
+    line: "The smallest version worth shipping, in real hands.",
+    gets: ["Design and engineering from one senior team", "AI features where they genuinely help", "Launched, with the measures that matter set up from day one", "The code and accounts are yours"],
+  },
+  {
+    id: "partner", n: "03", name: "Product partner", price: "Monthly, quoted",
+    line: "A senior product lead in your corner after launch.",
+    gets: ["What to build next, decided from real usage", "Ongoing design and engineering as needed", "Month to month"],
+  },
+];

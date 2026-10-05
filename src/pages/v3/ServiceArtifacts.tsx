@@ -5,42 +5,7 @@
 // V4 service pages; the assessment-v2 report will speak this same language.
 import { WindowBar } from "./ReadCard";
 
-// A — the conversation where work happens (agent drafts, human decides).
-export function ThreadArtifact() {
-  return <article className="v3-artifact sa-thread">
-    <WindowBar path="berrygood · customer inbox" note="agent drafts · you decide" />
-    <div className="sa-thread-body">
-      <div className="sa-msg"><span className="sa-av is-stone">GM</span><div>
-        <p className="sa-who">Greenridge Market <small>8:42 AM</small></p>
-        <p>Do you have any raspberries left for today?</p></div></div>
-      <div className="sa-msg"><span className="sa-av is-charcoal">AI</span><div>
-        <p className="sa-who is-plum">Inbox agent <small>8:42 AM</small></p>
-        <p>Draft ready: “We have 20 pints picked this morning. Want me to hold 6 for your usual pickup?” Inventory checked, price current.</p>
-        <div className="sa-acts"><b className="is-go">Send it</b><b>Edit first</b><b>Hold 6 pints</b></div></div></div>
-      <div className="sa-msg"><span className="sa-av is-fir">MK</span><div>
-        <p className="sa-who">Maya (owner) <small>8:44 AM</small></p>
-        <p>Sent. Held the pints.</p></div></div>
-      <footer>Drafts wait for you. Nothing sends itself.</footer>
-    </div>
-  </article>;
-}
 
-// B — the week, counted (what the system handled).
-export function WeekArtifact() {
-  const cells: [string, string, string, string, number][] = [
-    ["Orders", "34", "entered from email & voicemail", "fir", 85],
-    ["Reminders", "12", "invoices nudged politely", "copper", 60],
-    ["Drafts", "6", "waiting for your okay", "stone", 30],
-    ["Flags", "2", "needed a human, got one", "orange", 12],
-  ];
-  return <article className="v3-artifact sa-week">
-    <WindowBar path="this week · handled by the system" note="owner reviewed: 15 min" />
-    <div className="sa-week-grid">{cells.map(([label, n, sub, hue, pct]) =>
-      <section key={label} className={`is-${hue}`}><h3>{label}</h3><strong>{n}</strong><span>{sub}</span><i><b style={{ width: `${pct}%` }} /></i></section>)}
-    </div>
-    <footer>Counts from the Berry Good demo operation, one real week.</footer>
-  </article>;
-}
 
 // C — the positioning line, sharpened (before / after).
 export function BeforeAfterArtifact() {
@@ -88,25 +53,6 @@ export function JourneyArtifact({ data = RETENTION_JOURNEY }: { data?: typeof RE
   </article>;
 }
 
-// G — the identity mini-board: a brand system at a glance (Berry Good).
-export function IdentityBoardArtifact() {
-  return <article className="v3-artifact sa-id">
-    <WindowBar path="berrygood · brand system" note="one identity, every touchpoint" />
-    <div className="sa-id-body">
-      <div className="sa-id-mark"><strong>Berry Good</strong><span>BERRY FARM</span><p>Roadside-stand editorial. Real fruit, real simple.</p></div>
-      <div className="sa-id-side">
-        <div className="sa-id-row"><h3>Color</h3><ul>
-          <li><i style={{ background: "#B8114D" }} />Raspberry</li>
-          <li><i style={{ background: "#3D6B35" }} />Leaf</li>
-          <li><i style={{ background: "#FAF5EA" }} />Cream</li>
-          <li><i style={{ background: "#33202A" }} />Ink</li>
-        </ul></div>
-        <div className="sa-id-row"><h3>Type</h3><p className="sa-id-serif">Fraunces</p><p className="sa-id-sans">Karla</p></div>
-        <div className="sa-id-row"><h3>Voice</h3><p className="sa-id-voice">"Picked with care in the Nooksack Valley."</p></div>
-      </div>
-    </div>
-  </article>;
-}
 
 // H — the storefront teardown: what a page that converts is made of.
 export function StorefrontArtifact() {
@@ -121,41 +67,7 @@ export function StorefrontArtifact() {
   </article>;
 }
 
-// E — everything lands somewhere (intake routing).
-export function RoutingArtifact() {
-  const rows: [string, string, string, string, boolean][] = [
-    ["Wholesale order, voicemail", "Orders", "fir", "Entered", true],
-    ["Refund ask, tone matters", "Owner", "orange", "Yours", false],
-    ["Invoice #241, 3 weeks late", "Bookkeeping", "copper", "Nudged", true],
-    ["“Are you open Labor Day?”", "Inbox agent", "plum", "Answered", true],
-  ];
-  return <article className="v3-artifact sa-rt">
-    <WindowBar path="intake · yesterday" note="routed with context" />
-    <table>
-      <thead><tr><th scope="col">Came in</th><th scope="col">Routed to</th><th scope="col">Status</th></tr></thead>
-      <tbody>{rows.map(([what, dest, hue, status, ok]) =>
-        <tr key={what}><td>{what}</td><td className={`is-${hue}`}>{dest}</td><td className={ok ? "is-ok" : "is-own"}>{status}</td></tr>)}
-      </tbody></table>
-  </article>;
-}
 
-// F — three versions, one winner (the learn loop).
-export function VariantsArtifact() {
-  const variants: [string, string, string, string, number, boolean][] = [
-    ["Variant A", "“We miss you at the farm stand”", "11%", "stone", 24, false],
-    ["Variant B · winner", "“Tayberries are back (3 weeks only)”", "38%", "orange", 82, true],
-    ["Variant C", "“10% off your next visit”", "17%", "copper", 37, false],
-  ];
-  return <article className="v3-artifact sa-vr">
-    <WindowBar path="win-back email · subject test" note="sent to 180 lapsed customers" />
-    <div className="sa-vr-grid">{variants.map(([label, subject, rate, hue, pct, lead]) =>
-      <section key={label} className={lead ? "is-lead" : undefined}><h3>{label}</h3><p>{subject}</p>
-        <div className="sa-vr-meter"><strong>{rate}</strong><span>opened</span></div>
-        <i className={`is-${hue}`} style={{ width: `${pct}%` }} /></section>)}
-    </div>
-    <footer>Scarcity beat sentiment and discounts. The next send already knows.</footer>
-  </article>;
-}
 
 // I — the regulars board (Ecommerce & Loyalty, 2026-10-01): a small rewards
 // program for Berry Good, our demonstration business. Who is close to a perk,
