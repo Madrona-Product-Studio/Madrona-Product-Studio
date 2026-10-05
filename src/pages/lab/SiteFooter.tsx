@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
 import { track, ctaClick } from "../../lib/analytics";
+import { bookClick, bookHref, bookProps } from "./useCalEmbed";
 
 const EMAIL = "hello@madronaproduct.com";
 const CONTACT = "/connect";
@@ -23,10 +24,13 @@ const P = {
 // The closing ask, back in the dark rounded box joined to the footer
 // (Charlie, 2026-09-30), carrying the simplified homepage close: one
 // conversation, one button, and the three steps on the right, each with its
-// line and its terms.
+// line and its terms. 2026-10-06 (Charlie): the first call is free, a written
+// quote is free, and a recommendations assessment (AI) is paid; the main
+// button books the call, matching the landing pages, with a message as the
+// quieter alternative.
 const STEPS = [
   { n: "01", name: "Talk it through", line: "A free 30-minute call. You leave with a clear first move.", terms: "Free · 30 min" },
-  { n: "02", name: "Get it in writing", line: "A short written read on where we can help, and where we can’t.", terms: "Free · yours to keep" },
+  { n: "02", name: "Get a quote in writing", line: "Scope and price, in writing. For AI work, an optional paid assessment maps your week first.", terms: "Free · yours to keep" },
   { n: "03", name: "Start small", line: "A scoped first project with its win named up front, like a two-week AI setup.", terms: "Paid · only if it makes sense" },
 ];
 
@@ -41,7 +45,10 @@ export default function SiteFooter({ cta = true }: { cta?: boolean }) {
                 <p className="fc-kicker">Get started</p>
                 <h2>It starts with <span>one conversation.</span></h2>
                 <p>Free, and it takes 30 minutes. Tell us where the friction is, or what you’d like to exist next.</p>
-                <Link className="m2-fc-btn" to={CONTACT} onClick={ctaClick("Get in touch", CONTACT, "footer")}>Get in touch <I d={P.arrow} /></Link>
+                <div className="fc-actions">
+                  <a className="m2-fc-btn" href={bookHref()} target="_blank" rel="noopener noreferrer" data-book-placement="footer" {...bookProps()} onClick={bookClick}>Book a free 30-minute call <I d={P.arrow} /></a>
+                  <Link className="fc-alt" to={CONTACT} onClick={ctaClick("Send a message", CONTACT, "footer")}>Or send a message</Link>
+                </div>
               </div>
               <ol className="fc-steps">{STEPS.map(s => <li key={s.n}><span>{s.n}</span><div><strong>{s.name}</strong><p>{s.line}</p></div><em>{s.terms}</em></li>)}</ol>
             </div>
