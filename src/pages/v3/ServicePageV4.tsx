@@ -2,13 +2,11 @@ import type { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { serviceAreas, type ServiceId } from "../../data/services";
 import { areaByServiceId } from "../../data/areas";
-import { SETUP_SPRINT } from "../../data/offer";
 import { imgProps, SIZES } from "../../lib/responsiveImage";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
-import { BriefArtifact } from "./V3Artifacts";
-import { BeforeAfterArtifact, BuildJourneyArtifact, IdentityBoardArtifact, LoyaltyArtifact, StorefrontArtifact, ThreadArtifact } from "./ServiceArtifacts";
+import { BeforeAfterArtifact, BuildJourneyArtifact, IdentityBoardArtifact, LoyaltyArtifact, StorefrontArtifact } from "./ServiceArtifacts";
 import { ProductsShowcase } from "./showcase/ProductsShowcase";
 import Reveal from "./Reveal";
 import { BERRY_URL } from "../../data/proof";
@@ -27,11 +25,8 @@ import "./home-refactor.css";
 
 type Example = { kicker: string; title: string; body: string; link?: { to: string; label: string }; Art: () => ReactElement };
 
-const EXAMPLES: Record<ServiceId, Example[]> = {
-  "operations-and-ai": [
-    { kicker: "Keep review visible", title: "The agent drafts. You decide.", body: "Questions arrive answered, in your voice, waiting for your okay. Nothing sends itself.", link: { to: "/tools/customer-inbox", label: "Try the customer email demo" }, Art: ThreadArtifact },
-    { kicker: "Know what changed", title: "Turn scattered signals into a short brief.", body: "An agent watches the sources that matter, explains what moved, and hands you the next step.", link: { to: "/tools/industry-brief", label: "Try the industry intelligence demo" }, Art: BriefArtifact },
-  ],
+// AI & Operations has its own landing page (AiSetupPage.tsx, 2026-10-05).
+const EXAMPLES: Partial<Record<ServiceId, Example[]>> = {
   "brand-and-web": [
     { kicker: "Brand system", title: "One identity, carried everywhere.", body: "Not a logo file. A small system of color, type, and voice that makes every touchpoint feel like the same business.", Art: IdentityBoardArtifact },
     { kicker: "Website", title: "Say the specific thing.", body: "Most sites say what everyone says. We find the line only you can say, then build the site around it.", link: { to: "https://www.sjiboating.com/", label: "See a site we built and run: sjiboating.com" }, Art: BeforeAfterArtifact },
@@ -46,15 +41,6 @@ const EXAMPLES: Record<ServiceId, Example[]> = {
   ],
 };
 
-// AI & Operations points first-timers at the Resources "Start here" shelf.
-const START_HERE: Partial<Record<ServiceId, { to: string; label: string }[]>> = {
-  "operations-and-ai": [
-    { to: "/thinking/getting-started-with-ai", label: "Read the owner’s guide to getting started" },
-    { to: "/thinking/ai-prompt-starter-pack", label: "Copy the prompt starter pack" },
-    { to: "/resources#tools", label: "Try all the tool demos" },
-  ],
-};
-
 function ExampleLink({ link, source }: { link: NonNullable<Example["link"]>; source: string }) {
   return link.to.startsWith("http")
     ? <a href={link.to} target="_blank" rel="noopener noreferrer" onClick={outboundClick(link.to, source)}>{link.label} <span aria-hidden="true">↗</span></a>
@@ -64,7 +50,6 @@ function ExampleLink({ link, source }: { link: NonNullable<Example["link"]>; sou
 export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
   const service = serviceAreas.find((item) => item.id === serviceId) ?? serviceAreas[0];
   const area = areaByServiceId(service.id);
-  const start = START_HERE[service.id];
   return (
     <div className="m2 v3">
       <LabMeta title={`${service.name} · Madrona Product Studio`} />
@@ -94,26 +79,9 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
         </div>
       </Reveal>
 
-      {service.id === "operations-and-ai" && <Reveal as="section" className="v3-section sp-sprint" id="setup-sprint" aria-labelledby="sp-sprint-h">
-        <div className="v3-shell sp-sprint-grid">
-          <div>
-            <p className="v3-kicker">The fixed-price start</p>
-            <h2 id="sp-sprint-h">{SETUP_SPRINT.name}</h2>
-            <p className="sp-sprint-promise">{SETUP_SPRINT.promise}</p>
-            <p className="sp-sprint-fine"><strong>{SETUP_SPRINT.price}.</strong> {SETUP_SPRINT.terms}</p>
-            <Link className="v3-btn v3-btn-primary" to="/connect" onClick={ctaClick("Get in touch", "/connect", "setup-sprint")}>Get in touch</Link>
-          </div>
-          <div>
-            <ul className="sp-offer sp-sprint-scope">{SETUP_SPRINT.scope.map((it, i) => <li key={it.name}><span>{String(i + 1).padStart(2, "0")}</span><strong>{it.name}</strong><p>{it.line}</p></li>)}</ul>
-            <p className="sp-sprint-note">{SETUP_SPRINT.tools} {SETUP_SPRINT.after}</p>
-            <Link className="sp-sprint-path" to="/ai-setup">See the whole path: assessment, setup, and a command center <span aria-hidden="true">→</span></Link>
-          </div>
-        </div>
-      </Reveal>}
-
       <section className="v4-modules sp-examples v3-shell">
         <Reveal className="v4-modules-intro"><p className="v3-kicker">See it working</p><h2>Two examples, up close.</h2></Reveal>
-        {EXAMPLES[service.id].map(({ kicker, title, body, link, Art }) => (
+        {(EXAMPLES[service.id] ?? []).map(({ kicker, title, body, link, Art }) => (
           <Reveal as="article" className="v4-module rv-stagger" key={title}>
             <div className="v4-module-copy">
               <p className="v3-kicker">{kicker}</p>
@@ -124,7 +92,6 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
             <div className="v4-module-art"><Art /></div>
           </Reveal>
         ))}
-        {start && <Reveal className="sp-start"><p className="v3-kicker">New to AI?</p><div>{start.map(l => <Link key={l.to} to={l.to}>{l.label} <span aria-hidden="true">→</span></Link>)}</div></Reveal>}
       </section>
 
 

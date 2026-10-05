@@ -14,7 +14,9 @@ import "../lab/madrona-v2.css";
 import "./v3.css";
 import "./home-refactor.css";
 
-// /ai-setup (Charlie, 2026-10-05; reworked same day: "it should feel like a
+// The AI & Operations page, /services/ai-operations (Charlie, 2026-10-05:
+// it began as the sendable /ai-setup landing page and replaced the service
+// page the same day; /ai-setup 301s here). Reworked once: "it should feel like a
 // landing page where people can clearly see the benefit to them"). The
 // sendable page for outreach, workshops, and a QR code. Built as a landing
 // page, not a site page: a dark hero that leads with the benefit and books
@@ -81,14 +83,14 @@ function MondayBrief() {
 
 export default function AiSetupPage() {
   return <div className="m2 v3">
-    <LabMeta title="AI for your operations · Madrona Product Studio" />
+    <LabMeta title="AI & Operations · Madrona Product Studio" />
     <M2Nav active="services" />
     <main id="main">
 
     <section className="ais-hero">
       <div className="v3-shell ais-hero-grid">
         <div>
-          <p className="ais-kicker">AI for small business operations</p>
+          <p className="ais-kicker">AI & Operations</p>
           <h1>The invoices, inbox, and follow-up, <span>handled.</span> You just approve.</h1>
           <p className="ais-lede">We set AI up on the tools you already use, in two weeks, for a fixed price. It does the routine work; anything that matters waits for you.</p>
           <div className="ais-actions">
@@ -146,6 +148,7 @@ export default function AiSetupPage() {
         <h2 id="ais-faq-h">What owners ask first.</h2>
       </div>
       <div className="ai-faq-list">{FAQ.map(f => <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+      <p className="ais-new">New to AI? <Link to="/thinking/getting-started-with-ai">Read the owner’s guide</Link>, <Link to="/thinking/ai-prompt-starter-pack">copy the prompt pack</Link>, or <Link to="/resources#tools">try the tool demos</Link>.</p>
     </Reveal>
 
     <section className="ais-final">

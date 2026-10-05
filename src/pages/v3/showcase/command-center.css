@@ -1,4 +1,4 @@
-/* The example command center on /ai-setup (2026-10-05). The capability list
+/* The example command center on AI & Operations (2026-10-05). The capability list
    doubles as the tab strip; the window is a light island in dark skies. */
 .cc{display:grid;grid-template-columns:minmax(260px,.62fr) minmax(0,1.38fr);gap:48px;align-items:start}
 .cc-caps{display:flex;flex-direction:column;border-top:1px solid var(--v3-line)}

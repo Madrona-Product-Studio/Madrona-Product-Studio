@@ -16,7 +16,7 @@ const MadronaV2About = lazy(() => import("./pages/lab/MadronaV2About"));
 // Resources: Tools + Articles in one place (2026-09-30). /tools and
 // /thinking 301 here in vercel.json; their detail pages keep their URLs.
 const Resources = lazy(() => import("./pages/lab/Resources"));
-// The sendable AI-for-operations page (2026-10-05).
+// AI & Operations is a landing page (2026-10-05; /ai-setup 301s here).
 const AiSetupPage = lazy(() => import("./pages/v3/AiSetupPage"));
 const GettingStartedNote = lazy(() => import("./pages/lab/GettingStartedNote"));
 const PromptPackNote = lazy(() => import("./pages/lab/PromptPackNote"));
@@ -48,7 +48,7 @@ export default function App() {
       <Routes>
         {/* V3 promoted 2026-08-29: the redesign is the live site. */}
         <Route path="/" element={<HomeV3 />} />
-        <Route path="services/ai-operations" element={<ServicePageV4 serviceId="operations-and-ai" />} />
+        <Route path="services/ai-operations" element={<AiSetupPage />} />
         <Route path="services/brand-website" element={<ServicePageV4 serviceId="brand-and-web" />} />
         <Route path="services/ecommerce-loyalty" element={<ServicePageV4 serviceId="ecommerce-and-loyalty" />} />
         <Route path="services/new-products" element={<ServicePageV4 serviceId="new-products" />} />
@@ -61,7 +61,6 @@ export default function App() {
         <Route path="about" element={<MadronaV2About />} />
         {/* Thinking — the studio feed (renamed from Our POV 2026-08-07). */}
         <Route path="resources" element={<Resources />} />
-        <Route path="ai-setup" element={<AiSetupPage />} />
         <Route path="thinking/getting-started-with-ai" element={<GettingStartedNote />} />
         <Route path="thinking/ai-prompt-starter-pack" element={<PromptPackNote />} />
         <Route path="thinking/under-the-hood" element={<MadronaV2EngineNote />} />
