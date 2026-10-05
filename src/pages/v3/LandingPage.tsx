@@ -7,7 +7,7 @@ import Reveal from "./Reveal";
 import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import type { PathStep } from "../../data/offer";
 import { ctaClick } from "../../lib/analytics";
-import { brandPath } from "../lab/connectors";
+import { brandPath } from "../lab/connectorMarks";
 import "../lab/madrona-v2.css";
 import "./v3.css";
 import "./home-refactor.css";

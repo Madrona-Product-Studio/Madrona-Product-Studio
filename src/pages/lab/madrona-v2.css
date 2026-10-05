@@ -2281,3 +2281,9 @@ html[data-theme="night"] .fc-steps li p, html[data-theme="dusk"] .fc-steps li p 
 /* Services is a <button>, so the generic `.m2 button` reset kept it at 400
    while the other nav links are 600. */
 .m2-nav .m2-nav-dd-trigger { font-weight: 600; }
+/* Footer box actions (2026-10-06): book first, message second. */
+.fc-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 14px 24px; }
+.fc-alt { color: rgba(247, 237, 228, .82); font-size: 14px; font-weight: 600; text-decoration: underline; text-decoration-color: rgba(247, 237, 228, .35); text-underline-offset: 3px; }
+.fc-alt:hover, .fc-alt:focus-visible { color: #F7EDE4; }
+html[data-theme="night"] .fc-alt, html[data-theme="dusk"] .fc-alt { color: #403a33; text-decoration-color: rgba(26,23,20,.3); }
+@media (max-width: 640px) { .fc-close .m2-fc-btn { font-size: .74rem; letter-spacing: .05em; padding: 15px 18px; white-space: nowrap; } }

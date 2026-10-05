@@ -4,7 +4,7 @@
 // /services; the footer's closing ask (compact there) carries the action.
 const steps = [
   ["01", "Talk it through", "A clear read on where to start", "A free 30-minute conversation with a published agenda, and a clear first move by the end.", "Free · 30 minutes"],
-  ["02", "Get it in writing", "A written point of view, yours to keep", "A short, honest read on where we can help, and where we can’t.", "Free · yours either way"],
+  ["02", "Get a quote in writing", "Scope and price, yours to keep", "A fixed quote in writing. For AI work, an optional paid assessment maps your whole week first, credited if you go ahead.", "Free · yours either way"],
   ["03", "Start small", "The smallest useful build, live", "A scoped first project with its win named up front, like a two-week AI setup.", "Paid · only if it makes sense"],
 ];
 

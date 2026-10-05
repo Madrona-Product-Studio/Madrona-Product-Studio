@@ -14,7 +14,7 @@ import { AREAS } from "../../data/areas";
 //
 // Pull-back, 2026-09-30 (Charlie): the rails were carrying too much detail.
 // Each now lists what we make as plain lines, with no source tags or links;
-// the showcase shows one example and "More on" leads to the service page,
+// the showcase shows one example and the rail link leads to the area page,
 // which carries the worked examples and demos. Because the lines name kinds
 // of work rather than past projects, they need no provenance tag.
 // Copy comes from data/areas.ts (shared with the service pages); this file
@@ -23,11 +23,12 @@ const SHOWCASES: Record<string, () => React.ReactElement> = {
   "ai-operations": WeekShowcase,
   "brand-website": BrandShowcase,
   "ecommerce-loyalty": CommerceShowcase,
-  "new-products": ProductsShowcase,
+  "new-products": () => <ProductsShowcase without={["san-juan-boating-guide"]} />,
 };
 
 // Charlie (2026-09-29): the New Products rail lists no products; the
-// showcase carries Helm, Lila Trips, and San Juan, and the rail links to the rest.
+// showcase carries Helm and Lila Trips (San Juan out, 2026-10-06), and the
+// rail links to the rest.
 const EXTRA_LINKS: Record<string, { label: string; to: string }> = {
   "new-products": { label: "See all our products", to: "/apps" },
 };
@@ -59,7 +60,7 @@ export function AreasSection({ intro, firstClassName = "" }: { intro?: ReactNode
               <h2 id={`area-${area.slug}-q`}>{area.headline}</h2>
               <p className="ar-does">{area.does}</p>
               {area.makes.length > 0 && <MakesList items={area.makes} />}
-              <Link className="v3-practice-link" to={area.route}>More on {area.name} <span aria-hidden="true">→</span></Link>
+              <Link className="v3-practice-link" to={area.route} aria-label={`${area.name}: see how it works and what it costs`}>See how it works and what it costs <span aria-hidden="true">→</span></Link>
               {extraLink && <Link className="npr-all ar-extra" to={extraLink.to}>{extraLink.label} <span aria-hidden="true">→</span></Link>}
             </div>
             <div className="ar-showcase"><Showcase /></div>

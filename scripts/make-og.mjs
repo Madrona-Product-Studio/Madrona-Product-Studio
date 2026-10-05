@@ -97,6 +97,11 @@ const articles = [
   { file: "og-pov-starter-guide.png", kicker: "Getting started", title: "A starter guide to building real software with AI." },
   { file: "og-pov-solve-the-system.png", kicker: "Product systems", title: "Solve the system, not the symptom." },
   { file: "og-pov-ai-tools-inventory.png", kicker: "Operations and AI", title: "The 12 jobs AI tools already do for small businesses." },
+  // The four area landing pages (2026-10-06): each card carries its hero.
+  { file: "og-svc-ai-operations.png", kicker: "AI & Operations", title: "The invoices, inbox, and follow-up, handled." },
+  { file: "og-svc-brand-website.png", kicker: "Brand & Website", title: "A website you’re proud to send people to." },
+  { file: "og-svc-ecommerce-loyalty.png", kicker: "Ecommerce & Loyalty", title: "Sell online, and turn first orders into regulars." },
+  { file: "og-svc-new-products.png", kicker: "New Products", title: "Turn a good idea into a real product." },
 ];
 
 // Optional filter: `node scripts/make-og.mjs og-ai-opportunities.png` renders

@@ -12,7 +12,7 @@ export interface Area {
   serviceId: ServiceId;  // the matching entry in services.ts
   route: string;
   name: string;
-  headline: string;      // the outcome, stated (2026-10-02: statements, not problem questions)
+  headline: string;      // the outcome, stated; a short form of the area landing page's hero (2026-10-06)
   does: string;          // one line: what we do about it
   makes: string[];       // homepage rail: three plain lines
 }
@@ -23,16 +23,16 @@ export const AREAS: Area[] = [
     serviceId: "operations-and-ai",
     route: "/services/ai-operations",
     name: "AI & Operations",
-    headline: "Get hours back every week.",
+    headline: "The invoices, inbox, and follow-up, handled.",
     does: "Practical AI and tools built on your real workflows, with a person checking anything that matters.",
-    makes: ["Bookkeeping and invoicing agents", "Customer inbox triage", "Operations dashboards"],
+    makes: ["Bookkeeping and invoicing agents", "Customer inbox triage", "A command center for the business"],
   },
   {
     slug: "brand-website",
     serviceId: "brand-and-web",
     route: "/services/brand-website",
     name: "Brand & Website",
-    headline: "A website that does your business justice.",
+    headline: "A website you’re proud to send people to.",
     does: "Brands and websites, designed and built to a high bar.",
     makes: ["Websites, designed and built", "Brand systems and packaging", "Positioning and messaging"],
   },
@@ -45,7 +45,7 @@ export const AREAS: Area[] = [
     serviceId: "ecommerce-and-loyalty",
     route: "/services/ecommerce-loyalty",
     name: "Ecommerce & Loyalty",
-    headline: "Sell online, and keep them coming back.",
+    headline: "Sell online, and turn first orders into regulars.",
     does: "Online stores that make buying easy, and the memberships, rewards, and follow-up that turn first orders into regulars.",
     makes: ["Online stores and Shopify builds", "Memberships and rewards", "Reorders and win-back follow-up"],
   },
