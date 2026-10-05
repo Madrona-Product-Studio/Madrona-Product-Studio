@@ -237,3 +237,19 @@ html[data-theme="night"] .ais-hero,html[data-theme="dusk"] .ais-hero,html[data-t
 @media(prefers-reduced-motion:reduce){.ai-faq-list summary::after{transition:none}}
 .v3 .ais-new{margin:28px 0 0;color:var(--v3-clay);font-size:15px}
 .v3 .ais-new a{color:var(--v3-bark-dark);font-weight:650}
+
+/* Ecommerce landing visuals (2026-10-05). */
+.ais-orders,.ais-hero .sa-sf{box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.ais-orders-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0;padding:16px 18px}
+.ais-orders-stats div{padding:10px 12px;border:1px solid var(--v3-soft);border-radius:7px;background:var(--v3-paper)}
+.ais-orders-stats dt{color:var(--v3-clay);font-size:11px}
+.ais-orders-stats dd{margin:4px 0 0;color:var(--v3-ink);font:600 22px/1 Inter,sans-serif;font-variant-numeric:tabular-nums}
+.ais-orders-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-soft)}
+.ais-orders-list li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 18px;border-bottom:1px solid var(--v3-soft)}
+.ais-orders-list li:last-child{border-bottom:0}
+.ais-orders-list b{display:block;color:var(--v3-ink);font-size:14px;font-weight:600}
+.ais-orders-list small{display:block;margin-top:2px;color:var(--v3-clay);font-size:12px}
+.ais-orders-list em{flex:none;padding:3px 9px;border-radius:999px;background:var(--v3-paper);color:var(--v3-clay);font-size:10.5px;font-style:normal;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.ais-orders-list em.is-repeat{background:color-mix(in srgb,#39846d 12%,transparent);color:#2d6b58}
+.ais-commerce{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:32px;align-items:start}
+@media(max-width:900px){.ais-commerce{grid-template-columns:minmax(0,1fr)}}

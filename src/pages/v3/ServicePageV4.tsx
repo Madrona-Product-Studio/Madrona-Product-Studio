@@ -6,10 +6,9 @@ import { imgProps, SIZES } from "../../lib/responsiveImage";
 import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
-import { BeforeAfterArtifact, BuildJourneyArtifact, IdentityBoardArtifact, LoyaltyArtifact, StorefrontArtifact } from "./ServiceArtifacts";
+import { BuildJourneyArtifact } from "./ServiceArtifacts";
 import { ProductsShowcase } from "./showcase/ProductsShowcase";
 import Reveal from "./Reveal";
-import { BERRY_URL } from "../../data/proof";
 import { ctaClick, outboundClick } from "../../lib/analytics";
 import "../lab/madrona-v2.css";
 import "./v3.css";
@@ -27,14 +26,6 @@ type Example = { kicker: string; title: string; body: string; link?: { to: strin
 
 // AI & Operations has its own landing page (AiSetupPage.tsx, 2026-10-05).
 const EXAMPLES: Partial<Record<ServiceId, Example[]>> = {
-  "brand-and-web": [
-    { kicker: "Brand system", title: "One identity, carried everywhere.", body: "Not a logo file. A small system of color, type, and voice that makes every touchpoint feel like the same business.", Art: IdentityBoardArtifact },
-    { kicker: "Website", title: "Say the specific thing.", body: "Most sites say what everyone says. We find the line only you can say, then build the site around it.", link: { to: "https://www.sjiboating.com/", label: "See a site we built and run: sjiboating.com" }, Art: BeforeAfterArtifact },
-  ],
-  "ecommerce-and-loyalty": [
-    { kicker: "The store", title: "Every element earns its place.", body: "A store that sells says what you sell, proves it, and asks once. Then checkout gets out of the way.", link: { to: BERRY_URL, label: "Visit the Berry Good storefront" }, Art: StorefrontArtifact },
-    { kicker: "The second order", title: "Turn first orders into regulars.", body: "A simple rewards program, a reminder when someone is close, and a win-back when they go quiet. Mostly automated, and you see who is close.", link: { to: "/tools/post-sale-followup", label: "Try the post-sale follow-up demo" }, Art: LoyaltyArtifact },
-  ],
   "new-products": [
     { kicker: "Get it in hands", title: "Skip the stall.", body: "Ideas die in the planning gap. A small prototype with real users on it ends the debate faster than any document.", Art: BuildJourneyArtifact },
     { kicker: "Learn from real use", title: "Ship, then improve what matters.", body: "Once it is live, real usage and small tests show what to keep. We run our own products this way.", link: { to: "/apps", label: "See all our products" }, Art: ProductsShowcase },
