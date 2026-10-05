@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/ai-setup", "destination": "/services/ai-operations", "permanent": true },
     { "source": "/tools", "destination": "/resources", "permanent": true },
     { "source": "/thinking", "destination": "/resources#articles", "permanent": true },
     { "source": "/agents", "destination": "/resources", "permanent": true },

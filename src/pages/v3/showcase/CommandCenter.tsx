@@ -1,4 +1,4 @@
-// The example command center (Charlie, 2026-10-05): on /ai-setup, what step
+// The example command center (Charlie, 2026-10-05): on the AI & Operations page, what step
 // three looks like for a real kind of business. Berry Good Berry Farm is our
 // demonstration business; every number is illustrative and labeled so. The
 // capability list on the left is also the tab strip, so reading what it can
