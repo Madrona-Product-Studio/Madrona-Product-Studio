@@ -106,6 +106,7 @@ export default function ServicePageV4({ serviceId }: { serviceId: ServiceId }) {
           <div>
             <ul className="sp-offer sp-sprint-scope">{SETUP_SPRINT.scope.map((it, i) => <li key={it.name}><span>{String(i + 1).padStart(2, "0")}</span><strong>{it.name}</strong><p>{it.line}</p></li>)}</ul>
             <p className="sp-sprint-note">{SETUP_SPRINT.tools} {SETUP_SPRINT.after}</p>
+            <Link className="sp-sprint-path" to="/ai-setup">See the whole path: assessment, setup, and a command center <span aria-hidden="true">→</span></Link>
           </div>
         </div>
       </Reveal>}

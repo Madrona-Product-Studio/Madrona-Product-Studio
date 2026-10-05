@@ -151,3 +151,103 @@
 .v3 .sp-sprint .v3-btn{min-height:48px;padding:0 26px;border-radius:3px;font:700 12.5px/1 Inter,sans-serif;letter-spacing:.09em;text-transform:uppercase}
 .v3 .sp-sprint-note{margin:20px 0 0;color:var(--v3-clay);font-size:14px;line-height:1.55}
 @media(max-width:900px){.sp-sprint-grid{grid-template-columns:minmax(0,1fr);gap:32px}}
+
+/* /ai-setup, the landing page (2026-10-05). Its own structure, so it does
+   not read as the homepage: a dark hero band that books the call, a Monday
+   brief, a before/after table, a timed path, proof, questions, the ask. */
+.ais-hero{background:var(--v3-cta-band);color:#F7EDE4;padding-block:88px 96px}
+.ais-hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:72px;align-items:center}
+.ais-kicker{margin:0 0 18px;color:#e8a999;font:700 11px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.v3 .ais-hero h1{margin:0 0 22px;color:#F7EDE4;font-size:clamp(2.6rem,4.4vw,4.2rem);line-height:1.03;letter-spacing:-.035em}
+.ais-hero h1 span{color:var(--v3-bark)}
+.v3 .ais-lede{max-width:48ch;margin:0 0 32px;color:rgba(247,237,228,.78);font-size:1.15rem;line-height:1.55}
+.ais-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 26px}
+.v3 .ais-book{min-height:54px;padding:0 28px;border-radius:3px;font:700 13px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-top:0}
+.v3 .ais-alt{color:#F7EDE4;font-size:15px;font-weight:600}
+.ais-alt span{color:#e8a999}
+.ais-trust{display:flex;flex-wrap:wrap;gap:8px 22px;margin:28px 0 0;padding:0;list-style:none}
+.ais-trust li{position:relative;padding-left:22px;color:rgba(247,237,228,.72);font-size:14px}
+.ais-trust li::before{content:"";position:absolute;left:2px;top:5px;width:11px;height:5px;border-left:1.6px solid #7fbfa8;border-bottom:1.6px solid #7fbfa8;transform:rotate(-45deg)}
+.ais-brief{box-shadow:0 30px 70px rgba(0,0,0,.35)}
+.ais-brief-head{display:flex;flex-direction:column;gap:3px;padding:18px 20px 14px}
+.ais-brief-head strong{font:500 24px/1.1 "Hanken Grotesk",Inter,sans-serif;letter-spacing:-.02em;color:var(--v3-ink)}
+.ais-brief-head span{color:var(--v3-clay);font-size:13px}
+.ais-brief-done{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-soft)}
+.ais-brief-done li{display:flex;gap:14px;align-items:flex-start;padding:13px 20px;border-bottom:1px solid var(--v3-soft)}
+.ais-brief-done i{flex:none;width:16px;height:16px;margin-top:2px;border-radius:50%;background:var(--hue-mint-deep,#39846d);box-shadow:inset 0 0 0 4.5px var(--v3-card)}
+.ais-brief-done b,.ais-brief-you b{display:block;color:var(--v3-ink);font-size:14px;font-weight:600}
+.ais-brief-done small,.ais-brief-you small{display:block;margin-top:2px;color:var(--v3-clay);font-size:12px}
+.ais-brief-you{position:relative;padding:14px 20px 16px;background:color-mix(in srgb,var(--v3-bark) 6%,var(--v3-card));border-left:2px solid var(--v3-bark)}
+.ais-brief-tag{display:inline-block;margin-bottom:6px;padding:3px 8px;border:1px solid color-mix(in srgb,var(--v3-bark) 45%,transparent);border-radius:999px;color:var(--v3-bark-dark);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+/* The brief's settle (armed by JS; the CSS above is the finished frame).
+   Job i turns done at 700ms + i x 520ms; the needs-you row lands after. */
+.ais-play .ais-brief-head{animation:ais-rise 420ms cubic-bezier(.23,1,.32,1) 200ms both}
+.ais-play .ais-brief-done li{--t:calc(700ms + var(--i) * 520ms)}
+.ais-play .ais-brief-done li span{animation:ais-lift 320ms cubic-bezier(.23,1,.32,1) calc(var(--t) - 260ms) both}
+.ais-play .ais-brief-done li i{animation:ais-tick 300ms cubic-bezier(.23,1,.32,1) var(--t) both}
+.ais-play .ais-brief-you{animation:ais-slide 460ms cubic-bezier(.23,1,.32,1) 2420ms both}
+.ais-play .ais-brief-tag{animation:ais-pop 280ms cubic-bezier(.23,1,.32,1) 2700ms both}
+.ais-hold,.ais-hold *{animation-play-state:paused!important}
+@keyframes ais-rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes ais-lift{from{opacity:.35}to{opacity:1}}
+@keyframes ais-tick{0%{background:var(--v3-card);box-shadow:inset 0 0 0 1.5px var(--v3-faint);transform:scale(.85)}60%{transform:scale(1.12)}100%{background:var(--hue-mint-deep,#39846d);box-shadow:inset 0 0 0 4.5px var(--v3-card);transform:none}}
+@keyframes ais-slide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes ais-pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.ais-brief *{animation:none!important}}
+.ais-changes,.ais-cc,.ais-faq{padding-block:88px}
+.ais-head{max-width:62ch;margin-bottom:36px}
+.ais-head-row{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 48px;max-width:none}
+.ais-head-row>p{max-width:44ch;margin:0;color:var(--v3-clay);font-size:15px;line-height:1.55}
+.v3 .ais-head h2{margin:8px 0 0;font-size:clamp(2rem,3.2vw,3rem);line-height:1.05;letter-spacing:-.03em}
+.ais-table{width:100%;border-collapse:collapse;border-top:1px solid var(--v3-ink)}
+.ais-table thead th{padding:12px 16px 12px 0;color:var(--v3-muted);font:700 10.5px/1.2 Inter,sans-serif;letter-spacing:.12em;text-align:left;text-transform:uppercase}
+.ais-table tbody th,.ais-table td{padding:22px 24px 22px 0;border-top:1px solid var(--v3-line);text-align:left;vertical-align:top;font-size:15.5px;line-height:1.45}
+.ais-table tbody th{width:22%;color:var(--v3-ink);font-weight:650}
+.ais-table td.is-before{width:34%;color:var(--v3-clay);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--v3-bark) 55%,transparent);text-decoration-thickness:1.5px}
+.ais-table td.is-after{color:var(--v3-ink)}
+.ais-table td.is-after::before{content:"→ ";color:var(--hue-mint-deep,#39846d);font-weight:700}
+.v3 .ais-path{background:var(--v3-paper);border-block:1px solid var(--v3-soft)}
+.ais-timeline{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0;padding:0;list-style:none;counter-reset:s}
+.ais-timeline::before{content:"";position:absolute;top:7px;left:0;right:0;height:2px;background:linear-gradient(to right,var(--v3-bark),color-mix(in srgb,var(--v3-bark) 25%,transparent))}
+.ais-timeline>li{position:relative;padding:34px 36px 0 0;scroll-margin-top:96px}
+.ais-timeline>li::before{content:"";position:absolute;top:0;left:0;width:16px;height:16px;border-radius:50%;background:var(--v3-paper);box-shadow:inset 0 0 0 2px var(--v3-bark),0 0 0 4px var(--v3-paper)}
+.ais-timeline>li:first-child::before{background:var(--v3-bark)}
+.v3 .ais-when{margin:0 0 8px;color:var(--v3-bark-dark);font:600 11px/1 ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.04em;text-transform:uppercase}
+.v3 .ais-timeline h3{margin:0 0 8px;font:500 1.55rem/1.1 var(--font-serif),sans-serif;letter-spacing:-.02em}
+.v3 .ais-step-line{margin:0 0 14px;color:var(--v3-ink70);font-size:15px;line-height:1.5}
+.ais-timeline ul{margin:0 0 18px;padding:0;list-style:none}
+.ais-timeline ul li{position:relative;padding:5px 0 5px 20px;color:var(--v3-clay);font-size:14px;line-height:1.45}
+.ais-timeline ul li::before{content:"";position:absolute;left:1px;top:11px;width:10px;height:5px;border-left:1.5px solid var(--hue-mint-deep,#39846d);border-bottom:1.5px solid var(--hue-mint-deep,#39846d);transform:rotate(-45deg)}
+.v3 .ais-price{display:inline-block;margin:0;padding:5px 12px;border-radius:999px;background:color-mix(in srgb,var(--v3-bark) 10%,var(--v3-card));color:var(--v3-ink);font-size:13px;font-weight:650}
+.v3 .ais-final{background:var(--v3-cta-band);color:#F7EDE4;padding-block:80px}
+.ais-final-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 56px;align-items:center}
+.v3 .ais-final h2{grid-column:1;margin:0;color:#F7EDE4;font-size:clamp(2rem,3.4vw,3.2rem);line-height:1.04;letter-spacing:-.03em}
+.v3 .ais-final p{grid-column:1;margin:0;color:rgba(247,237,228,.75);font-size:1.05rem}
+.ais-final .ais-book{grid-column:2;grid-row:1/3}
+.ai-faq-list{max-width:820px;border-top:1px solid var(--v3-line)}
+.ai-faq-list details{border-bottom:1px solid var(--v3-line)}
+.ai-faq-list summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;color:var(--v3-ink);font-size:1.1rem;font-weight:600;cursor:pointer;list-style:none}
+.ai-faq-list summary::-webkit-details-marker{display:none}
+.ai-faq-list summary::after{content:"+";color:var(--v3-bark-dark);font-size:1.4rem;font-weight:400;transition:transform 200ms cubic-bezier(.23,1,.32,1)}
+.ai-faq-list details[open] summary::after{transform:rotate(45deg)}
+.v3 .ai-faq-list details p{max-width:62ch;margin:0 0 22px;color:var(--v3-clay);font-size:15.5px;line-height:1.6}
+@media(max-width:900px){
+  .ais-hero{padding-block:56px 64px}
+  .ais-hero-grid,.ais-final-inner{grid-template-columns:minmax(0,1fr);gap:40px}
+  .ais-final .ais-book{grid-column:1;grid-row:auto;justify-self:start}
+  .ais-timeline{grid-template-columns:minmax(0,1fr);gap:8px;padding-left:28px}
+  .ais-timeline::before{top:0;bottom:0;left:7px;right:auto;width:2px;height:auto;background:linear-gradient(to bottom,var(--v3-bark),color-mix(in srgb,var(--v3-bark) 25%,transparent))}
+  .ais-timeline>li{padding:0 0 32px}
+  .ais-timeline>li::before{left:-28px;top:2px}
+  .ais-changes,.ais-cc,.ais-faq{padding-block:64px}
+    }
+@media(max-width:640px){
+  .ais-table thead{display:none}
+  .ais-table,.ais-table tbody,.ais-table tr,.ais-table th,.ais-table td{display:block;width:auto!important}
+  .ais-table tbody tr{padding:18px 0;border-top:1px solid var(--v3-line)}
+  .ais-table tbody th,.ais-table td{padding:2px 0;border-top:0}
+  .ais-table tbody th{margin-bottom:6px}
+}
+html[data-theme="night"] .ais-hero,html[data-theme="dusk"] .ais-hero,html[data-theme="night"] .ais-final,html[data-theme="dusk"] .ais-final{background:var(--v3-cta-band)}
+@media(prefers-reduced-motion:reduce){.ai-faq-list summary::after{transition:none}}
+.v3 .sp-sprint-path{display:inline-flex;gap:6px;margin-top:18px;color:var(--v3-bark-dark);font-size:14.5px;font-weight:650}

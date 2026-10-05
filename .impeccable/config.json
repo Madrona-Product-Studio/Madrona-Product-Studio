@@ -68,6 +68,15 @@
         ],
         "createdAt": "2026-09-30T22:52:04.044Z",
         "reason": "Claude: src is supplied by the imgProps() spread (responsive srcset helper), verified rendering in screenshots"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/pages/v3/home-refactor.css"
+        ],
+        "createdAt": "2026-10-05T16:12:04.719Z",
+        "reason": "Claude: sanctioned brand move (CLAUDE.md structural move 4, left-edge madrona rule); 2px 'needs you' row marker matching the shipped week window"
       }
     ]
   }

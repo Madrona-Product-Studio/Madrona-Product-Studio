@@ -1,0 +1,53 @@
+/* The example command center on /ai-setup (2026-10-05). The capability list
+   doubles as the tab strip; the window is a light island in dark skies. */
+.cc{display:grid;grid-template-columns:minmax(260px,.62fr) minmax(0,1.38fr);gap:48px;align-items:start}
+.cc-caps{display:flex;flex-direction:column;border-top:1px solid var(--v3-line)}
+.cc-caps [role=tab]{display:flex;flex-direction:column;gap:4px;padding:16px 14px 16px 18px;border:0;border-bottom:1px solid var(--v3-line);border-left:2px solid transparent;background:none;color:var(--v3-ink);font:inherit;text-align:left;cursor:pointer;transition:background-color 160ms ease,border-color 160ms ease}
+.cc-caps [role=tab] strong{font-size:16px;font-weight:650}
+.cc-caps [role=tab] span{color:var(--v3-clay);font-size:13.5px;line-height:1.45}
+.cc-caps [role=tab]:hover{background:color-mix(in srgb,var(--v3-ink) 3%,transparent)}
+.cc-caps [role=tab].is-active{border-left-color:var(--v3-bark);background:color-mix(in srgb,var(--v3-bark) 7%,transparent)}
+.cc-caps [role=tab].is-active strong{color:var(--v3-bark-dark)}
+.cc-caps [role=tab]:focus-visible{outline:2px solid var(--v3-bark-dark);outline-offset:-2px}
+.cc-window{box-shadow:0 24px 60px rgba(26,23,20,.14)}
+.cc-body{display:grid;grid-template-columns:150px minmax(0,1fr);min-height:440px}
+.cc-side{display:flex;flex-direction:column;gap:2px;padding:16px 10px;border-right:1px solid var(--v3-soft);background:var(--v3-paper)}
+.cc-logo{margin:0 8px 12px;color:#B8114D;font:600 15px/1.1 Georgia,serif}
+.cc-side span{padding:7px 8px;border-radius:5px;color:var(--v3-clay);font-size:12.5px}
+.cc-side span.is-active{background:var(--v3-card);color:var(--v3-ink);font-weight:600;box-shadow:0 1px 2px rgba(26,23,20,.08)}
+.cc-main{padding:20px 22px 22px;animation:cc-in 260ms cubic-bezier(.23,1,.32,1)}
+.cc-main h3{margin:0 0 14px;color:var(--v3-ink);font:500 22px/1.15 "Hanken Grotesk",Inter,sans-serif;letter-spacing:-.02em}
+.cc-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 16px}
+.cc-stats div{padding:10px 12px;border:1px solid var(--v3-soft);border-radius:7px;background:var(--v3-paper)}
+.cc-stats dt{color:var(--v3-clay);font-size:11px;line-height:1.3}
+.cc-stats dd{margin:4px 0 0;color:var(--v3-ink);font:600 20px/1 Inter,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.cc-group+.cc-group{margin-top:14px}
+.cc-group h4{margin:0 0 6px;color:var(--v3-muted);font:700 10px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.cc-group ul{margin:0;padding:0;list-style:none;border-top:1px solid var(--v3-soft)}
+.cc-group li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid var(--v3-soft)}
+.cc-row-text b{display:block;color:var(--v3-ink);font-size:13.5px;font-weight:600}
+.cc-row-text small{display:block;margin-top:2px;color:var(--v3-clay);font-size:12px}
+.cc-status{flex:none;padding:3px 9px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.cc-status.is-ok{background:color-mix(in srgb,#39846d 12%,transparent);color:#2d6b58}
+.cc-status.is-you{border:1px solid color-mix(in srgb,var(--v3-bark) 45%,transparent);color:var(--v3-bark-dark);background:var(--v3-card)}
+.cc-status.is-warn{background:color-mix(in srgb,#A0603A 13%,transparent);color:#8a4f2c}
+.cc-foot-m{display:none}
+.cc-links{display:flex;flex-wrap:wrap;gap:8px 22px;padding:18px 0 0}
+.v3 .cc-links a{color:var(--v3-bark-dark);font-size:14px;font-weight:650}
+@keyframes cc-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(max-width:960px){
+  .cc{grid-template-columns:minmax(0,1fr);gap:24px}
+  .cc-caps{flex-direction:row;overflow-x:auto;border-top:0;border-bottom:1px solid var(--v3-line);scrollbar-width:none}
+  .cc-caps [role=tab]{flex:none;padding:10px 14px;border-bottom:2px solid transparent;border-left:0}
+  .cc-caps [role=tab] span{display:none}
+  .cc-caps [role=tab].is-active{border-bottom-color:var(--v3-bark);background:none}
+  .cc-caps .cc-links{display:none}
+  .cc-foot-m{display:block}
+}
+@media(max-width:640px){
+  .cc-body{grid-template-columns:minmax(0,1fr);min-height:0}
+  .cc-side{display:none}
+  .cc-main{padding:16px}
+  .cc-stats dd{font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){.cc-main{animation:none}.cc-caps [role=tab]{transition:none}}
