@@ -2,7 +2,7 @@ import { BRAND_PATH } from "../../data/offer";
 import { BrandShowcase } from "./showcase/BrandShowcase";
 import { BeforeAfterArtifact } from "./ServiceArtifacts";
 import { HeroShot } from "./HeroShot";
-import brandImage from "../../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp?w=640;960;1280&format=webp&as=img";
+import storefrontImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-storefront-desktop.webp?w=640;960;1280&format=webp&as=img";
 import LandingPage, { type LandingConfig } from "./LandingPage";
 
 // Brand & Website as a landing page (Charlie, 2026-10-05). Offer and prices
@@ -15,7 +15,7 @@ const CONFIG: LandingConfig = {
   headline: <>A website you’re proud to send people to, <span>live in two weeks.</span></>,
   lede: "We design and build a clear, fast site that says what you do and proves it, and you can update it yourself. Nothing is monthly unless you want it.",
   worksWith: ["Shopify", "Squarespace", "Webflow", "Google Business Profile", "Square"],
-  heroVisual: <HeroShot src={brandImage} path="berrygood · brand system" note="Our demonstration business" position="50% 50%" alt="Berry Good brand system: logo, palette, and type carried onto packaging, a hang tag, and the website on a phone" />,
+  heroVisual: <HeroShot src={storefrontImage} path="berrygood · website" note="Our demonstration business" alt="The Berry Good Berry Farm website: what's ripe today, berries to order, and pickup" />,
   changes: {
     heading: "Your website, before and after.",
     colAfter: "After launch",
@@ -33,8 +33,8 @@ const CONFIG: LandingConfig = {
   },
   showcase: {
     kicker: "Work like this",
-    heading: "A brand and a website, carried through.",
-    intro: "A brand system for Berry Good Berry Farm, our demonstration business, the San Juan Boating Guide, a site we built and run, and the kind of line we help you find.",
+    heading: "One brand, carried everywhere.",
+    intro: "Berry Good Berry Farm, our demonstration business: the brand system, the same site on a phone, and the kind of line we help you find.",
     node: <div className="ais-commerce"><BrandShowcase /><BeforeAfterArtifact /></div>,
   },
   faq: [

@@ -235,3 +235,5 @@ html[data-theme="night"] .ais-hero,html[data-theme="dusk"] .ais-hero,html[data-t
 .ais-works ul{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .ais-works li{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid rgba(247,237,228,.18);border-radius:999px;color:rgba(247,237,228,.86);font-size:13px;font-weight:550}
 .ais-works svg{width:14px;height:14px;flex:none}
+.ais-commerce-even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+@media(max-width:900px){.ais-commerce-even{grid-template-columns:minmax(0,1fr)}}
