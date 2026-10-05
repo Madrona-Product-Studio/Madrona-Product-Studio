@@ -28,7 +28,7 @@ const CHANGES = [
 const TIMING: Record<string, string> = {
   assessment: "Week 1",
   setup: "Weeks 2 and 3",
-  "command-center": "Month 2 onward",
+  "command-center": "After setup",
 };
 
 const FAQ: { q: string; a: string }[] = [
@@ -84,7 +84,7 @@ const CONFIG: LandingConfig = {
   showcase: {
     kicker: "Step three, up close",
     heading: "One screen for the whole business.",
-    intro: "Here is a command center for Berry Good Berry Farm, our demonstration business. Yours is built around your own work and tools.",
+    intro: "Here is a command center for Berry Good Berry Farm, our demonstration business. Yours is built around your own work and tools, and it is yours to keep.",
     node: <CommandCenter footer={<div className="cc-links">
       <a href={HELM_DEMO_URL} target="_blank" rel="noopener noreferrer" onClick={outboundClick(HELM_DEMO_URL, "ai-setup-cc")}>Click around a live one: the Helm demo <span aria-hidden="true">↗</span></a>
       <Link to="/resources#tools">Try the agents behind it <span aria-hidden="true">→</span></Link>
@@ -92,7 +92,7 @@ const CONFIG: LandingConfig = {
   },
   faq: FAQ,
   faqNote: <>New to AI? <Link to="/thinking/getting-started-with-ai">Read the owner’s guide</Link>, <Link to="/thinking/ai-prompt-starter-pack">copy the prompt pack</Link>, or <Link to="/resources#tools">try the tool demos</Link>.</>,
-  final: { heading: "Get the first job off your plate.", line: "Thirty minutes, free. We will tell you where AI would help most, and where it would not." },
+  final: { heading: "Get the busywork off your plate.", line: "Thirty minutes, free. We will tell you where AI would help most, and where it would not." },
 };
 
 export default function AiSetupPage() {
