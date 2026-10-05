@@ -91,10 +91,12 @@ function ProductRow({ row }: { row: Row }) {
   </a>;
 }
 
-export function ProductsShowcase() {
+// `without` drops rows by id (Charlie, 2026-10-06: the New Products page
+// leaves out the San Juan guide).
+export function ProductsShowcase({ without = [] }: { without?: string[] } = {}) {
   return <div className="npr">
     <ul className="npr-list">
-      {ROWS.map((row) => <li key={row.id}><ProductRow row={row} /></li>)}
+      {ROWS.filter((row) => !without.includes(row.id)).map((row) => <li key={row.id}><ProductRow row={row} /></li>)}
     </ul>
   </div>;
 }

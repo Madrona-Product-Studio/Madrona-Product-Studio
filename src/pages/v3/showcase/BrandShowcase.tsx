@@ -3,33 +3,22 @@ import { imgProps, SIZES } from "../../../lib/responsiveImage";
 import brandImage from "../../../../docs/madrona-v2-build-kit/placeholders/product-proof/berry-good-brand-system-wide.webp?w=640;960;1280&format=webp&as=img";
 import storefrontImage from "../../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-storefront-desktop.webp?w=640;960;1280&format=webp&as=img";
 import journeyImage from "../../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp?w=640;960;1280&format=webp&as=img";
-import sanJuanImage from "../../../../docs/madrona-v2-build-kit/site-assets/sjbg-composite.webp?w=640;960;1280&format=webp&as=img";
+import mobileImage from "../../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-storefront-mobile.webp?w=640;960;1280&format=webp&as=img";
 import { BERRY_URL } from "../../../data/proof";
 import { outboundClick } from "../../../lib/analytics";
 import "./brand.css";
 
-// Brand & Website showcase (2026-09-29 refactor). One window, three pieces of
-// work across two very different businesses, so the range reads at a glance:
-// a farm's brand system, the same farm's storefront, and a live regional
-// guide. Berry Good is named as our demonstration business on its tabs; San
-// Juan is a live product of ours, pitched as the kind of guide a marina,
-// outfitter, or tourism group could have. The footer links carry only real,
-// resolving hosts (BERRY_URL is the deployed storefront; sjiboating.com is
-// the guide), never an invented domain. All three images stay mounted in one
-// fixed-ratio frame and crossfade, so switching tabs never shifts the page.
-
-// Review pass (same day): Berry Good's storefront still lives on a Vercel
-// preview-style host with a random suffix, which read as a throwaway deploy in
-// orange mono. The links now carry a plain label and keep the real href; the
-// host is still what the browser shows on hover. San Juan's own domain is
-// clean, so its label names it.
-const SJ_URL = "https://www.sjiboating.com/";
+// The tabbed work window (2026-09-29 refactor; reworked 2026-10-06). One
+// window, a few pieces of real work, crossfading in a fixed-ratio frame so a
+// tab switch never shifts the page. Every piece is Berry Good Berry Farm, our
+// demonstration business, and is labeled so; links go only to the deployed
+// site (BERRY_URL), shown with a plain label rather than its preview-style
+// host. The San Juan guide came out of the service pages on 2026-10-06.
 
 type Tab = { id: string; label: string; project: string; tag: string; image: typeof brandImage; position: string; alt: string; caption: string; href: string; linkLabel: string };
 
-// 2026-10-01: Ecommerce & Loyalty took the storefront, so Brand & Website
-// shows the brand system and a website (the San Juan guide, a site we built
-// and run). The commerce window below reuses the same tabbed frame.
+// Brand & Website: the brand system and the site on a phone. Ecommerce:
+// the storefront and ordering through pickup.
 const BRAND_TABS: Tab[] = [
   {
     id: "brand",
@@ -44,16 +33,16 @@ const BRAND_TABS: Tab[] = [
     linkLabel: "Visit the farm’s site",
   },
   {
-    id: "website",
-    label: "Website",
-    project: "San Juan Boating Guide",
-    tag: "Live, our own product",
-    image: sanJuanImage,
-    position: "50% 50%",
-    alt: "San Juan Boating Guide on a tablet map of the islands and a phone showing live wind and tides",
-    caption: "A website people use every trip: marinas, parks, and dining on one map, with live wind and tides.",
-    href: SJ_URL,
-    linkLabel: "Visit sjiboating.com",
+    id: "phone",
+    label: "On a phone",
+    project: "Berry Good Berry Farm",
+    tag: "Our demonstration business",
+    image: mobileImage,
+    position: "50% 0%",
+    alt: "The Berry Good website on a phone: what's ripe today and berries to order",
+    caption: "The same site on a phone, where most customers find it: what's ripe, what it costs, and one clear way to order.",
+    href: BERRY_URL,
+    linkLabel: "Visit the farm’s site",
   },
 ];
 
@@ -98,14 +87,12 @@ export function BrandShowcase() {
   return <TabShowcase tabs={BRAND_TABS} id="brand" label="Brand and website examples" />;
 }
 
-// `start` picks the opening tab (the Ecommerce page opens on Order to pickup,
-// since its hero already shows the storefront).
-export function CommerceShowcase({ start = 0 }: { start?: number } = {}) {
-  return <TabShowcase tabs={COMMERCE_TABS} id="commerce" label="Ecommerce examples" start={start} />;
+export function CommerceShowcase() {
+  return <TabShowcase tabs={COMMERCE_TABS} id="commerce" label="Ecommerce examples" />;
 }
 
-function TabShowcase({ tabs, id, label, start = 0 }: { tabs: Tab[]; id: string; label: string; start?: number }) {
-  const [active, setActive] = useState(start);
+function TabShowcase({ tabs, id, label }: { tabs: Tab[]; id: string; label: string }) {
+  const [active, setActive] = useState(0);
   const [auto, setAuto] = useState(false);
   const [inView, setInView] = useState(false);
   const [held, setHeld] = useState(false);

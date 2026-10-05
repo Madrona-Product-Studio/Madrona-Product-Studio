@@ -101,7 +101,7 @@ export const pages = {
     title: "New Products: validate an idea from $3,000, then build the first release · Madrona Product Studio",
     description: "Turn a good idea into a real product without betting the business on it. A validation sprint from $3,000 tests the idea with real people; then one senior team builds the smallest version worth shipping. From a small senior studio in the Pacific Northwest.",
     h1: "Turn a good idea into a real product, without betting the business on it.",
-    body: "We test the idea with real people first, from $3,000, then build the smallest version worth shipping. Step one, a validation sprint from $3,000: a clickable prototype, sessions with the people it is for, and a written go, change, or stop. Step two, prototype to first release, quoted after validation: design and engineering from one senior team, AI features where they help, and the code and accounts are yours. Step three, a product partner after launch, monthly. We build and run our own products, including Helm, Lila Trips, and the San Juan Boating Guide.",
+    body: "We test the idea with real people first, from $3,000, then build the smallest version worth shipping. Step one, a validation sprint from $3,000: a clickable prototype, sessions with the people it is for, and a written go, change, or stop. Step two, prototype to first release, quoted after validation: design and engineering from one senior team, AI features where they help, and the code and accounts are yours. Step three, a product partner after launch, monthly. We build and run our own products, including Helm and Lila Trips.",
   },
   "/charlie": {
     title: "Charlie Koch · Madrona Product Studio",

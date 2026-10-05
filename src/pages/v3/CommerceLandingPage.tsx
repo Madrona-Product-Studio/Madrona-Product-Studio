@@ -1,8 +1,7 @@
 import { COMMERCE_PATH } from "../../data/offer";
-import { CommerceShowcase } from "./showcase/BrandShowcase";
-import { LoyaltyArtifact } from "./ServiceArtifacts";
+import { LoyaltyArtifact, StorefrontArtifact } from "./ServiceArtifacts";
 import { HeroShot } from "./HeroShot";
-import storefrontImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-storefront-desktop.webp?w=640;960;1280&format=webp&as=img";
+import journeyImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp?w=640;960;1280&format=webp&as=img";
 import LandingPage, { type LandingConfig } from "./LandingPage";
 
 // Ecommerce & Loyalty as a landing page (Charlie, 2026-10-05). Offer and
@@ -17,7 +16,7 @@ const CONFIG: LandingConfig = {
   headline: <>Sell online, and turn first orders <span>into regulars.</span></>,
   lede: "We set up your Shopify store in about two weeks, then add the rewards and reminders that bring people back. You run it; we make it easy to.",
   worksWith: ["Shopify", "PayPal", "Stripe", "QuickBooks", "Google Shopping", "Gmail"],
-  heroVisual: <HeroShot src={storefrontImage} path="berrygood · store" note="Our demonstration business" alt="The Berry Good online store: what's ripe today, berries to order, and pickup" />,
+  heroVisual: <HeroShot src={journeyImage} path="berrygood · from order to pickup" note="Our demonstration business" position="50% 50%" alt="The Berry Good purchase path on four phones: see what is ripe, order and pick a pickup time, get a confirmation, and check in at pickup" />,
   changes: {
     heading: "How you sell, before and after.",
     colAfter: "After setup",
@@ -36,8 +35,8 @@ const CONFIG: LandingConfig = {
   showcase: {
     kicker: "A store, start to finish",
     heading: "From the storefront to the second order.",
-    intro: "Berry Good Berry Farm, our demonstration business: the store, ordering through pickup, and the rewards that bring regulars back.",
-    node: <div className="ais-commerce"><CommerceShowcase start={1} /><LoyaltyArtifact /></div>,
+    intro: "Berry Good Berry Farm, our demonstration business: what makes the store page sell, and the rewards that bring regulars back.",
+    node: <div className="ais-commerce ais-commerce-even"><StorefrontArtifact /><LoyaltyArtifact /></div>,
   },
   faq: [
     { q: "Why Shopify?", a: "It is reliable, easy to run yourself, and has the payments, shipping, and apps a small store needs. If you are on another platform that works for you, we can work with that instead." },

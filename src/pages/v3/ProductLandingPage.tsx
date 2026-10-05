@@ -32,8 +32,8 @@ const CONFIG: LandingConfig = {
   showcase: {
     kicker: "We build our own",
     heading: "Products we built, and still run.",
-    intro: "We take our own ideas from sketch to launch, so we know what launching takes. Each one is live or in beta today.",
-    node: <ProductsShowcase />,
+    intro: "We take our own ideas from sketch to launch, so we know what launching takes. Both are live or in beta today.",
+    node: <ProductsShowcase without={["san-juan-boating-guide"]} />,
   },
   faq: [
     { q: "What is a validation sprint?", a: "A few weeks to make the idea concrete and put it in front of the people it is for: a clickable prototype, real sessions, and a written go, change, or stop. It is the cheapest way to find out before you spend more." },
