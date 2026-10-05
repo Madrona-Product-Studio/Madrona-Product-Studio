@@ -85,6 +85,12 @@ export const pages = {
     h1: "Get hours back every week.",
     body: "Get hours back every week. We map how work actually happens, identify the highest-friction handoffs, and build practical tools, automations, and AI agents around the real workflow. Workflow and process design, automation, AI assistants and agents, internal tools and dashboards. We run our own studio this way. From Madrona Product Studio in the Pacific Northwest. The fixed-price start: the AI Setup Sprint, one job off your plate running in two weeks, from $1,500. Fixed price and scope in writing after a free first conversation.",
   },
+  "/ai-setup": {
+    title: "AI for your operations: assessment, setup, and a command center · Madrona Product Studio",
+    description: "Get your week back, one job at a time. An operations assessment ($300, credited toward setup), an AI setup on the tools you already use (from $1,500), and a custom command center. From a small senior studio in the Pacific Northwest.",
+    h1: "Get your week back, one job at a time.",
+    body: "We find where your hours go, set AI up on the tools you already use, and leave you with one place to see what ran and what needs you. Step one, the Operations Assessment: a working session on how your week actually runs, a map of where your hours go, the three to five best opportunities ranked by time saved and effort, and a written plan you keep; $300, credited in full toward setup. Step two, the AI Setup Sprint: one job off your plate, running in two weeks, from $1,500, connected to your email, calendar, documents, and books, with your team trained and a written playbook. Step three, the Command Center: a dashboard built for your business, connected to your email and tools, showing what ran and what needs your okay; monthly, quoted after setup. Your data stays on business accounts, and anything that sends money or messages waits for your approval.",
+  },
   "/services/ecommerce-loyalty": {
     title: "Ecommerce & Loyalty: online stores, memberships, and repeat customers · Madrona Product Studio",
     description: "Online stores and Shopify builds that make buying easy, plus the memberships, rewards, reorders, and follow-up that turn first orders into regulars. From a small senior studio in the Pacific Northwest.",
