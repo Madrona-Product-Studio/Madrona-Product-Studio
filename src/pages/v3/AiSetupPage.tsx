@@ -1,18 +1,11 @@
 import { useLayoutEffect, useRef, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
-import LabMeta from "../lab/LabMeta";
-import M2Nav from "../lab/M2Nav";
-import SiteFooter from "../lab/SiteFooter";
-import Reveal from "./Reveal";
 import { WindowBar } from "./ReadCard";
-import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import { AI_PATH, SETUP_SPRINT } from "../../data/offer";
 import { HELM_DEMO_URL } from "../../data/proof";
 import { CommandCenter } from "./showcase/CommandCenter";
-import { ctaClick, outboundClick } from "../../lib/analytics";
-import "../lab/madrona-v2.css";
-import "./v3.css";
-import "./home-refactor.css";
+import { outboundClick } from "../../lib/analytics";
+import LandingPage, { type LandingConfig } from "./LandingPage";
 
 // The AI & Operations page, /services/ai-operations (Charlie, 2026-10-05:
 // it began as the sendable /ai-setup landing page and replaced the service
@@ -25,7 +18,7 @@ import "./home-refactor.css";
 // prices, an example command center (Berry Good) in place of a proof list,
 // the honest questions, and the ask again.
 
-const CHANGES: { job: string; before: string; after: string }[] = [
+const CHANGES = [
   { job: "Getting paid", before: "Chasing late invoices every Friday.", after: "Polite reminders go out on their own. You decide who gets grace." },
   { job: "The inbox", before: "Answering the same questions all day.", after: "Replies drafted in your voice, waiting for a quick okay." },
   { job: "The books", before: "Month-end eats a weekend.", after: "Month-end becomes a review of what was flagged." },
@@ -45,10 +38,6 @@ const FAQ: { q: string; a: string }[] = [
   { q: "What if it doesn't work for us?", a: "The assessment tells you before you spend more, and setup is a fixed price and scope agreed in writing. Everything we set up is yours to keep, with no lock-in." },
   { q: "Is the first call really free?", a: "Yes. Thirty minutes, no obligation. If an assessment makes sense, we will say so, and if it doesn't, we will say that too." },
 ];
-
-function BookButton({ source, light = false }: { source: string; light?: boolean }) {
-  return <a className={`v3-btn ${light ? "v3-btn-light" : "v3-btn-primary"} ais-book`} href={bookHref()} target="_blank" rel="noopener noreferrer" data-book-placement={source} {...bookProps()} onClick={bookClick}>Book a free 30-minute call</a>;
-}
 
 // What the owner sees on a Monday: the benefit, shown. Illustrative.
 // Motion (the week window's settle, 2026-10-05): the markup is the finished
@@ -81,85 +70,30 @@ function MondayBrief() {
   </article>;
 }
 
+const CONFIG: LandingConfig = {
+  slug: "ai-setup",
+  title: "AI & Operations · Madrona Product Studio",
+  kicker: "AI & Operations",
+  headline: <>The invoices, inbox, and follow-up, <span>handled.</span> You just approve.</>,
+  lede: "We set AI up on the tools you already use, in two weeks, for a fixed price. It does the routine work; anything that matters waits for you.",
+  alt: { label: "Or take the free two-minute read", to: "/ai-opportunities" },
+  heroVisual: <MondayBrief />,
+  changes: { heading: "Your week, before and after.", colAfter: "After setup", rows: CHANGES },
+  path: { heading: "Start small. Go further only when it pays off.", steps: AI_PATH, timing: TIMING },
+  showcase: {
+    kicker: "Step three, up close",
+    heading: "One screen for the whole business.",
+    intro: "Here is a command center for Berry Good Berry Farm, our demonstration business. Yours is built around your own work and tools.",
+    node: <CommandCenter footer={<div className="cc-links">
+      <a href={HELM_DEMO_URL} target="_blank" rel="noopener noreferrer" onClick={outboundClick(HELM_DEMO_URL, "ai-setup-cc")}>Click around a live one: the Helm demo <span aria-hidden="true">↗</span></a>
+      <Link to="/resources#tools">Try the agents behind it <span aria-hidden="true">→</span></Link>
+    </div>} />,
+  },
+  faq: FAQ,
+  faqNote: <>New to AI? <Link to="/thinking/getting-started-with-ai">Read the owner’s guide</Link>, <Link to="/thinking/ai-prompt-starter-pack">copy the prompt pack</Link>, or <Link to="/resources#tools">try the tool demos</Link>.</>,
+  final: { heading: "Get the first job off your plate.", line: "Thirty minutes, free. We will tell you where AI would help most, and where it would not." },
+};
+
 export default function AiSetupPage() {
-  return <div className="m2 v3">
-    <LabMeta title="AI & Operations · Madrona Product Studio" />
-    <M2Nav active="services" />
-    <main id="main">
-
-    <section className="ais-hero">
-      <div className="v3-shell ais-hero-grid">
-        <div>
-          <p className="ais-kicker">AI & Operations</p>
-          <h1>The invoices, inbox, and follow-up, <span>handled.</span> You just approve.</h1>
-          <p className="ais-lede">We set AI up on the tools you already use, in two weeks, for a fixed price. It does the routine work; anything that matters waits for you.</p>
-          <div className="ais-actions">
-            <BookButton source="ai-setup-hero" light />
-            <Link className="ais-alt" to="/ai-opportunities" onClick={ctaClick("Find your AI opportunities", "/ai-opportunities", "ai-setup-hero")}>Or take the free two-minute read <span aria-hidden="true">→</span></Link>
-          </div>
-          <ul className="ais-trust"><li>Free first call</li><li>Fixed price, in writing</li><li>Yours to keep, no lock-in</li></ul>
-        </div>
-        <MondayBrief />
-      </div>
-    </section>
-
-    <Reveal as="section" className="v3-shell ais-changes" aria-labelledby="ais-changes-h">
-      <div className="ais-head">
-        <p className="v3-kicker">What changes for you</p>
-        <h2 id="ais-changes-h">Your week, before and after.</h2>
-      </div>
-      <table className="ais-table">
-        <thead><tr><th scope="col">The job</th><th scope="col">Today</th><th scope="col">After setup</th></tr></thead>
-        <tbody>{CHANGES.map(c => <tr key={c.job}><th scope="row">{c.job}</th><td className="is-before">{c.before}</td><td className="is-after">{c.after}</td></tr>)}</tbody>
-      </table>
-    </Reveal>
-
-    <Reveal as="section" className="v3-section ais-path" aria-labelledby="ais-path-h">
-      <div className="v3-shell">
-        <div className="ais-head">
-          <p className="v3-kicker">How it works</p>
-          <h2 id="ais-path-h">Start small. Go further only when it pays off.</h2>
-        </div>
-        <ol className="ais-timeline">{AI_PATH.map(step => <li key={step.id} id={step.id}>
-          <p className="ais-when">{TIMING[step.id]}</p>
-          <h3>{step.name}</h3>
-          <p className="ais-step-line">{step.line}</p>
-          <ul>{step.gets.slice(0, 3).map(g => <li key={g}>{g.split(":")[0]}</li>)}</ul>
-          <p className="ais-price">{step.price}</p>
-        </li>)}</ol>
-      </div>
-    </Reveal>
-
-    <Reveal as="section" className="v3-shell ais-cc" aria-labelledby="ais-cc-h">
-      <div className="ais-head ais-head-row">
-        <div><p className="v3-kicker">Step three, up close</p>
-        <h2 id="ais-cc-h">One screen for the whole business.</h2></div>
-        <p>Here is a command center for Berry Good Berry Farm, our demonstration business. Yours is built around your own work and tools.</p>
-      </div>
-      <CommandCenter footer={<div className="cc-links">
-        <a href={HELM_DEMO_URL} target="_blank" rel="noopener noreferrer" onClick={outboundClick(HELM_DEMO_URL, "ai-setup-cc")}>Click around a live one: the Helm demo <span aria-hidden="true">↗</span></a>
-        <Link to="/resources#tools">Try the agents behind it <span aria-hidden="true">→</span></Link>
-      </div>} />
-    </Reveal>
-
-    <Reveal as="section" className="v3-shell ais-faq" aria-labelledby="ais-faq-h">
-      <div className="ais-head">
-        <p className="v3-kicker">Fair questions</p>
-        <h2 id="ais-faq-h">What owners ask first.</h2>
-      </div>
-      <div className="ai-faq-list">{FAQ.map(f => <details key={f.q}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
-      <p className="ais-new">New to AI? <Link to="/thinking/getting-started-with-ai">Read the owner’s guide</Link>, <Link to="/thinking/ai-prompt-starter-pack">copy the prompt pack</Link>, or <Link to="/resources#tools">try the tool demos</Link>.</p>
-    </Reveal>
-
-    <section className="ais-final">
-      <div className="v3-shell ais-final-inner">
-        <h2>Get the first job off your plate.</h2>
-        <p>Thirty minutes, free. We will tell you where AI would help most, and where it would not.</p>
-        <BookButton source="ai-setup-final" light />
-      </div>
-    </section>
-
-    </main>
-    <SiteFooter cta={false} />
-  </div>;
+  return <LandingPage c={CONFIG} />;
 }

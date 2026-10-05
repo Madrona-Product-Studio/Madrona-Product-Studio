@@ -18,6 +18,8 @@ const MadronaV2About = lazy(() => import("./pages/lab/MadronaV2About"));
 const Resources = lazy(() => import("./pages/lab/Resources"));
 // AI & Operations is a landing page (2026-10-05; /ai-setup 301s here).
 const AiSetupPage = lazy(() => import("./pages/v3/AiSetupPage"));
+const BrandLandingPage = lazy(() => import("./pages/v3/BrandLandingPage"));
+const CommerceLandingPage = lazy(() => import("./pages/v3/CommerceLandingPage"));
 const GettingStartedNote = lazy(() => import("./pages/lab/GettingStartedNote"));
 const PromptPackNote = lazy(() => import("./pages/lab/PromptPackNote"));
 const CharliePage = lazy(() => import("./pages/v3/CharliePage"));
@@ -49,8 +51,8 @@ export default function App() {
         {/* V3 promoted 2026-08-29: the redesign is the live site. */}
         <Route path="/" element={<HomeV3 />} />
         <Route path="services/ai-operations" element={<AiSetupPage />} />
-        <Route path="services/brand-website" element={<ServicePageV4 serviceId="brand-and-web" />} />
-        <Route path="services/ecommerce-loyalty" element={<ServicePageV4 serviceId="ecommerce-and-loyalty" />} />
+        <Route path="services/brand-website" element={<BrandLandingPage />} />
+        <Route path="services/ecommerce-loyalty" element={<CommerceLandingPage />} />
         <Route path="services/new-products" element={<ServicePageV4 serviceId="new-products" />} />
         {/* Charlie's public positioning page — sendable, out of the nav.
             Sibling of the internal /pitch-kit rehearsal surface. */}

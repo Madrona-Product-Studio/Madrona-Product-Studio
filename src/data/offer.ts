@@ -27,7 +27,9 @@ export const SETUP_SPRINT = {
 // Three steps, each saying what the owner walks away with. The assessment is
 // a small paid step, credited in full toward setup; the command center is a
 // custom dashboard per client (Helm is the example, not the product sold).
-export const AI_PATH = [
+export type PathStep = { id: string; n: string; name: string; price: string; line: string; gets: string[] };
+
+export const AI_PATH: PathStep[] = [
   {
     id: "assessment",
     n: "01",
@@ -60,5 +62,45 @@ export const AI_PATH = [
       "Everything that ran on its own, and everything that needs your okay",
       "New jobs added month by month as the first ones prove out",
     ],
+  },
+];
+
+// Brand & Website and Ecommerce & Loyalty offers (Charlie, 2026-10-05, after
+// a market check: freelance 5-page sites run $1.5-5k, Shopify setups with a
+// freelancer or small studio $2-10k, care plans $50-150/mo). The first step is
+// free inside the first call; ongoing help is optional, "only if needed".
+export const BRAND_PATH: PathStep[] = [
+  {
+    id: "review", n: "01", name: "Website review", price: "Free, in the first call",
+    line: "What your site does well, what it costs you, and what to fix first.",
+    gets: ["An honest read on your current site", "What to keep, what to change, and what it would take", "A fixed quote if a new site makes sense"],
+  },
+  {
+    id: "site", n: "02", name: "A new website", price: "From $2,000",
+    line: "A clear, fast site for your business, live in one to two weeks.",
+    gets: ["A few well-built pages that say what you do and prove it", "Works on every screen, built so search engines can read it", "A site you can update yourself", "Bigger sites, or brand and site together, quoted in writing"],
+  },
+  {
+    id: "care", n: "03", name: "Care, only if you want it", price: "From $75/mo, or pay as you go",
+    line: "Updates, new pages, and small fixes when you need them.",
+    gets: ["Changes handled for you, so the site stays current", "No contract: pay as you go if you prefer", "Skip it entirely if you'd rather run it yourself"],
+  },
+];
+
+export const COMMERCE_PATH: PathStep[] = [
+  {
+    id: "review", n: "01", name: "Store review", price: "Free, in the first call",
+    line: "Where buyers drop off today, and what a store would take.",
+    gets: ["A look at how you sell now: phone, DMs, or an existing store", "What to set up first for the most sales", "A fixed quote for the build"],
+  },
+  {
+    id: "store", n: "02", name: "Your online store", price: "From $2,500",
+    line: "A Shopify store taking orders and payments in about two weeks.",
+    gets: ["A store on a proven theme, with your products loaded", "Payments, shipping or pickup, and tax set up", "Taught to run it yourself", "Rewards and reorder reminders added from $750"],
+  },
+  {
+    id: "growth", n: "03", name: "Growth, only if you want it", price: "From $300/mo",
+    line: "The follow-up, reviews, and rewards tuned month by month.",
+    gets: ["Win-back and review requests running and improving", "A short monthly read on what sold and what to try", "Cancel any time"],
   },
 ];
