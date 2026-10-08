@@ -1,5 +1,5 @@
 import { BRAND_PATH } from "../../data/offer";
-import { BrandShowcase } from "./showcase/BrandShowcase";
+import { BrandShowcase, SpringLineSpread } from "./showcase/BrandShowcase";
 import { BeforeAfterArtifact } from "./ServiceArtifacts";
 import { HeroShot } from "./HeroShot";
 import storefrontImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-storefront-desktop.webp?w=640;960;1280&format=webp&as=img";
@@ -7,7 +7,8 @@ import LandingPage, { type LandingConfig } from "./LandingPage";
 
 // Brand & Website as a landing page (Charlie, 2026-10-05). Offer and prices
 // in data/offer.ts (BRAND_PATH): a free review, a simple site from $2,000 in
-// one to two weeks, and care only if wanted.
+// one to two weeks, and care only if wanted. Worked examples (2026-10-08):
+// Berry Good, then Spring Line, our two demonstration businesses.
 const CONFIG: LandingConfig = {
   slug: "brand-website",
   title: "Brand & Website · Madrona Product Studio",
@@ -34,8 +35,8 @@ const CONFIG: LandingConfig = {
   showcase: {
     kicker: "Work like this",
     heading: "One brand, carried everywhere.",
-    intro: "Berry Good Berry Farm, our demonstration business: the brand system, the same site on a phone, and the kind of line we help you find.",
-    node: <div className="ais-commerce"><BrandShowcase /><BeforeAfterArtifact /></div>,
+    intro: "From our two demonstration businesses. Berry Good Berry Farm: the brand system, the same site on a phone, and the kind of line we help you find. Below it, Spring Line Rigging & Canvas, a shop site with its rates in plain view.",
+    node: <><div className="ais-commerce"><BrandShowcase withSpringLine={false} /><BeforeAfterArtifact /></div><SpringLineSpread show="site" /></>,
   },
   faq: [
     { q: "What does “from $2,000” include?", a: "A few well-built pages, designed and written with you, working on every screen, and set up so search engines can read it. If you need more pages, a store, or a new brand too, we quote it in writing before anything starts." },

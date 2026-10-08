@@ -1,6 +1,7 @@
 import { COMMERCE_PATH } from "../../data/offer";
 import { LoyaltyArtifact, StorefrontArtifact } from "./ServiceArtifacts";
 import { HeroShot } from "./HeroShot";
+import { SpringLineSpread } from "./showcase/BrandShowcase";
 import journeyImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-customer-journey.webp?w=640;960;1280&format=webp&as=img";
 import LandingPage, { type LandingConfig } from "./LandingPage";
 
@@ -35,8 +36,8 @@ const CONFIG: LandingConfig = {
   showcase: {
     kicker: "A store, start to finish",
     heading: "From the storefront to the second order.",
-    intro: "Berry Good Berry Farm, our demonstration business: what makes the store page sell, and the rewards that bring regulars back.",
-    node: <div className="ais-commerce ais-commerce-even"><StorefrontArtifact /><LoyaltyArtifact /></div>,
+    intro: "From our two demonstration businesses. Berry Good Berry Farm: what makes the store page sell, and the rewards that bring regulars back. Below it, Spring Line Rigging & Canvas, for a shop that sells work rather than products.",
+    node: <><div className="ais-commerce ais-commerce-even"><StorefrontArtifact /><LoyaltyArtifact /></div><SpringLineSpread show="return" /></>,
   },
   faq: [
     { q: "Why Shopify?", a: "It is reliable, easy to run yourself, and has the payments, shipping, and apps a small store needs. If you are on another platform that works for you, we can work with that instead." },
