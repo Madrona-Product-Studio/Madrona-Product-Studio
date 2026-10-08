@@ -9,6 +9,15 @@
 export const BERRY_URL = "https://berry-good-sigma.vercel.app";
 export const BERRY_HOST = "berry-good-sigma.vercel.app";
 
+// Spring Line Rigging & Canvas, our second demonstration business (added
+// 2026-10-08): a made-up six-person rigging and canvas shop on the Bellingham
+// waterfront, built for marine service businesses. The site, the job board,
+// the customer status page, and the kit (estimate, Shop Note, job ticket) are
+// all live on the Vercel host; no custom domain, so labels say "the shop's
+// site", never springlinerigging.com (that address is part of the fiction).
+export const SPRING_LINE_URL = "https://spring-line.vercel.app";
+export const SPRING_LINE_KIT_URL = "https://spring-line.vercel.app/kit/";
+
 // Helm's public demo account (helm.day/demo: "Demo account. The mechanics are
 // real."). This is the dogfood proof for the operations work. Never link the
 // real HQ instance. Checked 2026-09-06: helm.day and helm.day/?demo=1 both
