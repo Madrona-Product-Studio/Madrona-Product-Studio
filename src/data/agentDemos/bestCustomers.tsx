@@ -90,7 +90,7 @@ export const bestCustomers: AgentDemo = {
   deploy: {
     title: "Point it at your sales.",
     body: [
-      <>It starts with a free 30-minute conversation. We&rsquo;ll tell you in writing whether a best-customers agent would earn its keep on your operation, and what it should watch for.</>,
+      <>It starts with a short note, and the first conversation is free. We&rsquo;ll tell you in writing whether a best-customers agent would earn its keep on your operation, and what it should watch for.</>,
       <>When it fits, we connect your sales history, set it to run on demand, teach you to run it, and it&rsquo;s yours to keep, no lock-in.</>,
     ],
   },

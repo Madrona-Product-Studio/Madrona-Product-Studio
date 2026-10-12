@@ -88,7 +88,7 @@ export const reviewRequests: AgentDemo = {
   deploy: {
     title: "Put it on your reviews.",
     body: [
-      <>It starts with a free 30-minute conversation. We&rsquo;ll tell you in writing where this would actually help on your reviews, and where it wouldn&rsquo;t.</>,
+      <>It starts with a short note, and the first conversation is free. We&rsquo;ll tell you in writing where this would actually help on your reviews, and where it wouldn&rsquo;t.</>,
       <>When it fits, we connect your Business Profile and point of sale, set the ask rules, teach it your voice, and hand it over. Yours to keep, no lock-in.</>,
     ],
   },

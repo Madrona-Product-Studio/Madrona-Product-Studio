@@ -43,9 +43,9 @@ const CONFIG: LandingConfig = {
     { q: "Can I update it myself?", a: "Yes. We build on a platform you can edit, show you how, and leave a short guide. Care is there if you would rather hand changes off." },
     { q: "Do I have to pay monthly?", a: "No. Your hosting or platform plan is paid directly to the provider. Our care plan is optional, and you can pay as you go instead." },
     { q: "Do you write the words?", a: "Yes, with you. Most sites need clearer words more than new design, so we start there." },
-    { q: "What do I need to have ready?", a: "Your logo if you have one, a few photos, and thirty minutes to talk about what you do. We can help with photos and the rest." },
+    { q: "What do I need to have ready?", a: "Your logo if you have one, a few photos, and a short note about what you do. We can help with photos and the rest." },
   ],
-  final: { heading: "Let’s look at your site together.", line: "Thirty minutes, free. We will tell you what is working, what to fix first, and what it would cost." },
+  final: { heading: "Let’s look at your site together.", line: "Send us your site. We reply within two business days with what is working, what to fix first, and what it would cost." },
 };
 
 export default function BrandLandingPage() {

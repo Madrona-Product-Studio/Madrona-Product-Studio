@@ -135,7 +135,7 @@ export const monthEndClose: AgentDemo = {
   deploy: {
     title: "Deploy it on your books.",
     body: [
-      <>It starts with a 30-minute conversation, and it&rsquo;s free. We&rsquo;ll tell you in writing where an agent like this would actually help on your operation, and where it wouldn&rsquo;t.</>,
+      <>It starts with a short note, and the first conversation is free. We&rsquo;ll tell you in writing where an agent like this would actually help on your operation, and where it wouldn&rsquo;t.</>,
       <>When it&rsquo;s a fit, we install it on your real systems, encode your accounts and thresholds, set the approval gates, and teach you to run it. It&rsquo;s yours to keep, no lock-in. We build it and leave you capable.</>,
     ],
   },

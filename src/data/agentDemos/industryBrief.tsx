@@ -90,7 +90,7 @@ export const industryBrief: AgentDemo = {
   deploy: {
     title: "Point it at your industry.",
     body: [
-      <>It starts with a free 30-minute conversation. We&rsquo;ll tell you in writing whether an industry agent would earn its keep in your trade, and what its base file should watch.</>,
+      <>It starts with a short note, and the first conversation is free. We&rsquo;ll tell you in writing whether an industry agent would earn its keep in your trade, and what its base file should watch.</>,
       <>When it&rsquo;s a fit, we write the base file with you, wire the sources, set the nightly rhythm, and teach you to run it. Yours to keep, no lock-in.</>,
     ],
   },

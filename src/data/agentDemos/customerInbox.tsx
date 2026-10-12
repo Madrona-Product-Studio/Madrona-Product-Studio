@@ -86,7 +86,7 @@ export const customerInbox: AgentDemo = {
   deploy: {
     title: "Put it on your inbox.",
     body: [
-      <>It starts with a free 30-minute conversation. We&rsquo;ll tell you in writing where this would actually help on your inbox, and where it wouldn&rsquo;t.</>,
+      <>It starts with a short note, and the first conversation is free. We&rsquo;ll tell you in writing where this would actually help on your inbox, and where it wouldn&rsquo;t.</>,
       <>When it&rsquo;s a fit, we write your FAQ into it, teach it your voice and what to never touch, set the approval gate, and hand it over. Yours to keep, no lock-in.</>,
     ],
   },

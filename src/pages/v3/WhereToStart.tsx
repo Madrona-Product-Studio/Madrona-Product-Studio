@@ -2,7 +2,6 @@ import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "rea
 import { Link, useSearchParams } from "react-router-dom";
 import LabMeta from "../lab/LabMeta";
 import MadronaLogo from "../lab/MadronaLogo";
-import { useCalEmbed, bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import { SETUP_SPRINT } from "../../data/offer";
 import { track } from "../../lib/analytics";
 import {
@@ -70,26 +69,6 @@ function mergeChips(prev: OpportunityAnswers, chips: ChipId[], otherText: string
   return next;
 }
 
-// The booking notes Cal.com prefills so Charlie sees the read with the
-// click. Set as data-cal-notes (the embed hook reads it) and inside the
-// data-cal-config JSON (Cal's own prefill key).
-function buildCalNotes(report: OpportunityReportData, answers: OpportunityAnswers): string {
-  const parts = [
-    "AI opportunity assessment",
-    report.title,
-    `flagged: ${answers.chips.map(c => chipShort[c]).join(", ") || "nothing"}`,
-  ];
-  if (report.nowChip) parts.push(`now: ${report.moves[0].move.headline}`);
-  if (answers.otherText?.trim()) parts.push(`in their words: ${answers.otherText.trim()}`);
-  return parts.join(" · ");
-}
-
-function bookPropsWithNotes(notes: string): ReturnType<typeof bookProps> & { "data-cal-notes"?: string } {
-  const props = bookProps();
-  if (!Object.keys(props).length) return props;
-  return { ...props, "data-cal-notes": notes };
-}
-
 function connectHref(report: OpportunityReportData, answers: OpportunityAnswers): string {
   const q = new URLSearchParams({ from: "ai-opportunities", read: report.title, chips: answers.chips.join(",") });
   if (report.nowChip) q.set("now", report.moves[0].move.headline);
@@ -120,7 +99,6 @@ function AgentBubble({ children }: { children: React.ReactNode }) {
 }
 
 export default function WhereToStart() {
-  useCalEmbed();
   const [searchParams, setSearchParams] = useSearchParams();
   // A pasted or refreshed permalink restores the read at the result stage;
   // a partial code just prefills the opener.
@@ -546,7 +524,6 @@ function ResultStage({ report, answers, code, onRetake }: {
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: true });
   }, []);
-  const notes = useMemo(() => buildCalNotes(report, answers), [report, answers]);
 
   // "Email me this read": optional, once, nothing else. The server rebuilds
   // the read from the permalink code, so the form only carries an address.
@@ -585,26 +562,25 @@ function ResultStage({ report, answers, code, onRetake }: {
     <p className="sa-eyebrow">Your read</p>
     <h1 id="wts-r" ref={headingRef} tabIndex={-1}>{report.title}</h1>
     <p className="sa-interpretation">{report.overall.note} The full read is yours to keep.</p>
-    {/* target=_blank on the fallback href: if the embed doesn't take the click,
-        Cal opens beside the read instead of replacing it. */}
-    <a className="sa-primary sa-primary--wide" href={bookHref()} target="_blank" rel="noopener noreferrer" {...bookPropsWithNotes(notes)} onClick={bookClick}>
-      Talk through this read <span aria-hidden="true">→</span>
-    </a>
-    <p className="sa-cta-fine">A free 30-minute conversation about what you flagged. Your read comes with the booking.</p>
+    {/* The ask (2026-10-12: booking removed): send the read with a note; the
+        contact form prefills it from connectHref. */}
+    <Link className="sa-primary sa-primary--wide" to={connectHref(report, answers)} onClick={() => track("wts_cta_click", { read: report.title, to: "/connect" })}>
+      Send us this read <span aria-hidden="true">→</span>
+    </Link>
+    <p className="sa-cta-fine">Your read rides along with a short note. We reply within two business days.</p>
 
     {/* The fixed-price next step (2026-10-01): the read names a first move;
         the setup sprint is how it gets running. */}
     {report.moves[0] && <div className="wts-rail-block wts-sprint">
       <p className="wts-rail-label">Then, your first move</p>
       <p className="wts-sprint-move">{report.moves[0].move.headline}</p>
-      <p className="wts-sprint-line">The {SETUP_SPRINT.name} gets it running in two weeks, at a fixed price agreed after the free call.</p>
+      <p className="wts-sprint-line">The {SETUP_SPRINT.name} gets it running in two weeks, at a fixed price agreed after a free first conversation.</p>
       <Link to={SETUP_SPRINT.href} onClick={() => track("wts_cta_click", { read: report.title, to: SETUP_SPRINT.href })}>See what the sprint includes <span aria-hidden="true">→</span></Link>
     </div>}
 
     <div className="wts-rail-block">
       <p className="wts-rail-label">Other ways in</p>
       <ul className="wts-rail-list">
-        <li><Link to={connectHref(report, answers)}>Prefer writing? Send us a note <span aria-hidden="true">→</span></Link><span>Three fields, and a real reply. Your read rides along.</span></li>
         <li><Link to="/services">See how the work happens <span aria-hidden="true">→</span></Link><span>What an engagement looks like, in plain terms.</span></li>
       </ul>
     </div>

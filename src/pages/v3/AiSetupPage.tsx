@@ -39,7 +39,7 @@ const FAQ: { q: string; a: string }[] = [
   { q: "Do I need to be technical?", a: "No. If you can use email and a spreadsheet, you can run this. We set it up, teach your team, and leave a short written playbook." },
   { q: "Which AI do you use?", a: SETUP_SPRINT.tools },
   { q: "What if it doesn't work for us?", a: "The assessment tells you before you spend more, and setup is a fixed price and scope agreed in writing. Everything we set up is yours to keep, with no lock-in." },
-  { q: "Is the first call really free?", a: "Yes. Thirty minutes, no obligation. If an assessment makes sense, we will say so, and if it doesn't, we will say that too." },
+  { q: "Is the first conversation really free?", a: "Yes. Send a note about what eats your week and we will reply in writing, within two business days. If an assessment makes sense, we will say so, and if it doesn't, we will say that too." },
 ];
 
 // What the owner sees on a Monday: the benefit, shown. Illustrative.
@@ -95,7 +95,7 @@ const CONFIG: LandingConfig = {
   },
   faq: FAQ,
   faqNote: <>New to AI? <Link to="/thinking/getting-started-with-ai">Read the owner’s guide</Link>, <Link to="/thinking/ai-prompt-starter-pack">copy the prompt pack</Link>, or <Link to="/resources#tools">try the tool demos</Link>.</>,
-  final: { heading: "Get the busywork off your plate.", line: "Thirty minutes, free. We will tell you where AI would help most, and where it would not." },
+  final: { heading: "Get the busywork off your plate.", line: "Tell us what eats your week. We reply within two business days with where AI would help most, and where it would not." },
 };
 
 export default function AiSetupPage() {

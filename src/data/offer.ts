@@ -17,7 +17,7 @@ export const SETUP_SPRINT = {
     { name: "Your team can run it", line: "We teach it, and leave a short written playbook." },
     { name: "30 days of check-ins", line: "We tune it once it is doing real work." },
   ],
-  terms: "Fixed price and scope, in writing, after the free first conversation.",
+  terms: "Fixed price and scope, in writing, after a free first conversation.",
   tools: "We set it up on Claude by default, or on the AI already built into the tools you use.",
   after: "Everything we set up is yours. Want more added later? That is quoted when you are ready.",
 };
@@ -73,7 +73,7 @@ export const AI_PATH: PathStep[] = [
 // free inside the first call; ongoing help is optional, "only if needed".
 export const BRAND_PATH: PathStep[] = [
   {
-    id: "review", n: "01", name: "Website review", price: "Free, in the first call",
+    id: "review", n: "01", name: "Website review", price: "Free, in the first conversation",
     line: "What your site does well, what it costs you, and what to fix first.",
     gets: ["An honest read on your current site", "What to keep, what to change, and what it would take", "A fixed quote if a new site makes sense"],
   },
@@ -91,7 +91,7 @@ export const BRAND_PATH: PathStep[] = [
 
 export const COMMERCE_PATH: PathStep[] = [
   {
-    id: "review", n: "01", name: "Store review", price: "Free, in the first call",
+    id: "review", n: "01", name: "Store review", price: "Free, in the first conversation",
     line: "Where buyers drop off today, and what a store would take.",
     gets: ["A look at how you sell now: phone, DMs, or an existing store", "What to set up first for the most sales", "A fixed quote for the build"],
   },

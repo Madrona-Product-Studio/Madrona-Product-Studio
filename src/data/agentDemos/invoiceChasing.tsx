@@ -88,7 +88,7 @@ export const invoiceChasing: AgentDemo = {
   deploy: {
     title: "Deploy it on your receivables.",
     body: [
-      <>It starts with a free 30-minute conversation. We&rsquo;ll tell you in writing where this would actually help on your books, and where it wouldn&rsquo;t.</>,
+      <>It starts with a short note, and the first conversation is free. We&rsquo;ll tell you in writing where this would actually help on your books, and where it wouldn&rsquo;t.</>,
       <>When it&rsquo;s a fit, we wire it to your invoicing, teach it your voice and your grace rules, set the approval gate, and hand it to you. Yours to keep, no lock-in.</>,
     ],
   },

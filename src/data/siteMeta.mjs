@@ -64,7 +64,7 @@ export const pages = {
     title: "Madrona Product Studio · PNW, USA",
     description: "Madrona is a full-service digital studio in the Pacific Northwest. Great websites, practical AI tools, and new products, designed and built by a small senior team, with examples of each.",
     h1: "Great digital work, with AI built in.",
-    body: "A Pacific Northwest studio. We design websites and brands, build new products, and put AI to work inside your business, with a person checking what matters. Great websites, practical AI tools, and new products, designed and built by a small senior team that brings in specialists as the work needs them. Most of the work on this page we built for ourselves first, and each example is labeled for what it is: our own products, our demonstration business, working demos, or an illustrative example. We can build it for you. AI and operations: field notes into draft reports, bookkeeping and month-end agents, customer inbox triage, operations dashboards. Brand and website: brand systems, storefronts and online ordering, local guides with live maps. Growth and retention: follow-up, reminders, reviews, and guides grounded in your own content, for customers, members, donors, and volunteers. New products: Helm, Lila Trips, and the San Juan Boating Guide. Every engagement starts with a free 30-minute conversation, here in the PNW and beyond.",
+    body: "A Pacific Northwest studio. We design websites and brands, build new products, and put AI to work inside your business, with a person checking what matters. Great websites, practical AI tools, and new products, designed and built by a small senior team that brings in specialists as the work needs them. Most of the work on this page we built for ourselves first, and each example is labeled for what it is: our own products, our demonstration business, working demos, or an illustrative example. We can build it for you. AI and operations: field notes into draft reports, bookkeeping and month-end agents, customer inbox triage, operations dashboards. Brand and website: brand systems, storefronts and online ordering, local guides with live maps. Growth and retention: follow-up, reminders, reviews, and guides grounded in your own content, for customers, members, donors, and volunteers. New products: Helm, Lila Trips, and the San Juan Boating Guide. Every engagement starts with a free first conversation, here in the PNW and beyond.",
   },
   "/ai-opportunities": {
     title: "AI Opportunity Assessment · a free 2-minute read · Madrona Product Studio",
@@ -77,7 +77,7 @@ export const pages = {
     title: "Services · Madrona Product Studio",
     description: "We help you figure out what to build, then build it. Four areas, one senior team: AI and operations, brand and website, ecommerce and loyalty, and new products, from a small senior team in the Pacific Northwest.",
     h1: "Four areas. One senior team.",
-    body: "Four areas, one senior team, and every engagement starts with one free conversation. AI & Operations: get hours back every week, with practical AI and tools on your real workflows, with a person checking anything that matters. Brand & Website: brands and websites, designed and built to a high bar. Ecommerce & Loyalty: online stores that make buying easy, and the memberships, rewards, and follow-up that turn first orders into regulars. New Products: from prototype to launched product. How an engagement runs: a free 30-minute conversation, a free written quote with scope and price (for AI work, an optional paid assessment maps your week first), then a small first project with its win named up front, paid only if it makes sense.",
+    body: "Four areas, one senior team, and every engagement starts with one free conversation. AI & Operations: get hours back every week, with practical AI and tools on your real workflows, with a person checking anything that matters. Brand & Website: brands and websites, designed and built to a high bar. Ecommerce & Loyalty: online stores that make buying easy, and the memberships, rewards, and follow-up that turn first orders into regulars. New Products: from prototype to launched product. How an engagement runs: a free first conversation by note or email, a free written quote with scope and price (for AI work, an optional paid assessment maps your week first), then a small first project with its win named up front, paid only if it makes sense.",
   },
   "/services/ai-operations": {
     title: "AI & Operations: assessment, AI setup, and a command center · Madrona Product Studio",
@@ -206,9 +206,9 @@ export const pages = {
   },
   "/connect": {
     title: "Let's connect · Madrona Product Studio",
-    description: "Book a 30-minute call or send us a message about your project. Every path begins with a free 30-minute conversation with a published agenda.",
+    description: "Send us a note about your project, or email hello@madronaproduct.com. We reply within two business days, and the first conversation is free.",
     h1: "Let's connect.",
-    body: "Whatever's easiest: book a 30-minute call or send a message about your project. Every way in starts the same, a free 30-minute conversation with a published agenda. Email hello@madronaproduct.com.",
+    body: "Send a note about your project, or email us directly. Every way in starts the same: a free first conversation, and a reply within two business days. Email hello@madronaproduct.com.",
   },
 
   // Tool demos: one page per agent. Each is its own high-intent landing page
