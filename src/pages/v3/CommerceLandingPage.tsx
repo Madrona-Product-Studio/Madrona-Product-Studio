@@ -31,7 +31,7 @@ const CONFIG: LandingConfig = {
   path: {
     heading: "Close to doing it yourself, without the weekends.",
     steps: COMMERCE_PATH,
-    timing: { review: "First call", store: "Weeks 1 and 2", growth: "After launch" },
+    timing: { review: "First conversation", store: "Weeks 1 and 2", growth: "After launch" },
   },
   showcase: {
     kicker: "A store, start to finish",

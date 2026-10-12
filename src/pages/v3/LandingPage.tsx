@@ -30,7 +30,8 @@ export type LandingConfig = {
   worksWith?: string[];               // tools shown in the hero (logos where we have a real mark)
   changes: { heading: string; colToday?: string; colAfter: string; rows: { job: string; before: string; after: string }[] };
   path: { heading: string; steps: PathStep[]; timing: Record<string, string> };
-  showcase: { kicker: string; heading: string; intro: string; node: ReactNode };
+  showcase: { kicker: string; heading: string; intro?: string; node: ReactNode };
+  showcaseFirst?: boolean;            // show the showcase above How it works (Brand, 2026-10-12)
   faq: { q: string; a: string }[];
   faqNote?: ReactNode;
   final: { heading: string; line: string };
@@ -48,6 +49,15 @@ function EmailLink({ source }: { source: string }) {
 }
 
 export default function LandingPage({ c }: { c: LandingConfig }) {
+  const showcase = <Reveal as="section" className="v3-shell ais-cc" aria-labelledby="ais-cc-h">
+      <div className="ais-head ais-head-row">
+        <div><p className="v3-kicker">{c.showcase.kicker}</p>
+        <h2 id="ais-cc-h">{c.showcase.heading}</h2></div>
+        {c.showcase.intro && <p>{c.showcase.intro}</p>}
+      </div>
+      {c.showcase.node}
+    </Reveal>;
+
   return <div className="m2 v3">
     <LabMeta title={c.title} />
     <M2Nav active="services" />
@@ -85,6 +95,8 @@ export default function LandingPage({ c }: { c: LandingConfig }) {
       </table>
     </Reveal>
 
+    {c.showcaseFirst && showcase}
+
     <Reveal as="section" className="v3-section ais-path" aria-labelledby="ais-path-h">
       <div className="v3-shell">
         <div className="ais-head">
@@ -101,14 +113,7 @@ export default function LandingPage({ c }: { c: LandingConfig }) {
       </div>
     </Reveal>
 
-    <Reveal as="section" className="v3-shell ais-cc" aria-labelledby="ais-cc-h">
-      <div className="ais-head ais-head-row">
-        <div><p className="v3-kicker">{c.showcase.kicker}</p>
-        <h2 id="ais-cc-h">{c.showcase.heading}</h2></div>
-        <p>{c.showcase.intro}</p>
-      </div>
-      {c.showcase.node}
-    </Reveal>
+    {!c.showcaseFirst && showcase}
 
     <Reveal as="section" className="v3-shell ais-faq" aria-labelledby="ais-faq-h">
       <div className="ais-head">

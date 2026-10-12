@@ -77,6 +77,15 @@
         ],
         "createdAt": "2026-10-05T16:12:04.719Z",
         "reason": "Claude: sanctioned brand move (CLAUDE.md structural move 4, left-edge madrona rule); 2px 'needs you' row marker matching the shipped week window"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/pages/v3/showcase/SitesWeBuild.tsx"
+        ],
+        "createdAt": "2026-10-12T17:41:39.020Z",
+        "reason": "Claude: src comes from the imgProps() spread (responsive srcset helper); verified rendering"
       }
     ]
   }
