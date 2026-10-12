@@ -7,7 +7,7 @@
 //   cta_click         { label, to, source }   — any primary CTA: "Get in touch",
 //                                               "Find your AI opportunities", the
 //                                               tool hero buttons (trackCta)
-//   outbound_click    { href, source }        — outbound proof links: Berry Good,
+//   outbound_click    { href, source }        — outbound proof links: Berry Good, Spring Line,
 //                                               Helm, Lila, San Juan, GitHub
 //                                               (trackOutbound)
 //   book_click        { source }              — any "Schedule a 30-minute call" CTA;
@@ -67,7 +67,7 @@ export function trackCta(label: string, to: string, source: string) {
   track("cta_click", { label, to, source });
 }
 
-// An outbound proof link was clicked (Berry Good, Helm, a live app, GitHub).
+// An outbound proof link was clicked (Berry Good, Spring Line, Helm, a live app, GitHub).
 export function trackOutbound(href: string, source: string) {
   track("outbound_click", { href, source });
 }

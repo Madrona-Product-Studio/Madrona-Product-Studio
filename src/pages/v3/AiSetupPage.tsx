@@ -4,6 +4,7 @@ import { WindowBar } from "./ReadCard";
 import { AI_PATH, SETUP_SPRINT } from "../../data/offer";
 import { HELM_DEMO_URL } from "../../data/proof";
 import { CommandCenter } from "./showcase/CommandCenter";
+import { SpringLineSpread } from "./showcase/BrandShowcase";
 import { outboundClick } from "../../lib/analytics";
 import LandingPage, { type LandingConfig } from "./LandingPage";
 
@@ -16,7 +17,9 @@ import LandingPage, { type LandingConfig } from "./LandingPage";
 // the call directly, a Monday-morning brief showing what the owner gets, the
 // jobs that change as a before/after table, the path as a timed sequence with
 // prices, an example command center (Berry Good) in place of a proof list,
-// the honest questions, and the ask again.
+// the honest questions, and the ask again. Spring Line (2026-10-08), our
+// second demonstration business, follows the command center with its job
+// board, status text, and estimate: the worked example for marine trades.
 
 const CHANGES = [
   { job: "Getting paid", before: "Chasing late invoices every Friday.", after: "Polite reminders go out on their own. You decide who gets grace." },
@@ -84,11 +87,11 @@ const CONFIG: LandingConfig = {
   showcase: {
     kicker: "Step three, up close",
     heading: "One screen for the whole business.",
-    intro: "Here is a command center for Berry Good Berry Farm, our demonstration business. Yours is built around your own work and tools, and it is yours to keep.",
-    node: <CommandCenter footer={<div className="cc-links">
+    intro: "Here is a command center for Berry Good Berry Farm, one of our two demonstration businesses, and below it the job board and estimate for the other. Yours is built around your own work and tools, and it is yours to keep.",
+    node: <><CommandCenter footer={<div className="cc-links">
       <a href={HELM_DEMO_URL} target="_blank" rel="noopener noreferrer" onClick={outboundClick(HELM_DEMO_URL, "ai-setup-cc")}>Click around a live one: the Helm demo <span aria-hidden="true">↗</span></a>
       <Link to="/resources#tools">Try the agents behind it <span aria-hidden="true">→</span></Link>
-    </div>} />,
+    </div>} /><SpringLineSpread show="ops" /></>,
   },
   faq: FAQ,
   faqNote: <>New to AI? <Link to="/thinking/getting-started-with-ai">Read the owner’s guide</Link>, <Link to="/thinking/ai-prompt-starter-pack">copy the prompt pack</Link>, or <Link to="/resources#tools">try the tool demos</Link>.</>,

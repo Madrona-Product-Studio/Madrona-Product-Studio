@@ -50,3 +50,18 @@
   .v3 .bsc-meta{flex-direction:column;align-items:flex-start}
   .v3 .bsc-caption{min-height:4.5em}
 }
+
+/* Spring Line spread (2026-10-08): our second demonstration business on each
+   area page. A labeled rail (kicker, name, narrow copy, two plain links) and
+   one tabbed window, under a full-width hairline. */
+.v3 .sls{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:64px;align-items:start;margin-top:72px;padding-top:56px;border-top:1px solid var(--v3-line)}
+.v3 .sls-rail{max-width:46ch}
+.v3 .sls-rail h3{margin:0 0 16px;font-size:clamp(1.6rem,2.4vw,2.1rem);line-height:1.05;letter-spacing:-.025em}
+.v3 .sls-rail p:not(.v3-kicker){margin:0 0 14px;color:var(--v3-clay);font-size:15px;line-height:1.55}
+.v3 .sls-links{display:flex;flex-direction:column;gap:4px;margin:22px 0 0;padding:16px 0 0;border-top:1px solid var(--v3-soft);list-style:none}
+.v3 .sls-links a{display:inline-flex;align-items:center;gap:6px;min-height:32px;color:var(--v3-bark-dark);font:700 13px/1.2 Inter,sans-serif}
+.v3 .sls-links a:hover{text-decoration:underline;text-underline-offset:3px}
+.v3 .sls .bsc{max-width:none}
+@media(max-width:900px){
+  .v3 .sls{grid-template-columns:minmax(0,1fr);gap:32px;margin-top:56px;padding-top:40px}
+}
