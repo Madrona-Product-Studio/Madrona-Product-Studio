@@ -86,6 +86,15 @@
         ],
         "createdAt": "2026-10-12T17:41:39.020Z",
         "reason": "Claude: src comes from the imgProps() spread (responsive srcset helper); verified rendering"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/pages/v3/showcase/ProductsWeBuild.tsx"
+        ],
+        "createdAt": "2026-10-12T21:59:11.392Z",
+        "reason": "Claude: src comes from the imgProps() spread (responsive srcset helper); verified rendering"
       }
     ]
   }

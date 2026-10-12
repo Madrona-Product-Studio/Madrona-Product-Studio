@@ -129,6 +129,8 @@
 .ais-kicker{margin:0 0 18px;color:#e8a999;font:700 11px/1.2 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase}
 .v3 .ais-hero h1{margin:0 0 22px;color:#F7EDE4;font-size:clamp(2.6rem,4.4vw,4.2rem);line-height:1.03;letter-spacing:-.035em}
 .ais-hero h1 span{color:var(--v3-bark)}
+.v3 .ais-hero h1,.v3 .ais-head h2,.v3 .ais-timeline h3{text-wrap:balance}
+.v3 .ais-lede,.v3 .ais-timeline p{text-wrap:pretty}
 .v3 .ais-lede{max-width:48ch;margin:0 0 32px;color:rgba(247,237,228,.78);font-size:1.15rem;line-height:1.55}
 .ais-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px 26px}
 .v3 .ais-book{min-height:54px;padding:0 28px;border-radius:3px;font:700 13px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-top:0}
