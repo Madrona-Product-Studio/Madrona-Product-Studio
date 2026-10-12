@@ -63,3 +63,6 @@
 }
 @media(prefers-reduced-motion:reduce){.swb-pills button{transition:none}}
 .swb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* No hanging words: balanced heads, tidier body wraps (2026-10-12). */
+.v3 .swb-info h3{text-wrap:balance}
+.v3 .swb-for,.v3 .swb-line,.v3 .swb-note,.swb-needs li{text-wrap:pretty}

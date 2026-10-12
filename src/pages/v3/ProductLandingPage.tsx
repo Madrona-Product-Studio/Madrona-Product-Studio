@@ -1,6 +1,5 @@
 import { PRODUCT_PATH } from "../../data/offer";
-import { ProductsShowcase } from "./showcase/ProductsShowcase";
-import { BuildJourneyArtifact } from "./ServiceArtifacts";
+import { ProductsHero, ProductsWeBuild } from "./showcase/ProductsWeBuild";
 import LandingPage, { type LandingConfig } from "./LandingPage";
 
 // New Products as a landing page (Charlie, 2026-10-05). Offer in
@@ -12,7 +11,7 @@ const CONFIG: LandingConfig = {
   kicker: "New Products",
   headline: <>Turn a good idea into a real product, <span>without betting the business on it.</span></>,
   lede: "We test the idea with real people first, then build the smallest version worth shipping. One senior team, from the first sketch to launch.",
-  heroVisual: <div className="ais-hero-art"><BuildJourneyArtifact /></div>,
+  heroVisual: <ProductsHero />,
   changes: {
     heading: "Building something new, before and after.",
     colToday: "The usual way",
@@ -30,11 +29,11 @@ const CONFIG: LandingConfig = {
     timing: { validate: "Weeks 1 to 4", build: "Months 2 and 3", partner: "After launch" },
   },
   showcase: {
-    kicker: "We build our own",
-    heading: "Products we built, and still run.",
-    intro: "We take our own ideas from sketch to launch, so we know what launching takes. Both are live or in beta today.",
-    node: <ProductsShowcase without={["san-juan-boating-guide"]} />,
+    kicker: "Products we build",
+    heading: "Built around the people who use them.",
+    node: <ProductsWeBuild />,
   },
+  showcaseFirst: true,
   faq: [
     { q: "What is a validation sprint?", a: "A few weeks to make the idea concrete and put it in front of the people it is for: a clickable prototype, real sessions, and a written go, change, or stop. It is the cheapest way to find out before you spend more." },
     { q: "What does the build cost?", a: "It depends on what validation shows the first version needs, so we quote it in writing after the sprint, before anything starts." },
