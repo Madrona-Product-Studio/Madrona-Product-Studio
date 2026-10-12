@@ -1,14 +1,13 @@
 import { BRAND_PATH } from "../../data/offer";
-import { BrandShowcase, SpringLineSpread } from "./showcase/BrandShowcase";
-import { BeforeAfterArtifact } from "./ServiceArtifacts";
-import { HeroShot } from "./HeroShot";
-import storefrontImage from "../../../docs/madrona-v2-build-kit/product-proof/berry-good/berry-storefront-desktop.webp?w=640;960;1280&format=webp&as=img";
+import { SitesHero, SitesWeBuild } from "./showcase/SitesWeBuild";
 import LandingPage, { type LandingConfig } from "./LandingPage";
 
 // Brand & Website as a landing page (Charlie, 2026-10-05). Offer and prices
 // in data/offer.ts (BRAND_PATH): a free review, a simple site from $2,000 in
-// one to two weeks, and care only if wanted. Worked examples (2026-10-08):
-// Berry Good, then Spring Line, our two demonstration businesses.
+// one to two weeks, and care only if wanted. 2026-10-12 (Charlie): the page
+// shows the kinds of sites we build (sell direct, book the work, explain
+// something new) rather than leading with "our demonstration business"; the
+// example builds are labeled quietly.
 const CONFIG: LandingConfig = {
   slug: "brand-website",
   title: "Brand & Website · Madrona Product Studio",
@@ -16,7 +15,7 @@ const CONFIG: LandingConfig = {
   headline: <>A website you’re proud to send people to, <span>live in two weeks.</span></>,
   lede: "We design and build a clear, fast site that says what you do and proves it, and you can update it yourself. Nothing is monthly unless you want it.",
   worksWith: ["Shopify", "Squarespace", "Webflow", "Google Business Profile", "Square"],
-  heroVisual: <HeroShot src={storefrontImage} path="berrygood · website" note="Our demonstration business" alt="The Berry Good Berry Farm website: what's ripe today, berries to order, and pickup" />,
+  heroVisual: <SitesHero />,
   changes: {
     heading: "Your website, before and after.",
     colAfter: "After launch",
@@ -30,14 +29,14 @@ const CONFIG: LandingConfig = {
   path: {
     heading: "A fixed price, and no monthly fee unless you want one.",
     steps: BRAND_PATH,
-    timing: { review: "First call", site: "Weeks 1 and 2", care: "After launch" },
+    timing: { review: "First conversation", site: "Weeks 1 and 2", care: "After launch" },
   },
   showcase: {
-    kicker: "Work like this",
-    heading: "One brand, carried everywhere.",
-    intro: "From our two demonstration businesses. Berry Good Berry Farm: the brand system, the same site on a phone, and the kind of line we help you find. Below it, Spring Line Rigging & Canvas, a shop site with its rates in plain view.",
-    node: <><div className="ais-commerce"><BrandShowcase withSpringLine={false} /><BeforeAfterArtifact /></div><SpringLineSpread show="site" /></>,
+    kicker: "Sites we build",
+    heading: "Built around what you sell.",
+    node: <SitesWeBuild />,
   },
+  showcaseFirst: true,
   faq: [
     { q: "What does “from $2,000” include?", a: "A few well-built pages, designed and written with you, working on every screen, and set up so search engines can read it. If you need more pages, a store, or a new brand too, we quote it in writing before anything starts." },
     { q: "Can I update it myself?", a: "Yes. We build on a platform you can edit, show you how, and leave a short guide. Care is there if you would rather hand changes off." },
