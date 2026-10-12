@@ -93,7 +93,7 @@ export const cashPosition: AgentDemo = {
   deploy: {
     title: "Put it on your accounts.",
     body: [
-      <>It starts with a free 30-minute conversation. We&rsquo;ll tell you in writing where an agent like this would actually help on your books, and where it wouldn&rsquo;t.</>,
+      <>It starts with a short note, and the first conversation is free. We&rsquo;ll tell you in writing where an agent like this would actually help on your books, and where it wouldn&rsquo;t.</>,
       <>When it&rsquo;s a fit, we connect your accounts, set the morning rhythm, and teach you to run it. Yours to keep, no lock-in.</>,
     ],
   },

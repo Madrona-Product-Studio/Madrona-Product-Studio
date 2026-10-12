@@ -42,7 +42,7 @@ const CONFIG: LandingConfig = {
     { q: "Can you add AI to it?", a: "Where it genuinely helps the people using it, yes. We build with AI every day, and we will tell you when it is not the right tool." },
     { q: "Will you keep my idea confidential?", a: "Yes. What you share stays between us, and we are glad to sign an NDA." },
   ],
-  final: { heading: "Tell us the idea.", line: "Thirty minutes, free. We will tell you how we would test it, and what that would cost." },
+  final: { heading: "Tell us the idea.", line: "Send us the idea. We reply within two business days with how we would test it, and what that would cost." },
 };
 
 export default function ProductLandingPage() {

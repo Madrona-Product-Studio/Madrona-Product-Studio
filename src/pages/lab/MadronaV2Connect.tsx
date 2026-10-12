@@ -4,7 +4,6 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import { useCalEmbed, bookProps, bookHref, bookClick } from "./useCalEmbed";
 import { track } from "../../lib/analytics";
 import "./madrona-v2.css";
 
@@ -35,8 +34,8 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TOPICS = ["AI & Operations", "Brand & Website", "Ecommerce & Loyalty", "New Products", "Not sure yet"];
 
 const expectItems = [
-  { icon: "chat", title: "A 30-minute conversation", body: "We’ll explore your goals, challenges, and what’s possible." },
-  { icon: "agenda", title: "A clear agenda", body: "We come prepared and make the most of your time." },
+  { icon: "chat", title: "A real reply", body: "Within two business days, in writing, from the person who would do the work." },
+  { icon: "agenda", title: "A clear next step", body: "What we would do first, and roughly what it would take." },
   { icon: "eye", title: "An honest point of view", body: "You’ll get straightforward feedback and ideas you can use." },
   { icon: "compass", title: "No pressure if it’s not a fit", body: "If we’re not the right partner, we’ll help point you in the right direction." },
 ];
@@ -84,7 +83,6 @@ function seedNotes(handoff: Handoff): string {
 
 export default function MadronaV2Connect() {
   useReveal();
-  useCalEmbed();
   const { pathname, search } = useLocation();
   const handoff = useMemo(() => readHandoff(search), [search]);
   const [status, setStatus] = useState<Status>("idle");
@@ -175,7 +173,7 @@ export default function MadronaV2Connect() {
           <span className="m2-cx-rule" aria-hidden="true" />
           <p>Bring us an important problem, an early idea, or something already in motion. We help you figure out what to build, then build it.</p>
           <div className="m2-cx-tags">
-            <span><CxIcon name="clock" />30-minute conversation</span>
+            <span><CxIcon name="clock" />Reply within two business days</span>
             <span><CxIcon name="check" />No prep needed</span>
             <span><CxIcon name="people" />Senior team from the start</span>
           </div>
@@ -230,10 +228,7 @@ export default function MadronaV2Connect() {
 
         <aside className="m2-cx-side">
           <div className="m2-cx-card m2-cx-book">
-            <h3>Prefer to talk first?</h3>
-            <p className="m2-cx-book-sub">Schedule a free 30-minute call to talk through where you are and where we can help. No prep needed.</p>
-            <a className="m2-button m2-button-secondary" href={bookHref()} onClick={bookClick} data-book-placement="connect-side" {...bookProps()}>Schedule a 30-minute call <span>↗︎</span></a>
-            <p className="m2-cx-book-label">What to expect</p>
+            <h3>What to expect</h3>
             <ul className="m2-cx-expect">
               {expectItems.map((it) => (
                 <li key={it.title}><span className="m2-cx-expect-ic"><CxIcon name={it.icon} /></span><div><strong>{it.title}</strong><p>{it.body}</p></div></li>
@@ -241,15 +236,11 @@ export default function MadronaV2Connect() {
             </ul>
           </div>
           <div className="m2-cx-card">
-            <h3>Contact information</h3>
+            <h3>Rather email?</h3>
             <ul className="m2-cx-contact">
               <li><CxIcon name="mail" />{mailto}</li>
               <li><CxIcon name="pin" />Based in the Pacific Northwest</li>
             </ul>
-          </div>
-          <div className="m2-cx-card m2-cx-respond">
-            <span className="m2-cx-expect-ic"><CxIcon name="clock" /></span>
-            <div><strong>We usually respond</strong><p>Within two business days</p></div>
           </div>
         </aside>
       </section>

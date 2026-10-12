@@ -89,7 +89,7 @@ export const postSaleFollowup: AgentDemo = {
   deploy: {
     title: "Put it on your customers.",
     body: [
-      "It starts with a free 30-minute conversation. We’ll tell you in writing where this would actually help with your customers, and where it wouldn’t.",
+      "It starts with a short note, and the first conversation is free. We’ll tell you in writing where this would actually help with your customers, and where it wouldn’t.",
       "When it fits, we wire your store and inbox, set the rhythm you decide, teach you how it runs, and hand it over. Yours to keep, no lock-in.",
     ],
   },

@@ -46,7 +46,7 @@ const CONFIG: LandingConfig = {
     { q: "What do rewards cost to run?", a: "Setup is from $750. The rewards app is billed by its maker, and many have a free tier for smaller stores." },
     { q: "Do I need the monthly growth plan?", a: "No. It is there if you want the follow-up and reviews tuned for you. Most stores start without it." },
   ],
-  final: { heading: "Let’s get your store selling.", line: "Thirty minutes, free. We will look at how you sell today and what a store would take." },
+  final: { heading: "Let’s get your store selling.", line: "Tell us how you sell today. We reply within two business days with what a store would take." },
 };
 
 export default function CommerceLandingPage() {

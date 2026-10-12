@@ -4,9 +4,9 @@ import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import SiteFooter from "../lab/SiteFooter";
 import Reveal from "./Reveal";
-import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import type { PathStep } from "../../data/offer";
-import { ctaClick } from "../../lib/analytics";
+import { ctaClick, track } from "../../lib/analytics";
+import { CONTACT_EMAIL, CONTACT_PATH } from "../../data/contact";
 import { brandPath } from "../lab/connectorMarks";
 import "../lab/madrona-v2.css";
 import "./v3.css";
@@ -36,8 +36,15 @@ export type LandingConfig = {
   final: { heading: string; line: string };
 };
 
-function BookButton({ source }: { source: string }) {
-  return <a className="v3-btn v3-btn-light ais-book" href={bookHref()} target="_blank" rel="noopener noreferrer" data-book-placement={source} {...bookProps()} onClick={bookClick}>Book a free 30-minute call</a>;
+// The ask (2026-10-12: booking removed): a note through the contact form, with
+// the email address right beside it for anyone who would rather write directly.
+function NoteButton({ source }: { source: string }) {
+  const to = `${CONTACT_PATH}?from=${source}`;
+  return <Link className="v3-btn v3-btn-light ais-book" to={to} onClick={ctaClick("Send us a note", to, source)}>Send us a note</Link>;
+}
+
+function EmailLink({ source }: { source: string }) {
+  return <a className="ais-email" href={`mailto:${CONTACT_EMAIL}`} onClick={() => track("email_click", { source })}>or email {CONTACT_EMAIL}</a>;
 }
 
 export default function LandingPage({ c }: { c: LandingConfig }) {
@@ -53,10 +60,11 @@ export default function LandingPage({ c }: { c: LandingConfig }) {
           <h1>{c.headline}</h1>
           <p className="ais-lede">{c.lede}</p>
           <div className="ais-actions">
-            <BookButton source={`${c.slug}-hero`} />
+            <NoteButton source={`${c.slug}-hero`} />
+            <EmailLink source={`${c.slug}-hero`} />
             {c.alt && <Link className="ais-alt" to={c.alt.to} onClick={ctaClick(c.alt.label, c.alt.to, `${c.slug}-hero`)}>{c.alt.label} <span aria-hidden="true">→</span></Link>}
           </div>
-          <ul className="ais-trust"><li>Free first call</li><li>Fixed price, in writing</li><li>Yours to keep, no lock-in</li></ul>
+          <ul className="ais-trust"><li>Free to ask</li><li>Fixed price, in writing</li><li>Yours to keep, no lock-in</li></ul>
           {c.worksWith && <div className="ais-works"><span className="ais-works-label">Works with</span><ul>{c.worksWith.map(t => {
             const d = brandPath(t);
             return <li key={t}>{d && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={d} /></svg>}{t}</li>;
@@ -115,7 +123,7 @@ export default function LandingPage({ c }: { c: LandingConfig }) {
       <div className="v3-shell ais-final-inner">
         <h2>{c.final.heading}</h2>
         <p>{c.final.line}</p>
-        <BookButton source={`${c.slug}-final`} />
+        <div className="ais-final-actions"><NoteButton source={`${c.slug}-final`} /><EmailLink source={`${c.slug}-final`} /></div>
       </div>
     </section>
 

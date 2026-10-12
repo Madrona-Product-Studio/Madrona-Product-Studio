@@ -10,7 +10,8 @@
 //   outbound_click    { href, source }        — outbound proof links: Berry Good, Spring Line,
 //                                               Helm, Lila, San Juan, GitHub
 //                                               (trackOutbound)
-//   book_click        { source }              — any "Schedule a 30-minute call" CTA;
+//   book_click        { source }              — RETIRED 2026-10-12 (booking removed;
+//                                               historic data only). Was: any "Schedule a 30-minute call" CTA;
 //                                               source is the pathname. Anchors may
 //                                               carry data-book-placement to tell
 //                                               the drawer from the page body.

@@ -492,7 +492,7 @@ const READINESS_LINES = [
   "You said you want focus. We'd map the options and rank them by payback.",
   "You said prototype first. We agree, that's how we work anyway.",
   "You said you're ready to build. We'd scope the smallest useful version.",
-  "You asked for perspective first. That's what the free 30 minutes is for.",
+  "You asked for perspective first. That's what the free first conversation is for.",
 ];
 
 // The AI-today answer sets the register of the moves: extend what runs, or

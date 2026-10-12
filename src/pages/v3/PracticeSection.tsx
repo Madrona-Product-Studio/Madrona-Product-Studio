@@ -3,7 +3,7 @@
 // price/terms read as first-class pills. Since 2026-09-30 it lives only on
 // /services; the footer's closing ask (compact there) carries the action.
 const steps = [
-  ["01", "Talk it through", "A clear read on where to start", "A free 30-minute conversation with a published agenda, and a clear first move by the end.", "Free · 30 minutes"],
+  ["01", "Send a note", "A clear read on where to start", "Tell us what you need. We reply in writing within two business days, with a clear first move.", "Free"],
   ["02", "Get a quote in writing", "Scope and price, yours to keep", "A fixed quote in writing. For AI work, an optional paid assessment maps your whole week first, credited if you go ahead.", "Free · yours either way"],
   ["03", "Start small", "The smallest useful build, live", "A scoped first project with its win named up front, like a two-week AI setup.", "Paid · only if it makes sense"],
 ];

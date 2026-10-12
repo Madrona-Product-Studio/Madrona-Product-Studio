@@ -2287,3 +2287,5 @@ html[data-theme="night"] .fc-steps li p, html[data-theme="dusk"] .fc-steps li p 
 .fc-alt:hover, .fc-alt:focus-visible { color: #F7EDE4; }
 html[data-theme="night"] .fc-alt, html[data-theme="dusk"] .fc-alt { color: #403a33; text-decoration-color: rgba(26,23,20,.3); }
 @media (max-width: 640px) { .fc-close .m2-fc-btn { font-size: .74rem; letter-spacing: .05em; padding: 15px 18px; white-space: nowrap; } }
+.m2-navmenu-email { color: var(--ink-soft, #3a3c39); display: inline-block; font-size: .92rem; font-weight: 600; margin-top: 14px; text-decoration: underline; text-underline-offset: 3px; }
+.m2-cx-book > h3 { margin-bottom: 18px; }

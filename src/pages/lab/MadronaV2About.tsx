@@ -132,9 +132,10 @@ export default function MadronaV2About() {
         <section className="v3-final-cta"><div className="v3-shell">
           <p className="v3-kicker">Start with a conversation</p>
           <h2>Tell us what you’re working on.</h2>
-          <p>The first conversation is free, and it takes 30 minutes.</p>
+          <p>The first conversation is free. Send a note and we reply within two business days.</p>
           <div className="m2-ab-close-actions">
-            <Link className="v3-btn v3-btn-light" to="/connect" onClick={ctaClick("Get in touch", "/connect", "about")}>Get in touch</Link>
+            <Link className="v3-btn v3-btn-light" to="/connect" onClick={ctaClick("Send us a note", "/connect", "about")}>Send us a note</Link>
+            <a className="m2-ab-thesis-link" href="mailto:hello@madronaproduct.com">or email hello@madronaproduct.com</a>
             <Link className="m2-ab-thesis-link" to="/thesis">Our thinking: the Madrona Product Thesis <span aria-hidden="true">→</span></Link>
           </div>
         </div></section>

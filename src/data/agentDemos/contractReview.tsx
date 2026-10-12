@@ -87,7 +87,7 @@ export const contractReview: AgentDemo = {
   deploy: {
     title: "Put it on your next contract.",
     body: [
-      <>It starts with a free 30-minute conversation. We&rsquo;ll tell you in writing whether a contract agent would earn its keep in your operation, and what it should watch for.</>,
+      <>It starts with a short note, and the first conversation is free. We&rsquo;ll tell you in writing whether a contract agent would earn its keep in your operation, and what it should watch for.</>,
       <>When it fits, we set it up on your documents, tune it to the terms you care about, and teach you to run it. Yours to keep, no lock-in.</>,
     ],
   },

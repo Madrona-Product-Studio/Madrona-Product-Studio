@@ -3,7 +3,6 @@ import LabMeta from "../lab/LabMeta";
 import M2Nav from "../lab/M2Nav";
 import Reveal from "./Reveal";
 import SiteFooter from "../lab/SiteFooter";
-import { bookClick, bookHref, bookProps } from "../lab/useCalEmbed";
 import { imgProps, SIZES } from "../../lib/responsiveImage";
 import portrait from "../../../docs/madrona-v2-build-kit/site-assets/about-charlie-headshot.webp?w=360;520;780&format=webp&as=img";
 import { ctaClick } from "../../lib/analytics";
@@ -135,8 +134,8 @@ export default function CharliePage() {
           If that combination would compound on your team or in your business,
           I'd genuinely like to talk.
         </p>
-        <a className="v3-btn v3-btn-light" href={bookHref()} {...bookProps()} onClick={bookClick}>
-          Schedule a 30-minute call
+        <a className="v3-btn v3-btn-light" href="mailto:hello@madronaproduct.com">
+          Email hello@madronaproduct.com
         </a>
       </Reveal>
     </section>

@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import MadronaLogo from "./MadronaLogo";
 import SkySwitcher from "./SkySwitcher";
-import { bookHref, bookProps, bookClick } from "./useCalEmbed";
 import { ctaClick } from "../../lib/analytics";
 import { useFocusTrap } from "./useFocusTrap";
 
@@ -28,10 +27,6 @@ const SERVICE_LINKS = [
   { href: "/services/ecommerce-loyalty", label: "Ecommerce & Loyalty" },
   { href: "/services/new-products", label: "New Products" },
 ];
-
-const ArrowUpRight = () => (
-  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
-);
 
 export default function M2Nav({ active }: { active?: NavKey }) {
   const [open, setOpen] = useState(false);
@@ -107,12 +102,9 @@ export default function M2Nav({ active }: { active?: NavKey }) {
         </nav>
         <div className="m2-navmenu-foot">
           <h2 className="m2-navmenu-title">Let’s connect.</h2>
-          <p className="m2-navmenu-invite">Tell us what you’re working on, or schedule a free 30-minute call. We reply within two business days.</p>
-          <Link className="m2-button m2-navmenu-primary" to="/connect#send" onClick={() => { ctaClick("Send a message", "/connect#send", "nav-drawer")(); setOpen(false); }}>Send a message</Link>
-          {/* Same booking wiring as every other "Schedule" CTA: bookClick tracks
-              book_click {source: pathname}; the placement attribute tells the
-              drawer apart from the page body in the event stream. */}
-          <a className="m2-button m2-button-secondary m2-navmenu-secondary" href={bookHref()} {...bookProps()} data-book-placement="nav-drawer" onClick={(e) => { bookClick(e); setOpen(false); }}>Schedule a 30-minute call <ArrowUpRight /></a>
+          <p className="m2-navmenu-invite">Tell us what you’re working on. We reply within two business days.</p>
+          <Link className="m2-button m2-navmenu-primary" to="/connect#send" onClick={() => { ctaClick("Send us a note", "/connect#send", "nav-drawer")(); setOpen(false); }}>Send us a note</Link>
+          <a className="m2-navmenu-email" href="mailto:hello@madronaproduct.com" onClick={() => setOpen(false)}>or email hello@madronaproduct.com</a>
         </div>
       </div>
     </>

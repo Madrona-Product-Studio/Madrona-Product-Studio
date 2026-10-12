@@ -196,30 +196,25 @@ Before shipping any animation or transition, run its REVIEW.md bar.
 Every page should be able to route here. Three steps, published on
 `/how-it-works`:
 
-1. **Free 30-minute conversation** — published agenda: where you're at,
-   where you've been, the biggest opportunities to grow or get more
-   efficient, and what's already on your mind. (Shortened from 45 in
-   canon 2026-07-21.) The primary ask sitewide is **"Get in touch"**,
-   routed to `/connect` (Charlie, 2026-08-30; supersedes the earlier
-   "Book a 30m free chat" button). Explicitly booking-shaped CTAs (the
-   assessment result, /charlie) may open the Cal.com popup directly.
-2. **Written assessment** — a short written read on where the studio can
-   help (and where it can't). The client keeps it either way.
-3. **Scoped proposal** — scope, cost, and approach. First engagements are
-   deliberately small, with visible payback. No prices published yet
-   (Charlie's call, pending).
+1. **A free first conversation, by note or email** — reply within two
+   business days. The nav says "Get in touch"; page CTAs say "Send us a
+   note" → `/connect`, with the email address beside them. (No booking
+   since 2026-10-12.)
+2. **A written quote, free** — scope and price in writing. For AI work, an
+   optional paid Operations Assessment ($300, credited toward setup) maps
+   the week first (rule, Charlie 2026-10-06: first conversation free, quote
+   free, a recommendations assessment paid).
+3. **Start small** — a scoped first project with its win named up front.
+   Prices ARE published on the area landing pages (from $1,500 AI setup,
+   $2,000 site, $2,500 store, $3,000 validation; `src/data/offer.ts`), never
+   in heroes.
 
-Booking runs on the **Cal.com popup embed** (settled 2026-08-23; this
-supersedes the earlier Google Calendar recommendation). `CAL_LINK` in
-`src/data/booking.ts` is live; `bookHref()` + `bookProps()` +
-`bookClick()` (src/pages/lab/useCalEmbed.ts) power every "Schedule a
-30-min call" CTA. The embed script loads only on intent (hover/focus
-warms it, the click opens the popup programmatically), never at page
-load; `useCalEmbed()` is a kept-for-compatibility no-op. `bookHref()`
-is the no-JS fallback href. Booking
-clicks fire the `book_click` event through the shared dual-sink tracker
-(`src/lib/analytics.ts` — GA4 + Vercel; its header documents the full
-event vocabulary).
+Booking was **removed** (Charlie, 2026-10-12: less time for calls). People
+reach the studio only by **a note** (the `/connect` form → `/api/contact`,
+Resend) or **email** (hello@madronaproduct.com), and every CTA says "Send
+us a note" with the address beside it. Copy promises a reply "within two
+business days" and a free first *conversation*, never a call time.
+Constants live in `src/data/contact.ts`; there is no Cal.com code left.
 
 ## Service architecture (Grow / Retain / Operate — site IA follows it)
 
@@ -284,7 +279,7 @@ The three engagement shapes live on `/how-it-works` as the shapes a
   three question doors (one per bucket), agenda strip, curated proof,
   contact CTA.
 - **How it works** — the 3-step engagement model with the published
-  30-minute agenda (incl. "what would better look like"), the Signal
+  engagement steps (incl. "what would better look like"), the Signal
   block (real customers before real money), + the proposal shapes.
 - **Services** — the three doors: getting found / coming back / running
   smoother, each with impact line and offerings, agentic-operations
