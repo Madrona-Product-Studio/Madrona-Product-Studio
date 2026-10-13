@@ -36,7 +36,6 @@ const CONFIG: LandingConfig = {
     heading: "Built around what you sell.",
     node: <SitesWeBuild />,
   },
-  showcaseFirst: true,
   faq: [
     { q: "What does “from $2,000” include?", a: "A few well-built pages, designed and written with you, working on every screen, and set up so search engines can read it. If you need more pages, a store, or a new brand too, we quote it in writing before anything starts." },
     { q: "Can I update it myself?", a: "Yes. We build on a platform you can edit, show you how, and leave a short guide. Care is there if you would rather hand changes off." },

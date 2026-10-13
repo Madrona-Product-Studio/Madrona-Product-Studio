@@ -85,7 +85,7 @@ const CONFIG: LandingConfig = {
   changes: { heading: "Your week, before and after.", colAfter: "After setup", rows: CHANGES },
   path: { heading: "Start small. Go further only when it pays off.", steps: AI_PATH, timing: TIMING },
   showcase: {
-    kicker: "Step three, up close",
+    kicker: "The command center, up close",
     heading: "One screen for the whole business.",
     intro: "Here is a command center for Berry Good Berry Farm, one of our two demonstration businesses, and below it the job board and estimate for the other. Yours is built around your own work and tools, and it is yours to keep.",
     node: <><CommandCenter footer={<div className="cc-links">

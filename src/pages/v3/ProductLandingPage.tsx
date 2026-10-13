@@ -33,7 +33,6 @@ const CONFIG: LandingConfig = {
     heading: "Built around the people who use them.",
     node: <ProductsWeBuild />,
   },
-  showcaseFirst: true,
   faq: [
     { q: "What is a validation sprint?", a: "A few weeks to make the idea concrete and put it in front of the people it is for: a clickable prototype, real sessions, and a written go, change, or stop. It is the cheapest way to find out before you spend more." },
     { q: "What does the build cost?", a: "It depends on what validation shows the first version needs, so we quote it in writing after the sprint, before anything starts." },
