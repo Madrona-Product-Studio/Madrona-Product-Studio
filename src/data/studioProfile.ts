@@ -38,9 +38,9 @@ export const studioProfile: StudioProfile = {
     ],
     portraitSrc: portrait,
     portraitAlt:
-      "Charlie Koch, founder of Madrona Product Studio, in a navy blazer against a wood wall.",
+      "Charlie Koch, principal at Madrona Product Studio, in a navy blazer against a wood wall.",
   },
-  charlie: { name: "Charlie", role: "Founder & Head of Product" },
+  charlie: { name: "Charlie", role: "Principal" },
   proofPoints: [
     {
       id: "senior-team",
@@ -50,7 +50,7 @@ export const studioProfile: StudioProfile = {
     },
     {
       id: "founder-led",
-      title: "Founder-led",
+      title: "Principal-led",
       description: "Direct partnership from first conversation to delivery.",
       icon: "founder",
     },
