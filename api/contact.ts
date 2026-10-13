@@ -6,8 +6,11 @@
  * environments):
  *   RESEND_API_KEY     — from resend.com (the sending domain must be verified)
  *   CONTACT_TO         — where inquiries land (default: hello@madronaproduct.com)
- *   CONTACT_FROM       — verified sender (default: "Madrona Product Studio
- *                        <hello@madronaproduct.com>")
+ *   CONTACT_FROM       — verified sender for the visitor's confirmation
+ *                        (default: "Madrona Product Studio <hello@madronaproduct.com>")
+ *   CONTACT_NOTIFY_FROM — sender for the studio's copy (default: "Madrona
+ *                        website <form@madronaproduct.com>"); must differ from
+ *                        CONTACT_TO or Gmail skips the inbox
  *   ANTHROPIC_API_KEY  — optional; when set, a one-line triage (bucket,
  *                        urgency, a first question) is appended to Charlie's
  *                        copy. Never sent to the visitor. No key, no line.
@@ -25,6 +28,11 @@ import { clientIp, isEmail, isJsonRequest, json, overDailyCap, rateLimited, str,
 
 const TO = process.env.CONTACT_TO || "hello@madronaproduct.com";
 const FROM = process.env.CONTACT_FROM || "Madrona Product Studio <hello@madronaproduct.com>";
+// The notification to the studio comes from its own address, never from
+// hello@ itself: Gmail files mail "from" an alias of the receiving account as
+// sent-by-you, so it skips the inbox (Charlie, 2026-10-13). Reply-to is the
+// visitor, so replying still goes straight to them.
+const NOTIFY_FROM = process.env.CONTACT_NOTIFY_FROM || "Madrona website <form@madronaproduct.com>";
 
 // A submission must have sat on the page at least this long. Real people take
 // longer than three seconds to type a name and an email.
@@ -175,7 +183,7 @@ export async function POST(request: Request): Promise<Response> {
   ];
 
   const res = await sendEmail(apiKey, {
-    from: FROM,
+    from: NOTIFY_FROM,
     to: [TO],
     reply_to: email,
     subject: `New inquiry from ${name}${organization ? ` (${organization})` : ""}`,
