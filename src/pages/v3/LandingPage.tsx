@@ -31,7 +31,6 @@ export type LandingConfig = {
   changes: { heading: string; colToday?: string; colAfter: string; rows: { job: string; before: string; after: string }[] };
   path: { heading: string; steps: PathStep[]; timing: Record<string, string> };
   showcase: { kicker: string; heading: string; intro?: string; node: ReactNode };
-  showcaseFirst?: boolean;            // show the showcase above How it works (Brand, 2026-10-12)
   faq: { q: string; a: string }[];
   faqNote?: ReactNode;
   final: { heading: string; line: string };
@@ -95,7 +94,7 @@ export default function LandingPage({ c }: { c: LandingConfig }) {
       </table>
     </Reveal>
 
-    {c.showcaseFirst && showcase}
+    {showcase}
 
     <Reveal as="section" className="v3-section ais-path" aria-labelledby="ais-path-h">
       <div className="v3-shell">
@@ -113,7 +112,6 @@ export default function LandingPage({ c }: { c: LandingConfig }) {
       </div>
     </Reveal>
 
-    {!c.showcaseFirst && showcase}
 
     <Reveal as="section" className="v3-shell ais-faq" aria-labelledby="ais-faq-h">
       <div className="ais-head">
