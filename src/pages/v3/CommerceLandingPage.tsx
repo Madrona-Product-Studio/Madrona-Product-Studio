@@ -17,7 +17,7 @@ const CONFIG: LandingConfig = {
   headline: <>Sell online, and turn first orders <span>into regulars.</span></>,
   lede: "We set up your Shopify store in about two weeks, then add the rewards and reminders that bring people back. You run it; we make it easy to.",
   worksWith: ["Shopify", "PayPal", "Stripe", "QuickBooks", "Google Shopping", "Gmail"],
-  heroVisual: <HeroShot src={journeyImage} path="berrygood · from order to pickup" note="Our demonstration business" position="50% 50%" alt="The Berry Good purchase path on four phones: see what is ripe, order and pick a pickup time, get a confirmation, and check in at pickup" />,
+  heroVisual: <HeroShot src={journeyImage} path="berrygood · from order to pickup" position="50% 50%" alt="The Berry Good purchase path on four phones: see what is ripe, order and pick a pickup time, get a confirmation, and check in at pickup" />,
   changes: {
     heading: "How you sell, before and after.",
     colAfter: "After setup",
@@ -36,7 +36,7 @@ const CONFIG: LandingConfig = {
   showcase: {
     kicker: "A store, start to finish",
     heading: "From the storefront to the second order.",
-    intro: "From our two demonstration businesses. Berry Good Berry Farm: what makes the store page sell, and the rewards that bring regulars back. Below it, Spring Line Rigging & Canvas, for a shop that sells work rather than products.",
+    intro: "Berry Good Berry Farm: what makes the store page sell, and the rewards that bring regulars back. Below it, Spring Line Rigging & Canvas, for a shop that sells work rather than products.",
     node: <><div className="ais-commerce ais-commerce-even"><StorefrontArtifact /><LoyaltyArtifact /></div><SpringLineSpread show="return" /></>,
   },
   faq: [

@@ -77,7 +77,7 @@ export const bestCustomers: AgentDemo = {
       </>
     ),
   },
-  caption: "A scripted run on Berry Good Berry Farm, our demonstration business. The orders and findings are made up; the analyze-and-decide pattern is the real one.",
+  caption: "A scripted run on Berry Good Berry Farm. The orders and findings are made up; the analyze-and-decide pattern is the real one.",
   how: {
     title: "Answers the query, poses the question.",
     lede: "Ranking your customers is arithmetic; the agent does it in seconds. The value is what it does next: it points you at the few moves the numbers actually justify, and leaves the deciding to you.",

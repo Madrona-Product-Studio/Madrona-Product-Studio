@@ -75,7 +75,7 @@ export const invoiceChasing: AgentDemo = {
       </>
     ),
   },
-  caption: "A scripted run on Berry Good Berry Farm, our demonstration business. The invoices and customers are made up; the workflow is the real one.",
+  caption: "A scripted run on Berry Good Berry Farm. The invoices and customers are made up; the workflow is the real one.",
   how: {
     title: "It drafts. You decide.",
     lede: <>The agent does the watching and the writing, the parts that never get done because they&rsquo;re nobody&rsquo;s job. The one thing it won&rsquo;t do is hit send.</>,

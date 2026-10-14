@@ -75,7 +75,7 @@ export const reviewRequests: AgentDemo = {
       </>
     ),
   },
-  caption: "A scripted run on Berry Good Berry Farm, our demonstration business. The customers are made up; the ask-and-hold behavior is the real one.",
+  caption: "A scripted run on Berry Good Berry Farm. The customers are made up; the ask-and-hold behavior is the real one.",
   how: {
     title: "Asks the right people. Answers with care.",
     lede: "Every happy customer is a review you never asked for. The agent spots the ones worth asking, drafts the ask in your voice, and drafts the replies to the reviews that come back: the warm ones for a tap, the hard one for you.",

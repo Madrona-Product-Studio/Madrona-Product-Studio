@@ -76,7 +76,7 @@ export const postSaleFollowup: AgentDemo = {
       </>
     ),
   },
-  caption: "A scripted run on Berry Good Berry Farm, our demonstration business. The customers and messages are made up; the draft-and-hold behavior is the real one.",
+  caption: "A scripted run on Berry Good Berry Farm. The customers and messages are made up; the draft-and-hold behavior is the real one.",
   how: {
     title: "The follow-up you never get to.",
     lede: "Every sale is a chance to say thanks, and every quiet regular is a chance to win them back, but nobody has the time, so it never happens. The agent runs the rhythm and holds the moment that needs a person.",

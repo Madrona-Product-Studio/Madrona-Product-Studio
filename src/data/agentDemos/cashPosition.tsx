@@ -80,7 +80,7 @@ export const cashPosition: AgentDemo = {
       </>
     ),
   },
-  caption: "A scripted run on Berry Good Berry Farm, our demonstration business. The accounts and numbers are made up; the workflow is the real one.",
+  caption: "A scripted run on Berry Good Berry Farm. The accounts and numbers are made up; the workflow is the real one.",
   how: {
     title: "Reads everything. Moves nothing.",
     lede: <>No black box. The agent runs the same four beats every morning, and it hands control back at the one that&rsquo;s yours to make.</>,
