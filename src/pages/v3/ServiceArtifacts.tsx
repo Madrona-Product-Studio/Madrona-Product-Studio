@@ -79,7 +79,7 @@ export function LoyaltyArtifact() {
     ["Dana R.", 3, "Quiet for 5 weeks: win-back sent", "orange"],
   ];
   return <article className="v3-artifact sa-ly">
-    <WindowBar path="berrygood · regulars" note="demo business" />
+    <WindowBar path="berrygood · regulars" />
     <div className="sa-ly-head"><strong>Berry Good regulars</strong><span>Every 10th pint is on the farm</span></div>
     <ul className="sa-ly-rows">{rows.map(([who, pints, next, hue]) => <li key={who}>
       <span className="sa-ly-who">{who}</span>

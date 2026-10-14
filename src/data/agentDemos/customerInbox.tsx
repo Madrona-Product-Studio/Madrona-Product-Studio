@@ -73,7 +73,7 @@ export const customerInbox: AgentDemo = {
       </>
     ),
   },
-  caption: "A scripted run on Berry Good Berry Farm, our demonstration business. The messages are made up; the draft-and-hold behavior is the real one.",
+  caption: "A scripted run on Berry Good Berry Farm. The messages are made up; the draft-and-hold behavior is the real one.",
   how: {
     title: "Answers the easy ones. Knows the hard ones.",
     lede: <>Most customer email is the same six questions. The agent handles those in your voice and, crucially, recognizes the message that isn&rsquo;t routine and steps back.</>,

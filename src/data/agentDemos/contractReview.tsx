@@ -74,7 +74,7 @@ export const contractReview: AgentDemo = {
       </>
     ),
   },
-  caption: "A scripted run on Berry Good Berry Farm, our demonstration business. The contract and flags are made up; the read-and-flag pattern is the real one.",
+  caption: "A scripted run on Berry Good Berry Farm. The contract and flags are made up; the read-and-flag pattern is the real one.",
   how: {
     title: "Reads it all. Flags what matters.",
     lede: <>The value isn&rsquo;t a legal opinion: it&rsquo;s a clear-eyed first read. The agent works through the whole document and hands back the handful of terms that deserve your attention, in plain English.</>,

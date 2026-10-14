@@ -87,7 +87,7 @@ const CONFIG: LandingConfig = {
   showcase: {
     kicker: "The command center, up close",
     heading: "One screen for the whole business.",
-    intro: "Here is a command center for Berry Good Berry Farm, one of our two demonstration businesses, and below it the job board and estimate for the other. Yours is built around your own work and tools, and it is yours to keep.",
+    intro: "Here is a command center for Berry Good Berry Farm, and below it the job board and estimate for Spring Line Rigging & Canvas. Yours is built around your own work and tools, and it is yours to keep.",
     node: <><CommandCenter footer={<div className="cc-links">
       <a href={HELM_DEMO_URL} target="_blank" rel="noopener noreferrer" onClick={outboundClick(HELM_DEMO_URL, "ai-setup-cc")}>Click around a live one: the Helm demo <span aria-hidden="true">↗</span></a>
       <Link to="/resources#tools">Try the agents behind it <span aria-hidden="true">→</span></Link>

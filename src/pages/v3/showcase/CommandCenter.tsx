@@ -111,7 +111,7 @@ export function CommandCenter({ footer }: { footer?: ReactNode }) {
     </div>
 
     <article className="v3-artifact cc-window" aria-label="Example command center for Berry Good Berry Farm">
-      <WindowBar path="berry good · command center" note="Illustrative · demo business" />
+      <WindowBar path="berry good · command center" note="Illustrative" />
       <div className="cc-body">
         <nav className="cc-side" aria-hidden="true">
           <b className="cc-logo">Berry Good</b>

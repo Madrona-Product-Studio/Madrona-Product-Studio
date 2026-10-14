@@ -36,7 +36,7 @@ const BRAND_TABS: Tab[] = [
     id: "brand",
     label: "Brand",
     project: "Berry Good Berry Farm",
-    tag: "Our demonstration business",
+    tag: "Example build",
     image: brandImage,
     position: "50% 50%",
     alt: "Berry Good brand system: logo, color palette, typography, a pint box, a hang tag, and a thank-you card",
@@ -48,7 +48,7 @@ const BRAND_TABS: Tab[] = [
     id: "phone",
     label: "On a phone",
     project: "Berry Good Berry Farm",
-    tag: "Our demonstration business",
+    tag: "Example build",
     image: mobileImage,
     position: "50% 0%",
     alt: "The Berry Good website on a phone: what's ripe today and berries to order",
@@ -60,7 +60,7 @@ const BRAND_TABS: Tab[] = [
     id: "shop",
     label: "Rigging shop",
     project: "Spring Line Rigging & Canvas",
-    tag: "Our demonstration business",
+    tag: "Example build",
     image: slSiteImage,
     position: "0% 0%",
     alt: "The Spring Line Rigging & Canvas website: rigging and canvas for sailboats in Bellingham, the shop rate, and a button to get an estimate",
@@ -75,7 +75,7 @@ const COMMERCE_TABS: Tab[] = [
     id: "store",
     label: "Storefront",
     project: "Berry Good Berry Farm",
-    tag: "Our demonstration business",
+    tag: "Example build",
     image: storefrontImage,
     position: "50% 0%",
     alt: "Berry Good storefront on desktop: a hero with raspberries, what’s ripe today, and berries to order",
@@ -87,7 +87,7 @@ const COMMERCE_TABS: Tab[] = [
     id: "order",
     label: "Order to pickup",
     project: "Berry Good Berry Farm",
-    tag: "Our demonstration business",
+    tag: "Example build",
     image: journeyImage,
     position: "50% 50%",
     alt: "Berry Good customer order journey on phones: browse, order, confirm, and pickup",
@@ -99,7 +99,7 @@ const COMMERCE_TABS: Tab[] = [
     id: "list",
     label: "Spring List",
     project: "Spring Line Rigging & Canvas",
-    tag: "Our demonstration business",
+    tag: "Example build",
     image: slListImage,
     position: "0% 0%",
     alt: "The Spring List page: $120 a year for reminders, first call in spring, and a lower repair rate",
@@ -111,7 +111,7 @@ const COMMERCE_TABS: Tab[] = [
 
 // Spring Line, shown in full on each area page: one tabbed window per area,
 // beside a rail that names it as our demonstration business.
-const SL_TAG = "Our demonstration business";
+const SL_TAG = "Example build";
 const SL_PROJECT = "Spring Line Rigging & Canvas";
 
 const SL_SITE_TABS: Tab[] = [
@@ -204,9 +204,9 @@ export function SpringLineSpread({ show }: { show: keyof typeof SL_SPREADS }) {
   const spread = SL_SPREADS[show];
   return <div className="sls">
     <div className="sls-rail">
-      <p className="v3-kicker">Our second demonstration business</p>
+      <p className="v3-kicker">A second example</p>
       <h3>Spring Line Rigging &amp; Canvas</h3>
-      <p>A demonstration rigging and canvas shop on the Bellingham waterfront. The shop and its six people are made up. The site, the job board, the estimate, and the customer texts are built out in full, so you can click through them.</p>
+      <p>A rigging and canvas shop on the Bellingham waterfront. The site, the job board, the estimate, and the customer texts are built out in full, so you can click through them.</p>
       <p>{spread.body}</p>
       <ul className="sls-links">
         <li><a href={SPRING_LINE_URL} target="_blank" rel="noreferrer" onClick={outboundClick(SPRING_LINE_URL, `sl-${show}-site`)}>Visit the shop’s site <span aria-hidden="true">↗︎</span><span className="bsc-sr"> (opens in a new tab)</span></a></li>

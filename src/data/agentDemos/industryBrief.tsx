@@ -77,7 +77,7 @@ export const industryBrief: AgentDemo = {
       </>
     ),
   },
-  caption: "A scripted run on Berry Good Berry Farm, our demonstration business. The sources and signals are made up; the sweep-and-brief pattern is the real one.",
+  caption: "A scripted run on Berry Good Berry Farm. The sources and signals are made up; the sweep-and-brief pattern is the real one.",
   how: {
     title: "Reads the night, briefs the morning.",
     lede: <>The value isn&rsquo;t more information: it&rsquo;s less. The agent reads far more than you could and hands back only what changed against what you already know.</>,

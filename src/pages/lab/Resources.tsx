@@ -67,7 +67,7 @@ export default function Resources() {
         <div className="rs-rail">
           <p className="m2-kicker">Try the tools</p>
           <h2 id="rs-tools">Try the AI tools we deploy.</h2>
-          <p>Interactive demos on Berry Good, our demonstration farm. Each one stops for a person wherever money, customers, or judgment are involved.</p>
+          <p>Interactive demos on Berry Good Berry Farm. Each one stops for a person wherever money, customers, or judgment are involved.</p>
         </div>
         <div>{Object.values(CATEGORY).map(cat => <div key={cat} className="rs-cgroup">
           <p className="rs-chead">{cat}</p>

@@ -122,7 +122,7 @@ export const monthEndClose: AgentDemo = {
       </>
     ),
   },
-  caption: "A scripted run on Berry Good Berry Farm, our demonstration business. Nothing connects to a real ledger. It’s the shape of the real thing, on made-up numbers.",
+  caption: "A scripted run on Berry Good Berry Farm. Nothing connects to a real ledger. It’s the shape of the real thing, on made-up numbers.",
   how: {
     title: "Four beats, one of them yours.",
     lede: "No black box. The agent runs the same four steps every close, and it hands control back at the one that matters.",
