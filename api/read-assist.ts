@@ -18,6 +18,7 @@
  */
 
 import Anthropic from "@anthropic-ai/sdk";
+import { report } from "./_lib/report.js";
 import { jsonSchemaOutputFormat } from "@anthropic-ai/sdk/helpers/json-schema";
 import { createHash } from "node:crypto";
 import {
@@ -145,6 +146,10 @@ export async function POST(request: Request): Promise<Response> {
     // Timeouts, rate limits upstream, refusals: the page shows the rule
     // lines alone. Log the class, not the visitor's text.
     console.error("read-assist", err instanceof Anthropic.APIError ? `${err.status} ${err.name}` : err instanceof Error ? err.name : "unknown");
+    // Timeouts and rate limits are expected here; a server error or a rejected key is not.
+    if (err instanceof Anthropic.APIError && (err.status === 401 || err.status === 403 || (err.status ?? 0) >= 500)) {
+      await report("read-assist", `${err.status} ${err.name}`);
+    }
     return new Response(null, { status: 204 });
   } finally {
     clearTimeout(timer);

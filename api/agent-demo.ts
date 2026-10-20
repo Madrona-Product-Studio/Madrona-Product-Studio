@@ -25,6 +25,7 @@ import { z } from "zod";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { claudeClient, MODEL } from "./_lib/claude.js";
 import { clientIp, isJsonRequest, json, overDailyCap, rateLimited } from "./_lib/guard.js";
+import { report } from "./_lib/report.js";
 
 const INPUT_MAX = 4000;
 const RATE_LIMIT = 8;
@@ -132,6 +133,7 @@ export async function POST(request: Request): Promise<Response> {
     const status = typeof error === "object" && error && "status" in error ? (error as { status?: number }).status : undefined;
     console.error("agent-demo error", status, error instanceof Error ? error.message : "unknown");
     if (status === 429) return json({ error: "The demo is busy right now. Try again in a minute." }, 503);
+    await report("agent-demo", `${status ?? "no status"} ${error instanceof Error ? error.name : "unknown"}`);
     return json({ error: "The demo hit a snag. Try again, or run the scripted version beside it." }, 502);
   }
 }
