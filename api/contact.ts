@@ -24,6 +24,7 @@
 import { z } from "zod";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { claudeClient, MODEL } from "./_lib/claude.js";
+import { report } from "./_lib/report.js";
 import { clientIp, isEmail, isJsonRequest, json, overDailyCap, rateLimited, str, strList } from "./_lib/guard.js";
 
 const TO = process.env.CONTACT_TO || "hello@madronaproduct.com";
@@ -192,6 +193,7 @@ export async function POST(request: Request): Promise<Response> {
 
   if (!res.ok) {
     console.error("Resend error", res.status, await res.text().catch(() => ""));
+    await report("contact", `Resend ${res.status}: the inquiry email was not sent`);
     return json({ error: "Something went wrong sending your message." }, 502);
   }
 
