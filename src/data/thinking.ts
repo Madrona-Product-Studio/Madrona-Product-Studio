@@ -6,6 +6,7 @@
 // New entries slot in wherever they belong, not at the end.
 import type { PovMotif } from "../pages/lab/PovThumb.jsx";
 import { publishedLabel } from "./siteMeta.mjs";
+import type { BcArrangement, BcMotif } from "../lib/blocks-contours.mjs";
 
 // Dates derive from the article table (the same field the JSON-LD uses).
 const dated = (href: string) => publishedLabel(href, { short: true });
@@ -19,6 +20,11 @@ export type ThinkingEntry = {
   excerpt: string;
   href: string;
   motif: PovMotif;
+  // Blocks & Contours composition (Charlie's pick, 2026-10-28): the article
+  // header, the feed thumbnail and the OG card are all keyed to it. The
+  // arrangement says what kind of piece it is, the motif what it argues; the
+  // slug is the seed. Rules: madrona-studio kit/styles/blocks-contours/RULES.md.
+  bc: { arrangement: BcArrangement; motif: BcMotif; spots?: number; buried?: boolean };
 };
 
 export const thinkingEntries: ThinkingEntry[] = [
@@ -31,6 +37,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     excerpt: "What AI is actually good at today, three safe first projects, what to avoid, what it costs, and how to spend your first week.",
     href: "/thinking/getting-started-with-ai",
     motif: "target",
+    bc: { arrangement: "step", motif: "route" },
   },
   {
     date: dated("/thinking/ai-prompt-starter-pack"),
@@ -39,6 +46,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     excerpt: "Nine copy-and-paste prompts for answering customers, handling paperwork, and keeping track of the week. Works in ChatGPT, Claude, Gemini, or Copilot.",
     href: "/thinking/ai-prompt-starter-pack",
     motif: "modules",
+    bc: { arrangement: "bleed", motif: "spot", spots: 9 },
   },
   {
     date: dated("/thesis"),
@@ -47,6 +55,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     excerpt: "A working theory of how great software gets built in the AI era, and what that changes about product leadership.",
     href: "/thesis",
     motif: "target",
+    bc: { arrangement: "cover", motif: "rings" },
   },
   {
     date: dated("/thinking/the-era-of-agentic-operations"),
@@ -55,6 +64,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     excerpt: "A business can now run on one source of truth and agents on a rhythm, with a person firmly in charge. What changes, and how to start small.",
     href: "/thinking/the-era-of-agentic-operations",
     motif: "flow",
+    bc: { arrangement: "hang", motif: "ridge" },
   },
   {
     date: dated("/thinking/starter-guide-to-building-with-ai"),
@@ -63,6 +73,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     excerpt: "The piece I wish someone had handed me on day one: the tools, the setup, the working prompts, and the habits that take you from zero to shipping.",
     href: "/thinking/starter-guide-to-building-with-ai",
     motif: "structure",
+    bc: { arrangement: "cut", motif: "route" },
   },
   {
     date: dated("/thinking/ai-tools-for-small-business"),
@@ -71,6 +82,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     excerpt: "A living inventory of what out-of-the-box AI handles today, indexed by the problem rather than the product: the close, the invoices, the emails, the ads. Each entry with what it needs from you and where it ends.",
     href: "/thinking/ai-tools-for-small-business",
     motif: "inventory",
+    bc: { arrangement: "step", motif: "spot", spots: 12 },
   },
   {
     date: dated("/thinking/solve-the-system-not-the-symptom"),
@@ -79,6 +91,7 @@ export const thinkingEntries: ThinkingEntry[] = [
     excerpt: "The higher-leverage fix is rarely the output in front of you. It is the system that produced it. Why AI made fixing the machine the default, the prompts that help you do it, and how to tell which symptoms are worth it.",
     href: "/thinking/solve-the-system-not-the-symptom",
     motif: "source",
+    bc: { arrangement: "bleed", motif: "saddle" },
   },
   {
     date: dated("/thinking/under-the-hood"),
@@ -87,5 +100,6 @@ export const thinkingEntries: ThinkingEntry[] = [
     excerpt: "Hard-won product judgment, encoded into a platform every project inherits, held to the same gates, and compounding with every launch.",
     href: "/thinking/under-the-hood",
     motif: "modules",
+    bc: { arrangement: "cut", motif: "rings", buried: true },
   },
 ];

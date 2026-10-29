@@ -6,12 +6,19 @@
  * ("simple is best" doctrine, same as make-agent-og.mjs).
  *
  * Outputs: public/og-main.png (site default), public/og-thinking.png,
- * public/og-pov-*.png (article family: lockup up top, kicker + big title).
+ * public/og-pov-*.png (article family).
+ *
+ * The article family moved to Blocks & Contours, option B "Spread" (Charlie's
+ * pick, 2026-10-28): each card is drawn by the same generator as the article
+ * header and feed thumbnail (src/lib/blocks-contours.mjs, vendored from the
+ * studio kit), keyed to the entry's composition in src/data/thinking.ts.
+ *
  * Run manually when the brand or article set changes:
  *   node scripts/make-og.mjs
  */
 import fs from "fs";
 import path from "path";
+import { publishedLabel } from "../src/data/siteMeta.mjs";
 // Playwright lives in the screenshot toolbelt, not the site's node_modules.
 const { chromium } = await import(process.env.HOME + "/.claude-tools/screenshot/node_modules/playwright/index.mjs");
 
@@ -91,12 +98,6 @@ const articles = [
   // The assessment card rides the article template: same lockup up top, the
   // tool's own kicker and its opening question as the title.
   { file: "og-ai-opportunities.png", kicker: "AI Opportunity Assessment", title: "Where does your week actually go?" },
-  { file: "og-pov-thesis.png", kicker: "A working theory", title: "The Madrona Product Thesis" },
-  { file: "og-pov-under-the-hood.png", kicker: "Inside the practice", title: "The engine behind everything we ship." },
-  { file: "og-pov-agentic-operations.png", kicker: "Operations and AI", title: "The era of agentic operations." },
-  { file: "og-pov-starter-guide.png", kicker: "Getting started", title: "A starter guide to building real software with AI." },
-  { file: "og-pov-solve-the-system.png", kicker: "Product systems", title: "Solve the system, not the symptom." },
-  { file: "og-pov-ai-tools-inventory.png", kicker: "Operations and AI", title: "The 12 jobs AI tools already do for small businesses." },
   // The four area landing pages (2026-10-06): each card carries its hero.
   { file: "og-svc-ai-operations.png", kicker: "AI & Operations", title: "The invoices, inbox, and follow-up, handled." },
   { file: "og-svc-brand-website.png", kicker: "Brand & Website", title: "A website you’re proud to send people to." },
@@ -109,6 +110,38 @@ const articles = [
 // the whole family.
 const only = new Set(process.argv.slice(2));
 const wanted = (file) => only.size === 0 || only.has(file);
+
+// ---- Blocks & Contours article cards (B "Spread", 1200 x 630) ----
+// One row per /thinking entry. Keep the compositions in step with `bc` in
+// src/data/thinking.ts (the header and thumbnail read them from there).
+const bcCards = [
+  { file: "og-pov-getting-started.png", href: "/thinking/getting-started-with-ai", type: "Guide", title: "Getting started with AI: a plain-language guide for owners", arrangement: "step", motif: "route" },
+  { file: "og-pov-prompt-pack.png", href: "/thinking/ai-prompt-starter-pack", type: "Artifact", title: "An AI prompt starter pack for small business owners", arrangement: "bleed", motif: "spot", spots: 9 },
+  { file: "og-pov-thesis.png", href: "/thesis", type: "Essay", title: "The Madrona Product Thesis", arrangement: "cover", motif: "rings" },
+  { file: "og-pov-agentic-operations.png", href: "/thinking/the-era-of-agentic-operations", type: "Essay", title: "The era of agentic operations", arrangement: "hang", motif: "ridge" },
+  { file: "og-pov-starter-guide.png", href: "/thinking/starter-guide-to-building-with-ai", type: "Guide", title: "A starter guide to building real software with AI", arrangement: "cut", motif: "route" },
+  { file: "og-pov-ai-tools-inventory.png", href: "/thinking/ai-tools-for-small-business", type: "Artifact", title: "The 12 jobs AI tools already do for small businesses", arrangement: "step", motif: "spot", spots: 12 },
+  { file: "og-pov-solve-the-system.png", href: "/thinking/solve-the-system-not-the-symptom", type: "Essay", title: "Solve the system, not the symptom", arrangement: "bleed", motif: "saddle" },
+  { file: "og-pov-under-the-hood.png", href: "/thinking/under-the-hood", type: "Artifact", title: "The engine behind everything we ship", arrangement: "cut", motif: "rings", buried: true },
+];
+const SKY_BY_TYPE = { Essay: "night", Guide: "day", Artifact: "dusk" };
+const GEN = fs.readFileSync(path.resolve("src/lib/blocks-contours.mjs"), "utf8");
+const font = (f) => `data:font/woff2;base64,${fs.readFileSync(path.resolve("public/fonts", f)).toString("base64")}`;
+const BC_HEAD = `<meta charset="utf-8"><style>
+@font-face{font-family:"Hanken Grotesk";src:url(${font("hanken-grotesk-latin-wght-normal.woff2")}) format("woff2");font-weight:100 900}
+@font-face{font-family:"Inter";src:url(${font("inter-latin-wght-normal.woff2")}) format("woff2");font-weight:100 900}
+*{margin:0}html,body{background:transparent}svg{display:block}</style>`;
+const bcCard = (c) => `<!doctype html><html><head>${BC_HEAD}</head><body><main id="f"></main>
+<script type="module">
+${GEN}
+await document.fonts.load("550 40px 'Hanken Grotesk'"); await document.fonts.load("600 40px 'Hanken Grotesk'");
+await document.fonts.load("500 16px Inter"); await document.fonts.load("600 16px Inter"); await document.fonts.ready;
+const c = ${JSON.stringify(c)};
+document.getElementById("f").innerHTML = render({ option: "B", size: "og", mode: "frame", sky: c.sky, seed: c.seed,
+  arrangement: c.arrangement, motif: c.motif, spots: c.spots, buried: c.buried,
+  title: c.title, kicker: c.type, meta: c.date, measure: canvasMeasure() });
+window.__ready = true;
+</script></body></html>`;
 
 const browser = await chromium.launch({ channel: "chrome" });
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 1 });
@@ -123,5 +156,12 @@ for (const a of articles.filter((a) => wanted(a.file))) {
   await page.waitForTimeout(300);
   await page.screenshot({ path: path.join(OUT, a.file) });
   console.log(a.file);
+}
+for (const c of bcCards.filter((c) => wanted(c.file))) {
+  const seed = c.href.split("/").filter(Boolean).pop();
+  await page.setContent(bcCard({ ...c, seed, sky: SKY_BY_TYPE[c.type], date: publishedLabel(c.href, { short: true }) }), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__ready === true, null, { timeout: 20000 });
+  await page.locator("#f svg").screenshot({ path: path.join(OUT, c.file) });
+  console.log(c.file);
 }
 await browser.close();

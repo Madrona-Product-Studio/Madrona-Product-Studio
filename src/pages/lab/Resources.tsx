@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
-import PovThumb from "./PovThumb";
+import { BcThumb } from "./BcArt";
 import { TypeCircle } from "./TypeMark";
 import { agents, CATEGORY } from "../../data/agents";
 import { thinkingEntries, type ThinkingEntry } from "../../data/thinking";
@@ -25,7 +25,7 @@ const deeper = thinkingEntries.filter(e => !START_HREFS.includes(e.href));
 
 function ArticleRow({ e }: { e: ThinkingEntry }) {
   return <Link to={e.href} className="rs-row">
-    <div className="rs-row-media"><div className="rs-thumb"><PovThumb motif={e.motif} /></div></div>
+    <div className="rs-row-media rs-row-media--bc"><BcThumb entry={e} /></div>
     <div className="rs-row-body">
       <p className="rs-meta m2-tm-b"><TypeCircle type={e.type} /><span>{e.type}</span><span>{e.date}</span></p>
       <h3>{e.title}</h3>

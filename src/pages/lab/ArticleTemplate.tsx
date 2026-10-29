@@ -1,7 +1,8 @@
-import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
+import { useEffect, useState, useSyncExternalStore, type CSSProperties, type ReactNode } from "react";
 import { Link } from "react-router-dom";
-import PovThumb from "./PovThumb";
 import { thinkingEntries } from "../../data/thinking";
+import { BcThumb } from "./BcArt";
+import { useBcCover } from "./bcCover";
 import "./article-template.css";
 
 const SITE_ORIGIN = "https://www.madronaproduct.com";
@@ -17,6 +18,25 @@ const SITE_ORIGIN = "https://www.madronaproduct.com";
 /* ---- Header (title section carries the contents nav) ------------------- */
 export type TocItem = { id: string; label: string };
 
+function Contents({ toc }: { toc?: TocItem[] }) {
+  if (!toc || !toc.length) return null;
+  return (
+    <nav className="art-contents" aria-label="In this article">
+      <p className="art-contents-label">In this article</p>
+      <ul className="art-contents-list">
+        {toc.map((t, i) => (
+          <li key={t.id}>
+            <a href={`#${t.id}`} className="art-contents-link">
+              <span className="n">{String(i + 1).padStart(2, "0")}</span>
+              <span className="tx">{t.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
 export function ArticleHeader({
   kicker,
   typeMark,
@@ -27,6 +47,7 @@ export function ArticleHeader({
   standfirst,
   toc,
   visual,
+  cover,
 }: {
   kicker: string;
   typeMark?: ReactNode; // tinted type circle (TypeCircle) beside the kicker
@@ -37,7 +58,54 @@ export function ArticleHeader({
   standfirst: ReactNode;
   toc?: TocItem[];
   visual?: ReactNode; // framed illustration shown to the right of the title
+  cover?: string; // the entry's href: sets the header as its Blocks & Contours cover
 }) {
+  const bc = useBcCover(cover);
+  if (bc) {
+    // Blocks & Contours "Spread" (2026-10-28): a full-bleed band in the page's
+    // own sky. The blocks hang from the top edge on the right; the copy is a
+    // labeled spread on the left, a top rail (kicker, type) and a bottom rail
+    // (byline, date) on hairlines that stop where the blocks begin.
+    const date = meta[meta.length - 1];
+    const rest = meta.slice(0, -1);
+    return (
+      <header className="art-head art-head--cover">
+        <div
+          className="bc-cover"
+          style={{ "--bc-art": bc.artRatio, "--bc-frame": bc.frameRatio } as CSSProperties}
+        >
+          <div className="bc-cover-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: bc.wide }} />
+          <div className="bc-cover-strip" aria-hidden="true" dangerouslySetInnerHTML={{ __html: bc.strip }} />
+          <div className="bc-cover-copy">
+            <div className="bc-rail bc-rail-top">
+              {typeMark ? (
+                <p className="m2-kicker art-kicker-row">{typeMark}<span>{kicker}</span></p>
+              ) : (
+                <p className="m2-kicker">{kicker}</p>
+              )}
+              <span className="bc-rail-note">{bc.entry.type}</span>
+            </div>
+            <h1 className="art-title">{title}</h1>
+            <div className="bc-rail bc-rail-bot">
+              <p className="art-metaline">
+                by <Link to={authorHref}>{author}</Link>
+                {rest.map((m) => (
+                  <span key={m}>
+                    <span className="dot">·</span>
+                    {m}
+                  </span>
+                ))}
+              </p>
+              <span className="bc-rail-note">{date}</span>
+            </div>
+          </div>
+        </div>
+        <p className="art-standfirst">{standfirst}</p>
+        <Contents toc={toc} />
+        <hr className="art-head-rule" />
+      </header>
+    );
+  }
   return (
     <header className="art-head">
       <div className={`art-head-split${visual ? "" : " no-visual"}`}>
@@ -61,21 +129,7 @@ export function ArticleHeader({
         </div>
         {visual && <div className="art-head-visual">{visual}</div>}
       </div>
-      {toc && toc.length > 0 && (
-        <nav className="art-contents" aria-label="In this article">
-          <p className="art-contents-label">In this article</p>
-          <ul className="art-contents-list">
-            {toc.map((t, i) => (
-              <li key={t.id}>
-                <a href={`#${t.id}`} className="art-contents-link">
-                  <span className="n">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="tx">{t.label}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+      <Contents toc={toc} />
       <hr className="art-head-rule" />
     </header>
   );
@@ -192,7 +246,7 @@ export function RelatedReading({ currentHref, limit = 3 }: { currentHref: string
       <div className="art-related-grid">
         {items.map((e) => (
           <Link key={e.href} to={e.href} className="art-related-card">
-            <div className="m2-pov-plate"><PovThumb motif={e.motif} /></div>
+            <div className="m2-pov-plate bc-plate"><BcThumb entry={e} /></div>
             <div className="art-related-body">
               <span className="art-related-type">{e.type}</span>
               <h3>{e.title}</h3>

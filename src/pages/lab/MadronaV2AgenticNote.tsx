@@ -4,7 +4,6 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import PovThumb from "./PovThumb";
 import { TypeCircle } from "./TypeMark";
 import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, type TocItem } from "./ArticleTemplate";
 import "./madrona-v2.css";
@@ -97,7 +96,7 @@ export default function MadronaV2AgenticNote() {
           title="The era of agentic operations."
           standfirst="A business used to run on scattered tools and someone's memory. It can now run on one source of truth and a handful of AI agents on a rhythm, with a person firmly in charge. The change is not AI doing your work. It is your operation briefing you, so your attention goes to deciding."
           toc={TOC}
-          visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="flow" /></div></div>}
+          cover="/thinking/the-era-of-agentic-operations"
         />
         <ArticleBody share={{ title: "The era of agentic operations", href: "/thinking/the-era-of-agentic-operations" }}>
           <ArticleSection id="the-shift" num="1" eyebrow="The shift" title="Most businesses run on tool sprawl. The agentic version inverts it.">

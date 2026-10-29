@@ -4,7 +4,6 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import PovThumb from "./PovThumb";
 import { TypeCircle } from "./TypeMark";
 import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, type TocItem } from "./ArticleTemplate";
 import "./madrona-v2.css";
@@ -131,7 +130,7 @@ export default function MadronaV2SystemNote() {
           title="Solve the system, not the symptom."
           standfirst="When something is wrong, the instinct is to fix the thing in front of you. Recolor the button, redo the one bad output. The higher-leverage move is almost always one level down: fix the system that produced it, so everything it makes next is better. AI made that trade cheap enough to be the default."
           toc={TOC}
-          visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="source" /></div></div>}
+          cover="/thinking/solve-the-system-not-the-symptom"
         />
         <ArticleBody share={{ title: "Solve the system, not the symptom", href: "/thinking/solve-the-system-not-the-symptom" }}>
           <ArticleSection id="the-moment" num="1" eyebrow="The moment" title="One bad image, and two ways to respond.">

@@ -148,6 +148,7 @@ export const pages = {
     description: "Where to start with AI in a small business: what AI is good at today, three safe first projects, what to avoid, what it really costs, and a day-by-day plan for your first week.",
     article: { datePublished: "2026-09-30", dateModified: "2026-09-30" },
     h1: "Getting started with AI: a plain-language guide for owners.",
+    ogImage: "/og-pov-getting-started.png",
     body: "What AI is actually good at today, three safe first projects, what to avoid, what it costs, and how to spend your first week.",
   },
   "/thinking/ai-prompt-starter-pack": {
@@ -155,6 +156,7 @@ export const pages = {
     description: "Nine copy-and-paste AI prompts for small business owners: customer replies, review responses, follow-ups, quotes, email summaries, invoice reminders, weekly numbers, checklists, and planning. Works in ChatGPT, Claude, Gemini, or Copilot.",
     article: { datePublished: "2026-09-30", dateModified: "2026-09-30" },
     h1: "An AI prompt starter pack for small business owners.",
+    ogImage: "/og-pov-prompt-pack.png",
     body: "Nine copy-and-paste prompts for the everyday jobs of running a small business: answering customers, handling paperwork, and keeping track of the week.",
   },
   "/thinking/the-era-of-agentic-operations": {
