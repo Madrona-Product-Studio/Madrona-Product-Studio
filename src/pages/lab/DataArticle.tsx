@@ -6,7 +6,7 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import PovThumb, { type PovMotif } from "./PovThumb";
+import type { PovMotif } from "./PovThumb";
 import { TypeCircle } from "./TypeMark";
 import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure } from "./ArticleTemplate";
 import "./madrona-v2.css";
@@ -110,7 +110,7 @@ export default function DataArticle({ article: a }: { article: DataArticleConten
           title={a.title}
           standfirst={a.standfirst}
           toc={a.sections.map(s => ({ id: s.id, label: s.title.replace(/\.$/, "") }))}
-          visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif={a.motif} /></div></div>}
+          cover={a.href}
         />
         <ArticleBody share={{ title: a.shareTitle, href: a.href }}>
           {a.sections.map((s, n) => <ArticleSection key={s.id} id={s.id} num={String(n + 1)} eyebrow={s.eyebrow} title={s.title}>

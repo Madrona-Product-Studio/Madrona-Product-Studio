@@ -4,7 +4,6 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import PovThumb from "./PovThumb";
 import { TypeCircle } from "./TypeMark";
 import {
   ArticleHeader,
@@ -162,13 +161,7 @@ export default function MadronaV2EngineNote() {
           title={<>The engine behind everything we&nbsp;ship.</>}
           standfirst="Hard-won product judgment, encoded into a platform every project inherits. AI is the power tool; the engine is the judgment it executes."
           toc={TOC}
-          visual={
-            <div className="art-head-plate">
-              <div className="m2-pov-plate">
-                <PovThumb motif="modules" />
-              </div>
-            </div>
-          }
+          cover="/thinking/under-the-hood"
         />
 
         <ArticleBody share={{ title: "The engine behind everything we ship", href: "/thinking/under-the-hood" }}>

@@ -5,7 +5,6 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import PovThumb from "./PovThumb";
 import { TypeCircle } from "./TypeMark";
 import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, SpecTable, type TocItem } from "./ArticleTemplate";
 import "./madrona-v2.css";
@@ -126,7 +125,7 @@ export default function MadronaV2InventoryNote() {
           title="The 12 jobs AI tools already do for small businesses."
           standfirst="A lot of the work that fills your week is already handled, out of the box, by tools you may be paying for today. Nobody lays that shelf out plainly, so we did: twelve jobs, organized by problem rather than product, each with what it needs from you and where it ends. We update this page as the shelf changes."
           toc={TOC}
-          visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="inventory" /></div></div>}
+          cover="/thinking/ai-tools-for-small-business"
         />
         <ArticleBody share={{ title: "The 12 jobs AI tools already do for small businesses", href: HREF }}>
           <ArticleSection id="the-shelf" num="1" eyebrow="The gap" title="The shelf nobody shows you.">

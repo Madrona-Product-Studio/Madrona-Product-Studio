@@ -4,7 +4,6 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import PovThumb from "./PovThumb";
 import { TypeCircle } from "./TypeMark";
 import {
   ArticleHeader,
@@ -97,7 +96,7 @@ export default function MadronaV2Thesis() {
           title="The Madrona Product Thesis"
           standfirst="A point of view on how great software gets built in the AI era, and what that changes about product leadership. It comes from building, and we revise it as the work teaches us."
           toc={TOC}
-          visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="target" /></div></div>}
+          cover="/thesis"
         />
 
         <ArticleBody share={{ title: "The Madrona Product Thesis", href: "/thesis" }}>

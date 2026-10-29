@@ -4,7 +4,6 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { useReveal } from "./useReveal";
-import PovThumb from "./PovThumb";
 import { TypeCircle } from "./TypeMark";
 import { ArticleHeader, ArticleBody, ArticleSection, Prose, Figure, type TocItem } from "./ArticleTemplate";
 import "./madrona-v2.css";
@@ -182,7 +181,7 @@ export default function MadronaV2StarterGuideNote() {
           title="A starter guide to building real software with AI."
           standfirst="This is the piece I wish someone had handed me when I started. You do not need a computer science degree to build real software with AI anymore. You need a handful of tools set up the right way, a few habits, and something worth building. Here is the whole setup, in an afternoon."
           toc={TOC}
-          visual={<div className="art-head-plate"><div className="m2-pov-plate"><PovThumb motif="structure" /></div></div>}
+          cover="/thinking/starter-guide-to-building-with-ai"
         />
 
         <ArticleBody share={{ title: "A starter guide to building real software with AI", href: "/thinking/starter-guide-to-building-with-ai" }}>
