@@ -23,7 +23,6 @@ import LabMeta from "./LabMeta";
 import M2Nav from "./M2Nav";
 import SiteFooter from "./SiteFooter";
 import { HeroChart } from "../v3/HeroChart";
-import { WindowBar } from "../v3/ReadCard";
 import { WeekShowcase } from "../v3/showcase/WeekShowcase";
 import { CommandCenter } from "../v3/showcase/CommandCenter";
 import { HELM_DEMO_URL, SPRING_LINE_URL } from "../../data/proof";
@@ -39,7 +38,7 @@ const BOOK_LABEL = "Book a conversation";
 const ARTICLE = "/thinking/the-era-of-agentic-operations";
 
 const KICKER = "A product studio in Bellingham, Washington";
-const LEDE = "We build the tools and AI workflows that take routine work off a small team. For small businesses, non-profits and founders.";
+const LEDE = "We are a small studio that builds software tools and AI workflows to take routine work off your team. For small businesses, non-profits and founders.";
 
 type HeroId = "a" | "b" | "c";
 const HEROES: { id: HeroId; name: string; note: string }[] = [
@@ -87,9 +86,9 @@ function TwoOptions() {
     </div>
     <div className="ag-opt ag-opt-us">
       <p className="ag-opt-n">Option 2 <em>What we build</em></p>
-      <h3>Make the people you have more effective</h3>
+      <h3>Give the same five people more reach</h3>
       <Bars mode="lift" />
-      <p className="ag-opt-cap">The same five people. Each gets more done.</p>
+      <p className="ag-opt-cap">A sketch, not a measurement.</p>
       <ol className="ag-ladder">{LADDER.map((step, i) => <li key={step.name} className={step.lead ? "is-lead" : undefined}>
         <i className={`ag-swatch is-${i + 1}`} aria-hidden="true" />
         <strong>{step.name}</strong>
@@ -104,22 +103,22 @@ function TwoOptions() {
 // day"). The essay prints clock times; this window names the part of the day
 // instead, so a change to the schedule does not make the home page wrong.
 const DAY: { when: string; job: string; does: string; who: "agent" | "person"; mode: string }[] = [
-  { when: "Overnight", job: "The sweep", does: "Finds new opportunities and files the ones worth acting on.", who: "agent", mode: "Runs itself" },
-  { when: "Early", job: "The morning pulse", does: "Reads email and calendar, then re-ranks the priorities.", who: "agent", mode: "Runs itself" },
+  { when: "Overnight", job: "A sweep for new work", does: "Finds new opportunities and files the ones worth acting on.", who: "agent", mode: "Runs itself" },
+  { when: "Early", job: "A read of email and calendar", does: "Notes replies and meetings, then re-ranks the day’s priorities.", who: "agent", mode: "Runs itself" },
   { when: "Morning", job: "The daily brief", does: "What changed overnight, what to approve, today’s top three.", who: "person", mode: "A person decides" },
   { when: "Weekly", job: "The weekly sync", does: "What moved, what slipped, what is owed.", who: "person", mode: "A person decides" },
 ];
 
 function StudioDay() {
-  return <article className="v3-artifact ag-day" aria-label="How Madrona's own operation runs: two jobs run on their own, two wait for a person">
-    <WindowBar path="madrona · how the studio runs" note="Our own setup" />
+  return <div className="ag-day" role="group" aria-label="How Madrona's own operation runs: two jobs run on their own, two wait for a person">
     <ol className="ag-day-list">{DAY.map(row => <li key={row.job} className={row.who === "person" ? "is-person" : undefined}>
       <span className="ag-day-when">{row.when}</span>
       <span className="ag-day-text"><strong>{row.job}</strong><small>{row.does}</small></span>
       <em className="ag-day-mode">{row.mode}</em>
     </li>)}</ol>
-    <footer className="ag-day-foot"><span className="is-person">Sending, signing and deciding stay with a person.</span></footer>
-  </article>;
+    <p className="ag-day-foot"><span>Sending, signing and deciding stay with a person.</span>
+      <a href={HELM_DEMO_URL} target="_blank" rel="noopener noreferrer" onClick={outboundClick(HELM_DEMO_URL, "lab-home-agentic")}>Try a demo of our command center <span aria-hidden="true">↗</span></a></p>
+  </div>;
 }
 
 // ── Three heroes ────────────────────────────────────────────────────────────
@@ -206,15 +205,14 @@ function Spread({ id, kicker, title, children, picture, flip = false, light = fa
 
 function Choice() {
   return <Spread id="choice" kicker="The choice" title="Two ways to fix being understaffed." picture={<TwoOptions />} light>
-    <p className="ar-does">You can add headcount, or make the people you have more effective. We build the second.</p>
+    <p className="ar-does">Hiring is one answer. We build the other.</p>
   </Spread>;
 }
 
 function Workflow() {
-  return <Spread id="workflow" kicker="Agent-run workflows" title="A routine job that runs itself, then stops for a person." picture={<StudioDay />} flip>
+  return <Spread id="workflow" kicker="Our own setup" title="A routine job that runs itself, then stops for a person." picture={<StudioDay />} flip>
     <p className="ar-does">An agent is software that reads, sorts and prepares on a schedule. Our own studio runs on them every day.</p>
     <Link className="v3-practice-link" to={ARTICLE}>Read how it works <span aria-hidden="true">→</span></Link>
-    <a className="npr-all ar-extra ag-out" href={HELM_DEMO_URL} target="_blank" rel="noopener noreferrer" onClick={outboundClick(HELM_DEMO_URL, "lab-home-agentic")}>Click around the Helm demo <span aria-hidden="true">↗</span></a>
   </Spread>;
 }
 
@@ -228,10 +226,10 @@ function Example({ picture }: { picture: "command-center" | "week" }) {
     <div className="v3-shell">
       <header className="ag-example-head">
         <div>
-          <p className="v3-kicker ar-kicker">Built out in full</p>
-          <h2 id="example-h">One screen for a whole farm business.</h2>
+          <p className="v3-kicker ar-kicker">An example, built out in full</p>
+          <h2 id="example-h">One screen for a whole farm’s week.</h2>
         </div>
-        <p>Berry Good Berry Farm is an example business we built end to end.</p>
+        <p>Berry Good Berry Farm is a made-up farm. Pick a view.</p>
       </header>
       <CommandCenter footer={<div className="cc-links">
         <a href={SPRING_LINE_URL} target="_blank" rel="noopener noreferrer" onClick={outboundClick(SPRING_LINE_URL, "lab-home-agentic")}>A second example: a rigging shop <span aria-hidden="true">↗</span></a>
@@ -241,9 +239,8 @@ function Example({ picture }: { picture: "command-center" | "week" }) {
 }
 
 const STEPS = [
-  { n: "01", name: "A conversation", line: "Tell us where your team’s week goes. It is free." },
+  { n: "01", name: "A conversation", line: "With Charlie Koch, who runs the studio. It is free." },
   { n: "02", name: "One small piece of work", line: "One workflow, with its win named before we build." },
-  { n: "03", name: "Then you decide", line: "Go further only if it paid off." },
 ];
 
 function Start() {
@@ -252,7 +249,7 @@ function Start() {
       <div className="ar-spread">
         <div className="ar-rail">
           <p className="v3-kicker ar-kicker">How it starts</p>
-          <h2 id="start-h">A conversation, then one small piece of work.</h2>
+          <h2 id="start-h">Start small. Go further only if it paid off.</h2>
           <div className="ag-start-actions">
             <Book source="lab-close" />
             <a className="ag-mail" href={`mailto:${CONTACT_EMAIL}`}>or write to {CONTACT_EMAIL}</a>
