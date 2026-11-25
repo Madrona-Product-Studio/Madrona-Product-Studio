@@ -35,6 +35,8 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const WhereToStart = lazy(() => import("./pages/v3/WhereToStart"));
 const PitchKit = lazy(() => import("./pages/lab/PitchKit"));
 const AgentDemoPage = lazy(() => import("./pages/lab/AgentDemoPage"));
+// DRAFT (2026-11-24): a home page variant for review. Unlinked, noindex.
+const HomeAgentic = lazy(() => import("./pages/lab/HomeAgentic"));
 
 // Retired URLs (old /agents, /pov, /current, /work, /how-it-works, the /v3
 // previews, the old assessment slugs, and the /lab/madrona-v2 pages) are
@@ -84,6 +86,9 @@ export default function App() {
         {/* Internal design-system study — kept routable for working sessions,
             but never linked from the public site. */}
         <Route path="lab/madrona-system" element={<MadronaSystem />} />
+        {/* DRAFT home variant (2026-11-24): the understaffed argument, with
+            three hero options behind ?hero=a|b|c|all. Never linked. */}
+        <Route path="lab/home-agentic" element={<HomeAgentic />} />
         {/* Charlie's positioning kit — internal, unlinked, noindex. Source of
             truth: charlie-hq/job-search/pitch-kit.md. */}
         <Route path="pitch-kit" element={<PitchKit />} />
