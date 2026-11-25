@@ -290,6 +290,13 @@ export const pages = {
     h1: "A warm, practical system for serious work.",
     body: "An internal design-system study for Madrona Product Studio: the palette, the type ramp, and the component vocabulary the site is built from.",
     noindex: true,
+  },  // DRAFT home variant (2026-11-24). Unlinked; noindex baked into its HTML.
+  "/lab/home-agentic": {
+    title: "Draft home page · Madrona Product Studio",
+    description: "A draft home page for review. Not linked from the site.",
+    h1: "Short on people? Make the team you have more effective.",
+    body: "A draft home page for Madrona Product Studio, for review.",
+    noindex: true,
   },
 };
 

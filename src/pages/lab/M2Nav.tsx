@@ -28,7 +28,9 @@ const SERVICE_LINKS = [
   { href: "/services/new-products", label: "New Products" },
 ];
 
-export default function M2Nav({ active }: { active?: NavKey }) {
+// `cta` swaps the header button for one page (the /lab/home-agentic draft
+// books a conversation); every live page keeps the default "Get in touch".
+export default function M2Nav({ active, cta }: { active?: NavKey; cta?: { label: string; href: string } }) {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
@@ -80,7 +82,9 @@ export default function M2Nav({ active }: { active?: NavKey }) {
           ) : <Link key={l.key} to={l.href} className={l.primary ? "is-primary" : undefined} aria-current={active === l.key ? "page" : undefined}>{l.label}</Link>)}
         </nav>
         <SkySwitcher />
-        <Link className="m2-button m2-nav-cta" to="/connect" onClick={ctaClick("Get in touch", "/connect", "nav")}>Get in touch</Link>
+        {cta
+          ? <a className="m2-button m2-nav-cta" href={cta.href} onClick={ctaClick(cta.label, cta.href, "nav")}>{cta.label}</a>
+          : <Link className="m2-button m2-nav-cta" to="/connect" onClick={ctaClick("Get in touch", "/connect", "nav")}>Get in touch</Link>}
         <button ref={burgerRef} className="m2-nav-burger" aria-label="Open menu" aria-expanded={open} onClick={() => setOpen(true)}>
           <span className="m2-burger" aria-hidden="true"><span /><span /><span /></span>
         </button>
