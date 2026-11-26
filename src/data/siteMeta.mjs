@@ -3,10 +3,11 @@
 // (LabMeta, the /thinking feed, the article headers) import the same rows.
 // Types live in siteMeta.d.mts next to this file.
 //
-// Per route: title, description, h1 (the static H1 crawlers see), body (the
-// noscript summary for non-article pages), ogImage, article dates, faq,
-// noindex. Article routes also carry their full prose in
-// scripts/thinking-content.json, keyed by the same path.
+// Per route: title, description, h1, body (a short summary), ogImage, article
+// dates, faq, noindex. Since 2026-11 the prerender writes each public page's
+// full text into its HTML from the real components; h1 and body are what it
+// falls back to for internal (noindex) pages or a page that fails to render,
+// as is the article prose in scripts/thinking-content.json.
 
 export const SITE_ORIGIN = "https://www.madronaproduct.com";
 export const SITE_NAME = "Madrona Product Studio";
