@@ -41,9 +41,11 @@ const AgentDemoPage = lazy(() => import("./pages/lab/AgentDemoPage"));
 // 301'd by vercel.json before the app ever loads, so they are not mirrored
 // here. Add a redirect there, not a client-side <Navigate>.
 
-export default function App() {
+// The routed tree without its router, so the build-time prerender
+// (src/prerender-entry.ts) can render the same pages under a StaticRouter.
+export function AppRoutes() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <PageFade>
       <Suspense fallback={<RouteGround />}>
@@ -94,6 +96,14 @@ export default function App() {
       </Routes>
       </Suspense>
       </PageFade>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   );
 }
